@@ -1,0 +1,3 @@
+<button type="{{ $type??'button' }}" class="btn btn-primary px-4" id="{{ $id??'' }}" >{{ TranslationHelper::translate(ucfirst('Submit')??'') }}</button>
+{{-- <button type="{{ $type??'button' }}" class="btn btn-primary px-4" id="{{ $id??'' }}" value="{{ $value??'' }}" name="submit2">{{ TranslationHelper::translate(ucfirst('Submit')??'') }}</button> --}}
+<button type="reset" class="btn btn-light px-4">{{ TranslationHelper::translate(ucfirst('Reset')??'') }}</button>

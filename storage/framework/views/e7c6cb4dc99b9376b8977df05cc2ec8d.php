@@ -1,0 +1,2 @@
+<span class="<?php echo e($class??'form-text text-muted'); ?>"><?php echo e(ucfirst(TranslationHelper::translate($name))); ?></span>
+<br><?php /**PATH /home2/nendemo2024/public_html/resources/views/components/admin/form/label-end.blade.php ENDPATH**/ ?>

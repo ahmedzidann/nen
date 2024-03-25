@@ -1,5 +1,5 @@
 $(function () {
-    var language = $('#slider').val();
+    var language = $('#Slider').val();
     var url = new URL(window.location.href);
     var category = url.searchParams.get("category");
     var subcategory = url.searchParams.get("subcategory");

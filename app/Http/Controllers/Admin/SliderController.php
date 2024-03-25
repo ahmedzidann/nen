@@ -39,10 +39,7 @@ class SliderController extends Controller {
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('Page', function ($row) use($language)  { 
-                                if(!empty($row->Page)){
-                                return "welcome";
-                                // return $row->Page->translate('name', $language);
-                                }
+                            return $row->Pages->translate('name', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
                         

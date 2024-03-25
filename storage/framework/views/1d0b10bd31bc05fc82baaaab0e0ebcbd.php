@@ -1,2 +1,0 @@
-<input type="radio" value="<?php echo e($value??''); ?>" class="form-check-input" id="bsValidation6" <?php echo e($checked??''); ?> value="<?php echo e($value??''); ?>" name="<?php echo e($name??''); ?>" 
-    <?php /**PATH /home2/nendemo2024/public_html/resources/views/components/admin/form/radio.blade.php ENDPATH**/ ?>

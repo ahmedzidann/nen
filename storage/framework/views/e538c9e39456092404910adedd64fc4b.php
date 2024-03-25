@@ -1,1 +1,0 @@
-<label class="<?php echo e($class??'form-label'); ?>"><?php echo e(ucfirst(TranslationHelper::translate($name))); ?> <span style="color: red"><?php echo e($star??''); ?></span>  </label> <br><?php /**PATH /home2/nendemo2024/public_html/resources/views/components/admin/form/label-first.blade.php ENDPATH**/ ?>

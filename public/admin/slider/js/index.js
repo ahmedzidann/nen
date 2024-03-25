@@ -141,7 +141,7 @@ $(function () {
                             id: id
                         },
                         sucess: function (response) {
-                            // Handle the success response
+                            // Handle the success response                           
                             Swal.fire(
                                 'Deleted!',
                                 'Your item has been deleted.',

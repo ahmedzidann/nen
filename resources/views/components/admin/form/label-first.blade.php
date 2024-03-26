@@ -1,0 +1,1 @@
+<label class="{{ $class??'form-label' }}">{{ ucfirst(TranslationHelper::translate($name))  }} <span style="color: red">{{ $star??'' }}</span>  </label> <br>

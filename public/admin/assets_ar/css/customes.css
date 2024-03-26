@@ -1,0 +1,11 @@
+#yajra-datatable_length {
+    margin: 1rem;
+}
+
+.yajra-datatable tfoot tr,
+.yajra-datatable tfoot td {
+    background: rgba(0, 0, 0, 0.05);
+}
+.intl-tel-input{
+width: 100%;
+}

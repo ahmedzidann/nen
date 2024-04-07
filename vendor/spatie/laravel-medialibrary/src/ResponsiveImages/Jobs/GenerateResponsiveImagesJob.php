@@ -12,8 +12,8 @@ use Spatie\MediaLibrary\ResponsiveImages\ResponsiveImageGenerator;
 class GenerateResponsiveImagesJob implements ShouldQueue
 {
     use InteractsWithQueue;
-    use Queueable;
     use SerializesModels;
+    use Queueable;
 
     public function __construct(protected Media $media)
     {

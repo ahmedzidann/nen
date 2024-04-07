@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Model
- *
  * @method void prepareToAttachMedia(Media $media, FileAdder $fileAdder)
- *
  * @property bool $registerMediaConversionsUsingModelInstance
  * @property ?\Spatie\MediaLibrary\MediaCollections\MediaCollection $mediaCollections
  */
@@ -39,11 +37,9 @@ interface HasMedia
 
     public function addMediaConversion(string $name): Conversion;
 
-    public function registerMediaConversions(?Media $media = null): void;
+    public function registerMediaConversions(Media $media = null): void;
 
     public function registerMediaCollections(): void;
 
     public function registerAllMediaConversions(): void;
-
-    public function getMediaModel(): string;
 }

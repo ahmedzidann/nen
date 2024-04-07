@@ -4,19 +4,17 @@ namespace Spatie\MediaLibrary\Conversions\Actions;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Spatie\Image\Exceptions\UnsupportedImageFormat;
-use Spatie\Image\Image;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\Support\ImageFactory;
 
 class PerformManipulationsAction
 {
     public function execute(
         Media $media,
         Conversion $conversion,
-        string $imageFile,
+        string $imageFile
     ): string {
-
         if ($conversion->getManipulations()->isEmpty()) {
             return $imageFile;
         }
@@ -30,17 +28,9 @@ class PerformManipulationsAction
             $conversion->format($media->extension);
         }
 
-        $image = Image::useImageDriver(config('media-library.image_driver'))
-            ->loadFile($conversionTempFile)
-            ->format('jpg');
-
-        try {
-            $conversion->getManipulations()->apply($image);
-
-            $image->save();
-        } catch (UnsupportedImageFormat) {
-
-        }
+        ImageFactory::load($conversionTempFile)
+            ->manipulate($conversion->getManipulations())
+            ->save();
 
         return $conversionTempFile;
     }
@@ -48,17 +38,11 @@ class PerformManipulationsAction
     protected function getConversionTempFileName(
         Media $media,
         Conversion $conversion,
-        string $imageFile,
+        string $imageFile
     ): string {
         $directory = pathinfo($imageFile, PATHINFO_DIRNAME);
 
-        $extension = $media->extension;
-
-        if ($extension === '') {
-            $extension = 'jpg';
-        }
-
-        $fileName = Str::random(32)."{$conversion->getName()}.{$extension}";
+        $fileName = Str::random(32)."{$conversion->getName()}.{$media->extension}";
 
         return "{$directory}/{$fileName}";
     }

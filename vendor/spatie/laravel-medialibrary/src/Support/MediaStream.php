@@ -6,13 +6,14 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use ZipStream\Option\Archive as ArchiveOptions;
 use ZipStream\ZipStream;
 
 class MediaStream implements Responsable
 {
     protected Collection $mediaItems;
 
-    protected array $zipOptions;
+    protected array|ArchiveOptions $zipOptions;
 
     public static function create(string $zipName): self
     {
@@ -23,7 +24,7 @@ class MediaStream implements Responsable
     {
         $this->mediaItems = collect();
 
-        $this->zipOptions = [];
+        $this->zipOptions = class_exists(ArchiveOptions::class) ? new ArchiveOptions() : [];
     }
 
     public function useZipOptions(callable $zipOptionsCallable): self
@@ -73,8 +74,12 @@ class MediaStream implements Responsable
 
     public function getZipStream(): ZipStream
     {
-        $this->zipOptions['outputName'] = $this->zipName;
-        $zip = new ZipStream(...$this->zipOptions);
+        if (class_exists(ArchiveOptions::class)) {
+            $zip = new ZipStream($this->zipName, $this->zipOptions);
+        } else {
+            $this->zipOptions['outputName'] = $this->zipName;
+            $zip = new ZipStream(...$this->zipOptions);
+        }
 
         $this->getZipStreamContents()->each(function (array $mediaInZip) use ($zip) {
             $stream = $mediaInZip['media']->stream();
@@ -93,7 +98,6 @@ class MediaStream implements Responsable
 
     protected function getZipStreamContents(): Collection
     {
-
         return $this->mediaItems->map(fn (Media $media, $mediaItemIndex) => [
             'fileNameInZip' => $this->getZipFileNamePrefix($this->mediaItems, $mediaItemIndex).$this->getFileNameWithSuffix($this->mediaItems, $mediaItemIndex),
             'media' => $media,
@@ -104,14 +108,14 @@ class MediaStream implements Responsable
     {
         $fileNameCount = 0;
 
-        $fileName = $mediaItems[$currentIndex]->getDownloadFilename();
+        $fileName = $mediaItems[$currentIndex]->file_name;
 
         foreach ($mediaItems as $index => $media) {
             if ($index >= $currentIndex) {
                 break;
             }
 
-            if ($this->getZipFileNamePrefix($mediaItems, $index).$media->getDownloadFilename() === $this->getZipFileNamePrefix($mediaItems, $currentIndex).$fileName) {
+            if ($this->getZipFileNamePrefix($mediaItems, $index).$media->file_name === $this->getZipFileNamePrefix($mediaItems, $currentIndex).$fileName) {
                 $fileNameCount++;
             }
         }

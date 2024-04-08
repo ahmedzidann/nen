@@ -5,6 +5,7 @@ namespace Spatie\MediaLibrary\Conversions;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\InvalidConversion;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -74,10 +75,10 @@ class ConversionCollection extends Collection
         $this->items = $model->mediaConversions;
     }
 
-    protected function addManipulationsFromDb(Media $media): void
+    protected function addManipulationsFromDb(Media $media)
     {
         collect($media->manipulations)->each(function ($manipulation, $conversionName) {
-            $manipulations = new Manipulations($manipulation);
+            $manipulations = new Manipulations([$manipulation]);
 
             $this->addManipulationToConversion($manipulations, $conversionName);
         });

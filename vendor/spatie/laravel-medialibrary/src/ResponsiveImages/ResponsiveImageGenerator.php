@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\MediaCollections\Filesystem;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\ResponsiveImages\Events\ResponsiveImagesGeneratedEvent;
+use Spatie\MediaLibrary\ResponsiveImages\Events\ResponsiveImagesGenerated;
 use Spatie\MediaLibrary\ResponsiveImages\Exceptions\InvalidTinyJpg;
 use Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator;
 use Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator;
@@ -45,7 +45,7 @@ class ResponsiveImageGenerator
             $this->generateResponsiveImage($media, $baseImage, 'media_library_original', $width, $temporaryDirectory);
         }
 
-        event(new ResponsiveImagesGeneratedEvent($media));
+        event(new ResponsiveImagesGenerated($media));
 
         $this->generateTinyJpg($media, $baseImage, 'media_library_original', $temporaryDirectory);
 
@@ -58,9 +58,7 @@ class ResponsiveImageGenerator
 
         $media = $this->cleanResponsiveImages($media, $conversion->getName());
 
-        $widthCalculator = $conversion->getWidthCalculator() ?? $this->widthCalculator;
-
-        foreach ($widthCalculator->calculateWidthsFromFile($baseImage) as $width) {
+        foreach ($this->widthCalculator->calculateWidthsFromFile($baseImage) as $width) {
             $this->generateResponsiveImage($media, $baseImage, $conversion->getName(), $width, $temporaryDirectory, $this->getConversionQuality($conversion));
         }
 
@@ -71,7 +69,7 @@ class ResponsiveImageGenerator
 
     private function getConversionQuality(Conversion $conversion): int
     {
-        return $conversion->getManipulations()->getFirstManipulationArgument('quality') ?: self::DEFAULT_CONVERSION_QUALITY;
+        return $conversion->getManipulations()->getManipulationArgument('quality') ?: self::DEFAULT_CONVERSION_QUALITY;
     }
 
     public function generateResponsiveImage(
@@ -119,10 +117,6 @@ class ResponsiveImageGenerator
         string $conversionName,
         BaseTemporaryDirectory $temporaryDirectory
     ): void {
-        if (! config('media-library.responsive_images.use_tiny_placeholders')) {
-            return;
-        }
-
         $tempDestination = $temporaryDirectory->path('tiny.jpg');
 
         $this->tinyPlaceholderGenerator->generateTinyPlaceholder($originalImagePath, $tempDestination);
@@ -150,7 +144,7 @@ class ResponsiveImageGenerator
         ResponsiveImage::registerTinySvg($media, $base64Svg, $conversionName);
     }
 
-    protected function appendToFileName(string $filePath, string $suffix, ?string $extensionFilePath = null): string
+    protected function appendToFileName(string $filePath, string $suffix, string $extensionFilePath = null): string
     {
         $baseName = pathinfo($filePath, PATHINFO_FILENAME);
 

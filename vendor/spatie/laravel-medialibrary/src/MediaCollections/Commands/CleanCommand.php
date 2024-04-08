@@ -218,7 +218,6 @@ class CleanCommand extends Command
         $generatedConversionName = null;
 
         $media->getGeneratedConversions()
-            ->dot()
             ->filter(
                 fn (bool $isGenerated, string $generatedConversionName) => Str::contains($conversionFile, $generatedConversionName)
             )

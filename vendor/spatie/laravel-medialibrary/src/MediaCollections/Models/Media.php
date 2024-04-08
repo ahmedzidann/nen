@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Mail\Attachment;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\Conversions\ConversionCollection;
 use Spatie\MediaLibrary\Conversions\ImageGenerators\ImageGeneratorFactory;
@@ -57,11 +56,11 @@ use Spatie\MediaLibraryPro\Models\TemporaryUpload;
  * @property-read ?\Illuminate\Support\Carbon $created_at
  * @property-read ?\Illuminate\Support\Carbon $updated_at
  */
-class Media extends Model implements Attachable, Htmlable, Responsable
+class Media extends Model implements Responsable, Htmlable, Attachable
 {
+    use IsSorted;
     use CustomMediaProperties;
     use HasUuid;
-    use IsSorted;
 
     protected $table = 'media';
 
@@ -77,8 +76,6 @@ class Media extends Model implements Attachable, Htmlable, Responsable
         'generated_conversions' => 'array',
         'responsive_images' => 'array',
     ];
-
-    protected int $streamChunkSize = (1024 * 1024); // default to 1MB chunks.
 
     public function newCollection(array $models = [])
     {
@@ -137,11 +134,6 @@ class Media extends Model implements Attachable, Htmlable, Responsable
         }
 
         return $this->getUrl();
-    }
-
-    public function getDownloadFilename(): string
-    {
-        return $this->file_name;
     }
 
     public function getAvailableFullUrl(array $conversionNames): string
@@ -233,7 +225,10 @@ class Media extends Model implements Attachable, Htmlable, Responsable
     /**
      * Get the value of custom property with the given name.
      *
-     * @param  mixed  $default
+     * @param string $propertyName
+     * @param mixed $default
+     *
+     * @return mixed
      */
     public function getCustomProperty(string $propertyName, $default = null): mixed
     {
@@ -241,7 +236,8 @@ class Media extends Model implements Attachable, Htmlable, Responsable
     }
 
     /**
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return $this
      */
     public function setCustomProperty(string $name, $value): self
@@ -278,6 +274,7 @@ class Media extends Model implements Attachable, Htmlable, Responsable
         return collect($this->generated_conversions ?? []);
     }
 
+
     public function markAsConversionGenerated(string $conversionName): self
     {
         $generatedConversions = $this->generated_conversions;
@@ -306,16 +303,9 @@ class Media extends Model implements Attachable, Htmlable, Responsable
 
     public function hasGeneratedConversion(string $conversionName): bool
     {
-        $generatedConversions = $this->generated_conversions;
+        $generatedConversions = $this->getGeneratedConversions();
 
-        return Arr::get($generatedConversions, $conversionName, false);
-    }
-
-    public function setStreamChunkSize(int $chunkSize)
-    {
-        $this->streamChunkSize = $chunkSize;
-
-        return $this;
+        return $generatedConversions[$conversionName] ?? false;
     }
 
     public function toResponse($request)
@@ -330,23 +320,18 @@ class Media extends Model implements Attachable, Htmlable, Responsable
 
     private function buildResponse($request, string $contentDispositionType)
     {
-        $filename = str_replace('"', '\'', Str::ascii($this->getDownloadFilename()));
-
         $downloadHeaders = [
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
             'Content-Type' => $this->mime_type,
             'Content-Length' => $this->size,
-            'Content-Disposition' => $contentDispositionType.'; filename="'.$filename.'"',
+            'Content-Disposition' => $contentDispositionType . '; filename="' . $this->file_name . '"',
             'Pragma' => 'public',
         ];
 
         return response()->stream(function () {
             $stream = $this->stream();
 
-            while (! feof($stream)) {
-                echo fread($stream, $this->streamChunkSize);
-                flush();
-            }
+            fpassthru($stream);
 
             if (is_resource($stream)) {
                 fclose($stream);
@@ -381,7 +366,7 @@ class Media extends Model implements Attachable, Htmlable, Responsable
         return Attribute::get(fn () => $this->getUrl());
     }
 
-    /** @param  string  $collectionName */
+    /** @param string $collectionName */
     public function move(HasMedia $model, $collectionName = 'default', string $diskName = '', string $fileName = ''): self
     {
         $newMedia = $this->copy($model, $collectionName, $diskName, $fileName);
@@ -391,12 +376,12 @@ class Media extends Model implements Attachable, Htmlable, Responsable
         return $newMedia;
     }
 
-    /** @param  string  $collectionName */
+    /** @param string $collectionName */
     public function copy(HasMedia $model, $collectionName = 'default', string $diskName = '', string $fileName = ''): self
     {
         $temporaryDirectory = TemporaryDirectory::create();
 
-        $temporaryFile = $temporaryDirectory->path('/').DIRECTORY_SEPARATOR.$this->file_name;
+        $temporaryFile = $temporaryDirectory->path('/') . DIRECTORY_SEPARATOR . $this->file_name;
 
         /** @var Filesystem $filesystem */
         $filesystem = app(Filesystem::class);

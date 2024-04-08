@@ -2,14 +2,13 @@
 
 namespace Spatie\MediaLibrary\Conversions;
 
-use Illuminate\Support\Arr;
+use BadMethodCallException;
 use Illuminate\Support\Traits\Conditionable;
-use Spatie\ImageOptimizer\OptimizerChainFactory;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator;
 use Spatie\MediaLibrary\Support\FileNamer\FileNamer;
 
-/** @mixin \Spatie\Image\Drivers\ImageDriver */
+/** @mixin \Spatie\Image\Manipulations */
 class Conversion
 {
     use Conditionable;
@@ -28,19 +27,16 @@ class Conversion
 
     protected bool $generateResponsiveImages = false;
 
-    protected ?WidthCalculator $widthCalculator = null;
-
     protected ?string $loadingAttributeValue;
 
     protected int $pdfPageNumber = 1;
 
     public function __construct(
-        protected string $name,
+        protected string $name
     ) {
-        $optimizerChain = OptimizerChainFactory::create(config('media-library.image_optimizers'));
-
-        $this->manipulations = new Manipulations();
-        $this->manipulations->optimize($optimizerChain)->format('jpg');
+        $this->manipulations = (new Manipulations())
+            ->optimize(config('media-library.image_optimizers'))
+            ->format(Manipulations::FORMAT_JPG);
 
         $this->fileNamer = app(config('media-library.file_namer'));
 
@@ -49,7 +45,7 @@ class Conversion
         $this->performOnQueue = config('media-library.queue_conversions_by_default', true);
     }
 
-    public static function create(string $name): self
+    public static function create(string $name)
     {
         return new static($name);
     }
@@ -111,8 +107,12 @@ class Conversion
         return $this;
     }
 
-    public function __call($name, $arguments): self
+    public function __call($name, $arguments)
     {
+        if (! method_exists($this->manipulations, $name)) {
+            throw new BadMethodCallException("Manipulation `{$name}` does not exist");
+        }
+
         $this->manipulations->$name(...$arguments);
 
         return $this;
@@ -133,13 +133,11 @@ class Conversion
 
     public function addAsFirstManipulations(Manipulations $manipulations): self
     {
-        $newManipulations = $manipulations->toArray();
+        $manipulationSequence = $manipulations->getManipulationSequence()->toArray();
 
-        $currentManipulations = $this->manipulations->toArray();
-
-        $allManipulations = array_merge($currentManipulations, $newManipulations);
-
-        $this->manipulations = new Manipulations($allManipulations);
+        $this->manipulations
+            ->getManipulationSequence()
+            ->mergeArray($manipulationSequence);
 
         return $this;
     }
@@ -193,18 +191,6 @@ class Conversion
         return $this;
     }
 
-    public function withWidthCalculator(WidthCalculator $widthCalculator): self
-    {
-        $this->widthCalculator = $widthCalculator;
-
-        return $this;
-    }
-
-    public function getWidthCalculator(): ?WidthCalculator
-    {
-        return $this->widthCalculator;
-    }
-
     public function shouldGenerateResponsiveImages(): bool
     {
         return $this->generateResponsiveImages;
@@ -223,7 +209,7 @@ class Conversion
             }
         }
 
-        if ($manipulationArgument = Arr::get($this->manipulations->getManipulationArgument('format'), 0)) {
+        if ($manipulationArgument = $this->manipulations->getManipulationArgument('format')) {
             return $manipulationArgument;
         }
 

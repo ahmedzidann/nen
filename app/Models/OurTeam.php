@@ -19,7 +19,7 @@ class OurTeam extends Model implements  HasMedia
       'name',
       'jop',
    ];
-   
+
    protected $fillable = [
       'title',
       'name',
@@ -34,4 +34,8 @@ class OurTeam extends Model implements  HasMedia
        {
          return $this->belongsTo(Page::class, 'pages_id');
        }
+
+       public function scopeActive($q){
+        $q->where('status',"active");
+    }
 }

@@ -26,7 +26,7 @@ class InvestorsRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -40,7 +40,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreOne()
     {
         $request= Request();
@@ -50,6 +50,7 @@ class InvestorsRequest extends FormRequest
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['nullable'],
+            'description' => ['required'],
         ]);
     }
 
@@ -57,7 +58,8 @@ class InvestorsRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'icon' => ['required','max:255','min:2'],
+            // 'icon' => ['required','max:255','min:2'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
             'title.*' => ['required','max:255','min:2'],
             'subtitle.*' => ['required','max:255','min:2'],
             'item' => ['required'],
@@ -65,7 +67,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreThree()
     {
         $request= Request();
@@ -76,7 +78,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreFoure()
     {
         $request= Request();
@@ -89,7 +91,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateOneEn()
     {
         $request= Request();
@@ -99,14 +101,16 @@ class InvestorsRequest extends FormRequest
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['nullable'],
+            'description' => ['required'],
         ]);
     }
-    
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'icon'=>['required','max:255','min:2'],
+            // 'icon'=>['required','max:255','min:2'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
             'subtitle.'.$request->submit2 => ['required','max:255','min:2'],
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'item' => ['required'],
@@ -114,7 +118,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateThreeEn()
     {
         $request= Request();
@@ -148,7 +152,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();
@@ -170,7 +174,7 @@ class InvestorsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateFoureAr()
     {
         $request= Request();
@@ -195,7 +199,7 @@ class InvestorsRequest extends FormRequest
             'sort' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateAr()
     {
         $request= Request();

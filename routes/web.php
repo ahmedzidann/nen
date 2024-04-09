@@ -12,8 +12,16 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'about','as'=>'about.', 'name'=>'about.'], function () {
     Route::get('identity', [AboutController::class, 'identity'])->name('identity');
-    Route::get('award', [AboutController::class, 'award'])->name('award');
+    Route::get('investors', [AboutController::class, 'investors'])->name('investors');
+    Route::get('achievements', [AboutController::class, 'achievements'])->name('achievements');
+
+    Route::get('awards', [AboutController::class, 'awards'])->name('awards');
     Route::get('certificates', [AboutController::class, 'certificates'])->name('certificates');
     Route::get('partners', [AboutController::class, 'partners'])->name('partners');
+    Route::get('clients', [AboutController::class, 'clients'])->name('clients');
+    Route::get('careers', [AboutController::class, 'careers'])->name('careers');
+    Route::get('our-team', [AboutController::class, 'our_team'])->name('our-team');
+
+
 
 });

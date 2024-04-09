@@ -62,8 +62,16 @@
   </div>
   <!-- section_who_us -->
 
-  @yield('content')
 
+  <section class="about_sec">
+    <div class="container">
+      <div class="about_us_div">
+        @include('user.layout.includes.about.sidebar')
+        @yield('content')
+
+      </div>
+    </div>
+  </section>
   <!-- footer -->
 
   <section class="footer_sec">

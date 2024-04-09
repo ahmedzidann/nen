@@ -7,9 +7,14 @@
               <a href="#" class="a_ref active_link">About<span><i class="bi bi-chevron-down"></i></span></a>
               <ul class="ul_dropdown">
                 <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.identity')); ?>">identify</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.award')); ?>">Awards</a></li>
+                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.investors')); ?>">investors</a></li>
+                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.achievements')); ?>">achievements</a></li>
+                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.awards')); ?>">Awards</a></li>
                 <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.certificates')); ?>">certificates</a></li>
                 <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.partners')); ?>">partneres</a></li>
+                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.clients')); ?>">clients</a></li>
+                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.our-team')); ?>">our team</a></li>
+                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.careers')); ?>">careers</a></li>
                 <li class="li_drop_content">
                   <a href="investors.html">investors</a>
                   <i class="bi bi-chevron-right"></i>

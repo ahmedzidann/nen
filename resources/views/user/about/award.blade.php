@@ -1,217 +1,244 @@
 @extends('user.layout.master')
+@section('parent_page_name')About @endsection
+@section('page_name')Awards @endsection
 @section('content')
 
-<section class="about_sec">
-    <div class="container">
-      <div class="about_us_div">
-        <div class="aside_div">
-          <a href="identify.html" class="ref_styles active_ref">
-            <img class="Identity_icon" src="{{asset('content/images/small_icon/card.png')}}"
-                alt="" />Identity
+<div class="about_content">
 
-          </a>
-          <a href="investors.html" class="ref_styles">
-             <img class="Investors_icon"
-                src="{{asset('content/images/small_icon/SVGRepo_iconCarrier.png')}}" alt="" />Investors
+    @if ($fSection =  $items->where('item','section-one')->first())
+    <div class="Awards_flex">
+        <div class="Awards_titel">
+            <h1>{{$fSection->title}}</h1>
 
-          </a>
-          <a href="Achievements.html" class="ref_styles">
-            <img src="{{asset('content/images/small_icon/photoe.png')}}" alt="" />Achievements
-
-          </a>
-          <a href="Awards.html" class="ref_styles ">
-            <img src="{{asset('content/images/small_icon/cup.png')}}" alt="" />Awards
-
-          </a>
-          <a href="certificates.html" class="ref_styles ">
-              <img src="{{asset('content/images/small_icon/SVGRepo_iconCarrier (1).png')}}" alt="" />Certificates
-          </a>
-          <a href="partneres.html" class="ref_styles">
-              <img src="{{asset('content/images/small_icon/shield-tick.png')}}" alt="" />
-              Partneres
-
-          </a>
-          <a href="Clients.html" class="ref_styles">
-              <img src="{{asset('content/images/small_icon/people.png')}}" alt="" />
-              Clients
-
-          </a>
-          <a href="OUR_TEAM.html" class="ref_styles">
-              <img src="{{asset('content/images/small_icon/shield-tick.png')}}"
-                />
-              Our Teams
-          </a>
-
-          <a href="careers.html" class="ref_styles ">
-
-              <img src="{{asset('content/images/small_icon/Slider container.png')}}" alt="" />
-              Careers
-
-          </a>
+            <p>{!! ($fSection->description)!!}</p>
         </div>
 
-        <div class="about_content">
-          <div class="about_flex">
-            <div class="video_div">
-              <img class="video_img" src="{{asset('content/images/women.png')}}" />
-              <span class="video_icon" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                  class="bi bi-play-circle"></i></span>
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                  <div class="modal-content modal_syles">
-                    <div class="modal-header">
-
-                      <a href="#" class="bttn_close" data-bs-dismiss="modal" aria-label="Close"><i
-                          class="bi bi-x-lg"></i></a>
-                    </div>
-                    <div class="modal-body">
-                      <iframe width="700" height="350"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
-                      </iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="about_titel_circle_progress">
-              <div class="about_titel">
-                <h1>who are we</h1>
-                <p>
-                  Most recently, when we successfully made our IPO
-                  transforming into a multi-national corporation listed on
-                  stock exchanges, we secured the resources needed to initiate
-                  Stage II within which we will be expanding our scope of
-                  service & range of solutions further than ever before to get
-                  closer to being the organization we dreamt of back in 2008:
-                  A socially responsible business organization, powered by the
-                  wonders of modern technology...
-                </p>
-
-                <a href="#" class="see_more">see more</a>
-              </div>
-
-              <div class="three_circles">
-                <div class="circle_content">
-                  <circle-progress class="progress_1" value="90" max="100" text-format="percent"></circle-progress>
-                  <span class="text">Ui/Ux Designer</span>
-                </div>
-                <div class="circle_content">
-                  <circle-progress class="progress_1" value="70" max="100" text-format="percent"></circle-progress>
-                  <span class="text">Ui/Ux Designer</span>
-                </div>
-                <div class="circle_content">
-                  <circle-progress class="progress_1" value="80" max="100" text-format="percent"></circle-progress>
-                  <span class="text">Ui/Ux Designer</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="bg_div" style="background-image: url({{asset('content/images/imge2.jpeg')}})">
-            <div class="explain_div">
-              <div class="d-flex align-items-start flex_action">
-                <div class="nav flex-column nav-pills our_visions me-3" id="v-pills-tab" role="tablist"
-                  aria-orientation="vertical">
-                  <button class="nav-link active tab_state w_nav_link" id="v-pills-home-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                    aria-selected="true">
-                    Our Vision
-                  </button>
-                  <button class="nav-link tab_state bttn_tab w_nav_link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                    aria-selected="false">
-                    Our Mission
-                  </button>
-                  <button class="nav-link tab_state bttn_tab w_nav_link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
-                    aria-selected="false">
-                    Objectives
-                  </button>
-                </div>
-                <div class="tab-content tab_horzintal" id="v-pills-tabContent">
-                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab" tabindex="0">
-                    <p class="tab_p">
-                      “Human civilization only through development and
-                      innovation can exist harmoniously on the planet.” Become a
-                      global market leader in the fields of Information
-                      Technology & Educational Solutions; ushering in an era of
-                      digital transformation & capabilities optimization.
-                    </p>
-                  </div>
-                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                    tabindex="0">
-                    <p class="tab_p">
-                      “Human civilization only through development and
-                      innovation can exist harmoniously on the planet.” Become a
-                      global market leader in the fields of Information
-                      Technology & Educational Solutions; ushering in an era of
-                      digital transformation & capabilities optimization.
-                    </p>
-                  </div>
-                  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                    aria-labelledby="v-pills-messages-tab" tabindex="0">
-                    <p class="tab_p">
-                      “Human civilization only through development and
-                      innovation can exist harmoniously on the planet.” Become a
-                      global market leader in the fields of Information
-                      Technology & Educational Solutions; ushering in an era of
-                      digital transformation & capabilities optimization.
-
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-           <!-- <div class="objectives_div">
-            <div class="objectiv_titling">
-              <h1>Our Objectives Of Company</h1>
-              <ul class="objectives_ul">
-                <li>
-                  Developing highly qualified calibers to keep pace with the
-                  requirements of the labor market.
-                </li>
-                <li>
-                  Providing free educational resources and platforms to
-                  enabling self-education that would guarantee equal
-                  opportunities for young people everywhere
-                </li>
-                <li>
-                  Expanding the range of our consultation services focusing on
-                  hyper growth sectors.
-                </li>
-                <li>
-                  Promoting benefits of technological solutions for enhancing
-                  organizational capabilities and competencies with small
-                  businesses.
-                </li>
-                <li>
-                  Leading a strong, comprehensive network of professional,
-                  socially responsible organizations dedicated to innovation
-                  and excellence.
-                </li>
-                <li>
-                  Preparing a generation of qualified teachers, trainers, and
-                  lecturers capable of utilizing state-of-the-art
-                  technological solutions to facilitate education and
-                  learning.
-                </li>
-              </ul>
-            </div>
-
-            <div class="objectives_img">
-              <img src="content/images/Rating.png" />
-            </div>
-          </div> -->
+        <div class="Awards_img">
+            <img src="{{$fSection->getFirstMediaUrl('StaticTable')}}">
         </div>
-      </div>
-      <div></div>
     </div>
-  </section>
+    @endif
+
+    <div class="Awards_head_titel">
+        <h1>AWARDS</h1>
+        <div class="tabs_div">
+            <ul class="nav nav-pills mb-3 Awards_bttn " id="pills-tab" role="tablist">
+                <!-- Swiper -->
+                <div class="swiper mySwiper Awards_slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                    <div class="swiper-wrapper swipper_action" id="swiper-wrapper-106b4cf6610d8a50610" aria-live="polite">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 5px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link proj_bttn active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">TAMKEEN
+                                    COMPETITION</button>
+                            </li>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 6" style="margin-right: 5px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link proj_bttn" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">CISCO
+                                    ACADEMY</button>
+                            </li>
+                        </div>
+                        <div class="swiper-slide" role="group" aria-label="3 / 6" style="margin-right: 5px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link proj_bttn" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">Microsoft</button>
+                            </li>
+                        </div>
+
+                        <div class="swiper-slide" role="group" aria-label="4 / 6" style="margin-right: 5px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">ACTIVATE ICT PRODUCT
+                                    DEVELOPMENT</button>
+                            </li>
+                        </div>
+
+                        <div class="swiper-slide" role="group" aria-label="5 / 6" style="margin-right: 5px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">INNOVATION AWARD</button>
+                            </li>
+                        </div>
+
+                        <div class="swiper-slide" role="group" aria-label="6 / 6" style="margin-right: 5px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">LEARNING CENTER</button>
+                            </li>
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-106b4cf6610d8a50610" aria-disabled="false"></div>
+                    <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-106b4cf6610d8a50610" aria-disabled="true"></div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+                <!-- Swiper JS -->
+
+                <!-- <li class="nav-item" role="presentation">
+                    <button class="nav-link active proj_bttn" id="pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">TAMKEEN COMPETITION</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link proj_bttn" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab"
+                        aria-controls="pills-profile" aria-selected="false">CISCO ACADEMY</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link proj_bttn" id="pills-contact-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-contact" type="button" role="tab"
+                        aria-controls="pills-contact" aria-selected="false">Microsoft</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-disabled" type="button" role="tab"
+                        aria-controls="pills-disabled" aria-selected="false">ACTIVATE ICT PRODUCT
+                        DEVELOPMENT</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-disabled" type="button" role="tab"
+                        aria-controls="pills-disabled" aria-selected="false">INNOVATION AWARD</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-disabled" type="button" role="tab"
+                        aria-controls="pills-disabled" aria-selected="false">LEARNING CENTER</button>
+                </li> -->
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                    <div class="tabs_content">
+                        <div class="logo_img_discreption">
+                            <div class="icons_div_logo_img_div">
+                                <div class="logo_img_div">
+                                    <img class="logo_img" src="content/images/logo_imge.png">
+
+                                </div>
+                                <div class="icons_div">
+                                    <h5>TAMKEEN COMPETITION ( MCIT )</h5>
+                                    <div class="flex_icons_div">
+                                        <p><img src="content/images/small_icon/archive-book.png"><span>Reference</span>
+                                        </p>
+                                        <p><img src="content/images/small_icon/global.png"><span>Website</span>
+                                        </p>
+                                        <p><img src="content/images/small_icon/calendar-2.png"><span>19
+                                                /3 /
+                                                2024</span></p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="discreption_div">
+                                <p>The first award is for developing the app Tasaheel which is a portal
+                                    to
+                                    facilitate for citizens with special needs access to all services,
+                                    whether governmental or otherwise; the app includes sign language as
+                                    a
+                                    feature enabling the deaf to fully utilize all the capabilities of
+                                    the
+                                    system. The Second award is for Qayas, a system for managing
+                                    electronic
+                                    tests for people with visual disabilities enabling them to handle
+                                    the
+                                    tests at ease.</p>
+                            </div>
+
+                        </div>
+
+                        <div class="logo_img_discreption">
+                            <div class="icons_div_logo_img_div">
+                                <div class="logo_img_div">
+                                    <img class="logo_img" src="content/images/logo_imge.png">
+
+                                </div>
+                                <div class="icons_div">
+                                    <h5>TAMKEEN COMPETITION ( MCIT )</h5>
+                                    <div class="flex_icons_div">
+                                        <p><img src="content/images/small_icon/archive-book.png"><span>Reference</span>
+                                        </p>
+                                        <p><img src="content/images/small_icon/global.png"><span>Website</span>
+                                        </p>
+                                        <p><img src="content/images/small_icon/calendar-2.png"><span>19
+                                                /3 /
+                                                2024</span></p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="discreption_div">
+                                <p>The first award is for developing the app Tasaheel which is a portal
+                                    to
+                                    facilitate for citizens with special needs access to all services,
+                                    whether governmental or otherwise; the app includes sign language as
+                                    a
+                                    feature enabling the deaf to fully utilize all the capabilities of
+                                    the
+                                    system. The Second award is for Qayas, a system for managing
+                                    electronic
+                                    tests for people with visual disabilities enabling them to handle
+                                    the
+                                    tests at ease.</p>
+                            </div>
+
+                        </div>
+
+                        <div class="logo_img_discreption">
+                            <div class="icons_div_logo_img_div">
+                                <div class="logo_img_div">
+                                    <img class="logo_img" src="content/images/logo_imge.png">
+
+                                </div>
+                                <div class="icons_div">
+                                    <h5>TAMKEEN COMPETITION ( MCIT )</h5>
+                                    <div class="flex_icons_div">
+                                        <p><img src="content/images/small_icon/archive-book.png"><span>Reference</span>
+                                        </p>
+                                        <p><img src="content/images/small_icon/global.png"><span>Website</span>
+                                        </p>
+                                        <p><img src="content/images/small_icon/calendar-2.png"><span>19
+                                                /3 /
+                                                2024</span></p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="discreption_div">
+                                <p>The first award is for developing the app Tasaheel which is a portal
+                                    to
+                                    facilitate for citizens with special needs access to all services,
+                                    whether governmental or otherwise; the app includes sign language as
+                                    a
+                                    feature enabling the deaf to fully utilize all the capabilities of
+                                    the
+                                    system. The Second award is for Qayas, a system for managing
+                                    electronic
+                                    tests for people with visual disabilities enabling them to handle
+                                    the
+                                    tests at ease.</p>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">...</div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
+                <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+                <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
 @endsection

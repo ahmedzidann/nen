@@ -18,6 +18,14 @@
             @else
             <li class="li_category">
                 <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
+                <ul class="ul_dropdown">
+                    @foreach ($page->childe as $sub)
+
+                    <li class="li_drop_content"><a href="#">{{$sub->name}}</a></li>
+                    @endforeach
+
+
+                </ul>
               </li>
             @endif
 

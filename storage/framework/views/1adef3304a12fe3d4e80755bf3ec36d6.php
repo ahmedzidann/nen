@@ -18,6 +18,14 @@
             <?php else: ?>
             <li class="li_category">
                 <a href="#" class="a_ref <?php echo e(Route::is(''.$page->slug.'.*')? "active_link": ""); ?>"><?php echo e($page->name); ?> <span><i class="bi bi-chevron-down"></i></span></a>
+                <ul class="ul_dropdown">
+                    <?php $__currentLoopData = $page->childe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                    <li class="li_drop_content"><a href="#"><?php echo e($sub->name); ?></a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+                </ul>
               </li>
             <?php endif; ?>
 

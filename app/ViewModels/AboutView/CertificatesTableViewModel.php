@@ -18,6 +18,7 @@ class CertificatesTableViewModel extends ViewModel
     public  $allPage;
     public  $SelectPages;
     public  $DataFull;
+    public  $childe_pages_id;
 
     public function __construct($StaticTable = null)
     {
@@ -31,6 +32,7 @@ class CertificatesTableViewModel extends ViewModel
         $this->allPage = Page::get();
         if(!empty(Request()->category) && !empty(Request()->subcategory)){
             $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
+            $this->childe_pages_id = Page::where('slug',Request()->subsubcategory)->first();
             $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
         }elseif(!empty(Request()->category)){
             $this->SelectPages = Page::where('slug',Request()->category)->first();

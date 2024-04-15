@@ -1,7 +1,6 @@
 <?php $__env->startSection('parent_page_name'); ?>About <?php $__env->stopSection(); ?>
 <?php $__env->startSection('page_name'); ?>Investors <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-
 <div class="about_content">
     <?php if($fSection =  $items->where('item','section-one')->first()): ?>
     <div class="investors_flex">

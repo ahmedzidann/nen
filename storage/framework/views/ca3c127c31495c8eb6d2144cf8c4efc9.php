@@ -68,8 +68,7 @@
                                             <input type="hidden" name="subcategory"
                                                 value="<?php echo e(Request()->subcategory ?? ''); ?>">
                                             <input type="hidden" name="item" value="<?php echo e(Request()->item ?? ''); ?>">
-                                            <input type="hidden" name="childe_pages_id"
-                                                value="<?php echo e($childe_pages_id->id); ?>">
+                                            
                                             <input type="hidden" name="subsubcategory"
                                                 value="<?php echo e(Request()->subsubcategory ?? ''); ?>">
                                             
@@ -138,68 +137,7 @@
                                             </div>
                                             
                                             
-                                            <div class="col-md-12 mb-4">
-                                                <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['star' => '*','class' => 'form-label','name' => 'Description  '.e($translationFirst->name).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('admin.form.label-first'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['star' => '*','class' => 'form-label','name' => 'Description  '.e($translationFirst->name).'']); ?>
-                                                 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
-<?php $attributes = $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
-<?php unset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
-<?php $component = $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
-<?php unset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
-<?php endif; ?>
-                                                <?php if (isset($component)) { $__componentOriginal8095f65bcb6cd63d5b96918b7b8b39a2 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal8095f65bcb6cd63d5b96918b7b8b39a2 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.text','data' => ['old' => ''.e('description.'.$translationFirst->key).'','name' => ''.e('description'.'['.$translationFirst->key.']').'','type' => 'text','placeholder' => 'Description '.e(ucfirst($translationFirst->name)).'','value' => $StaticTable->translate('description', $translationFirst->key)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('admin.form.text'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['old' => ''.e('description.'.$translationFirst->key).'','name' => ''.e('description'.'['.$translationFirst->key.']').'','type' => 'text','placeholder' => 'Description '.e(ucfirst($translationFirst->name)).'','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($StaticTable->translate('description', $translationFirst->key))]); ?>
-                                                 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal8095f65bcb6cd63d5b96918b7b8b39a2)): ?>
-<?php $attributes = $__attributesOriginal8095f65bcb6cd63d5b96918b7b8b39a2; ?>
-<?php unset($__attributesOriginal8095f65bcb6cd63d5b96918b7b8b39a2); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal8095f65bcb6cd63d5b96918b7b8b39a2)): ?>
-<?php $component = $__componentOriginal8095f65bcb6cd63d5b96918b7b8b39a2; ?>
-<?php unset($__componentOriginal8095f65bcb6cd63d5b96918b7b8b39a2); ?>
-<?php endif; ?>
-                                                <?php if (isset($component)) { $__componentOriginal1719fcc38154baad93f627a80a957b58 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal1719fcc38154baad93f627a80a957b58 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-end','data' => ['star' => '*','name' => 'please enter Description  '.e($translationFirst->name).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('admin.form.label-end'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['star' => '*','name' => 'please enter Description  '.e($translationFirst->name).'']); ?>
-                                                 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal1719fcc38154baad93f627a80a957b58)): ?>
-<?php $attributes = $__attributesOriginal1719fcc38154baad93f627a80a957b58; ?>
-<?php unset($__attributesOriginal1719fcc38154baad93f627a80a957b58); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal1719fcc38154baad93f627a80a957b58)): ?>
-<?php $component = $__componentOriginal1719fcc38154baad93f627a80a957b58; ?>
-<?php unset($__componentOriginal1719fcc38154baad93f627a80a957b58); ?>
-<?php endif; ?>
-                                            </div>
+                                            
                                             
                                             
                                             <div class="col-md-12 mb-4">
@@ -344,4 +282,5 @@
 <?php echo $__env->make('admin.layouts.ckeditor.ckeditor', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <script src="<?php echo e(asset('admin/about/clients/js/create.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/about/clients/create.blade.php ENDPATH**/ ?>

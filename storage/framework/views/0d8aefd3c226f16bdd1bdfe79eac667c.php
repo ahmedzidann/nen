@@ -67,6 +67,8 @@
                                                 value="<?php echo e(Request()->category ?? ''); ?>">
                                             <input type="hidden" name="subcategory"
                                                 value="<?php echo e(Request()->subcategory ?? ''); ?>">
+                                                <input type="hidden" name="childe_pages_id"
+                                                value="<?php echo e($childe_pages_id->id); ?>">
                                             <input type="hidden" name="item" value="<?php echo e(Request()->item ?? ''); ?>">
                                             
                                             
@@ -706,4 +708,5 @@
 <?php echo $__env->make('admin.layouts.ckeditor.ckeditor', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <script src="<?php echo e(asset('admin/about/certificates/js/create.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/about/certificates/create_sectionTwo.blade.php ENDPATH**/ ?>

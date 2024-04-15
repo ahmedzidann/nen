@@ -12,7 +12,7 @@
         </div>
 
         <div class="investors_img">
-            <img src="<?php echo e($fSection->getFirstMediaUrl('StaticTable')); ?>">
+            <img src="<?php echo e($fSection->getFirstMediaUrl('OurTeam')); ?>">
         </div>
 
     </div>
@@ -30,9 +30,9 @@
             <div class="grid_dives">
                 <?php $__currentLoopData = $items->where('item','member-board'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="grid_div_cont">
-                        <img src="content/images/small_icon/karrly.png">
+                        <img src="<?php echo e($item->getFirstMediaUrl('OurTeam')); ?>">
                         <h5><?php echo e($item->name); ?></h5>
-                        <p><?php echo e($item->job); ?></p>
+                        <p><?php echo e($item->jop); ?></p>
                         <div class="socail_flex_icons">
                             <a href="#"><i class="bi bi-facebook"></i></a>
                             <a href="#"><i class="bi bi-whatsapp"></i></a>

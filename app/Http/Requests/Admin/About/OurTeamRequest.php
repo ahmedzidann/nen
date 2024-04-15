@@ -26,7 +26,7 @@ class OurTeamRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -39,7 +39,7 @@ class OurTeamRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreTwo()
     {
         $request= Request();
@@ -53,14 +53,15 @@ class OurTeamRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'name.'.$request->submit2 => ['required','max:255','min:2'],
             'jop.'.$request->submit2 => ['required','max:255','min:2'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'description.*' => ['required','max:8000','min:2'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -79,7 +80,7 @@ class OurTeamRequest extends FormRequest
             'status' => ['required'],
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();

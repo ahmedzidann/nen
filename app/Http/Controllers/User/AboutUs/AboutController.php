@@ -40,7 +40,8 @@ class AboutController extends Controller
     {
         $career = Page::where('slug','careers')->first();
         if($career){
-            $careers = StaticTable::where("pages_id",$career->id)->active()->get();
+            $careers = StaticTable::where("pages_id",$career->id)->active()
+            ->orderBy('id','desc')->get();
             return view('user.about.careers',['items'=>$careers]);
         }
         else abort(400, "error");
@@ -51,10 +52,11 @@ class AboutController extends Controller
 
     public function awards():View
     {
-        $investor = Page::where('slug','awards')->first();
-        if($investor){
-            $awards = StaticTable::where("pages_id",$investor->id)->active()->get();
-            return view('user.about.award',['items'=>$awards]);
+        $award = Page::where('slug','awards')->first();
+        if($award){
+            $subAwards = $award->childe;
+            $awards = StaticTable::where("pages_id",$award->id)->where('item','!=','section-one')->active()->get();
+            return view('user.about.award',['items'=>$awards,'subAwards'=>$subAwards]);
         }
         else abort(400, "error");
     }
@@ -62,9 +64,11 @@ class AboutController extends Controller
     public function clients():View
     {
         $achievement = Page::where('slug','clients')->first();
+        $subAwards = $achievement->childe;
         if($achievement){
             $achievements = StaticTable::where("pages_id",$achievement->id)->active()->get();
-            return view('user.about.clients',['items'=>$achievements]);
+
+            return view('user.about.clients',['items'=>$achievements,'subClients'=>$subAwards]);
         }
         else abort(400, "error");
     }
@@ -93,7 +97,15 @@ class AboutController extends Controller
 
     public function certificates():View
     {
-        return view('user.about.certificates');
+        $partner = Page::where('slug','certificates')->first();
+        if($partner){
+            $subPartners = $partner->childe;
+            $partners = StaticTable::where("pages_id",$partner->id)->active()->get();
+
+
+            return view('user.about.certificates',['items'=>$partners,'subPartners'=>$subPartners]);
+        }
+        else abort(400, "error");
     }
 
     public function partners():View
@@ -103,6 +115,7 @@ class AboutController extends Controller
             $subPartners = $partner->childe;
 
             $partners = StaticTable::where("pages_id",$partner->id)->active()->get();
+
             return view('user.about.partners',['items'=>$partners,'subPartners'=>$subPartners]);
         }
         else abort(400, "error");

@@ -6,7 +6,7 @@
     <?php if($fSection =  $items->where('item','section-one')->first()): ?>
         <div class="about_flex">
             <div class="video_div">
-                <img class="video_img" src="<?php echo e(asset('content/images/women.png')); ?>" />
+                <img class="video_img" src="<?php echo e($fSection->getFirstMediaUrl('StaticTable')); ?>" />
                 <span class="video_icon" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                     class="bi bi-play-circle"></i></span>
                 <!-- Modal -->
@@ -21,7 +21,7 @@
                     </div>
                     <div class="modal-body">
                         <iframe width="700" height="350"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                        src="<?php echo e($fSection->getFirstMediaUrl('StaticTable')); ?>">
                         </iframe>
                     </div>
                     </div>
@@ -37,7 +37,7 @@
 
                 </p>
 
-                <a href="#" class="see_more">see more</a>
+                
                 </div>
 
                 <div class="three_circles">

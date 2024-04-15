@@ -34,7 +34,7 @@
         <hr />
         <input type="hidden" id="<?php echo e($viewTable); ?>" value="<?php echo e(app()->getLocale()); ?>">
         <?php if(Request()->category == 'about' && Request()->subcategory == 'clients' && Request()->item == 'section-one'): ?>
-            <?php if(empty($DataChildFull)): ?>
+        <?php if(empty($DataFull)): ?>
             <?php if (isset($component)) { $__componentOriginalc49e54a9ef7c3d21eea2545ba6c53add = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc49e54a9ef7c3d21eea2545ba6c53add = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.filter','data' => ['route' => $routeCreate]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -115,4 +115,5 @@
 <?php $__env->startSection('jsadmin'); ?>
 <script src="<?php echo e(asset('admin/about/clients/js/index.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/about/clients/view.blade.php ENDPATH**/ ?>

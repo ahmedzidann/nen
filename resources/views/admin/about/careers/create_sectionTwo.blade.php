@@ -66,6 +66,25 @@
                                                     name="please enter title  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-end>
                                             </div>
+
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="company  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'subtitle.'.$translationFirst->key }}"
+                                                    name="{{ 'subtitle'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder="company {{ $translationFirst->name }}"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('subtitle', $translationFirst->key)">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter company  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
+
+
+
+
                                             {{-- ----------end Title --}}
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">
@@ -83,6 +102,40 @@
                                                 </x-admin.form.label-end>
                                             </div>
                                             {{-- ----------Description end --}}
+
+
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="city">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'city' }}" name="{{ 'city' }}" type="text"
+                                                    required="" placeholder="city" class="form-control valid"
+                                                    :value="$StaticTable->city">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter city">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="job_type">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'job_type' }}" name="{{ 'job_type' }}" type="text"
+                                                    required="" placeholder="job type" class="form-control valid"
+                                                    :value="$StaticTable->city">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter job type">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="salary">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'salary' }}" name="{{ 'salary' }}" type="text"
+                                                    required="" placeholder="salary" class="form-control valid"
+                                                    :value="$StaticTable->salary">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter salary">
+                                                </x-admin.form.label-end>
+                                            </div>
+
+
                                             {{-- ----------sort first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="sort">
@@ -95,6 +148,20 @@
                                                 </x-admin.form.label-end>
                                             </div>
                                             {{-- ----------sort end --}}
+                                             {{-- ----------first image--}}
+                                             <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                                    name="File Upload Image">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
+                                                        old="image" name="image" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
+                                            </div>
+                                            {{-- ----------end image--}}
                                             {{-- ----------status first --}}
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"

@@ -55,6 +55,7 @@
                         <?php $__currentLoopData = $translation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <form method="post" id="myForm<?php echo e($key); ?>" action="<?php echo e($action??''); ?>"
                             enctype="multipart/form-data">
+
                             <?php echo $__env->make('components.admin.form.csrf', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <div class="tab-content py-3">
                                 <div class="tab-pane fade <?php echo e($loop->first?'show active':''); ?>" id="<?php echo e($item->id); ?>"
@@ -370,6 +371,51 @@
                                             
 
                                             <?php if($loop->first): ?>
+
+                                            <div class="col-md-12 mb-4">
+                                                <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['star' => '*','class' => 'col-sm-3 col-form-label','name' => 'File Upload Image']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-first'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['star' => '*','class' => 'col-sm-3 col-form-label','name' => 'File Upload Image']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $attributes = $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $component = $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+                                                <div class="col-sm-9">
+                                                    <?php if (isset($component)) { $__componentOriginal375f0ed4f8ee156e823aad8b1382f853 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.input','data' => ['model' => $pages,'nameImage' => 'icon','old' => 'image','name' => 'image','type' => 'file','readonly' => '','placeholder' => 'Please Enter Image','id' => 'image','class' => 'dropify','dataHeight' => '300','accept' => '.jpg, .png, image/jpeg, image/png']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['model' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($pages),'nameImage' => 'icon','old' => 'image','name' => 'image','type' => 'file','readonly' => '','placeholder' => 'Please Enter Image','id' => 'image','class' => 'dropify','DataHeight' => '300','accept' => '.jpg, .png, image/jpeg, image/png']); ?>
+                                                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $attributes = $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $component = $__componentOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+                                                </div>
+                                            </div>
                                             
                                             <div class="col-md-6 mb-4">
                                                 <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
@@ -581,4 +627,5 @@
 
 <script src="<?php echo e(asset('admin/pages/js/edit.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/pages/edit.blade.php ENDPATH**/ ?>

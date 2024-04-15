@@ -36,24 +36,25 @@ class AwardsController extends Controller
                     $category = $request->category;
                     $subcategory = $request->subcategory;
                     $item = $request->item;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
+
                         ->addColumn('action', function($row) use ($category,$subcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.awards.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
-        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item == 'section-two'){
+
+        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
         return view('admin.about.awards.create_sectionTwo',new AwardsTableViewModel());
         }else{
         return view('admin.about.awards.create',new AwardsTableViewModel());
@@ -84,8 +85,8 @@ class AwardsController extends Controller
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =StaticTable::find($id); 
-        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item == 'section-two'){
+        $StaticTable =StaticTable::find($id);
+        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
         return view('admin.about.awards.edit_sectionTwo',new AwardsTableViewModel($StaticTable));
         }else{
         return view('admin.about.awards.edit',new AwardsTableViewModel($StaticTable));
@@ -93,15 +94,17 @@ class AwardsController extends Controller
     }
     public function update(AwardsRequest $request, $id)
     {
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =StaticTable::find($id);
+
+
        if($request->submit2=='en'){
-            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item == 'section-two'){
+            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
                $validator = $request->validationUpdateTwoEn();
             }else{
                $validator = $request->validationUpdateEn();
             }
        }else{
-            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item == 'section-two'){
+            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
                 $validator = $request->validationUpdateTwoAr();
             }else{
                 $validator = $request->validationUpdateAr();
@@ -114,6 +117,7 @@ class AwardsController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
+
             app(UpdateStaticTableAction::class)->handle($StaticTable,$validator->validated());
             return response()->json([
                 'status'=>200,
@@ -121,7 +125,7 @@ class AwardsController extends Controller
                 'redirect_url' => route('admin.about.awards.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

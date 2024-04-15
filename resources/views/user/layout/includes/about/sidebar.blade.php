@@ -1,5 +1,11 @@
 <div class="aside_div">
-    <a href="{{route('about.identity')}}" class="ref_styles active_ref active_link active">
+    @foreach ($VCpages as $page)
+        <a href="{{route('about.'.$page->slug.'')}}" class="ref_styles active_ref active_link active">
+            <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
+                alt="" />{{$page->name}}
+        </a>
+    @endforeach
+    {{-- <a href="{{route('about.identity')}}" class="ref_styles active_ref active_link active">
       <img class="Identity_icon" src="{{asset('content/images/small_icon/card.png')}}"
           alt="" />Identity
 
@@ -41,5 +47,5 @@
         <img src="{{asset('content/images/small_icon/Slider container.png')}}" alt="" />
         Careers
 
-    </a>
+    </a> --}}
   </div>

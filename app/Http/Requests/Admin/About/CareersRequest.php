@@ -26,7 +26,7 @@ class CareersRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -39,32 +39,46 @@ class CareersRequest extends FormRequest
             'pages_id' => ['required'],
             'sort' => ['nullable'],
             'status' => ['nullable'],
+            'city' => ['nullable'],
+            'job_type' => ['nullable'],
+            'salary' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreTwo()
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required','max:255','min:2'],
+            'title.*'  => ['required','max:255','min:2'],
             'description.*' => ['required','max:8000','min:2'],
-            'item' => ['required'],
-            'pages_id' => ['required'],
-            'sort' => ['nullable'],
-            'status' => ['nullable'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'item'      => ['required'],
+            'pages_id'  => ['required'],
+            'sort'      => ['nullable'],
+            'status'    => ['nullable'],
+            'image'     =>['required','mimes:png,jpg,jpeg'],
+            'city'      => ['nullable'],
+            'job_type'  => ['nullable'],
+            'salary'    => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'subtitle.'.$request->submit2 => ['required','max:8000','min:2'],
+
             'item' => ['required'],
+            'image' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
+            'city' => ['nullable'],
+            'job_type' => ['nullable'],
+            'salary' => ['nullable'],
         ]);
     }
     public function validationUpdateEn()
@@ -78,15 +92,17 @@ class CareersRequest extends FormRequest
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
+
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'subtitle.'.$request->submit2 => ['required','max:8000','min:2'],
         ]);
     }
     public function validationUpdateAr()

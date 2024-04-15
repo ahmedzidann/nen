@@ -25,19 +25,23 @@
                 <div class="grid_dive_cards">
                 <?php $__currentLoopData = $items->where('item','section-two'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="card frame_card">
-
+                        <?php
+                            $date = Carbon\Carbon::parse($item->created_at)
+                        ?>
                         <div class="frame_card_content_img">
                             <div class="frame_img">
-                                <img src="content/images/small_icon/Frame 17.png">
+                                <img src="<?php echo e($item->getFirstMediaUrl('StaticTable')); ?>">
                             </div>
                             <div class="frame_card_content">
-                                <h6>Linear company</h6>
-                                <h5><?php echo e($item->title); ?> <span class="span_style">New Post</span></h5>
+                                <h6><?php echo e($item->subtitle); ?></h6>
+                                <h5><?php echo e($item->title); ?></h5> <?php if($date->isToday()): ?>
+                                    <span class="span_style">New Post</span>
+                                <?php endif; ?>
                                 <div class="small_icons_div">
-                                    <p><i class="bi bi-geo-alt"></i><span>Cairo</span></p>
-                                    <p><i class="bi bi-clock"></i><span>Full time</span></p>
-                                    <p><i class="bi bi-currency-dollar"></i><span>10k</span></p>
-                                    <p><i class="bi bi-calendar2"></i><span>1 year</span></p>
+                                    <p><i class="bi bi-geo-alt"></i><span><?php echo e($item->city); ?></span></p>
+                                    <p><i class="bi bi-clock"></i><span><?php echo e($item->job_type); ?></span></p>
+                                    <p><i class="bi bi-currency-dollar"></i><span><?php echo e($item->salary); ?></span></p>
+                                    <p><i class="bi bi-calendar2"></i><span><?php echo e($date->diffForHumans()); ?></span></p>
                                 </div>
                                 <p class="p_detail"><?php echo ($fSection->description); ?></p>
                             </div>

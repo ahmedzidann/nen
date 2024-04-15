@@ -13,7 +13,7 @@
         </div>
 
         <div class="investors_img">
-            <img src="{{$fSection->getFirstMediaUrl('StaticTable')}}">
+            <img src="{{$fSection->getFirstMediaUrl('OurTeam')}}">
         </div>
 
     </div>
@@ -31,9 +31,9 @@
             <div class="grid_dives">
                 @foreach ($items->where('item','member-board') as $item)
                     <div class="grid_div_cont">
-                        <img src="content/images/small_icon/karrly.png">
+                        <img src="{{$item->getFirstMediaUrl('OurTeam')}}">
                         <h5>{{$item->name}}</h5>
-                        <p>{{$item->job}}</p>
+                        <p>{{$item->jop}}</p>
                         <div class="socail_flex_icons">
                             <a href="#"><i class="bi bi-facebook"></i></a>
                             <a href="#"><i class="bi bi-whatsapp"></i></a>

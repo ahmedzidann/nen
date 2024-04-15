@@ -24,6 +24,7 @@ class StaticTable extends Model implements  HasMedia
       'url_two',
       'years_text',
       'button_two',
+
    ];
 
    protected $fillable = [
@@ -44,6 +45,9 @@ class StaticTable extends Model implements  HasMedia
       'years_text',
       'button_two',
       'url_two',
+      'city',
+      'job_type',
+      'salary',
    ];
     const STATUS = ['Active','Not Active'];
     public function Page()

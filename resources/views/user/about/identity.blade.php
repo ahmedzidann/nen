@@ -7,7 +7,7 @@
     @if ($fSection =  $items->where('item','section-one')->first())
         <div class="about_flex">
             <div class="video_div">
-                <img class="video_img" src="{{asset('content/images/women.png')}}" />
+                <img class="video_img" src="{{$fSection->getFirstMediaUrl('StaticTable')}}" />
                 <span class="video_icon" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                     class="bi bi-play-circle"></i></span>
                 <!-- Modal -->
@@ -22,7 +22,7 @@
                     </div>
                     <div class="modal-body">
                         <iframe width="700" height="350"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                        src="{{$fSection->getFirstMediaUrl('StaticTable')}}">
                         </iframe>
                     </div>
                     </div>
@@ -37,7 +37,7 @@
                     {{strip_tags($fSection->description)}}
                 </p>
 
-                <a href="#" class="see_more">see more</a>
+                {{-- <a href="#" class="see_more">see more</a> --}}
                 </div>
 
                 <div class="three_circles">

@@ -37,6 +37,7 @@
                         @foreach ($translation as $key=>$item)
                         <form method="post" id="myForm{{ $key }}" action="{{ $action??'' }}"
                             enctype="multipart/form-data">
+
                             @include('components.admin.form.csrf')
                             <div class="tab-content py-3">
                                 <div class="tab-pane fade {{ $loop->first?'show active':'' }}" id="{{ $item->id }}"
@@ -115,6 +116,19 @@
                                             {{-- ----------Description end --}}
 
                                             @if ($loop->first)
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                                    name="File Upload Image">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$pages" nameImage="icon"
+                                                        old="image" name="image" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
+                                            </div>
                                             {{-- ----------navbar first --}}
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"

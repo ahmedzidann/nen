@@ -49,6 +49,8 @@
                                                 value="{{ Request()->category ?? '' }}">
                                             <input type="hidden" name="subcategory"
                                                 value="{{ Request()->subcategory ?? '' }}">
+                                                <input type="hidden" name="childe_pages_id"
+                                                value="{{ $childe_pages_id->id  }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end Pages --}}
                                             {{-- ----------start Title --}}

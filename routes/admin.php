@@ -61,7 +61,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::get('help/contactus/edit/{id?}', [HelpTabsController::class,'editcontactus'])->name('edit_help_contactus');
         Route::resource('help', HelpTabsController::class);
         Route::resource('joinus', JoinusTabsController::class);
-        }); 
+        });
          // clear route
                // clear route
         Route::get('/route-clear', function () {

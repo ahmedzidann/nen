@@ -18,6 +18,7 @@ class OurTeam extends Model implements  HasMedia
       'title',
       'name',
       'jop',
+      'description'
    ];
 
    protected $fillable = [
@@ -28,6 +29,7 @@ class OurTeam extends Model implements  HasMedia
       'item',
       'pages_id',
       'sort',
+      'description'
    ];
      const STATUS = ['Active','Not Active'];
        public function Page()

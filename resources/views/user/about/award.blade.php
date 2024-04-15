@@ -142,7 +142,7 @@
                                 </div>
                             </div>
                             <div class="discreption_div">
-                                <p>{{$item->description}}</p>
+                                <p>{!!$item->description!!}</p>
                             </div>
 
                         </div>

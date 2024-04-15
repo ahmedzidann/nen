@@ -90,7 +90,7 @@
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="OurTeam"
                                                         old="image" name="image" type="file" readonly=""
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">

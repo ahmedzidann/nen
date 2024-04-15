@@ -70,7 +70,7 @@
                                             {{-- ----------Description first --}}
                                             @if (Request()->category == 'about' && Request()->subcategory == 'investors'
                                             && Request()->item == 'section-one')
-                                            @else
+
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Description  {{ $translationFirst->name  }}">

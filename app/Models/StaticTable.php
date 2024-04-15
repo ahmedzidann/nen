@@ -24,8 +24,9 @@ class StaticTable extends Model implements  HasMedia
       'url_two',
       'years_text',
       'button_two',
+
    ];
-   
+
    protected $fillable = [
       'title',
       'subsubtitle',
@@ -44,15 +45,21 @@ class StaticTable extends Model implements  HasMedia
       'years_text',
       'button_two',
       'url_two',
+      'city',
+      'job_type',
+      'salary',
    ];
-     const STATUS = ['Active','Not Active'];
-       public function Page()
-       {
-         return $this->belongsTo(Page::class, 'pages_id');
-       }
-       public function ChildePage()
-       {
-         return $this->belongsTo(Page::class, 'childe_pages_id');
-       }
-       
+    const STATUS = ['Active','Not Active'];
+    public function Page()
+    {
+        return $this->belongsTo(Page::class, 'pages_id');
+    }
+    public function ChildePage()
+    {
+        return $this->belongsTo(Page::class, 'childe_pages_id');
+    }
+
+    public function scopeActive($q){
+        $q->where('status',"active");
+    }
 }

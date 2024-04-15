@@ -1,46 +1,11 @@
 <div class="aside_div">
-    <a href="identify.html" class="ref_styles active_ref active_link">
-      <img class="Identity_icon" src="<?php echo e(asset('content/images/small_icon/card.png')); ?>"
-          alt="" />Identity
+    <?php $__currentLoopData = $VCpages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <a href="<?php echo e(route('about.'.$page->slug.'')); ?>" class="ref_styles active_ref active_link active">
+            <img  class="<?php if($page->slug == 'identity'): ?> Identity_icon <?php endif; ?>"  src="<?php echo e(asset($page->getFirstMediaUrl('icon'))); ?>"
+                alt="" /><?php echo e($page->name); ?>
 
-    </a>
-    <a href="investors.html" class="ref_styles">
-       <img class="Investors_icon"
-          src="<?php echo e(asset('content/images/small_icon/SVGRepo_iconCarrier.png')); ?>" alt="" />Investors
-
-    </a>
-    <a href="Achievements.html" class="ref_styles">
-      <img src="<?php echo e(asset('content/images/small_icon/photoe.png')); ?>" alt="" />Achievements
-
-    </a>
-    <a href="Awards.html" class="ref_styles ">
-      <img src="<?php echo e(asset('content/images/small_icon/cup.png')); ?>" alt="" />Awards
-
-    </a>
-    <a href="certificates.html" class="ref_styles ">
-        <img src="<?php echo e(asset('content/images/small_icon/SVGRepo_iconCarrier (1).png')); ?>" alt="" />Certificates
-    </a>
-    <a href="partneres.html" class="ref_styles">
-        <img src="<?php echo e(asset('content/images/small_icon/shield-tick.png')); ?>" alt="" />
-        Partneres
-
-    </a>
-    <a href="Clients.html" class="ref_styles">
-        <img src="<?php echo e(asset('content/images/small_icon/people.png')); ?>" alt="" />
-        Clients
-
-    </a>
-    <a href="OUR_TEAM.html" class="ref_styles">
-        <img src="<?php echo e(asset('content/images/small_icon/shield-tick.png')); ?>"
-          />
-        Our Teams
-    </a>
-
-    <a href="careers.html" class="ref_styles ">
-
-        <img src="<?php echo e(asset('content/images/small_icon/Slider container.png')); ?>" alt="" />
-        Careers
-
-    </a>
+        </a>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    
   </div>
 <?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/user/layout/includes/about/sidebar.blade.php ENDPATH**/ ?>

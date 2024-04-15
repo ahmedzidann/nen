@@ -65,20 +65,37 @@
 							<ul>
 
 								<li class="<?php echo e($route=='about' && $route_two=='awards' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.awards.index',['category=about','subcategory=awards','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
-								<li class="<?php echo e($route=='about' && $route_two=='awards' && Request()->item=='section-two' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.awards.index',['category=about','subcategory=awards','item=section-two'])); ?>" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+                                <?php $__currentLoopData = App\Models\Page::where('slug','awards')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $awards): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<?php $__currentLoopData = $awards->childe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<li class="<?php echo e($route=='about' && $route_two=='awards' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.awards.index',['category=about','subcategory=awards','item='.$item->slug.''])); ?>" ><i class='bx bx-radio-circle'></i><?php echo e($item->name); ?></a></li>
+
+									
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								
 							</ul>
 						</li>
-						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Certificates</a>
+						
+                        <li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Certificates</a>
 							<ul>
-								<li class="<?php echo e($route=='about' && $route_two=='certificates' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
-								<li class="<?php echo e($route=='about' && $route_two=='certificates' && Request()->item=='section-two' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','item=section-two'])); ?>" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+								<?php $__currentLoopData = App\Models\Page::where('id',15)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<?php $__currentLoopData = $partner->childe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i><?php echo e($item->name); ?></a>
+									<ul>
+										<li class="<?php echo e($route=='about' && $route_two=='certificates' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
+										<li class="<?php echo e($route=='about' && $route_two=='certificates' && Request()->item=='section-two' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-two'])); ?>" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+									</ul>
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</ul>
 						</li>
 
 						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Partners</a>
 							<ul>
-								<?php $__currentLoopData = App\Models\Page::where('slug','partners')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<?php $__currentLoopData = App\Models\Page::where('id',16)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<?php $__currentLoopData = $partner->childe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
 								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i><?php echo e($item->name); ?></a>
 									<ul>
 										<li class="<?php echo e($route=='about' && $route_two=='partners' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.partners.index',['category=about','subcategory=partners','subsubcategory='.$item->slug.'','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
@@ -91,12 +108,12 @@
 						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Clients</a>
 							<ul>
 								<?php $__currentLoopData = App\Models\Page::where('slug','clients')->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<li class="<?php echo e($route=='about' && $route_two=='clients' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.clients.index',['category=about','subcategory=clients','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
+
 								<?php $__currentLoopData = $partner->childe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i><?php echo e($item->name); ?></a>
-									<ul>
-										<li class="<?php echo e($route=='about' && $route_two=='clients' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.clients.index',['category=about','subcategory=clients','subsubcategory='.$item->slug.'','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
-										<li class="<?php echo e($route=='about' && $route_two=='clients' && Request()->item=='section-two' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.clients.index',['category=about','subcategory=clients','subsubcategory='.$item->slug.'','item=section-two'])); ?>" ><i class='bx bx-radio-circle'></i>Section two</a></li>
-									</ul>
+										<li class="<?php echo e($route=='about' && $route_two=='clients' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.clients.index',['category=about','subcategory=clients','item='.$item->slug.''])); ?>" ><i class='bx bx-radio-circle'></i><?php echo e($item->name); ?></a></li>
+
+								
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</ul>

@@ -32,14 +32,14 @@ class PagesController extends Controller
 
             if ($request->ajax()) {
                 $data = Page::select('*')->latest();
-              
-                  
+
+
                     if((!empty($request->from_date )) && (!empty($request->to_date))){
-                          
+
                             $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
                     }
                     if(!empty($request->search_text)) {
-                      
+
                         $data = $data->where(function($q) use ($request){
                             $q->whereJsonContains('name->en', $request->search_text)
                                 ->orWhereJsonContains('name->ar', $request->search_text);
@@ -49,10 +49,10 @@ class PagesController extends Controller
                         $data= $data->where('parent_id',$request->sub_parent_id);
                     }
                     elseif(!empty($request->parent_id)){
-                        
+
                         $data= $data->where('parent_id',$request->parent_id);
                     }
-                   
+
                 return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
@@ -82,6 +82,7 @@ class PagesController extends Controller
             'footer' => ['nullable'],
             'status' => ['nullable'],
             'parent_id' => ['nullable'],
+            'image' => ['nullable'],
         ]);
 
         if($validator->fails())
@@ -116,6 +117,7 @@ class PagesController extends Controller
                 'footer' => ['nullable'],
                 'status' => ['required'],
                 'parent_id' => ['nullable'],
+                'image' => ['nullable'],
             ]);
        }else{
             $validator = Validator::make($request->all(), [

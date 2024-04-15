@@ -62,8 +62,16 @@
   </div>
   <!-- section_who_us -->
 
-  <?php echo $__env->yieldContent('content'); ?>
 
+  <section class="about_sec">
+    <div class="container">
+      <div class="about_us_div">
+        <?php echo $__env->make('user.layout.includes.about.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->yieldContent('content'); ?>
+
+      </div>
+    </div>
+  </section>
   <!-- footer -->
 
   <section class="footer_sec">

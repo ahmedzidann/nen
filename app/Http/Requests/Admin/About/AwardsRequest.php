@@ -26,7 +26,7 @@ class AwardsRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -39,7 +39,7 @@ class AwardsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreTwo()
     {
         $request= Request();
@@ -57,7 +57,7 @@ class AwardsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
@@ -68,7 +68,7 @@ class AwardsRequest extends FormRequest
             'years_text.'.$request->submit2 => ['required','max:8000','min:2'],
             'url.'.$request->submit2 => ['required','max:8000','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
-            'image2'=>['nullable','mimes:png,jpg,jpeg'],
+            'image2'=>['nullable',''],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -87,7 +87,7 @@ class AwardsRequest extends FormRequest
             'status' => ['required'],
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();

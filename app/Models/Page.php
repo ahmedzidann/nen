@@ -15,7 +15,7 @@ class Page extends Model implements  HasMedia
     use HasApiTokens, HasFactory, Notifiable,HasTranslations, HasRoles, InteractsWithMedia;
 
    public $translatable = ['name','description'];
-   
+
    protected $fillable = [
       'name',
       'link',
@@ -32,13 +32,15 @@ class Page extends Model implements  HasMedia
      return $this->belongsTo(self::class, 'parent_id');
    }
 
-   
+
    public function childe()
    {
      return $this->hasMany(Page::class,'parent_id','id');
    }
-     const STATUS = ['Active','Not Active'];
+
+
+    const STATUS = ['Active','Not Active'];
     Const FOOTER=['Active','Not Active'];
     Const NAVBAR=['Active','Not Active'];
- 
+
 }

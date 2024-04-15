@@ -17,7 +17,7 @@
         <hr />
         <input type="hidden" id="{{ $viewTable }}" value="{{ app()->getLocale() }}">
         @if (Request()->category == 'about' && Request()->subcategory == 'clients' && Request()->item == 'section-one')
-            @if (empty($DataChildFull))
+        @if (empty($DataFull))
             <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
             @endif
         @else

@@ -38,20 +38,20 @@ class CareersController extends Controller
                     $category = $request->category;
                     $subcategory = $request->subcategory;
                     $item = $request->item;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
+
                         ->addColumn('action', function($row) use ($category,$subcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.careers.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
@@ -63,7 +63,9 @@ class CareersController extends Controller
     }
     public function store(CareersRequest $request)
     {
-        if ($request->category == 'about' && $request->subcategory == 'careers' && $request->item == 'section-two'){
+        if ($request->category == 'about' &&
+            $request->subcategory == 'careers' &&
+            $request->item == 'section-two'){
             $validator = $request->validationStoreTwo();
         }else{
             $validator = $request->validationStore();
@@ -86,7 +88,7 @@ class CareersController extends Controller
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =StaticTable::find($id);
         if ($request->category == 'about' && $request->subcategory == 'careers' && $request->item == 'section-two'){
         return view('admin.about.careers.edit_sectionTwo',new CareersTableViewModel($StaticTable));
         }else{
@@ -95,7 +97,7 @@ class CareersController extends Controller
     }
     public function update(CareersRequest $request, $id)
     {
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =StaticTable::find($id);
        if($request->submit2=='en'){
             if ($request->category == 'about' && $request->subcategory == 'careers' && $request->item == 'section-two'){
                $validator = $request->validationUpdateTwoEn();
@@ -123,7 +125,7 @@ class CareersController extends Controller
                 'redirect_url' => route('admin.about.careers.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

@@ -38,20 +38,20 @@ class CertificatesController extends Controller
                     $category = $request->category;
                     $subcategory = $request->subcategory;
                     $item = $request->item;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
+
                         ->addColumn('action', function($row) use ($category,$subcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.certificates.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
@@ -86,7 +86,7 @@ class CertificatesController extends Controller
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =StaticTable::find($id);
         if ($request->category == 'about' && $request->subcategory == 'certificates' && $request->item == 'section-two'){
         return view('admin.about.certificates.edit_sectionTwo',new CertificatesTableViewModel($StaticTable));
         }else{
@@ -95,7 +95,7 @@ class CertificatesController extends Controller
     }
     public function update(CertificatesRequest $request, $id)
     {
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =StaticTable::find($id);
        if($request->submit2=='en'){
             if ($request->category == 'about' && $request->subcategory == 'certificates' && $request->item == 'section-two'){
                $validator = $request->validationUpdateTwoEn();
@@ -123,7 +123,7 @@ class CertificatesController extends Controller
                 'redirect_url' => route('admin.about.certificates.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

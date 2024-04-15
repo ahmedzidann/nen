@@ -26,7 +26,7 @@ class ClientsRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -35,12 +35,12 @@ class ClientsRequest extends FormRequest
             'description.*' => ['required','max:8000','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'item' => ['required'],
-            'childe_pages_id' => ['required'],
+            // 'childe_pages_id' => ['required'],
             'pages_id' => ['required'],
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreTwo()
     {
         $request= Request();
@@ -54,7 +54,24 @@ class ClientsRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
+    public function validationStorOne()
+    {
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
+            'description.*' => ['required','max:8000','min:2'],
+            'item' => ['required'],
+            'pages_id' => ['required'],
+            // 'childe_pages_id' => ['required'],
+            'sort' => ['nullable'],
+            'status' => ['nullable'],
+        ]);
+    }
+
+
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
@@ -80,7 +97,7 @@ class ClientsRequest extends FormRequest
             'status' => ['required'],
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();

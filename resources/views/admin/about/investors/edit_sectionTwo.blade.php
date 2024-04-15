@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="tab-title">{{ TranslationHelper::translate(ucfirst('Profile')??'')
                                                 }} {{ ucfirst($item->name) }}</div>
-    
+
                                         </div>
                                     </a>
                                 </li>
@@ -52,7 +52,7 @@
                                                     <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                                     {{-- ----------end static --}}
                                                     {{-- ----------icon first --}}
-                                                    @if ($loop->first)
+                                                    {{-- @if ($loop->first)
                                                     <div class="col-md-12 mb-4">
                                                         <x-admin.form.label-first class="form-label" name="icon">
                                                         </x-admin.form.label-first>
@@ -63,8 +63,24 @@
                                                         <x-admin.form.label-end star="*" name="please enter icon">
                                                         </x-admin.form.label-end>
                                                     </div>
-                                                @endif
+                                                @endif --}}
                                                     {{-- ----------icon end --}}
+                                                     {{-- ----------first image--}}
+                                                        @if ($loop->first)
+                                                        <div class="col-md-12 mb-4">
+                                                            <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                                                name="File Upload Image">
+                                                            </x-admin.form.label-first>
+                                                            <div class="col-sm-9">
+                                                                <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
+                                                                    old="image" name="image" type="file" readonly=""
+                                                                    placeholder="Please Enter Image" id="image" class="dropify"
+                                                                    DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                                </x-admin.form.input>
+                                                            </div>
+                                                        </div>
+                                                        @endif
+                                                        {{-- ----------end image--}}
                                                     {{-- ----------name first --}}
                                                     <div class="col-md-12 mb-4">
                                                         <x-admin.form.label-first star="*" class="form-label"
@@ -131,7 +147,7 @@
                                                         </div>
                                                     </div>
                                                     {{-- ----------status end --}}
-        
+
                                                     @endif
                                                     <input type="hidden" name="submit2" value="{{ $item->key }}">
                                                     <div class="col-md-12">

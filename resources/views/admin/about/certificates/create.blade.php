@@ -49,6 +49,8 @@
                                                 value="{{ Request()->category ?? '' }}">
                                             <input type="hidden" name="subcategory"
                                                 value="{{ Request()->subcategory ?? '' }}">
+                                            <input type="hidden" name="childe_pages_id"
+                                                value="{{ $childe_pages_id->id  }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name first --}}
@@ -97,6 +99,7 @@
                                                 </div>
                                             </div>
                                             {{-- ----------end image--}}
+
                                             {{-- ----------status first --}}
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"

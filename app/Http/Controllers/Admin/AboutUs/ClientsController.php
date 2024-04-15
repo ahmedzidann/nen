@@ -32,7 +32,11 @@ class ClientsController extends Controller
             }
                 $childe_pages_id = Page::where('slug',$request->subsubcategory)->first();
             if ($request->ajax()) {
-                $data = StaticTable::where('pages_id',$page->id??'')->where('childe_pages_id',$childe_pages_id->id??'')->where('item',$request->item)->select('*')->latest();
+                if($childe_pages_id){
+                    $data = StaticTable::where('pages_id',$page->id??'')->where('childe_pages_id',$childe_pages_id->id??'')->where('item',$request->item)->select('*')->latest();
+                }else{
+                    $data = StaticTable::where('pages_id',$page->id??'')->where('item',$request->item)->select('*')->latest();
+                }
                     if((!empty($request->from_date )) && (!empty($request->to_date))){
                             $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
                     }
@@ -40,24 +44,27 @@ class ClientsController extends Controller
                     $subcategory = $request->subcategory;
                     $subsubcategory = $request->subsubcategory;
                     $item = $request->item;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
+
                         ->addColumn('action', function($row) use ($category,$subcategory,$subsubcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.clients.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'subsubcategory='.$subsubcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
-        if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
+        if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-one'){
+            return view('admin.about.clients.create_sectionOne',new ClientsTableViewModel());
+            }
+        elseif ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
         return view('admin.about.clients.create_sectionTwo',new ClientsTableViewModel());
         }else{
         return view('admin.about.clients.create',new ClientsTableViewModel());
@@ -65,7 +72,10 @@ class ClientsController extends Controller
     }
     public function store(ClientsRequest $request)
     {
-        if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
+        if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-one'){
+            $validator = $request->validationStorOne();
+        }
+        elseif ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
             $validator = $request->validationStoreTwo();
         }else{
             $validator = $request->validationStore();
@@ -88,8 +98,11 @@ class ClientsController extends Controller
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =StaticTable::find($id); 
-        if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
+        $StaticTable =StaticTable::find($id);
+        if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-one'){
+            return view('admin.about.clients.edit_sectionOne',new ClientsTableViewModel($StaticTable));
+            }
+        elseif ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
         return view('admin.about.clients.edit_sectionTwo',new ClientsTableViewModel($StaticTable));
         }else{
         return view('admin.about.clients.edit',new ClientsTableViewModel($StaticTable));
@@ -97,7 +110,7 @@ class ClientsController extends Controller
     }
     public function update(ClientsRequest $request, $id)
     {
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =StaticTable::find($id);
        if($request->submit2=='en'){
             if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
                $validator = $request->validationUpdateTwoEn();
@@ -125,7 +138,7 @@ class ClientsController extends Controller
                 'redirect_url' => route('admin.about.clients.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

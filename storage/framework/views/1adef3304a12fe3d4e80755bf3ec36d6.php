@@ -2,64 +2,30 @@
       <div class="container">
         <div class="second_part">
           <ul class="ul_pages">
-            <li><a href="#" class="a_ref">Home</a></li>
+            <?php $__currentLoopData = App\Models\Page::where('parent_id',null)->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($page->slug=='about'): ?>
             <li class="li_category">
-              <a href="#" class="a_ref active_link">About<span><i class="bi bi-chevron-down"></i></span></a>
-              <ul class="ul_dropdown">
-                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.identity')); ?>">identify</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.award')); ?>">Awards</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.certificates')); ?>">certificates</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="<?php echo e(route('about.partners')); ?>">partneres</a></li>
-                <li class="li_drop_content">
-                  <a href="investors.html">investors</a>
-                  <i class="bi bi-chevron-right"></i>
-                  <ul class="sub_dropdowen">
-                    <li><a href="partneres.html">partneres</a></li>
-                    <li><a href="Clients.html">Clients</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="li_category">
-              <a href="#" class="a_ref">Projects <span><i class="bi bi-chevron-down"></i></span></a>
-              <ul class="ul_dropdown">
-                <li class="li_drop_content"><a href="identify.html">identify</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="Awards.html">Awards</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="certificates.html">certificates</a></li>
-                <li class="li_drop_content"><a class="small_ref_hover" href="partneres.html">partneres</a></li>
-                <li class="li_drop_content">
-                  <a href="investors.html">investors</a>
-                  <i class="bi bi-chevron-right"></i>
-                  <ul class="sub_dropdowen">
-                    <li><a href="Awards.html">Awards</a></li>
-                    <li><a href="certificates.html">certificates</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+                <a href="#" class="a_ref <?php echo e(Route::is(''.$page->slug.'.*')? "active_link": ""); ?>"><?php echo e($page->name); ?> <span><i class="bi bi-chevron-down"></i></span></a>
+                <ul class="ul_dropdown">
+                    <?php $__currentLoopData = $page->childe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-            <li class="li_category">
-              <a href="#" class="a_ref">Education <span><i class="bi bi-chevron-down"></i></span></a>
+                    <li class="li_drop_content"><a href="<?php echo e(route('about.'.$sub->slug.'')); ?>"><?php echo e($sub->name); ?></a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+                </ul>
             </li>
+            <?php else: ?>
             <li class="li_category">
-              <a href="#" class="a_ref">Testing <span><i class="bi bi-chevron-down"></i></span></a>
-            </li>
-            <li class="li_category">
-              <a href="#" class="a_ref">Solution <span><i class="bi bi-chevron-down"></i></span></a>
-            </li>
-            <li class="li_category">
-              <a href="#" class="a_ref">Technology <span><i class="bi bi-chevron-down"></i></span></a>
-            </li>
-            <li class="li_category">
-              <a href="#" class="a_ref">
-                DOC Validation <span><i class="bi bi-chevron-down"></i></span></a>
-            </li class="li_category">
-            <li class="li_category">
-              <a href="#" class="a_ref">Join Us <span><i class="bi bi-chevron-down"></i></span></a>
-            </li>
-            <li class="li_category">
-              <a href="#" class="a_ref">Find Us <span><i class="bi bi-chevron-down"></i></span></a>
-            </li>
+                <a href="#" class="a_ref <?php echo e(Route::is(''.$page->slug.'.*')? "active_link": ""); ?>"><?php echo e($page->name); ?> <span><i class="bi bi-chevron-down"></i></span></a>
+              </li>
+            <?php endif; ?>
+
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+            
+            
           </ul>
         </div>
       </div>

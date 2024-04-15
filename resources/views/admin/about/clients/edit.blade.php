@@ -52,8 +52,8 @@
                                             <input type="hidden" name="subcategory"
                                                 value="{{ Request()->subcategory ?? '' }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
-                                            <input type="hidden" name="childe_pages_id"
-                                                value="{{ $childe_pages_id->id  }}">
+                                            {{-- <input type="hidden" name="childe_pages_id"
+                                                value="{{ $childe_pages_id->id  }}"> --}}
                                             <input type="hidden" name="subsubcategory"
                                                 value="{{ Request()->subsubcategory ?? '' }}">
                                             {{-- ----------end static --}}
@@ -72,7 +72,7 @@
                                             </div>
                                             {{-- ----------name first --}}
                                             {{-- ----------Description first --}}
-                                            <div class="col-md-12 mb-4">
+                                            {{-- <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Description  {{ $item->name  }}">
                                                 </x-admin.form.label-first>
@@ -85,7 +85,7 @@
                                                     name="please enter Name  {{ $item->name  }}">
                                                 </x-admin.form.label-end>
 
-                                            </div>
+                                            </div> --}}
                                             {{-- ----------Description end --}}
                                             {{-- ----------first image--}}
                                             @if ($loop->first)

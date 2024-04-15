@@ -40,20 +40,20 @@ class OurTeamController extends Controller
                     $category = $request->category;
                     $subcategory = $request->subcategory;
                     $item = $request->item;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
+
                         ->addColumn('action', function($row) use ($category,$subcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.our-team.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
@@ -89,16 +89,16 @@ class OurTeamController extends Controller
     public function edit(Request $request,$id):View
     {
         if ($request->category == 'about' && $request->subcategory == 'our-team' && $request->item == 'section-one'){
-        $StaticTable =StaticTable::find($id); 
+        $StaticTable =OurTeam::find($id);
         return view('admin.about.our-team.edit',new OurTeamTableViewModel($StaticTable));
         }else{
-        $StaticTable =OurTeam::find($id); 
+        $StaticTable =OurTeam::find($id);
         return view('admin.about.our-team.edit_sectionTwo',new OurTeamTableViewModel($StaticTable));
         }
     }
     public function update(OurTeamRequest $request, $id)
     {
-        $StaticTable =OurTeam::find($id); 
+        $StaticTable =OurTeam::find($id);
        if($request->submit2=='en'){
             if ($request->category == 'about' && $request->subcategory == 'our-team' && $request->item == 'section-one'){
                $validator = $request->validationUpdateEn();
@@ -126,7 +126,7 @@ class OurTeamController extends Controller
                 'redirect_url' => route('admin.about.our-team.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

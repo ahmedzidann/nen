@@ -26,7 +26,7 @@ class CertificatesRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -34,12 +34,13 @@ class CertificatesRequest extends FormRequest
             'title.*' => ['required','max:255','min:2'],
             'description.*' => ['required','max:8000','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
+            'childe_pages_id' => ['required'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreTwo()
     {
         $request= Request();
@@ -49,6 +50,7 @@ class CertificatesRequest extends FormRequest
             'subsubtitle.*' => ['nullable','max:255','min:2'],
             'description.*' => ['required','max:8000','min:2'],
             'years_text.*' => ['required','max:8000','min:2'],
+            'childe_pages_id' => ['required'],
             'url.*' => ['required','max:8000','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'image2'=>['nullable'],
@@ -58,7 +60,7 @@ class CertificatesRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
@@ -89,7 +91,7 @@ class CertificatesRequest extends FormRequest
             'status' => ['required'],
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();

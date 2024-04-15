@@ -18,8 +18,9 @@ class OurTeam extends Model implements  HasMedia
       'title',
       'name',
       'jop',
+      'description'
    ];
-   
+
    protected $fillable = [
       'title',
       'name',
@@ -28,10 +29,15 @@ class OurTeam extends Model implements  HasMedia
       'item',
       'pages_id',
       'sort',
+      'description'
    ];
      const STATUS = ['Active','Not Active'];
        public function Page()
        {
          return $this->belongsTo(Page::class, 'pages_id');
        }
+
+       public function scopeActive($q){
+        $q->where('status',"active");
+    }
 }

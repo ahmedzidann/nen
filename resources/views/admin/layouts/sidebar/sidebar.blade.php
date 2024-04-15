@@ -65,20 +65,42 @@
 							<ul>
 
 								<li class="{{ $route=='about' && $route_two=='awards' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.awards.index',['category=about','subcategory=awards','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
-								<li class="{{ $route=='about' && $route_two=='awards' && Request()->item=='section-two' ?'mm-active':'' }}"><a href="{{ route('admin.about.awards.index',['category=about','subcategory=awards','item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+                                @foreach (App\Models\Page::where('slug','awards')->get() as $awards)
+								@foreach ($awards->childe as $item)
+								<li class="{{ $route=='about' && $route_two=='awards' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.awards.index',['category=about','subcategory=awards','item='.$item->slug.'']) }}" ><i class='bx bx-radio-circle'></i>{{$item->name}}</a></li>
+
+									{{-- <li class="{{ $route=='about' && $route_two=='awards' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.partners.index',['category=about','subcategory={{$awards->slug}}','subsubcategory=item=section-one']) }}" ><i class='bx bx-radio-circle'></i>{{$item->name}}</a></li> --}}
+								@endforeach
+								@endforeach
+								{{-- <li class="{{ $route=='about' && $route_two=='awards' && Request()->item=='section-two' ?'mm-active':'' }}"><a href="{{ route('admin.about.awards.index',['category=about','subcategory=awards','item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li> --}}
 							</ul>
 						</li>
-						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Certificates</a>
+						{{-- <li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Certificates</a>
 							<ul>
 								<li class="{{ $route=='about' && $route_two=='certificates' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.certificates.index',['category=about','subcategory=certificates','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
 								<li class="{{ $route=='about' && $route_two=='certificates' && Request()->item=='section-two' ?'mm-active':'' }}"><a href="{{ route('admin.about.certificates.index',['category=about','subcategory=certificates','item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+							</ul>
+						</li> --}}
+                        <li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Certificates</a>
+							<ul>
+								@foreach (App\Models\Page::where('id',15)->get() as $partner)
+								@foreach ($partner->childe as $item)
+
+								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>{{ $item->name }}</a>
+									<ul>
+										<li class="{{ $route=='about' && $route_two=='certificates' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
+										<li class="{{ $route=='about' && $route_two=='certificates' && Request()->item=='section-two' ?'mm-active':'' }}"><a href="{{ route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+									</ul>
+								@endforeach
+								@endforeach
 							</ul>
 						</li>
 
 						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Partners</a>
 							<ul>
-								@foreach (App\Models\Page::where('slug','partners')->get() as $partner)
+								@foreach (App\Models\Page::where('id',16)->get() as $partner)
 								@foreach ($partner->childe as $item)
+
 								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>{{ $item->name }}</a>
 									<ul>
 										<li class="{{ $route=='about' && $route_two=='partners' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.partners.index',['category=about','subcategory=partners','subsubcategory='.$item->slug.'','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
@@ -91,12 +113,16 @@
 						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Clients</a>
 							<ul>
 								@foreach (App\Models\Page::where('slug','clients')->get() as $partner)
+										<li class="{{ $route=='about' && $route_two=='clients' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.clients.index',['category=about','subcategory=clients','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
+
 								@foreach ($partner->childe as $item)
-								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>{{ $item->name }}</a>
+										<li class="{{ $route=='about' && $route_two=='clients' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.clients.index',['category=about','subcategory=clients','item='.$item->slug.'']) }}" ><i class='bx bx-radio-circle'></i>{{$item->name}}</a></li>
+
+								{{-- <li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>{{ $item->name }}</a>
 									<ul>
 										<li class="{{ $route=='about' && $route_two=='clients' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.clients.index',['category=about','subcategory=clients','subsubcategory='.$item->slug.'','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
 										<li class="{{ $route=='about' && $route_two=='clients' && Request()->item=='section-two' ?'mm-active':'' }}"><a href="{{ route('admin.about.clients.index',['category=about','subcategory=clients','subsubcategory='.$item->slug.'','item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li>
-									</ul>
+									</ul> --}}
 								@endforeach
 								@endforeach
 							</ul>

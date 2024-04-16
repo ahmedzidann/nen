@@ -35,9 +35,9 @@
                         <h5>{{$item->name}}</h5>
                         <p>{{$item->jop}}</p>
                         <div class="socail_flex_icons">
-                            <a href="#"><i class="bi bi-facebook"></i></a>
-                            <a href="#"><i class="bi bi-whatsapp"></i></a>
-                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="{{$item->facebook}}"><i class="bi bi-facebook"></i></a>
+                            <a href="{{$item->whatsapp}}"><i class="bi bi-whatsapp"></i></a>
+                            <a href="{{$item->instagrame}}"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 @endforeach

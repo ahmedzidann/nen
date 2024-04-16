@@ -247,6 +247,194 @@
                                             <div class="col-md-12 mb-4">
                                                 <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['class' => 'form-label','name' => 'facebook']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-first'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'form-label','name' => 'facebook']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $attributes = $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $component = $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginal375f0ed4f8ee156e823aad8b1382f853 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.input','data' => ['old' => ''.e('facebook').'','name' => ''.e('facebook').'','type' => 'text','required' => '','placeholder' => 'facebook','class' => 'form-control valid','value' => $StaticTable->facebook]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['old' => ''.e('facebook').'','name' => ''.e('facebook').'','type' => 'text','required' => '','placeholder' => 'facebook','class' => 'form-control valid','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($StaticTable->facebook)]); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $attributes = $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $component = $__componentOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginal1719fcc38154baad93f627a80a957b58 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1719fcc38154baad93f627a80a957b58 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-end','data' => ['star' => '*','name' => 'please enter facebook']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-end'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['star' => '*','name' => 'please enter facebook']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1719fcc38154baad93f627a80a957b58)): ?>
+<?php $attributes = $__attributesOriginal1719fcc38154baad93f627a80a957b58; ?>
+<?php unset($__attributesOriginal1719fcc38154baad93f627a80a957b58); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1719fcc38154baad93f627a80a957b58)): ?>
+<?php $component = $__componentOriginal1719fcc38154baad93f627a80a957b58; ?>
+<?php unset($__componentOriginal1719fcc38154baad93f627a80a957b58); ?>
+<?php endif; ?>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['class' => 'form-label','name' => 'whatsapp']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-first'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'form-label','name' => 'whatsapp']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $attributes = $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $component = $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginal375f0ed4f8ee156e823aad8b1382f853 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.input','data' => ['old' => ''.e('whatsapp').'','name' => ''.e('whatsapp').'','type' => 'text','required' => '','placeholder' => 'whatsapp','class' => 'form-control valid','value' => $StaticTable->whatsapp]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['old' => ''.e('whatsapp').'','name' => ''.e('whatsapp').'','type' => 'text','required' => '','placeholder' => 'whatsapp','class' => 'form-control valid','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($StaticTable->whatsapp)]); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $attributes = $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $component = $__componentOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginal1719fcc38154baad93f627a80a957b58 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1719fcc38154baad93f627a80a957b58 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-end','data' => ['star' => '*','name' => 'please enter facebook']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-end'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['star' => '*','name' => 'please enter facebook']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1719fcc38154baad93f627a80a957b58)): ?>
+<?php $attributes = $__attributesOriginal1719fcc38154baad93f627a80a957b58; ?>
+<?php unset($__attributesOriginal1719fcc38154baad93f627a80a957b58); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1719fcc38154baad93f627a80a957b58)): ?>
+<?php $component = $__componentOriginal1719fcc38154baad93f627a80a957b58; ?>
+<?php unset($__componentOriginal1719fcc38154baad93f627a80a957b58); ?>
+<?php endif; ?>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['class' => 'form-label','name' => 'instagrame']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-first'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'form-label','name' => 'instagrame']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $attributes = $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
+<?php $component = $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
+<?php unset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginal375f0ed4f8ee156e823aad8b1382f853 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.input','data' => ['old' => ''.e('instagrame').'','name' => ''.e('instagrame').'','type' => 'text','required' => '','placeholder' => 'instagrame','class' => 'form-control valid','value' => $StaticTable->instagrame]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['old' => ''.e('instagrame').'','name' => ''.e('instagrame').'','type' => 'text','required' => '','placeholder' => 'instagrame','class' => 'form-control valid','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($StaticTable->instagrame)]); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $attributes = $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__attributesOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853)): ?>
+<?php $component = $__componentOriginal375f0ed4f8ee156e823aad8b1382f853; ?>
+<?php unset($__componentOriginal375f0ed4f8ee156e823aad8b1382f853); ?>
+<?php endif; ?>
+                                                <?php if (isset($component)) { $__componentOriginal1719fcc38154baad93f627a80a957b58 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1719fcc38154baad93f627a80a957b58 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-end','data' => ['star' => '*','name' => 'please enter instagrame']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('admin.form.label-end'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['star' => '*','name' => 'please enter instagrame']); ?>
+                                                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1719fcc38154baad93f627a80a957b58)): ?>
+<?php $attributes = $__attributesOriginal1719fcc38154baad93f627a80a957b58; ?>
+<?php unset($__attributesOriginal1719fcc38154baad93f627a80a957b58); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1719fcc38154baad93f627a80a957b58)): ?>
+<?php $component = $__componentOriginal1719fcc38154baad93f627a80a957b58; ?>
+<?php unset($__componentOriginal1719fcc38154baad93f627a80a957b58); ?>
+<?php endif; ?>
+                                            </div>
+                                            
+                                            
+                                            <div class="col-md-12 mb-4">
+                                                <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['class' => 'form-label','name' => 'sort']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('admin.form.label-first'); ?>
 <?php if ($component->shouldRender()): ?>
@@ -404,4 +592,5 @@
 <?php echo $__env->make('admin.layouts.ckeditor.ckeditor', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <script src="<?php echo e(asset('admin/about/ourteam/js/create.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/about/our-team/create_sectionTwo.blade.php ENDPATH**/ ?>

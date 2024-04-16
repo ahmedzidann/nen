@@ -51,6 +51,9 @@ class OurTeamRequest extends FormRequest
             'pages_id' => ['required'],
             'sort' => ['nullable'],
             'status' => ['nullable'],
+            'facebook' => ['nullable'],
+            'whatsapp' => ['nullable'],
+            'instagrame' => ['nullable'],
         ]);
     }
 
@@ -66,6 +69,9 @@ class OurTeamRequest extends FormRequest
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
+            'facebook' => ['nullable'],
+            'whatsapp' => ['nullable'],
+            'instagrame' => ['nullable'],
         ]);
     }
     public function validationUpdateEn()

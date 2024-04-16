@@ -99,6 +99,38 @@
                                             {{-- ----------end image--}}
                                             {{-- ----------sort first --}}
                                             <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="facebook">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'facebook' }}" name="{{ 'facebook' }}" type="text"
+                                                    required="" placeholder="facebook" class="form-control valid"
+                                                    :value="$StaticTable->facebook">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter facebook">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="whatsapp">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'whatsapp' }}" name="{{ 'whatsapp' }}" type="text"
+                                                    required="" placeholder="whatsapp" class="form-control valid"
+                                                    :value="$StaticTable->whatsapp">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter facebook">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="instagrame">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'instagrame' }}" name="{{ 'instagrame' }}" type="text"
+                                                    required="" placeholder="instagrame" class="form-control valid"
+                                                    :value="$StaticTable->instagrame">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter instagrame">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            {{-- ----------sort end --}}
+                                            {{-- ----------sort first --}}
+                                            <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="sort">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.input old="{{ 'sort' }}" name="{{ 'sort' }}" type="number"

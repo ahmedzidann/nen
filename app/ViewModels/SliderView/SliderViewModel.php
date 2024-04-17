@@ -25,7 +25,7 @@ class SliderViewModel extends ViewModel {
         $this->translationFirst = TranslationKey::first();
         $this->routeCreate = route( 'admin.slider.create', Request()->query() );
         $this->routeView = route( 'admin.slider.index', Request()->query() );
-        $this->viewTable = 'Slider';
+        $this->viewTable = 'slider';
         $this->allPage = Page::WhereNull( 'parent_id' )->get();
     }
 

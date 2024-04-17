@@ -362,4 +362,5 @@
 <?php echo $__env->make('admin.layouts.ckeditor.ckeditor', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <script src="<?php echo e(asset('admin/about/identity/js/create.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/about/identity/create_sectionTwo.blade.php ENDPATH**/ ?>

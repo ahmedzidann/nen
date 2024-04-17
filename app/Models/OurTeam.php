@@ -29,7 +29,10 @@ class OurTeam extends Model implements  HasMedia
       'item',
       'pages_id',
       'sort',
-      'description'
+      'description',
+      'facebook',
+      'whatsapp',
+      'instagrame'
    ];
      const STATUS = ['Active','Not Active'];
        public function Page()

@@ -78,20 +78,21 @@ class IdentityController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
-            if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
-                     foreach($request->description as $data){
-                         StaticTable::create([
-                         'pages_id'=>$request->pages_id,
-                         'category'=>$request->category,
-                         'subcategory'=>$request->subcategory,
-                         'item'=>$request->item,
-                         'sort'=>$request->sort,
-                         'description'=>$data['en'],
-                         ]);
-                     }
-            }else{
-                app(StoreStaticTableAction::class)->handle($validator->validated());
-            }
+            app(StoreStaticTableAction::class)->handle($validator->validated());
+            // if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
+            //          foreach($request->description as $data){
+            //              StaticTable::create([
+            //              'pages_id'=>$request->pages_id,
+            //              'category'=>$request->category,
+            //              'subcategory'=>$request->subcategory,
+            //              'item'=>$request->item,
+            //              'sort'=>$request->sort,
+            //              'description'=>$data['en'],
+            //              ]);
+            //          }
+            // }else{
+
+            // }
             redirect()->route('admin.about.identity.index')->with('add','Success Add Identity');
             return response()->json([
                 'status'=>200,

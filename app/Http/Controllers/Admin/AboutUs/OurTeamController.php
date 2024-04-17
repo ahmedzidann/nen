@@ -77,6 +77,7 @@ class OurTeamController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
+
             app(StoreOurTeamTableAction::class)->handle($validator->validated());
             redirect()->route('admin.about.our-team.index')->with('add','Success Add OurTeam');
             return response()->json([

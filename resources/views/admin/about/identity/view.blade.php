@@ -16,7 +16,7 @@
         <!--end breadcrumb-->
         <hr />
         <input type="hidden" id="{{ $viewTable }}" value="{{ app()->getLocale() }}">
-        @if (Request()->category == 'about' && Request()->subcategory == 'identity' && Request()->item == 'section-one')
+        @if (Request()->category == 'about' && Request()->subcategory == 'identity' && (Request()->item == 'section-one' ||Request()->item == 'section-three'))
             @if (empty($DataFull))
                 <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
             @endif

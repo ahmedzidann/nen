@@ -133,6 +133,20 @@
         </div>
     </div>
     @endif
+    @if ($tSection =  $items->where('item','section-three')->first())
+    <div class="objectives_div">
+        <div class="objectiv_titling">
+          <h1>{{$tSection->title}}</h1>
+          <ul class="objectives_ul">
+            {!!$tSection->description!!}
+          </ul>
+        </div>
+
+        <div class="objectives_img">
+          <img src="{{$tSection->getFirstMediaUrl('StaticTable')}}">
+        </div>
+    </div>
+    @endif
    <!-- <div class="objectives_div">
     <div class="objectiv_titling">
       <h1>Our Objectives Of Company</h1>
@@ -174,4 +188,5 @@
     </div>
   </div> -->
 </div>
+
 @endsection

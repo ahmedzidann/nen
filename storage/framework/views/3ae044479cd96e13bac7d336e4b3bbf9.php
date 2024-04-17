@@ -34,9 +34,9 @@
                         <h5><?php echo e($item->name); ?></h5>
                         <p><?php echo e($item->jop); ?></p>
                         <div class="socail_flex_icons">
-                            <a href="#"><i class="bi bi-facebook"></i></a>
-                            <a href="#"><i class="bi bi-whatsapp"></i></a>
-                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="<?php echo e($item->facebook); ?>"><i class="bi bi-facebook"></i></a>
+                            <a href="<?php echo e($item->whatsapp); ?>"><i class="bi bi-whatsapp"></i></a>
+                            <a href="<?php echo e($item->instagrame); ?>"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

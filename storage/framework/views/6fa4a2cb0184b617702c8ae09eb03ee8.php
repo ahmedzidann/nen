@@ -91,6 +91,21 @@
         </div>
     </div>
     <?php endif; ?>
+    <?php if($tSection =  $items->where('item','section-three')->first()): ?>
+    <div class="objectives_div">
+        <div class="objectiv_titling">
+          <h1><?php echo e($tSection->title); ?></h1>
+          <ul class="objectives_ul">
+            <?php echo $tSection->description; ?>
+
+          </ul>
+        </div>
+
+        <div class="objectives_img">
+          <img src="<?php echo e($tSection->getFirstMediaUrl('StaticTable')); ?>">
+        </div>
+    </div>
+    <?php endif; ?>
    <!-- <div class="objectives_div">
     <div class="objectiv_titling">
       <h1>Our Objectives Of Company</h1>
@@ -132,6 +147,7 @@
     </div>
   </div> -->
 </div>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('user.layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/user/about/identity.blade.php ENDPATH**/ ?>

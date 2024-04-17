@@ -26,7 +26,7 @@ class IdentityRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -39,7 +39,7 @@ class IdentityRequest extends FormRequest
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoretwo()
     {
         $request= Request();
@@ -56,8 +56,10 @@ class IdentityRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'title.*' => ['required','max:8000','min:2'],
             'description.*' => ['required','max:8000'],
             'item' => ['required'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
             'pages_id' => ['required'],
             'sort' => ['nullable'],
             'status' => ['nullable'],
@@ -80,11 +82,13 @@ class IdentityRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'title' => ['required','max:8000','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
         ]);
     }
     public function validationUpdateTwoEn()
@@ -103,6 +107,7 @@ class IdentityRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'title' => ['required','max:8000','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
         ]);
     }

@@ -51,15 +51,43 @@
                                                 value="{{ Request()->subcategory ?? '' }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end Pages --}}
-                                         
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Title  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'title.'.$translationFirst->key }}"
+                                                    name="{{ 'title'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder="Title {{ $translationFirst->name }}"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('title', $translationFirst->key)">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter title  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
                                             {{-- ----------Description first --}}
-                                            <div class="texareanew col-md-12 mb-4">
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Description  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.text old="{{ 'description.'.$translationFirst->key }}"
+                                                    name="{{ 'description'.'['.$translationFirst->key.']' }}"
+                                                    type="text"
+                                                    placeholder="Description {{ ucfirst($translationFirst->name)  }}"
+                                                    :value="$StaticTable->translate('description', $translationFirst->key)">
+                                                </x-admin.form.text>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter Description  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            {{-- <div class="texareanew col-md-12 mb-4">
                                             <a onclick="addRow()" class="addRow"><i class="lni lni-circle-plus"></i></a>
                                             <br>
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Description  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-first>
-                                                
+
                                                 <x-admin.form.text old="{{ 'description.'.$translationFirst->key }}"
                                                     name="{{ 'description[]'.'['.$translationFirst->key.']' }}"
                                                     type="text"
@@ -69,8 +97,20 @@
                                                 <x-admin.form.label-end star="*"
                                                     name="please enter Description  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-end>
-                                            </div>
+                                            </div> --}}
                                             {{-- ----------Description end --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                                    name="File Upload Image">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
+                                                        old="image" name="image" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
+                                            </div>
                                             {{-- ----------sort first --}}
                                             @if (Request()->category == 'about' && Request()->subcategory == 'identity'
                                             && Request()->item == 'section-one')
@@ -132,6 +172,8 @@
 </div>
 @endsection
 @section('jsadmin')
+@include('admin.layouts.ckeditor.ckeditor')
+
 <script src="{{ asset('admin/about/identity/js/create.js') }}"></script>
 <script>
    function addRow()
@@ -153,10 +195,11 @@
             name="please enter Description  {{ $translationFirst->name  }}">
         </x-admin.form.label-end>
     </div>
-  
+
   `;
   $('.texareanew').append(tr);
 }
+
 $(document).on('click', '.parent_color_div', function() {
     $(this).closest(".removelang").remove();
 });

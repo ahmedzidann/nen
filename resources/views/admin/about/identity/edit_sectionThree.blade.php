@@ -53,6 +53,20 @@
                                                 value="{{ Request()->subcategory ?? '' }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end static --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Title  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'title.'.$translationFirst->key }}"
+                                                    name="{{ 'title'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder="Title {{ $translationFirst->name }}"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('title', $translationFirst->key)">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter title  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
@@ -83,6 +97,18 @@
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end star="*" name="please enter sort">
                                                 </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                                    name="File Upload Image">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
+                                                        old="image" name="image" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
                                             </div>
                                             @endif
                                             @endif

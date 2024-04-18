@@ -2,7 +2,7 @@
 @section('parent_page_name')About @endsection
 @section('page_name')Clients @endsection
 @section('cover_image')
-    {{asset('content/images/about_img.png')}}
+    {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
 @endsection
 @section('content')
 

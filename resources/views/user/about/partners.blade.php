@@ -1,6 +1,9 @@
 @extends('user.layout.master')
 @section('parent_page_name')About @endsection
 @section('page_name')Partners @endsection
+@section('cover_image')
+    {{asset('content/images/about_img.png')}}
+@endsection
 @section('content')
     <div class="about_content">
         <h1>STRATIGIC PARTNERS</h1>

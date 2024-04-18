@@ -5,7 +5,7 @@
 
 <div class="about_content">
 
-    @if ($fSection =  $items->where('item','section-one')->first())
+    @if ($fSection)
     <div class="Awards_flex">
         <div class="Awards_titel">
             <h1>{{$fSection->title}}</h1>
@@ -133,9 +133,9 @@
                                 <div class="icons_div">
                                     <h5>{{$item->title}}</h5>
                                     <div class="flex_icons_div">
-                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a src='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
+                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a target="_blank" href='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
                                         </p>
-                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a href="{{$item->url}}">Website</a> </span>
+                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a target="_blank" href="{{$item->url}}">Website</a> </span>
                                         </p>
                                         <p><img src="{{url('content/images/small_icon/calendar-2.png')}}"><span>{{$item->years_text}}</span></p>
                                     </div>

@@ -44,7 +44,6 @@
             <div class="tab-content certificates_h" id="pills-tabContent">
                 @foreach ($subPartners as $sub)
                 @php
-
                     $fs= $items->where('item','section-one')
                     ->where('childe_pages_id',$sub->id)->first();
 

@@ -4,7 +4,7 @@
 
 <div class="about_content">
 
-    <?php if($fSection =  $items->where('item','section-one')->first()): ?>
+    <?php if($fSection): ?>
     <div class="Awards_flex">
         <div class="Awards_titel">
             <h1><?php echo e($fSection->title); ?></h1>
@@ -100,16 +100,16 @@
                                 <div class="icons_div">
                                     <h5><?php echo e($item->title); ?></h5>
                                     <div class="flex_icons_div">
-                                        <p><img src="<?php echo e(url('content/images/small_icon/archive-book.png')); ?>"><span><a src='<?php echo e($item->getFirstMediaUrl('StaticTable2')); ?>'>Reference</a></span>
+                                        <p><img src="<?php echo e(url('content/images/small_icon/archive-book.png')); ?>"><span><a target="_blank" href='<?php echo e($item->getFirstMediaUrl('StaticTable2')); ?>'>Reference</a></span>
                                         </p>
-                                        <p><img src="<?php echo e(url('content/images/small_icon/global.png')); ?>"><span><a href="<?php echo e($item->url); ?>">Website</a> </span>
+                                        <p><img src="<?php echo e(url('content/images/small_icon/global.png')); ?>"><span><a target="_blank" href="<?php echo e($item->url); ?>">Website</a> </span>
                                         </p>
                                         <p><img src="<?php echo e(url('content/images/small_icon/calendar-2.png')); ?>"><span><?php echo e($item->years_text); ?></span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="discreption_div">
-                                <p><?php echo e($item->description); ?></p>
+                                <p><?php echo $item->description; ?></p>
                             </div>
 
                         </div>

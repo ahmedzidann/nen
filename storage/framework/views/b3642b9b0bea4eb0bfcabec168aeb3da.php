@@ -18,7 +18,6 @@
             <div class="tab-content certificates_h" id="pills-tabContent">
                 <?php $__currentLoopData = $subPartners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php
-
                     $fs= $items->where('item','section-one')
                     ->where('childe_pages_id',$sub->id)->first();
 

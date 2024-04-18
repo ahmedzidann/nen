@@ -56,7 +56,8 @@ class AboutController extends Controller
         if($award){
             $subAwards = $award->childe;
             $awards = StaticTable::where("pages_id",$award->id)->where('item','!=','section-one')->active()->get();
-            return view('user.about.award',['items'=>$awards,'subAwards'=>$subAwards]);
+            $fSection= StaticTable::where("pages_id",$award->id)->where('item','=','section-one')->active()->first();
+            return view('user.about.award',['items'=>$awards,'subAwards'=>$subAwards,'fSection'=>$fSection]);
         }
         else abort(400, "error");
     }

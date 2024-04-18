@@ -112,16 +112,17 @@ class ClientsController extends Controller
     {
         $StaticTable =StaticTable::find($id);
        if($request->submit2=='en'){
-            if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
-               $validator = $request->validationUpdateTwoEn();
+            if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-one'){
+                $validator = $request->validationUpdateEn();
             }else{
-               $validator = $request->validationUpdateEn();
+                $validator = $request->validationUpdateTwoEn();
+
             }
        }else{
-            if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-two'){
-                $validator = $request->validationUpdateTwoAr();
-            }else{
+            if ($request->category == 'about' && $request->subcategory == 'clients' && $request->item == 'section-one'){
                 $validator = $request->validationUpdateAr();
+            }else{
+                $validator = $request->validationUpdateTwoAr();
             }
        }
         if($validator->fails())

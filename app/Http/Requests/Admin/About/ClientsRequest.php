@@ -91,7 +91,7 @@ class ClientsRequest extends FormRequest
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
-            'childe_pages_id' => ['required'],
+            // 'childe_pages_id' => ['required'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],

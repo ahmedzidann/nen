@@ -1,5 +1,9 @@
 <?php $__env->startSection('parent_page_name'); ?>About <?php $__env->stopSection(); ?>
 <?php $__env->startSection('page_name'); ?>Careers <?php $__env->stopSection(); ?>
+<?php $__env->startSection('cover_image'); ?>
+    <?php echo e(asset('content/images/about_img.png')); ?>
+
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="about_content">
         <?php if($fSection =  $items->where('item','section-one')->first()): ?>

@@ -1,6 +1,9 @@
 @extends('user.layout.master')
 @section('parent_page_name')About @endsection
 @section('page_name')Awards @endsection
+@section('cover_image')
+    {{ isset($slider)? $slider->getFirstMediaUrl('image'): asset('content/images/about_img.png')}}
+@endsection
 @section('content')
 
 <div class="about_content">

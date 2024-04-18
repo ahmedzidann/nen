@@ -130,10 +130,10 @@
 						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Our Team</a>
 							<ul>
 								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
-								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='member-board' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=member-board']) }}" ><i class='bx bx-radio-circle'></i>Member Board </a></li>
-								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='financial-department' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=financial-department']) }}" ><i class='bx bx-radio-circle'></i>Financial Department</a></li>
+								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='member-board' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=member-board']) }}" ><i class='bx bx-radio-circle'></i>Members </a></li>
+								{{-- <li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='financial-department' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=financial-department']) }}" ><i class='bx bx-radio-circle'></i>Financial Department</a></li>
 								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='marketing-department' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=marketing-department']) }}" ><i class='bx bx-radio-circle'></i>Marketing Department</a></li>
-								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='it-department' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=it-department']) }}" ><i class='bx bx-radio-circle'></i>It Department</a></li>
+								<li class="{{ $route=='about' && $route_two=='our-team' && Request()->item=='it-department' ?'mm-active':'' }}"><a href="{{ route('admin.about.our-team.index',['category=about','subcategory=our-team','item=it-department']) }}" ><i class='bx bx-radio-circle'></i>It Department</a></li> --}}
 							</ul>
 						</li>
 						<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>Careers</a>

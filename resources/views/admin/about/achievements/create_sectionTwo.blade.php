@@ -84,7 +84,7 @@
                                                 <x-admin.form.label-first star="*" class="form-label" name="month">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.input old="{{ 'month' }}" name="{{ 'month' }}"
-                                                    type="number" required="" placeholder="month"
+                                                    type="text" required="" placeholder="month"
                                                     class="form-control valid" :value="$StaticTable->month">
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end star="*" name="please enter month">

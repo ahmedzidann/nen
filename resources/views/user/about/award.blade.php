@@ -29,7 +29,7 @@
                 <!-- Swiper -->
                 <div class="swiper mySwiper Awards_slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
                     <div class="swiper-wrapper swipper_action" id="swiper-wrapper-106b4cf6610d8a50610" aria-live="polite">
-                        @foreach ($subAwards as $key=>$award)
+                        {{-- @foreach ($subAwards as $key=>$award)
                             <div class="swiper-slide {{ $key==0? 'swiper-slide-active':($key==1?'swiper-slide-next':'swiper-slide') }}" role="group" aria-label="{{$key+1}} / 6" style="margin-right: 5px;">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link proj_bttn  {{ $loop->first? 'active':'' }}" id="pills-{{$award->slug}}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{$award->slug}}" type="button"
@@ -37,9 +37,9 @@
                                      {{$award->name}}</button>
                             </li>
                         </div>
-                        @endforeach
+                        @endforeach --}}
 
-                        {{-- <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 5px;">
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 5px;">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">TAMKEEN
                                     COMPETITION</button>
@@ -68,13 +68,13 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">INNOVATION AWARD</button>
                             </li>
-                        </div> --}}
+                        </div>
 
-                        {{-- <div class="swiper-slide" role="group" aria-label="6 / 6" style="margin-right: 5px;">
+                         <div class="swiper-slide" role="group" aria-label="6 / 6" style="margin-right: 5px;">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">LEARNING CENTER</button>
                             </li>
-                        </div> --}}
+                        </div>
 
                     </div>
                     <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-106b4cf6610d8a50610" aria-disabled="false"></div>
@@ -293,4 +293,55 @@
 
 
 </div>
+
+<script src="{{url('content/js/vendors/jquery.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/kursor.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/all.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/swiper-bundle.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
+    <script src="{{url('content/js/scripts.js')}}"></script>
+
+    <script>
+        var swiper = new Swiper(".Awards_slider", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            breakpoints: {
+
+                1024: {
+                    slidesPerView: "auto",
+                    spaceBetween: 5
+                },
+
+                900: {
+                    slidesPerView:3,
+                    spaceBetween: 5
+                },
+
+                650: {
+                    slidesPerView: 2,
+                    spaceBetween:5
+                },
+
+                375: {
+                    slidesPerView: 1,
+                    spaceBetween: 5
+                },
+
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 @endsection

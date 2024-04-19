@@ -23,20 +23,27 @@ class CertificatesController extends Controller
     }
     public function show(Request $request,$language)
     {
-            if(!empty($request->category)  &&  !empty($request->subcategory)){
+            if(!empty($request->category)  &&  !empty($request->subcategory) && !empty($request->subsubcategory)){
+                $page = Page::where('slug',$request->subsubcategory)->first();
+
+            }
+            elseif(!empty($request->category)  &&  !empty($request->subcategory)){
                 $page = Page::where('slug',$request->subcategory)->first();
             }elseif(!empty($request->category)){
                 $page = Page::where('slug',$request->category)->first();
             }else{
                 $page = '';
             }
+            //return($request->subsubcategory);
             if ($request->ajax()) {
-                $data = StaticTable::where('pages_id',$page->id??'')->where('item',$request->item)->select('*')->latest();
+                $data = StaticTable::where('childe_pages_id',$page->id??'')
+                ->where('item',$request->item)->select('*')->latest();
                     if((!empty($request->from_date )) && (!empty($request->to_date))){
                             $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
                     }
                     $category = $request->category;
                     $subcategory = $request->subcategory;
+                    $subsubcategory  = $request->subsubcategory;
                     $item = $request->item;
                 return Datatables::of($data)
                         ->addIndexColumn()
@@ -47,7 +54,7 @@ class CertificatesController extends Controller
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
 
-                        ->addColumn('action', function($row) use ($category,$subcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.certificates.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
+                        ->addColumn('action', function($row) use ($category,$subcategory,$subsubcategory,$item) {return'<div class="d-flex order-actions"> <a href="'.route('admin.about.certificates.edit',[$row->id,'category='.$category,'subcategory='.$subcategory,'subsubcategory='.$subsubcategory,'item='.$item]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
@@ -80,7 +87,8 @@ class CertificatesController extends Controller
             return response()->json([
                 'status'=>200,
                 'message'=>'Success Add Certificates',
-                'redirect_url' => route('admin.about.certificates.index',['category='.$request->category,'subcategory='.$request->subcategory,'item='.$request->item]),
+                'redirect_url' => route('admin.about.certificates.index',['category='.$request->category,'subcategory='.$request->subcategory
+                ,'subsubcategory='.$request->subsubcategory,'item='.$request->item]),
             ]);
         }
     }

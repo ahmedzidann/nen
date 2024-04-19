@@ -30,10 +30,18 @@ class CertificatesTableViewModel extends ViewModel
         $this->routeView = route('admin.about.certificates.index',Request()->query());
         $this->viewTable = 'Certificates';
         $this->allPage = Page::get();
-        if(!empty(Request()->category) && !empty(Request()->subcategory)){
+        if(!empty(Request()->category) && !empty(Request()->subcategory) && !empty(Request()->subsubcategory)){
+            $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
+            $this->childe_pages_id = Page::where('slug',Request()->subsubcategory)->first();
+            $this->DataFull = StaticTable::where('item',Request()->item)
+            ->where('pages_id',$this->SelectPages->id)->where('childe_pages_id',$this->childe_pages_id->id)->first();
+
+        }
+        elseif(!empty(Request()->category) && !empty(Request()->subcategory)){
             $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
             $this->childe_pages_id = Page::where('slug',Request()->subsubcategory)->first();
             $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
+            // dd($this->DataFull);
         }elseif(!empty(Request()->category)){
             $this->SelectPages = Page::where('slug',Request()->category)->first();
             $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();

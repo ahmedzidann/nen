@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="tab-title">{{ TranslationHelper::translate(ucfirst('Profile')??'')
                                                 }} {{ ucfirst($item->name) }}</div>
-    
+
                                         </div>
                                     </a>
                                 </li>
@@ -94,7 +94,7 @@
                                                         </div>
                                                     </div>
                                                     @endif
-                                                {{-- ----------end image--}}      
+                                                {{-- ----------end image--}}
                                                     {{-- ----------sort first --}}
                                                     @if ($loop->first)
                                                     <div class="col-md-12 mb-4">
@@ -133,7 +133,7 @@
                                                         </div>
                                                     </div>
                                                     {{-- ----------status end --}}
-        
+
                                                     @endif
                                                     <input type="hidden" name="submit2" value="{{ $item->key }}">
                                                     <div class="col-md-12">
@@ -150,7 +150,7 @@
                             @endforeach
                     </div>
                 </div>
-                
+{{--
                 <input type="hidden" id="static_tables_id" value="{{ $StaticTable->id }}">
                             <div class="card p-4">
                                 <h5 class="card-title">All Item</h5>
@@ -160,8 +160,8 @@
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bxs-plus-square"></i>Create</button>
                                     </div>
                                 </div>
-                       @include('admin.about.investors.modal.modal')
-                    <div class="card-body">
+                       @include('admin.about.investors.modal.modal') --}}
+                    {{-- <div class="card-body">
                         <div class="table-responsive">
                             <table id="yajra-datatable"
                                 class="yajra-datatable table table-striped table-bordered p-0 text-center table-hover">
@@ -174,12 +174,12 @@
                                         <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
                                     </tr>
                                 </thead>
-            
+
                                 <tbody></tbody>
                             </table>
                         </div>
-                    </div>
-                    
+                    </div> --}}
+
                 </div>
             </div>
         </div>
@@ -190,8 +190,10 @@
 @endsection
 @section('jsadmin')
 @include('admin.layouts.ckeditor.ckeditor')
-<script src="{{ asset('admin/about/investors/many/js/index.js') }}"></script>
-<script src="{{ asset('admin/about/investors/many/js/create.js') }}"></script>
+{{-- <script src="{{ asset('admin/about/investors/many/js/index.js') }}"></script> --}}
+{{-- <script src="{{ asset('admin/about/investors/many/js/create.js') }}"></script> --}}
+<script src="{{ asset('admin/about/investors/js/edit.js') }}"></script>
+
 <script>
     //delete
     // hatem

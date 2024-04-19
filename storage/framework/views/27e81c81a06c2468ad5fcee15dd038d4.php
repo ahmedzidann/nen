@@ -83,8 +83,8 @@
 
 								<li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i><?php echo e($item->name); ?></a>
 									<ul>
-										<li class="<?php echo e($route=='about' && $route_two=='certificates' && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
-										<li class="<?php echo e($route=='about' && $route_two=='certificates' && Request()->item=='section-two' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-two'])); ?>" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+										<li class="<?php echo e($route=='about' && $route_two=='certificates'  && Request()->subsubcategory==$item->slug && Request()->item=='section-one' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-one'])); ?>" ><i class='bx bx-radio-circle'></i>Section one</a></li>
+										<li class="<?php echo e($route=='about' && $route_two=='certificates'  && Request()->subsubcategory==$item->slug && Request()->item=='section-two' ?'mm-active':''); ?>"><a href="<?php echo e(route('admin.about.certificates.index',['category=about','subcategory=certificates','subsubcategory='.$item->slug.'','item=section-two'])); ?>" ><i class='bx bx-radio-circle'></i>Section two</a></li>
 									</ul>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

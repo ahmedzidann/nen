@@ -65,8 +65,11 @@
                                             <input type="hidden" name="pages_id" value="<?php echo e($SelectPages->id ?? ''); ?>">
                                             <input type="hidden" name="category"
                                                 value="<?php echo e(Request()->category ?? ''); ?>">
+
                                             <input type="hidden" name="subcategory"
                                                 value="<?php echo e(Request()->subcategory ?? ''); ?>">
+                                                <input type="hidden" name="subsubcategory"
+                                                value="<?php echo e(Request()->subsubcategory ?? ''); ?>">
                                             <input type="hidden" name="childe_pages_id"
                                                 value="<?php echo e($childe_pages_id->id); ?>">
                                             <input type="hidden" name="item" value="<?php echo e(Request()->item ?? ''); ?>">

@@ -1,7 +1,7 @@
 <?php $__env->startSection('parent_page_name'); ?>About <?php $__env->stopSection(); ?>
 <?php $__env->startSection('page_name'); ?>Careers <?php $__env->stopSection(); ?>
 <?php $__env->startSection('cover_image'); ?>
-    <?php echo e(asset('content/images/about_img.png')); ?>
+    <?php echo e(isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>

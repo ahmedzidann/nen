@@ -29,7 +29,7 @@
                 <!-- Swiper -->
                 <div class="swiper mySwiper Awards_slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
                     <div class="swiper-wrapper swipper_action" id="swiper-wrapper-106b4cf6610d8a50610" aria-live="polite">
-                        {{-- @foreach ($subAwards as $key=>$award)
+                        @foreach ($subAwards as $key=>$award)
                             <div class="swiper-slide {{ $key==0? 'swiper-slide-active':($key==1?'swiper-slide-next':'swiper-slide') }}" role="group" aria-label="{{$key+1}} / 6" style="margin-right: 5px;">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link proj_bttn  {{ $loop->first? 'active':'' }}" id="pills-{{$award->slug}}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{$award->slug}}" type="button"
@@ -37,8 +37,8 @@
                                      {{$award->name}}</button>
                             </li>
                         </div>
-                        @endforeach --}}
-
+                        @endforeach
+{{--
                         <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 5px;">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">TAMKEEN
@@ -74,7 +74,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">LEARNING CENTER</button>
                             </li>
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-106b4cf6610d8a50610" aria-disabled="false"></div>

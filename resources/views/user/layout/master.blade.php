@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{{asset('content/css/vendors/bootstrap-icons.css')}}" />
   <link rel="stylesheet" href="{{asset('content/css/vendors/swiper-bundle.min.css')}}" />
   <link rel="stylesheet" href="{{asset('content/css/style.css')}}" />
+  @yield('websiteStyle')
 </head>
 
 <body>
@@ -241,7 +242,7 @@
   <script src="{{asset('content/js/vendors/swiper-bundle.min.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
   <script src="{{asset('content/js/scripts.js')}}"></script>
-
+@yield('websiteScript')
 </body>
 
 </html>

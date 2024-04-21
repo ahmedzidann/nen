@@ -13,7 +13,7 @@ use Spatie\Translatable\HasTranslations;
 class AboutTabs extends Model implements  HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable,HasTranslations, InteractsWithMedia;
-
+    public $table='about_tabs';
    public $translatable = [
       'title',
       'description',
@@ -21,6 +21,9 @@ class AboutTabs extends Model implements  HasMedia
       'label2',
       'label3',
       'label4',
+      'challenge',
+      'solution',
+      'result',
    ];
    
    protected $fillable = [
@@ -35,6 +38,9 @@ class AboutTabs extends Model implements  HasMedia
       'label3',
       'label4',
       'sort',
+      'challenge',
+      'solution',
+      'result',
    ];
      const STATUS = ['Active','Not Active'];
  

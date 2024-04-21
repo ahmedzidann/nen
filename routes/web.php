@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\User\AboutUs\AboutController;
+use App\Http\Controllers\User\Projects\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,7 +22,7 @@ Route::group(['prefix' => 'about','as'=>'about.', 'name'=>'about.'], function ()
     Route::get('clients', [AboutController::class, 'clients'])->name('clients');
     Route::get('careers', [AboutController::class, 'careers'])->name('careers');
     Route::get('our-team', [AboutController::class, 'our_team'])->name('our-team');
-
-
-
 });
+
+    //Projects Routes
+    Route::get('Projects/{slug?}/{id?}',[ProjectController::class,'index'])->name('projects');

@@ -14,16 +14,18 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 
-class SliderController extends Controller {
+class SliderController extends Controller
+{
     /**
-    * Display a listing of the resource.
-    */
+     * Display a listing of the resource.
+     */
 
-    public function index():View
+    public function index(): View
     {
-        return view('admin.slider.view',new SliderViewModel());
+        return view('admin.slider.view', new SliderViewModel());
     }
-    public function show(Request $request,$language)
+
+    public function show(Request $request, $language)
     {
             if ($request->ajax()) {
                 $data = Slider::select('*')->latest();
@@ -49,34 +51,37 @@ class SliderController extends Controller {
             }
 
     }
-    public function create(Request $request):View
+
+    public function create(Request $request): View
     {
-        return view('admin.slider.create',new SliderViewModel());
+        return view('admin.slider.create', new SliderViewModel());
     }
+
     public function store(SliderRequest $request)
     {
-            $validator = $request->validationStore();
-        if($validator->fails())
-        {
+        $validator = $request->validationStore();
+        if ($validator->fails()) {
             return response()->json([
-                'status'=>400,
-                'errors'=>$validator->messages()
+                'status' => 400,
+                'errors' => $validator->messages()
             ]);
-        }else{
+        } else {
             app(StoreSliderAction::class)->handle($validator->validated());
-            redirect()->route('admin.slider.index')->with('add','Success Add Slider');
+            redirect()->route('admin.slider.index')->with('add', 'Success Add Slider');
             return response()->json([
-                'status'=>200,
-                'message'=>'Success Add Slider',
-                'redirect_url' => route('admin.slider.index',['category='.$request->category]),
+                'status' => 200,
+                'message' => 'Success Add Slider',
+                'redirect_url' => route('admin.slider.index', ['category=' . $request->category]),
             ]);
         }
     }
-    public function edit(Request $request,$id):View
+
+    public function edit(Request $request, $id): View
     {
         $StaticTable =Slider::find($id);
         return view('admin.slider.edit',new SliderViewModel($StaticTable));
     }
+
     public function update(SliderRequest $request, $id)
     {
         $StaticTable =Slider::find($id);
@@ -88,22 +93,25 @@ class SliderController extends Controller {
         if($validator->fails())
         {
             return response()->json([
-                'status'=>400,
-                'errors'=>$validator->messages()
+                'status' => 400,
+                'errors' => $validator->messages()
             ]);
-        }else{
-            app(UpdateSliderAction::class)->handle($StaticTable,$validator->validated());
+        } else {
+            app(UpdateSliderAction::class)->handle($StaticTable, $validator->validated());
             return response()->json([
-                'status'=>200,
-                'message'=>'Update Slider',
+                'status' => 200,
+                'message' => 'Update Slider',
                 'redirect_url' => route('admin.slider.index'),
             ]);
         }
 
     }
-    public function destroy(Request $request):RedirectResponse
+
+    public function destroy(Request $request): RedirectResponse
     {
-        foreach(Slider::find($request->id) as $static_table){$static_table->delete();}
-        return redirect()->back()->with('delete','Delete Slider');
+        foreach (Slider::find($request->id) as $static_table) {
+            $static_table->delete();
+        }
+        return redirect()->back()->with('delete', 'Delete Slider');
     }
 }

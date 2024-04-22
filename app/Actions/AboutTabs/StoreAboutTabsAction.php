@@ -8,6 +8,7 @@ class StoreAboutTabsAction
     use ImageHelper;
     public function handle(array $data)
     {
+        // dd($data);
         $AboutTabs = AboutTabs::create($data);
         $this->StoreImage($data,$AboutTabs,'AboutTabs');
         return $AboutTabs;

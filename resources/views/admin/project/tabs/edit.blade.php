@@ -111,6 +111,50 @@
 
                                             </div>
                                             {{-- ----------Description end --}}
+
+ <x-admin.form.label-first star="*" class="form-label"
+                                                    name="challenge  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.text old="{{ 'challenge.'.$translationFirst->key }}"
+                                                    name="{{ 'challenge'.'['.$translationFirst->key.']' }}"
+                                                    type="text"
+                                                    placeholder="challenge {{ ucfirst($translationFirst->name)  }}"
+                                                    :value="$StaticTable->translate('challenge', $translationFirst->key)">
+                                                </x-admin.form.text>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter challenge  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+
+                                                     <x-admin.form.label-first star="*" class="form-label"
+                                                    name="solution  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.text old="{{ 'solution.'.$translationFirst->key }}"
+                                                    name="{{ 'solution'.'['.$translationFirst->key.']' }}"
+                                                    type="text"
+                                                    placeholder="solution {{ ucfirst($translationFirst->name)  }}"
+                                                    :value="$StaticTable->translate('solution', $translationFirst->key)">
+                                                </x-admin.form.text>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter solution  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+
+
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="result  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.text old="{{ 'result.'.$translationFirst->key }}"
+                                                    name="{{ 'result'.'['.$translationFirst->key.']' }}"
+                                                    type="text"
+                                                    placeholder="result {{ ucfirst($translationFirst->name)  }}"
+                                                    :value="$StaticTable->translate('result', $translationFirst->key)">
+                                                </x-admin.form.text>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter result  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+
+
+
+
                                             {{-- ----------first image--}}
                                             @if ($loop->first)
                                             <div class="col-md-12 mb-4">

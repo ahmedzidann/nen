@@ -10,6 +10,7 @@ class UpdateJoinusTabsAction
     {
         $JoinusTabs->update($data);
         $this->UpdateImage($data,$JoinusTabs,'JoinusTabs');
+        $this->UpdateImage2($data,$JoinusTabs,'JoinusTerms');
         return $JoinusTabs;
     }
 }

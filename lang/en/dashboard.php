@@ -1,4 +1,3 @@
-c:\laragon\www\nen\lang\en\dashboard.php
 <?php return array (
   'Be Careful' => 'Be Careful',
   'Delete' => 'Delete',
@@ -601,4 +600,7 @@ c:\laragon\www\nen\lang\en\dashboard.php
   'please enter instagrame' => 'Please enter instagrame',
   'whatsapp' => 'Whatsapp',
   'Whatsapp' => 'Whatsapp',
+  'please enter Register Description  english' => 'Please enter Register Description  english',
+  'please enter label3  english' => 'Please enter label3  english',
+  'Register Description  english' => 'Register Description  english',
 );

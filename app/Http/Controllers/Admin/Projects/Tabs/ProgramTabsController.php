@@ -139,7 +139,7 @@ class ProgramTabsController
         $file = ProgramTabs::findorfail($id);
         $dow = $file->getFirstMediaUrl('pdfFile')  ;
         $baseUrl = url('/');
-        if (isset($dow)) {
+        if (!empty($dow)) {
             return response()->download(str_replace($baseUrl."/", "", $dow));
         } else {
             return response()->json(['error' => 'File not found.'], 404);

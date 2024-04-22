@@ -1,10 +1,12 @@
 <div class="aside_div">
+  @if(isset($VCpages))
     @foreach ($VCpages as $page)
         <a href="{{route('about.'.$page->slug.'')}}" class="ref_styles active_ref active_link active">
             <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
                 alt="" />{{$page->name}}
         </a>
     @endforeach
+    @endif
     {{-- <a href="{{route('about.identity')}}" class="ref_styles active_ref active_link active">
       <img class="Identity_icon" src="{{asset('content/images/small_icon/card.png')}}"
           alt="" />Identity

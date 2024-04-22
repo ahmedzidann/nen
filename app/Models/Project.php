@@ -47,7 +47,7 @@ class Project extends Model implements  HasMedia {
         return $this->hasMany( JoinusTabs::class, 'project_id' )->where('status','Active');
     }
     public function getDocument() {
-        return $this->hasMany( ProjectArchive::class, 'project_id' )->where('status','Active');
+        return $this->hasMany( ProjectArchive::class, 'project_id');
     }
 
     public function ChildePage() {

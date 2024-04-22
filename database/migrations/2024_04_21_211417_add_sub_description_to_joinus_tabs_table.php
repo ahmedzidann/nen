@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('our_teams', function (Blueprint $table) {
-            $table->string('facebook')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->string('instagrame')->nullable();
-
+        Schema::table('joinus_tabs', function (Blueprint $table) {
+        $table->longText('sub_description');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('joinus_tabs', function (Blueprint $table) {
+            //
+        });
     }
 };

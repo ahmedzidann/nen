@@ -1,0 +1,3 @@
+<button type="<?php echo e($type??'button'); ?>" class="btn btn-primary px-4" id="<?php echo e($id??''); ?>" ><?php echo e(TranslationHelper::translate(ucfirst('Submit')??'')); ?></button>
+
+<button type="reset" class="btn btn-light px-4"><?php echo e(TranslationHelper::translate(ucfirst('Reset')??'')); ?></button><?php /**PATH C:\laragon\www\nen\resources\views/components/admin/form/submit.blade.php ENDPATH**/ ?>

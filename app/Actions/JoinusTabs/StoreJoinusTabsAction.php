@@ -9,6 +9,7 @@ class StoreJoinusTabsAction {
     public function handle( array $data ) {
         $JoinusTabs = JoinusTabs::create( $data );
         $this->StoreImage( $data, $JoinusTabs, 'JoinusTabs' );
+        $this->StoreImage2( $data, $JoinusTabs, 'JoinusTerms' );
         return $JoinusTabs;
     }
 }

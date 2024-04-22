@@ -11,18 +11,25 @@
             </li>
             @endforeach
         </ul>
+        @if(!empty($projects->getAbout))
+        @foreach($projects->getAbout as $about)
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab" tabindex="0">
                 <div class="who_us">
                     <div class="who_us_titel">
                         <h5>Who we do for you</h5>
+                        @if(!empty($about->shortDescription))
                         <p id="shortDescription" style="white-space: pre-line;">{!! $about->shortDescription !!}</p>
+                        @endif
+                        @if(!empty($about->description))
                         <p id="fullDescription" style="white-space: pre-line; display: none;">{!! $about->description !!}</p>
+                        @endif
                         <a href="#" id="learnMoreBtn" class="btn_detail">Learn More</a>
                     </div>
                     <div class="whou_us_img">
-                        <img  src="{{ asset($about->getFirstMediaUrl('AboutTabs')) }}">
+                        <img src="{{ asset($about->getFirstMediaUrl('AboutTabs')) }}">
                     </div>
+
                 </div>
 
                 <div class="bg_div" style="background-image: url({{asset('content')}}/images/women.png);">
@@ -73,289 +80,171 @@
                         <div class="tab-pane fade show active" id="challang_tab" role="tabpanel" aria-labelledby="chalange_btn_tab" tabindex="0">
                             <div class="who_us">
                                 <div class="who_us_titel">
+                                    @if (!empty($about['challenge']))
                                     <p>{{ $about['challenge'] }}</p>
+                                    @endif
 
                                 </div>
 
 
                             </div>
                         </div>
+                        @if (!empty($about['solution']))
                         <div class="tab-pane fade" id="solution_tab" role="tabpanel" aria-labelledby="solution_btn_tab" tabindex="0">{{ $about['solution'] }}</div>
+                        @endif
+                        @if (!empty($about['result']))
                         <div class="tab-pane fade" id="result_tab" role="tabpanel" aria-labelledby="result_btn_tab" tabindex="0">{{ $about['result'] }}</div>
-
+                        @endif
                     </div>
                 </div>
             </div>
 
             <div class="tab-pane fade" id="pills-program" role="tabpanel" aria-labelledby="pills-program-tab" tabindex="0">
                 <div class="program_sec">
-                    @foreach($programs as $program)
-                        
+                    @foreach($projects->getProgram as $program)
+
+
+                    <div class="card all_program_card">
+
+                        <div class="programe_content">
+                            <img src="{{ asset($program->getFirstMediaUrl('firstImage')) }}">
+                            <h3>{{ $program->title }}</h3>
+                            <p class="p_clamp">{!! $program->description !!}</p>
+                            <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
+                            <div class="flex_icons_div">
+                                <a href="{{ route('admin.tabproject.programTabDownload',$program->id) }}">
+                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
+                                    </p>
+                                </a>
+                                <a href="https://{{$program->url}}" class="card_prgram" target="_blank">
+                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
+                                    </p>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
                    
-                        <div class="card all_program_card">
-
-                            <div class="programe_content">
-                                <img src="{{ asset($program->getFirstMediaUrl('firstImage')) }}">
-                                <h3>{{ $program->title }}</h3>
-                                <p class="p_clamp">{!! $program->description !!}</p>
-                                <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
-                                <div class="flex_icons_div">
-                                    <a href="">
-                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
-                                    </p>
-                                    </a>
-                    <a href="{{ $program->url ?? "" }}" class="card_prgram">
-                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
-                                    </p>
-                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    {{--  <a href="#" class="card_prgram">
-                        <div class="card all_program_card">
-
-                            <div class="programe_content">
-                                <img src="{{asset('content')}}/images/Frame 110.png">
-                                <h3>Program Name</h3>
-                                <p class="p_clamp">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.</p>
-                                <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
-                                <div class="flex_icons_div">
-                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
-                                    </p>
-                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="card_prgram">
-                        <div class="card all_program_card">
-
-                            <div class="programe_content">
-                                <img src="{{asset('content')}}/images/Frame 110 (2).png">
-                                <h3>Program Name</h3>
-                                <p class="p_clamp">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.</p>
-                                <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
-                                <div class="flex_icons_div">
-                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
-                                    </p>
-                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="card_prgram">
-                        <div class="card all_program_card">
-
-                            <div class="programe_content">
-                                <img src="{{asset('content')}}/images/Frame 110 (1).png">
-                                <h3>Program Name</h3>
-                                <p class="p_clamp">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.</p>
-                                <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
-                                <div class="flex_icons_div">
-                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
-                                    </p>
-                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="card_prgram">
-                        <div class="card all_program_card">
-
-                            <div class="programe_content">
-                                <img src="{{asset('content')}}/images/Frame 110.png">
-                                <h3>Program Name</h3>
-                                <p class="p_clamp">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.</p>
-                                <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
-                                <div class="flex_icons_div">
-                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
-                                    </p>
-                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="card_prgram">
-                        <div class="card all_program_card">
-
-                            <div class="programe_content">
-                                <img src="{{asset('content')}}/images/Frame 110 (2).png">
-                                <h3>Program Name</h3>
-                                <p class="p_clamp">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.</p>
-                                <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
-                                <div class="flex_icons_div">
-                                    <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
-                                    </p>
-                                    <p><img src="{{asset('content')}}/images/small_icon/global.png"><span>Website</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>  --}}
-                     @endforeach
+            @endforeach
 
 
-                </div>
+        </div>
 
-            </div>
+    </div>
 
 
-            <div class="tab-pane fade" id="pills-help" role="tabpanel" aria-labelledby="pills-help-tab" tabindex="0">
+    <div class="tab-pane fade" id="pills-help" role="tabpanel" aria-labelledby="pills-help-tab" tabindex="0">
 
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                 @foreach($help as $helpItem)
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                               {{$helpItem['title']}}
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">{!! $helpItem['description']!!}</div>
-                        </div>
-                    </div>
-                   @endforeach
-
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            @foreach($projects->getHelp as $helpItem)
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        {{$helpItem['title']}}
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{!! $helpItem['description']!!}</div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-arshaef" role="tabpanel" aria-labelledby="pills-arshaef-tab" tabindex="0">
-
-                <div class="document_sec">
-                    <div class="document_content">
-                        <i class="bi bi-filetype-pdf"></i>
-                        <div class="document_titel">
-                            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</h3>
-                            <p class="p_clamp">Lorem Ipsum has been the industry's standard dummy text
-                                ever since the 1500s when an......</p>
-
-                        </div>
-                        <i class="bi bi-download"></i>
-                    </div>
-                    <div class="document_content">
-                        <i class="bi bi-link-45deg"></i>
-                        <div class="document_titel">
-                            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</h3>
-                            <p class="p_clamp">Lorem Ipsum has been the industry's standard dummy text
-                                ever since the 1500s when an......</p>
-
-                        </div>
-                        <i class="bi bi-box-arrow-up-right"></i>
-                    </div>
-                    <div class="document_content">
-                        <i class="bi bi-filetype-pdf"></i>
-                        <div class="document_titel">
-                            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</h3>
-                            <p class="p_clamp">Lorem Ipsum has been the industry's standard dummy text
-                                ever since the 1500s when an......</p>
-
-                        </div>
-                        <i class="bi bi-download"></i>
-                    </div>
-                    <div class="document_content">
-                        <i class="bi bi-link-45deg"></i>
-                        <div class="document_titel">
-                            <h3>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</h3>
-                            <p class="p_clamp">Lorem Ipsum has been the industry's standard dummy text
-                                ever since the 1500s when an......</p>
-
-                        </div>
-                        <i class="bi bi-box-arrow-up-right"></i>
-                    </div>
-                </div>
-
-                <div class="media_sec">
-                    <h2>Media</h2>
-                    <div class="media_images">
-                        <img src="{{asset('content')}}/images/Frame 1000003486 (1).png">
-                        <img src="{{asset('content')}}/images/Frame 1000003485 (1).png">
-                        <img src="{{asset('content')}}/images/Frame 1000003486.png">
-                        <img src="{{asset('content')}}/images/Frame 1000003487.png">
-                        <img src="{{asset('content')}}/images/Frame 1000003485 (1).png">
-                        <img src="{{asset('content')}}/images/Frame 1000003484 (1).png">
-                        <img src="{{asset('content')}}/images/Frame 1000003486 (1).png">
-                        <img src="{{asset('content')}}/images/Frame 1000003487 (2).png">
-
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="pills-join-us" role="tabpanel" aria-labelledby="pills-join-us-tab" tabindex="0">
-
-                <div class="bg_div bg_join" style="background-image: url({{asset('content')}}/images/girl.jpg);">
-                    <div class="join_us_sec">
-                        <h3 class="h3_style">Register Steps</h3>
-                        <div class="join_us_dives">
-                            <div class="join_us_dive">
-                                <img src="{{asset('content')}}/images/small_icon/share.png">
-                                <p>{{ $joinus['description'] }}</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="terms_sec">
-                    <h2>Terms and Conditions</h2>
-                    <div class="flex_jon">
-                        <ul class="terms_ul">
-                            <li>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                            </li>
-                            <li>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                            </li>
-                            <li>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                            </li>
-                            <li>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                            </li>
-                            <li>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
-                            </li>
-                        </ul>
-
-                        <div class="terms_img">
-                            <img src="{{asset('content')}}/images/Frame 1000003508.png" />
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>
+    <div class="tab-pane fade" id="pills-archive" role="tabpanel" aria-labelledby="pills-archive-tab" tabindex="0">
+
+        <div class="document_sec">
+        @foreach($projects->getDocument as $doc)
+        @if($doc->type == "pdf")
+            <div class="document_content">
+                
+                <i class="bi bi-filetype-pdf"></i>
+                <div class="document_titel">
+                    <h3>{{$doc->title}}</h3>
+                    <p class="p_clamp"> {{$doc->description}}</p>
+                        ever since the 1500s when an......</p>
+
+                </div>
+                <a href="{{ route('admin.tabproject.archiveDownload',$doc->id) }}"><i class="bi bi-download"></i></a>
+            </div>
+          @elseif($doc->type == "url")
+            <div class="document_content">
+                <i class="bi bi-link-45deg"></i>
+                <div class="document_titel">
+                    <h3>{{$doc->title}}</h3>
+                    <p class="p_clamp">{{$doc->description}}</p>
+
+                </div>
+                <a href="https://{{ $doc->url }}">
+                <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+            </div>
+            @endif
+            @endforeach
+        </div>
+
+        <div class="media_sec">
+            <h2>Media</h2>
+            <div class="media_images">
+           @foreach($projects->getDocument as $img )
+                @if($img->type =="image")
+                <img src="{{ asset($img->getFirstMediaUrl('firstFile')) }}">
+                @endif
+            @endforeach
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-join-us" role="tabpanel" aria-labelledby="pills-join-us-tab" tabindex="0">
+
+        <div class="bg_div bg_join" style="background-image: url({{asset('content')}}/images/girl.jpg);">
+            <div class="join_us_sec">
+                <h3 class="h3_style">Register Steps</h3>
+                <div class="join_us_dives">
+                 @foreach ($projects->getJoinus as $joinus)
+                     
+                
+                    <div class="join_us_dive">
+                        <img src="{{asset('content')}}/images/small_icon/share.png">
+                        @if(!empty($joinus['description']))
+                        <p>{!! $joinus['description'] !!}</p>
+                        @endif
+                    </div>
+ @endforeach
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="terms_sec">
+            <h2>Terms and Conditions</h2>
+            <div class="flex_jon">
+                <ul class="terms_ul">
+                   @if(!empty($joinus['description']))
+                    <li>
+                        {!! $joinus['sub_description'] !!}
+                    </li>
+                 @endif
+                   
+                </ul>
+
+                <div class="terms_img">
+                @if(!empty($joinus->getFirstMediaUrl('JoinusTerms')))
+                    <img src="{{asset($joinus->getFirstMediaUrl('JoinusTerms'))}}" >
+                @endif
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+@endforeach
+@endif
+</div>
 
 
 </div>
@@ -371,4 +260,5 @@
             fullDescription.style.display = "block";
         });
     });
+
 </script>

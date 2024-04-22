@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 20, 2024 at 10:30 AM
+-- Generation Time: Apr 22, 2024 at 01:25 AM
 -- Server version: 5.7.23-23
 -- PHP Version: 8.1.27
 
@@ -920,6 +920,34 @@ INSERT INTO `projects` (`id`, `title`, `description`, `status`, `pages_id`, `sor
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project_archieve`
+--
+
+CREATE TABLE `project_archieve` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `type` json NOT NULL,
+  `url` json DEFAULT NULL,
+  `title` json DEFAULT NULL,
+  `description` json DEFAULT NULL,
+  `project_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `tabs_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `project_archieve`
+--
+
+INSERT INTO `project_archieve` (`id`, `type`, `url`, `title`, `description`, `project_id`, `created_at`, `updated_at`, `tabs_id`) VALUES
+(176, '{\"en\": \"url\"}', '{\"en\": \"new 1\"}', '{\"en\": \"Incididunt non adipi\"}', '{\"en\": \"Harum est voluptatem\"}', 1, '2024-03-10 08:47:33', '2024-03-10 08:47:33', 5),
+(177, '{\"en\": \"url\"}', '{\"en\": \"new 2\"}', '{\"en\": \"Qui adipisicing laud\"}', '{\"en\": \"Quis et aut aliquip\"}', 1, '2024-03-10 08:47:33', '2024-03-10 08:47:33', 5),
+(178, '{\"en\": \"pdf\"}', '{\"en\": null}', '{\"en\": \"khater1\"}', '{\"en\": \"dev1\"}', 1, '2024-03-10 09:14:42', '2024-03-10 09:14:42', 5),
+(179, '{\"en\": \"image\"}', '{\"en\": null}', '{\"en\": \"khater2\"}', '{\"en\": \"dev2\"}', 1, '2024-03-10 09:14:42', '2024-03-10 09:14:42', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -1137,7 +1165,7 @@ INSERT INTO `tabs` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (2, '{\"en\":\"program\",\"ar\":\"program\"}', 'program', NULL, NULL),
 (3, '{\"en\":\"help\",\"ar\":\"help\"}', 'help', NULL, NULL),
 (4, '{\"en\":\"join-us\",\"ar\":\"join-us\"}', 'join-us', NULL, NULL),
-(5, '{\"en\":\"arshaef\",\"ar\":\"arshaef\"}', 'arshaef', NULL, NULL);
+(5, '{\"en\":\"archive\",\"ar\":\"archive\"}', 'archive', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1460,6 +1488,14 @@ ALTER TABLE `projects`
   ADD KEY `projects_pages_id_foreign` (`pages_id`);
 
 --
+-- Indexes for table `project_archieve`
+--
+ALTER TABLE `project_archieve`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `project_archieve_project_id_foreign` (`project_id`),
+  ADD KEY `project_archieve_tabs_id_foreign` (`tabs_id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -1685,6 +1721,12 @@ ALTER TABLE `program_tabs`
 --
 ALTER TABLE `projects`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `project_archieve`
+--
+ALTER TABLE `project_archieve`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT for table `roles`

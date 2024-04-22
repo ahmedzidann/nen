@@ -3,6 +3,7 @@ $(function () {
     var url = new URL(window.location.href);
     var category = url.searchParams.get("category");
     var subcategory = url.searchParams.get("subcategory");
+    var subsubcategory = url.searchParams.get("subsubcategory");
     var item = url.searchParams.get("item");
     var table = $('.yajra-datatable').DataTable({
         processing: true,
@@ -16,6 +17,7 @@ $(function () {
                 d.to_date = $('.datepickerfrom').val();
                 d.category = category;
                 d.subcategory = subcategory;
+                d.subsubcategory = subsubcategory;
                 d.item = item;
             }
         },

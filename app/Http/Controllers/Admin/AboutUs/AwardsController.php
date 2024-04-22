@@ -54,7 +54,7 @@ class AwardsController extends Controller
     public function create(Request $request):View
     {
 
-        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
+        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-one'){
         return view('admin.about.awards.create_sectionTwo',new AwardsTableViewModel());
         }else{
         return view('admin.about.awards.create',new AwardsTableViewModel());
@@ -62,7 +62,7 @@ class AwardsController extends Controller
     }
     public function store(AwardsRequest $request)
     {
-        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item == 'section-two'){
+        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-one'){
             $validator = $request->validationStoreTwo();
         }else{
             $validator = $request->validationStore();
@@ -86,7 +86,7 @@ class AwardsController extends Controller
     public function edit(Request $request,$id):View
     {
         $StaticTable =StaticTable::find($id);
-        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
+        if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-one'){
         return view('admin.about.awards.edit_sectionTwo',new AwardsTableViewModel($StaticTable));
         }else{
         return view('admin.about.awards.edit',new AwardsTableViewModel($StaticTable));
@@ -98,13 +98,13 @@ class AwardsController extends Controller
 
 
        if($request->submit2=='en'){
-            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
+            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-one'){
                $validator = $request->validationUpdateTwoEn();
             }else{
                $validator = $request->validationUpdateEn();
             }
        }else{
-            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-two'){
+            if ($request->category == 'about' && $request->subcategory == 'awards' && $request->item != 'section-one'){
                 $validator = $request->validationUpdateTwoAr();
             }else{
                 $validator = $request->validationUpdateAr();

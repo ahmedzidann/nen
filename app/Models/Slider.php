@@ -11,7 +11,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
-class Slider extends Model {
+class Slider extends Model implements  HasMedia {
     use HasApiTokens, HasFactory, Notifiable, HasTranslations, InteractsWithMedia;
     public $table = 'slider';
 

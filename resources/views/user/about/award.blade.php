@@ -1,11 +1,14 @@
 @extends('user.layout.master')
 @section('parent_page_name')About @endsection
 @section('page_name')Awards @endsection
+@section('cover_image')
+    {{ isset($slider)? $slider->getFirstMediaUrl('image'): asset('content/images/about_img.png')}}
+@endsection
 @section('content')
 
 <div class="about_content">
 
-    @if ($fSection =  $items->where('item','section-one')->first())
+    @if ($fSection)
     <div class="Awards_flex">
         <div class="Awards_titel">
             <h1>{{$fSection->title}}</h1>
@@ -35,8 +38,8 @@
                             </li>
                         </div>
                         @endforeach
-
-                        {{-- <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 5px;">
+{{--
+                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="margin-right: 5px;">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">TAMKEEN
                                     COMPETITION</button>
@@ -65,9 +68,9 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">INNOVATION AWARD</button>
                             </li>
-                        </div> --}}
+                        </div>
 
-                        {{-- <div class="swiper-slide" role="group" aria-label="6 / 6" style="margin-right: 5px;">
+                         <div class="swiper-slide" role="group" aria-label="6 / 6" style="margin-right: 5px;">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">LEARNING CENTER</button>
                             </li>
@@ -133,9 +136,9 @@
                                 <div class="icons_div">
                                     <h5>{{$item->title}}</h5>
                                     <div class="flex_icons_div">
-                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a src='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
+                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a target="_blank" href='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
                                         </p>
-                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a href="{{$item->url}}">Website</a> </span>
+                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a target="_blank" href="{{$item->url}}">Website</a> </span>
                                         </p>
                                         <p><img src="{{url('content/images/small_icon/calendar-2.png')}}"><span>{{$item->years_text}}</span></p>
                                     </div>
@@ -290,4 +293,55 @@
 
 
 </div>
+
+<script src="{{url('content/js/vendors/jquery.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/kursor.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/all.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('content/js/vendors/swiper-bundle.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
+    <script src="{{url('content/js/scripts.js')}}"></script>
+
+    <script>
+        var swiper = new Swiper(".Awards_slider", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            breakpoints: {
+
+                1024: {
+                    slidesPerView: "auto",
+                    spaceBetween: 5
+                },
+
+                900: {
+                    slidesPerView:3,
+                    spaceBetween: 5
+                },
+
+                650: {
+                    slidesPerView: 2,
+                    spaceBetween:5
+                },
+
+                375: {
+                    slidesPerView: 1,
+                    spaceBetween: 5
+                },
+
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 @endsection

@@ -95,17 +95,29 @@
                                             @endphp  --}}
                                          {{-- ----------first image--}}
                                             @if ($loop->first)
-                                            <div class="col-md-12 mb-4">
+                                            {{-- <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first  class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">
                                                     <input
                                                     data-default-file="{{ asset('storage/slider/'.$StaticTable->image) }}"
-                                                        name="image" type="file" 
+                                                        name="image" type="file"
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         accept=".jpg, .png, image/jpeg, image/png">
-                                                
+
+                                                </div>
+                                            </div> --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                                    name="File Upload Image">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="image"
+                                                        old="image" name="image" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
                                                 </div>
                                             </div>
                                             @endif
@@ -122,7 +134,7 @@
                                                          name="icon" type="file"
                                                         placeholder="Please Enter Icon" id="icon" class="dropify"
                                                          accept=".jpg, .png, image/jpeg, image/png">
-                                                   
+
                                                 </div>
                                             </div>
                                             @endif

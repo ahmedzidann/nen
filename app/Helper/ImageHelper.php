@@ -13,7 +13,7 @@ trait ImageHelper
         if ( !empty( $imageData ) ) {
             $model->addMedia( $imageData )->toMediaCollection( $nameImage );
         }
-    }    
+    }
 
 	public function UpdateImage($data,$model,$nameImage){
         if (!empty($data['image'])) {

@@ -49,7 +49,7 @@
   <!-- hero_img -->
   <div class="section_photoe">
     <div class="title_img">
-      <img class="img_team" src="{{asset('content/images/about_img.png')}}" />
+      <img class="img_team" src="@yield('cover_image') " />
       <div class="titel_about_content">
         <h1>{{ strtoupper(trim(\Illuminate\Support\Str::of(trim($__env->yieldContent('page_name')))->stripTags())) }}</h1>
         <ol class="breadcrumb">

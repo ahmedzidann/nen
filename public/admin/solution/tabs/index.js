@@ -1,15 +1,15 @@
 $(function () {
-    var language = $('#Slider').val();
+    var language = 'en';
     var url = new URL(window.location.href);
-    var category = url.searchParams.get("category");
-    var subcategory = url.searchParams.get("subcategory");
+    var category = url.searchParams.get("tab");
+    var subcategory = url.searchParams.get("solution_id");
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
         autoWidth: false,
         ajax: {
-            url: `/admin/settings/slider/${language}`,
+            url: `/admin/tab-solution/ar`,
             data: function (d) {
                 d.from_date = $('.datepickerto').val();
                 d.to_date = $('.datepickerfrom').val();
@@ -31,9 +31,11 @@ $(function () {
                 data: 'title',
                 name: 'title'
             },
+
+
             {
-                data: 'Page',
-                name: 'page_id'
+                data: 'description',
+                name: 'description'
             },
             {
                 data: 'created_at',
@@ -132,7 +134,7 @@ $(function () {
             if (id.length > 0) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/admin/settings/slider/test",
+                        url: "/admin/tab-project/about/test",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -162,9 +164,9 @@ $(function () {
                 }
             } else {
                 Swal.fire(
-                'Error!',
-                'Please select least one check.',
-                'error'
+                    'Error!',
+                    'Please select least one check.',
+                    'error'
                 );
             }
         });

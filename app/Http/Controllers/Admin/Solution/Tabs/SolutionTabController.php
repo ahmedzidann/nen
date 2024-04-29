@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin\Solution\Tabs;
 use App\Actions\AboutTabs\StoreAboutTabsAction;
 use App\Actions\AboutTabs\UpdateAboutTabsAction;
 use App\Actions\Solution\Tabs\StoreSolutionTabAction;
+use App\Actions\Solution\Tabs\UpdateSolutionTabAction;
 use App\Http\Requests\Admin\Project\Tabs\About\AboutRequest;
 use App\Http\Requests\Admin\Solution\Tabs\SolutionTabRequest;
 use App\Models\AboutTabs;
@@ -119,9 +120,10 @@ class SolutionTabController
     //     $StaticTable =AboutTabs::find($id);
     //    return view('admin.project.tabs.editSectionTwo',new AboutTabsViewModel($StaticTable));
     // }
-    public function update(AboutRequest $request, $id)
+    public function update(SolutionTabRequest $request, $id)
     {
-        $StaticTable =AboutTabs::find($id);
+        $StaticTable =SolutionTab::find($id);
+
        if($request->submit2=='en'){
                $validator = $request->validationUpdateEn();
        }else{
@@ -134,7 +136,7 @@ class SolutionTabController
                 'errors'=>$validator->messages()
             ]);
         }else{
-            app(UpdateAboutTabsAction::class)->handle($StaticTable,$validator->validated());
+            app(UpdateSolutionTabAction::class)->handle($StaticTable,$validator->validated());
             return response()->json([
                 'status'=>200,
                 'message'=>'Update AboutTabs',

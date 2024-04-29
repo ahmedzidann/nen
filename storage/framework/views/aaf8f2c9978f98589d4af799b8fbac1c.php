@@ -109,48 +109,7 @@
                                             </div>
                                             
                                             
-                                            <div class="col-md-6 mb-4">
-                                                <?php if (isset($component)) { $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.label-first','data' => ['class' => 'form-label','name' => 'Select Tabs']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('admin.form.label-first'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'form-label','name' => 'Select Tabs']); ?>
-                                                 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
-<?php $attributes = $__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
-<?php unset($__attributesOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a)): ?>
-<?php $component = $__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a; ?>
-<?php unset($__componentOriginal3a6bcdc49aa05a7873738ce3c8c8a35a); ?>
-<?php endif; ?>
-                                                <?php if (isset($component)) { $__componentOriginal5c0c9b460fcf8b718aa767f0da9d8dc3 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal5c0c9b460fcf8b718aa767f0da9d8dc3 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.form.dropdown','data' => ['disabled' => '','required' => '','foreach' => $allTabs,'name' => 'tabs_id','nameselect' => 'Tabs','model' => $StaticTable]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('admin.form.dropdown'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['disabled' => '','required' => '','foreach' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($allTabs),'name' => 'tabs_id','nameselect' => 'Tabs','model' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($StaticTable)]); ?>
-                                                 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal5c0c9b460fcf8b718aa767f0da9d8dc3)): ?>
-<?php $attributes = $__attributesOriginal5c0c9b460fcf8b718aa767f0da9d8dc3; ?>
-<?php unset($__attributesOriginal5c0c9b460fcf8b718aa767f0da9d8dc3); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal5c0c9b460fcf8b718aa767f0da9d8dc3)): ?>
-<?php $component = $__componentOriginal5c0c9b460fcf8b718aa767f0da9d8dc3; ?>
-<?php unset($__componentOriginal5c0c9b460fcf8b718aa767f0da9d8dc3); ?>
-<?php endif; ?>
-                                            </div>
+                                            
                                             
                                             
                                             <div class="col-md-12 mb-4">
@@ -423,4 +382,5 @@
 <?php echo $__env->make('admin.layouts.ckeditor.ckeditor', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <script src="<?php echo e(asset('admin/solution/js/create.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/admin/solution/create.blade.php ENDPATH**/ ?>

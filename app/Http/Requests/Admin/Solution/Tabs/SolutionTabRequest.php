@@ -108,9 +108,20 @@ class SolutionTabRequest extends FormRequest
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
-            'item' => ['required'],
-            'pages_id' => ['required'],
+            // 'item' => ['required'],
+            // 'pages_id' => ['required'],
             'status' => ['required'],
+            "links" =>['nullable','array'],
+            "links.*" =>['nullable','url'],
+            'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            "link_id.en.*"    =>['nullable'],
+
+            "file" =>['nullable','array'],
+            "file.*" =>['nullable','file'],
+            "file_title.en.*" =>['nullable','string','required_with:file.*'],
+            "file_title.ar.*" =>['nullable','string','required_with:file.*'],
+            "file_id.en.*"    =>['nullable'],
         ]);
     }
 
@@ -133,6 +144,15 @@ class SolutionTabRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            "links" =>['nullable','array'],
+            "links.*" =>['nullable','url'],
+            'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            "link_id.ar.*"    =>['nullable'],
+
+            "file_title.ar.*" =>['nullable','string','required_with:file.*'],
+            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            "file_id.ar.*"    =>['nullable'],
         ]);
     }
 }

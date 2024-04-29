@@ -56,13 +56,13 @@
                                             </div>
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name tabs_id --}}
-                                            <div class="col-md-6 mb-4">
+                                            {{-- <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Tabs">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.dropdown disabled="" required="" :foreach="$allTabs"
                                                     name="tabs_id" nameselect="Tabs" :model="$StaticTable">
                                                 </x-admin.form.dropdown>
-                                            </div>
+                                            </div> --}}
                                             {{-- ----------end tabs_id --}}
                                             {{-- ----------name first --}}
                                             <div class="col-md-12 mb-4">

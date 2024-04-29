@@ -28,11 +28,7 @@ class ViewProjects extends Component
         $this->tabs = Tabs::get()->toArray();
         $this->page = Page::where([['slug',$slug],['status','Active']])->first();
         $this->projects =Project::where([['id',$id],['status','Active']])->first();
-        // $this->programs =$this->projects->getProgram ;
-        // $this->help =$this->projects->getHelp ;
-        // $this->joinus =$this->projects->getJoinus;
-
-        // dd($this->projects->getAbout[0]);
+        
     }
 
     /**

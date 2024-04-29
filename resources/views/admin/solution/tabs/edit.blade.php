@@ -46,52 +46,24 @@
                                         {{-- --------start --}}
                                         <div class="card-body p-4 row">
                                             {{-- ----------start static --}}
+                                            <input type="hidden" name="pages_id" value="{{ $SelectPages->id ?? '' }}">
                                             <input type="hidden" name="category"
                                                 value="{{ Request()->category ?? '' }}">
+                                            <input type="hidden" name="subcategory"
+                                                value="{{ Request()->subcategory ?? '' }}">
+                                            <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end static --}}
                                             {{-- ----------name first --}}
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label1  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label1" old="{{ 'label1.'.$item->key }}"
-                                                    name="{{ 'label1'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label1 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label1', $item->key)">
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Title  {{ $item->name  }}"></x-admin.form.label-first>
+                                                <x-admin.form.input id="title" old="{{ 'title.'.$item->key }}"
+                                                    name="{{ 'title'.'['.$item->key.']' }}" type="text" required=""
+                                                    placeholder="Title {{ $item->name }}" class="form-control valid"
+                                                    :value="$StaticTable->translate('title', $item->key)">
                                                 </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label1  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label2  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label2" old="{{ 'label2.'.$item->key }}"
-                                                    name="{{ 'label2'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label2 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label2', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label2  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label3  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label3" old="{{ 'label3.'.$item->key }}"
-                                                    name="{{ 'label3'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label3 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label3', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label3  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label4  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label4" old="{{ 'label4.'.$item->key }}"
-                                                    name="{{ 'label4'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label4 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label4', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label4  {{ $item->name  }}">
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter Title  {{ $item->name  }}">
                                                 </x-admin.form.label-end>
                                             </div>
                                             {{-- ----------name first --}}
@@ -114,11 +86,11 @@
                                             {{-- ----------first image--}}
                                             @if ($loop->first)
                                             <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first class="col-sm-3 col-form-label"
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="AboutTabs"
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="solutionTabs"
                                                         old="image" name="image" type="file" readonly=""
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
@@ -154,6 +126,156 @@
                                             {{-- ----------status end --}}
 
                                             @endif
+                                            <div id="input-template"  class="input-temp input-temp-{{$item->name}}" style="display:none;" >
+                                                <div class="col-md-12 mb-4 row">
+                                                    <div class="col-md-10 row">
+                                                        {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                        </x-admin.form.label-first> --}}
+                                                        <div class="col-sm-8">
+                                                            <x-admin.form.input name="links[]" type="text" required="" placeholder="links" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        <div class="col-sm-4">
+
+                                                            <x-admin.form.input name="{{ 'links_title'.'['.$translationFirst->key.'][]' }}" type="text" required="" placeholder="{{ $item->name  }} title" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                        </x-admin.form.label-end> --}}
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="button" class="btn btn-danger delete-input" style="">
+                                                             <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                                <!-- Add more input fields as needed -->
+
+                                            </div>
+                                            <div class=" mb-4">
+                                                <div class="col-md-12">
+                                                    <div id='inputs-container' class="inputs-container-{{$item->name}}">
+                                                        <label>links</label>
+                                                        {{-- @dd($StaticTable) --}}
+                                                        @if ($StaticTable->links->count())
+                                                        @foreach ($StaticTable->links as $link)
+                                                        <div id="input-template"  class="input-temp" style="">
+                                                            <div class="col-md-12 mb-4 row">
+                                                                <div class="col-md-10 row">
+                                                                    {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                                    </x-admin.form.label-first> --}}
+                                                                    <div class="col-sm-8">
+                                                                        <input disabled value='{{$link->reference }}'  name="links[]" type="text" required=""
+                                                                             placeholder="links" class="form-control valid">
+                                                                        {{-- </input> --}}
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                    <input type="hidden"  name="{{'link_id['.$item->key.'][]'}}" value="{{$link->id}}">
+
+                                                                        <x-admin.form.input  value="{{ $link->translate('title', $item->key)}}" name="{{'links_title['.$item->key.'][]'}}" type="text" required=""
+                                                                        placeholder="{{$item->name}} title" class="form-control valid">
+                                                                        </x-admin.form.input>
+                                                                    </div>
+                                                                    {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                                    </x-admin.form.label-end> --}}
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    {{-- <button type="button" class="btn btn-danger delete-input" style="">
+                                                                         <i class="bx bxs-trash"></i>&nbsp;</button> --}}
+                                                                </div>
+                                                            </div>
+                                                            <!-- Add more input fields as needed -->
+
+                                                        </div>
+                                                        @endforeach
+
+                                                        @else
+
+                                                        @endif
+                                                    </div>
+
+                                                    <button id="add-input-{{$item->name}}" type="button" class="col-sm-1 btn btn-success">
+                                                        <i class='bx bx-plus'></i>&nbsp;
+                                                    </button>
+
+                                                </div>
+
+                                                <div id="input-template-file"  class="input-template-file-{{$item->name}} input-temp-file" style="display:none;">
+                                                    <div class="col-md-12 mb-4 row">
+                                                        <div class="col-md-10 row">
+                                                            {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                            </x-admin.form.label-first> --}}
+                                                            <div class="col-sm-8">
+                                                            <x-admin.form.input name="file[]" type="file" required="" placeholder="file" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                            </div>
+
+                                                            <div class="col-sm-4">
+                                                                <x-admin.form.input name="{{ 'file_title'.'['.$translationFirst->key.'][]' }}" type="text" required=""  placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                                </x-admin.form.input>
+                                                            </div>
+                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                            </x-admin.form.label-end> --}}
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more input fields as needed -->
+
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                <div id='inputs-container-file-{{$item->name}}' class="inputs-container-file-{{$item->name}}">
+                                                    <label>file</label>
+                                                    @if ($StaticTable->files->count())
+                                                    @foreach ($StaticTable->files as $file)
+
+                                                    <div id="input-template-file"  class="input-temp-file" style="">
+                                                        <div class="col-md-12 mb-4 row">
+                                                            <div class="col-md-4 row">
+                                                                {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                                </x-admin.form.label-first> --}}
+                                                                <div class="col-sm-4">
+                                                                {{-- <x-admin.form.input name="file[]" value="{{storage_path('education').$file->file}}" type="file" required="" placeholder="file" class="form-control valid">
+                                                                </x-admin.form.input> --}}
+
+
+                                                                   <a href="{{ url('storage/education/' . $file->file) }}" class="btn btn-success donload-input-file" download>  <i class="bx bxs-download"></i>&nbsp;</a>
+
+                                                                </div>
+
+                                                                <div class="col-sm-8">
+                                                                    <input type="hidden"  name="{{'file_id['.$item->key.'][]'}}" value="{{$file->id}}">
+                                                                    <x-admin.form.input
+                                                                    value="{{ $file->translate('title', $item->key)}}" name="{{'file_title['.$item->key.'][]'}}" type="text" required=""
+                                                                        placeholder="{{$item->name}} title"
+                                                                       class="form-control valid">
+                                                                    </x-admin.form.input>
+                                                                </div>
+                                                                {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                                </x-admin.form.label-end> --}}
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                {{-- <button type="button" class="btn btn-danger delete-input-file">
+                                                                     <i class="bx bxs-trash"></i>&nbsp;
+                                                                    </button> --}}
+                                                            </div>
+                                                        </div>
+                                                        <!-- Add more input fields as needed -->
+
+                                                    </div>
+                                                    @endforeach
+
+                                                    @else
+
+                                                    @endif
+                                                </div>
+                                                <button id="add-input-file-english" type="button" class="col-sm-1 btn btn-success">
+                                                    <i class='bx bx-plus' ></i></i>&nbsp;</button>
+                                                </div>
+
+
+                                            </div>
                                             <input type="hidden" name="submit2" value="{{ $item->key }}">
                                             <div class="col-md-12">
                                                 <div class="d-md-flex d-grid align-items-center gap-3">
@@ -177,5 +299,90 @@
 @endsection
 @section('jsadmin')
 @include('admin.layouts.ckeditor.ckeditor')
-<script src="{{ asset('admin/project/tabs/about/js/edit.js') }}"></script>
+<script src="{{ asset('admin/about/certificates/js/edit.js') }}"></script>
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Function to create a new input field
+
+    function createInputFieldEnglish() {
+
+        var template = document.getElementsByClassName("input-temp-english")[0].cloneNode(true);
+
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+
+        document.getElementsByClassName("inputs-container-english")[0].appendChild(template);
+    }
+
+    function createInputFieldArabic() {
+
+        var template = document.getElementsByClassName("input-temp-arabic")[0].cloneNode(true);
+
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+
+        document.getElementsByClassName("inputs-container-arabic")[0].appendChild(template);
+    }
+
+    // Function to delete an input field
+    function deleteInputField(btn) {
+        btn.closest('.input-temp').remove();
+    }
+
+    // Add event listener for the "Add Input" button
+    document.getElementById("add-input-arabic").addEventListener("click", function() {
+
+        createInputFieldArabic();
+    });
+
+    document.getElementById("add-input-english").addEventListener("click", function() {
+
+        createInputFieldEnglish();
+    });
+
+    // Add event listener for dynamically added "Delete" buttons
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("delete-input")) {
+            deleteInputField(event.target);
+        }
+    });
+});
+
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Function to create a new input field
+    function createInputFieldEnglish() {
+        // Clone the template
+        var template = document.getElementsByClassName("input-template-file-english")[0].cloneNode(true);
+        console.log('d');
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+        // Append the cloned template to the container
+        document.getElementsByClassName("inputs-container-file-english")[0].appendChild(template);
+    }
+
+    // Function to delete an input field
+    function deleteInputField(btn) {
+        btn.closest('.input-temp-file').remove();
+    }
+
+    // Add event listener for the "Add Input" button
+    document.getElementById("add-input-file-english").addEventListener("click", function() {
+
+        createInputFieldEnglish();
+    });
+
+    // Add event listener for dynamically added "Delete" buttons
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("delete-input-file")) {
+            deleteInputField(event.target);
+        }
+    });
+});
+
+</script>

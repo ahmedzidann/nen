@@ -84,6 +84,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::name('tabsolution.')->prefix('tab-solution')->group(function(){
             Route::resource("", SolutionTabController::class);
             Route::get('/{solution}', [SolutionTabController::class,'show']);
+            Route::get('/{solution}/edit', [SolutionTabController::class,'edit']);
 
 
             });

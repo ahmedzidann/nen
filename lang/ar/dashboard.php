@@ -618,4 +618,5 @@
   'tabsolution Create' => 'Tabsolution Create',
   'tabsolution View' => 'Tabsolution View',
   'Descrption' => 'Descrption',
+  'tabsolution Edit' => 'Tabsolution Edit',
 );

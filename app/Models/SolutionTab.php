@@ -26,5 +26,15 @@ class SolutionTab extends Model implements  HasMedia
       "status"
    ];
 
+   public function links()
+   {
+     return $this->hasMany(SolutionTabReference::class,'tab_id');
+   }
+
+   public function files()
+   {
+     return $this->hasMany(SolutionTabFile::class,'tab_id');
+   }
+
 
 }

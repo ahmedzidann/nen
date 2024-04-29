@@ -53,6 +53,13 @@ class SolutionTabRequest extends FormRequest
             'status' => ['nullable'],
             'tabs_id' => ['nullable'],
             'solution_id' => ['nullable'],
+            "links" =>['nullable','array'],
+            "links.*" =>['nullable','url'],
+            'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            "file" =>['nullable','array'],
+            "file.*" =>['nullable','file'],
+            "file_title.en.*" =>['nullable','string','required_with:file.*'],
         ]);
     }
 

@@ -110,15 +110,15 @@ class SolutionTabController
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =AboutTabs::find($id);
-       return view('admin.project.tabs.edit',new AboutTabsViewModel($StaticTable));
+        $StaticTable =SolutionTab::find($id);
+       return view('admin.solution.tabs.edit',new SolutionTabsViewModel($StaticTable));
     }
 
-    public function editSectionTwo(Request $request,$id):View
-    {
-        $StaticTable =AboutTabs::find($id);
-       return view('admin.project.tabs.editSectionTwo',new AboutTabsViewModel($StaticTable));
-    }
+    // public function editSectionTwo(Request $request,$id):View
+    // {
+    //     $StaticTable =AboutTabs::find($id);
+    //    return view('admin.project.tabs.editSectionTwo',new AboutTabsViewModel($StaticTable));
+    // }
     public function update(AboutRequest $request, $id)
     {
         $StaticTable =AboutTabs::find($id);

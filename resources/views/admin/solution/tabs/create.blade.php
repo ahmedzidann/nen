@@ -129,14 +129,136 @@
                                                 </div>
                                             </div>
 
+                                            <div id="input-template"  class="input-temp" style="display:none;" >
+                                                <div class="col-md-12 mb-4 row">
+                                                    <div class="col-md-10 row">
+                                                        {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                        </x-admin.form.label-first> --}}
+                                                        <div class="col-sm-8">
+                                                            <x-admin.form.input name="links[]" type="text" required="" placeholder="links" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        <div class="col-sm-4">
+
+                                                            <x-admin.form.input name="{{ 'links_title'.'['.$translationFirst->key.'][]' }}" type="text" required="" placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                        </x-admin.form.label-end> --}}
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="button" class="btn btn-danger delete-input" style="">
+                                                             <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                                <!-- Add more input fields as needed -->
+
+                                            </div>
+                                            <div class="">
+                                                <div class="col-md-12">
+                                                    <div id='inputs-container'>
+                                                        <label>links</label>
+                                                        <div id="input-template2"  class="input-temp" style="">
+                                                            <div class="col-md-12 mb-4 row">
+                                                                <div class="col-md-10 row">
+                                                                    {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                                    </x-admin.form.label-first> --}}
+                                                                    <div class="col-sm-8">
+                                                                        <x-admin.form.input name="links[]" type="text" required="" placeholder="links" class="form-control valid">
+                                                                        </x-admin.form.input>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+
+                                                                        <x-admin.form.input name="{{ 'links_title'.'['.$translationFirst->key.'][]' }}" type="text" required="" placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                                        </x-admin.form.input>
+                                                                    </div>
+                                                                    {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                                    </x-admin.form.label-end> --}}
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <button type="button" class="btn btn-danger delete-input">
+                                                                         <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Add more input fields as needed -->
+
+                                                        </div>
+                                                    </div>
+
+                                                    <button id="add-input" type="button" class="col-sm-1 btn btn-success">
+                                                        <i class='bx bx-plus' ></i></i>&nbsp;
+                                                    </button>
+
+                                                </div>
+
+                                                <div id="input-template-file"  class="input-temp-file" style="display:none;">
+                                                    <div class="col-md-12 mb-4 row">
+                                                        <div class="col-md-10 row">
+                                                            {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                            </x-admin.form.label-first> --}}
+                                                            <div class="col-sm-8">
+                                                            <x-admin.form.input name="file[]" type="file" required="" placeholder="file" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                            </div>
+
+                                                            <div class="col-sm-4">
+                                                                <x-admin.form.input name="{{ 'file_title'.'['.$translationFirst->key.'][]' }}" type="text" required=""  placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                                </x-admin.form.input>
+                                                            </div>
+                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                            </x-admin.form.label-end> --}}
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more input fields as needed -->
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                <div id='inputs-container-file'>
+                                                    <label>file</label>
+                                                    <div id="input-template-file2"  class="input-temp-file" style="">
+                                                        <div class="col-md-12 mb-4 row">
+                                                            <div class="col-md-10 row">
+                                                                {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                                </x-admin.form.label-first> --}}
+                                                                <div class="col-sm-8">
+                                                                <x-admin.form.input name="file[]" type="file" required="" placeholder="file" class="form-control valid">
+                                                                </x-admin.form.input>
+                                                                </div>
+
+                                                                <div class="col-sm-4">
+                                                                    <x-admin.form.input name="{{ 'file_title'.'['.$translationFirst->key.'][]' }}" type="text" required=""  placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                                    </x-admin.form.input>
+                                                                </div>
+                                                                {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                                </x-admin.form.label-end> --}}
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash "></i>&nbsp;</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Add more input fields as needed -->
+
+                                                    </div>
+                                                </div>
+                                                <button id="add-input-file" type="button" class="col-sm-1 btn btn-success">
+                                                    <i class='bx bx-plus' ></i></i>&nbsp;</button>
+                                                </div>
+
+
+                                            </div>
+                                            <br>
+                                        </div>
                                             {{-- ----------status end --}}
                                             <div class="col-md-12">
                                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                                     <x-admin.form.submit type="submit"></x-admin.form.submit>
                                                 </div>
                                             </div>
-                                        </div>
-                                        {{-- --------hatem --}}
+
+                                        {{----------hatem --}}
                                     </div>
                                 </div>
                             </div>
@@ -153,3 +275,74 @@
 @include('admin.layouts.ckeditor.ckeditor')
 <script src="{{ asset('admin/about/certificates/js/create.js') }}"></script>
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Function to create a new input field
+    function createInputField() {
+        // Clone the template
+        var template = document.getElementById("input-template").cloneNode(true);
+        console.log(template);
+        template.style.display = "block";
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+        //template.value = "";
+        // Append the cloned template to the container
+        document.getElementById("inputs-container").appendChild(template);
+    }
+
+    // Function to delete an input field
+    function deleteInputField(btn) {
+        btn.closest('.input-temp').remove();
+    }
+
+    // Add event listener for the "Add Input" button
+    document.getElementById("add-input").addEventListener("click", function() {
+
+        createInputField();
+    });
+
+    // Add event listener for dynamically added "Delete" buttons
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("delete-input")) {
+            deleteInputField(event.target);
+        }
+    });
+});
+
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Function to create a new input field
+    function createInputField() {
+        // Clone the template
+        var template = document.getElementById("input-template-file").cloneNode(true);
+
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+        // Append the cloned template to the container
+        document.getElementById("inputs-container-file").appendChild(template);
+    }
+
+    // Function to delete an input field
+    function deleteInputField(btn) {
+        btn.closest('.input-temp-file').remove();
+    }
+
+    // Add event listener for the "Add Input" button
+    document.getElementById("add-input-file").addEventListener("click", function() {
+
+        createInputField();
+    });
+
+    // Add event listener for dynamically added "Delete" buttons
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("delete-input-file")) {
+            deleteInputField(event.target);
+        }
+    });
+});
+
+</script>

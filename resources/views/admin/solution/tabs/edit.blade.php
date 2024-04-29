@@ -53,24 +53,13 @@
                                                 value="{{ Request()->subcategory ?? '' }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end static --}}
-                                            {{-- ----------name Pages --}}
-                                            @if ($loop->first)
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first class="form-label" name="Select Pages">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.dropdown  required="" :foreach="$allPage"
-                                                    name="pages_id" nameselect="pages" :model="$StaticTable">
-                                                </x-admin.form.dropdown>
-                                            </div>
-                                            @endif
-                                            {{-- ----------end Pages --}}
                                             {{-- ----------name first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
-                                                    name="{{$item->name}} title"></x-admin.form.label-first>
+                                                    name="Title  {{ $item->name  }}"></x-admin.form.label-first>
                                                 <x-admin.form.input id="title" old="{{ 'title.'.$item->key }}"
                                                     name="{{ 'title'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="{{$item->name}} title" class="form-control valid"
+                                                    placeholder="Title {{ $item->name }}" class="form-control valid"
                                                     :value="$StaticTable->translate('title', $item->key)">
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end star="*"
@@ -97,11 +86,11 @@
                                             {{-- ----------first image--}}
                                             @if ($loop->first)
                                             <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first  class="col-sm-3 col-form-label"
+                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="Education"
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="solutionTabs"
                                                         old="image" name="image" type="file" readonly=""
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
@@ -135,6 +124,7 @@
                                                 </div>
                                             </div>
                                             {{-- ----------status end --}}
+
                                             @endif
                                             <div id="input-template"  class="input-temp input-temp-{{$item->name}}" style="display:none;" >
                                                 <div class="col-md-12 mb-4 row">
@@ -286,9 +276,6 @@
 
 
                                             </div>
-
-
-
                                             <input type="hidden" name="submit2" value="{{ $item->key }}">
                                             <div class="col-md-12">
                                                 <div class="d-md-flex d-grid align-items-center gap-3">
@@ -312,7 +299,7 @@
 @endsection
 @section('jsadmin')
 @include('admin.layouts.ckeditor.ckeditor')
-<script src="{{ asset('admin/education/js/edit.js') }}"></script>
+<script src="{{ asset('admin/about/certificates/js/edit.js') }}"></script>
 @endsection
 
 <script>

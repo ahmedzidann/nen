@@ -9,6 +9,8 @@ use App\Http\Requests\Admin\Solution\SolutionRequest;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\Solution;
+use App\Models\SolutionTab;
+use App\Models\Tabs;
 use App\ViewModels\SolutionView\SolutionViewModel;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
@@ -30,30 +32,56 @@ class SolutionController extends Controller
                             $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
                     }
                     $category = $request->category;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
-                        ->editColumn('Page', function ($row) use($language)  { 
+                        ->editColumn('Page', function ($row) use($language)  {
                                 if(!empty($row->Page)){
                                 return $row->Page->translate('name', $language);
                                 }
                         })
-                        ->editColumn('Tabs', function ($row) use($language)  { 
+                        ->editColumn('Tabs', function ($row) use($language)  {
                                 if(!empty($row->Tabs)){
                                 return $row->Tabs->translate('name', $language);
                                 }
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
-                        ->addColumn('action', function($row) use ($category) {return'<div class="d-flex order-actions"> <a href="'.route('admin.solution.edit',[$row->id,'category='.$category]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
+
+                        ->addColumn('action', function($row) use ($category)
+                        {
+                            $Tabs = Tabs::where('type','solution')->get();
+                            $options = '';
+                            foreach($Tabs as $item){
+
+                                $options .= '<li><a href="'.route('admin.tabsolution.index',['tab='.$item->slug,'solution_id='.$row->id]).'">'.$item->name.'</a></li>';
+
+                            };
+
+                        return
+                        '
+                        <div class="order-actions">
+                         <a href="'.route('admin.solution.edit',[$row->id,'category='.$category]).'" class="m-auto"><i class="bx bxs-edit"></i></a>
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Tabs
+                            </button>
+                            <ul class="dropdown-menu dragdown">
+                                '.$options.'
+                            </ul>
+                        </div>
+                        ';
+                            return'<div class="d-flex order-actions"> <a href="'.route('admin.solution.edit',[$row->id,'category='.$category]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';
+
+                        })
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
@@ -80,12 +108,12 @@ class SolutionController extends Controller
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =Solution::find($id); 
+        $StaticTable =Solution::find($id);
         return view('admin.solution.edit',new SolutionViewModel($StaticTable));
     }
     public function update(SolutionRequest $request, $id)
-    {    
-        $StaticTable =Solution::find($id); 
+    {
+        $StaticTable =Solution::find($id);
        if($request->submit2=='en'){
                $validator = $request->validationUpdateEn();
        }else{
@@ -105,7 +133,7 @@ class SolutionController extends Controller
                 'redirect_url' => route('admin.solution.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

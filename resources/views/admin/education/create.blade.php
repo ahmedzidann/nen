@@ -150,11 +150,36 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div id="input-template"  class="input-temp" style="display:none;" >
+                                                <div class="col-md-12 mb-4 row">
+                                                    <div class="col-md-10 row">
+                                                        {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                        </x-admin.form.label-first> --}}
+                                                        <div class="col-sm-8">
+                                                            <x-admin.form.input name="links[]" type="text" required="" placeholder="links" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        <div class="col-sm-4">
+
+                                                            <x-admin.form.input name="{{ 'links_title'.'['.$translationFirst->key.'][]' }}" type="text" required="" placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                        </x-admin.form.label-end> --}}
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="button" class="btn btn-danger delete-input" style="">
+                                                             <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                                <!-- Add more input fields as needed -->
+
+                                            </div>
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div id='inputs-container'>
                                                         <label>links</label>
-                                                        <div id="input-template"  class="input-temp" style="">
+                                                        <div id="input-template2"  class="input-temp" style="">
                                                             <div class="col-md-12 mb-4 row">
                                                                 <div class="col-md-10 row">
                                                                     {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
@@ -172,7 +197,7 @@
                                                                     </x-admin.form.label-end> --}}
                                                                 </div>
                                                                 <div class="col-md-2">
-                                                                    <button type="button" class="btn btn-danger delete-input" style="">
+                                                                    <button type="button" class="btn btn-danger delete-input">
                                                                          <i class="bx bxs-trash"></i>&nbsp;</button>
                                                                 </div>
                                                             </div>
@@ -187,11 +212,34 @@
 
                                                 </div>
 
+                                                <div id="input-template-file"  class="input-temp-file" style="display:none;">
+                                                    <div class="col-md-12 mb-4 row">
+                                                        <div class="col-md-10 row">
+                                                            {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                            </x-admin.form.label-first> --}}
+                                                            <div class="col-sm-8">
+                                                            <x-admin.form.input name="file[]" type="file" required="" placeholder="file" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                            </div>
 
+                                                            <div class="col-sm-4">
+                                                                <x-admin.form.input name="{{ 'file_title'.'['.$translationFirst->key.'][]' }}" type="text" required=""  placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                                </x-admin.form.input>
+                                                            </div>
+                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                            </x-admin.form.label-end> --}}
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more input fields as needed -->
+
+                                                </div>
                                                 <div class="col-md-12">
                                                 <div id='inputs-container-file'>
                                                     <label>file</label>
-                                                    <div id="input-template-file"  class="input-temp-file" style="">
+                                                    <div id="input-template-file2"  class="input-temp-file" style="">
                                                         <div class="col-md-12 mb-4 row">
                                                             <div class="col-md-10 row">
                                                                 {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
@@ -209,7 +257,7 @@
                                                                 </x-admin.form.label-end> --}}
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                                <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash "></i>&nbsp;</button>
                                                             </div>
                                                         </div>
                                                         <!-- Add more input fields as needed -->
@@ -259,7 +307,8 @@
     function createInputField() {
         // Clone the template
         var template = document.getElementById("input-template").cloneNode(true);
-
+        console.log(template);
+        template.style.display = "block";
         template.removeAttribute('id');
         template.removeAttribute('style');
         //template.value = "";

@@ -11,6 +11,7 @@
 <div class="page-wrapper">
     <div class="page-content">
         <!--breadcrumb-->
+
         <x-admin.customize-breadcrumb :name="$viewTable" :route-view="$routeView" type="View">
         </x-admin.customize-breadcrumb>
         <!--end breadcrumb-->
@@ -26,9 +27,8 @@
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('title')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Project')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Tabs')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('type')??'') }}</th>
+                            <th>{{ TranslationHelper::translate(ucfirst('description')??'') }}</th>
+
                             <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
                         </tr>
@@ -58,5 +58,5 @@
 </div>
 @endsection
 @section('jsadmin')
-<script src="{{ asset('admin/project/tabs/about/js/index.js') }}"></script>
+<script src="{{ asset('admin/solution/tabs/index.js') }}"></script>
 @endsection

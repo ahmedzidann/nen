@@ -12,7 +12,7 @@ class ProjectController extends Controller
 {
     public function index($slug= null,$id=null):View
     {
-        if(isset($slug && $id)){
+        if(isset($slug) && isset($id)){
             return view('user.projects.viewProjects',compact('slug','id'));
        
         }else abort(400, "error");

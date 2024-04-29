@@ -1,5 +1,5 @@
 $(function () {
-    var language = $('#Slider').val();
+    var language = $('#slider').val();
     var url = new URL(window.location.href);
     var category = url.searchParams.get("category");
     var subcategory = url.searchParams.get("subcategory");
@@ -107,8 +107,6 @@ $(function () {
 
     $('.selectAll').on('change', function () {
         var isChecked = $(this).is(':checked');
-
-        // Set all checkboxes in the table body to the same state as the "Select All" checkbox
         table.rows().every(function () {
             $(this.node()).find('input[type="checkbox"]').prop('checked', isChecked);
         });

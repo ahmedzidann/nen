@@ -92,7 +92,7 @@
                                                                     {{-- <x-admin.form.input  name="body[0][url]" type="search" placeholder="url {{ $translationFirst->name }}" class="form-control valid"> --}}
                                                                     {{--  <input name="body[0][image]" type="file" readonly="" placeholder="Please Enter file" id="image" class="dropify" DataHeight="300">  --}}
                                                                     {{-- test  --}}
-                                                                    <x-admin.form.input :model="$StaticTable" nameImage="firstImage" old="image" name="body[0][image]" type="file" readonly="" placeholder="Please Enter Image" id="image" class="dropify" DataHeight="300" >
+                                                                    <x-admin.form.input :model="$StaticTable" nameImage="firstFile" old="image" name="body[0][image]" type="file" readonly="" placeholder="Please Enter Image" id="image" class="dropify" DataHeight="300" >
                                                                     </x-admin.form.input>
                                                                     {{-- end test  --}}
                                                                     <br><br>

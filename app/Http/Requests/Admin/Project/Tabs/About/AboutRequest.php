@@ -36,6 +36,9 @@ class AboutRequest extends FormRequest
             'label3.*' => ['nullable','max:255','min:2'],
             'label4.*' => ['nullable','max:255','min:2'],
             'description.*' => ['required','max:8000','min:2'],
+            'challenge.*' => ['nullable','max:8000','min:2'],
+            'result.*' => ['nullable','max:8000','min:2'],
+            'solution.*' => ['nullable','max:8000','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'status' => ['nullable'],
             'project_id' => ['nullable'],
@@ -53,6 +56,9 @@ class AboutRequest extends FormRequest
             'label3.'.$request->submit2  => ['nullable','max:255','min:2'],
             'label4.'.$request->submit2  => ['nullable','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'challenge.'.$request->submit2 => ['nullable','max:8000','min:2'],
+            'result.'.$request->submit2 => ['nullable','max:8000','min:2'],
+            'solution.'.$request->submit2 => ['nullable','max:8000','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'status' => ['nullable'],
             'project_id' => ['nullable'],
@@ -70,6 +76,9 @@ class AboutRequest extends FormRequest
             'label3.'.$request->submit2  => ['nullable','max:255','min:2'],
             'label4.'.$request->submit2  => ['nullable','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'challenge.'.$request->submit2 => ['nullable','max:8000','min:2'],
+            'result.'.$request->submit2 => ['nullable','max:8000','min:2'],
+            'solution.'.$request->submit2 => ['nullable','max:8000','min:2'],
         ]);
     }
 }

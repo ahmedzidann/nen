@@ -54,6 +54,5 @@
 </div>
 @endsection
 @section('jsadmin')
-
 <script src="{{ asset('admin/project/tabs/archive/js/index.js') }}"></script>
 @endsection

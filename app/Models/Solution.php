@@ -18,7 +18,7 @@ class Solution extends Model implements  HasMedia
       'title',
       'description',
    ];
-   
+
    protected $fillable = [
       'title',
       'description',
@@ -26,6 +26,13 @@ class Solution extends Model implements  HasMedia
       'pages_id',
       'tabs_id',
       'sort',
+      'email',
+      'address',
+      'phone',
+      'phone2',
+      'fax',
+      'whatsapp'
+
    ];
      const STATUS = ['Active','Not Active'];
        public function Page()
@@ -41,5 +48,5 @@ class Solution extends Model implements  HasMedia
        {
          return $this->belongsTo(Page::class, 'pages_id');
        }
-       
+
 }

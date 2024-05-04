@@ -51,5 +51,8 @@ class Education extends Model implements  HasMedia
        {
          return $this->hasMany(EducationFile::class);
        }
+       public function scopeActive($q){
+        $q->where('status',"active");
+        }
 
 }

@@ -1,12 +1,56 @@
 <div class="aside_div">
   @if(isset($VCpages))
     @foreach ($VCpages as $page)
-        <a href="{{route('about.'.$page->slug.'')}}" class="ref_styles active_ref active_link active">
+        <a href="{{route('about.'.$page->slug.'')}}" class="ref_styles active_ref {{ Route::is('about.'.$page->slug.'')? "active_link active": ""}}">
             <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
                 alt="" />{{$page->name}}
         </a>
     @endforeach
-    @endif
+
+@elseif (isset($Spages))
+    @foreach ($Spages as $page)
+        <a href="{{route('education.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('education.'.$page->slug.'')? "active_link active": ""}}">
+            <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
+                alt="" />{{$page->name}}
+        </a>
+    @endforeach
+{{-- @endif --}}
+
+{{-- @if(isset($solpages)) --}}
+@else
+@php
+    // $solutionPages = App\Models\Page::where('parent_id',Page::where('slug','solutions')->first()->id)
+    // ->where('navbar','Active')->get();
+@endphp
+    @foreach ($ss as $page)
+    <div class="flex_asid_menu">
+        <a class="ref_styles dropdown_arrow " href="#">
+          <div class="img_link">
+            <img class="Identity_icon" src="content/images/small_icon/card.png" alt="">{{$page->name}}
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </a>
+
+        <ul class="aside_menu">
+            @foreach (\App\Models\Solution::where('pages_id',$page->id )->get() as $solution)
+            <li><a href="{{ route('solutions.'.$page->slug.'',['page_id'=>$page->id, 'solution_id'=>$solution->id]) }}">{{$solution->title}}</a></li>
+            @endforeach
+
+
+
+        </ul>
+
+      </div>
+        {{-- <a href="{{route('solutions.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref active_link active">
+            <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
+                alt="" />{{$page->name}}
+        </a> --}}
+
+    @endforeach
+@endif
+
+
+
     {{-- <a href="{{route('about.identity')}}" class="ref_styles active_ref active_link active">
       <img class="Identity_icon" src="{{asset('content/images/small_icon/card.png')}}"
           alt="" />Identity

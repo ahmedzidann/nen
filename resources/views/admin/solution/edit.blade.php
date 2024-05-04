@@ -51,7 +51,7 @@
                                             {{-- ----------end static --}}
                                             {{-- ----------name Pages --}}
                                             @if ($loop->first)
-                                            <div class="col-md-6 mb-4">
+                                            <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Pages">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
@@ -62,13 +62,13 @@
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name tabs_id --}}
                                             @if ($loop->first)
-                                            <div class="col-md-6 mb-4">
+                                            {{-- <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Tabs">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.dropdown disabled="" required="" :foreach="$allTabs"
                                                     name="tabs_id" nameselect="Tabs" :model="$StaticTable">
                                                 </x-admin.form.dropdown>
-                                            </div>
+                                            </div> --}}
                                             @endif
                                             {{-- ----------end tabs_id --}}
                                             {{-- ----------name first --}}
@@ -118,6 +118,90 @@
                                             @endif
                                             {{-- ----------end image--}}
                                             @if ($loop->first)
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
+                                                    name="Email">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="email"
+                                                    name="email" type="email"
+                                                    required="" placeholder="email"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->email">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter email">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
+                                                    name="Phone">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="phone"
+                                                    name="phone" type="phone"
+                                                    required="" placeholder="phone"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->phone">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter phone">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
+                                                    name="another phone">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="phone2"
+                                                    name="phone2" type="text"
+                                                    required="" placeholder="another phone"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->email">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter another phone">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
+                                                    name="whatsapp">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="whatsapp"
+                                                    name="whatsapp" type="text"
+                                                    required="" placeholder="whatsapp"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->email">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star=""
+                                                    name="please enter whatsapp">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
+                                                    name="address">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="address"
+                                                    name="address" type="text"
+                                                    required="" placeholder="address"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->email">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star=""
+                                                    name="please enter address">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
+                                                    name="fax">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="fax"
+                                                    name="fax" type="text"
+                                                    required="" placeholder="fax"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->email">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter fax">
+                                                </x-admin.form.label-end>
+                                            </div>
                                             {{-- ----------status first --}}
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"

@@ -7,6 +7,11 @@
         </a>
     @endforeach
     @endif
+     {{--  khater  navbar--}}
+   @if(Request::is('en/Projects/*'))
+   <x-frontend.projects.sidebar></x-frontend.projects.sidebar>
+   @endif
+   {{--  end project navbar  --}}
     {{-- <a href="{{route('about.identity')}}" class="ref_styles active_ref active_link active">
       <img class="Identity_icon" src="{{asset('content/images/small_icon/card.png')}}"
           alt="" />Identity

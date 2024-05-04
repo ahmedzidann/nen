@@ -36,5 +36,8 @@ class SolutionTab extends Model implements  HasMedia
      return $this->hasMany(SolutionTabFile::class,'tab_id');
    }
 
+   public function scopeActive($q){
+    $q->where('status',"active");
+    }
 
 }

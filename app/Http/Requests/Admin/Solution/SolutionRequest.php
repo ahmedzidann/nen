@@ -26,7 +26,7 @@ class SolutionRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
@@ -36,6 +36,12 @@ class SolutionRequest extends FormRequest
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'tabs_id' => ['nullable'],
+            'email' => ['nullable'],
+            'address' => ['nullable'],
+            'phone' => ['nullable'],
+            'phone2' => ['nullable'],
+            'fax' => ['nullable'],
+            'whatsapp' => ['nullable'],
             'status' => ['nullable'],
         ]);
     }
@@ -48,6 +54,12 @@ class SolutionRequest extends FormRequest
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'tabs_id' => ['nullable'],
+            'email' => ['nullable'],
+            'address' => ['nullable'],
+            'phone' => ['nullable'],
+            'phone2' => ['nullable'],
+            'fax' => ['nullable'],
+            'whatsapp' => ['nullable'],
             'status' => ['nullable'],
         ]);
     }

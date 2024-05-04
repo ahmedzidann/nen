@@ -13,16 +13,15 @@
              <ul class="aside_menu">
              @foreach ($projects as $project )
                  @if($page->id == $project->Page->id)
-                 {{--  <li class="li_active">{{ $project->title}}</li>  --}}
-                 <a href="{{route('projects',[$page->slug,$project->id])}}">
-                 <li 
-                   @if(Request::is('en/Projects/'.$page->slug.'/'.$project->id))
+                 <li>
+                 <a href="{{route('projects',[$page->slug,$project->id])}}"
+                  @if(Request::is('en/Projects/'.$page->slug.'/'.$project->id))
                  class="li_active" @else style="color:black"
                  @endif  
                  >
                  {{$project->title }}
-               </li>
                  </a>
+               </li>
                  @endif
              @endforeach
              </ul>

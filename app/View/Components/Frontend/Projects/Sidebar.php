@@ -19,9 +19,6 @@ class Sidebar extends Component
     {
         $this->pages = Page::where('slug','projects')->first()->childe;
         $this->projects = Project::where('status','Active')->get();
-         if (is_null($this->pages)) {
-            abort(404);
-        }
     }
 
     /**

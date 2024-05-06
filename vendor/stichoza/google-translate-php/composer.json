@@ -3,6 +3,7 @@
     "description": "Free Google Translate API PHP Package",
     "keywords": ["google", "translate", "translator", "php", "translating"],
     "license": "MIT",
+    "type": "library",
     "homepage": "https://github.com/Stichoza/google-translate-php",
     "authors": [
         {
@@ -11,13 +12,16 @@
         }
     ],
     "require": {
-        "php": "^7.1|^8",
-        "guzzlehttp/guzzle": "~6.0|~7.0",
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.0",
         "ext-json": "*",
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "autoload": {
         "psr-4": {

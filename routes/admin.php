@@ -12,27 +12,27 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Education\EducationController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\profile\AdminController;
-use App\Http\Controllers\Admin\profile\RoleController;
 use App\Http\Controllers\Admin\profile\UsersController;
 use App\Http\Controllers\Admin\Projects\ProjectController;
 use App\Http\Controllers\Admin\Projects\Tabs\AboutController;
 use App\Http\Controllers\Admin\Projects\Tabs\AboutTabsController;
+use App\Http\Controllers\Admin\Projects\Tabs\ArchiveTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\HelpTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\JoinusTabsController;
-use App\Http\Controllers\Admin\Projects\Tabs\ArchiveTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\ProgramTabsController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\Solution\SolutionController;
 use App\Http\Controllers\Admin\StaticTableController;
 use App\Http\Controllers\Admin\Testing\TestingController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\SliderController;
 
 
 Route::middleware('authAdmin:admin')->group(function () {
     Route::get('/',DashboardController::class)->name('dashboard');
     Route::resource('admins',AdminController::class);
     Route::resource('users',UsersController::class);
-    Route::resource('roles', RoleController::class);
+    Route::resource('roles',RoleController::class);
     Route::resource('pages', PagesController::class);
     Route::name('about.')->prefix('about')->group(function(){
         Route::resource('identity', IdentityController::class);

@@ -566,4 +566,9 @@
   'Slider Create' => 'Slider Create',
   'Please Enter Icon' => 'Please Enter Icon',
   'Slider Edit' => 'Slider Edit',
+  ' View' => ' View',
+  'Good' => 'Good',
+  'good View' => 'Good View',
+  'Role View' => 'Role View',
+  'Role Add' => 'Role Add',
 );

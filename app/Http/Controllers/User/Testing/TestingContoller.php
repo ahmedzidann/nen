@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\User\Education;
+namespace App\Http\Controllers\User\Testing;
 use App\Actions\StaticTable\StoreStaticTableAction;
 use App\Actions\StaticTable\UpdateStaticTableAction;
 use App\Http\Controllers\Controller;
@@ -11,6 +11,7 @@ use App\Models\Slider;
 use App\Models\SolutionTab;
 use App\Models\StaticTable;
 use App\Models\Tabs;
+use App\Models\Testing;
 use App\ViewModels\AboutView\IdentityTableViewModel;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
@@ -19,32 +20,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Yajra\DataTables\Facades\DataTables;
 
-class EducationController extends Controller
+class TestingContoller extends Controller
 {
 
+    // public function index():View
+    // {
+
+
+    //     if(Route::currentRouteName() == 'education.tqs'){
+
+    //         return $this->tqsView();
+    //     };
+    //     return $this->certificatesView();
+    // }
+
+
     public function index():View
-    {
-
-
-        if(Route::currentRouteName() == 'education.tqs'){
-
-            return $this->tqsView();
-        };
-        return $this->certificatesView();
-    }
-
-
-    public function certificatesView():View
     {
         $partner = Page::findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
 
         if($partner){
             $subPartners = $partner->childe;
-            $partners = Education::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();
+            $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();
             // dd($partners);
 
-            return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
+            return view('user.testing.index',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }
         else abort(400, "error");
     }

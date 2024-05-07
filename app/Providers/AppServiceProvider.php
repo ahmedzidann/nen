@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
             ->where('navbar','Active')->get();
     $educationPages = Page::where('parent_id',Page::where('slug','education')->first()->id)
     ->where('navbar','Active')->get();
+    $testingPages = Page::where('parent_id',Page::where('slug','testing')->first()->id)
+    ->where('navbar','Active')->get();
 
     $solutionPages = Page::where('parent_id',Page::where('slug','solutions')->first()->id)
     ->where('navbar','Active')->get();
@@ -35,6 +37,9 @@ class AppServiceProvider extends ServiceProvider
         });
     View::composer('user.education.*', function ($view) use($educationPages) {
         $view->with('Spages', $educationPages);
+    });
+    View::composer('user.testing.*', function ($view) use($testingPages) {
+        $view->with('Tpages', $testingPages);
     });
     View::composer('*', function ($view) use($solutionPages) {
 

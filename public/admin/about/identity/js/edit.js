@@ -1,5 +1,5 @@
   $(document).ready(function () {
-  
+
       // start show token
     $.ajaxSetup({
         headers: {

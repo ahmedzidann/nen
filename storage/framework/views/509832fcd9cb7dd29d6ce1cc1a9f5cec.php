@@ -25,20 +25,17 @@
             <div class="tab-pane fade  <?php echo e($loop->first ? "active show":""); ?>" id="pills-<?php echo e($tab->id); ?>" role="tabpanel" aria-labelledby="pills-<?php echo e($tab->id); ?>-tab" tabindex="0">
                 <div class="program_sec">
                    <?php $__currentLoopData = $items->where('tabs_id',$tab->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                   <a href="#" class="card_prgram">
+                   <a  class="card_prgram">
                     <div class="card all_program_card">
 
                         <div class="programe_content">
                             <img src="<?php echo e($item->getFirstMediaUrl('solutionTabs')); ?>">
                             <h3><?php echo e($item->title); ?></h3>
-                            <p class="p_clamp"><?php echo e(strip_tags( $item->description)); ?></p>
-                            <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
+                            <p style="color: #000;" class="description p_clamp"><?php echo e(strip_tags($item->description)); ?></p>
+                            <button class="show_bttn" onclick="toggleDescription(this)">Show More <i class="bi bi-chevron-down"></i></button>
                             <div class="flex_icons_div">
-                                <p><img src="<?php echo e(url('content/images/small_icon/archive-book.png')); ?>"><span>Reference</span>
-                                </p>
-                                <p><img src="<?php echo e(url('content/images/small_icon/global.png')); ?>"><span>Website</span>
-                                </p>
-
+                                <p><img src="<?php echo e(url('content/images/small_icon/archive-book.png')); ?>"><span>Reference</span></p>
+                                <p><img src="<?php echo e(url('content/images/small_icon/global.png')); ?>"><span>Website</span></p>
                             </div>
                         </div>
                     </div>
@@ -110,7 +107,18 @@
 
 
 </div>
-
+<script>
+    function toggleDescription(button) {
+    var description = button.previousElementSibling;
+    if (description.classList.contains('p_clamp')) {
+        description.classList.remove('p_clamp');
+        button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+    } else {
+        description.classList.add('p_clamp');
+        button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+    }
+}
+    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('user.layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp8.2\htdocs\nen\resources\views/user/solution/index.blade.php ENDPATH**/ ?>

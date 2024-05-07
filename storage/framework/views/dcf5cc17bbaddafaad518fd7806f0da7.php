@@ -20,6 +20,17 @@
                     </div>
                     </a>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php elseif(isset($Tpages)): ?>
+            <?php $__currentLoopData = $Tpages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a href="<?php echo e(route('testing.'.$page->slug.'',['page_id'=>$page->id] )); ?>" class="ref_styles active_ref <?php echo e(Route::is('testing.'.$page->slug.'')? "active_link active": ""); ?>">
+                    <div class="img_link">
+                    <img  class="<?php if($page->slug == 'identity'): ?> Identity_icon <?php endif; ?>"  src="<?php echo e(asset($page->getFirstMediaUrl('icon'))); ?>"
+                        alt="" /><?php echo e($page->name); ?>
+
+                    </div>
+                    </a>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 
         <?php else: ?>
         <?php

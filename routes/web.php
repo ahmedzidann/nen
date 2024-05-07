@@ -5,6 +5,7 @@ use App\Http\Controllers\User\AboutUs\AboutController;
 use App\Http\Controllers\User\Education\EducationController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
 
@@ -42,8 +43,15 @@ Route::group(['prefix' => 'education','as'=>'education.', 'name'=>'education.'],
      // dd($page->slug);
      Route::get($page->slug, [EducationController::class, 'index'])->name($page->slug);
      // Route::get('index', [SolutionController::class, 'index'])->name('education');
-}
+    }
+});
 
+Route::group(['prefix' => 'testing','as'=>'testing.', 'name'=>'testing.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','testing')->first()->id)->get() as $page){
+    //  dd($page->slug);
+    Route::get($page->slug, [TestingContoller::class, 'index'])->name($page->slug);
+     // Route::get('index', [SolutionController::class, 'index'])->name('education');
+    }
 });
 
     //Projects Routes

@@ -18,6 +18,16 @@
                     </div>
                     </a>
             @endforeach
+            @elseif (isset($Tpages))
+            @foreach ($Tpages as $page)
+                <a href="{{route('testing.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('testing.'.$page->slug.'')? "active_link active": ""}}">
+                    <div class="img_link">
+                    <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
+                        alt="" />{{$page->name}}
+                    </div>
+                    </a>
+            @endforeach
+
 
         @else
         @php

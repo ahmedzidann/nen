@@ -39,20 +39,17 @@
             <div class="tab-pane fade  {{$loop->first ? "active show":"" }}" id="pills-{{$tab->id}}" role="tabpanel" aria-labelledby="pills-{{$tab->id}}-tab" tabindex="0">
                 <div class="program_sec">
                    @foreach ($items->where('tabs_id',$tab->id) as $item)
-                   <a href="#" class="card_prgram">
+                   <a  class="card_prgram">
                     <div class="card all_program_card">
 
                         <div class="programe_content">
                             <img src="{{$item->getFirstMediaUrl('solutionTabs')}}">
                             <h3>{{$item->title}}</h3>
-                            <p class="p_clamp">{{ strip_tags( $item->description) }}</p>
-                            <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
+                            <p style="color: #000;" class="description p_clamp">{{ strip_tags($item->description) }}</p>
+                            <button class="show_bttn" onclick="toggleDescription(this)">Show More <i class="bi bi-chevron-down"></i></button>
                             <div class="flex_icons_div">
-                                <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span>Reference</span>
-                                </p>
-                                <p><img src="{{url('content/images/small_icon/global.png')}}"><span>Website</span>
-                                </p>
-
+                                <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span>Reference</span></p>
+                                <p><img src="{{url('content/images/small_icon/global.png')}}"><span>Website</span></p>
                             </div>
                         </div>
                     </div>
@@ -124,5 +121,16 @@
 
 
 </div>
-
+<script>
+    function toggleDescription(button) {
+    var description = button.previousElementSibling;
+    if (description.classList.contains('p_clamp')) {
+        description.classList.remove('p_clamp');
+        button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+    } else {
+        description.classList.add('p_clamp');
+        button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+    }
+}
+    </script>
 @endsection

@@ -38,7 +38,7 @@
             @if ($tab->slug !='contacts')
             <div class="tab-pane fade  {{$loop->first ? "active show":"" }}" id="pills-{{$tab->id}}" role="tabpanel" aria-labelledby="pills-{{$tab->id}}-tab" tabindex="0">
                 <div class="program_sec">
-                   @foreach ($items->where('tabs_id',$tab->id) as $item)
+                   @forelse ($items->where('tabs_id',$tab->id) as $item)
                    <a  class="card_prgram">
                     <div class="card all_program_card">
 
@@ -53,8 +53,12 @@
                             </div>
                         </div>
                     </div>
-                </a>
-                   @endforeach
+                    </a>
+                    @empty
+                    <div style="display: flex; justify-content: center;">
+                        <p style="color:#999;">There is No Data Available</p>
+                    </div>
+                   @endforelse
 
 
 

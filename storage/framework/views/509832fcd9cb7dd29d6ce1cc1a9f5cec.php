@@ -24,7 +24,7 @@
             <?php if($tab->slug !='contacts'): ?>
             <div class="tab-pane fade  <?php echo e($loop->first ? "active show":""); ?>" id="pills-<?php echo e($tab->id); ?>" role="tabpanel" aria-labelledby="pills-<?php echo e($tab->id); ?>-tab" tabindex="0">
                 <div class="program_sec">
-                   <?php $__currentLoopData = $items->where('tabs_id',$tab->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                   <?php $__empty_1 = true; $__currentLoopData = $items->where('tabs_id',$tab->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                    <a  class="card_prgram">
                     <div class="card all_program_card">
 
@@ -39,8 +39,12 @@
                             </div>
                         </div>
                     </div>
-                </a>
-                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                    <div style="display: flex; justify-content: center;">
+                        <p style="color:#999;">There is No Data Available</p>
+                    </div>
+                   <?php endif; ?>
 
 
 

@@ -42,13 +42,12 @@
 
 
                     <div class="ceryifcates_sec">
-                        <h1>Our CERTIFICATES</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
 
 
                             <div class="grid_div_bttn">
                                 <div class="grid_div">
-                                    <?php $__currentLoopData = $items->where('pages_id',$sub->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__empty_1 = true; $__currentLoopData = $items->where('pages_id',$sub->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
                                     <div class="card card_styles">
                                         <div class="card_content">
@@ -73,7 +72,11 @@
 
                                         </div>
                                     </div>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                        <div style="display: flex; justify-content: center;">
+                                            <p style="color:#999;">There is No Data Available</p>
+                                        </div>
+                                    <?php endif; ?>
 
 
                                 </div>

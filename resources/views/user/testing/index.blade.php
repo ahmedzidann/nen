@@ -43,13 +43,12 @@
 
 
                     <div class="ceryifcates_sec">
-                        <h1>Our CERTIFICATES</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
 
 
                             <div class="grid_div_bttn">
                                 <div class="grid_div">
-                                    @foreach ($items->where('pages_id',$sub->id) as $item)
+                                    @forelse ($items->where('pages_id',$sub->id) as $item)
 
                                     <div class="card card_styles">
                                         <div class="card_content">
@@ -73,7 +72,11 @@
 
                                         </div>
                                     </div>
-                                    @endforeach
+                                    @empty
+                                        <div style="display: flex; justify-content: center;">
+                                            <p style="color:#999;">There is No Data Available</p>
+                                        </div>
+                                    @endforelse
 
 
                                 </div>

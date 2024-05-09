@@ -9,6 +9,9 @@
         </a>
     @endforeach
 
+ @if(Request::is('en/Projects/*'))
+   <x-frontend.projects.sidebar></x-frontend.projects.sidebar>
+   @endif
         @elseif (isset($Spages))
             @foreach ($Spages as $page)
                 <a href="{{route('education.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('education.'.$page->slug.'')? "active_link active": ""}}">
@@ -60,3 +63,4 @@
 
 
 </div>
+

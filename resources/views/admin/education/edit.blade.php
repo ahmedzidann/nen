@@ -67,10 +67,10 @@
                                             {{-- ----------name first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
-                                                    name="Title  {{ $item->name  }}"></x-admin.form.label-first>
+                                                    name="{{$item->name}} title"></x-admin.form.label-first>
                                                 <x-admin.form.input id="title" old="{{ 'title.'.$item->key }}"
                                                     name="{{ 'title'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="Title {{ $item->name }}" class="form-control valid"
+                                                    placeholder="{{$item->name}} title" class="form-control valid"
                                                     :value="$StaticTable->translate('title', $item->key)">
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end star="*"
@@ -136,9 +136,34 @@
                                             </div>
                                             {{-- ----------status end --}}
                                             @endif
+                                            <div id="input-template"  class="input-temp input-temp-{{$item->name}}" style="display:none;" >
+                                                <div class="col-md-12 mb-4 row">
+                                                    <div class="col-md-10 row">
+                                                        {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                        </x-admin.form.label-first> --}}
+                                                        <div class="col-sm-8">
+                                                            <x-admin.form.input name="links[]" type="text" required="" placeholder="links" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        <div class="col-sm-4">
+
+                                                            <x-admin.form.input name="{{ 'links_title'.'['.$translationFirst->key.'][]' }}" type="text" required="" placeholder="{{ $item->name  }} title" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                        </div>
+                                                        {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                        </x-admin.form.label-end> --}}
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="button" class="btn btn-danger delete-input" style="">
+                                                             <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                    </div>
+                                                </div>
+                                                <!-- Add more input fields as needed -->
+
+                                            </div>
                                             <div class=" mb-4">
                                                 <div class="col-md-12">
-                                                    <div id='inputs-container'>
+                                                    <div id='inputs-container' class="inputs-container-{{$item->name}}">
                                                         <label>links</label>
                                                         {{-- @dd($StaticTable) --}}
                                                         @if ($StaticTable->links->count())
@@ -157,7 +182,7 @@
                                                                     <input type="hidden"  name="{{'link_id['.$item->key.'][]'}}" value="{{$link->id}}">
 
                                                                         <x-admin.form.input  value="{{ $link->translate('title', $item->key)}}" name="{{'links_title['.$item->key.'][]'}}" type="text" required=""
-                                                                        placeholder="title {{$item->name}}" class="form-control valid">
+                                                                        placeholder="{{$item->name}} title" class="form-control valid">
                                                                         </x-admin.form.input>
                                                                     </div>
                                                                     {{-- <x-admin.form.label-end star="*" name="Please enter title">
@@ -174,43 +199,43 @@
                                                         @endforeach
 
                                                         @else
-                                                        <div id="input-template"  class="input-temp" style="">
-                                                            <div class="col-md-12 mb-4 row">
-                                                                <div class="col-md-10 row">
-                                                                    {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
-                                                                    </x-admin.form.label-first> --}}
-                                                                    <div class="col-sm-8">
-                                                                        <x-admin.form.input  name="links[]" type="text" required="" placeholder="links" class="form-control valid">
-                                                                        </x-admin.form.input>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <x-admin.form.input  name="links_title[]" type="text" required=""
-                                                                        placeholder="title" class="form-control valid">
-                                                                        </x-admin.form.input>
-                                                                    </div>
-                                                                    {{-- <x-admin.form.label-end star="*" name="Please enter title">
-                                                                    </x-admin.form.label-end> --}}
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <button type="button" class="btn btn-danger delete-input" style="">
-                                                                         <i class="bx bxs-trash"></i>&nbsp;</button>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Add more input fields as needed -->
 
-                                                        </div>
                                                         @endif
                                                     </div>
 
-                                                    {{-- <button id="add-input" type="button" class="col-sm-1 btn btn-success">
-                                                        <i class='bx bx-plus' ></i></i>&nbsp;
-                                                    </button> --}}
+                                                    <button id="add-input-{{$item->name}}" type="button" class="col-sm-1 btn btn-success">
+                                                        <i class='bx bx-plus'></i>&nbsp;
+                                                    </button>
 
                                                 </div>
 
+                                                <div id="input-template-file"  class="input-template-file-{{$item->name}} input-temp-file" style="display:none;">
+                                                    <div class="col-md-12 mb-4 row">
+                                                        <div class="col-md-10 row">
+                                                            {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
+                                                            </x-admin.form.label-first> --}}
+                                                            <div class="col-sm-8">
+                                                            <x-admin.form.input name="file[]" type="file" required="" placeholder="file" class="form-control valid">
+                                                            </x-admin.form.input>
+                                                            </div>
+
+                                                            <div class="col-sm-4">
+                                                                <x-admin.form.input name="{{ 'file_title'.'['.$translationFirst->key.'][]' }}" type="text" required=""  placeholder="title {{ $translationFirst->name  }}" class="form-control valid">
+                                                                </x-admin.form.input>
+                                                            </div>
+                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                            </x-admin.form.label-end> --}}
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-danger delete-input-file"> <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more input fields as needed -->
+
+                                                </div>
 
                                                 <div class="col-md-12">
-                                                <div id='inputs-container-file'>
+                                                <div id='inputs-container-file-{{$item->name}}' class="inputs-container-file-{{$item->name}}">
                                                     <label>file</label>
                                                     @if ($StaticTable->files->count())
                                                     @foreach ($StaticTable->files as $file)
@@ -233,7 +258,7 @@
                                                                     <input type="hidden"  name="{{'file_id['.$item->key.'][]'}}" value="{{$file->id}}">
                                                                     <x-admin.form.input
                                                                     value="{{ $file->translate('title', $item->key)}}" name="{{'file_title['.$item->key.'][]'}}" type="text" required=""
-                                                                        placeholder="title {{$item->name}}"
+                                                                        placeholder="{{$item->name}} title"
                                                                        class="form-control valid">
                                                                     </x-admin.form.input>
                                                                 </div>
@@ -255,8 +280,8 @@
 
                                                     @endif
                                                 </div>
-                                                {{-- <button id="add-input-file" type="button" class="col-sm-1 btn btn-success">
-                                                    <i class='bx bx-plus' ></i></i>&nbsp;</button> --}}
+                                                <button id="add-input-file-english" type="button" class="col-sm-1 btn btn-success">
+                                                    <i class='bx bx-plus' ></i></i>&nbsp;</button>
                                                 </div>
 
 
@@ -293,15 +318,25 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     // Function to create a new input field
-    function createInputField() {
-        // Clone the template
-        var template = document.getElementById("input-template").cloneNode(true);
+
+    function createInputFieldEnglish() {
+
+        var template = document.getElementsByClassName("input-temp-english")[0].cloneNode(true);
 
         template.removeAttribute('id');
         template.removeAttribute('style');
-        //template.value = "";
-        // Append the cloned template to the container
-        document.getElementById("inputs-container").appendChild(template);
+
+        document.getElementsByClassName("inputs-container-english")[0].appendChild(template);
+    }
+
+    function createInputFieldArabic() {
+
+        var template = document.getElementsByClassName("input-temp-arabic")[0].cloneNode(true);
+
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+
+        document.getElementsByClassName("inputs-container-arabic")[0].appendChild(template);
     }
 
     // Function to delete an input field
@@ -310,9 +345,14 @@
     }
 
     // Add event listener for the "Add Input" button
-    document.getElementById("add-input").addEventListener("click", function() {
+    document.getElementById("add-input-arabic").addEventListener("click", function() {
 
-        createInputField();
+        createInputFieldArabic();
+    });
+
+    document.getElementById("add-input-english").addEventListener("click", function() {
+
+        createInputFieldEnglish();
     });
 
     // Add event listener for dynamically added "Delete" buttons
@@ -329,14 +369,14 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     // Function to create a new input field
-    function createInputField() {
+    function createInputFieldEnglish() {
         // Clone the template
-        var template = document.getElementById("input-template-file").cloneNode(true);
-
+        var template = document.getElementsByClassName("input-template-file-english")[0].cloneNode(true);
+        console.log('d');
         template.removeAttribute('id');
         template.removeAttribute('style');
         // Append the cloned template to the container
-        document.getElementById("inputs-container-file").appendChild(template);
+        document.getElementsByClassName("inputs-container-file-english")[0].appendChild(template);
     }
 
     // Function to delete an input field
@@ -345,9 +385,9 @@
     }
 
     // Add event listener for the "Add Input" button
-    document.getElementById("add-input-file").addEventListener("click", function() {
+    document.getElementById("add-input-file-english").addEventListener("click", function() {
 
-        createInputField();
+        createInputFieldEnglish();
     });
 
     // Add event listener for dynamically added "Delete" buttons

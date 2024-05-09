@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\StaticTableController;
 use App\Http\Controllers\Admin\Testing\TestingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Solution\Tabs\SolutionTabController;
 
 
 
@@ -64,6 +65,8 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('help', HelpTabsController::class);
         Route::resource('joinus', JoinusTabsController::class);
         });
+
+
          // clear route
                // clear route
         Route::get('/route-clear', function () {
@@ -81,4 +84,12 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('education', EducationController::class);
         Route::resource('testing', TestingController::class);
         Route::resource('solution', SolutionController::class);
+        Route::name('tabsolution.')->prefix('tab-solution')->group(function(){
+            Route::resource("", SolutionTabController::class);
+            Route::get('/{solution}', [SolutionTabController::class,'show']);
+            Route::get('/{solution}/edit', [SolutionTabController::class,'edit']);
+            Route::put('/{solution}', [SolutionTabController::class,'update']);
+
+
+            });
 });

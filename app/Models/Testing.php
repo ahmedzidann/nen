@@ -51,5 +51,8 @@ class Testing extends Model implements  HasMedia
        {
          return $this->hasMany(TestingFile::class);
        }
+       public function scopeActive($q){
+        $q->where('status',"active");
+        }
 
 }

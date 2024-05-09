@@ -29,25 +29,25 @@ class ProjectController extends Controller
                     }
                     $category = $request->category;
                     $subcategory = $request->subcategory;
-                return Datatables::of($data) 
+                return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {
-                        return 
+                        return
                         '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';
                         })
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  { 
+                        ->editColumn('title', function ($row) use($language)  {
                                 return $row->translate('title', $language);
                         })
-                        ->editColumn('Page', function ($row) use($language)  { 
+                        ->editColumn('Page', function ($row) use($language)  {
                                 if(!empty($row->Page)){
                                 return $row->Page->translate('name', $language);
                                 }
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        
+
                         ->addColumn('action', function($row) use ($category,$subcategory) {
-                            $Tabs = Tabs::get();
+                            $Tabs = Tabs::where('type','project')->get();
                             $options = '';
                             foreach($Tabs as $item){
                                 if($item->slug=='about'){
@@ -64,7 +64,7 @@ class ProjectController extends Controller
                                  $options .= '<li><a href="'.url('admin.tabproject.joinus.index',['tab='.$item->slug,'project_id='.$row->id]).'">'.$item->name.'</a></li>';
                                 }
                             };
-                            
+
                         return
                         '
                         <div class="order-actions">
@@ -83,7 +83,7 @@ class ProjectController extends Controller
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
-                
+
     }
     public function create(Request $request):View
     {
@@ -110,12 +110,12 @@ class ProjectController extends Controller
     }
     public function edit(Request $request,$id):View
     {
-        $StaticTable =Project::find($id); 
+        $StaticTable =Project::find($id);
         return view('admin.project.edit',new ProjectTableViewModel($StaticTable));
     }
     public function update(ProjectRequest $request, $id)
-    {    
-        $StaticTable =Project::find($id); 
+    {
+        $StaticTable =Project::find($id);
        if($request->submit2=='en'){
                $validator = $request->validationUpdateEn();
        }else{
@@ -135,7 +135,7 @@ class ProjectController extends Controller
                 'redirect_url' => route('admin.project.index'),
             ]);
         }
-        
+
     }
     public function destroy(Request $request):RedirectResponse
     {

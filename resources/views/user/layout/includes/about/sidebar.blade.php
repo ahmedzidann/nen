@@ -1,58 +1,66 @@
 <div class="aside_div">
   @if(isset($VCpages))
     @foreach ($VCpages as $page)
-        <a href="{{route('about.'.$page->slug.'')}}" class="ref_styles active_ref active_link active">
+        <a href="{{route('about.'.$page->slug.'')}}" class="ref_styles active_ref {{ Route::is('about.'.$page->slug.'')? "active_link active": ""}}">
+            <div class="img_link">
             <img  class="@if($page->slug == 'identity') Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
                 alt="" />{{$page->name}}
+            </div>
         </a>
     @endforeach
-    @endif
-     {{--  khater  navbar--}}
-   @if(Request::is('en/Projects/*'))
+
+ @if(Request::is('en/Projects/*'))
    <x-frontend.projects.sidebar></x-frontend.projects.sidebar>
    @endif
-   {{--  end project navbar  --}}
-    {{-- <a href="{{route('about.identity')}}" class="ref_styles active_ref active_link active">
-      <img class="Identity_icon" src="{{asset('content/images/small_icon/card.png')}}"
-          alt="" />Identity
+        @elseif (isset($Spages))
+            @foreach ($Spages as $page)
+                <a href="{{route('education.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('education.'.$page->slug.'')? "active_link active": ""}}">
+                    <div class="img_link">
+                    <img  class="@if($loop->first) Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
+                        alt="" />{{$page->name}}
+                    </div>
+                    </a>
+            @endforeach
+            @elseif (isset($Tpages))
+            @foreach ($Tpages as $page)
+                <a href="{{route('testing.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('testing.'.$page->slug.'')? "active_link active": ""}}">
+                    <div class="img_link">
+                    <img  class="@if($loop->first) Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
+                        alt="" />{{$page->name}}
+                    </div>
+                    </a>
+            @endforeach
 
-    </a>
-    <a href="{{route('about.investors')}}" class="ref_styles">
-       <img class="Investors_icon"
-          src="{{asset('content/images/small_icon/SVGRepo_iconCarrier.png')}}" alt="" />Investors
 
-    </a>
-    <a href="{{route('about.achievements')}}" class="ref_styles">
-      <img src="{{asset('content/images/small_icon/photoe.png')}}" alt="" />Achievements
+        @else
+        @php
 
-    </a>
-    <a href="{{route('about.awards')}}" class="ref_styles ">
-      <img src="{{asset('content/images/small_icon/cup.png')}}" alt="" />Awards
+        @endphp
+            @foreach ($ss as $page)
+            <div class="flex_asid_menu">
+                <a class="ref_styles dropdown_arrow {{ Route::is('solutions.'.$page->slug.'')? "active_link active": ""}}" href="#">
+                <div class="img_link">
+                    <img class="Identity_icon" src="content/images/small_icon/card.png" alt="">{{$page->name}}
+                </div>
+                <i class="bi bi-chevron-down"></i>
+                </a>
 
-    </a>
-    <a href="{{route('about.certificates')}}" class="ref_styles ">
-        <img src="{{asset('content/images/small_icon/SVGRepo_iconCarrier (1).png')}}" alt="" />Certificates
-    </a>
-    <a href="{{route('about.partners')}}" class="ref_styles">
-        <img src="{{asset('content/images/small_icon/shield-tick.png')}}" alt="" />
-        Partneres
+                <ul class="aside_menu">
+                    @foreach (\App\Models\Solution::where('pages_id',$page->id )->get() as $solution)
+                    <li><a class="{{ Route::is('solutions.'.$page->slug.'') && ($solution->id == Request()->solution_id)? "active_link active": ""}}" href="{{ route('solutions.'.$page->slug.'',['page_id'=>$page->id, 'solution_id'=>$solution->id]) }}">{{$solution->title}}</a></li>
+                    @endforeach
 
-    </a>
-    <a href="{{route('about.clients')}}" class="ref_styles">
-        <img src="{{asset('content/images/small_icon/people.png')}}" alt="" />
-        Clients
 
-    </a>
-    <a href="{{route('about.our-team')}}" class="ref_styles">
-        <img src="{{asset('content/images/small_icon/shield-tick.png')}}"
-          />
-        Our Teams
-    </a>
 
-    <a href="{{route('about.careers')}}" class="ref_styles ">
+                </ul>
 
-        <img src="{{asset('content/images/small_icon/Slider container.png')}}" alt="" />
-        Careers
+            </div>
 
-    </a> --}}
-  </div>
+
+            @endforeach
+        @endif
+
+
+
+</div>
+

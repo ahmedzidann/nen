@@ -113,6 +113,7 @@ class IdentityController extends Controller
     }
     public function update(IdentityRequest $request, StaticTable $identity)
     {
+        // dd($request->all());
        if($request->submit2=='en'){
             if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
               $validator = $request->validationUpdateThreeEn();

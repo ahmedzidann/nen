@@ -82,13 +82,13 @@ class IdentityRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'title' => ['required','max:8000','min:2'],
+            'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
-            'image'=>['required','mimes:png,jpg,jpeg'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
         ]);
     }
     public function validationUpdateTwoEn()

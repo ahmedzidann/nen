@@ -26,6 +26,7 @@ class AchievementsController extends Controller
             }elseif(!empty($request->category)){
                 $page = Page::where('slug',$request->category)->first();
             }else{
+                
                 $page = '';
             }
             if ($request->ajax()) {

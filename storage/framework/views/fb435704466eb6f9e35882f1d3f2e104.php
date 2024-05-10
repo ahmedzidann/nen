@@ -10,6 +10,7 @@
 			 </div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
+			<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard_view')): ?>
 				<li>
 					<a href="<?php echo e(route('admin.dashboard')); ?>">
 						<div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -17,6 +18,7 @@
 						<div class="menu-title">Dashboard</div>
 					</a>
 				</li>
+			<?php endif; ?>
 				<li>
 					<a href="<?php echo e(url('translations')); ?>" target="_blank">
 						<div class="parent-icon"><i class="bx bx-category"></i>

@@ -10,6 +10,7 @@
 			 </div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
+			@can('dashboard_view')
 				<li>
 					<a href="{{ route('admin.dashboard') }}">
 						<div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -17,6 +18,7 @@
 						<div class="menu-title">Dashboard</div>
 					</a>
 				</li>
+			@endcan
 				<li>
 					<a href="{{ url('translations') }}" target="_blank">
 						<div class="parent-icon"><i class="bx bx-category"></i>

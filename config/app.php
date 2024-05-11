@@ -170,7 +170,11 @@ return [
         App\Providers\RouteServiceProvider::class,
     	Spatie\Permission\PermissionServiceProvider::class,
 	    Yajra\DataTables\DataTablesServiceProvider::class,
+<<<<<<< HEAD
         App\Providers\ComposerServiceProvider::class,
+=======
+	    	Spatie\Permission\PermissionServiceProvider::class,
+>>>>>>> 6dc66502 (permation sidebar)
     ])->toArray(),
 
     /*

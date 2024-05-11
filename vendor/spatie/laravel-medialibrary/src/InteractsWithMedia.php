@@ -517,7 +517,7 @@ trait InteractsWithMedia
     {
         $mediaCollection = MediaCollection::create($name);
 
-        $this->mediaCollections[] = $mediaCollection;
+        $this->mediaCollections[$name] = $mediaCollection;
 
         return $mediaCollection;
     }

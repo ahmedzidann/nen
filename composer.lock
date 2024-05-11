@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "3e2cc84fe23552ef087d0035e2febc7b",
+=======
+    "content-hash": "90826df00b86b299cc08c41ccd8b3da4",
+>>>>>>> 6dc66502 (permation sidebar)
     "packages": [
         {
             "name": "barryvdh/laravel-translation-manager",
@@ -4890,6 +4894,7 @@
         {
             "name": "spatie/image",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "2.2.7",
             "source": {
                 "type": "git",
@@ -4902,16 +4907,24 @@
                 "reference": "2f802853aab017aa615224daae1588054b5ab20e",
 =======
             "version": "3.5.0",
+=======
+            "version": "3.6.0",
+>>>>>>> 6dc66502 (permation sidebar)
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image.git",
-                "reference": "05166a6fae90b4c2ab57ff2d25d7f97a5e29f47b"
+                "reference": "2e848dcf5c6780455d3d15a3e8f1dcec2571e06b"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/spatie/image/zipball/05166a6fae90b4c2ab57ff2d25d7f97a5e29f47b",
                 "reference": "05166a6fae90b4c2ab57ff2d25d7f97a5e29f47b",
 >>>>>>> 03785cf3 (edit permation)
+=======
+                "url": "https://api.github.com/repos/spatie/image/zipball/2e848dcf5c6780455d3d15a3e8f1dcec2571e06b",
+                "reference": "2e848dcf5c6780455d3d15a3e8f1dcec2571e06b",
+>>>>>>> 6dc66502 (permation sidebar)
                 "shasum": ""
             },
             "require": {
@@ -4956,10 +4969,14 @@
             ],
             "support": {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "source": "https://github.com/spatie/image/tree/2.2.7"
 =======
                 "source": "https://github.com/spatie/image/tree/3.5.0"
 >>>>>>> 03785cf3 (edit permation)
+=======
+                "source": "https://github.com/spatie/image/tree/3.6.0"
+>>>>>>> 6dc66502 (permation sidebar)
             },
             "funding": [
                 {
@@ -4972,23 +4989,27 @@
                 }
             ],
 <<<<<<< HEAD
+<<<<<<< HEAD
             "time": "2023-07-24T13:54:13+00:00"
 =======
             "time": "2024-04-17T13:16:06+00:00"
 >>>>>>> 03785cf3 (edit permation)
+=======
+            "time": "2024-05-07T08:56:10+00:00"
+>>>>>>> 6dc66502 (permation sidebar)
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.7.3",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "d4f0d09c44700c78d1718cd40da404b1c800b935"
+                "reference": "ed39c7bfce7a2ecf676174a2d4286ab3a1c4f4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/d4f0d09c44700c78d1718cd40da404b1c800b935",
-                "reference": "d4f0d09c44700c78d1718cd40da404b1c800b935",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/ed39c7bfce7a2ecf676174a2d4286ab3a1c4f4f7",
+                "reference": "ed39c7bfce7a2ecf676174a2d4286ab3a1c4f4f7",
                 "shasum": ""
             },
             "require": {
@@ -5028,9 +5049,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.7.3"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.7.4"
             },
-            "time": "2024-05-03T14:05:33+00:00"
+            "time": "2024-05-06T09:12:30+00:00"
         },
         {
             "name": "spatie/laravel-activitylog",
@@ -5126,6 +5147,7 @@
         {
             "name": "spatie/laravel-medialibrary",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "10.15.0",
             "source": {
                 "type": "git",
@@ -5138,16 +5160,24 @@
                 "reference": "f464c82357500c5c68ea350edff35ed9831fd48e",
 =======
             "version": "11.4.7",
+=======
+            "version": "11.4.8",
+>>>>>>> 6dc66502 (permation sidebar)
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "85f5f8284f827b8f2b426943e357e3df117ad1f5"
+                "reference": "2c50eee8310a90b2210ff5e4907908333f38915c"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/85f5f8284f827b8f2b426943e357e3df117ad1f5",
                 "reference": "85f5f8284f827b8f2b426943e357e3df117ad1f5",
 >>>>>>> 03785cf3 (edit permation)
+=======
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/2c50eee8310a90b2210ff5e4907908333f38915c",
+                "reference": "2c50eee8310a90b2210ff5e4907908333f38915c",
+>>>>>>> 6dc66502 (permation sidebar)
                 "shasum": ""
             },
             "require": {
@@ -5231,10 +5261,14 @@
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "source": "https://github.com/spatie/laravel-medialibrary/tree/10.15.0"
 =======
                 "source": "https://github.com/spatie/laravel-medialibrary/tree/11.4.7"
 >>>>>>> 03785cf3 (edit permation)
+=======
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.4.8"
+>>>>>>> 6dc66502 (permation sidebar)
             },
             "funding": [
                 {
@@ -5247,10 +5281,14 @@
                 }
             ],
 <<<<<<< HEAD
+<<<<<<< HEAD
             "time": "2023-11-03T13:09:19+00:00"
 =======
             "time": "2024-04-24T13:42:14+00:00"
 >>>>>>> 03785cf3 (edit permation)
+=======
+            "time": "2024-05-06T09:16:55+00:00"
+>>>>>>> 6dc66502 (permation sidebar)
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -9743,16 +9781,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "3.0.4",
+            "version": "3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "4f988f8fdf580d53bdb2d1278fe93d1ed5462255"
+                "reference": "6c1925561632e83d60a44492e0b344cf48ab85ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/4f988f8fdf580d53bdb2d1278fe93d1ed5462255",
-                "reference": "4f988f8fdf580d53bdb2d1278fe93d1ed5462255",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/6c1925561632e83d60a44492e0b344cf48ab85ef",
+                "reference": "6c1925561632e83d60a44492e0b344cf48ab85ef",
                 "shasum": ""
             },
             "require": {
@@ -9789,7 +9827,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/xdebug-handler/issues",
-                "source": "https://github.com/composer/xdebug-handler/tree/3.0.4"
+                "source": "https://github.com/composer/xdebug-handler/tree/3.0.5"
             },
             "funding": [
                 {
@@ -9805,7 +9843,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-26T18:29:49+00:00"
+            "time": "2024-05-06T16:37:16+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -11303,16 +11341,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.28.0",
+            "version": "1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb"
+                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
-                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/536889f2b340489d328f5ffb7b02bb6b183ddedc",
+                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc",
                 "shasum": ""
             },
             "require": {
@@ -11344,9 +11382,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.28.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.0"
             },
-            "time": "2024-04-03T18:51:33+00:00"
+            "time": "2024-05-06T12:04:23+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

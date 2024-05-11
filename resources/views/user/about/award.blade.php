@@ -4,6 +4,12 @@
 @section('cover_image')
     {{ isset($slider)? $slider->getFirstMediaUrl('image'): asset('content/images/about_img.png')}}
 @endsection
+<style>
+span{
+font-size:20px !important;
+}
+
+</style>
 @section('content')
 
 <div class="about_content">
@@ -136,9 +142,9 @@
                                 <div class="icons_div">
                                     <h5>{{$item->title}}</h5>
                                     <div class="flex_icons_div">
-                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a target="_blank" href='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
+                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" target="_blank" href='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
                                         </p>
-                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a target="_blank" href="{{$item->url}}">Website</a> </span>
+                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" target="_blank" href="{{$item->url}}">Website</a> </span>
                                         </p>
                                         <p><img src="{{url('content/images/small_icon/calendar-2.png')}}"><span>{{$item->years_text}}</span></p>
                                     </div>
@@ -146,6 +152,7 @@
                             </div>
                             <div class="discreption_div">
                                 <p>{!!$item->description!!}</p>
+
                             </div>
 
                         </div>

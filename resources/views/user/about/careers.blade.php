@@ -11,6 +11,7 @@
         <div class="investors_titel">
             <h1>{{$fSection->title}}</h1>
             <p>{{strip_tags($fSection->description)}}</p>
+            
         </div>
 
         <div class="investors_img">
@@ -48,6 +49,8 @@
                                     <p><i class="bi bi-calendar2"></i><span>{{$date->diffForHumans()}}</span></p>
                                 </div>
                                 <p class="p_detail">{!! ($fSection->description)!!}</p>
+                                <a href="#" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+
                             </div>
                         </div>
                     </div>

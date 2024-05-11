@@ -31,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
 
     $solutionPages = Page::where('parent_id',Page::where('slug','solutions')->first()->id)
     ->where('navbar','Active')->get();
+    $projectPages = Page::where('parent_id',Page::where('slug','Projects')->first()->id)
+    ->where('navbar','Active')->get();
+
 
     View::composer('user.about.*', function ($view) use($pages) {
             $view->with('VCpages', $pages);
@@ -41,10 +44,15 @@ class AppServiceProvider extends ServiceProvider
     View::composer('user.testing.*', function ($view) use($testingPages) {
         $view->with('Tpages', $testingPages);
     });
+    View::composer('user.projects.*', function ($view) use($projectPages) {
+
+        $view->with('projectPages', $projectPages);
+    });
     View::composer('*', function ($view) use($solutionPages) {
 
         $view->with('ss', $solutionPages);
     });
+
         // Paginator::useBootstrap(); // here we have added code.
     }
 }

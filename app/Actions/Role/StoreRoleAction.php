@@ -1,7 +1,7 @@
 <?php
 namespace App\Actions\Role;
 
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 
 class StoreRoleAction
 {

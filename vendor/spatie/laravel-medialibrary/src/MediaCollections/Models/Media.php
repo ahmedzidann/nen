@@ -392,6 +392,7 @@ class Media extends Model implements Responsable, Htmlable, Attachable
             ->addMedia($temporaryFile)
             ->usingName($this->name)
             ->setOrder($this->order_column)
+            ->withManipulations($this->manipulations)
             ->withCustomProperties($this->custom_properties);
         if ($fileName !== '') {
             $fileAdder->usingFileName($fileName);

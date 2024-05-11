@@ -565,6 +565,7 @@
   'Slider Create' => 'Slider Create',
   'Please Enter Icon' => 'Please Enter Icon',
   'Slider Edit' => 'Slider Edit',
+<<<<<<< HEAD
   'tabsolution View' => 'Tabsolution View',
   'tabsolution Create' => 'Tabsolution Create',
   'tabsolution Edit' => 'Tabsolution Edit',
@@ -583,4 +584,11 @@
   'fax' => 'Fax',
   'Fax' => 'Fax',
   'please enter fax' => 'Please enter fax',
+=======
+  ' View' => ' View',
+  'Good' => 'Good',
+  'good View' => 'Good View',
+  'Role View' => 'Role View',
+  'Role Add' => 'Role Add',
+>>>>>>> 03785cf3 (edit permation)
 );

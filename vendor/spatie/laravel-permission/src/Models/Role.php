@@ -18,10 +18,9 @@ use Spatie\Permission\Traits\RefreshesPermissionCache;
  * @property ?\Illuminate\Support\Carbon $created_at
  * @property ?\Illuminate\Support\Carbon $updated_at
  */
-class Role extends Model implements RoleContract
+class Role extends Model 
 {
     use HasPermissions;
-    use RefreshesPermissionCache;
 
     protected $guarded = [];
 

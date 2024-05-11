@@ -18,6 +18,12 @@ class FloatSynth extends Synth {
     static function hydrateFromType($type, $value) {
         if ($value === '' || $value === null) return null;
 
+<<<<<<< HEAD
         return (float) $value;
+=======
+        if ((float) $value == $value) return (float) $value;
+
+        return $value;
+>>>>>>> 03785cf3 (edit permation)
     }
 }

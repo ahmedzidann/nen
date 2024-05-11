@@ -6,6 +6,8 @@ use Laravel\Prompts\Prompt;
 
 trait DrawsBoxes
 {
+    use InteractsWithStrings;
+
     protected int $minWidth = 60;
 
     /**
@@ -55,6 +57,7 @@ trait DrawsBoxes
 
         return $this;
     }
+<<<<<<< HEAD
 
     /**
      * Get the length of the longest line.
@@ -95,4 +98,6 @@ trait DrawsBoxes
         // Strip Symfony inline style tags.
         return preg_replace("/<(?:(?:[fb]g|options)=[a-z,;]+)+>(.*?)<\/>/i", '$1', $text);
     }
+=======
+>>>>>>> 03785cf3 (edit permation)
 }

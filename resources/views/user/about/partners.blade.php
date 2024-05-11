@@ -60,7 +60,7 @@
 
                     <div class="swiper-slide">
                         @if ($fs)
-                            <img src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
+                            <img class="certifcate_img" src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
                         @endif
                     </div>
 
@@ -77,20 +77,25 @@
                                 <div class="card card_styles">
                                     <div class="card_content">
                                         <div class="iso_div">
+                                            <div class="size_div">
                                             <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
+
+                                            </div>
                                             <p>{{$item->title}} <span>({{$item->years_text}})</span></p>
                                         </div>
                                         <div class="iso_titels">
                                            {!! $item->description!!}
+                                          
+                                           <a href="#" class="read_more">Read More <i class="bi bi-chevron-down"></i></a> 
 
                                             <div class="flex_icons_div">
                                                 <p>
 
 
-                                                    <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a  href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                    <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring"  href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                 </p>
                                                 <p>
-                                                    <img  src="{{url('content/images/small_icon/global.png')}}"><span><a  href="{{$item->url}}">Website</a></span>
+                                                    <img  src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring"  href="{{$item->url}}">Website</a></span>
                                                 </p>
 
                                             </div>
@@ -103,6 +108,7 @@
 
 
                             </div>
+                            <a href="#" class="see_more_bttn">See More <span><i class="bi bi-chevron-down"></i></span></a>
 
                         </div>
 

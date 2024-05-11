@@ -23,6 +23,7 @@ class ProjectController extends Controller
             return view('user.projects.viewProjects',compact('slug','id','projects','page','tabs'));
 
         }else abort(400, "error");
+        //adadad
 }
 
 }

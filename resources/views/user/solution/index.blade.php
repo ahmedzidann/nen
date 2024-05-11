@@ -47,10 +47,25 @@
                             <h3>{{$item->title}}</h3>
                             <p style="color: #000;" class="description p_clamp">{{ strip_tags($item->description) }}</p>
                             <button class="show_bttn" onclick="toggleDescription(this)">Show More <i class="bi bi-chevron-down"></i></button>
-                            <div class="flex_icons_div">
-                                <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span>Reference</span></p>
-                                <p><img src="{{url('content/images/small_icon/global.png')}}"><span>Website</span></p>
-                            </div>
+
+                            @php
+                                $bcount = $item->files->count() > $item->links->count()? $item->files->count():  $item->links->count();
+                                // $scount = $item->files->count() > $item->links->count()? $item->links->count():  $item->files->count();
+                            @endphp
+                                @foreach (range(0, $bcount-1) as $i)
+                                <div class="flex_icons_div">
+                                    @if (isset($item->files[$i]))
+                                        <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><a href="{{  url('storage/education/' . $item->files[$i]->file)  }} " download>Reference</a></p>
+                                    @endif
+                                    @if (isset($item->links[$i]))
+
+                                        <p><img src="{{url('content/images/small_icon/global.png')}}"><a href="{{$item->links[$i]->reference}}">Website</a></p>
+                                    @endif
+
+
+                                </div>
+                                @endforeach
+
                         </div>
                     </div>
                     </a>

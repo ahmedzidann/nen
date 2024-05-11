@@ -33,10 +33,25 @@
                             <h3><?php echo e($item->title); ?></h3>
                             <p style="color: #000;" class="description p_clamp"><?php echo e(strip_tags($item->description)); ?></p>
                             <button class="show_bttn" onclick="toggleDescription(this)">Show More <i class="bi bi-chevron-down"></i></button>
-                            <div class="flex_icons_div">
-                                <p><img src="<?php echo e(url('content/images/small_icon/archive-book.png')); ?>"><span>Reference</span></p>
-                                <p><img src="<?php echo e(url('content/images/small_icon/global.png')); ?>"><span>Website</span></p>
-                            </div>
+
+                            <?php
+                                $bcount = $item->files->count() > $item->links->count()? $item->files->count():  $item->links->count();
+                                // $scount = $item->files->count() > $item->links->count()? $item->links->count():  $item->files->count();
+                            ?>
+                                <?php $__currentLoopData = range(0, $bcount-1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="flex_icons_div">
+                                    <?php if(isset($item->files[$i])): ?>
+                                        <p><img src="<?php echo e(url('content/images/small_icon/archive-book.png')); ?>"><a href="<?php echo e(url('storage/education/' . $item->files[$i]->file)); ?> " download>Reference</a></p>
+                                    <?php endif; ?>
+                                    <?php if(isset($item->links[$i])): ?>
+
+                                        <p><img src="<?php echo e(url('content/images/small_icon/global.png')); ?>"><a href="<?php echo e($item->links[$i]->reference); ?>">Website</a></p>
+                                    <?php endif; ?>
+
+
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                         </div>
                     </div>
                     </a>

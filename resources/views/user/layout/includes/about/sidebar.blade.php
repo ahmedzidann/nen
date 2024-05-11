@@ -28,11 +28,27 @@
                     </a>
             @endforeach
 
+        @elseif (isset($projectPages))
+            @foreach ($projectPages as $page)
+            <div class="flex_asid_menu">
+                <a class="ref_styles dropdown_arrow {{ Route::is('projects.'.$page->slug.'')? "active_link active": ""}}" href="#">
+                <div class="img_link">
+                    <img class="Identity_icon" src="content/images/small_icon/card.png" alt="">{{$page->name}}
+                </div>
+                <i class="bi bi-chevron-down"></i>
+                </a>
+
+                <ul class="aside_menu">
+                    @foreach (\App\Models\Project::where('pages_id',$page->id )->get() as $solution)
+                    <li><a class="{{ Route::is('projects.'.$page->slug.'') && ($solution->id == Request()->project_id)? "li_active": ""}}" href="{{ route('projects.'.$page->slug.'',['page_id'=>$page->id, 'project_id'=>$solution->id]) }}">{{$solution->title}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+            @endforeach
+
 
         @else
-        @php
 
-        @endphp
             @foreach ($ss as $page)
             <div class="flex_asid_menu">
                 <a class="ref_styles dropdown_arrow {{ Route::is('solutions.'.$page->slug.'')? "active_link active": ""}}" href="#">
@@ -44,13 +60,9 @@
 
                 <ul class="aside_menu">
                     @foreach (\App\Models\Solution::where('pages_id',$page->id )->get() as $solution)
-                    <li><a class="{{ Route::is('solutions.'.$page->slug.'') && ($solution->id == Request()->solution_id)? "active_link active": ""}}" href="{{ route('solutions.'.$page->slug.'',['page_id'=>$page->id, 'solution_id'=>$solution->id]) }}">{{$solution->title}}</a></li>
+                    <li><a class="{{ Route::is('solutions.'.$page->slug.'') && ($solution->id == Request()->solution_id)? "li_active": ""}}" href="{{ route('solutions.'.$page->slug.'',['page_id'=>$page->id, 'solution_id'=>$solution->id]) }}">{{$solution->title}}</a></li>
                     @endforeach
-
-
-
                 </ul>
-
             </div>
 
 

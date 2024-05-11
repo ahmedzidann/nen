@@ -355,6 +355,7 @@
 <?php endif; ?>
                                                         </div>
                                                         
+
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="button" class="btn btn-danger delete-input" style="">
@@ -376,12 +377,12 @@
                                                                 <div class="col-md-10 row">
                                                                     
                                                                     <div class="col-sm-8">
-                                                                        <input disabled value='<?php echo e($link->reference); ?>'  name="links[]" type="text" required=""
+                                                                        <input  value='<?php echo e($link->reference); ?>'  name="links[]" type="text" required=""
                                                                              placeholder="links" class="form-control valid">
                                                                         
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                    <input type="hidden"  name="<?php echo e('link_id['.$item->key.'][]'); ?>" value="<?php echo e($link->id); ?>">
+                                                                    
 
                                                                         <?php if (isset($component)) { $__componentOriginal375f0ed4f8ee156e823aad8b1382f853 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal375f0ed4f8ee156e823aad8b1382f853 = $attributes; } ?>
@@ -407,7 +408,8 @@
                                                                     
                                                                 </div>
                                                                 <div class="col-md-2">
-                                                                    
+                                                                    <button type="button" class="btn btn-danger delete-input" style="">
+                                                                         <i class="bx bxs-trash"></i>&nbsp;</button>
                                                                 </div>
                                                             </div>
                                                             <!-- Add more input fields as needed -->
@@ -529,7 +531,9 @@
                                                                 
                                                             </div>
                                                             <div class="col-md-2">
-                                                                
+                                                                <button type="button" class="btn btn-danger delete-input-file">
+                                                                     <i class="bx bxs-trash"></i>&nbsp;
+                                                                    </button>
                                                             </div>
                                                         </div>
                                                         <!-- Add more input fields as needed -->
@@ -588,7 +592,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('jsadmin'); ?>
 <?php echo $__env->make('admin.layouts.ckeditor.ckeditor', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<script src="<?php echo e(asset('admin/about/certificates/js/edit.js')); ?>"></script>
+
 <?php $__env->stopSection(); ?>
 
 <script>

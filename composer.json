@@ -15,13 +15,8 @@
         "livewire/livewire": "^3.3",
         "mcamara/laravel-localization": "^1.8",
         "spatie/laravel-activitylog": "^4.7",
-<<<<<<< HEAD
-        "spatie/laravel-medialibrary": "^10.0.0",
-        "spatie/laravel-permission": "^6.3",
-=======
         "spatie/laravel-medialibrary": "^11.0.0",
         "spatie/laravel-permission": "^6.7",
->>>>>>> 6dc66502 (permation sidebar)
         "spatie/laravel-translatable": "^6.5",
         "spatie/laravel-view-models": "^1.5",
         "tanmuhittin/laravel-google-translate": "^2.2",

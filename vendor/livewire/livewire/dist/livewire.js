@@ -2278,11 +2278,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     get raw() {
       return raw;
     },
-<<<<<<< HEAD
-    version: "3.13.8",
-=======
     version: "3.13.10",
->>>>>>> 03785cf3 (edit permation)
     flushAndStopDeferringMutations,
     dontAutoEvaluateFunctions,
     disableEffectScheduling,
@@ -3357,11 +3353,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       setValue(getInputValue(el, modifiers, e, getValue()));
     });
     if (modifiers.includes("fill")) {
-<<<<<<< HEAD
-      if ([void 0, null, ""].includes(getValue()) || el.type === "checkbox" && Array.isArray(getValue())) {
-=======
       if ([void 0, null, ""].includes(getValue()) || el.type === "checkbox" && Array.isArray(getValue()) || el.tagName.toLowerCase() === "select" && el.multiple) {
->>>>>>> 03785cf3 (edit permation)
         setValue(getInputValue(el, modifiers, { target: el }, getValue()));
       }
     }
@@ -3498,11 +3490,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     });
   });
   mapAttributes(startingWith(":", into(prefix("bind:"))));
-<<<<<<< HEAD
-  var handler2 = (el, { value, modifiers, expression, original }, { effect: effect3, cleanup: cleanup22 }) => {
-=======
   var handler2 = (el, { value, modifiers, expression, original }, { effect: effect3, cleanup: cleanup2 }) => {
->>>>>>> 03785cf3 (edit permation)
     if (!value) {
       let bindingProviders = {};
       injectBindingProviders(bindingProviders);
@@ -3524,11 +3512,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       }
       mutateDom(() => bind(el, value, result, modifiers));
     }));
-<<<<<<< HEAD
-    cleanup22(() => {
-=======
     cleanup2(() => {
->>>>>>> 03785cf3 (edit permation)
       el._x_undoAddedClasses && el._x_undoAddedClasses();
       el._x_undoAddedStyles && el._x_undoAddedStyles();
     });
@@ -8664,7 +8648,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       component.addCleanup(() => window.removeEventListener(name, handler4));
       component.el.addEventListener(name, (e) => {
         if (!e.__livewire)
-<<<<<<< HEAD
           return;
         if (e.bubbles)
           return;
@@ -8675,242 +8658,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     });
   }
 
-  // js/features/supportScriptsAndAssets.js
-  var executedScripts = /* @__PURE__ */ new WeakMap();
-  var executedAssets = /* @__PURE__ */ new Set();
-  on2("payload.intercept", async ({ assets }) => {
-    if (!assets)
-      return;
-    for (let [key, asset] of Object.entries(assets)) {
-      await onlyIfAssetsHaventBeenLoadedAlreadyOnThisPage(key, async () => {
-        await addAssetsToHeadTagOfPage(asset);
-      });
-    }
-  });
-  on2("component.init", ({ component }) => {
-    let assets = component.snapshot.memo.assets;
-    if (assets) {
-      assets.forEach((key) => {
-        if (executedAssets.has(key))
-          return;
-        executedAssets.add(key);
-      });
-    }
-  });
-  on2("effect", ({ component, effects }) => {
-    let scripts = effects.scripts;
-    if (scripts) {
-      Object.entries(scripts).forEach(([key, content]) => {
-        onlyIfScriptHasntBeenRunAlreadyForThisComponent(component, key, () => {
-          let scriptContent = extractScriptTagContent(content);
-          module_default.dontAutoEvaluateFunctions(() => {
-            module_default.evaluate(component.el, scriptContent, { "$wire": component.$wire });
-          });
-        });
-      });
-    }
-  });
-  function onlyIfScriptHasntBeenRunAlreadyForThisComponent(component, key, callback) {
-    if (executedScripts.has(component)) {
-      let alreadyRunKeys2 = executedScripts.get(component);
-      if (alreadyRunKeys2.includes(key))
-        return;
-    }
-    callback();
-    if (!executedScripts.has(component))
-      executedScripts.set(component, []);
-    let alreadyRunKeys = executedScripts.get(component);
-    alreadyRunKeys.push(key);
-    executedScripts.set(component, alreadyRunKeys);
-  }
-  function extractScriptTagContent(rawHtml) {
-    let scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;
-    let matches2 = scriptRegex.exec(rawHtml);
-    let innards = matches2 && matches2[1] ? matches2[1].trim() : "";
-    return innards;
-  }
-  async function onlyIfAssetsHaventBeenLoadedAlreadyOnThisPage(key, callback) {
-    if (executedAssets.has(key))
-      return;
-    await callback();
-    executedAssets.add(key);
-  }
-  async function addAssetsToHeadTagOfPage(rawHtml) {
-    let newDocument = new DOMParser().parseFromString(rawHtml, "text/html");
-    let newHead = document.adoptNode(newDocument.head);
-    for (let child of newHead.children) {
-      try {
-        await runAssetSynchronously(child);
-      } catch (error2) {
-      }
-    }
-  }
-  async function runAssetSynchronously(child) {
-    return new Promise((resolve, reject) => {
-      if (isScript2(child)) {
-        let script = cloneScriptTag2(child);
-        if (script.src) {
-          script.onload = () => resolve();
-          script.onerror = () => reject();
-        } else {
-          resolve();
-        }
-        document.head.appendChild(script);
-      } else {
-        document.head.appendChild(child);
-        resolve();
-      }
-    });
-  }
-  function isScript2(el) {
-    return el.tagName.toLowerCase() === "script";
-  }
-  function cloneScriptTag2(el) {
-    let script = document.createElement("script");
-    script.textContent = el.textContent;
-    script.async = el.async;
-    for (let attr of el.attributes) {
-      script.setAttribute(attr.name, attr.value);
-    }
-    return script;
-  }
-
-  // js/features/supportJsEvaluation.js
-  on2("effect", ({ component, effects }) => {
-    let js = effects.js;
-    let xjs = effects.xjs;
-    if (js) {
-      Object.entries(js).forEach(([method, body]) => {
-        overrideMethod(component, method, () => {
-          module_default.evaluate(component.el, body);
-        });
-      });
-    }
-    if (xjs) {
-      xjs.forEach((expression) => {
-        module_default.evaluate(component.el, expression);
-      });
-    }
-  });
-
-  // js/morph.js
-  function morph2(component, el, html) {
-    let wrapperTag = el.parentElement ? el.parentElement.tagName.toLowerCase() : "div";
-    let wrapper = document.createElement(wrapperTag);
-    wrapper.innerHTML = html;
-    let parentComponent;
-    try {
-      parentComponent = closestComponent(el.parentElement);
-    } catch (e) {
-    }
-    parentComponent && (wrapper.__livewire = parentComponent);
-    let to = wrapper.firstElementChild;
-    to.__livewire = component;
-    trigger2("morph", { el, toEl: to, component });
-    module_default.morph(el, to, {
-      updating: (el2, toEl, childrenOnly, skip) => {
-        if (isntElement(el2))
-          return;
-        trigger2("morph.updating", { el: el2, toEl, component, skip, childrenOnly });
-        if (el2.__livewire_ignore === true)
-          return skip();
-        if (el2.__livewire_ignore_self === true)
-          childrenOnly();
-        if (isComponentRootEl(el2) && el2.getAttribute("wire:id") !== component.id)
-          return skip();
-        if (isComponentRootEl(el2))
-          toEl.__livewire = component;
-      },
-      updated: (el2) => {
-        if (isntElement(el2))
-          return;
-        trigger2("morph.updated", { el: el2, component });
-      },
-      removing: (el2, skip) => {
-        if (isntElement(el2))
-          return;
-        trigger2("morph.removing", { el: el2, component, skip });
-      },
-      removed: (el2) => {
-        if (isntElement(el2))
-          return;
-        trigger2("morph.removed", { el: el2, component });
-      },
-      adding: (el2) => {
-        trigger2("morph.adding", { el: el2, component });
-      },
-      added: (el2) => {
-        if (isntElement(el2))
-          return;
-        const closestComponentId = closestComponent(el2).id;
-        trigger2("morph.added", { el: el2 });
-      },
-      key: (el2) => {
-        if (isntElement(el2))
-          return;
-        return el2.hasAttribute(`wire:key`) ? el2.getAttribute(`wire:key`) : el2.hasAttribute(`wire:id`) ? el2.getAttribute(`wire:id`) : el2.id;
-      },
-      lookahead: false
-    });
-  }
-  function isntElement(el) {
-    return typeof el.hasAttribute !== "function";
-  }
-  function isComponentRootEl(el) {
-    return el.hasAttribute("wire:id");
-  }
-
-  // js/features/supportMorphDom.js
-  on2("effect", ({ component, effects }) => {
-    let html = effects.html;
-    if (!html)
-      return;
-    queueMicrotask(() => {
-      queueMicrotask(() => {
-        morph2(component, component.el, html);
-      });
-    });
-  });
-
-  // js/features/supportDispatches.js
-  on2("effect", ({ component, effects }) => {
-    dispatchEvents(component, effects.dispatches || []);
-  });
-  function dispatchEvents(component, dispatches) {
-    dispatches.forEach(({ name, params = {}, self = false, to }) => {
-      if (self)
-        dispatchSelf(component, name, params);
-      else if (to)
-        dispatchTo(to, name, params);
-      else
-        dispatch3(component, name, params);
-    });
-  }
-
-  // js/features/supportDisablingFormsDuringRequest.js
-  var cleanupStackByComponentId = {};
-  on2("element.init", ({ el, component }) => setTimeout(() => {
-    let directives2 = getDirectives(el);
-    if (directives2.missing("submit"))
-      return;
-    el.addEventListener("submit", () => {
-      cleanupStackByComponentId[component.id] = [];
-      module_default.walk(component.el, (node, skip) => {
-        if (!el.contains(node))
-=======
->>>>>>> 03785cf3 (edit permation)
-          return;
-        if (e.bubbles)
-          return;
-        if (e.__livewire)
-          e.__livewire.receivedBy.push(component.id);
-        component.$wire.call("__dispatch", name, e.detail || {});
-      });
-    });
-  }
-
-<<<<<<< HEAD
-=======
   // js/features/supportScriptsAndAssets.js
   var executedScripts = /* @__PURE__ */ new WeakMap();
   var executedAssets = /* @__PURE__ */ new Set();
@@ -9252,7 +8999,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     });
   }
 
->>>>>>> 03785cf3 (edit permation)
   // js/features/supportFileDownloads.js
   on2("commit", ({ succeed }) => {
     succeed(({ effects }) => {
@@ -9637,11 +9383,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   });
 
   // js/directives/wire-loading.js
-<<<<<<< HEAD
-  directive2("loading", ({ el, directive: directive3, component, cleanup: cleanup3 }) => {
-=======
   directive2("loading", ({ el, directive: directive3, component, cleanup: cleanup2 }) => {
->>>>>>> 03785cf3 (edit permation)
     let { targets, inverted } = getTargets(el);
     let [delay3, abortDelay] = applyDelay(directive3);
     let cleanupA = whenTargetsArePartOfRequest(component, targets, inverted, [
@@ -9652,11 +9394,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       () => delay3(() => toggleBooleanStateDirective(el, directive3, true)),
       () => abortDelay(() => toggleBooleanStateDirective(el, directive3, false))
     ]);
-<<<<<<< HEAD
-    cleanup3(() => {
-=======
     cleanup2(() => {
->>>>>>> 03785cf3 (edit permation)
       cleanupA();
       cleanupB();
     });

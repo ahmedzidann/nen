@@ -3,10 +3,7 @@
 namespace Livewire\Features\SupportConsoleCommands\Commands;
 
 use Illuminate\Console\GeneratorCommand;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\File;
->>>>>>> 03785cf3 (edit permation)
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'livewire:attribute')]

@@ -2,10 +2,6 @@
 
 All notable changes to `image` will be documented in this file
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 ## 3.5.0 - 2024-04-17
 
 ### What's Changed
@@ -18,7 +14,6 @@ All notable changes to `image` will be documented in this file
 
 **Full Changelog**: https://github.com/spatie/image/compare/3.4.2...3.5.0
 
->>>>>>> 6dc66502 (permation sidebar)
 ## 3.4.2 - 2024-04-15
 
 ### What's Changed
@@ -191,7 +186,6 @@ All notable changes to `image` will be documented in this file
 
 - bump requirements
 
->>>>>>> 03785cf3 (edit permation)
 ## 2.2.6 - 2023-05-06
 
 ### What's Changed

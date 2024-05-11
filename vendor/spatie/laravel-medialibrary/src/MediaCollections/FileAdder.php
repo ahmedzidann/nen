@@ -74,13 +74,6 @@ class FileAdder
         return $this;
     }
 
-    /*
-     * Set the file that needs to be imported.
-     *
-     * @param string|UploadedFile $file
-     *
-     * @return $this
-     */
     public function setFile($file): self
     {
         $this->file = $file;
@@ -244,7 +237,7 @@ class FileAdder
             throw FileIsTooBig::create($this->pathToFile, $storage->size($this->pathToFile));
         }
 
-        $mediaClass = config('media-library.media_model');
+        $mediaClass = $this->subject?->getMediaModel() ?? config('media-library.media_model');
         /** @var Media $media */
         $media = new $mediaClass();
 
@@ -307,7 +300,7 @@ class FileAdder
             throw FileIsTooBig::create($this->pathToFile);
         }
 
-        $mediaClass = config('media-library.media_model');
+        $mediaClass = $this->subject?->getMediaModel() ?? config('media-library.media_model');
         /** @var Media $media */
         $media = new $mediaClass();
 
@@ -545,7 +538,7 @@ class FileAdder
     protected function appendExtension(string $file, ?string $extension): string
     {
         return $extension
-            ? $file . '.' . $extension
+            ? $file.'.'.$extension
             : $file;
     }
 }

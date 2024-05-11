@@ -2861,11 +2861,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       get raw() {
         return raw;
       },
-<<<<<<< HEAD
-      version: "3.13.8",
-=======
       version: "3.13.10",
->>>>>>> 03785cf3 (edit permation)
       flushAndStopDeferringMutations,
       dontAutoEvaluateFunctions,
       disableEffectScheduling,
@@ -3293,11 +3289,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         setValue(getInputValue(el, modifiers, e, getValue()));
       });
       if (modifiers.includes("fill")) {
-<<<<<<< HEAD
-        if ([void 0, null, ""].includes(getValue()) || el.type === "checkbox" && Array.isArray(getValue())) {
-=======
         if ([void 0, null, ""].includes(getValue()) || el.type === "checkbox" && Array.isArray(getValue()) || el.tagName.toLowerCase() === "select" && el.multiple) {
->>>>>>> 03785cf3 (edit permation)
           setValue(getInputValue(el, modifiers, { target: el }, getValue()));
         }
       }
@@ -3434,11 +3426,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       });
     });
     mapAttributes(startingWith(":", into(prefix("bind:"))));
-<<<<<<< HEAD
-    var handler2 = (el, { value, modifiers, expression, original }, { effect: effect3, cleanup: cleanup2 }) => {
-=======
     var handler2 = (el, { value, modifiers, expression, original }, { effect: effect3, cleanup }) => {
->>>>>>> 03785cf3 (edit permation)
       if (!value) {
         let bindingProviders = {};
         injectBindingProviders(bindingProviders);
@@ -3460,11 +3448,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         }
         mutateDom(() => bind(el, value, result, modifiers));
       }));
-<<<<<<< HEAD
-      cleanup2(() => {
-=======
       cleanup(() => {
->>>>>>> 03785cf3 (edit permation)
         el._x_undoAddedClasses && el._x_undoAddedClasses();
         el._x_undoAddedStyles && el._x_undoAddedStyles();
       });
@@ -9527,7 +9511,6 @@ function registerListeners(component, listeners2) {
     component.addCleanup(() => window.removeEventListener(name, handler));
     component.el.addEventListener(name, (e) => {
       if (!e.__livewire)
-<<<<<<< HEAD
         return;
       if (e.bubbles)
         return;
@@ -9538,246 +9521,6 @@ function registerListeners(component, listeners2) {
   });
 }
 
-// js/features/supportScriptsAndAssets.js
-var import_alpinejs6 = __toESM(require_module_cjs());
-var executedScripts = /* @__PURE__ */ new WeakMap();
-var executedAssets = /* @__PURE__ */ new Set();
-on("payload.intercept", async ({ assets }) => {
-  if (!assets)
-    return;
-  for (let [key, asset] of Object.entries(assets)) {
-    await onlyIfAssetsHaventBeenLoadedAlreadyOnThisPage(key, async () => {
-      await addAssetsToHeadTagOfPage(asset);
-    });
-  }
-});
-on("component.init", ({ component }) => {
-  let assets = component.snapshot.memo.assets;
-  if (assets) {
-    assets.forEach((key) => {
-      if (executedAssets.has(key))
-        return;
-      executedAssets.add(key);
-    });
-  }
-});
-on("effect", ({ component, effects }) => {
-  let scripts = effects.scripts;
-  if (scripts) {
-    Object.entries(scripts).forEach(([key, content]) => {
-      onlyIfScriptHasntBeenRunAlreadyForThisComponent(component, key, () => {
-        let scriptContent = extractScriptTagContent(content);
-        import_alpinejs6.default.dontAutoEvaluateFunctions(() => {
-          import_alpinejs6.default.evaluate(component.el, scriptContent, { "$wire": component.$wire });
-        });
-      });
-    });
-  }
-});
-function onlyIfScriptHasntBeenRunAlreadyForThisComponent(component, key, callback) {
-  if (executedScripts.has(component)) {
-    let alreadyRunKeys2 = executedScripts.get(component);
-    if (alreadyRunKeys2.includes(key))
-      return;
-  }
-  callback();
-  if (!executedScripts.has(component))
-    executedScripts.set(component, []);
-  let alreadyRunKeys = executedScripts.get(component);
-  alreadyRunKeys.push(key);
-  executedScripts.set(component, alreadyRunKeys);
-}
-function extractScriptTagContent(rawHtml) {
-  let scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;
-  let matches = scriptRegex.exec(rawHtml);
-  let innards = matches && matches[1] ? matches[1].trim() : "";
-  return innards;
-}
-async function onlyIfAssetsHaventBeenLoadedAlreadyOnThisPage(key, callback) {
-  if (executedAssets.has(key))
-    return;
-  await callback();
-  executedAssets.add(key);
-}
-async function addAssetsToHeadTagOfPage(rawHtml) {
-  let newDocument = new DOMParser().parseFromString(rawHtml, "text/html");
-  let newHead = document.adoptNode(newDocument.head);
-  for (let child of newHead.children) {
-    try {
-      await runAssetSynchronously(child);
-    } catch (error2) {
-    }
-  }
-}
-async function runAssetSynchronously(child) {
-  return new Promise((resolve, reject) => {
-    if (isScript2(child)) {
-      let script = cloneScriptTag2(child);
-      if (script.src) {
-        script.onload = () => resolve();
-        script.onerror = () => reject();
-      } else {
-        resolve();
-      }
-      document.head.appendChild(script);
-    } else {
-      document.head.appendChild(child);
-      resolve();
-    }
-  });
-}
-function isScript2(el) {
-  return el.tagName.toLowerCase() === "script";
-}
-function cloneScriptTag2(el) {
-  let script = document.createElement("script");
-  script.textContent = el.textContent;
-  script.async = el.async;
-  for (let attr of el.attributes) {
-    script.setAttribute(attr.name, attr.value);
-  }
-  return script;
-}
-
-// js/features/supportJsEvaluation.js
-var import_alpinejs7 = __toESM(require_module_cjs());
-on("effect", ({ component, effects }) => {
-  let js = effects.js;
-  let xjs = effects.xjs;
-  if (js) {
-    Object.entries(js).forEach(([method, body]) => {
-      overrideMethod(component, method, () => {
-        import_alpinejs7.default.evaluate(component.el, body);
-      });
-    });
-  }
-  if (xjs) {
-    xjs.forEach((expression) => {
-      import_alpinejs7.default.evaluate(component.el, expression);
-    });
-  }
-});
-
-// js/morph.js
-var import_alpinejs8 = __toESM(require_module_cjs());
-function morph2(component, el, html) {
-  let wrapperTag = el.parentElement ? el.parentElement.tagName.toLowerCase() : "div";
-  let wrapper = document.createElement(wrapperTag);
-  wrapper.innerHTML = html;
-  let parentComponent;
-  try {
-    parentComponent = closestComponent(el.parentElement);
-  } catch (e) {
-  }
-  parentComponent && (wrapper.__livewire = parentComponent);
-  let to = wrapper.firstElementChild;
-  to.__livewire = component;
-  trigger("morph", { el, toEl: to, component });
-  import_alpinejs8.default.morph(el, to, {
-    updating: (el2, toEl, childrenOnly, skip) => {
-      if (isntElement(el2))
-        return;
-      trigger("morph.updating", { el: el2, toEl, component, skip, childrenOnly });
-      if (el2.__livewire_ignore === true)
-        return skip();
-      if (el2.__livewire_ignore_self === true)
-        childrenOnly();
-      if (isComponentRootEl(el2) && el2.getAttribute("wire:id") !== component.id)
-        return skip();
-      if (isComponentRootEl(el2))
-        toEl.__livewire = component;
-    },
-    updated: (el2) => {
-      if (isntElement(el2))
-        return;
-      trigger("morph.updated", { el: el2, component });
-    },
-    removing: (el2, skip) => {
-      if (isntElement(el2))
-        return;
-      trigger("morph.removing", { el: el2, component, skip });
-    },
-    removed: (el2) => {
-      if (isntElement(el2))
-        return;
-      trigger("morph.removed", { el: el2, component });
-    },
-    adding: (el2) => {
-      trigger("morph.adding", { el: el2, component });
-    },
-    added: (el2) => {
-      if (isntElement(el2))
-        return;
-      const closestComponentId = closestComponent(el2).id;
-      trigger("morph.added", { el: el2 });
-    },
-    key: (el2) => {
-      if (isntElement(el2))
-        return;
-      return el2.hasAttribute(`wire:key`) ? el2.getAttribute(`wire:key`) : el2.hasAttribute(`wire:id`) ? el2.getAttribute(`wire:id`) : el2.id;
-    },
-    lookahead: false
-  });
-}
-function isntElement(el) {
-  return typeof el.hasAttribute !== "function";
-}
-function isComponentRootEl(el) {
-  return el.hasAttribute("wire:id");
-}
-
-// js/features/supportMorphDom.js
-on("effect", ({ component, effects }) => {
-  let html = effects.html;
-  if (!html)
-    return;
-  queueMicrotask(() => {
-    queueMicrotask(() => {
-      morph2(component, component.el, html);
-    });
-  });
-});
-
-// js/features/supportDispatches.js
-on("effect", ({ component, effects }) => {
-  dispatchEvents(component, effects.dispatches || []);
-});
-function dispatchEvents(component, dispatches) {
-  dispatches.forEach(({ name, params = {}, self: self2 = false, to }) => {
-    if (self2)
-      dispatchSelf(component, name, params);
-    else if (to)
-      dispatchTo(to, name, params);
-    else
-      dispatch2(component, name, params);
-  });
-}
-
-// js/features/supportDisablingFormsDuringRequest.js
-var import_alpinejs9 = __toESM(require_module_cjs());
-var cleanupStackByComponentId = {};
-on("element.init", ({ el, component }) => setTimeout(() => {
-  let directives = getDirectives(el);
-  if (directives.missing("submit"))
-    return;
-  el.addEventListener("submit", () => {
-    cleanupStackByComponentId[component.id] = [];
-    import_alpinejs9.default.walk(component.el, (node, skip) => {
-      if (!el.contains(node))
-=======
->>>>>>> 03785cf3 (edit permation)
-        return;
-      if (e.bubbles)
-        return;
-      if (e.__livewire)
-        e.__livewire.receivedBy.push(component.id);
-      component.$wire.call("__dispatch", name, e.detail || {});
-    });
-  });
-}
-
-<<<<<<< HEAD
-=======
 // js/features/supportScriptsAndAssets.js
 var import_alpinejs6 = __toESM(require_module_cjs());
 var executedScripts = /* @__PURE__ */ new WeakMap();
@@ -10123,7 +9866,6 @@ function getDeepChildren(component, callback) {
   });
 }
 
->>>>>>> 03785cf3 (edit permation)
 // js/features/supportFileDownloads.js
 on("commit", ({ succeed }) => {
   succeed(({ effects }) => {
@@ -10188,11 +9930,7 @@ on("commit.pooling", ({ commits }) => {
 
 // js/features/supportQueryString.js
 var import_alpinejs10 = __toESM(require_module_cjs());
-<<<<<<< HEAD
-on("effect", ({ component, effects, cleanup: cleanup2 }) => {
-=======
 on("effect", ({ component, effects, cleanup }) => {
->>>>>>> 03785cf3 (edit permation)
   let queryString = effects["url"];
   if (!queryString)
     return;
@@ -10206,11 +9944,7 @@ on("effect", ({ component, effects, cleanup }) => {
       let effectReference = import_alpinejs10.default.effect(() => {
         replace2(dataGet(component.reactive, name));
       });
-<<<<<<< HEAD
-      cleanup2(() => import_alpinejs10.default.release(effectReference));
-=======
       cleanup(() => import_alpinejs10.default.release(effectReference));
->>>>>>> 03785cf3 (edit permation)
     } else if (use === "push") {
       let forgetCommitHandler = on("commit", ({ component: commitComponent, succeed }) => {
         if (component !== commitComponent)
@@ -10520,11 +10254,7 @@ directive("offline", ({ el, directive: directive2, cleanup }) => {
 });
 
 // js/directives/wire-loading.js
-<<<<<<< HEAD
-directive("loading", ({ el, directive: directive2, component, cleanup: cleanup2 }) => {
-=======
 directive("loading", ({ el, directive: directive2, component, cleanup }) => {
->>>>>>> 03785cf3 (edit permation)
   let { targets, inverted } = getTargets(el);
   let [delay, abortDelay] = applyDelay(directive2);
   let cleanupA = whenTargetsArePartOfRequest(component, targets, inverted, [
@@ -10535,11 +10265,7 @@ directive("loading", ({ el, directive: directive2, component, cleanup }) => {
     () => delay(() => toggleBooleanStateDirective(el, directive2, true)),
     () => abortDelay(() => toggleBooleanStateDirective(el, directive2, false))
   ]);
-<<<<<<< HEAD
-  cleanup2(() => {
-=======
   cleanup(() => {
->>>>>>> 03785cf3 (edit permation)
     cleanupA();
     cleanupB();
   });

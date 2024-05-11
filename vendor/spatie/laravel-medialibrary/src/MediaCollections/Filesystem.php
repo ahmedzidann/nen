@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversions\ConversionCollection;
 use Spatie\MediaLibrary\Conversions\FileManipulator;
-use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAdded;
+use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\DiskCannotBeAccessed;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\File;
@@ -28,11 +28,11 @@ class Filesystem
     {
         try {
             $this->copyToMediaLibrary($file, $media, null, $targetFileName);
-        } catch(DiskCannotBeAccessed $exception) {
+        } catch (DiskCannotBeAccessed $exception) {
             return false;
         }
 
-        event(new MediaHasBeenAdded($media));
+        event(new MediaHasBeenAddedEvent($media));
 
         app(FileManipulator::class)->createDerivedFiles($media);
 
@@ -43,11 +43,11 @@ class Filesystem
     {
         try {
             $this->copyToMediaLibraryFromRemote($file, $media, null, $targetFileName);
-        } catch(DiskCannotBeAccessed $exception) {
+        } catch (DiskCannotBeAccessed $exception) {
             return false;
         }
 
-        event(new MediaHasBeenAdded($media));
+        event(new MediaHasBeenAddedEvent($media));
 
         app(FileManipulator::class)->createDerivedFiles($media);
 
@@ -185,7 +185,7 @@ class Filesystem
     public function getRemoteHeadersForFile(
         string $file,
         array $mediaCustomHeaders = [],
-        string $mimeType = null
+        ?string $mimeType = null
     ): array {
         $mimeTypeHeader = ['ContentType' => $mimeType ?: File::getMimeType($file)];
 
@@ -204,6 +204,13 @@ class Filesystem
         $sourceFile = $this->getMediaDirectory($media).'/'.$media->file_name;
 
         return $this->filesystem->disk($media->disk)->readStream($sourceFile);
+    }
+
+    public function getConversionStream(Media $media, string $conversion)
+    {
+        $sourceFile = $media->getPathRelativeToRoot($conversion);
+
+        return $this->filesystem->disk($media->conversions_disk)->readStream($sourceFile);
     }
 
     public function copyFromMediaLibrary(Media $media, string $targetFile): string
@@ -235,7 +242,7 @@ class Filesystem
 
         $responsiveImagePaths = array_filter(
             $allFilePaths,
-            fn (string $path) => Str::contains($path, $conversionName)
+            fn (string $path) => Str::contains($path, $media->name) && Str::contains($path, $conversionName)
         );
 
         $this->filesystem->disk($media->disk)->delete($responsiveImagePaths);

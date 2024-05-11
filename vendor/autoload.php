@@ -22,8 +22,4 @@ if (PHP_VERSION_ID < 50600) {
 
 require_once __DIR__ . '/composer/autoload_real.php';
 
-<<<<<<< HEAD
-return ComposerAutoloaderInit9f177e1ce830cbc131de08d3b1ae240a::getLoader();
-=======
 return ComposerAutoloaderInit90826df00b86b299cc08c41ccd8b3da4::getLoader();
->>>>>>> 6dc66502 (permation sidebar)

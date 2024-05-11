@@ -44,6 +44,7 @@ class Solution extends Model implements  HasMedia
          return $this->belongsTo(Tabs::class, 'tabs_id');
        }
 
+
        public function ChildePage()
        {
          return $this->belongsTo(Page::class, 'pages_id');

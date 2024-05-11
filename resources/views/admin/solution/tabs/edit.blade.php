@@ -142,6 +142,7 @@
                                                         </div>
                                                         {{-- <x-admin.form.label-end star="*" name="Please enter title">
                                                         </x-admin.form.label-end> --}}
+
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="button" class="btn btn-danger delete-input" style="">
@@ -164,12 +165,12 @@
                                                                     {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
                                                                     </x-admin.form.label-first> --}}
                                                                     <div class="col-sm-8">
-                                                                        <input disabled value='{{$link->reference }}'  name="links[]" type="text" required=""
+                                                                        <input  value='{{$link->reference }}'  name="links[]" type="text" required=""
                                                                              placeholder="links" class="form-control valid">
                                                                         {{-- </input> --}}
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                    <input type="hidden"  name="{{'link_id['.$item->key.'][]'}}" value="{{$link->id}}">
+                                                                    {{-- <input type="hidden"  name="{{'link_id['.$item->key.'][]'}}" value="{{$link->id}}"> --}}
 
                                                                         <x-admin.form.input  value="{{ $link->translate('title', $item->key)}}" name="{{'links_title['.$item->key.'][]'}}" type="text" required=""
                                                                         placeholder="{{$item->name}} title" class="form-control valid">
@@ -179,8 +180,8 @@
                                                                     </x-admin.form.label-end> --}}
                                                                 </div>
                                                                 <div class="col-md-2">
-                                                                    {{-- <button type="button" class="btn btn-danger delete-input" style="">
-                                                                         <i class="bx bxs-trash"></i>&nbsp;</button> --}}
+                                                                    <button type="button" class="btn btn-danger delete-input" style="">
+                                                                         <i class="bx bxs-trash"></i>&nbsp;</button>
                                                                 </div>
                                                             </div>
                                                             <!-- Add more input fields as needed -->
@@ -256,9 +257,9 @@
                                                                 </x-admin.form.label-end> --}}
                                                             </div>
                                                             <div class="col-md-2">
-                                                                {{-- <button type="button" class="btn btn-danger delete-input-file">
+                                                                <button type="button" class="btn btn-danger delete-input-file">
                                                                      <i class="bx bxs-trash"></i>&nbsp;
-                                                                    </button> --}}
+                                                                    </button>
                                                             </div>
                                                         </div>
                                                         <!-- Add more input fields as needed -->
@@ -299,7 +300,7 @@
 @endsection
 @section('jsadmin')
 @include('admin.layouts.ckeditor.ckeditor')
-<script src="{{ asset('admin/about/certificates/js/edit.js') }}"></script>
+{{-- <script src="{{ asset('admin/about/certificates/js/edit.js') }}"></script> --}}
 @endsection
 
 <script>

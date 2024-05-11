@@ -48,9 +48,14 @@ Route::group(['prefix' => 'education','as'=>'education.', 'name'=>'education.'],
 
 Route::group(['prefix' => 'testing','as'=>'testing.', 'name'=>'testing.'], function () {
     foreach(Page::where('parent_id',Page::where('slug','testing')->first()->id)->get() as $page){
-    //  dd($page->slug);
-    Route::get($page->slug, [TestingContoller::class, 'index'])->name($page->slug);
-     // Route::get('index', [SolutionController::class, 'index'])->name('education');
+        Route::get($page->slug, [TestingContoller::class, 'index'])->name($page->slug);
+    }
+});
+
+Route::group(['prefix' => 'projects','as'=>'projects.', 'name'=>'projects.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','projects')->first()->id)->get() as $page){
+        // dd($page->slug);
+        Route::get($page->slug, [ProjectController::class, 'index'])->name($page->slug);
     }
 });
 

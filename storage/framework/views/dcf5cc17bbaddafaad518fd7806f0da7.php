@@ -31,11 +31,28 @@
                     </a>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
+        <?php elseif(isset($projectPages)): ?>
+            <?php $__currentLoopData = $projectPages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="flex_asid_menu">
+                <a class="ref_styles dropdown_arrow <?php echo e(Route::is('projects.'.$page->slug.'')? "active_link active": ""); ?>" href="#">
+                <div class="img_link">
+                    <img class="Identity_icon" src="content/images/small_icon/card.png" alt=""><?php echo e($page->name); ?>
+
+                </div>
+                <i class="bi bi-chevron-down"></i>
+                </a>
+
+                <ul class="aside_menu">
+                    <?php $__currentLoopData = \App\Models\Project::where('pages_id',$page->id )->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solution): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><a class="<?php echo e(Route::is('projects.'.$page->slug.'') && ($solution->id == Request()->project_id)? "li_active": ""); ?>" href="<?php echo e(route('projects.'.$page->slug.'',['page_id'=>$page->id, 'project_id'=>$solution->id])); ?>"><?php echo e($solution->title); ?></a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 
         <?php else: ?>
-        <?php
 
-        ?>
             <?php $__currentLoopData = $ss; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="flex_asid_menu">
                 <a class="ref_styles dropdown_arrow <?php echo e(Route::is('solutions.'.$page->slug.'')? "active_link active": ""); ?>" href="#">
@@ -48,13 +65,9 @@
 
                 <ul class="aside_menu">
                     <?php $__currentLoopData = \App\Models\Solution::where('pages_id',$page->id )->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solution): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><a class="<?php echo e(Route::is('solutions.'.$page->slug.'') && ($solution->id == Request()->solution_id)? "active_link active": ""); ?>" href="<?php echo e(route('solutions.'.$page->slug.'',['page_id'=>$page->id, 'solution_id'=>$solution->id])); ?>"><?php echo e($solution->title); ?></a></li>
+                    <li><a class="<?php echo e(Route::is('solutions.'.$page->slug.'') && ($solution->id == Request()->solution_id)? "li_active": ""); ?>" href="<?php echo e(route('solutions.'.$page->slug.'',['page_id'=>$page->id, 'solution_id'=>$solution->id])); ?>"><?php echo e($solution->title); ?></a></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
-
                 </ul>
-
             </div>
 
 

@@ -12,17 +12,12 @@ use Illuminate\View\View;
 
 class ProjectController extends Controller
 {
-    public function index($slug= null,$id=null):View
+     public function index($slug= null,$id=null):View
     {
-        $page = Page::findOrFail(request()->page_id);
-        $tabs = Tabs::where('type','project')->get();
-        $slug = $page->slug;
-        $id = $page->id;
-        $projects = Project::findOrFail(request()->project_id);
-        if(isset($slug)){
-            return view('user.projects.viewProjects',compact('slug','id','projects','page','tabs'));
-
+        if(isset($slug) && isset($id)){
+            return view('user.projects.viewProjects',compact('slug','id'));
+       
         }else abort(400, "error");
-}
+   }
 
 }

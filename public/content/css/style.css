@@ -490,6 +490,7 @@ a.active {
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
+  width: 100%;
 }
 
 .who_us_titel h5 {
@@ -521,9 +522,12 @@ a.active {
 
 }
 
+
+
 .whou_us_img img {
   width: 100%;
-
+  height: 350px;
+  object-fit: cover;
 }
 
 .bg_div {
@@ -1414,6 +1418,7 @@ z-index: 2;
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .flex_icons_div p {
@@ -1513,6 +1518,7 @@ z-index: 2;
   align-items: center;
   gap: 12px;
   margin-bottom: 15px;
+  height: 100%;
 }
 
 .iso_div {
@@ -1524,7 +1530,7 @@ z-index: 2;
 
 .iso_div p {
   font-weight: 700;
-  height: 70px;
+  /* height: 70px; */
 }
 
 .iso_div p span {
@@ -1536,6 +1542,7 @@ z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
 }
 
 .iso_titels ul{
@@ -1697,10 +1704,10 @@ circle-progress::part(text) {
 }
 
 .client_content img {
-  height: 80px;
-  width: 150px;
+  height:75px;
+  width: 125px;
   border-radius: 7px;
-  object-fit: cover;
+  object-fit:contain;
 }
 
 .client_content h2 {
@@ -2479,6 +2486,11 @@ margin-top: 75px;
   height: 60px;
 }
 
+.whou_us_img{
+  width: 400px;
+  max-width:400px;
+}
+
 /* responsive */
 
 @media (max-width:1200px) {
@@ -3054,6 +3066,10 @@ margin-top: 75px;
       height: 325px;
       border-radius: 10px;
       object-fit: cover;
+  }
+
+  .whou_us_img{
+    width: 100%;
   }
 }
 
@@ -3697,6 +3713,10 @@ width: 100%;
   width: 115px;
   height: 50px;
 }
+
+.whou_us_img img {
+  height: 100%;
+}
 }
 
 @media(max-width:450px) {
@@ -3989,6 +4009,10 @@ width: 100%;
   .size_div {
       width: 100%;
       height: 100px;
+  }
+
+  .whou_us_img img{
+    height: 100%;
   }
 }
 

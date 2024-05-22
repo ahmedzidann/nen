@@ -123,7 +123,7 @@
 
                     {{-- <a href="#" class="see_more_bttn">See More <span><i class="bi bi-chevron-down"></i></span></a> --}}
                     @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
-                        <a href="#" class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,'ar')">See More <span><i class="bi bi-chevron-down"></i></span></a>
+                        <a href="#" class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,{{app()->getLocale()}})">See More <span><i class="bi bi-chevron-down"></i></span></a>
                     @endif
                 </div>
             </div>

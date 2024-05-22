@@ -5,6 +5,7 @@
     {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
 @endsection
 @section('content')
+
     <div class="about_content text-start">
         <h1>STRATEGIC PARTNERS</h1>
 
@@ -79,7 +80,7 @@
                                 @endforeach
                             </div>
                             @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
-                                <a href="#"  id='see_more_bttn' class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,'ar')">See More <span><i class="bi bi-chevron-down"></i></span></a>
+                                <a href="#"  id='see_more_bttn' class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">See More <span><i class="bi bi-chevron-down"></i></span></a>
                             @endif
                         </div>
                     </div>

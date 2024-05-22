@@ -137,6 +137,7 @@ class SolutionTabController
             ]);
         }else{
             app(UpdateSolutionTabAction::class)->handle($StaticTable,$validator->validated());
+            // return redirect()->route('admin.tabproject.about.index')->with('add','Success Add AboutTabs');
             return response()->json([
                 'status'=>200,
                 'message'=>'Update AboutTabs',

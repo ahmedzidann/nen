@@ -10,6 +10,10 @@
               e.preventDefault(); // Prevent the default form submission
               var form = $(this);
               var url = form.attr('action');
+              var submitButton = form.find('button[type="submit"]');
+              submitButton.prop('disabled', true);
+
+
                 for (instance in CKEDITOR.instances) {
                     CKEDITOR.instances[instance].updateElement();
                 }
@@ -24,12 +28,15 @@
                       if (response.status == 200) {
                           window.location.href = response.redirect_url;
                       }else{
+                        submitButton.prop('disabled', false);
+
                           $.each(response.errors, function (key, err_value) {
                               toastr.error(err_value,'Error!',{timeOut:11000});
                           });
                       }
                   },
                   error: function (xhr) {
+                    submitButton.prop('disabled', false);
                       toastr.error(xhr.responseText,'Error!',{timeOut:11000});
                   }
               });

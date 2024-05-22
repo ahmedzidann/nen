@@ -127,6 +127,7 @@ class SolutionController extends Controller
             ]);
         }else{
             app(UpdateSolutionAction::class)->handle($StaticTable,$validator->validated());
+
             return response()->json([
                 'status'=>200,
                 'message'=>'Update Solution',

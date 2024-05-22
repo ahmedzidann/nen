@@ -3,7 +3,10 @@
         <div class="second_part">
           <ul class="ul_pages">
             @foreach (App\Models\Page::where('parent_id',null)->get() as $page)
-            @if ($page->slug=='about' || $page->slug=='education' || $page->slug=='testing' )
+            @if ($page->slug=='home' )
+                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} </a>
+
+            @elseif ($page->slug=='about' || $page->slug=='education' || $page->slug=='testing' )
             <li class="li_category">
                 <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
                 <ul class="ul_dropdown">

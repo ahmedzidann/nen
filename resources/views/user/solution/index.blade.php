@@ -45,9 +45,10 @@
                         <div class="programe_content">
                             <img src="{{$item->getFirstMediaUrl('solutionTabs')}}">
                             <h3>{{$item->title}}</h3>
-                            <p style="color: #000;" class="description p_clamp">{{ strip_tags($item->description) }}</p>
+                            <p style="color: #000;" class="description {{ strlen($item->description)>= 200 ? "p_clamp":''}}">{{ strip_tags($item->description) }}</p>
+                            @if (strlen($item->description)>= 200)
                             <button class="show_bttn" onclick="toggleDescription(this)">Show More <i class="bi bi-chevron-down"></i></button>
-
+                            @endif
                             @php
                                 $bcount = $item->files->count() > $item->links->count()? $item->files->count():  $item->links->count();
                                 // $scount = $item->files->count() > $item->links->count()? $item->links->count():  $item->files->count();
@@ -141,15 +142,16 @@
 
 </div>
 <script>
+
     function toggleDescription(button) {
-    var description = button.previousElementSibling;
-    if (description.classList.contains('p_clamp')) {
-        description.classList.remove('p_clamp');
-        button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
-    } else {
-        description.classList.add('p_clamp');
-        button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+        var description = button.previousElementSibling;
+        if (description.classList.contains('p_clamp')) {
+            description.classList.remove('p_clamp');
+            button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+        } else {
+            description.classList.add('p_clamp');
+            button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+        }
     }
-}
     </script>
 @endsection

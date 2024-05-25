@@ -583,4 +583,7 @@
   'fax' => 'Fax',
   'Fax' => 'Fax',
   'please enter fax' => 'Please enter fax',
+  'Icon  english' => 'Icon  english',
+  'Icon ' => 'Icon ',
+  'please enter icon ' => 'Please enter icon ',
 );

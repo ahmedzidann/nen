@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Intervention\Image\Commands\EllipseCommand;
 use Yajra\DataTables\Facades\DataTables;
 
 class SolutionTabController
@@ -81,6 +82,10 @@ class SolutionTabController
 
     public function create(Request $request):View
     {
+        if( $request->tab== 'about_section_2'){
+            return view('admin.solution.tabs.create_about_sec_2',new SolutionTabsViewModel());
+
+        }
        return view('admin.solution.tabs.create',new SolutionTabsViewModel());
     }
 
@@ -91,7 +96,12 @@ class SolutionTabController
 
     public function store(SolutionTabRequest $request)
     {
-        $validator = $request->validationStore();
+        if($request->tab == 'about_section_2'){
+            $validator = $request->validationStoreSec2();
+
+        }else{
+            $validator = $request->validationStore();
+        }
         if($validator->fails())
         {
             return response()->json([
@@ -112,6 +122,11 @@ class SolutionTabController
     public function edit(Request $request,$id):View
     {
         $StaticTable =SolutionTab::find($id);
+        if( $request->tab== 'about_section_2'){
+            return view('admin.solution.tabs.edit_sec_2',new SolutionTabsViewModel($StaticTable));
+
+
+        }
        return view('admin.solution.tabs.edit',new SolutionTabsViewModel($StaticTable));
     }
 
@@ -125,8 +140,16 @@ class SolutionTabController
         $StaticTable =SolutionTab::find($id);
 
        if($request->submit2=='en'){
+            if($request->tab == 'about_section_2'){
+                $validator = $request->validationUpdateEnSec2();
+
+            }else
                $validator = $request->validationUpdateEn();
        }else{
+            if($request->tab == 'about_section_2'){
+                $validator = $request->validationUpdateArSec2();
+
+            }else
                 $validator = $request->validationUpdateAr();
        }
         if($validator->fails())

@@ -62,6 +62,27 @@ class SolutionTabRequest extends FormRequest
             "file_title.en.*" =>['nullable','string','required_with:file.*'],
         ]);
     }
+    public function validationStoreSec2(){
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            // 'childe_pages_id' => ['required'],
+            // 'item' => ['required'],
+            'icon' => ['required'],
+            'status' => ['nullable'],
+            'tabs_id' => ['nullable'],
+            'solution_id' => ['nullable'],
+            // "links" =>['nullable','array'],
+            // "links.*" =>['nullable','url'],
+            // 'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            // 'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            // "file" =>['nullable','array'],
+            // "file.*" =>['nullable','file'],
+            // "file_title.en.*" =>['nullable','string','required_with:file.*'],
+        ]);
+    }
 
     public function validationStoreTwo()
     {
@@ -122,6 +143,55 @@ class SolutionTabRequest extends FormRequest
             "file_title.en.*" =>['nullable','string','required_with:file.*'],
             "file_title.ar.*" =>['nullable','string','required_with:file.*'],
             "file_id.en.*"    =>['nullable'],
+        ]);
+    }
+    public function validationUpdateEnSec2()
+    {
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.'.$request->submit2 => ['required','max:255','min:2'],
+            'subtitle.'.$request->submit2 => ['required','max:8000','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            // 'item' => ['required'],
+            // 'pages_id' => ['required'],
+            'icon' => ['required'],
+            'status' => ['required'],
+            // "links" =>['nullable','array'],
+            // "links.*" =>['nullable','url'],
+            // 'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            // 'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            // "link_id.en.*"    =>['nullable'],
+
+            // "file" =>['nullable','array'],
+            // "file.*" =>['nullable','file'],
+            // "file_title.en.*" =>['nullable','string','required_with:file.*'],
+            // "file_title.ar.*" =>['nullable','string','required_with:file.*'],
+            // "file_id.en.*"    =>['nullable'],
+        ]);
+    }
+
+    public function validationUpdateArSec2()
+    {
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.'.$request->submit2 => ['required','max:255','min:2'],
+            'subtitle.'.$request->submit2 => ['required','max:8000','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            // 'item' => ['required'],
+            // 'pages_id' => ['required'],
+            'icon' => ['required'],
+            'status' => ['required'],
+            // "links" =>['nullable','array'],
+            // "links.*" =>['nullable','url'],
+            // 'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            // 'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            // "link_id.en.*"    =>['nullable'],
+
+            // "file" =>['nullable','array'],
+            // "file.*" =>['nullable','file'],
+            // "file_title.en.*" =>['nullable','string','required_with:file.*'],
+            // "file_title.ar.*" =>['nullable','string','required_with:file.*'],
+            // "file_id.en.*"    =>['nullable'],
         ]);
     }
 

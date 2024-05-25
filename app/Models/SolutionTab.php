@@ -16,6 +16,7 @@ class SolutionTab extends Model implements  HasMedia
    public $translatable = [
     'title',
     'description',
+    "subtitle"
    ];
 
    protected $fillable = [
@@ -23,7 +24,9 @@ class SolutionTab extends Model implements  HasMedia
       'description',
       "tabs_id",
       "solution_id",
-      "status"
+      "status",
+      "icon",
+      "subtitle"
    ];
 
    public function links()

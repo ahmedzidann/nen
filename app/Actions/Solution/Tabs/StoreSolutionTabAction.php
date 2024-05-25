@@ -39,7 +39,7 @@ class StoreSolutionTabAction
                     }
                 }
                 // dd($data);
-
+                if(isset($data['links']))
                 foreach($data['links'] as $key=>$link){
                     if($link!=null){
                         $title[array_key_first($data['links_title'])]= $data['links_title']['en'][$key];

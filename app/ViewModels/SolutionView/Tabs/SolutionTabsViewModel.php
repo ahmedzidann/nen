@@ -4,6 +4,7 @@ namespace App\ViewModels\SolutionView\Tabs;
 use App\Models\AboutTabs;
 use App\Models\Page;
 use App\Models\Project;
+use App\Models\SolutionTab;
 use App\Models\StaticTable;
 use App\Models\Tabs;
 use App\Models\TranslationKey;
@@ -26,7 +27,7 @@ class SolutionTabsViewModel extends ViewModel
 
     public function __construct($StaticTable = null)
     {
-        $this->StaticTable = is_null($StaticTable) ? new AboutTabs(old()) : $StaticTable;
+        $this->StaticTable = is_null($StaticTable) ? new SolutionTab(old()) : $StaticTable;
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();

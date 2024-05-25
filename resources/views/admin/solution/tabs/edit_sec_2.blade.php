@@ -1,0 +1,241 @@
+@extends('admin.layouts.master')
+@section('titleadmin')
+{{ str_replace("-"," ",ucfirst(TranslationHelper::translate($viewTable.' '.$type))) }}
+@endsection
+@section('cssadmin')
+
+@endsection
+
+@section('contentadmin')
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <x-admin.customize-breadcrumb :name="$viewTable" :route-view="$routeView" type="Edit">
+        </x-admin.customize-breadcrumb>
+        <!--end breadcrumb-->
+        <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12">
+            <div class="col">
+                <h6 class="mb-0 text-uppercase">{{ TranslationHelper::translate(ucfirst('Nav Tabs')??'') }}</h6>
+                <hr />
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-danger" role="tablist">
+                            @foreach ($translation as $item)
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link {{ $loop->first?'active':'' }}" data-bs-toggle="tab"
+                                    href="#{{ $item->id }}" role="tab" aria-selected="true">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
+                                        </div>
+                                        <div class="tab-title"> {{ ucfirst($item->name) }}</div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                        <input type="hidden" id="key_new" value="{{ $translation->count() }}">
+                        @foreach ($translation as $key=>$item)
+                        <form method="post" id="myForm{{ $key }}" action="{{ $action??'' }}"
+                            enctype="multipart/form-data">
+                            @include('components.admin.form.csrf')
+                            <div class="tab-content py-3">
+                                <div class="tab-pane fade {{ $loop->first?'show active':'' }}" id="{{ $item->id }}"
+                                    role="tabpanel">
+                                    <div class="card-body p-4">
+                                        {{-- --------start --}}
+                                        <div class="card-body p-4 row">
+                                            {{-- ----------start static --}}
+                                            <input type="hidden" name="pages_id" value="{{ $SelectPages->id ?? '' }}">
+                                            <input type="hidden" name="category"
+                                                value="{{ Request()->category ?? '' }}">
+                                            <input type="hidden" name="subcategory"
+                                                value="{{ Request()->subcategory ?? '' }}">
+                                            <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
+                                            {{-- ----------end static --}}
+                                            {{-- ----------name first --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Title  {{ $item->name  }}"></x-admin.form.label-first>
+                                                <x-admin.form.input id="title" old="{{ 'title.'.$item->key }}"
+                                                    name="{{ 'title'.'['.$item->key.']' }}" type="text" required=""
+                                                    placeholder="Title {{ $item->name }}" class="form-control valid"
+                                                    :value="$StaticTable->translate('title', $item->key)">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter Title  {{ $item->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <x-admin.form.label-first star="*" class="form-label"
+                                            name="subtitle  {{ $translationFirst->name  }}">
+                                        </x-admin.form.label-first>
+                                        <x-admin.form.input old="{{ 'subtitle.'.$translationFirst->key }}"
+                                            name="{{ 'subtitle'.'['.$translationFirst->key.']' }}" type="text"
+                                            required="" placeholder="subtitle {{ $translationFirst->name }}"
+                                            class="form-control valid"
+                                            :value="$StaticTable->translate('subtitle', $translationFirst->key)">
+                                        </x-admin.form.input>
+                                        <x-admin.form.label-end star="*"
+                                            name="please enter subtitle  {{ $translationFirst->name  }}">
+                                        </x-admin.form.label-end>
+                                    </div>
+                                            {{-- ----------name first --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Icon">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="icon"
+                                                    name="icon" type="text"
+                                                    required="" placeholder="icon "
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->icon">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter icon ">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            {{-- ----------first image--}}
+
+                                            {{-- ----------end image--}}
+                                            @if ($loop->first)
+                                            {{-- ----------status first --}}
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first class="form-label"
+                                                    name="Checked switch checkbox status">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <div class="form-check">
+                                                            @foreach (App\Models\Page::STATUS as $status)
+                                                            <div class="form-check">
+                                                                <x-admin.form.radio
+                                                                    :checked="$StaticTable->status==$status?'checked':''"
+                                                                    name="status" value="{{ $status }}"
+                                                                    :model="$StaticTable">
+                                                                </x-admin.form.radio>
+                                                                <label class="form-check-label" for="bsValidation6">{{
+                                                                    $status }}</label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- ----------status end --}}
+
+                                            @endif
+
+                                            <input type="hidden" name="submit2" value="{{ $item->key }}">
+                                            <input type="hidden" name="tab" value="about_section_2">
+
+                                            <div class="col-md-12">
+                                                <div class="d-md-flex d-grid align-items-center gap-3">
+                                                    <x-admin.form.submit type="submit"></x-admin.form.submit>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- --------hatem --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end row-->
+    </div>
+</div>
+@endsection
+@section('jsadmin')
+@include('admin.layouts.ckeditor.ckeditor')
+<script src="{{ asset('admin/about/certificates/js/edit.js') }}"></script>
+{{-- <script src="{{ asset('admin/about/certificates/js/create.js') }}"></script> --}}
+
+@endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Function to create a new input field
+
+    function createInputFieldEnglish() {
+
+        var template = document.getElementsByClassName("input-temp-english")[0].cloneNode(true);
+
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+
+        document.getElementsByClassName("inputs-container-english")[0].appendChild(template);
+    }
+
+    function createInputFieldArabic() {
+
+        var template = document.getElementsByClassName("input-temp-arabic")[0].cloneNode(true);
+
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+
+        document.getElementsByClassName("inputs-container-arabic")[0].appendChild(template);
+    }
+
+    // Function to delete an input field
+    function deleteInputField(btn) {
+        btn.closest('.input-temp').remove();
+    }
+
+    // Add event listener for the "Add Input" button
+    document.getElementById("add-input-arabic").addEventListener("click", function() {
+
+        createInputFieldArabic();
+    });
+
+    document.getElementById("add-input-english").addEventListener("click", function() {
+
+        createInputFieldEnglish();
+    });
+
+    // Add event listener for dynamically added "Delete" buttons
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("delete-input")) {
+            deleteInputField(event.target);
+        }
+    });
+});
+
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Function to create a new input field
+    function createInputFieldEnglish() {
+        // Clone the template
+        var template = document.getElementsByClassName("input-template-file-english")[0].cloneNode(true);
+        console.log('d');
+        template.removeAttribute('id');
+        template.removeAttribute('style');
+        // Append the cloned template to the container
+        document.getElementsByClassName("inputs-container-file-english")[0].appendChild(template);
+    }
+
+    // Function to delete an input field
+    function deleteInputField(btn) {
+        btn.closest('.input-temp-file').remove();
+    }
+
+    // Add event listener for the "Add Input" button
+    document.getElementById("add-input-file-english").addEventListener("click", function() {
+
+        createInputFieldEnglish();
+    });
+
+    // Add event listener for dynamically added "Delete" buttons
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("delete-input-file")) {
+            deleteInputField(event.target);
+        }
+    });
+});
+
+</script>

@@ -26,7 +26,8 @@ class SolutionTab extends Model implements  HasMedia
       "solution_id",
       "status",
       "icon",
-      "subtitle"
+      "subtitle",
+      "subsubtitle"
    ];
 
    public function links()

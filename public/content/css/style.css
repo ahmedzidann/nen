@@ -2133,7 +2133,7 @@ margin-top: 75px;
 .p_clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   overflow: hidden;
   color: #333333;
   text-align: left;
@@ -2760,7 +2760,7 @@ color: #ffffff;
 .bttn_service img{
   height: 70px;
   width: 70px;
-} 
+}
 
 .flex_servic_icon{
   display: flex;
@@ -3101,7 +3101,7 @@ color: #ffffff;
 
   .about_des_div h3 {
       font-size: 23px;
-  
+
   }
   .about_des_div_img img {
       width: 350px;
@@ -3437,26 +3437,26 @@ color: #ffffff;
 
   .about_des_div h3 {
       font-size: 20px;
-  
+
   }
 
   .about_des_div .lamp_div {
       font-size: 18px;
       line-height: 28px;
   }
-  
+
   .about-counters {
       gap:25px;
       padding-top: 35px;
       margin: 40px 0;
       grid-template-columns: 1fr 1fr 1fr;
   }
-  
+
   .about-counters li i {
       font-size: 32px;
-  
+
   }
-  
+
   .about-counters li::after {
       width: 0;
   }
@@ -3497,7 +3497,7 @@ color: #ffffff;
 .resource_img img {
   width: 140px;
   height: 85px;
- 
+
 }
 .Resources_sec {
   padding: 21px 20px;
@@ -3994,7 +3994,7 @@ width: 100%;
 .resource_img img {
   width: 125px;
   height: 79px;
-  
+
 }
 
 .Resources_sec {

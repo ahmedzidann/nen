@@ -85,6 +85,9 @@ class SolutionTabController
         if( $request->tab== 'about_section_2'){
             return view('admin.solution.tabs.create_about_sec_2',new SolutionTabsViewModel());
 
+        }elseif( $request->tab== 'contacts'){
+            return view('admin.solution.tabs.contacts',new SolutionTabsViewModel());
+
         }
        return view('admin.solution.tabs.create',new SolutionTabsViewModel());
     }
@@ -99,7 +102,10 @@ class SolutionTabController
         if($request->tab == 'about_section_2'){
             $validator = $request->validationStoreSec2();
 
-        }else{
+        }elseif( $request->tab== 'contacts'){
+            $validator = $request->validationStoreContact();
+        }
+        else{
             $validator = $request->validationStore();
         }
         if($validator->fails())
@@ -109,6 +115,7 @@ class SolutionTabController
                 'errors'=>$validator->messages()
             ]);
         }else{
+
             $Tabs = Tabs::find($request->tabs_id);
             app(StoreSolutionTabAction::class)->handle($validator->validated());
             redirect()->route('admin.tabsolution.index')->with('add','Success Add AboutTabs');
@@ -124,6 +131,10 @@ class SolutionTabController
         $StaticTable =SolutionTab::find($id);
         if( $request->tab== 'about_section_2'){
             return view('admin.solution.tabs.edit_sec_2',new SolutionTabsViewModel($StaticTable));
+
+
+        }elseif( $request->tab== 'contacts'){
+            return view('admin.solution.tabs.edit-contacts',new SolutionTabsViewModel($StaticTable));
 
 
         }
@@ -142,6 +153,10 @@ class SolutionTabController
        if($request->submit2=='en'){
             if($request->tab == 'about_section_2'){
                 $validator = $request->validationUpdateEnSec2();
+
+            }elseif($request->tab == 'contacts'){
+
+                $validator = $request->validationUpdateContacts();
 
             }else
                $validator = $request->validationUpdateEn();

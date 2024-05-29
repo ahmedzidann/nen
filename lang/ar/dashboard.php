@@ -587,4 +587,13 @@
   'Icon  english' => 'Icon  english',
   'Icon ' => 'Icon ',
   'please enter icon ' => 'Please enter icon ',
+  'please enter Name' => 'Please enter Name',
+  'please enter Country' => 'Please enter Country',
+  'please enter Phone' => 'Please enter Phone',
+  'country Flag' => 'Country Flag',
+  'Technology View' => 'Technology View',
+  'Technology Create' => 'Technology Create',
+  'Technology Edit' => 'Technology Edit',
+  'english title' => 'English title',
+  'arabic title' => 'Arabic title',
 );

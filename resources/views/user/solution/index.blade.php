@@ -210,7 +210,7 @@
                         <h2 class="section-title__title">do you have questions? Do not hesitate to
                             contact us</h2>
                         <a href="#" class="bttn_service">
-                            <img src="content/images/small_icon/chat.png">
+                            <img src="{{url('content/images/small_icon/chat.png')}}">
                             <div class="flex_servic_icon">
                                 <p>Customer Service</p>
                                 <h6>cs@nen-global.org</h6>
@@ -239,35 +239,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                         @forelse ($items->where('tabs_id',$tab->id) as $key=> $item)
                                         <tr>
                                             <td data-column="Country" class="td-left">
-                                                <div class="country_icons"> <span class="office-flag-img"><img src="content/images/small_icon/Flag_of_Egypt.svg.webp"></span>
-                                                    Egypt</div>
+                                                <div class="country_icons"> <span class="office-flag-img"><img src="{{$item->getFirstMediaUrl('solutionTabs')}}"></span>
+                                                    {{$item->subsubtitle}} </div>
 
                                             </td>
-                                            <td data-column="Name" class="td-center">mohamed mostafa
+                                            <td data-column="Name" class="td-center">{{$item->title}}
                                             </td>
 
-                                            <td data-column="Phone">+962 7 9007 5557</td>
+                                            <td data-column="Phone">{{$item->subtitle}}</td>
                                         </tr>
-                                        <tr>
-                                            <td data-column="Country" class="td-left">
-                                                <div class="country_icons"> <span class="office-flag-img"><img src="content/images/small_icon/images.png"></span>
-                                                    Saudi </div>
-                                            </td>
-                                            <td data-column="Name" class="td-center">mohamed mostafa
-                                            </td>
-                                            <td data-column="Phone">+963 944 316 641</td>
-                                        </tr>
-                                        <tr>
-                                            <td data-column="Country" class="td-left">
-                                                <div class="country_icons"> <span class="office-flag-img"><img src="content/images/small_icon/download.png"></span>
-                                                    kanda</div>
-                                            </td>
-                                            <td data-column="Name" class="td-center">mohamed mostafa
-                                            </td>
-                                            <td data-column="Phone">+7 961 607 7887</td>
-                                        </tr>
+                                        @empty
+                                        @endforelse
+
                                     </tbody>
                                 </table>
                             </div>

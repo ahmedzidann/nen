@@ -98,16 +98,13 @@
                                                     class="ref_coloring"
                                                     href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                 @endif
-
                                             </p>
                                             <p>
                                                 @if ($item->url)
                                                 <img src="{{url('content/images/small_icon/global.png')}}"><span><a
                                                     class="ref_coloring" href="{{$item->url}}">Website</a></span>
                                                 @endif
-
                                             </p>
-
                                         </div>
                                     </div>
                                 </div>

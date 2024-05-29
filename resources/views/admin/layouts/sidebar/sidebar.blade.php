@@ -265,6 +265,30 @@
 						{{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
 					</ul>
 				</li>
+                @php
+                $testing = App\Models\Page::find(7);
+                @endphp
+                {{-- Testing --}}
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                        </div>
+                        <div class="menu-title">{{$testing->name}}</div>
+                    </a>
+                    <ul>
+                        @foreach ($testing->childe as $ch)
+
+                                <li class="">
+
+                                    <a href="{{ route('admin.technology.index',['category='.$testing->slug
+                                        ,"subcategory=".$ch->slug]) }}" >
+                                    <i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
+                                </li>
+
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
                 {{-- end Testing  --}}
 				{{-- item --}}
 				<li class="menu-label">Forms & Tables</li>

@@ -28,8 +28,7 @@ use App\Http\Controllers\Admin\Testing\TestingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Solution\Tabs\SolutionTabController;
-
-
+use App\Http\Controllers\Admin\Technology\TechnologyController;
 
 Route::middleware('authAdmin:admin')->group(function () {
     Route::get('/',DashboardController::class)->name('dashboard');
@@ -84,6 +83,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('education', EducationController::class);
         Route::resource('testing', TestingController::class);
         Route::resource('solution', SolutionController::class);
+        Route::resource('technology', TechnologyController::class);
         Route::name('tabsolution.')->prefix('tab-solution')->group(function(){
             Route::resource("", SolutionTabController::class);
             Route::get('/{solution}', [SolutionTabController::class,'show']);

@@ -62,6 +62,22 @@ class SolutionTabRequest extends FormRequest
             "file_title.en.*" =>['nullable','string','required_with:file.*'],
         ]);
     }
+    public function validationStoreContact(){
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'subsubtitle' => ['required'],
+            'image'=>['required','mimes:png,jpg,jpeg,svg,webp'],
+            // 'childe_pages_id' => ['required'],
+            // 'item' => ['required'],
+            // 'pages_id' => ['required'],
+            'status' => ['nullable'],
+            'tabs_id' => ['nullable'],
+            'solution_id' => ['nullable'],
+
+        ]);
+    }
     public function validationStoreSec2(){
         $request= Request();
         return Validator::make($request->all(), [
@@ -143,6 +159,24 @@ class SolutionTabRequest extends FormRequest
             "file_title.en.*" =>['nullable','string','required_with:file.*'],
             "file_title.ar.*" =>['nullable','string','required_with:file.*'],
             "file_id.en.*"    =>['nullable'],
+        ]);
+    }
+
+    public function validationUpdateContacts()
+    {
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'subsubtitle' => ['required'],
+            'image'=>['nullable','mimes:png,jpg,jpeg,svg,webp'],
+            // 'childe_pages_id' => ['required'],
+            // 'item' => ['required'],
+            // 'pages_id' => ['required'],
+            'status' => ['nullable'],
+            // 'tabs_id' => ['nullable'],
+            // 'solution_id' => ['nullable'],
+
         ]);
     }
     public function validationUpdateEnSec2()

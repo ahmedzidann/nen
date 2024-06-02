@@ -278,12 +278,18 @@
                     <ul>
                         @foreach ($testing->childe as $ch)
 
-                                <li class="">
+                        <li><a class="has-arrow" href="javascript:;"><i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
+							<ul>
+								<li class="{{ $route=='about' && $route_two=='identity' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.technology.index',['category='.$testing->slug,"subcategory=".$ch->slug,'item=section-one']) }}" ><i class='bx bx-radio-circle'></i>Section one</a></li>
+								<li class="{{ $route=='about' && $route_two=='identity' && Request()->item=='section-one' ?'mm-active':'' }}"><a href="{{ route('admin.technology.index',['category='.$testing->slug,"subcategory=".$ch->slug,'item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li>
+								{{-- <li class="{{ $route=='about' && $route_two=='identity' && Request()->item=='section-two' ?'mm-active':'' }}"><a href="{{ route('admin.technology.index',['category=about','subcategory=identity','item=section-two']) }}" ><i class='bx bx-radio-circle'></i>Section two</a></li> --}}
+								{{-- <li class="{{ $route=='about' && $route_two=='identity' && Request()->item=='section-three' ?'mm-active':'' }}"><a href="{{ route('admin.about.identity.index',['category=about','subcategory=identity','item=section-three']) }}" ><i class='bx bx-radio-circle'></i>Section three</a></li> --}}
+							</ul>
+						</li>
+                                {{-- <li class="">
 
-                                    <a href="{{ route('admin.technology.index',['category='.$testing->slug
-                                        ,"subcategory=".$ch->slug]) }}" >
-                                    <i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
-                                </li>
+                                    <a href="{{ route('admin.technology.index',['category='.$testing->slug,"subcategory=".$ch->slug]) }}" ><i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
+                                </li> --}}
 
                         </li>
                         @endforeach

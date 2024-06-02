@@ -3,7 +3,6 @@ namespace App\ViewModels\TechnologyView;
 
 use App\Models\Page;
 use App\Models\StaticTable;
-use App\Models\Technology;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
 
@@ -19,35 +18,27 @@ class TechnologyViewModel extends ViewModel
     public  $allPage;
     public  $SelectPages;
     public  $DataFull;
-    public  $editRoute;
 
     public function __construct($StaticTable = null)
     {
-        $this->StaticTable = is_null($StaticTable) ? new Technology(old()) : $StaticTable;
+        $this->StaticTable = is_null($StaticTable) ? new StaticTable(old()) : $StaticTable;
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();
         $this->routeCreate = route('admin.technology.create',Request()->query());
         $this->routeView = route('admin.technology.index',Request()->query());
-        // $this->editRoute = route('admin.technology.edit',['technology'=> "5" ,''=>Request()->query()]);
-        // dd($this->editRoute);
         $this->viewTable = 'Technology';
-        $a = Page::where('slug',Request()->category)->first()->childe->where('slug',Request()->subcategory);
-        // dd($a);
-        $this->allPage = $a->first()->childe;
-        if(!empty(Request()->category) && !empty(Request()->subcategory) && !empty(Request()->item)){
-            $this->SelectPages = Page::where('slug',Request()->item)->first();
-        }
-        elseif(!empty(Request()->category) && !empty(Request()->subcategory)){
-
+        $this->allPage = Page::get();
+        if(!empty(Request()->category) && !empty(Request()->subcategory)){
             $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
+            $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
         }elseif(!empty(Request()->category)){
             $this->SelectPages = Page::where('slug',Request()->category)->first();
+            $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
         }else{
             $this->SelectPages = '';
+            $this->DataFull = '';
         }
-
-        // dd($this->SelectPages);
     }
 
     public function action(): string

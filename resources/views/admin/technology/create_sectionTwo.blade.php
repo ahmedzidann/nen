@@ -70,19 +70,19 @@
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
-                                                    name="Description  {{ $translationFirst->name  }}">
+                                                    name="subtitle  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-first>
-                                                <x-admin.form.text old="{{ 'description.'.$translationFirst->key }}"
-                                                    name="{{ 'description'.'['.$translationFirst->key.']' }}"
-                                                    type="text"
-                                                    placeholder="Description {{ ucfirst($translationFirst->name)  }}"
-                                                    :value="$StaticTable->translate('description', $translationFirst->key)">
-                                                </x-admin.form.text>
+                                                <x-admin.form.input old="{{ 'subtitle.'.$translationFirst->key }}"
+                                                    name="{{ 'subtitle'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder="subtitle {{ $translationFirst->name }}"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('subtitle', $translationFirst->key)">
+                                                </x-admin.form.input>
                                                 <x-admin.form.label-end star="*"
-                                                    name="please enter Description  {{ $translationFirst->name  }}">
+                                                    name="please enter subtitle  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            {{-- ----------Description end --}}
+
                                             {{-- ----------first image--}}
                                             @if (Request()->category == 'about' && Request()->subcategory == 'identity'
                                             && Request()->item == 'section-three')
@@ -101,6 +101,7 @@
                                             </div>
                                             @endif
                                             {{-- ----------end image--}}
+                                            {{-- ----------Description end --}}
                                             {{-- ----------sort first --}}
                                             @if (Request()->category == 'about' && Request()->subcategory == 'identity'
                                             && Request()->item == 'section-one')

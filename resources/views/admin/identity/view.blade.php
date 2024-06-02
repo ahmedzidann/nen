@@ -21,7 +21,6 @@
                 <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
             @endif
         @else
-
                 <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
         @endif
 

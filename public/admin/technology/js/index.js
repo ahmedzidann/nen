@@ -34,10 +34,6 @@ $(function () {
                 name: 'title'
             },
             {
-                data: 'Page2',
-                name: 'childe_pages_id'
-            },
-            {
                 data: 'created_at',
                 name: 'created_at'
             },
@@ -45,9 +41,7 @@ $(function () {
                 data: 'action',
                 name: 'action',
                 orderable: true,
-                searchable: true,
-
-
+                searchable: true
             },
         ],
         dom: 'lBfrtip',

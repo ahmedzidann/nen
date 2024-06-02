@@ -37,57 +37,104 @@ class TechnologyRequest extends FormRequest
             'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],
             'status' => ['nullable'],
-            "links" =>['nullable','array'],
-            "links.*" =>['nullable','url'],
-            'links_title.en.*' =>['nullable','string','required_with:links.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
-            "file" =>['nullable','array'],
-            "file.*" =>['nullable','file'],
-            "file_title.en.*" =>['nullable','string','required_with:file.*'],
+            "item"  =>['required'],
+            "subcategory"  =>['required'],
+            // "links" =>['nullable','array'],
+            // "links.*" =>['nullable','url'],
+            // 'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            // 'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            // "file" =>['nullable','array'],
+            // "file.*" =>['nullable','file'],
+            // "file_title.en.*" =>['nullable','string','required_with:file.*'],
             "video"=>'nullable|mimetypes:video/mp4,video/quicktime'
         ]);
     }
-    public function validationUpdateEn()
+    public function validationStoretwo()
     {
-        // dd(Request()->all());
         $request= Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
-            'pages_id' => ['nullable'],
+            'title.*' => ['required','max:255','min:2'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'image'=>['required','mimes:png,jpg,jpeg'],
+            'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],
             'status' => ['nullable'],
-            "links" =>['nullable','array'],
-            "links.*" =>['nullable','url'],
-            'links_title.en.*' =>['nullable','string','required_with:links.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
-            "link_id.en.*"    =>['nullable'],
-
-            "file" =>['nullable','array'],
-            "file.*" =>['nullable','file'],
-            "file_title.en.*" =>['nullable','string','required_with:file.*'],
-            "file_title.ar.*" =>['nullable','string','required_with:file.*'],
-            "file_id.en.*"    =>['nullable'],
-
+            "item"  =>['required'],
+            "subcategory"  =>['required'],
+            // "links" =>['nullable','array'],
+            // "links.*" =>['nullable','url'],
+            // 'links_title.en.*' =>['nullable','string','required_with:links.*'],
+            // 'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            // "file" =>['nullable','array'],
+            // "file.*" =>['nullable','file'],
+            // "file_title.en.*" =>['nullable','string','required_with:file.*'],
+            "video"=>'nullable|mimetypes:video/mp4,video/quicktime'
         ]);
     }
+
+
+
+    public function validationUpdateEn()
+    {
+
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'description.*' => ['required','max:8000','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'pages_id' => ['required'],
+            'childe_pages_id' => ['nullable'],
+            'status' => ['nullable'],
+            "item"  =>['required'],
+            "subcategory"  =>['required'],
+        ]);
+    }
+
+    public function validationUpdateTwoEn()
+    {
+
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'pages_id' => ['required'],
+            'childe_pages_id' => ['nullable'],
+            'status' => ['nullable'],
+            "item"  =>['required'],
+            "subcategory"  =>['required'],
+        ]);
+    }
+
     public function validationUpdateAr()
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            "links" =>['nullable','array'],
-            "links.*" =>['nullable','url'],
-            'links_title.en.*' =>['nullable','string','required_with:links.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
-            "link_id.ar.*"    =>['nullable'],
+            'title.*' => ['required','max:255','min:2'],
+            'description.*' => ['required','max:8000','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'pages_id' => ['required'],
+            'childe_pages_id' => ['nullable'],
+            'status' => ['nullable'],
+            "item"  =>['required'],
+            "subcategory"  =>['required'],
 
-            "file_title.ar.*" =>['nullable','string','required_with:file.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
-            "file_id.ar.*"    =>['nullable'],
+        ]);
+    }
 
+    public function validationUpdateTwoAr()
+    {
+
+        $request= Request();
+        return Validator::make($request->all(), [
+            'title.*' => ['required','max:255','min:2'],
+            'subtitle.*' => ['required','max:255','min:2'],
+            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'pages_id' => ['required'],
+            'childe_pages_id' => ['nullable'],
+            'status' => ['nullable'],
+            "item"  =>['required'],
+            "subcategory"  =>['required'],
         ]);
     }
 }

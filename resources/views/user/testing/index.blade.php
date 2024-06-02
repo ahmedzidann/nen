@@ -58,7 +58,7 @@
 
                                                 </div>
 
-                                                <p>{{$item->title}} <span>({{$item->years_text}})</span></p>
+                                                <p>{{$item->title}}</p>
                                             </div>
                                             <div class="iso_titels "  >
                                                 <span class="description {{ strlen($item->description)>= 200 ? "p_clamp":''}}">

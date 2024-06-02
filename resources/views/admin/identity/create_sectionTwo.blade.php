@@ -70,37 +70,34 @@
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
-                                                    name="Description  {{ $translationFirst->name  }}">
+                                                    name="subtitle  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-first>
-                                                <x-admin.form.text old="{{ 'description.'.$translationFirst->key }}"
-                                                    name="{{ 'description'.'['.$translationFirst->key.']' }}"
-                                                    type="text"
-                                                    placeholder="Description {{ ucfirst($translationFirst->name)  }}"
-                                                    :value="$StaticTable->translate('description', $translationFirst->key)">
-                                                </x-admin.form.text>
+                                                <x-admin.form.input old="{{ 'subtitle.'.$translationFirst->key }}"
+                                                    name="{{ 'subtitle'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder="subtitle {{ $translationFirst->name }}"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('subtitle', $translationFirst->key)">
+                                                </x-admin.form.input>
                                                 <x-admin.form.label-end star="*"
-                                                    name="please enter Description  {{ $translationFirst->name  }}">
+                                                    name="please enter subtitle  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="icon">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="icon"
+                                                    name="icon" type="text"
+                                                    required="" placeholder="icon"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->icon">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter icon">
                                                 </x-admin.form.label-end>
                                             </div>
                                             {{-- ----------Description end --}}
-                                            {{-- ----------first image--}}
-                                            @if (Request()->category == 'about' && Request()->subcategory == 'identity'
-                                            && Request()->item == 'section-three')
-                                            @else
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
-                                                    name="File Upload Image">
-                                                </x-admin.form.label-first>
-                                                <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
-                                                        old="image" name="image" type="file" readonly=""
-                                                        placeholder="Please Enter Image" id="image" class="dropify"
-                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                                    </x-admin.form.input>
-                                                </div>
-                                            </div>
-                                            @endif
-                                            {{-- ----------end image--}}
                                             {{-- ----------sort first --}}
                                             @if (Request()->category == 'about' && Request()->subcategory == 'identity'
                                             && Request()->item == 'section-one')

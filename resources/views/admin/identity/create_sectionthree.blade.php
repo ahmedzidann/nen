@@ -51,7 +51,7 @@
                                                 value="{{ Request()->subcategory ?? '' }}">
                                             <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                             {{-- ----------end Pages --}}
-                                            {{-- ----------name first --}}
+
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Title  {{ $translationFirst->name  }}">
@@ -66,7 +66,6 @@
                                                     name="please enter title  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            {{-- ----------name first --}}
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
@@ -82,11 +81,24 @@
                                                     name="please enter Description  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-end>
                                             </div>
+                                            {{-- <div class="texareanew col-md-12 mb-4">
+                                            <a onclick="addRow()" class="addRow"><i class="lni lni-circle-plus"></i></a>
+                                            <br>
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Description  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+
+                                                <x-admin.form.text old="{{ 'description.'.$translationFirst->key }}"
+                                                    name="{{ 'description[]'.'['.$translationFirst->key.']' }}"
+                                                    type="text"
+                                                    placeholder="Description {{ ucfirst($translationFirst->name)  }}"
+                                                    :value="$StaticTable->translate('description', $translationFirst->key)">
+                                                </x-admin.form.text>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter Description  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-end>
+                                            </div> --}}
                                             {{-- ----------Description end --}}
-                                            {{-- ----------first image--}}
-                                            @if (Request()->category == 'about' && Request()->subcategory == 'identity'
-                                            && Request()->item == 'section-three')
-                                            @else
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
@@ -99,8 +111,6 @@
                                                     </x-admin.form.input>
                                                 </div>
                                             </div>
-                                            @endif
-                                            {{-- ----------end image--}}
                                             {{-- ----------sort first --}}
                                             @if (Request()->category == 'about' && Request()->subcategory == 'identity'
                                             && Request()->item == 'section-one')
@@ -163,5 +173,35 @@
 @endsection
 @section('jsadmin')
 @include('admin.layouts.ckeditor.ckeditor')
+
 <script src="{{ asset('admin/about/identity/js/create.js') }}"></script>
+<script>
+   function addRow()
+{
+  var tr =`
+      <div class="texareanew col-md-12 mb-4 removelang">
+      <a  class="parent_color_div remove"><i class="lni lni-circle-minus"></i></a>
+      <br/>
+        <x-admin.form.label-first star="*" class="form-label"
+            name="Description  {{ $translationFirst->name  }}">
+        </x-admin.form.label-first>
+        <x-admin.form.text old="{{ 'description.'.$translationFirst->key }}"
+            name="{{ 'description[]'.'['.$translationFirst->key.']' }}"
+            type="text"
+            placeholder="Description {{ ucfirst($translationFirst->name)  }}"
+            :value="$StaticTable->translate('description', $translationFirst->key)">
+        </x-admin.form.text>
+        <x-admin.form.label-end star="*"
+            name="please enter Description  {{ $translationFirst->name  }}">
+        </x-admin.form.label-end>
+    </div>
+
+  `;
+  $('.texareanew').append(tr);
+}
+
+$(document).on('click', '.parent_color_div', function() {
+    $(this).closest(".removelang").remove();
+});
+</script>
 @endsection

@@ -16,14 +16,8 @@
         <!--end breadcrumb-->
         <hr />
         <input type="hidden" id="{{ $viewTable }}" value="{{ app()->getLocale() }}">
-        @if ( Request()->item == 'section-one')
-            @if (empty($DataFull))
-                <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
-            @endif
-        @else
-
-                <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
-        @endif
+        <input type="hidden" id="{{ $viewTable.'-edit' }}" value="{{ $editRoute }}">
+        <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
 
         <div class="card-body">
             <div class="table-responsive">
@@ -34,6 +28,7 @@
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('title')??'') }}</th>
+                            <th>{{ TranslationHelper::translate(ucfirst('Page')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
                         </tr>
@@ -41,16 +36,19 @@
 
                     <tbody></tbody>
                     <tfoot>
-                        <tr class="odd">
+                        {{-- <tr class="odd">
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
                             <td><input type="text" class="form-control filter-input"
                                     placeholder="{{ TranslationHelper::translate(ucfirst('Search for name...')??'') }}"
                                     data-column="1"></td>
                             <td><input type="text" class="form-control filter-input"
+                                    placeholder="{{ TranslationHelper::translate(ucfirst('Search for name...')??'') }}"
+                                    data-column="2"></td>
+                            <td><input type="text" class="form-control filter-input"
                                     placeholder="Search for created_at..." data-column="3"></td>
                             <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
-                        </tr>
+                        </tr> --}}
                     </tfoot>
                 </table>
             </div>

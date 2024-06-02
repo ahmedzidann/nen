@@ -5,6 +5,7 @@ use App\Http\Controllers\User\AboutUs\AboutController;
 use App\Http\Controllers\User\Education\EducationController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,12 @@ Route::group(['prefix' => 'education','as'=>'education.', 'name'=>'education.'],
 Route::group(['prefix' => 'testing','as'=>'testing.', 'name'=>'testing.'], function () {
     foreach(Page::where('parent_id',Page::where('slug','testing')->first()->id)->get() as $page){
         Route::get($page->slug, [TestingContoller::class, 'index'])->name($page->slug);
+    }
+});
+
+Route::group(['prefix' => 'technology','as'=>'technology.', 'name'=>'technology.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','technology')->first()->id)->get() as $page){
+        Route::get($page->slug, [TechnologyContoller::class, 'index'])->name($page->slug);
     }
 });
 

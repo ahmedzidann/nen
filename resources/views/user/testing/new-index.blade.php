@@ -1,17 +1,17 @@
 @extends('user.layout.master')
-@section('parent_page_name')Solution @endsection
-@section('page_name')Solution @endsection
+@section('parent_page_name')Testing @endsection
+@section('page_name')Testing @endsection
 @section('cover_image')
     {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
 @endsection
 @section('content')
 
 <div class="about_content">
-    <h5>Education</h5>
+    <h5>Testing</h5>
     <h2>{{$tech->name}}</h2>
-    @if ($fSection =  $items->where('item','section-one')->first())
+    @if ($fSection =  $items)
     <div class="flex_sec_content">
-        <div class="left_side col-sm-6" style="">
+        <div class="left_side col-sm-6">
             <h2>{{ $fSection->title }}</h2>
             <div class="dtail_div">
                {!! $fSection->description!!}
@@ -20,7 +20,7 @@
             <a href="#" class="show_hidden">show more <i class="bi bi-chevron-down"></i></a>
         </div>
         <div class="right_side">
-            <img src="{{$fSection->getFirstMediaUrl('StaticTable')}}">
+            <img src="{{$fSection->getFirstMediaUrl('Testing')}}">
         </div>
 
     </div>

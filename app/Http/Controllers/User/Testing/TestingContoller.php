@@ -42,9 +42,10 @@ class TestingContoller extends Controller
 
         if($partner){
             $subPartners = $partner->childe;
-            $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();
+            $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->latest()->first();
             // dd($partners);
 
+            return view('user.testing.new-index',['tech'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
             return view('user.testing.index',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }
         else abort(400, "error");

@@ -47,7 +47,7 @@
             @endforeach
             @elseif (isset($technologies))
             @foreach ($technologies as $page)
-                <a href="{{route('technology.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('education.'.$page->slug.'')? "active_link active": ""}}">
+                <a href="{{route('technology.'.$page->slug.'',['page_id'=>$page->id] )}}" class="ref_styles active_ref {{ Route::is('technology.'.$page->slug.'')? "active_link active": ""}}">
                     <div class="img_link">
                     <img  class="@if($loop->first) Identity_icon @endif"  src="{{asset($page->getFirstMediaUrl('icon'))}}"
                         alt="" />{{$page->name}}

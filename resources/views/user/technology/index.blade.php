@@ -1,6 +1,6 @@
 @extends('user.layout.master')
-@section('parent_page_name')Solution @endsection
-@section('page_name')Solution @endsection
+@section('parent_page_name')Technology @endsection
+@section('page_name')Technology @endsection
 @section('cover_image')
     {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
 @endsection
@@ -13,11 +13,17 @@
     <div class="flex_sec_content">
         <div class="left_side col-sm-6" style="">
             <h2>{{ $fSection->title }}</h2>
-            <div class="dtail_div">
-               {!! $fSection->description!!}
+            <div class="iso_titels">
+                <span class="description text-start {{ strlen($fSection->description) >= 200 ? "p_clamp" : ''}}">
+                    {{ html_entity_decode(strip_tags($fSection->description)) }}
+                </span>
+
+                @if (strlen($fSection->description) >= 200)
+                <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+                @endif
             </div>
 
-            <a href="#" class="show_hidden">show more <i class="bi bi-chevron-down"></i></a>
+            {{-- <a href="#"     class="show_hidden">show more <i class="bi bi-chevron-down"></i></a> --}}
         </div>
         <div class="right_side">
             <img src="{{$fSection->getFirstMediaUrl('StaticTable')}}">

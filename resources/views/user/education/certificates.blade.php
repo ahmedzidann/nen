@@ -43,18 +43,15 @@
 
 
                     <div class="ceryifcates_sec">
-
-
-
                             <div class="grid_div_bttn">
-                                <div class="grid_div">
-                                    @forelse ($items->where('pages_id',$sub->id) as $item)
+                                <div class="grid_div" id="partners-{{$sub->slug}}" data-page="1">
+                                    @forelse ($items->where('pages_id',$sub->id)->take(6) as $item)
 
                                     <div class="card card_styles">
                                         <div class="card_content">
                                             <div class="iso_div">
                                                 <div class="size_div">
-                                                    <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
+                                                    <img src="{{$item->getFirstMediaUrl('Education')}}">
 
                                                 </div>
 
@@ -93,6 +90,9 @@
                                     </div>
                                     @endforelse
                                 </div>
+                                @if ($items->where('pages_id',$sub->id)->count()>6)
+                                <a href="#"  id='see_more_bttn' class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">See More <span><i class="bi bi-chevron-down"></i></span></a>
+                            @endif
                             </div>
 
 
@@ -156,13 +156,14 @@
             var newPage = page + 1;
 
             // Fetching items through a data attribute (ensure items are available globally in the blade)
-            var items = @json($items->where('item', 'section-two')->values());
-            var subItems = items.filter(item => item.childe_pages_id == slug_id)
-            var start = page * 2;
-            var end = start + 2;
+            var items = @json($items->values()); //'pages_id',$sub->id
+            var subItems = items.filter(item => item.pages_id == slug_id)
+            console.log(subItems);
+            var start = page * 6;
+            var end = start + 6;
             var newItems = subItems.slice(start, end);
-            console.log(items);
-            console.log(newItems);
+            // console.log(items);
+            // console.log(newItems);
 
             //.getFirstMediaUrl('StaticTable')
             newItems.forEach(item => {
@@ -172,10 +173,10 @@
                     <div class="card_content">
                         <div class="iso_div">
                             <div class="size_div">
-                                <img src="${item.media ?(item.media.filter(i => i.collection_name == 'StaticTable')[0]? item.media.filter(i => i.collection_name == 'StaticTable')[0].original_url : ""):""}">
+                                <img src="${item.media ?(item.media.filter(i => i.collection_name == 'Education')[0]? item.media.filter(i => i.collection_name == 'Education')[0].original_url : ""):""}">
 
                             </div>
-                            <p>${item.title[lang]?item.title[lang] :item.title.en} <span>(${item.years_text[lang]?item.years_text[lang] : item.years_text.en})</span></p>
+                            <p>${item.title[lang]?item.title[lang] :item.title.en} </p>
                         </div>
                         <div class="iso_titels">
                             <span class="description ${ item.description[lang]?(item.description[lang].length >= 200 ? 'p_clamp' : ''):

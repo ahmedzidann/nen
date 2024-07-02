@@ -13,11 +13,18 @@
     <div class="flex_sec_content">
         <div class="left_side col-sm-6">
             <h2>{{ $fSection->title }}</h2>
-            <div class="dtail_div">
-               {!! $fSection->description!!}
+            <div class="iso_titels">
+
+               <span class="description text-start {{ strlen($fSection->description) >= 200 ? "p_clamp" : ''}}">
+                {{ html_entity_decode(strip_tags($fSection->description)) }}
+            </span>
+
+            @if (strlen($fSection->description) >= 200)
+            <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+            @endif
             </div>
 
-            <a href="#" class="show_hidden">show more <i class="bi bi-chevron-down"></i></a>
+            {{-- <a href="#" class="show_hidden">show more <i class="bi bi-chevron-down"></i></a> --}}
         </div>
         <div class="right_side">
             <img src="{{$fSection->getFirstMediaUrl('Testing')}}">
@@ -27,14 +34,26 @@
     @endif
 
     <div class="counter_sec">
-        @foreach ($items->where('item','section-two') as $item)
+        @if ($items)
+
+
+        @forelse ($items->where('item','section-two') as $item)
             <div class="counter_content">
                 <h2>{{$item->title}}
                     <p>{{$item->subtitle}}</p>
                 </h2>
                 <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
             </div>
-        @endforeach
+            @empty
+            {{-- <div style="display: flex; justify-content: center;">
+                <p style="color:#999;">There is No Data Available</p>
+            </div> --}}
+        @endforelse
+        @else
+        <div style="display: flex; justify-content: center;">
+            <p style="color:#999;">There is No Data Available</p>
+        </div>
+        @endif
 
     </div>
 

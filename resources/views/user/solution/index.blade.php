@@ -82,8 +82,17 @@
                         <div class="flex_about_div">
                             <div class="about_des_div">
                                 <h3>{{$item->title}}</h3>
-                                <div class="lamp_div">{{ strip_tags($item->description) }}</div>
-                                <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a>
+                                {{-- <div class="lamp_div">{{ strip_tags($item->description) }}</div> --}}
+                                {{-- <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a> --}}
+                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                    {{ html_entity_decode(strip_tags($item->description)) }}
+                                </span>
+
+                                @if (strlen($item->description) >= 200)
+                                    <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+                                @endif
+
+
                             </div>
                             <div class="about_des_div_img">
                                 <img src="{{$item->getFirstMediaUrl('solutionTabs')}}">
@@ -103,8 +112,16 @@
                             </div>
                             <div class="about_des_div">
                                 <h3>{{$item->title}}</h3>
-                                <div class="lamp_div">{{ strip_tags($item->description) }}</div>
-                                <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a>
+                                {{-- <div class="lamp_div">{{ strip_tags($item->description) }}</div>
+                                <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a> --}}
+                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                    {{ html_entity_decode(strip_tags($item->description)) }}
+                                </span>
+
+                                @if (strlen($item->description) >= 200)
+                                    <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+                                @endif
+
                             </div>
                         </div>
                         @endif
@@ -212,8 +229,8 @@
                         <a href="#" class="bttn_service">
                             <img src="{{url('content/images/small_icon/chat.png')}}">
                             <div class="flex_servic_icon">
-                                <p>Customer Service</p>
-                                <h6>cs@nen-global.org</h6>
+                                <p>{{$solution->fax}}</p>
+                                <h6>{{$solution->email}}</h6>
                             </div>
                         </a>
                     </div>

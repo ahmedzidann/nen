@@ -148,7 +148,7 @@
 
             // console.log(newItems);
 
-        //.getFirstMediaUrl('StaticTable')
+            //.getFirstMediaUrl('StaticTable')
             newItems.forEach(item => {
                 var card = document.createElement('div');
                 card.className = 'card card_styles';

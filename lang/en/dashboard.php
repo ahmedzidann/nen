@@ -595,4 +595,5 @@
   'Technology Edit' => 'Technology Edit',
   'english title' => 'English title',
   'arabic title' => 'Arabic title',
+  'Service Name' => 'Service Name',
 );

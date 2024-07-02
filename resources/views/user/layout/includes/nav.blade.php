@@ -4,11 +4,11 @@
           <ul class="ul_pages">
             @foreach (App\Models\Page::where('parent_id',null)->get() as $page)
             @if ($page->slug=='home' )
-                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} </a>
+                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} </a>
 
             @elseif ($page->slug=='about' || $page->slug=='education' || $page->slug=='testing' || $page->slug=='technology' )
             <li class="li_category">
-                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
+                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
                 <ul class="ul_dropdown">
                     @foreach ($page->childe as $sub)
 
@@ -20,7 +20,7 @@
             </li>
             @elseif ( $page->slug=='solutions' )
             <li class="li_category">
-                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
+                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
                 <ul class="ul_dropdown">
                     @foreach ($page->childe as $sub)
 
@@ -40,7 +40,7 @@
             </li>
             @elseif ( $page->slug=='projects')
             <li class="li_category">
-                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
+                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
                 <ul class="ul_dropdown">
                     @foreach ($page->childe as $sub)
 
@@ -60,7 +60,7 @@
             </li>
             @else
             <li class="li_category">
-                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active_link": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
+                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
                 <ul class="ul_dropdown">
                     @foreach ($page->childe as $sub)
 

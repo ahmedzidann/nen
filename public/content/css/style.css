@@ -2140,6 +2140,15 @@ margin-top: 75px;
   text-align: left;
 }
 
+.p_clamp_2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    color: #333333;
+    text-align: left;
+  }
+
 .programe_content .show_bttn {
   background: #fff;
   border: none;
@@ -2761,7 +2770,7 @@ color: #ffffff;
 .bttn_service img{
   height: 70px;
   width: 70px;
-} 
+}
 
 .flex_servic_icon{
   display: flex;
@@ -2881,7 +2890,7 @@ color: #ffffff;
   line-height: 30px;
   display: -webkit-box;
   -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: 18px;
 }
@@ -3187,7 +3196,7 @@ color: #ffffff;
 
   .about_des_div h3 {
       font-size: 23px;
-  
+
   }
   .about_des_div_img img {
       width: 350px;
@@ -3523,26 +3532,26 @@ color: #ffffff;
 
   .about_des_div h3 {
       font-size: 20px;
-  
+
   }
 
   .about_des_div .lamp_div {
       font-size: 18px;
       line-height: 28px;
   }
-  
+
   .about-counters {
       gap:25px;
       padding-top: 35px;
       margin: 40px 0;
       grid-template-columns: 1fr 1fr 1fr;
   }
-  
+
   .about-counters li i {
       font-size: 32px;
-  
+
   }
-  
+
   .about-counters li::after {
       width: 0;
   }
@@ -3583,7 +3592,7 @@ color: #ffffff;
 .resource_img img {
   width: 140px;
   height: 85px;
- 
+
 }
 .Resources_sec {
   padding: 21px 20px;
@@ -4108,7 +4117,7 @@ width: 100%;
 .resource_img img {
   width: 125px;
   height: 79px;
-  
+
 }
 
 .Resources_sec {

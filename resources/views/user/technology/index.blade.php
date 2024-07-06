@@ -14,11 +14,11 @@
         <div class="left_side col-sm-6" style="">
             <h2>{{ $fSection->title }}</h2>
             <div class="iso_titels">
-                <span class="description text-start {{ strlen($fSection->description) >= 200 ? "p_clamp" : ''}}">
+                <span class="description text-start {{ strlen($fSection->description) >= 400 ? "p_clamp_2" : ''}}">
                     {{ html_entity_decode(strip_tags($fSection->description)) }}
                 </span>
 
-                @if (strlen($fSection->description) >= 200)
+                @if (strlen($fSection->description) >= 400)
                 <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
                 @endif
             </div>
@@ -83,11 +83,11 @@
 
     function toggleDescription(button) {
         var description = button.previousElementSibling;
-        if (description.classList.contains('p_clamp')) {
-            description.classList.remove('p_clamp');
+        if (description.classList.contains('p_clamp_2')) {
+            description.classList.remove('p_clamp_2');
             button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
         } else {
-            description.classList.add('p_clamp');
+            description.classList.add('p_clamp_2');
             button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
         }
     }

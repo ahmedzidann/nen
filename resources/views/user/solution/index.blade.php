@@ -50,7 +50,7 @@
                             <div class="programe_content">
                                 <img src="{{$item->getFirstMediaUrl('solutionTabs')}}">
                                 <h3>{{$item->title}}</h3>
-                                <p style="color: #000;" class="description {{ strlen($item->description)>= 200 ? "p_clamp":''}}">{{ strip_tags($item->description) }}</p>
+                                <p style="color: #000;" class="description {{ strlen($item->description)>= 200 ? "p_clamp_2":''}}">{{ strip_tags($item->description) }}</p>
                                 @if (strlen($item->description)>= 200)
                                 <button class="show_bttn" onclick="toggleDescription(this)">Show More <i class="bi bi-chevron-down"></i></button>
                                 @endif
@@ -84,11 +84,11 @@
                                 <h3>{{$item->title}}</h3>
                                 {{-- <div class="lamp_div">{{ strip_tags($item->description) }}</div> --}}
                                 {{-- <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a> --}}
-                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                <span class="description text-start {{ strlen($item->description) >= 300 ? "p_clamp_2" : ''}}">
                                     {{ html_entity_decode(strip_tags($item->description)) }}
                                 </span>
 
-                                @if (strlen($item->description) >= 200)
+                                @if (strlen($item->description) >= 300)
                                     <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
                                 @endif
 
@@ -114,7 +114,7 @@
                                 <h3>{{$item->title}}</h3>
                                 {{-- <div class="lamp_div">{{ strip_tags($item->description) }}</div>
                                 <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a> --}}
-                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp_2" : ''}}">
                                     {{ html_entity_decode(strip_tags($item->description)) }}
                                 </span>
 
@@ -292,11 +292,11 @@
 
     function toggleDescription(button) {
         var description = button.previousElementSibling;
-        if (description.classList.contains('p_clamp')) {
-            description.classList.remove('p_clamp');
+        if (description.classList.contains('p_clamp_2')) {
+            description.classList.remove('p_clamp_2');
             button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
         } else {
-            description.classList.add('p_clamp');
+            description.classList.add('p_clamp_2');
             button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
         }
     }

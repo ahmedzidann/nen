@@ -14,11 +14,11 @@
         <div class="left_side col-sm-6" style="">
             <h2>{{ $fSection->title }}</h2>
             <div class="iso_titels">
-                <span class="description text-start {{ strlen($fSection->description) >= 400 ? "p_clamp_2" : ''}}">
+                <span class="description text-start {{ strlen($fSection->description) >= 500 ? "p_clamp_2" : ''}}">
                     {{ html_entity_decode(strip_tags($fSection->description)) }}
                 </span>
 
-                @if (strlen($fSection->description) >= 400)
+                @if (strlen($fSection->description) >= 500)
                 <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
                 @endif
             </div>

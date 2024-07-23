@@ -224,7 +224,55 @@
 					</ul>
 				</li>
 				{{-- Education --}}
-                @php
+
+
+            {{-- Doc Validation --}}
+
+            {{-- Doc Validation --}}
+            @php
+                $docValidation = App\Models\Page::find(8);
+            @endphp
+            <li>
+                <a class="has-arrow" href="javascript:;">
+                    <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                    </div>
+                    <div class="menu-title">{{$docValidation->name}}</div>
+                </a>
+                <ul>
+                    @foreach ($docValidation->childe as $ch)
+                        {{-- <li class="">
+
+                            <a href="{{ route('admin.solution.index',['category='.$ch->slug]) }}" >
+                            <i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
+                        </li> --}}
+                        {{--
+                        <li>
+                            <a class="has-arrow" href="javascript:;">
+                                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                                </div>
+                                <div class="menu-title">{{$ch->name}}</div>
+                            </a>
+                            <ul> --}}
+
+                        <li class="">
+
+                            <a href="{{ route('admin.doc-validation.index',['category='.$docValidation->slug
+                                        ,"subcategory=".$ch->slug]) }}" >
+                                <i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
+                        </li>
+
+
+                {{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
+                {{-- </ul> --}}
+            </li>
+            @endforeach
+            {{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
+            </ul>
+            </li>
+
+            {{-- End Doc Validation --}}
+
+            @php
                         $testing = App\Models\Page::find(5);
                 @endphp
                 {{-- Testing --}}

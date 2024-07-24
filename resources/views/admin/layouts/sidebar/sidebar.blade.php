@@ -167,6 +167,24 @@
 					<ul>
 						<li class=""><a href="{{ route('admin.slider.index') }}" ><i class='bx bx-radio-circle'></i>Slider</a></li>
 					</ul>
+                    <ul>
+						<li class=""><a href="{{ route('admin.countries.index') }}" ><i class='bx bx-radio-circle'></i>countries</a></li>
+					</ul>
+                    <ul>
+						<li class=""><a href="{{ route('admin.states.index') }}" ><i class='bx bx-radio-circle'></i>states</a></li>
+					</ul>
+                    <ul>
+						<li class=""><a href="{{ route('admin.categories.index') }}" ><i class='bx bx-radio-circle'></i>categories</a></li>
+					</ul>
+                    <ul>
+						<li class=""><a href="{{ route('admin.levels.index') }}" ><i class='bx bx-radio-circle'></i>levels</a></li>
+					</ul>
+                    <ul>
+						<li class=""><a href="{{ route('admin.certificates.index') }}" ><i class='bx bx-radio-circle'></i>certificates</a></li>
+					</ul>
+                    <ul>
+						<li class=""><a href="{{ route('admin.specializations.index') }}" ><i class='bx bx-radio-circle'></i>specializations</a></li>
+					</ul>
 				</li>
 				{{-- settings --}}
 				{{-- Education --}}
@@ -295,6 +313,16 @@
                         @endforeach
                     </ul>
                 </li>
+                <li>
+					<a class="has-arrow" href="javascript:;">
+						<div class="parent-icon"><i class="bx bx-user-circle"></i>
+						</div>
+						<div class="menu-title">Find us</div>
+					</a>
+					<ul>
+						<li class=""><a href="{{ route('admin.find-us.index') }}" ><i class='bx bx-radio-circle'></i>Section</a></li>
+					</ul>
+				</li>
                 {{-- end Testing  --}}
 				{{-- item --}}
 				<li class="menu-label">Forms & Tables</li>

@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\Technology\TechnologyController;
 use App\Http\Controllers\Admin\Technology\TechnologyResourceController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\Admin\DocValidation\DocValidationController;
 
 Route::middleware('authAdmin:admin')->group(function () {
     Route::get('/',DashboardController::class)->name('dashboard');
@@ -109,4 +110,12 @@ Route::middleware('authAdmin:admin')->group(function () {
 
 
             });
+
+
+
+
+        #### Elsdodey
+
+    Route::resource('doc-validation', DocValidationController::class);
+
 });

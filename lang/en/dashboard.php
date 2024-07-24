@@ -648,4 +648,11 @@
   'specializations View' => 'Specializations View',
   'Specializations' => 'Specializations',
   'specializations Create' => 'Specializations Create',
+  'Doc Validation Create' => 'Doc Validation Create',
+  'Doc Validation View' => 'Doc Validation View',
+  'DocValidation View' => 'DocValidation View',
+  'DocValidation Edit' => 'DocValidation Edit',
+  'DocValidation Create' => 'DocValidation Create',
+  'Details' => 'Details',
+  'Title ${trans}' => 'Title ${trans}',
 );

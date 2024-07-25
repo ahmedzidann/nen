@@ -10,6 +10,11 @@ use App\Http\Controllers\Admin\AboutUs\OurTeamController;
 use App\Http\Controllers\Admin\AboutUs\PartnersController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Education\EducationController;
+use App\Http\Controllers\Admin\FindUs\CategoryController;
+use App\Http\Controllers\Admin\FindUs\CertificateController;
+use App\Http\Controllers\Admin\FindUs\FindUsController;
+use App\Http\Controllers\Admin\FindUs\LevelController;
+use App\Http\Controllers\Admin\FindUs\SpecializationController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\Admin\profile\RoleController;
@@ -30,6 +35,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Solution\Tabs\SolutionTabController;
 use App\Http\Controllers\Admin\Technology\TechnologyController;
 use App\Http\Controllers\Admin\Technology\TechnologyResourceController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\Admin\DocValidation\DocValidationController;
 
 Route::middleware('authAdmin:admin')->group(function () {
@@ -38,6 +45,14 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('users',UsersController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('pages', PagesController::class);
+    Route::resource('countries',CountryController::class);
+    Route::resource('states',StateController::class);
+    Route::resource('categories',CategoryController::class);
+    Route::resource('levels',LevelController::class);
+    Route::resource('certificates',CertificateController::class);
+    Route::resource('specializations',SpecializationController::class);
+    Route::resource('find-us',FindUsController::class);
+
     Route::name('about.')->prefix('about')->group(function(){
         Route::resource('identity', IdentityController::class);
         Route::resource('investors', InvestorsController::class);

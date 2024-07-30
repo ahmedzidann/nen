@@ -6,7 +6,7 @@
             @if ($page->slug=='home' )
                 <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} </a>
 
-            @elseif ($page->slug=='about' || $page->slug=='education' || $page->slug=='testing' || $page->slug=='technology' )
+            @elseif ($page->slug=='about' || $page->slug=='education' || $page->slug=='testing' || $page->slug=='technology' ||  $page->slug=="doc-validation" ||  $page->slug=="find-us")
             <li class="li_category">
                 <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} <span><i class="bi bi-chevron-down"></i></span></a>
                 <ul class="ul_dropdown">
@@ -14,8 +14,6 @@
 
                     <li class="li_drop_content"><a href="{{ route($page->slug.'.'.$sub->slug.'',['page_id'=>$sub->id]) }}">{{$sub->name}}</a></li>
                     @endforeach
-
-
                 </ul>
             </li>
             @elseif ( $page->slug=='solutions' )

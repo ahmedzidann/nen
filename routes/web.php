@@ -1,8 +1,11 @@
 <?php
 
+
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\User\AboutUs\AboutController;
+use App\Http\Controllers\User\DocValidation\DocValidationController;
 use App\Http\Controllers\User\Education\EducationController;
+use App\Http\Controllers\User\FindUs\FindUsController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\Solution\SolutionController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
@@ -65,6 +68,19 @@ Route::group(['prefix' => 'projects','as'=>'projects.', 'name'=>'projects.'], fu
         Route::get($page->slug, [ProjectController::class, 'index'])->name($page->slug);
     }
 });
+
+Route::group(['prefix' => 'doc-validation','as'=>'doc-validation.', 'name'=>'doc-validation.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','doc-validation')->first()->id)->get() as $page){
+        Route::get($page->slug, [DocValidationController::class, 'index'])->name($page->slug);
+    }
+});
+
+Route::group(['prefix' => 'find-us','as'=>'find-us.', 'name'=>'find-us.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','find-us')->first()->id)->get() as $page){
+        Route::get($page->slug, [FindUsController::class, 'index'])->name($page->slug);
+    }
+});
+
 
     //Projects Routes
     Route::get('Projects/{slug?}/{id?}',[ProjectController::class,'index'])->name('projects');

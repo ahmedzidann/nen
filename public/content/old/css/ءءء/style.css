@@ -2142,7 +2142,7 @@ margin-top: 75px;
 .p_clamp_2 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 2;
     overflow: hidden;
     color: #333333;
     text-align: left;

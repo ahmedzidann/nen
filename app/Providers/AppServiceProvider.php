@@ -36,6 +36,12 @@ class AppServiceProvider extends ServiceProvider
     $technologies = Page::where('parent_id',Page::where('slug','technology')->first()->id)
     ->where('navbar','Active')->get();
 
+    $docs = Page::where('parent_id',Page::where('slug','doc-validation')->first()->id)
+    ->where('navbar','Active')->get();
+
+    $findus = Page::where('parent_id',Page::where('slug','find-us')->first()->id)
+    ->where('navbar','Active')->get();
+
 
     View::composer('user.about.*', function ($view) use($pages) {
             $view->with('VCpages', $pages);
@@ -52,6 +58,14 @@ class AppServiceProvider extends ServiceProvider
     View::composer('user.technology.*', function ($view) use($technologies) {
 
         $view->with('technologies', $technologies);
+    });
+    View::composer('user.doc-validation.*', function ($view) use($docs) {
+
+        $view->with('docs', $docs);
+    });
+    View::composer('user.find-us.*', function ($view) use($findus) {
+
+        $view->with('findus', $findus);
     });
     View::composer('*', function ($view) use($solutionPages) {
 

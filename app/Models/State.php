@@ -28,4 +28,9 @@ class State extends Model
        {
          return $this->belongsTo(Country::class);
        }
+
+       public function findus()
+       {
+         return $this->hasMany(FindUs::class);
+       }
 }

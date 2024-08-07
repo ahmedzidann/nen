@@ -655,4 +655,5 @@
   'DocValidation Create' => 'DocValidation Create',
   'Details' => 'Details',
   'Title ${trans}' => 'Title ${trans}',
+  'specialization' => 'Specialization',
 );

@@ -38,11 +38,13 @@ class FindUs extends Model implements  HasMedia
       "start_date",
       "user_comment",
       "admin_comment",
+      "lng",
+      "lat",
 
    ];
 
-    //    public function Page()
-    //    {
-    //      return $this->belongsTo(Page::class, 'pages_id');
-    //    }
+       public function state()
+       {
+         return $this->belongsTo(State::class);
+       }
 }

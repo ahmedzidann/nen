@@ -23,6 +23,10 @@ class Certificate extends Model implements  HasMedia
       'category_id',
       'title',
    ];
+   public function findus()
+       {
+         return $this->hasMany(FindUs::class);
+       }
 
     //    public function Page()
     //    {

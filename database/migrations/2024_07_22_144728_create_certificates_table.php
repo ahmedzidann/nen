@@ -71,6 +71,8 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->string('user_comment')->nullable();
             $table->string('admin_comment')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
 
             $table->unsignedBigInteger('page_id');
             $table->unsignedBigInteger('certificate_id');

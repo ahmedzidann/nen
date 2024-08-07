@@ -24,8 +24,8 @@ class Country extends Model implements  HasMedia
       'title',
    ];
 
-    //    public function Page()
-    //    {
-    //      return $this->belongsTo(Page::class, 'pages_id');
-    //    }
+       public function states()
+       {
+         return $this->hasMany(State::class);
+       }
 }

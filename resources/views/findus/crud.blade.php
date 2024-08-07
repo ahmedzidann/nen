@@ -129,7 +129,7 @@
 
                                         @if ($loop->first)
                                         <div class="row mb-3">
-                                            <x-admin.form.label-first star="*" class="col-sm-3 col-form-label" name="certificates"></x-admin.form.label-first>
+                                            <x-admin.form.label-first star="*" class="col-sm-3 col-form-label" name="specialization"></x-admin.form.label-first>
                                             <div class="col-sm-9">
                                                 <select name="specialization_id" id="specialization_id" class="form-control valid">
                                                     <option value="">Select Certificate</option>
@@ -308,7 +308,7 @@
                                                     {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
                                                     </x-admin.form.label-first> --}}
                                                     <div class="col-sm-8">
-                                                        <x-admin.form.input name="links[]" type="text" required="" placeholder="id" class="form-control valid">
+                                                        <x-admin.form.input name="links[]" type="file" required="" placeholder="id" class="form-control valid">
                                                         </x-admin.form.input>
                                                     </div>
                                                     <div class="col-sm-4">
@@ -338,7 +338,7 @@
                                                                 {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
                                                                 </x-admin.form.label-first> --}}
                                                                 <div class="col-sm-8">
-                                                                    <x-admin.form.input name="links[]" type="text" required="" placeholder="id" class="form-control valid">
+                                                                    <x-admin.form.input name="links[]" type="file" required="" placeholder="id" class="form-control valid">
                                                                     </x-admin.form.input>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -476,22 +476,22 @@ $(document).ready(function() {
 
     });
 
-    $('#level_id').change(function() {
-        var selectedLevelId = $(this).val();
+    // $('#level_id').change(function() {
+    //     var selectedLevelId = $(this).val();
 
-        // Show all certificates initially
-        $('#certificate_id option').each(function() {
-            $(this).hide();
-        });
+    //     // Show all certificates initially
+    //     $('#certificate_id option').each(function() {
+    //         $(this).hide();
+    //     });
 
-        // Show certificates that belong to the selected level
-        $('#certificate_id option[data-level="' + selectedLevelId + '"]').each(function() {
-            $(this).show();
-        });
+    //     // Show certificates that belong to the selected level
+    //     $('#certificate_id option[data-level="' + selectedLevelId + '"]').each(function() {
+    //         $(this).show();
+    //     });
 
-        // Reset the certificate dropdown to the default option
-        $('#certificate_id').val('');
-    });
+    //     // Reset the certificate dropdown to the default option
+    //     $('#certificate_id').val('');
+    // });
 
 
 

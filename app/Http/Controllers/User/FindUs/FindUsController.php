@@ -71,7 +71,10 @@ class FindUsController extends Controller
                 $locations[]=['lat'=>$item->lat , "lng"=>$item->lng];
             }
             // dd($zoom);
-            $states = State::whereHas('findus')->get();
+            $states = State::whereHas('findus')
+            ->when(request()->country_id, function($q){
+                $q->where( 'country_id',request()->country_id);
+            })->get();
 
             $levels = Level::whereHas('findus')->get();
             $certs = Certificate::whereHas('findus')->get();

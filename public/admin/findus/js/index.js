@@ -128,7 +128,7 @@ $(function () {
             if (id.length > 0) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/admin/admins/test",
+                        url: "/admin/find-us/test",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

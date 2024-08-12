@@ -26,7 +26,7 @@
                                 <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 7" style="margin-right: 10px;">
                                     <form id="countryForm-{{$country->id}}">
                                     <div class="country_div" onclick="document.getElementById('countryForm-{{$country->id}}').submit()" style="cursor: pointer">
-                                        {{$country->title}} <img src="content/images/small_icon/Flag_of_Egypt.svg.webp">
+                                        {{$country->title}} <img src="{{$country->getFirstMediaUrl('flag')}}">
                                         <input type="hidden" name="page_id" value="{{request()->page_id}}">
                                         <input type="hidden" name="country_id" value="{{$country->id}}">
                                     </div>

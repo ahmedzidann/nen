@@ -25,8 +25,6 @@ class UpdateDocValidationAction
                 $key=$data['submit2'];
                 $exists_details_ides=[];
 
-
-
                 if(isset($data['old_details_id'][$key])) {
 
                      foreach ($data['old_details_id'][$key] as $index=>$old_details_id) {
@@ -45,19 +43,14 @@ class UpdateDocValidationAction
                 if(isset($data['details_title'][$key])) {
 
                     foreach ($data['details_title'][$key] as $index=>$detail_title) {
-
                         $docValidationDetails=   DocValidationDetails::create([
                             'doc_validation_id'=>$doc_validation_id,
                             'title'=>$data['details_title'][$key][$index],
                         ]);
-
                         $docValidationDetails->setTranslation('title',$key,$data['details_title'][$key][$index] );
                         $docValidationDetails->save();
-
                     }
-
                 }
-
 
 
                 } catch (\Exception $e) {

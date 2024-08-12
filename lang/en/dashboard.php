@@ -656,4 +656,5 @@
   'Details' => 'Details',
   'Title ${trans}' => 'Title ${trans}',
   'specialization' => 'Specialization',
+  'Countries Edit' => 'Countries Edit',
 );

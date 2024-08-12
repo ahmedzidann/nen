@@ -15,8 +15,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
+use App\Helper\ImageHelper;
 class CountryController extends Controller
 {
+    use ImageHelper;
     public function index():View
     {
         return view('country.view',new CountryViewModel());
@@ -36,7 +38,7 @@ class CountryController extends Controller
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        ->addColumn('action', function($row){return'<div class="d-flex order-actions"> <a href="'.route('admin.admins.edit',$row->id).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
+                        ->addColumn('action', function($row){return'<div class="d-flex order-actions"> <a href="'.route('admin.countries.edit',$row->id).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
@@ -49,18 +51,27 @@ class CountryController extends Controller
     public function store(Request $request):RedirectResponse
     {
         // app(StoreAdminAction::class)->handle($request->validated());
-        Country::create([
+
+        $c = Country::create([
             "title" => $request->title
         ]);
+        $this->StoreImage($request->all(),$c,'flag');
         return redirect()->route('admin.countries.index')->with('add','Success Add Admin');
     }
-    public function edit(Admin $admin):View
+    public function edit(int $admin):View
     {
-        return view('admin.countries.crud',new CountryViewModel($admin));
+        $admin= Country::find($admin);
+        return view('country.crud',new CountryViewModel($admin));
     }
-    public function update(UpdateAdminRequest $request, Admin $admin):RedirectResponse
+    public function update(Request $request, int $admin):RedirectResponse
     {
-        app(UpdateAdminAction::class)->handle($admin,$request->validated());
+        $admin= Country::find($admin);
+
+        $admin->update([
+            "title" => $request->title
+        ]);
+        $this->UpdateImage($request->all(),$admin,'flag');
+        // app(UpdateAdminAction::class)->handle($admin,$request->validated());
         return redirect()->route('admin.countries.index')->with('edit','Update Admin');
     }
     public function destroy(Request $request):RedirectResponse

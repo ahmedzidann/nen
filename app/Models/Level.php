@@ -28,8 +28,8 @@ class Level extends Model implements  HasMedia
        {
          return $this->hasMany(FindUs::class);
        }
-    //    public function Page()
-    //    {
-    //      return $this->belongsTo(Page::class, 'pages_id');
-    //    }
+       public function category()
+       {
+         return $this->belongsTo(Category::class);
+       }
 }

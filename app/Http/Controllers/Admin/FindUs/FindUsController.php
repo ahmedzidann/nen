@@ -62,8 +62,8 @@ class FindUsController extends Controller
             'phone' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'address' => 'nullable|string|max:255',
-            'lat' => 'required|numeric',
-            'lng' => 'required|numeric',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
             'status' => 'required|string|in:pending,active,block',
             'join_date' => 'nullable|date',
             'end_date' => 'nullable|date',
@@ -83,14 +83,42 @@ class FindUsController extends Controller
         $admin = FindUs::find($admin);
         return view('findus.crud',new FindUsViewModel($admin));
     }
-    public function update(UpdateAdminRequest $request, Admin $admin):RedirectResponse
+    public function update(Request $request, int $admin):RedirectResponse
     {
-        app(UpdateAdminAction::class)->handle($admin,$request->validated());
+        $fus = (FindUs::find($admin));
+
+        $request->validate([
+            // 'category_id' => 'required|exists:categories,id',
+            'level_id' => 'required|exists:levels,id',
+            'certificate_id' => 'required|exists:certificates,id',
+            "specialization_id" =>"required",
+            // Add other validation rules as needed
+            'code' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
+            'address' => 'nullable|string|max:255',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
+            'status' => 'required|string|in:pending,active,block',
+            'join_date' => 'nullable|date',
+            'end_date' => 'nullable|date',
+            'start_date' => 'nullable|date',
+            'user_comment' => 'nullable|string|max:255',
+            'admin_comment' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $data = $request->except(['image','links','links_title']);
+
+        $fus->update($data);
+        // app(UpdateAdminAction::class)->handle($admin,$request->validated());
         return redirect()->route('admin.countries.index')->with('edit','Update Admin');
     }
     public function destroy(Request $request):RedirectResponse
     {
-        foreach(Admin::find($request->id) as $admin){$admin->delete();}
+
+        foreach(FindUs::find($request->id) as $admin){$admin->delete();}
         return redirect()->back()->with('delete','Delete Admin');
     }
 }

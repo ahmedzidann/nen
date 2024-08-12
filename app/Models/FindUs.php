@@ -47,4 +47,9 @@ class FindUs extends Model implements  HasMedia
        {
          return $this->belongsTo(State::class);
        }
+
+       public function level()
+       {
+         return $this->belongsTo(Level::class);
+       }
 }

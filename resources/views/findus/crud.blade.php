@@ -46,12 +46,13 @@
 
                                         @if ($loop->first)
                                         <div class="row mb-3">
+
                                             <x-admin.form.label-first star="*" class="col-sm-3 col-form-label" name="countries"></x-admin.form.label-first>
                                             <div class="col-sm-9">
                                                 <select name="country_id" id="country_id" class="form-control valid">
                                                     <option value="">Select Country</option>
                                                     @foreach($countries as $country)
-                                                        <option value="{{$country->id}}" {{ isset($admin) && $admin->country_id == $country->id ? 'selected' : '' }}>{{$country->translate('title', $item->key)}}</option>
+                                                        <option value="{{$country->id}}" {{ isset($admin->state) && $admin->state->country_id == $country->id ? 'selected' : '' }}>{{$country->translate('title', $item->key)}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -86,13 +87,14 @@
                                         </div>
                                         @endif
                                         @if ($loop->first)
+
                                         <div class="row mb-3">
                                             <x-admin.form.label-first star="*" class="col-sm-3 col-form-label" name="categories"></x-admin.form.label-first>
                                             <div class="col-sm-9">
                                                 <select name="category_id" id="category_id" class="form-control valid">
                                                     <option value="">Select Category</option>
                                                     @foreach($categories as $category)
-                                                        <option value="{{$category->id}}" {{ isset($admin) && $admin->category_id == $category->id ? 'selected' : '' }}>{{$category->translate('title', $item->key)}}</option>
+                                                        <option value="{{$category->id}}" {{ isset($admin->level) && $admin->level->category_id == $category->id ? 'selected' : '' }}>{{$category->translate('title', $item->key)}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -132,9 +134,9 @@
                                             <x-admin.form.label-first star="*" class="col-sm-3 col-form-label" name="specialization"></x-admin.form.label-first>
                                             <div class="col-sm-9">
                                                 <select name="specialization_id" id="specialization_id" class="form-control valid">
-                                                    <option value="">Select Certificate</option>
+                                                    <option value="">Select Specialization</option>
                                                     @foreach($specs as $certificate)
-                                                        <option value="{{$certificate->id}}" data-category="{{$certificate->category_id}}" {{ isset($admin) && $admin->certificate_id == $certificate->id ? 'selected' : '' }}>{{$certificate->translate('title', $item->key)}}</option>
+                                                        <option value="{{$certificate->id}}" data-category="{{$certificate->category_id}}" {{ isset($admin) && $admin->specialization_id == $certificate->id ? 'selected' : '' }}>{{$certificate->translate('title', $item->key)}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -214,7 +216,7 @@
                                             </x-admin.form.label-first>
                                             <div class="col-sm-9">
                                                 <x-admin.form.input old="lng" name="lng" type="text"
-                                                    placeholder="Lang" class="form-control valid" required='true' :value="$admin->lang ?? ''">
+                                                    placeholder="Lang" class="form-control valid" required='true' :value="$admin->lng ?? ''">
                                                 </x-admin.form.input>
                                             </div>
                                         </div>
@@ -422,6 +424,9 @@
 $(document).ready(function() {
     $('#country_id').change(function() {
         var selectedCountryId = $(this).val();
+        var selectedStateId = $('#state_id').val();
+
+
 
         // Show all states initially
         $('#state_id option').each(function() {
@@ -429,16 +434,26 @@ $(document).ready(function() {
         });
 
         // Show states that belong to the selected country
+        $('#state_id').val('');
         $('#state_id option[data-country="' + selectedCountryId + '"]').each(function() {
+
+            if ($(this).val() == selectedStateId) {
+                $(this).prop('selected', true);
+            }
             $(this).show();
         });
 
         // Reset the state dropdown to the default option
-        $('#state_id').val('');
+
     });
 
     $('#category_id').change(function() {
         var selectedCategoryId = $(this).val();
+
+        var selectedLevelId = $('#level_id').val();
+        var selectedCertId = $('#certificate_id').val();
+        var selectedSpezId = $('#specialization_id').val();
+
 
         // Show all levels initially
         $('#level_id option').each(function() {
@@ -446,31 +461,52 @@ $(document).ready(function() {
         });
 
         // Show levels that belong to the selected category
+        $('#level_id').val('');
         $('#level_id option[data-category="' + selectedCategoryId + '"]').each(function() {
+
+            if ($(this).val() == selectedLevelId) {
+                $(this).prop('selected', true);
+
+            }
             $(this).show();
+
         });
 
         // Reset the level dropdown to the default option
-        $('#level_id').val('');
+
 
 
         var selectedLevelId = $(this).val();
 
+        $('#certificate_id').val('');
         $('#certificate_id option').each(function() {
             $(this).hide();
         });
-        $('#certificate_id option[data-category="' + selectedLevelId + '"]').each(function() {
+        $('#certificate_id option[data-category="' + selectedCategoryId + '"]').each(function() {
+
+            if ($(this).val() == selectedCertId) {
+                $(this).prop('selected', true);
+
+            }
             $(this).show();
         });
-        $('#certificate_id').val('');
+
+
+
+        $('#specialization_id').val('');
 
         $('#specialization_id option').each(function() {
             $(this).hide();
         });
-        $('#specialization_id option[data-category="' + selectedLevelId + '"]').each(function() {
+        $('#specialization_id option[data-category="' + selectedCategoryId + '"]').each(function() {
+
+            if ($(this).val() == selectedSpezId) {
+                $(this).prop('selected', true);
+
+            }
+
             $(this).show();
         });
-        $('#specialization_id').val('');
 
 
 

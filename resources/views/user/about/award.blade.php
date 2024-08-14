@@ -142,9 +142,15 @@ font-size:20px !important;
                                 <div class="icons_div">
                                     <h5>{{$item->title}}</h5>
                                     <div class="flex_icons_div">
+                                        @if ($item->getFirstMediaUrl('StaticTable2'))
+
                                         <p><img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" target="_blank" href='{{$item->getFirstMediaUrl('StaticTable2')}}'>Reference</a></span>
+                                        @endif
                                         </p>
+                                        @if ($item->url)
+
                                         <p><img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" target="_blank" href="{{$item->url}}">Website</a> </span>
+                                        @endif
                                         </p>
                                         <p><img src="{{url('content/images/small_icon/calendar-2.png')}}"><span>{{$item->years_text}}</span></p>
                                     </div>

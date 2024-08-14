@@ -40,12 +40,13 @@ class TestingContoller extends Controller
         $partner = Page::findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
 
+
         if($partner){
             $subPartners = $partner->childe;
-            $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();
-            // dd($partners);
+            $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->latest()->first();
 
-            return view('user.testing.index',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
+            return view('user.testing.new-index',['tech'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
+            // return view('user.testing.index',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }
         else abort(400, "error");
     }

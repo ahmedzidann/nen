@@ -41,7 +41,7 @@ class EducationController extends Controller
 
         if($partner){
             $subPartners = $partner->childe;
-            $partners = Education::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();
+            $partners = Education::whereIn("pages_id",$subPartners->pluck('id')->toArray())->with('media')->active()->get();
             // dd($partners);
 
             return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);

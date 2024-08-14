@@ -1,10 +1,14 @@
 <?php
 
+
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\User\AboutUs\AboutController;
+use App\Http\Controllers\User\DocValidation\DocValidationController;
 use App\Http\Controllers\User\Education\EducationController;
+use App\Http\Controllers\User\FindUs\FindUsController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
@@ -52,12 +56,31 @@ Route::group(['prefix' => 'testing','as'=>'testing.', 'name'=>'testing.'], funct
     }
 });
 
+Route::group(['prefix' => 'technology','as'=>'technology.', 'name'=>'technology.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','technology')->first()->id)->get() as $page){
+        Route::get($page->slug, [TechnologyContoller::class, 'index'])->name($page->slug);
+    }
+});
+
 Route::group(['prefix' => 'projects','as'=>'projects.', 'name'=>'projects.'], function () {
     foreach(Page::where('parent_id',Page::where('slug','projects')->first()->id)->get() as $page){
         // dd($page->slug);
         Route::get($page->slug, [ProjectController::class, 'index'])->name($page->slug);
     }
 });
+
+Route::group(['prefix' => 'doc-validation','as'=>'doc-validation.', 'name'=>'doc-validation.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','doc-validation')->first()->id)->get() as $page){
+        Route::get($page->slug, [DocValidationController::class, 'index'])->name($page->slug);
+    }
+});
+
+Route::group(['prefix' => 'find-us','as'=>'find-us.', 'name'=>'find-us.'], function () {
+    foreach(Page::where('parent_id',Page::where('slug','find-us')->first()->id)->get() as $page){
+        Route::get($page->slug, [FindUsController::class, 'index'])->name($page->slug);
+    }
+});
+
 
     //Projects Routes
     Route::get('Projects/{slug?}/{id?}',[ProjectController::class,'index'])->name('projects');

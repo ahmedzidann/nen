@@ -135,10 +135,20 @@ class AboutController extends Controller
         if($partner){
             $subPartners = $partner->childe;
 
-            $partners = StaticTable::where("pages_id",$partner->id)->active()->get();
+            $partners = StaticTable::where("pages_id",$partner->id)->with('media')->active()->get();
 
             return view('user.about.partners',['items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }
         else abort(400, "error");
+    }
+
+    public function loadMorePartners(Request $request, $subPartnerId)
+    {
+        $partners = StaticTable::where('pages_id', $partner->id)
+            ->where('childe_pages_id', $subPartnerId)
+            ->active()
+            ->paginate(10); // Adjust the number of items per page as needed
+
+        return view('user.about.load_more_partners', ['partners' => $partners])->render();
     }
 }

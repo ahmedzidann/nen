@@ -134,6 +134,20 @@
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first star="" class="form-label"
+                                                    name="Service Name">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="fax"
+                                                    name="fax" type="text"
+                                                    required="" placeholder="fax"
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->email">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter fax">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first star="" class="form-label"
                                                     name="Phone">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.input old="phone"
@@ -188,20 +202,7 @@
                                                     name="please enter address">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            <div class="col-md-6 mb-4">
-                                                <x-admin.form.label-first star="" class="form-label"
-                                                    name="fax">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="fax"
-                                                    name="fax" type="text"
-                                                    required="" placeholder="fax"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->email">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end star="*"
-                                                    name="please enter fax">
-                                                </x-admin.form.label-end>
-                                            </div>
+
                                             {{-- ----------status first --}}
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"

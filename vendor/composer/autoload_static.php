@@ -294,8 +294,8 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'ZipStream\\' => 
         array (
@@ -307,12 +307,12 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         ),
         'Yajra\\DataTables\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
-            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
-            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
-            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            5 => __DIR__ . '/..' . '/yajra/laravel-datatables-export/src',
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
+            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-export/src',
+            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
+            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            5 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -560,8 +560,8 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -1008,6 +1008,8 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'App\\Actions\\Solution\\UpdateSolutionAction' => __DIR__ . '/../..' . '/app/Actions/Solution/UpdateSolutionAction.php',
         'App\\Actions\\StaticTable\\StoreStaticTableAction' => __DIR__ . '/../..' . '/app/Actions/StaticTable/StoreStaticTableAction.php',
         'App\\Actions\\StaticTable\\UpdateStaticTableAction' => __DIR__ . '/../..' . '/app/Actions/StaticTable/UpdateStaticTableAction.php',
+        'App\\Actions\\Technology\\StoreTechnologyAction' => __DIR__ . '/../..' . '/app/Actions/Technology/StoreTechnologyAction.php',
+        'App\\Actions\\Technology\\UpdateTechnologyAction' => __DIR__ . '/../..' . '/app/Actions/Technology/UpdateTechnologyAction.php',
         'App\\Actions\\Testing\\StoreTestingAction' => __DIR__ . '/../..' . '/app/Actions/Testing/StoreTestingAction.php',
         'App\\Actions\\Testing\\UpdateTestingAction' => __DIR__ . '/../..' . '/app/Actions/Testing/UpdateTestingAction.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -1039,6 +1041,8 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'App\\Http\\Controllers\\Admin\\SliderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SliderController.php',
         'App\\Http\\Controllers\\Admin\\Solution\\SolutionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Solution/SolutionController.php',
         'App\\Http\\Controllers\\Admin\\Solution\\Tabs\\SolutionTabController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Solution/Tabs/SolutionTabController.php',
+        'App\\Http\\Controllers\\Admin\\Technology\\TechnologyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Technology/TechnologyController.php',
+        'App\\Http\\Controllers\\Admin\\Technology\\TechnologyResourceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Technology/TechnologyResourceController.php',
         'App\\Http\\Controllers\\Admin\\Testing\\TestingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Testing/TestingController.php',
         'App\\Http\\Controllers\\Admin\\profile\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/profile/AdminController.php',
         'App\\Http\\Controllers\\Admin\\profile\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/profile/RoleController.php',
@@ -1058,6 +1062,7 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'App\\Http\\Controllers\\User\\Education\\EducationController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Education/EducationController.php',
         'App\\Http\\Controllers\\User\\Projects\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Projects/ProjectController.php',
         'App\\Http\\Controllers\\User\\Solution\\SolutionController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Solution/SolutionController.php',
+        'App\\Http\\Controllers\\User\\Technology\\TechnologyContoller' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Technology/TechnologyContoller.php',
         'App\\Http\\Controllers\\User\\Testing\\TestingContoller' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Testing/TestingContoller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AuthenticateAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthenticateAdmin.php',
@@ -1095,6 +1100,7 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'App\\Http\\Requests\\Admin\\Slider\\SliderRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/Slider/SliderRequest.php',
         'App\\Http\\Requests\\Admin\\Solution\\SolutionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/Solution/SolutionRequest.php',
         'App\\Http\\Requests\\Admin\\Solution\\Tabs\\SolutionTabRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/Solution/Tabs/SolutionTabRequest.php',
+        'App\\Http\\Requests\\Admin\\Technology\\TechnologyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/Technology/TechnologyRequest.php',
         'App\\Http\\Requests\\Admin\\Testing\\TestingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/Testing/TestingRequest.php',
         'App\\Http\\Requests\\AuthAdmin\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AuthAdmin/LoginRequest.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
@@ -1122,6 +1128,7 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'App\\Models\\SolutionTabReference' => __DIR__ . '/../..' . '/app/Models/SolutionTabReference.php',
         'App\\Models\\StaticTable' => __DIR__ . '/../..' . '/app/Models/StaticTable.php',
         'App\\Models\\Tabs' => __DIR__ . '/../..' . '/app/Models/Tabs.php',
+        'App\\Models\\Technology' => __DIR__ . '/../..' . '/app/Models/Technology.php',
         'App\\Models\\Testing' => __DIR__ . '/../..' . '/app/Models/Testing.php',
         'App\\Models\\TestingFile' => __DIR__ . '/../..' . '/app/Models/TestingFile.php',
         'App\\Models\\TestingReference' => __DIR__ . '/../..' . '/app/Models/TestingReference.php',
@@ -1157,6 +1164,7 @@ class ComposerStaticInit9f177e1ce830cbc131de08d3b1ae240a
         'App\\ViewModels\\SliderView\\SliderViewModel' => __DIR__ . '/../..' . '/app/ViewModels/SliderView/SliderViewModel.php',
         'App\\ViewModels\\SolutionView\\SolutionViewModel' => __DIR__ . '/../..' . '/app/ViewModels/SolutionView/SolutionViewModel.php',
         'App\\ViewModels\\SolutionView\\Tabs\\SolutionTabsViewModel' => __DIR__ . '/../..' . '/app/ViewModels/SolutionView/Tabs/SolutionTabsViewModel.php',
+        'App\\ViewModels\\TechnologyView\\TechnologyViewModel' => __DIR__ . '/../..' . '/app/ViewModels/TechnologyView/TechnologyViewModel.php',
         'App\\ViewModels\\TestingView\\TestingViewModel' => __DIR__ . '/../..' . '/app/ViewModels/TestingView/TestingViewModel.php',
         'App\\ViewModels\\UsersView\\UserViewModel' => __DIR__ . '/../..' . '/app/ViewModels/UsersView/UserViewModel.php',
         'App\\View\\Components\\Admin\\CustomizeBreadcrumb' => __DIR__ . '/../..' . '/app/View/Components/Admin/CustomizeBreadcrumb.php',

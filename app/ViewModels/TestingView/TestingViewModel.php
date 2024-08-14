@@ -31,10 +31,12 @@ class TestingViewModel extends ViewModel
         $this->routeView = route('admin.testing.index',Request()->query());
         // $this->editRoute = route('admin.testing.edit',['testing'=> "5" ,''=>Request()->query()]);
         // dd($this->editRoute);
+
         $this->viewTable = 'Testing';
         $a = Page::where('slug',Request()->category)->first()->childe->where('slug',Request()->subcategory);
         // dd($a);
         $this->allPage = $a->first()->childe;
+
         if(!empty(Request()->category) && !empty(Request()->subcategory) && !empty(Request()->item)){
             $this->SelectPages = Page::where('slug',Request()->item)->first();
         }

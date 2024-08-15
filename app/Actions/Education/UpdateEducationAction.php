@@ -12,14 +12,14 @@ class UpdateEducationAction
     use ImageHelper;
     public function handle(Education $education, $data)
     {
-        if (array_key_exists(0, $data['links_title']['en']) && is_null($data['links_title']['en'][0])) {
-            unset($data['links_title']['en'][0]);
-            $data['links_title']['en'] = array_values($data['links_title']['en']);
+        if (array_key_exists(0, $data['links_title'][array_key_first($data['file_title'])]) && is_null($data['links_title'][array_key_first($data['file_title'])][0])) {
+            unset($data['links_title'][array_key_first($data['file_title'])][0]);
+            $data['links_title'][array_key_first($data['file_title'])] = array_values($data['links_title'][array_key_first($data['file_title'])]);
         }
 
-        if (array_key_exists(0, $data['file_title']['en']) && is_null($data['file_title']['en'][0])) {
-            unset($data['file_title']['en'][0]);
-            $data['file_title']['en'] = array_values($data['file_title']['en']);
+        if (array_key_exists(0, $data['file_title'][array_key_first($data['file_title'])]) && is_null($data['file_title'][array_key_first($data['file_title'])][0])) {
+            unset($data['file_title'][array_key_first($data['file_title'])][0]);
+            $data['file_title'][array_key_first($data['file_title'])] = array_values($data['file_title'][array_key_first($data['file_title'])]);
         }
 
         DB::transaction(function () use ($data, $education) {
@@ -33,7 +33,7 @@ class UpdateEducationAction
                             EducationFile::create([
                                 'education_id' => $education->id,
                                 'file' => $data['file'][array_key_first($data['file']) + $firstIterator],
-                                'title' => $data['file_title'][array_key_first($data['file_id'])][$key],
+                                'title' => $data['file_title'][array_key_first($data['file_title'])][$key],
                             ]);
                             ++$firstIterator;
                         }
@@ -70,7 +70,7 @@ class UpdateEducationAction
                             EducationReference::create([
                                 'education_id' => $education->id,
                                 'reference' => $data['links'][$key],
-                                'title' => $data['links_title'][array_key_first($data['link_id'])][$key],
+                                'title' => $data['links_title'][array_key_first($data['links_title'])][$key],
                             ]);
                         }
                     }

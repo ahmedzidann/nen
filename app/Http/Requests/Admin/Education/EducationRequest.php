@@ -72,19 +72,15 @@ class EducationRequest extends FormRequest
                 'links_title.*.*' => ['nullable', 'string', 'required_with:links.*'],
                 'links_title.en.*' => ['nullable', 'string', 'required_with:links.*'],
                 'links_title.ar.*' => ['nullable', 'string', 'required_with:links.*'],
-                'links_title.' . $this->submit2 . '.*' => ['nullable', 'string', 'required_with:links.*'],
-                "link_id.en.*" => ['nullable'],
-                "link_id.ar.*" => ['nullable'],
-                "link_id.'.$this->submit2.'.*" => ['nullable'],
+                "links_title.{$this->submit2}.*" => ['nullable', 'string', 'required_with:links.*'],
+                "link_id.*.*" => ['nullable'],
 
                 "file" => ['nullable', 'array'],
                 "file.*" => ['nullable', 'file'],
                 "file_title.en.*" => ['nullable', 'string', 'required_with:file.*'],
                 "file_title.ar.*" => ['nullable', 'string', 'required_with:file.*'],
-                "file_title.'.$this->submit2.'.*" => ['nullable', 'string', 'required_with:file.*'],
-                "file_id.en.*" => ['required'],
-                "file_id.ar.*" => ['required'],
-                "file_id.'.$this->submit2.'.*" => ['required'],
+                "file_title.{$this->submit2}.*" => ['nullable', 'string', 'required_with:file.*'],
+                "file_id.*.*" => ['required'],
             ];
         }
     }

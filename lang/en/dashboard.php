@@ -666,4 +666,8 @@
   'Description  french' => 'Description  french',
   'please enter Title  french' => 'Please enter Title  french',
   'french title' => 'French title',
+  'Title french' => 'Title french',
+  'please enter result  english' => 'Please enter result  english',
+  'please enter Terms  french' => 'Please enter Terms  french',
+  'Title  french' => 'Title  french',
 );

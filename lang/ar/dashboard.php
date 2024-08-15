@@ -658,4 +658,13 @@
   'Title ${trans}' => 'Title ${trans}',
   'specialization' => 'Specialization',
   'Countries Edit' => 'Countries Edit',
+  'please enter Register Description  english' => 'Please enter Register Description  english',
+  'Register Description  english' => 'Register Description  english',
+  'Please Enter Terms Image' => 'Please Enter Terms Image',
+  'Terms File Upload Image' => 'Terms File Upload Image',
+  'French title' => 'French title',
+  'please enter Name  french' => 'Please enter Name  french',
+  'Description  french' => 'Description  french',
+  'please enter Title  french' => 'Please enter Title  french',
+  'french title' => 'French title',
 );

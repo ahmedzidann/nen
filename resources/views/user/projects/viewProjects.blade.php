@@ -4,6 +4,9 @@
 @section('websiteStyle')
 
 @endsection
+@section('cover_image')
+    {{ isset($slider)? $slider->getFirstMediaUrl('image'): asset('content/images/about_img.png')}}
+@endsection
 @section('content')
 <div class="about_content">
     <h5>{{ $page->name }}</h5>
@@ -240,7 +243,7 @@
                 </ul>
 
                 <div class="terms_img">
-                @if(!empty($joinus->getFirstMediaUrl('JoinusTerms')))
+                @if(isset($joinus) && !empty($joinus->getFirstMediaUrl('JoinusTerms')))
                     <img src="{{asset($joinus->getFirstMediaUrl('JoinusTerms'))}}" >
                 @endif
                 </div>

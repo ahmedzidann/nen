@@ -598,15 +598,12 @@
   'please enter instagrame' => 'Please enter instagrame',
   'whatsapp' => 'Whatsapp',
   'Whatsapp' => 'Whatsapp',
-<<<<<<< HEAD:lang/en/dashboard.php
   'English title' => 'English title',
   'Arabic title' => 'Arabic title',
   'english title' => 'English title',
   'arabic title' => 'Arabic title',
-=======
   'slider View' => 'Slider View',
   'slider Edit' => 'Slider Edit',
->>>>>>> 1d8cf68c403f022d45fd8e9ed4c1d7f67cefa3e7:lang/en/dashboard - Copy.php
   'tabproject Create' => 'Tabproject Create',
   'label1  english' => 'Label1  english',
   'Label1 english' => 'Label1 english',
@@ -616,14 +613,12 @@
   'label3  english' => 'Label3  english',
   'Label3 english' => 'Label3 english',
   'please enter label3  english' => 'Please enter label3  english',
-<<<<<<< HEAD:lang/en/dashboard.php
   'Register Description  english' => 'Register Description  english',
   'please enter Register Description  english' => 'Please enter Register Description  english',
   'tabsolution Create' => 'Tabsolution Create',
   'tabsolution View' => 'Tabsolution View',
   'Descrption' => 'Descrption',
   'tabsolution Edit' => 'Tabsolution Edit',
-=======
   'tabproject Edit' => 'Tabproject Edit',
   'label1  arabic' => 'Label1  arabic',
   'Label1 arabic' => 'Label1 arabic',
@@ -659,5 +654,4 @@
   'please enter Register Description  arabic' => 'Please enter Register Description  arabic',
   'Terms  arabic' => 'Terms  arabic',
   'please enter Terms  arabic' => 'Please enter Terms  arabic',
->>>>>>> 1d8cf68c403f022d45fd8e9ed4c1d7f67cefa3e7:lang/en/dashboard - Copy.php
 );

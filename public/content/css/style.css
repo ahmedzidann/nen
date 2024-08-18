@@ -1209,8 +1209,8 @@ top: 0;
 }
 
 .w-icons {
-  height: 70px;
-  width: 90px;
+  height: 80px;
+  width: 80px;
   object-fit: cover;
   border-radius: 7px;
 }
@@ -1317,11 +1317,11 @@ z-index: 2;
 }
 
 .clients-sec .clients-slide img {
-  height: 100px;
+  height: 90px;
   display: block;
   margin: 0 auto;
   object-fit: cover;
-  width: 150px;
+  width: 90px;
   border-radius: 7px;
 }
 

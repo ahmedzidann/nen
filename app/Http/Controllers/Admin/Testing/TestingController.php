@@ -18,7 +18,7 @@ class TestingController extends Controller
 {
     public function index():View
     {
-       
+
         return view('admin.testing.view',new TestingViewModel());
     }
     public function show(Request $request,$language)
@@ -26,6 +26,7 @@ class TestingController extends Controller
             // if(!empty($request->category)  &&  !empty($request->subcategory && !empty($request->item))){
             //     $page = Page::where('slug',$request->item)->first();
             // }
+
             if(!empty($request->category)  &&  !empty($request->subcategory)) {
                 $pages = Page::whereHas('parent',function($q)use($request){
                     $q->where('slug',$request->subcategory);

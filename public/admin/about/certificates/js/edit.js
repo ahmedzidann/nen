@@ -1,5 +1,4 @@
   $(document).ready(function () {
-  
       // start show token
     $.ajaxSetup({
         headers: {
@@ -7,7 +6,6 @@
         }
     });
     // end show token
-    
       for (let i = 0; i < $('#key_new').val(); i++) {
           $('#myForm' + i).submit(function (e) {
               e.preventDefault(); // Prevent the default form submission

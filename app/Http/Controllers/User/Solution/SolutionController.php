@@ -29,7 +29,7 @@ class SolutionController extends Controller
         $solution = Solution::where('id',request()->solution_id)->first();
         // dd($solution);
         $identity = Page::where('slug','identity')->first();
-        $slider   = Slider::where('page_id',$identity->id)->first();
+        $slider   = Slider::where('page_id',$page->id)->first();
 
 
         if($identity){

@@ -11,7 +11,7 @@
         <div class="investors_titel">
             <h1>{{$fSection->title}}</h1>
             <p>{{strip_tags($fSection->description)}}</p>
-            
+
         </div>
 
         <div class="investors_img">
@@ -48,8 +48,12 @@
                                     <p><i class="bi bi-currency-dollar"></i><span>{{$item->salary}}</span></p>
                                     <p><i class="bi bi-calendar2"></i><span>{{$date->diffForHumans()}}</span></p>
                                 </div>
-                                <p class="p_detail">{!! ($fSection->description)!!}</p>
-                                <a href="#" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+                                <span class=" description  {{ strlen($fSection->description)>= 200 ? "p_clamp":''}}"> {{ html_entity_decode(strip_tags($fSection->description)) }}</span>
+                                @if (strlen($fSection->description)>= 200)
+
+                                <a  role='btn' onclick="toggleDescription(this)" class="read_more" >Read More <i class="bi bi-chevron-down"></i></a>
+                                @endif
+                                {{-- <a href="#" class="read_more">Read More <i class="bi bi-chevron-down"></i></a> --}}
 
                             </div>
                         </div>
@@ -65,4 +69,17 @@
 
 
     </div>
+
+    <script>
+        function toggleDescription(button) {
+        var description = button.previousElementSibling;
+        if (description.classList.contains('p_clamp')) {
+            description.classList.remove('p_clamp');
+            button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+        } else {
+            description.classList.add('p_clamp');
+            button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+        }
+    }
+        </script>
 @endsection

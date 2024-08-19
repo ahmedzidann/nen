@@ -371,6 +371,16 @@
 						<li class=""><a href="{{ route('admin.find-us.index') }}" ><i class='bx bx-radio-circle'></i>Section</a></li>
 					</ul>
 				</li>
+                <li>
+					<a class="has-arrow" href="javascript:;">
+						<div class="parent-icon"><i class="bx bx-user-circle"></i>
+						</div>
+						<div class="menu-title">Contact us</div>
+					</a>
+					<ul>
+						<li class=""><a href="{{ route('admin.find-us.index') }}" ><i class='bx bx-radio-circle'></i>Section</a></li>
+					</ul>
+				</li>
                 {{-- end Testing  --}}
 				{{-- item --}}
 				<li class="menu-label">Forms & Tables</li>

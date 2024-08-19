@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AboutUs\IdentityController;
 use App\Http\Controllers\Admin\AboutUs\InvestorsController;
 use App\Http\Controllers\Admin\AboutUs\OurTeamController;
 use App\Http\Controllers\Admin\AboutUs\PartnersController;
+use App\Http\Controllers\Admin\ContactUs\RegionalOfficeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Education\EducationController;
 use App\Http\Controllers\Admin\FindUs\CategoryController;
@@ -52,6 +53,10 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('certificates',CertificateController::class);
     Route::resource('specializations',SpecializationController::class);
     Route::resource('find-us',FindUsController::class);
+    // Route::resource('contct-us-country/services',FindUsController::class);
+    Route::resource('contct-us-country/regional-offices',RegionalOfficeController::class);
+    // Route::resource('contct-us-country/authorized-offices',FindUsController::class);
+    // Route::resource('contct-us-country/regional-representatives',FindUsController::class);
 
     Route::name('about.')->prefix('about')->group(function(){
         Route::resource('identity', IdentityController::class);

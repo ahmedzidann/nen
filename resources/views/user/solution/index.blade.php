@@ -2,7 +2,7 @@
 @section('parent_page_name')Solution @endsection
 @section('page_name')Solution @endsection
 @section('cover_image')
-    {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
+{{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
 @endsection
 @section('content')
 
@@ -277,11 +277,64 @@
                         </div>
                     </div>
                 </div>
+                </a>
+                </div>
+
+                <div class="tabel_contact_us">
+                <h3 class="txt-center-bold">Regional Representatives
+                </h3>
+                <div class="table-responsive">
+                    <div class="office-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="flex_img_country"><i class="bi bi-globe-asia-australia"></i> Country
+                                        </div>
+                                    </th>
+                                    <th> <div class="flex_img_country"><i class="bi bi-person"></i> Name<div></th>
+                                    <th> <div class="flex_img_country"><i class="bi bi-telephone"></i> Phone</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-column="Country" class="td-left">
+                                        <div class="country_icons"> <span class="office-flag-img"><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Egypt.svg.webp')}}"></span>
+                                            Egypt</div>
+
+                                    </td>
+                                    <td data-column="Name" class="td-center">mohamed mostafa</td>
+
+                                    <td data-column="Phone">+962 7 9007 5557</td>
+                                </tr>
+                                <tr>
+                                    <td data-column="Country" class="td-left">
+                                        <div class="country_icons"> <span class="office-flag-img"><img
+                                                    src="{{asset('content/images/small_icon/images.png')}}"></span>
+                                                    Saudi </div>
+                                    </td>
+                                    <td data-column="Name" class="td-center">mohamed mostafa</td>
+                                    <td data-column="Phone">+963 944 316 641</td>
+                                </tr>
+                                <tr>
+                                    <td data-column="Country" class="td-left">
+                                        <div class="country_icons"> <span class="office-flag-img"><img
+                                                    src="{{asset('content/images/small_icon/download.png')}}"></span>
+                                            kanda</div>
+                                    </td>
+                                    <td data-column="Name" class="td-center">mohamed mostafa</td>
+                                    <td data-column="Phone">+7 961 607 7887</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                </div>
             </div>
             @endif
-        @endforeach
-
-
+            @endforeach
 
         </div>
     </div>

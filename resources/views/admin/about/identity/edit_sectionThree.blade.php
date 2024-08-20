@@ -99,6 +99,8 @@
                                                 </x-admin.form.label-end>
                                             </div>
                                             <div class="col-md-12 mb-4">
+                                            <h6>مقاس الصورة (350 * 350)</h6>
+
                                                 <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>

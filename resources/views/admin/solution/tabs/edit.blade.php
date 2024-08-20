@@ -170,7 +170,7 @@
                                                                         {{-- </input> --}}
                                                                     </div>
                                                                     <div class="col-sm-4">
-                                                                    {{-- <input type="hidden"  name="{{'link_id['.$item->key.'][]'}}" value="{{$link->id}}"> --}}
+                                                                    <input type="hidden"  name="{{'link_id['.$item->key.'][]'}}" value="{{$link->id}}">
 
                                                                         <x-admin.form.input  value="{{ $link->translate('title', $item->key)}}" name="{{'links_title['.$item->key.'][]'}}" type="text" required=""
                                                                         placeholder="{{$item->name}} title" class="form-control valid">
@@ -300,7 +300,7 @@
 @endsection
 @section('jsadmin')
 @include('admin.layouts.ckeditor.ckeditor')
-{{-- <script src="{{ asset('admin/about/certificates/js/edit.js') }}"></script> --}}
+<script src="{{ asset('admin/solution/js/edit.js') }}"></script>
 @endsection
 
 <script>

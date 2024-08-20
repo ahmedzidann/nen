@@ -31,12 +31,6 @@ $(function () {
                 data: 'title',
                 name: 'title'
             },
-
-
-            {
-                data: 'description',
-                name: 'description'
-            },
             {
                 data: 'created_at',
                 name: 'created_at'

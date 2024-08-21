@@ -1,13 +1,10 @@
 <?php
 
 namespace App\ViewModels\ContactUs;
-
-use App\Models\Page;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
 use App\Models\ContactUsCountry as ContactUsCountryModel;
-
-class ContactUsCountry extends ViewModel
+class RegionalRepresentativeViewModel extends ViewModel
 {
     public  $StaticTable;
     public  $type;
@@ -26,8 +23,8 @@ class ContactUsCountry extends ViewModel
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();
-        $this->routeCreate = route('admin.regional-offices.create',Request()->query());
-        $this->routeView = route('admin.regional-offices.index',Request()->query());
+        $this->routeCreate = route('admin.regional-representatives.create',Request()->query());
+        $this->routeView = route('admin.regional-representatives.index',Request()->query());
         // $this->editRoute = route('admin.regional-offices.edit',['regional-offices'=> "5" ,''=>Request()->query()]);
         // dd($this->editRoute);
         $this->viewTable = 'Contact Us';
@@ -36,8 +33,8 @@ class ContactUsCountry extends ViewModel
     public function action(): string
     {
         return is_null($this->StaticTable->id)
-            ? route('admin.regional-offices.store')
-            : route('admin.regional-offices.update', $this->StaticTable->id);
+            ? route('admin.regional-representatives.store')
+            : route('admin.regional-representatives.update', $this->StaticTable->id);
     }
 
     public function method(): string

@@ -45,31 +45,26 @@
                                                 {{-- --------start --}}
                                                 <div class="card-body p-4 row">
                                                     <div class="col-md-12 mb-4">
-                                                        <x-admin.form.label-first star="*" class="form-label"
-                                                            name="Country  {{ $item->country }}"></x-admin.form.label-first>
-                                                        <x-admin.form.input id="title"
-                                                            old="{{ 'country.' . $item->key }}"
+                                                        <x-admin.form.input id="title" old="{{ 'name.' . $item->key }}"
                                                             name="{{ 'country' . '[' . $item->key . ']' }}" type="text"
-                                                            required="" placeholder="Title {{ $item->country }}"
+                                                            required="" placeholder="Country {{ $item->key }}"
                                                             class="form-control valid" :value="$StaticTable->translate('country', $item->key)">
                                                         </x-admin.form.input>
                                                         <x-admin.form.label-end star="*"
-                                                            name="please enter  {{ $item->country }}">
+                                                            name="please enter Country {{ $item->key }}">
                                                         </x-admin.form.label-end>
                                                     </div>
                                                     <div class="col-md-12 mb-4">
-                                                        <x-admin.form.label-first star="*" class="form-label"
-                                                            name="Adress  {{ $item->address }}"></x-admin.form.label-first>
-                                                        <x-admin.form.input id="title"
-                                                            old="{{ 'address.' . $item->key }}"
-                                                            name="{{ 'address' . '[' . $item->key . ']' }}" type="text"
-                                                            required="" placeholder="Title {{ $item->address }}"
-                                                            class="form-control valid" :value="$StaticTable->translate('address', $item->key)">
+                                                        <x-admin.form.input id="title" old="{{ 'name.' . $item->key }}"
+                                                            name="{{ 'name' . '[' . $item->key . ']' }}" type="text"
+                                                            required="" placeholder="name {{ $item->key }}"
+                                                            class="form-control valid" :value="$StaticTable->translate('name', $item->key)">
                                                         </x-admin.form.input>
                                                         <x-admin.form.label-end star="*"
-                                                            name="please enter  {{ $item->address }}">
+                                                            name="please enter name {{ $item->key }}">
                                                         </x-admin.form.label-end>
                                                     </div>
+
 
                                                     {{-- ----------first image --}}
                                                     @if ($loop->first)
@@ -107,31 +102,6 @@
                                                                 name="please enter Longitude">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        <div class="col-md-6 mb-4">
-                                                            <x-admin.form.label-first star="" class="form-label"
-                                                                name="From At">
-                                                            </x-admin.form.label-first>
-                                                            <x-admin.form.input old="from_at" name="from_at"
-                                                                type="datetime-local" required="" placeholder="From At"
-                                                                class="form-control valid" :value="$StaticTable->from_at">
-                                                            </x-admin.form.input>
-                                                            <x-admin.form.label-end star="*"
-                                                                name="please enter From At">
-                                                            </x-admin.form.label-end>
-                                                        </div>
-                                                        <div class="col-md-6 mb-4">
-                                                            <x-admin.form.label-first star="" class="form-label"
-                                                                name="To At">
-                                                            </x-admin.form.label-first>
-                                                            <x-admin.form.input old="to_at" name="to_at"
-                                                                type="datetime-local" required="" placeholder="To At"
-                                                                class="form-control valid" :value="$StaticTable->to_at">
-                                                            </x-admin.form.input>
-                                                            <x-admin.form.label-end star="*"
-                                                                name="please enter To At">
-                                                            </x-admin.form.label-end>
-                                                        </div>
-
                                                         {{-- ----------first image --}}
                                                         <div class="col-md-12 mb-4">
                                                             <x-admin.form.label-first class="col-sm-3 col-form-label"

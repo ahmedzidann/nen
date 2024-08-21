@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('phone');
             $table->tinyInteger('type');
-            $table->dateTime('from_at');
-            $table->dateTime('to_at');
+            $table->dateTime('from_at')->nullable();
+            $table->dateTime('to_at')->nullable();
             $table->timestamps();
         });
     }

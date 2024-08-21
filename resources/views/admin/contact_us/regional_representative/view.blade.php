@@ -26,8 +26,8 @@
                                 <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                                 <th>{{ TranslationHelper::translate(ucfirst('#') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('country') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('name') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('phone') ?? '') }}</th>
-                                <th>{{ TranslationHelper::translate(ucfirst('schedule') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Processes') ?? '') }}</th>
                             </tr>
                         </thead>
@@ -59,7 +59,9 @@
     <script src="{{ asset('admin/custom/js/index.js') }}"></script>
     <script>
         var language = $('#Admins').val();
-        let url = '{{ route('admin.regional-offices.show', ['regional_office' => ':id']) }}'
+        console.log(language);
+        
+        let url = '{{ route('admin.regional-representatives.show', ['regional_representative' => ':id']) }}'
         url = url.replace(':id', language);
         $(document).ready(function() {
             var table = initializeDataTable(
@@ -78,10 +80,10 @@
                         data: 'country'
                     },
                     {
-                        data: 'phone'
+                        data: 'name'
                     },
                     {
-                        data: 'schedule'
+                        data: 'phone'
                     },
                     {
                         data: 'action',
@@ -99,7 +101,7 @@
             );
 
             // Setup bulk delete functionality
-            bulkDelete(table, "{{route('admin.delete.regional-offices')}}");
+            bulkDelete(table, "{{route('admin.delete.regional-representatives')}}");
         });
     </script>
 @endsection

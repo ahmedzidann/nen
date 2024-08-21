@@ -59,16 +59,16 @@
                                             </div>
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
-                                                    name="address  {{ $translationFirst->address  }}">
+                                                    name="name  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'address.'.$translationFirst->key }}"
-                                                    name="{{ 'address'.'['.$translationFirst->key.']' }}" type="text"
-                                                    required="" placeholder="address {{ $translationFirst->address }}"
+                                                <x-admin.form.input old="{{ 'name.'.$translationFirst->key }}"
+                                                    name="{{ 'name'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder="name {{ $translationFirst->name }}"
                                                     class="form-control valid"
-                                                    :value="$StaticTable->translate('address', $translationFirst->key)">
+                                                    :value="$StaticTable->translate('name', $translationFirst->key)">
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end star="*"
-                                                    name="please enter address  {{ $translationFirst->address  }}">
+                                                    name="please enter name  {{ $translationFirst->address  }}">
                                                 </x-admin.form.label-end>
                                             </div>
 
@@ -112,34 +112,7 @@
                                                     name="please enter Longitude">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            <div class="col-md-6 mb-4">
-                                                <x-admin.form.label-first star="" class="form-label"
-                                                    name="From At">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="from_at"
-                                                    name="from_at" type="datetime-local"
-                                                    required="" placeholder="From At"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->from_at">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end star="*"
-                                                    name="please enter From At">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <x-admin.form.label-first star="" class="form-label"
-                                                    name="To At">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="to_at"
-                                                    name="to_at" type="datetime-local"
-                                                    required="" placeholder="To At"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->lat">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end star="*"
-                                                    name="please enter To At">
-                                                </x-admin.form.label-end>
-                                            </div>
+
 
                                             {{-- ----------first image--}}
                                             <div class="col-md-12 mb-4">
@@ -155,7 +128,6 @@
                                                 </div>
                                             </div>
                                             {{-- ----------end image--}}
-
                                             <div class="col-md-12">
                                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                                     <x-admin.form.submit type="submit"></x-admin.form.submit>

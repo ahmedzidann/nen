@@ -155,7 +155,6 @@
                                                 </div>
                                             </div>
                                             {{-- ----------end image--}}
-
                                             <div class="col-md-12">
                                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                                     <x-admin.form.submit type="submit"></x-admin.form.submit>

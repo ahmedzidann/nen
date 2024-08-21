@@ -59,7 +59,7 @@
     <script src="{{ asset('admin/custom/js/index.js') }}"></script>
     <script>
         var language = $('#Admins').val();
-        let url = '{{ route('admin.regional-offices.show', ['regional_office' => ':id']) }}'
+        let url = '{{ route('admin.authorized-offices.show', ['authorized_office' => ':id']) }}'
         url = url.replace(':id', language);
         $(document).ready(function() {
             var table = initializeDataTable(
@@ -99,7 +99,7 @@
             );
 
             // Setup bulk delete functionality
-            bulkDelete(table, "{{route('admin.delete.regional-offices')}}");
+            bulkDelete(table, "{{route('admin.delete.authorized-offices')}}");
         });
     </script>
 @endsection

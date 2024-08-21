@@ -25,9 +25,8 @@
                             <tr>
                                 <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                                 <th>{{ TranslationHelper::translate(ucfirst('#') ?? '') }}</th>
-                                <th>{{ TranslationHelper::translate(ucfirst('country') ?? '') }}</th>
-                                <th>{{ TranslationHelper::translate(ucfirst('phone') ?? '') }}</th>
-                                <th>{{ TranslationHelper::translate(ucfirst('schedule') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('title') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('email') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Processes') ?? '') }}</th>
                             </tr>
                         </thead>
@@ -59,7 +58,7 @@
     <script src="{{ asset('admin/custom/js/index.js') }}"></script>
     <script>
         var language = $('#Admins').val();
-        let url = '{{ route('admin.regional-offices.show', ['regional_office' => ':id']) }}'
+        let url = '{{ route('admin.contact-us-services.show', ['contact_us_service' => ':id']) }}'
         url = url.replace(':id', language);
         $(document).ready(function() {
             var table = initializeDataTable(
@@ -75,13 +74,10 @@
                         data: 'id'
                     },
                     {
-                        data: 'country'
+                        data: 'title'
                     },
                     {
-                        data: 'phone'
-                    },
-                    {
-                        data: 'schedule'
+                        data: 'email'
                     },
                     {
                         data: 'action',
@@ -97,9 +93,8 @@
                     }
                 ], {} // Extra data to pass with the request (optional)
             );
-
             // Setup bulk delete functionality
-            bulkDelete(table, "{{route('admin.delete.regional-offices')}}");
+            bulkDelete(table, "{{route('admin.delete.contact-us-services')}}");
         });
     </script>
 @endsection

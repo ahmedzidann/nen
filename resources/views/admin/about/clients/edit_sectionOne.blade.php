@@ -90,7 +90,9 @@
                                             {{-- ----------first image--}}
                                             @if ($loop->first)
                                             <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
+                                            <h6>مقاس الصورة (350 * 370)</h6>
+
+                                            <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">

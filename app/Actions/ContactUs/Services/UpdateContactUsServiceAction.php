@@ -12,7 +12,7 @@ class UpdateContactUsServiceAction
     public function handle(ContactUsService  $item,array $data)
     {
         $item->update((Arr::except($data, 'image')));
-        $this->UpdateImage($data,$item,'Contact');
+        $this->UpdateImage($data,$item,'image');
         return $item;
     }
 }

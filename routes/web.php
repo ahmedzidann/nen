@@ -1,17 +1,18 @@
 <?php
 
 
-use App\Http\Controllers\Admin\profile\AdminController;
-use App\Http\Controllers\User\AboutUs\AboutController;
-use App\Http\Controllers\User\DocValidation\DocValidationController;
-use App\Http\Controllers\User\Education\EducationController;
-use App\Http\Controllers\User\FindUs\FindUsController;
-use App\Http\Controllers\User\Projects\ProjectController;
-use App\Http\Controllers\User\Solution\SolutionController;
-use App\Http\Controllers\User\Technology\TechnologyContoller;
-use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\AboutUs\AboutController;
+use App\Http\Controllers\User\FindUs\FindUsController;
+use App\Http\Controllers\Admin\profile\AdminController;
+use App\Http\Controllers\User\Testing\TestingContoller;
+use App\Http\Controllers\User\Projects\ProjectController;
+use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\ContactUs\ContactUsController;
+use App\Http\Controllers\User\Education\EducationController;
+use App\Http\Controllers\User\Technology\TechnologyContoller;
+use App\Http\Controllers\User\DocValidation\DocValidationController;
 
 Route::get('/', function () {
     return 'asd';
@@ -84,3 +85,7 @@ Route::group(['prefix' => 'find-us','as'=>'find-us.', 'name'=>'find-us.'], funct
 
     //Projects Routes
     Route::get('Projects/{slug?}/{id?}',[ProjectController::class,'index'])->name('projects');
+    Route::get('contact-us/{param?}',[ContactUsController::class,'index'])->name('contact-us');
+
+
+ 

@@ -731,4 +731,5 @@
   'please enter title fr' => 'Please enter title fr',
   'please enter title ar' => 'Please enter title ar',
   'please enter title en' => 'Please enter title en',
+  'please enter salary' => 'Please enter salary',
 );

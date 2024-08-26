@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AboutUs\AchievementsController;
 use App\Http\Controllers\Admin\AboutUs\AwardsController;
 use App\Http\Controllers\Admin\AboutUs\CareersController;
@@ -55,6 +57,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('find-us', FindUsController::class);
     // Route::resource('contct-us-country/services',FindUsController::class);
     Route::resource('contct-us-country/regional-offices', RegionalOfficeController::class)->except('destroy');
+    Route::resource('about', AboutController::class);
     Route::post('contct-us-country/regional-offices-bulk-delete', [RegionalOfficeController::class, 'destroy'])->name('delete.regional-offices');
     Route::resource('contct-us-country/authorized-offices', AuthorizedOfficeController::class)->except('destroy');
     Route::post('contct-us-country/authorized-offices-bulk-delete', [AuthorizedOfficeController::class, 'destroy'])->name('delete.authorized-offices');

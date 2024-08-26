@@ -81,18 +81,16 @@
         <div class="row">
           <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="logo_footer_div">
-              <img class="footer_img" src="{{asset('content/images/small_icon/logo1.png')}}" />
+              <img class="footer_img" src="{{asset('content/images/logo.svg')}}" />
               <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text
+               {{$about->translate('text', app()->getLocale())}}
               </p>
 
               <div class="socail_div">
-                <a href="#" class="a_link"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="a_link"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="a_link"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="a_link"><i class="bi bi-youtube"></i></a>
+                <a href="{{$about->facebook_link}}" class="a_link"><i class="bi bi-facebook"></i></a>
+                <a href="{{$about->twitter_link}}" class="a_link"><i class="bi bi-twitter"></i></a>
+                <a href="{{$about->instagram_link}}" class="a_link"><i class="bi bi-instagram"></i></a>
+                <a href="{{$about->youtube_link}}" class="a_link"><i class="bi bi-youtube"></i></a>
               </div>
             </div>
           </div>

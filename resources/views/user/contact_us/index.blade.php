@@ -272,16 +272,18 @@
             // Select all elements with the class 'contact_offices'
             var offices = document.querySelectorAll('.contact_offices');
 
-            // Loop through each 'contact_offices' div
-            offices.forEach(function(office) {
-                // Check if the class name exists in the URL
-                
-                if (currentUrl.includes(office.classList[2])) {
-                    office.style.display = 'block'; // Show the matching office
-                } else {
-                    office.style.display = 'none'; // Hide non-matching offices
-                }
-            });
+            if (currentUrl.includes('contact_offices')) {
+                // Loop through each 'contact_offices' div
+                offices.forEach(function(office) {
+                    // Check if the class name exists in the URL
+
+                    if (currentUrl.includes(office.classList[2])) {
+                        office.style.display = 'block'; // Show the matching office
+                    } else {
+                        office.style.display = 'none'; // Hide non-matching offices
+                    }
+                });
+            }
         });
     </script>
 

@@ -55,16 +55,6 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('certificates', CertificateController::class);
     Route::resource('specializations', SpecializationController::class);
     Route::resource('find-us', FindUsController::class);
-    // Route::resource('contct-us-country/services',FindUsController::class);
-    Route::resource('contct-us-country/regional-offices', RegionalOfficeController::class)->except('destroy');
-    Route::resource('about', AboutController::class);
-    Route::post('contct-us-country/regional-offices-bulk-delete', [RegionalOfficeController::class, 'destroy'])->name('delete.regional-offices');
-    Route::resource('contct-us-country/authorized-offices', AuthorizedOfficeController::class)->except('destroy');
-    Route::post('contct-us-country/authorized-offices-bulk-delete', [AuthorizedOfficeController::class, 'destroy'])->name('delete.authorized-offices');
-    Route::resource('contct-us-country/regional-representatives', RegionalRepresentativeController::class)->except('destroy');
-    Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
-    Route::resource('contact-us-services', ServicesController::class)->except('destroy');
-    Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
 
     Route::name('about.')->prefix('about')->group(function () {
         Route::resource('identity', IdentityController::class);
@@ -125,5 +115,15 @@ Route::middleware('authAdmin:admin')->group(function () {
     #### Elsdodey
 
     Route::resource('doc-validation', DocValidationController::class);
+    Route::resource('contct-us-country/services',FindUsController::class);
+    Route::resource('contct-us-country/regional-offices', RegionalOfficeController::class)->except('destroy');
+    Route::resource('about', AboutController::class);
+    Route::post('contct-us-country/regional-offices-bulk-delete', [RegionalOfficeController::class, 'destroy'])->name('delete.regional-offices');
+    Route::resource('contct-us-country/authorized-offices', AuthorizedOfficeController::class)->except('destroy');
+    Route::post('contct-us-country/authorized-offices-bulk-delete', [AuthorizedOfficeController::class, 'destroy'])->name('delete.authorized-offices');
+    Route::resource('contct-us-country/regional-representatives', RegionalRepresentativeController::class)->except('destroy');
+    Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
+    Route::resource('contact-us-services', ServicesController::class)->except('destroy');
+    Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
 
 });

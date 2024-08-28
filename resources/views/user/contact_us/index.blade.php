@@ -8,11 +8,26 @@
 @section('cover_image')
     {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png') }}
 @endsection
-<style>
-    #map {
-        height: 100%;
-    }
-</style>
+@section('websiteStyle')
+    {{-- start toastr --}}
+    <link rel="stylesheet" href="{{ asset('toastr/css/toastr.min.css') }}" />
+    {{-- end toastr --}}
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        .txt-center-bold-black {
+            text-align: center !important;
+            padding: 8px 10px;
+            background: #000000;
+            color: #fff !important;
+            font-size: 20px;
+            outline: 0;
+            margin: 25px 0 0 0 !important;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="about_content">
         {{-- @if ($items->count()) --}}
@@ -227,6 +242,53 @@
                     <p style="color:#999;">There is No Data Of Service Available</p>
                 </div>
             @endforelse
+            <hr>
+            <h3 class="txt-center-bold-black">Contact Form</h3>
+            <br>
+            <br>
+            <form id="contact_form" action="{{ route('contacts.store') }}" method="post">
+                @csrf
+                <div class="Department">
+                    <label for="Department"></label>
+                    <select placeholder="Department" name="department" id="department_input" required="">
+                        <option disabled="" hidden="" selected="">Department</option>
+                        <option value="0">Customer Service</option>
+                        <option value="1">Technical Support</option>
+                        <option value="2">Sales and Marketing</option>
+                        <option value="3">Operation and Quality</option>
+                        <option value="4">Purchase and Finance</option>
+                        <option value="5">International Testing</option>
+                        <option value="6">Education and Training</option>
+                    </select>
+                </div>
+                <div class="name">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Name" name="name" id="name_input">
+                </div>
+                <div class="email">
+                    <label for="email"></label>
+                    <input type="email" placeholder="Email" name="email" id="email_input">
+                </div>
+                <div class="telephone">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Phone" name="phone" id="telephone_input">
+                </div>
+                <div class="refrence">
+                    <label for="refrence"></label>
+                    <input type="text" placeholder="Reference" name="reference" id="reference_input">
+                </div>
+                <div class="subject">
+                    <label for="subject"></label>
+                    <input type="text" placeholder="Subject" name="subject" id="subject_input">
+                </div>
+                <div class="message">
+                    <label for="message"></label>
+                    <textarea name="message" placeholder="Message" id="message_input" cols="30" rows="5"></textarea>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Send Message" id="form_button">
+                </div>
+            </form>
         </div>
     </div>
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s"></script>
@@ -286,5 +348,44 @@
             }
         });
     </script>
+@endsection
+@section('websiteScript')
+    {{-- start toastr --}}
+    <script src="{{ asset('toastr/js/toastr.min.js') }}"></script>
+    {{-- end toastr --}}
+    <script>
+        $(document).ready(function() {
+            $('#contact_form').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
 
+                console.log('test'); // Debugging output to check if the function runs
+
+                var form = $(this)[0]; // Get the DOM element for FormData
+                var formData = new FormData(form); // Create a new FormData object
+
+                var url = $(this).attr('action');
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: formData, // Send the FormData object
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                            toastr.success(response.message, 'Error!', {
+                                timeOut: 11000
+                            });
+                    },
+                    error: function(xhr) {
+                        let errors = xhr.responseJSON.errors;
+                        $.each(errors, function(index, error) {
+                            toastr.error(error, 'Error!', {
+                                timeOut: 11000
+                            });
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

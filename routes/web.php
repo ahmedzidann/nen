@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\AboutUs\AboutController;
 use App\Http\Controllers\User\FindUs\FindUsController;
 use App\Http\Controllers\Admin\profile\AdminController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\Solution\SolutionController;
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'find-us','as'=>'find-us.', 'name'=>'find-us.'], funct
     //Projects Routes
     Route::get('Projects/{slug?}/{id?}',[ProjectController::class,'index'])->name('projects');
     Route::get('contact-us/{param?}',[ContactUsController::class,'index'])->name('contact-us');
+    Route::resource('contacts',ContactController::class)->only('store');
 
 
  

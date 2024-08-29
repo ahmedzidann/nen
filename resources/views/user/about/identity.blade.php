@@ -137,7 +137,7 @@
     </div>
     @endif
     @if ($tSection =  $items->where('item','section-three')->first())
-    <div class="objectives_div">
+    <!-- <div class="objectives_div">
         <div class="objectiv_titling">
           <h1>{{$tSection->title}}</h1>
           <ul class="objectives_ul">
@@ -148,7 +148,53 @@
         <div class="objectives_img">
           <img src="{{$tSection->getFirstMediaUrl('StaticTable')}}">
         </div>
-    </div>
+    </div> -->
+
+    <div class="objectives_div">
+            <div class="objectiv_titling">
+              <h1>Our Objectives Of Company</h1>
+              <ul class="objectives_ul">
+                <li>
+                  <i class="bi bi-record-circle"></i>
+                  Developing highly qualified calibers to keep pace with the requirements of the labor market.
+                </li>
+                <li>
+                  <i class="bi bi-record-circle"></i>
+                  Providing free educational resources and platforms to
+                  enabling self-education that would guarantee equal
+                  opportunities for young people everywhere
+                </li>
+                <li>
+                  <i class="bi bi-record-circle"></i>
+                  Expanding the range of our consultation services focusing on
+                  hyper growth sectors.
+                </li>
+                <li>
+                  <i class="bi bi-record-circle"></i>
+                  Promoting benefits of technological solutions for enhancing
+                  organizational capabilities and competencies with small
+                  businesses.
+                </li>
+                <li>
+                  <i class="bi bi-record-circle"></i>
+                  Leading a strong, comprehensive network of professional,
+                  socially responsible organizations dedicated to innovation
+                  and excellence.
+                </li>
+                <li>
+                  <i class="bi bi-record-circle"></i>
+                  Preparing a generation of qualified teachers, trainers, and
+                  lecturers capable of utilizing state-of-the-art
+                  technological solutions to facilitate education and
+                  learning.
+                </li>
+              </ul>
+            </div>
+
+            <div class="objectives_img">
+              <img src="content/images/Rating.png" />
+            </div>
+          </div> 
     @endif
    <!-- <div class="objectives_div">
     <div class="objectiv_titling">

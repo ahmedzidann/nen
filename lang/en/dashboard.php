@@ -752,4 +752,7 @@
   'File Upload youtube' => 'File Upload youtube',
   'Please Enter instagram Image' => 'Please Enter instagram Image',
   'Title  french' => 'Title  french',
+  'please enter url  french' => 'Please enter url  french',
+  'Url french' => 'Url french',
+  'url  french' => 'Url  french',
 );

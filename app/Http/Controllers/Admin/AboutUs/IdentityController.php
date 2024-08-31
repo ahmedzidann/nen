@@ -64,6 +64,7 @@ class IdentityController extends Controller
     public function store(IdentityRequest $request)
     // public function store(Request $request)
     {
+        dd($request->all());
         if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
             $validator = $request->validationStoreThree();
         }elseif ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-two'){
@@ -78,8 +79,12 @@ class IdentityController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
-            app(StoreStaticTableAction::class)->handle($validator->validated());
-
+             $StaticTable = app(StoreStaticTableAction::class)->handle($validator->validated());
+        if ($request->has('attributes')) {
+            $StaticTable->identityAttributes()->createMany(array_map(fn($item)=>[
+                'content'=>$item
+            ],$request['attributes']));
+        }
             redirect()->route('admin.about.identity.index')->with('add','Success Add Identity');
             return response()->json([
                 'status'=>200,

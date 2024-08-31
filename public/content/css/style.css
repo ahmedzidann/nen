@@ -3155,10 +3155,6 @@ th {
 
 }
 
-.subsidiaries_sec_content {
-    margin-top: 50px;
-}
-
 .subsidiaries__sec {
 
     display: grid;
@@ -3209,7 +3205,7 @@ th {
 .flg_div img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .subsidiaries_content {
@@ -3264,6 +3260,41 @@ th {
     align-items: center;
     gap: 10px;
 }
+
+.nav.nav-tabs.subsidiaries_tab {
+  margin-top: 50px;
+  --bs-nav-tabs-border-width: 1px;
+  --bs-nav-tabs-border-color: none;
+  --bs-nav-tabs-border-radius: 0.375rem;
+  --bs-nav-tabs-link-hover-border-color: none;
+  --bs-nav-tabs-link-active-color: #495057;
+  --bs-nav-tabs-link-active-bg: #fff;
+  --bs-nav-tabs-link-active-border-color: none;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 25px;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #990000;
+  border-color: unset;
+  border-radius: 10px;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: #000;
+  border-radius: 10px;
+}
+
+.bttn_tab_color{
+  color: #000;
+  font-size: 18px;
+}
+
 
 /* responsive */
 

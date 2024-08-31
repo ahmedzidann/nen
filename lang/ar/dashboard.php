@@ -686,8 +686,7 @@
   'subtitle  french' => 'Subtitle  french',
   'company  french' => 'Company  french',
   'please enter company  arabic' => 'Please enter company  arabic',
-);
-=======
+
     'Submit' => 'Submit',
     'name Roles' => 'Name Roles',
     'back' => 'Back',

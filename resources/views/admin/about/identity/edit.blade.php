@@ -89,7 +89,6 @@
                                             @else
                                             @if ($loop->first)
                                             <div class="col-md-12 mb-4">
-                                                <h6>مقاس الصورة (325 * 400)</h6>
                                                 <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
@@ -100,6 +99,8 @@
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
                                                     </x-admin.form.input>
                                                 </div>
+                                                <span>مقاس الصورة (325 * 400)</span>
+
                                             </div>
                                             @endif
                                             @endif
@@ -119,6 +120,7 @@
                                                 <x-admin.form.label-end star="*" name="please enter sort">
                                                 </x-admin.form.label-end>
                                             </div>
+
                                             @endif
                                             @endif
                                             {{-- ----------sort end --}}

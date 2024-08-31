@@ -10,19 +10,19 @@
 @endsection
 @section('content')
 
-    <div class="about_content">
-        @if ($fSection = $items->where('item', 'section-one')->first())
-            <div class="about_flex">
-                <div class="video_div">
-                    <img class="video_img" src="{{ $fSection->getFirstMediaUrl('StaticTable') }}" />
-                    <span class="video_icon" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                            class="bi bi-play-circle"></i></span>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content modal_syles">
-                                <div class="modal-header">
+<div class="about_content">
+    @if ($fSection =  $items->where('item','section-one')->first())
+        <div class="about_flex">
+            <div class="video_div">
+                <img class="video_img" src="{{$fSection->getFirstMediaUrl('StaticTable')}}" />
+                <span class="video_icon"><i
+                    class="bi bi-play-circle"></i></span>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content modal_syles">
+                    <div class="modal-header">
 
                                     <a href="#" class="bttn_close" data-bs-dismiss="modal" aria-label="Close"><i
                                             class="bi bi-x-lg"></i></a>

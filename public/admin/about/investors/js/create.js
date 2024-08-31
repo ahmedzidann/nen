@@ -14,6 +14,8 @@
                     CKEDITOR.instances[instance].updateElement();
                 }
               var form = new FormData(form[0]);
+              console.log(form);
+              
               $.ajax({
                   url: url,
                   type: "POST",

@@ -1,13 +1,14 @@
 <?php
 namespace App\Models;
 use App\Models\Page;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+use App\Models\IdentityAttribute;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Translatable\HasTranslations;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class StaticTable extends Model implements  HasMedia
@@ -61,5 +62,14 @@ class StaticTable extends Model implements  HasMedia
 
     public function scopeActive($q){
         $q->where('status',"active");
+    }
+
+    public function identityAttributes()
+    {
+        return $this->hasMany(IdentityAttribute::class, 'identity_id');
+    }
+    public function investorAttributes()
+    {
+        return $this->hasMany(InvestorAttribute::class, 'investor_id');
     }
 }

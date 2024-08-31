@@ -85,6 +85,7 @@ class InvestorsRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.*' => ['nullable','max:255','min:2'],
             'url.*' => ['required','max:255','min:2'],
+            'attributes.*' => ['required'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -134,7 +135,7 @@ class InvestorsRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['nullable','max:255','min:2'],
-            'url.'.$request->submit2 => ['required','max:900','min:2'],
+            'url' => ['required','max:900','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -180,7 +181,7 @@ class InvestorsRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['nullable','max:255','min:2'],
-            'url.'.$request->submit2 => ['required','max:900','min:2'],
+            'url' => ['required','max:900','min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
         ]);

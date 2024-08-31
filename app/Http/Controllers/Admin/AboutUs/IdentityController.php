@@ -64,6 +64,7 @@ class IdentityController extends Controller
     public function store(IdentityRequest $request)
     // public function store(Request $request)
     {
+        dd($request->all());
         if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
             $validator = $request->validationStoreThree();
         }elseif ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-two'){
@@ -78,21 +79,12 @@ class IdentityController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
-            app(StoreStaticTableAction::class)->handle($validator->validated());
-            // if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
-            //          foreach($request->description as $data){
-            //              StaticTable::create([
-            //              'pages_id'=>$request->pages_id,
-            //              'category'=>$request->category,
-            //              'subcategory'=>$request->subcategory,
-            //              'item'=>$request->item,
-            //              'sort'=>$request->sort,
-            //              'description'=>$data['en'],
-            //              ]);
-            //          }
-            // }else{
-
-            // }
+             $StaticTable = app(StoreStaticTableAction::class)->handle($validator->validated());
+        if ($request->has('attributes')) {
+            $StaticTable->identityAttributes()->createMany(array_map(fn($item)=>[
+                'content'=>$item
+            ],$request['attributes']));
+        }
             redirect()->route('admin.about.identity.index')->with('add','Success Add Identity');
             return response()->json([
                 'status'=>200,
@@ -106,15 +98,15 @@ class IdentityController extends Controller
         if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-two'){
         return view('admin.about.identity.edit_sectionTwo',new IdentityTableViewModel($identity));
         }elseif($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
-        return view('admin.about.identity.edit_sectionThree',new IdentityTableViewModel($identity));
+        return view('admin.about.identity.edit_sectionThree',new IdentityTableViewModel($identity->load('identityAttributes')));
         }else{
         return view('admin.about.identity.edit',new IdentityTableViewModel($identity));
         }
     }
     public function update(IdentityRequest $request, StaticTable $identity)
     {
-        // dd($request->all());
-       if($request->submit2=='en'){
+        
+        if($request->submit2=='en'){
             if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
               $validator = $request->validationUpdateThreeEn();
             }elseif($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-two'){

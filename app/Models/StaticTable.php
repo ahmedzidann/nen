@@ -62,4 +62,9 @@ class StaticTable extends Model implements  HasMedia
     public function scopeActive($q){
         $q->where('status',"active");
     }
+
+    public function identityAttributes()
+    {
+        return $this->hasMany(IdentityAttribute::class, 'identity_id');
+    }
 }

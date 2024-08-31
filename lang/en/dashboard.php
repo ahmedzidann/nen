@@ -751,4 +751,5 @@
   'youtube Link' => 'Youtube Link',
   'File Upload youtube' => 'File Upload youtube',
   'Please Enter instagram Image' => 'Please Enter instagram Image',
+  'Title  french' => 'Title  french',
 );

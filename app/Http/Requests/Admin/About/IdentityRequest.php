@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Requests\Admin\About;
 
-
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,11 +28,11 @@ class IdentityRequest extends FormRequest
 
     public function validationStore()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
-            'image'=>['required','mimes:png,jpg,jpeg'],
+            'title.*' => ['required', 'max:255', 'min:2'],
+            'description.*' => ['required', 'max:8000', 'min:2'],
+            'image' => ['required', 'mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['nullable'],
@@ -42,10 +41,10 @@ class IdentityRequest extends FormRequest
 
     public function validationStoretwo()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required','max:8000','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'title.*' => ['required', 'max:8000', 'min:2'],
+            'description.*' => ['required', 'max:8000', 'min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'sort' => ['nullable'],
@@ -54,12 +53,13 @@ class IdentityRequest extends FormRequest
     }
     public function validationStoreThree()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required','max:8000','min:2'],
-            'description.*' => ['required','max:8000'],
+            'title.*' => ['required', 'max:8000', 'min:2'],
+            'attributes.*' => ['nullable'],
+            'description.*' => ['required', 'max:8000'],
             'item' => ['required'],
-            'image'=>['required','mimes:png,jpg,jpeg'],
+            'image' => ['required', 'mimes:png,jpg,jpeg'],
             'pages_id' => ['required'],
             'sort' => ['nullable'],
             'status' => ['nullable'],
@@ -67,11 +67,11 @@ class IdentityRequest extends FormRequest
     }
     public function validationUpdateEn()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -80,23 +80,25 @@ class IdentityRequest extends FormRequest
     }
     public function validationUpdateThreeEn()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'title.' . $request->submit2 => ['required', 'max:255'],
+            'attributes.*.' . $request->submit2 => ['nullable'],
+            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'keys.*' => 'nullable',
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg'],
         ]);
     }
     public function validationUpdateTwoEn()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -105,26 +107,28 @@ class IdentityRequest extends FormRequest
     }
     public function validationUpdateThreeAr()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title' => ['required','max:8000','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'title' => ['required', 'max:8000'],
+            'attributes.*.' . $request->submit2 => ['nullable'],
+            'description.' . $request->submit2 => ['required', 'max:8000'],
+            'keys.*' => 'nullable',
         ]);
     }
     public function validationUpdateTwoAr()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
         ]);
     }
     public function validationUpdateAr()
     {
-        $request= Request();
+        $request = Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
         ]);
     }
 }

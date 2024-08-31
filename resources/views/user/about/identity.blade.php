@@ -11,7 +11,7 @@
         <div class="about_flex">
             <div class="video_div">
                 <img class="video_img" src="{{$fSection->getFirstMediaUrl('StaticTable')}}" />
-                <span class="video_icon" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                <span class="video_icon"><i
                     class="bi bi-play-circle"></i></span>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

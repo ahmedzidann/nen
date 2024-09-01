@@ -108,6 +108,7 @@ class IdentityRequest extends FormRequest
     public function validationUpdateThreeAr()
     {
         $request = Request();
+        dd($request->all());
         return Validator::make($request->all(), [
             'title' => ['required', 'max:8000'],
             'attributes.*.' . $request->submit2 => ['nullable'],

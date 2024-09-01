@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="small_photes_div">
-                    <a href="{{route('contact-us')}}"><img
+                    <a href="/contact-us"><img
                             src="{{ asset('content/images/small_icon/headphon_icon.svg') }}" /><span>Contact
                             us</span></a>
                     <a href="#"><img

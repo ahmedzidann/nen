@@ -2,6 +2,46 @@
 
 All notable changes to `laravel-translatable` will be documented in this file
 
+## 6.7.1 - 2024-05-14
+
+### What's Changed
+
+* fix: PHPDoc block in Translatable facade by @kyryl-bogach in https://github.com/spatie/laravel-translatable/pull/448
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/spatie/laravel-translatable/pull/446
+
+### New Contributors
+
+* @kyryl-bogach made their first contribution in https://github.com/spatie/laravel-translatable/pull/448
+
+**Full Changelog**: https://github.com/spatie/laravel-translatable/compare/6.7.0...6.7.1
+
+## 6.7.0 - 2024-05-13
+
+### What's Changed
+
+* Add method comment to Facade for IDE autocompletion by @Muetze42 in https://github.com/spatie/laravel-translatable/pull/438
+* Docs: add type declarations `array $translatable` by @fahrim in https://github.com/spatie/laravel-translatable/pull/441
+* [FEAT] add ability for filtering a column's locale or multiple locale… by @AbdelrahmanBl in https://github.com/spatie/laravel-translatable/pull/447
+
+### New Contributors
+
+* @fahrim made their first contribution in https://github.com/spatie/laravel-translatable/pull/441
+* @AbdelrahmanBl made their first contribution in https://github.com/spatie/laravel-translatable/pull/447
+
+**Full Changelog**: https://github.com/spatie/laravel-translatable/compare/6.6.2...6.7.0
+
+## 6.6.2 - 2024-03-01
+
+### What's Changed
+
+* Fix toArray when using accessors on translatable attributes by @vencelkatai in https://github.com/spatie/laravel-translatable/pull/437
+
+### New Contributors
+
+* @vencelkatai made their first contribution in https://github.com/spatie/laravel-translatable/pull/437
+
+**Full Changelog**: https://github.com/spatie/laravel-translatable/compare/6.6.1...6.6.2
+
 ## 6.6.1 - 2024-02-26
 
 ### What's Changed

@@ -90,7 +90,7 @@ class EventDispatcher
      */
     public function setRunScripts(bool $runScripts = true): self
     {
-        $this->runScripts = (bool) $runScripts;
+        $this->runScripts = $runScripts;
 
         return $this;
     }
@@ -193,6 +193,8 @@ class EventDispatcher
         $listeners = $this->getListeners($event);
 
         $this->pushEvent($event);
+
+        $autoloadersBefore = spl_autoload_functions();
 
         try {
             $returnMax = 0;
@@ -297,7 +299,7 @@ class EventDispatcher
                         // it does not hurt to keep the same stream as the current Application
                         if ($this->io instanceof ConsoleIO) {
                             $reflProp = new \ReflectionProperty($this->io, 'output');
-                            if (PHP_VERSION_ID < 80100) {
+                            if (\PHP_VERSION_ID < 80100) {
                                 $reflProp->setAccessible(true);
                             }
                             $output = $reflProp->getValue($this->io);
@@ -328,7 +330,7 @@ class EventDispatcher
                     }
 
                     $possibleLocalBinaries = $this->composer->getPackage()->getBinaries();
-                    if ($possibleLocalBinaries) {
+                    if (count($possibleLocalBinaries) > 0) {
                         foreach ($possibleLocalBinaries as $localExec) {
                             if (Preg::isMatch('{\b'.preg_quote($callable).'$}', $localExec)) {
                                 $caller = BinaryInstaller::determineBinaryCaller($localExec);
@@ -352,7 +354,7 @@ class EventDispatcher
                         $pathAndArgs = substr($exec, 5);
                         if (Platform::isWindows()) {
                             $pathAndArgs = Preg::replaceCallback('{^\S+}', static function ($path) {
-                                return str_replace('/', '\\', (string) $path[0]);
+                                return str_replace('/', '\\', $path[0]);
                             }, $pathAndArgs);
                         }
                         // match somename (not in quote, and not a qualified path) and if it is not a valid path from CWD then try to find it
@@ -382,8 +384,6 @@ class EventDispatcher
 
                         if (Platform::isWindows()) {
                             $exec = Preg::replaceCallback('{^\S+}', static function ($path) {
-                                assert(is_string($path[0]));
-
                                 return str_replace('/', '\\', $path[0]);
                             }, $exec);
                         }
@@ -411,6 +411,26 @@ class EventDispatcher
             }
         } finally {
             $this->popEvent();
+
+            $knownIdentifiers = [];
+            foreach ($autoloadersBefore as $key => $cb) {
+                $knownIdentifiers[$this->getCallbackIdentifier($cb)] = ['key' => $key, 'callback' => $cb];
+            }
+            foreach (spl_autoload_functions() as $cb) {
+                // once we get to the first known autoloader, we can leave any appended autoloader without problems
+                if (isset($knownIdentifiers[$this->getCallbackIdentifier($cb)]) && $knownIdentifiers[$this->getCallbackIdentifier($cb)]['key'] === 0) {
+                    break;
+                }
+
+                // other newly appeared prepended autoloaders should be appended instead to ensure Composer loads its classes first
+                if ($cb instanceof ClassLoader) {
+                    $cb->unregister();
+                    $cb->register(false);
+                } else {
+                    spl_autoload_unregister($cb);
+                    spl_autoload_register($cb);
+                }
+            }
         }
 
         return $returnMax;
@@ -637,5 +657,24 @@ class EventDispatcher
                 Platform::putEnv($pathEnv, $binDir.PATH_SEPARATOR.$pathValue);
             }
         }
+    }
+
+    /**
+     * @param callable $cb DO NOT MOVE TO TYPE HINT as private autoload callbacks are not technically callable
+     */
+    private function getCallbackIdentifier($cb): string
+    {
+        if (is_string($cb)) {
+            return 'fn:'.$cb;
+        }
+        if (is_object($cb)) {
+            return 'obj:'.spl_object_hash($cb);
+        }
+        if (is_array($cb)) {
+            return 'array:'.(is_string($cb[0]) ? $cb[0] : get_class($cb[0]) .'#'.spl_object_hash($cb[0])).'::'.$cb[1];
+        }
+
+        // not great but also do not want to break everything here
+        return 'unsupported';
     }
 }

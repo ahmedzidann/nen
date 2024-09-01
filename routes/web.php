@@ -89,5 +89,5 @@ Route::group(['prefix' => 'find-us','as'=>'find-us.', 'name'=>'find-us.'], funct
     Route::get('contact-us/{param?}',[ContactUsController::class,'index'])->name('contact-us');
     Route::resource('contacts',ContactController::class)->only('store');
 
-
+//
  

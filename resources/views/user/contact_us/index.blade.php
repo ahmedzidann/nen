@@ -291,7 +291,7 @@
             </form>
         </div>
     </div>
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s&loading=async"></script>
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -302,16 +302,7 @@
                 }
             });
 
-            var locations = @json($locations);
 
-            locations.forEach(function(location) {
-                location.lat = parseFloat(location.lat);
-                location.lng = parseFloat(location.lng);
-                new google.maps.Marker({
-                    position: location,
-                    map: map
-                });
-            });
         }
 
         document.addEventListener('DOMContentLoaded', initMap);
@@ -372,9 +363,9 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                            toastr.success(response.message, 'Error!', {
-                                timeOut: 11000
-                            });
+                        toastr.success(response.message, 'Error!', {
+                            timeOut: 11000
+                        });
                     },
                     error: function(xhr) {
                         let errors = xhr.responseJSON.errors;

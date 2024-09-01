@@ -64,7 +64,6 @@ class IdentityController extends Controller
     public function store(IdentityRequest $request)
     // public function store(Request $request)
     {
-        dd($request->all());
         if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
             $validator = $request->validationStoreThree();
         }elseif ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-two'){

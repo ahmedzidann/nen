@@ -79,7 +79,7 @@
                                                                 <div class=" col-md-10   mb-4">
                                                                     <input type="text" class="form-control"
                                                                         name="attributes[][{{ $item->key }}]"
-                                                                        value="{{ $attribute->translate('content', $translationFirst->key) }}"
+                                                                        value="{{ $attribute->translate('content', $item->key) }}"
                                                                         placeholder="Enter text">
                                                                     <input type="hidden" class="form-control"
                                                                         name="keys[]" value="{{ $attribute->id }}"
@@ -98,7 +98,8 @@
                                                         <div class="input-group new-chiled">
                                                             <div class="col-md-8 mb-4">
                                                                 <input type="text" class="form-control"
-                                                                    name="attributes[][{{$item->key}}]" placeholder="Enter text">
+                                                                    name="attributes[][{{ $item->key }}]"
+                                                                    placeholder="Enter text">
                                                             </div>
                                                             <div class="col-md-2 mb-4">
                                                                 <button type="button" class="form-control"
@@ -260,7 +261,9 @@
             const translations = @json($translation);
             const containers = document.querySelectorAll('.new-chiled');
             containers.forEach((container, index) => {
+
                 const language = translations[index].key;
+                console.log(language);
                 const clonedInputGroup = newInputGroup.cloneNode(true);
                 clonedInputGroup.querySelector('input').name = `attributes[][${language}]`;
                 container.appendChild(clonedInputGroup);

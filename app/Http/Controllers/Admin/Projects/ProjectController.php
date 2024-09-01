@@ -61,7 +61,7 @@ class ProjectController extends Controller
                                 }elseif($item->slug=='archive'){
                                 $options .= '<li><a href="'.route('admin.tabproject.archive.index',['tab='.$item->slug,'project_id='.$row->id]).'">'.$item->name.'</a></li>';
                                }else{
-                                 $options .= '<li><a href="'.url('admin.tabproject.joinus.index',['tab='.$item->slug,'project_id='.$row->id]).'">'.$item->name.'</a></li>';
+                                 $options .= '<li><a href="'.route('admin.tabproject.joinus.index',['tab='.$item->slug,'project_id='.$row->id]).'">'.$item->name.'</a></li>';
                                 }
                             };
 

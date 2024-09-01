@@ -14,7 +14,10 @@
     {{-- end toastr --}}
     <style>
         #map {
-            height: 100%;
+            height: 500px;
+            /* Set the height of the map */
+            width: 100%;
+            /* Set the width to fill the container */
         }
 
         .txt-center-bold-black {
@@ -248,9 +251,10 @@
             <br>
             <form id="contact_form" action="{{ route('contacts.store') }}" method="post">
                 @csrf
-                <div class="Department">
-                    <label for="Department"></label>
-                    <select placeholder="Department" name="department" id="department_input" required="">
+                <div class="Department ">
+                    <label for="Department">Select Department</label>
+                    <select class="form-control" placeholder="Department" name="department" id="department_input"
+                        required="">
                         <option disabled="" hidden="" selected="">Department</option>
                         <option value="0">Customer Service</option>
                         <option value="1">Technical Support</option>
@@ -262,36 +266,38 @@
                     </select>
                 </div>
                 <div class="name">
-                    <label for="name"></label>
-                    <input type="text" placeholder="Name" name="name" id="name_input">
+                    <label for="name">Enter Name</label>
+                    <input class="form-control" type="text" placeholder="Name" name="name" id="name_input">
                 </div>
                 <div class="email">
-                    <label for="email"></label>
-                    <input type="email" placeholder="Email" name="email" id="email_input">
+                    <label for="email">Enter Email</label>
+                    <input class="form-control" type="email" placeholder="Email" name="email" id="email_input">
                 </div>
                 <div class="telephone">
-                    <label for="name"></label>
-                    <input type="text" placeholder="Phone" name="phone" id="telephone_input">
+                    <label for="Phone">Enter Phone Number</label>
+                    <input class="form-control" type="text" placeholder="Phone" name="phone" id="telephone_input">
                 </div>
                 <div class="refrence">
-                    <label for="refrence"></label>
-                    <input type="text" placeholder="Reference" name="reference" id="reference_input">
+                    <label for="refrence">Enter Reference</label>
+                    <input class="form-control" type="text" placeholder="Reference" name="reference"
+                        id="reference_input">
                 </div>
                 <div class="subject">
-                    <label for="subject"></label>
-                    <input type="text" placeholder="Subject" name="subject" id="subject_input">
+                    <label for="subject">Enter Subject</label>
+                    <input class="form-control" type="text" placeholder="Subject" name="subject" id="subject_input">
                 </div>
                 <div class="message">
-                    <label for="message"></label>
-                    <textarea name="message" placeholder="Message" id="message_input" cols="30" rows="5"></textarea>
+                    <label for="message">Enter Message</label>
+                    <textarea class="form-control" name="message" placeholder="Message" id="message_input" cols="30"
+                        rows="5"></textarea>
                 </div>
                 <div class="submit">
-                    <input type="submit" value="Send Message" id="form_button">
+                    <input class="form-control" type="submit" value="Send Message" id="form_button">
                 </div>
             </form>
         </div>
     </div>
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s&loading=async"></script>
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -301,7 +307,7 @@
                     lng: 31.233334
                 }
             });
-
+            // Array of marker locations
             var locations = @json($locations);
 
             locations.forEach(function(location) {
@@ -313,6 +319,7 @@
                 });
             });
         }
+
 
         document.addEventListener('DOMContentLoaded', initMap);
     </script>
@@ -372,9 +379,9 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                            toastr.success(response.message, 'Error!', {
-                                timeOut: 11000
-                            });
+                        toastr.success(response.message, 'Error!', {
+                            timeOut: 11000
+                        });
                     },
                     error: function(xhr) {
                         let errors = xhr.responseJSON.errors;

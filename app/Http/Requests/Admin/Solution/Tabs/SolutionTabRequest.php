@@ -32,9 +32,9 @@ class SolutionTabRequest extends FormRequest
         } elseif ($this->isMethod('put') && $this->submit2 == 'en') {
             if ($this->tab == 'about_section_2') {
                 return $this->validationUpdateEnSec2();
-                
+
             } elseif ($this->tab == 'contacts') {
-                
+
                 return $this->validationUpdateContacts();
 
             } else {
@@ -110,7 +110,7 @@ class SolutionTabRequest extends FormRequest
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             // 'childe_pages_id' => ['required'],
             // 'item' => ['required'],
-            'icon' => ['required'],
+            // 'icon' =>  ['required', 'mimes:png,jpg,jpeg,svg,webp'],
             'status' => ['nullable'],
             'tabs_id' => ['nullable'],
             'solution_id' => ['nullable'],
@@ -188,7 +188,7 @@ class SolutionTabRequest extends FormRequest
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             // 'item' => ['required'],
             // 'pages_id' => ['required'],
-            'icon' => ['required'],
+            // 'icon' => ['required'],
             'status' => ['required'],
             // "links" =>['nullable','array'],
             // "links.*" =>['nullable','url'],

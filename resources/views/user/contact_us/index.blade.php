@@ -227,7 +227,7 @@
                                                             <img src="{{ $office->country?->getFirstMediaUrl('flag') }}"
                                                                 alt="Flag of Egypt">
                                                         </span>
-                                                        {{ $office->country->translate('title', app()->getLocale()) }}
+                                                        {{ $office->country?->translate('title', app()->getLocale()) }}
                                                     </div>
                                                 </td>
                                                 <td data-column="Name" class="td-center">{{ $office->name }}</td>

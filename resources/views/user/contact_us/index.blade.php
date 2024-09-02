@@ -224,7 +224,7 @@
                                                 <td data-column="Country" class="td-left">
                                                     <div class="country_icons">
                                                         <span class="office-flag-img">
-                                                            <img src="{{ $office->country->getFirstMediaUrl('flag') }}"
+                                                            <img src="{{ $office->country?->getFirstMediaUrl('flag') }}"
                                                                 alt="Flag of Egypt">
                                                         </span>
                                                         {{ $office->country->translate('title', app()->getLocale()) }}

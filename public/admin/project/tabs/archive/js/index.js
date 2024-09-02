@@ -35,22 +35,19 @@ $(function () {
                 data: 'title',
                 name: 'title'
             },
-            {
-                data: 'description',
-                name: 'description'
-            },
+
             {
                 data: 'Project',
                 name: 'project_id'
             },
-            {
-                data: 'Tabs',
-                name: 'tabs_id'
-            },
-            {
-                data: 'created_at',
-                name: 'created_at'
-            },
+            // {
+            //     data: 'Tabs',
+            //     name: 'tabs_id'
+            // },
+            // {
+            //     data: 'created_at',
+            //     name: 'created_at'
+            // },
             {
                 data: 'action',
                 name: 'action',

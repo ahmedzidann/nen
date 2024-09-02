@@ -34,9 +34,16 @@
                         <p id="shortDescription" style="white-space: pre-line;">{!! $about->shortDescription !!}</p>
                         @endif
                         @if(!empty($about->description))
-                        <p id="fullDescription" style="white-space: pre-line; display: none;">{!! $about->description !!}</p>
+                        <p id="fullDescription" style="white-space: pre-line;" class="text-start {{ strlen($about->description)>= 400 ? "p_clamp_4":''}}">
+                             {{ html_entity_decode(strip_tags($about->description)) }}
+
+                            </p>
                         @endif
-                        <a href="#" id="learnMoreBtn" class="btn_detail">Learn More</a>
+
+                        @if (strlen($about->description)>= 400)
+                            <a href="#" onclick="toggleDescription2(this)" id="learnMoreBtn" class="btn_detail">Show More</a>
+                            @endif
+
                     </div>
                     <div class="whou_us_img">
                         <img src="{{ asset($about->getFirstMediaUrl('AboutTabs')) }}">
@@ -121,8 +128,12 @@
                         <div class="programe_content">
                             <img src="{{ asset($program->getFirstMediaUrl('firstImage')) }}">
                             <h3>{{ $program->title }}</h3>
-                            <p class="p_clamp">{!! $program->description !!}</p>
-                            <button href="#" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
+                            <p class="text-start {{ strlen($program->description)>= 200 ? "p_clamp":''}} " >  {{ html_entity_decode(strip_tags($program->description)) }}</p>
+                            @if (strlen($program->description)>= 200)
+                            {{-- <a  role='btn' onclick="toggleDescription(this)" class="read_more" >Read More <i class="bi bi-chevron-down"></i></a> --}}
+                            <button href="#" onclick="toggleDescription(this)" class="show_bttn">Show More <i class="bi bi-chevron-down"></i></button>
+
+                            @endif
                             <div class="flex_icons_div">
                                 <a href="{{ route('admin.tabproject.programTabDownload',$program->id) }}">
                                     <p><img src="{{asset('content')}}/images/small_icon/archive-book.png"><span>Reference</span>
@@ -152,11 +163,11 @@
             @foreach($projects->getHelp as $helpItem)
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne-{{$helpItem['id']}}" aria-expanded="false" aria-controls="flush-collapseOne-{{$helpItem['id']}}">
                         {{$helpItem['title']}}
                     </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseOne-{{$helpItem['id']}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">{!! $helpItem['description']!!}</div>
                 </div>
             </div>
@@ -169,16 +180,18 @@
         <div class="document_sec">
         @foreach($projects->getDocument as $doc)
         @if($doc->type == "pdf")
-            <div class="document_content">
+            <div class="document_content  d-flex justify-content-between">
 
-                <i class="bi bi-filetype-pdf"></i>
+                <i class="bi bi-filetype-pdf "></i>
                 <div class="document_titel">
                     <h3>{{$doc->title}}</h3>
                     <p class="p_clamp"> {{$doc->description}}</p>
-                        ever since the 1500s when an......</p>
+                    <p>  ever since the 1500s when an......  </p>
 
                 </div>
-                <a href="{{ route('admin.tabproject.archiveDownload',$doc->id) }}"><i class="bi bi-download"></i></a>
+                <a href="{{ route('admin.tabproject.archiveDownload',$doc->id) }}">
+                    <i class="bi bi-download"></i>
+                </a>
             </div>
           @elseif($doc->type == "url")
             <div class="document_content">
@@ -189,7 +202,7 @@
 
                 </div>
                 <a href="https://{{ $doc->url }}">
-                <i class="bi bi-box-arrow-up-right"></i>
+                    <i class="bi bi-box-arrow-up-right"></i>
                 </a>
             </div>
             @endif
@@ -223,7 +236,7 @@
                         <p>{!! $joinus['description'] !!}</p>
                         @endif
                     </div>
- @endforeach
+                @endforeach
                 </div>
 
             </div>
@@ -234,11 +247,13 @@
             <h2>Terms and Conditions</h2>
             <div class="flex_jon">
                 <ul class="terms_ul">
+                @foreach ($projects->getJoinus as $joinus)
                    @if(!empty($joinus['description']))
                     <li>
                         {!! $joinus['sub_description'] !!}
                     </li>
-                 @endif
+                    @endif
+                @endforeach
 
                 </ul>
 
@@ -272,6 +287,28 @@
             fullDescription.style.display = "block";
         });
     });
+
+    function toggleDescription(button) {
+        var description = button.previousElementSibling;
+        if (description.classList.contains('p_clamp')) {
+            description.classList.remove('p_clamp');
+            button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+        } else {
+            description.classList.add('p_clamp');
+            button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+        }
+    }
+
+    function toggleDescription2(button) {
+            var description = button.previousElementSibling;
+            if (description.classList.contains('p_clamp_4')) {
+                description.classList.remove('p_clamp_4');
+                button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+            } else {
+                description.classList.add('p_clamp_4');
+                button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+            }
+        }
 
 </script>
 

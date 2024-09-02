@@ -2197,6 +2197,15 @@ margin-top: 75px;
     text-align: left;
 }
 
+.p_clamp_4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:6;
+    overflow: hidden;
+    color: #333333;
+    text-align: left;
+}
+
 .programe_content .show_bttn {
     background: #fff;
     border: none;

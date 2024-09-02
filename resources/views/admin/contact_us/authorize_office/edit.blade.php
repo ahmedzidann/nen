@@ -44,19 +44,23 @@
                                             <div class="card-body p-4">
                                                 {{-- --------start --}}
                                                 <div class="card-body p-4 row">
-                                                    <div class="col-md-12 mb-4">
-                                                        <x-admin.form.label-first star="*" class="form-label"
-                                                            name="Country  {{ $item->country }}"></x-admin.form.label-first>
-                                                        <x-admin.form.input id="title"
-                                                            old="{{ 'country.' . $item->key }}"
-                                                            name="{{ 'country' . '[' . $item->key . ']' }}" type="text"
-                                                            required="" placeholder="Title {{ $item->country }}"
-                                                            class="form-control valid" :value="$StaticTable->translate('country', $item->key)">
-                                                        </x-admin.form.input>
-                                                        <x-admin.form.label-end star="*"
-                                                            name="please enter  {{ $item->country }}">
-                                                        </x-admin.form.label-end>
-                                                    </div>
+                                                    @if ($loop->first)
+                                                        <div class="col-md-12 mb-4">
+                                                            <x-admin.form.label-first star="*"
+                                                                class="col-sm-12 col-form-label" name="Country">
+                                                            </x-admin.form.label-first>
+                                                            <div class="col-sm-12">
+                                                                <select name="country_id" class="form-control valid">
+                                                                    <option  disabled>Select Country</option>
+                                                                    @foreach ($countries as $country)
+                                                                        <option value="{{ $country->id }}"
+                                                                            {{ $country->id == $StaticTable->country_id ? 'selected' : '' }}>
+                                                                            {{ $country->title }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                     <div class="col-md-12 mb-4">
                                                         <x-admin.form.label-first star="*" class="form-label"
                                                             name="Adress  {{ $item->address }}"></x-admin.form.label-first>

@@ -60,12 +60,12 @@ Investors
             @if ($items->where('item', 'section-foure')->count())
 
             <div class="subsidiaries_sec_content">
-                <h1 class="subsidiaries_titel">subsidiaries</h1>
+                {{-- <h1 class="subsidiaries_titel">subsidiaries</h1> --}}
                 <div class="subsidiaries__sec">
                     @forelse ($subInvestors as $sub)
                     <div class="subsidiaries_content">
                         <div class="flg_div">
-                            <img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
+                            <img src="{{ $sub->getFirstMediaUrl('StaticTable') }}">
                         </div>
                         <div class="subsidiaries_details">
                             <h5>{{ $sub->translate('title', app()->getLocale()) }}</h5>
@@ -73,7 +73,7 @@ Investors
                                 @foreach ($sub->investorAttributes as $row)
                                 <div class="flag_icon_titel">
                                     <div class="sub_contennt">
-                                        <h6><img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
+                                        <h6><img src="{{ $row->country->getFirstMediaUrl('flag') }}">
                                             <p>Since : <span>{{ $row->since }}</span></p>
                                         </h6>
                                         <h6>
@@ -83,16 +83,6 @@ Investors
 
                                 </div>
                                 @endforeach
-                                <div class="sub_contennt">
-                                    <h6><img src="{{ asset('content/images/small_icon/Flag_of_Kuwait.svg.webp') }}">
-                                        <p>Since : <span>2008</span></p>
-                                    </h6>
-                                    <h6>
-                                        <p>Sharing : <span>100%</span></p>
-                                    </h6>
-                                </div>
-
-
                             </div>
                             <a href="{{ $sub->url}}" class="website_link">Website</a>
                         </div>
@@ -112,13 +102,13 @@ Investors
             @if ($items->where('item', 'section-foure')->count())
 
             <div class="subsidiaries_sec_content">
-                <h1 class="subsidiaries_titel">Sister Companies
-                </h1>
+                {{-- <h1 class="subsidiaries_titel">Sister Companies
+                </h1> --}}
                 <div class="subsidiaries__sec">
                     @forelse ($sisInvestors as $sister)
                     <div class="subsidiaries_content">
                         <div class="flg_div">
-                            <img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
+                            <img src="{{ $sister->getFirstMediaUrl('StaticTable') }}">
                         </div>
                         <div class="subsidiaries_details">
                             <h5>{{$sister->translate('title', app()->getLocale())}}</h5>
@@ -126,7 +116,7 @@ Investors
                                 @foreach ($sister->investorAttributes as $attr)
                                 <div class="flag_icon_titel">
                                     <div class="sub_contennt">
-                                        <h6><img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
+                                        <h6><img src="{{ $attr->country->getFirstMediaUrl('flag') }}">
                                             <p>Since : <span>{{ $attr->since}}</span></p>
                                         </h6>
                                         <h6>

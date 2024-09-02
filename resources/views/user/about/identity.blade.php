@@ -48,22 +48,14 @@
                     </div>
 
                     <div class="three_circles">
-                        <div class="circle_content">
-                            <circle-progress class="progress_1" value="90" max="100"
+                        @foreach ($statistics as $row)
+                                                    <div class="circle_content">
+                            <circle-progress class="progress_1" value="{{$row->value}}" max="100"
                                 text-format="percent"></circle-progress>
-                            <span class="text">Ui/Ux Designer</span>
-                        </div>
-                        <div class="circle_content">
-                            <circle-progress class="progress_1" value="70" max="100"
-                                text-format="percent"></circle-progress>
-                            <span class="text">Ui/Ux Designer</span>
-                        </div>
-                        <div class="circle_content">
-                            <circle-progress class="progress_1" value="80" max="100"
-                                text-format="percent"></circle-progress>
-                            <span class="text">Ui/Ux Designer</span>
+                            <span class="text">{{$row->translate('title', app()->getLocale())}}</span>
                         </div>
 
+                        @endforeach
                     </div>
                 </div>
             </div>

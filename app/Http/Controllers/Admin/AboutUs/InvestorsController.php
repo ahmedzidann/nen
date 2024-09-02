@@ -7,7 +7,6 @@ use App\Helper\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\About\InvestorsRequest;
 use App\Http\Requests\Admin\About\ManypostRequest;
-use App\Models\InvestorAttribute;
 use App\Models\ManyTables;
 use App\Models\Page;
 use App\Models\StaticTable;
@@ -157,15 +156,7 @@ class InvestorsController extends Controller
         } else {
             $staticTable = app(StoreStaticTableAction::class)->handle($validator->validated());
             if ($request->has('attributes')) {
-                foreach ($request['attributes'] as $k => $row) {
-                    $investor = InvestorAttribute::create([
-                        'investor_id' => $staticTable->id,
-                        'since' => $row['since'],
-                        'percent' => $row['percent'],
-                        'category' => $row['category'],
-                    ]);
-                    // $this->StoreImage($request['attributes'][$k], $investor, 'AboutTabs');
-                }
+                $staticTable->investorAttributes()->createMany(array_map(fn($item) => $item, $request['attributes']));
             }
             redirect()->route('admin.about.investors.index')->with('add', 'Success Add Investors');
             return response()->json([
@@ -214,7 +205,9 @@ class InvestorsController extends Controller
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-three') {
                 $validator = $request->validationUpdateThreeAr();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-foure') {
+
                 $validator = $request->validationUpdateFoureAr();
+                $validator->validated()['category'] = $request->cat;
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-five') {
                 $validator = $request->validationUpdateFoureAr();
             } else {
@@ -231,15 +224,8 @@ class InvestorsController extends Controller
             app(UpdateStaticTableAction::class)->handle($investors, $validator->validated());
             if ($request->has('attributes')) {
                 $investors->investorAttributes()->delete();
-                foreach ($request['attributes'] as $k => $row) {
-                    $investor = InvestorAttribute::create([
-                        'investor_id' => $investors->id,
-                        'since' => $row['since'],
-                        'percent' => $row['percent'],
-                        'category' => $row['category'],
-                    ]);
-                    // $this->StoreImage($request['attributes'][$k], $investor, 'AboutTabs');
-                }
+                $investors->investorAttributes()->createMany(array_map(fn($item) => $item, $request['attributes']));
+
             }
 
             return response()->json([

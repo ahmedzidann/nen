@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('contact_us_countries', function (Blueprint $table) {
             $table->id();
-            $table->string('country');
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->on('countries')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->nullable();
             $table->decimal('lat', 10, 7)->nullable(); // Latitude
             $table->decimal('lng', 10, 7)->nullable(); // Longitude

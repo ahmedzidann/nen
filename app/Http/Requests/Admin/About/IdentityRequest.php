@@ -103,12 +103,14 @@ class IdentityRequest extends FormRequest
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
+            'statistics.title.' . $request->submit2 => ['required'],
+            'statistics.value.*' => ['required'],
         ]);
     }
     public function validationUpdateThreeAr()
     {
         $request = Request();
-        dd($request->all());
+
         return Validator::make($request->all(), [
             'title' => ['required', 'max:8000'],
             'attributes.*.' . $request->submit2 => ['nullable'],
@@ -122,6 +124,8 @@ class IdentityRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
             'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'statistics.title.' . $request->submit2 => ['required'],
+            'statistics.value.*' => ['required'],
         ]);
     }
     public function validationUpdateAr()

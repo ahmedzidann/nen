@@ -7,6 +7,7 @@ use App\Models\OurTeam;
 use App\Models\Page;
 use App\Models\Slider;
 use App\Models\StaticTable;
+use App\Models\Statistic;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,10 @@ class AboutController extends Controller
     {
         $identity = Page::where('slug', 'identity')->first();
         $slider = Slider::where('page_id', $identity->id)->first();
-
+        $statistics = Statistic::limit(3)->get();
         if ($identity) {
             $identities = StaticTable::where("pages_id", $identity->id)->with('identityAttributes')->active()->get();
-            return view('user.about.identity', ['items' => $identities, 'slider' => $slider]);
+            return view('user.about.identity', ['items' => $identities, 'slider' => $slider, 'statistics' => $statistics]);
         } else {
             abort(400, "error");
         }
@@ -33,8 +34,8 @@ class AboutController extends Controller
 
         if ($investor) {
             $items = StaticTable::where("pages_id", $investor->id)->active()->get();
-            $subInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes')->whereHas('investorAttributes', fn($q) => $q->where('category', InvestorType::SUBDIDIARIES))->get();
-            $sisInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes' )->whereHas('investorAttributes' , fn($q) => $q->where('category', InvestorType::SISTER_COMPANIES))->get();
+            $subInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes.country')->where('category', InvestorType::SUBDIDIARIES)->get();
+            $sisInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes.country')->where('category', InvestorType::SISTER_COMPANIES)->get();
             return view('user.about.investors', ['items' => $items, 'sisInvestors' => $sisInvestors, 'subInvestors' => $subInvestors, 'slider' => $slider]);
         } else {
             abort(400, "error");

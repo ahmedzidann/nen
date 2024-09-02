@@ -25,7 +25,7 @@ class RegionalRepresentativeController extends Controller
 
         if ($request->ajax()) {
 
-            $data = ContactUsCountryModel::query()->where('type', OfficeType::REGIONAL_REPRESENTATIVES);
+            $data = ContactUsCountryModel::query()->with('country')->where('type', OfficeType::REGIONAL_REPRESENTATIVES);
             if ((!empty($request->from_date)) && (!empty($request->to_date))) {
                 $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }
@@ -35,7 +35,7 @@ class RegionalRepresentativeController extends Controller
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
                 ->editColumn('country', function ($row) use ($language) {
-                    return $row->translate('country', $language);
+                    return $row->country->translate('title', $language);
                 })
                 ->editColumn('name', function ($row) use ($language) {
                     return $row->translate('name', $language);
@@ -64,7 +64,7 @@ class RegionalRepresentativeController extends Controller
     }
     public function edit(Request $request, $id): View
     {
-        $StaticTable = ContactUsCountryModel::find($id);
+        $StaticTable = ContactUsCountryModel::with('country')->find($id);
         return view('admin.contact_us.regional_representative.edit', new RegionalRepresentativeViewModel($StaticTable));
     }
     public function update(ContactUsCountryRequest $request, $id)

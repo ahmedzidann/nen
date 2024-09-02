@@ -3,6 +3,7 @@
 namespace App\ViewModels\ContactUs;
 
 use App\Models\Page;
+use App\Models\Country;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
 use App\Models\ContactUsCountry as ContactUsCountryModel;
@@ -20,6 +21,8 @@ class ContactUsCountry extends ViewModel
     public  $SelectPages;
     public  $DataFull;
     public  $editRoute;
+    public  $countries;
+    
      public function __construct($StaticTable = null)
     {
         $this->StaticTable = is_null($StaticTable) ? new ContactUsCountryModel(old()) : $StaticTable;
@@ -28,6 +31,8 @@ class ContactUsCountry extends ViewModel
         $this->translationFirst = TranslationKey::first();
         $this->routeCreate = route('admin.regional-offices.create',Request()->query());
         $this->routeView = route('admin.regional-offices.index',Request()->query());
+        $this->countries = Country::all();
+
         // $this->editRoute = route('admin.regional-offices.edit',['regional-offices'=> "5" ,''=>Request()->query()]);
         // dd($this->editRoute);
         $this->viewTable = 'Contact Us';

@@ -2,6 +2,7 @@
 namespace App\ViewModels\AboutView;
 
 use App\Models\Page;
+use App\Models\Country;
 use App\Models\StaticTable;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
@@ -18,6 +19,7 @@ class InvestorsTableViewModel extends ViewModel
     public  $allPage;
     public  $SelectPages;
     public  $DataFull;
+    public  $countries;
 
     public function __construct($StaticTable = null)
     {
@@ -29,6 +31,7 @@ class InvestorsTableViewModel extends ViewModel
         $this->routeView = route('admin.about.investors.index',Request()->query());
         $this->viewTable = 'Investors';
         $this->allPage = Page::get();
+        $this->countries = Country::all();
         if(!empty(Request()->category) && !empty(Request()->subcategory)){
             $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
             $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();

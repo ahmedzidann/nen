@@ -3,6 +3,7 @@ namespace App\ViewModels\AboutView;
 
 use App\Models\Page;
 use App\Models\StaticTable;
+use App\Models\Statistic;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
 
@@ -18,6 +19,7 @@ class IdentityTableViewModel extends ViewModel
     public  $allPage;
     public  $SelectPages;
     public  $DataFull;
+    public  $statistics;
 
     public function __construct($StaticTable = null)
     {
@@ -25,6 +27,7 @@ class IdentityTableViewModel extends ViewModel
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();
+        $this->statistics = Statistic::limit(3)->get();
         $this->routeCreate = route('admin.about.identity.create',Request()->query());
         $this->routeView = route('admin.about.identity.index',Request()->query());
         $this->viewTable = 'Identity';

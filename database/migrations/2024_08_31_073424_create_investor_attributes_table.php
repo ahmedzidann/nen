@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('investor_id');
             $table->foreign('investor_id')->on('static_tables')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->tinyInteger('category')->default(1);
             $table->integer('since');
             $table->integer('percent');
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->on('countries')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

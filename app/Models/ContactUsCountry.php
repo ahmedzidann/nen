@@ -13,13 +13,12 @@ class ContactUsCountry extends Model implements HasMedia
     use HasTranslations, InteractsWithMedia;
 
     public $translatable = [
-        'country',
         'name',
         'title',
         'address',
     ];
     protected $fillable = [
-        'country',
+        'country_id',
         'name',
         'lat',
         'lng',
@@ -41,5 +40,10 @@ class ContactUsCountry extends Model implements HasMedia
     public function scopeFilterByLanguage(Builder $query, string $languageKey, string $countryName): Builder
     {
         return $query->whereRaw("JSON_EXTRACT(country, '$.\"$languageKey\"') = ?", [$countryName]);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 }

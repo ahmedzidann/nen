@@ -23,7 +23,7 @@ class ContactUsCountryRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
             return [
-                'country.*' => 'required_without:name',
+                'country_id' => 'required_without:name|exists:countries,id',
                 'name.*' => 'required_without:country',
                 'lat' => 'nullable',
                 'lng' => 'nullable',
@@ -35,7 +35,7 @@ class ContactUsCountryRequest extends FormRequest
             ];
         } else {
             return [
-                'country.*' => 'required_without:name',
+                'country_id' => 'required_without:name|exists:countries,id',
                 'name.*' => 'required_without:country',
                 'lat' => 'nullable',
                 'lng' => 'nullable',

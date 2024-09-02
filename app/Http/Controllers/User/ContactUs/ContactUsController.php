@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\ContactUs;
 use App\Http\Controllers\Controller;
 use App\Models\ContactUsCountry;
 use App\Models\ContactUsService;
+use App\Models\Country;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -12,13 +13,10 @@ class ContactUsController extends Controller
 {
     public function index(Request $request): View
     {
-        $countriesGrouped = ContactUsCountry::selectRaw('JSON_EXTRACT(country, "$.en") as country_name, MIN(id) as id')
-            ->groupBy('country_name')
-            ->get('id')->toArray();
-        $countries = ContactUsCountry::whereIn('id', array_column($countriesGrouped, 'id'))->with('media')->get();
+        $countries = Country::has('offices')->get();
         $services = ContactUsService::with('media')->get();
-        $contacts = ContactUsCountry::with('media')->when($request->country, function ($query) use ($request) {
-            return $query->filterByLanguage(app()->getLocale(), $request->country);
+        $contacts = ContactUsCountry::with(['media', 'country'])->when($request->country, function ($query) use ($request) {
+            return $query->where('country_id', $request->country);
         })->get();
 
         $locations = $contacts->map(function ($contact) {

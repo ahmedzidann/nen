@@ -48,9 +48,9 @@
                                     <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 7"
                                         style="margin-right: 10px;">
                                         <div class="country_div" style="cursor: pointer">
-                                            <a href="{{ route('contact-us', ['country' => $country->country]) }}">
-                                                {{ $country->country }}
-                                                <img src="{{ $country->getFirstMediaUrl('image') }}" alt="Flag">
+                                            <a href="{{ route('contact-us', ['country' => $country->id]) }}">
+                                                {{ $country->translate('title', app()->getLocale()) }}
+                                                <img src="{{ $country->getFirstMediaUrl('flag') }}" alt="Flag">
                                             </a>
                                         </div>
                                     </div>
@@ -128,10 +128,10 @@
                                                 <td data-column="Country" class="td-left">
                                                     <div class="country_icons">
                                                         <span class="office-flag-img">
-                                                            <img src="{{ $office->getFirstMediaUrl('image') }}"
+                                                            <img src="{{ $office->country->getFirstMediaUrl('flag') }}"
                                                                 alt="Flag of Egypt">
                                                         </span>
-                                                        {{ $office->country }}
+                                                        {{ $office->country->translate('title', app()->getLocale()) }}
                                                     </div>
                                                 </td>
                                                 <td data-column="Name" class="td-center">{{ $office->address }}</td>
@@ -178,10 +178,10 @@
                                                 <td data-column="Country" class="td-left">
                                                     <div class="country_icons">
                                                         <span class="office-flag-img">
-                                                            <img src="{{ $office->getFirstMediaUrl('image') }}"
+                                                            <img src="{{ $office->country->getFirstMediaUrl('flag') }}"
                                                                 alt="Flag of Egypt">
                                                         </span>
-                                                        {{ $office->country }}
+                                                       {{ $office->country->translate('title', app()->getLocale()) }}
                                                     </div>
                                                 </td>
                                                 <td data-column="Name" class="td-center">{{ $office->address }}</td>
@@ -224,10 +224,10 @@
                                                 <td data-column="Country" class="td-left">
                                                     <div class="country_icons">
                                                         <span class="office-flag-img">
-                                                            <img src="{{ $office->getFirstMediaUrl('image') }}"
+                                                            <img src="{{ $office->country->getFirstMediaUrl('flag') }}"
                                                                 alt="Flag of Egypt">
                                                         </span>
-                                                        {{ $office->country }}
+                                                        {{ $office->country->translate('title', app()->getLocale()) }}
                                                     </div>
                                                 </td>
                                                 <td data-column="Name" class="td-center">{{ $office->name }}</td>

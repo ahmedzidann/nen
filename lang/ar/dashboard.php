@@ -765,4 +765,11 @@
   'Title  french' => 'Title  french',
   'please enter name ar' => 'Please enter name ar',
   'Name ar' => 'Name ar',
+  'please enter name en' => 'Please enter name en',
+  'Value' => 'Value',
+  'Statistic Create' => 'Statistic Create',
+  'please enter value' => 'Please enter value',
+  'value' => 'Value',
+  'Statistic View' => 'Statistic View',
+  'Statistic Edit' => 'Statistic Edit',
 );

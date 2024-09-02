@@ -42,21 +42,21 @@
                                     <div class="card-body p-4">
                                         {{-- --------start --}}
                                         <div class="card-body p-4 row">
-
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first star="*" class="form-label"
-                                                    name="country {{ $translationFirst->country  }}">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'country.'.$translationFirst->key }}"
-                                                    name="{{ 'country'.'['.$translationFirst->key.']' }}" type="text"
-                                                    required="" placeholder="country {{ $translationFirst->country }}"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->translate('country', $translationFirst->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end star="*"
-                                                    name="please enter country  {{ $translationFirst->country  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
+                                                <div class="col-md-12 mb-4">
+                                                        <x-admin.form.label-first star="*"
+                                                            class="col-sm-12 col-form-label"
+                                                            name="Country">
+                                                        </x-admin.form.label-first>
+                                                        <div class="col-sm-12">
+                                                            <select name="country_id" class="form-control valid">
+                                                                <option selected disabled>Select Country</option>
+                                                                @foreach ($countries as $country)
+                                                                    <option value="{{ $country->id }}">
+                                                                        {{ $country->title }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                </div>
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="name  {{ $translationFirst->name  }}">

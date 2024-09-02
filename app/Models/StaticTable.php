@@ -49,6 +49,7 @@ class StaticTable extends Model implements  HasMedia
       'city',
       'job_type',
       'salary',
+      'category',
    ];
     const STATUS = ['Active','Not Active'];
     public function Page()

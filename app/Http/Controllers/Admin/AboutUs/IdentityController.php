@@ -131,10 +131,10 @@ class IdentityController extends Controller
         } else {
 
             $identity = app(UpdateStaticTableAction::class)->handle($identity, $validator->validated());
-            if ($request->has('attributes')) {
-                $identity->identityAttributes()->whereNotIn('id', $request['keys'])->delete();
+            if ($request->has('attributes') && is_countable($request['attributes'])) {
+                $identity->identityAttributes()->whereNotIn('id', $request['keys'] ?? [])->delete();
                 foreach ($request['attributes'] as $key => $attribute) {
-                    if ($request->has('keys') && array_key_exists($key, $request['keys'])) {
+                    if ($request->has('keys') && is_countable($request['keys']) && array_key_exists($key, $request['keys'])) {
                         $existingAttribute = IdentityAttribute::where('id', $request['keys'][$key])->update(['content->' . $request->submit2 => $attribute['content'][$request->submit2]]);
                     } else {
                         if (!is_null($attribute[$request->submit2])) {

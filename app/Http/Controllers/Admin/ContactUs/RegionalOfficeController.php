@@ -21,7 +21,7 @@ class RegionalOfficeController extends Controller
 
         return view('admin.contact_us.regional_office.view', new ContactUsCountry());
     }
-    public function show(Request $request, $language)
+    public function show(Request $request, $language = 'en')
     {
 
         if ($request->ajax()) {
@@ -36,7 +36,7 @@ class RegionalOfficeController extends Controller
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
                 ->editColumn('country', function ($row) use ($language) {
-                    return $row->country->translate('title', $language);
+                    return $row->country?->translate('title', $language);
                 })
                 ->addColumn('schedule', function ($row) {
                     $from = Carbon::parse($row->from_at)->format('l h:i A');

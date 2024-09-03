@@ -234,7 +234,7 @@
                             </div>
                         </a>
                     </div>
-
+                    @if ($items->where('tabs_id',$tab->id)->count())
                     <div class="tabel_contact_us">
                         <h3 class="txt-center-bold">Regional Representatives
                         </h3>
@@ -276,6 +276,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+
                 </div>
                 </a>
                 </div>

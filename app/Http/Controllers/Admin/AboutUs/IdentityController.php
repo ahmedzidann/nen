@@ -143,12 +143,6 @@ class IdentityController extends Controller
                     }
                 }
             }
-            // foreach ($request['keys'] as $index => $key) {
-            //     $attr = IdentityAttribute::whereId($key)->first() ?? [];
-            //     // dd($content);
-            //     $attr->setTranslation('content', $request['submit2'], $request['attributes'][$index][$request['submit2']]);
-            //     $attr->save();
-            // }
 
             return response()->json([
                 'status' => 200,

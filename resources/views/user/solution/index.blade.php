@@ -114,7 +114,7 @@
                                 <h3>{{$item->title}}</h3>
                                 {{-- <div class="lamp_div">{{ strip_tags($item->description) }}</div>
                                 <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a> --}}
-                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp_2" : ''}}">
+                                <span class="description text-start {{ strlen($item->description) >= 200 ? "p_clamp_2" : ''}}">
                                     {{ html_entity_decode(strip_tags($item->description)) }}
                                 </span>
 

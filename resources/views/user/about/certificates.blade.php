@@ -83,7 +83,7 @@
                                         <p>{{$item->title}} <span>({{$item->years_text}})</span></p>
                                     </div>
                                     <div class="iso_titels "  >
-                                        <span class="description {{ strlen($item->description)>= 200 ? "p_clamp":''}}">
+                                        <span class="description text-start {{ strlen($item->description)>= 200 ? "p_clamp_2":''}}">
                                         {{ html_entity_decode(strip_tags($item->description)) }}
                                         </span>
 
@@ -188,11 +188,11 @@
 <script>
     function toggleDescription(button) {
         var description = button.previousElementSibling;
-        if (description.classList.contains('p_clamp')) {
-            description.classList.remove('p_clamp');
+        if (description.classList.contains('p_clamp_2')) {
+            description.classList.remove('p_clamp_2');
             button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
         } else {
-            description.classList.add('p_clamp');
+            description.classList.add('p_clamp_2');
             button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
         }
     }
@@ -256,8 +256,8 @@
                         <p>${item.title[lang]?item.title[lang] :item.title.en} <span>(${item.years_text[lang]?item.years_text[lang] : item.years_text.en})</span></p>
                     </div>
                     <div class="iso_titels">
-                        <span class="description ${ item.description[lang]?(item.description[lang].length >= 200 ? 'p_clamp' : ''):
-                            (item.description.en.length >= 200 ? 'p_clamp' : '')
+                        <span class="description ${ item.description[lang]?(item.description[lang].length >= 200 ? 'p_clamp_2' : ''):
+                            (item.description.en.length >= 200 ? 'p_clamp_2' : '')
                         }">
                             ${htmlspecialchars(stripTags(item.description[lang]?item.description[lang] :item.description.en ))}
                         </span>

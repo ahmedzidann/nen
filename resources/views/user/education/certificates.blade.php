@@ -58,7 +58,7 @@
                                                 <p>{{$item->title}}  </p>
                                             </div>
                                             <div class="iso_titels "  >
-                                                <span class="description {{ strlen($item->description)>= 200 ? "p_clamp":''}}">
+                                                <span class="description text-start {{ strlen($item->description)>= 200 ? "p_clamp":''}}">
                                                 {{ html_entity_decode(strip_tags($item->description)) }}
                                                 </span>
 
@@ -180,7 +180,7 @@
                             <p>${item.title[lang]?item.title[lang] :item.title.en} </p>
                         </div>
                         <div class="iso_titels">
-                            <span class="description ${ item.description[lang]?(item.description[lang].length >= 200 ? 'p_clamp' : ''):
+                            <span class="description text-start ${ item.description[lang]?(item.description[lang].length >= 200 ? 'p_clamp' : ''):
                                 (item.description.en.length >= 200 ? 'p_clamp' : '')
                             }">
                                 ${htmlspecialchars(stripTags(item.description[lang]?item.description[lang] :item.description.en ))}

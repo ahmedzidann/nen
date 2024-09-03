@@ -48,7 +48,7 @@
                                     <p><i class="bi bi-currency-dollar"></i><span>{{$item->salary}}</span></p>
                                     <p><i class="bi bi-calendar2"></i><span>{{$date->diffForHumans()}}</span></p>
                                 </div>
-                                <span class=" description  {{ strlen($fSection->description)>= 200 ? "p_clamp":''}}"> {{ html_entity_decode(strip_tags($fSection->description)) }}</span>
+                                <span class=" description text-start  {{ strlen($fSection->description)>= 200 ? "p_clamp_2":''}}"> {{ html_entity_decode(strip_tags($fSection->description)) }}</span>
                                 @if (strlen($fSection->description)>= 200)
 
                                 <a  role='btn' onclick="toggleDescription(this)" class="read_more" >Read More <i class="bi bi-chevron-down"></i></a>
@@ -73,11 +73,11 @@
     <script>
         function toggleDescription(button) {
         var description = button.previousElementSibling;
-        if (description.classList.contains('p_clamp')) {
-            description.classList.remove('p_clamp');
+        if (description.classList.contains('p_clamp_2')) {
+            description.classList.remove('p_clamp_2');
             button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
         } else {
-            description.classList.add('p_clamp');
+            description.classList.add('p_clamp_2');
             button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
         }
     }

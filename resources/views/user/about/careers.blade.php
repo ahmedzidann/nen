@@ -42,6 +42,7 @@
                                 <h5>{{$item->title}}</h5> @if ($date->isToday())
                                     <span class="span_style">New Post</span>
                                 @endif
+
                                 <div class="small_icons_div">
                                     <p><i class="bi bi-geo-alt"></i><span>{{$item->city}}</span></p>
                                     <p><i class="bi bi-clock"></i><span>{{$item->job_type}}</span></p>

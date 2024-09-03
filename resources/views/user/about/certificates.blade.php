@@ -88,6 +88,7 @@
                                         </span>
 
 
+
                                         @if (strlen($item->description)>= 200)
                                             <a  role='btn' onclick="toggleDescription(this)" class="read_more" >Read More <i class="bi bi-chevron-down"></i></a>
                                         @endif

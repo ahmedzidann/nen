@@ -91,6 +91,7 @@
     </div>
 
     <script>
+
         function toggleDescription(button) {
             var description = button.previousElementSibling;
             if (description.classList.contains('p_clamp_2')) {

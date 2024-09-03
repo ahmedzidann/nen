@@ -19,6 +19,7 @@ Identity
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
+
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content modal_syles">
                         <div class="modal-header">
@@ -170,7 +171,7 @@ Identity
     <div class="objectives_div">
         <div class="objectiv_titling">
             <h1>  <img src="{{asset('content/images/small_icon/objective.png')}}"> <p>Our<ol>Objectives</ol> Of Company</p>
-        
+
             </h1>
             <ul class="objectives_ul">
                 <li>

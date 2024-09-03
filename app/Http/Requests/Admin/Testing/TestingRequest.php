@@ -39,11 +39,11 @@ class TestingRequest extends FormRequest
             'status' => ['nullable'],
             "links" =>['nullable','array'],
             "links.*" =>['nullable','url'],
-            'links_title.en.*' =>['nullable','string','required_with:links.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            'links_title.en.*' =>['nullable','required_with:links.*'],
+            'links_title.ar.*' =>['nullable','required_with:links.*'],
             "file" =>['nullable','array'],
             "file.*" =>['nullable','file'],
-            "file_title.en.*" =>['nullable','string','required_with:file.*'],
+            "file_title.en.*" =>['nullable','required_with:file.*'],
             "video"=>'nullable|mimetypes:video/mp4,video/quicktime'
         ]);
     }
@@ -60,15 +60,14 @@ class TestingRequest extends FormRequest
             'status' => ['nullable'],
             "links" =>['nullable','array'],
             "links.*" =>['nullable','url'],
-            'links_title.en.*' =>['nullable','string','required_with:links.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
-            "link_id.en.*"    =>['nullable'],
+            'links_title.*' =>['nullable','required_with:links.*'],
+            "link_id.*"    =>['nullable'],
 
             "file" =>['nullable','array'],
             "file.*" =>['nullable','file'],
-            "file_title.en.*" =>['nullable','string','required_with:file.*'],
-            "file_title.ar.*" =>['nullable','string','required_with:file.*'],
-            "file_id.en.*"    =>['nullable'],
+            "file_title.en.*" =>['nullable','required_with:file.*'],
+            "file_title.ar.*" =>['nullable','required_with:file.*'],
+            "file_id.*"    =>['nullable'],
 
         ]);
     }
@@ -80,12 +79,12 @@ class TestingRequest extends FormRequest
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
             "links" =>['nullable','array'],
             "links.*" =>['nullable','url'],
-            'links_title.en.*' =>['nullable','string','required_with:links.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
-            "link_id.ar.*"    =>['nullable'],
+            'links_title.en.*' =>['nullable','required_with:links.*'],
+            'links_title.*' =>['nullable','required_with:links.*'],
+            "link_id.*"    =>['nullable'],
 
-            "file_title.ar.*" =>['nullable','string','required_with:file.*'],
-            'links_title.ar.*' =>['nullable','string','required_with:links.*'],
+            "file_title.ar.*" =>['nullable','required_with:file.*'],
+            'links_title.ar.*' =>['nullable','required_with:links.*'],
             "file_id.ar.*"    =>['nullable'],
 
         ]);

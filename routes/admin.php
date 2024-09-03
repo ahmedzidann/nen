@@ -104,6 +104,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     });
     Route::resource('education', EducationController::class);
     Route::resource('testing', TestingController::class);
+    Route::delete('testing/link/{link_id}', [SolutionController::class,'deleteLink'])->name('testing.delete.link');
     Route::resource('solution', SolutionController::class);
     // Route::resource('technology', TechnologyController::class);
     Route::resource('technology', TechnologyResourceController::class);

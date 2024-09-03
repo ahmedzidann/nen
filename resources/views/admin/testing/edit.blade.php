@@ -319,14 +319,31 @@
                                                                                 </div>
                                                                             </div>
                                                                             <!-- Add more input fields as needed -->
-
                                                                         </div>
                                                                     @endforeach
                                                                 @else
+                                                                    <div id="input-template-file" class="input-temp-file"
+                                                                        style="">
+                                                                        <div class="col-md-12 mb-4 row">
+                                                                            <div class="col-sm-4">
+                                                                                <input type="file" name="file[]">
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <x-admin.form.input value=""
+                                                                                    name="{{ 'file_title[' . $item->key . '][]' }}"
+                                                                                    type="text" required=""
+                                                                                    placeholder="title {{ $item->name }}"
+                                                                                    class="form-control valid">
+                                                                                </x-admin.form.input>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Add more input fields as needed -->
+                                                                    </div>
                                                                 @endif
                                                             </div>
-                                                            {{-- <button id="add-input-file" type="button" class="col-sm-1 btn btn-success">
-                                                    <i class='bx bx-plus' ></i></i>&nbsp;</button> --}}
+                                                            <button id="add-input-file" type="button"
+                                                                class="col-sm-1 btn btn-success">
+                                                                <i class='bx bx-plus'></i></i>&nbsp;</button>
                                                         </div>
 
 
@@ -361,24 +378,24 @@
 @endsection
 
 <script>
-function delete_link(button) {
-    // Access the link-id attribute
-    var linkId = button.getAttribute('link-id');
-    var url = '{{ route('admin.testing.delete.link', ':link_id') }}';
-    url = url.replace(':link_id', linkId);
-    $.ajax({
-        url: url,
-        type: 'DELETE',
-        data: {
-            _token: '{{ csrf_token() }}'
-        },
-        success: function(response) {
-            location.reload();
-        },
-        error: function(xhr) {
-            alert('Failed to delete the link. Please try again.');
-        }
-    });
+    function delete_link(button) {
+        // Access the link-id attribute
+        var linkId = button.getAttribute('link-id');
+        var url = '{{ route('admin.testing.delete.link', ':link_id') }}';
+        url = url.replace(':link_id', linkId);
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+            data: {
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                location.reload();
+            },
+            error: function(xhr) {
+                alert('Failed to delete the link. Please try again.');
+            }
+        });
     }
     document.addEventListener("DOMContentLoaded", function() {
         // Function to create a new input field
@@ -418,8 +435,10 @@ function delete_link(button) {
     document.addEventListener("DOMContentLoaded", function() {
         // Function to create a new input field
         function createInputField() {
+
             // Clone the template
             var template = document.getElementById("input-template-file").cloneNode(true);
+
 
             template.removeAttribute('id');
             template.removeAttribute('style');

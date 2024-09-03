@@ -114,7 +114,7 @@
                                 <h3>{{$item->title}}</h3>
                                 {{-- <div class="lamp_div">{{ strip_tags($item->description) }}</div>
                                 <a href="#" class="learn_more_ref">learn more <i class="bi bi-arrow-right"></i></a> --}}
-                                <span class="description text-start {{ strlen($item->description) >= 200 ? "p_clamp_2" : ''}}">
+                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp_2" : ''}}">
                                     {{ html_entity_decode(strip_tags($item->description)) }}
                                 </span>
 
@@ -127,7 +127,7 @@
                         @endif
                         @empty
                         <div style="display: flex; justify-content: center;">
-                            <p class="alert alert-danger no-data" role="alert" style="color:#999;">There is No Data Available</p>
+                            <p style="color:#999;">There is No Data Available</p>
                         </div>
                     @endforelse
                     @if ($tab->slug =='about' )
@@ -135,7 +135,7 @@
 
                         @foreach ($items->where('tabs_id',11)->take(4) as $key=> $item)
                         <li>
-                            <img src="{{$item->getFirstMediaUrl('solutionTabs')}}">
+                            <i class="{{$item->icon}}"></i>
                             <div class="dts-counters">
                                 <h4>
                                     {{$item->title}}</h4>
@@ -211,7 +211,7 @@
                     </div>
                 @empty
                     <div style="display: flex; justify-content: center;">
-                        <p class="alert alert-danger no-data" role="alert" style="color:#999;">There is No Data Available</p>
+                        <p style="color:#999;">There is No Data Available</p>
                     </div>
                 @endforelse
             </div>
@@ -234,7 +234,7 @@
                             </div>
                         </a>
                     </div>
-                    @if ($items->where('tabs_id',$tab->id)->count())
+
                     <div class="tabel_contact_us">
                         <h3 class="txt-center-bold">Regional Representatives
                         </h3>
@@ -259,8 +259,7 @@
                                          @forelse ($items->where('tabs_id',$tab->id) as $key=> $item)
                                         <tr>
                                             <td data-column="Country" class="td-left">
-                                                <div class="country_icons"> <span class="office-flag-img">
-                                                    <img src="{{$item->getFirstMediaUrl('solutionTabs')}}"></span>
+                                                <div class="country_icons"> <span class="office-flag-img"><img src="{{$item->getFirstMediaUrl('solutionTabs')}}"></span>
                                                     {{$item->subsubtitle}} </div>
 
                                             </td>
@@ -277,11 +276,10 @@
                             </div>
                         </div>
                     </div>
-                    @endif
-
                 </div>
                 </a>
                 </div>
+                <!--
 
                 <div class="tabel_contact_us">
                 <h3 class="txt-center-bold">Regional Representatives
@@ -334,6 +332,7 @@
                     </div>
                 </div>
                 </div>
+                !-->
                 </div>
             </div>
             @endif

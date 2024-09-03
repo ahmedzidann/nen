@@ -55,7 +55,7 @@
 
                                                 </div>
 
-                                                <p>{{$item->title}} </p>
+                                                <p>{{$item->title}}  </p>
                                             </div>
                                             <div class="iso_titels "  >
                                                 <span class="description {{ strlen($item->description)>= 200 ? "p_clamp":''}}">
@@ -68,16 +68,17 @@
                                                 @endif
                                                 <div class="flex_icons_div">
                                                     <p>
-                                                        @if ($item->getFirstMediaUrl('StaticTable2'))
-                                                        <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a
+                                                         @if (isset($item->files[0])&& !empty($item->files[0]))
+                                                        <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a target="_blank"
                                                             class="ref_coloring"
-                                                            href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                            href="{{asset('storage/education/'. $item->files[0]->file)}}">Reference</a></span>
                                                         @endif
                                                     </p>
                                                     <p>
-                                                        @if ($item->url)
-                                                        <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                            class="ref_coloring" href="{{$item->url}}">Website</a></span>
+
+                                                        @if ($item->links[0]->reference)
+                                                        <img src="{{url('content/images/small_icon/global.png')}}"><span><a target="_blank"
+                                                            class="ref_coloring" href="{{$item->links[0]->reference}}">Website</a></span>
                                                         @endif
                                                     </p>
                                                 </div>
@@ -86,7 +87,7 @@
                                     </div>
                                     @empty
                                     <div style="display: flex; justify-content: center;">
-                                        <p class="alert alert-danger no-data" role="alert" style="color:#999;">There is No Data Available</p>
+                                        <p style="color:#999;">There is No Data Available</p>
                                     </div>
                                     @endforelse
                                 </div>

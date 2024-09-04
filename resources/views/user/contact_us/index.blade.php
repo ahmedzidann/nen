@@ -35,7 +35,7 @@ Contact Us
 <div class="about_content">
     {{-- @if ($items->count()) --}}
     <div>
-        <div class="Awards_head_titel">
+        <div class="Awards_head_titel find_us_style">
             <h1>Countries</h1>
             <div class="tabs_div">
                 <ul class="nav nav-pills mb-3 Awards_bttn" id="pills-tab" role="tablist">
@@ -78,7 +78,7 @@ Contact Us
         <div id="map"></div>
 
 
-        <div class="services_sec_tiiel">
+        <div class="services_sec_tiiel elment_style">
             <div class="services_sec">
                 @forelse ($services as $service)
                 <a href="#" class="bttn_service">

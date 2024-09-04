@@ -3362,6 +3362,52 @@ th {
     border:1px solid #930009 !important;
     
 }
+
+.label_con{
+    color: #000;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: left;
+    display: block;
+}
+
+.form-control.form_sty{border: 1px solid #e0dddd;padding: 10px;}
+
+.input_icon{
+    position: relative;
+}
+
+.input_icon .icon_shp {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    font-size: 24px;
+    color: #990000;
+}
+
+.sumb_btn {
+    border: none;
+    padding: 10px;
+    background: #990000;
+    color: #fff;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    gap: 9px;
+    border-radius: 10px;
+}
+
+.sumb_btn:hover {
+    background: hsl(0, 0%, 100%);
+    color:#990000;
+    border: 1px solid #990000;
+}
+
+
+
 /* responsive */
 
 @media (max-width:1200px) {

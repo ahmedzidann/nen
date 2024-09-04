@@ -19,36 +19,36 @@ class UpdateTestingAction
         DB::transaction(function () use ($data, $Testing) {
             try {
                 $this->UpdateImage($data, $Testing, 'Testing');
-                $Testing->update($data);
+                $Testing->update($data);   
                 if (isset($data['file_id'])) {
-                    // $Testing->files()->delete();
-
                     foreach ($data['file_id'][array_key_first($data['file_id'])] as $key => $file) {
                         if ($file != null) {
-
-                            // $fileName = time(). $key. '_' . $file->getClientOriginalName();
-                            // $filePath = $file->storeAs('Testing', $fileName);
-                            $title[array_key_first($data['file_id'])] = $data['file_title'][array_key_first($data['file_id'])][$key];
-                            // dd($title);
-                            $e = TestingFile::find($file);
-
-                            $e->update([
-
-                                "title" => $title,
-                                // "file"=>$fileName,
+                            $title = $data['file_title'][array_key_first($data['file_title'])][$key];
+                            $e = TestingFile::where('id', $file)->update([
+                                "title->" . $data['submit2'] => $title,
                             ]);
                         }
 
                     }
                 }
+                if (isset($data['file'])) {
+                    foreach ($data['file'] as $key => $file) {
+                        $fileName = time() . $key . '_' . $file->getClientOriginalName();
+                        $path = $file->storeAs('Testing', $fileName);
+                        TestingFile::create([
+                            'testing_id' => $Testing->id,
+                            'title' => $data['file_title'][array_key_first($data['file_title'])][$key],
+                            'file' => $path,
+                        ]);
 
+                    }
+                }
                 if (isset($data['link_id'])) {
                     foreach ($data['links'] as $key => $link) {
                         if (array_key_exists($key, $data['link_id'][array_key_first($data['link_id'])])) {
-                            $l = TestingReference::find($data['link_id'][array_key_first($data['link_id'])][$key]);
-                            $l->update([
+                            TestingReference::where('id', $data['link_id'][array_key_first($data['link_id'])][$key])->update([
                                 // "Testing_id"=>$Testing->id,
-                                "title" => $data['links_title'][array_key_first($data['links_title'])][$key],
+                                "title->" . $data['submit2'] => $data['links_title'][array_key_first($data['links_title'])][$key],
                                 "reference" => $data['links'][$key],
                             ]);
                         } else {

@@ -6,10 +6,120 @@
 @endsection
 @section('content')
 
-    <div class="about_content text-start">
-        <h1>STRATEGIC PARTNERS</h1>
+    <div id="partners-section">
+    <div class="texts-data d-flex flex-column align-items-start">
+    <h5 class="global-title">
+        STRATEGIC PARTNERS
+    </h5>
+    <div class="under-title-vector">
+                <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+            </div>
+</div>
 
-        <div class="tabs_div">
+ <!-- Start Swiper Slider -->
+ <div class="award-swiper">
+ <div class="tabs-items">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                @foreach ($subPartners as $sub)
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link @if($loop->first) active @endif proj_bttn" id="pills-{{$sub->slug}}-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-{{$sub->slug}}" type="button" role="tab" aria-controls="pills-{{$sub->slug}}"
+                            aria-selected="true">{{$sub->name}}</button>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="tab-content certificates_h text-start" id="pills-tabContent">
+                @foreach ($subPartners as $sub)
+                @php
+                    $fs = $items->where('item', 'section-one')
+                        ->where('childe_pages_id', $sub->id)
+                        ->first();
+                @endphp
+                <div class="tab-pane fade @if($loop->first) show active @endif" id="pills-{{$sub->slug}}" role="tabpanel"
+                    aria-labelledby="pills-{{$sub->slug}}-tab" tabindex="0">
+                    <div class="fs1-1 text-muted pb-3 lh-base text-start">
+                        <p>{!! $fs?->description !!}</p>
+                    </div>
+
+                    <div class="investors_img">
+                        @if ($fs)
+                            <img src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
+                        @endif
+                    </div>
+
+                    <div class="ceryifcates_sec">
+                        <div class="texts-data d-flex flex-column align-items-start">
+            <h5 class="global-title">
+            Our Partners
+            </h5>
+            <div class="under-title-vector">
+                <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+            </div>
+            <p class="fs1-1 text-muted pt-3 lh-base text-start">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+        </div>
+                        <div class="grid_div_bttn">
+                            <div class="grid_div new-card"  id="partners-{{$sub->slug}}" data-page="1">
+                                @foreach ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
+                                    <div id="cert-box" class="card">
+                                        <div class="card_content">
+                                            <div class="cert-data">
+                                                <div class="image-box">
+                                                    <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
+                                                </div>
+                                                <p class="title-card mt-2">{{$item->title}}</p>
+                                                <span class="mt-1">({{$item->years_text}})</span>
+                                            </div>
+                                            <div>
+                                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                                    {{ html_entity_decode(strip_tags($item->description)) }}
+                                                </span>
+
+                                                @if (strlen($item->description) >= 200)
+                                                    <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
+                                                @endif
+
+                                                <div class="icons-data">
+                                                    <p class="icons-item">
+                                                        @if ($item->getFirstMediaUrl('StaticTable2'))
+                                                            <img src="{{url('content/images/small_icon/archive-book.png')}}">
+                                                            <span><a class="ref_coloring" href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                        @endif
+                                                    </p>
+                                                    <p>
+                                                        @if ($item->url)
+                                                            <img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="{{$item->url}}">Website</a></span>
+                                                        @endif
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
+                                <a href="#"  id='see_more_bttn' class="see-more-btn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">
+                                    <button class="Btn">
+                                    <div class="sign">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    </div>
+                                    <div class="text">See More</div>
+                                </button>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- End Swiper Slider -->
+
+        <div class="tabs_div d-none">
             <ul class="nav nav-pills mb-3 text-start" id="pills-tab" role="tablist">
                 @foreach ($subPartners as $sub)
                     <li class="nav-item" role="presentation">
@@ -149,6 +259,7 @@
             // console.log(newItems);
 
             //.getFirstMediaUrl('StaticTable')
+            
             newItems.forEach(item => {
                 var card = document.createElement('div');
                 card.className = 'card card_styles';
@@ -178,6 +289,8 @@
                     </div>`;
                 container.appendChild(card);
             });
+
+            
             if(((subItems.length / 6) - newPage)<0){
                 document.getElementById('see_more_bttn').style.display = 'none';
             }

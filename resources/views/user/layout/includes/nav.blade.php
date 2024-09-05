@@ -1,6 +1,6 @@
 <div class="bg_second_part">
       <div class="container">
-        <div class="second_part">
+        <div class="second_part py-1">
           <ul class="ul_pages">
             @foreach (App\Models\Page::where('parent_id',null)->get() as $page)
             @if ($page->slug=='home' )

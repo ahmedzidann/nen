@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AboutUs\CareersController;
 use App\Http\Controllers\Admin\AboutUs\CertificatesController;
 use App\Http\Controllers\Admin\AboutUs\ClientsController;
 use App\Http\Controllers\Admin\AboutUs\IdentityController;
+use App\Http\Controllers\Admin\AboutUs\IdentityStatisticsController;
 use App\Http\Controllers\Admin\AboutUs\InvestorsController;
 use App\Http\Controllers\Admin\AboutUs\OurTeamController;
 use App\Http\Controllers\Admin\AboutUs\PartnersController;
@@ -58,6 +59,8 @@ Route::middleware('authAdmin:admin')->group(function () {
 
     Route::name('about.')->prefix('about')->group(function () {
         Route::resource('identity', IdentityController::class);
+        Route::resource('statistics', IdentityStatisticsController::class)->except('destroy');
+        Route::post('statistics/delete-many', [IdentityStatisticsController::class, 'destroy'])->name('statistics.delete-many');
         Route::resource('investors', InvestorsController::class);
         Route::get('investors/many/{id?}', [InvestorsController::class, 'many'])->name('investors.many');
         Route::put('investors/manypost/{id}', [InvestorsController::class, 'manypost'])->name('investors.manypost');
@@ -101,6 +104,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     });
     Route::resource('education', EducationController::class);
     Route::resource('testing', TestingController::class);
+    Route::delete('testing/link/{link_id}', [SolutionController::class,'deleteLink'])->name('testing.delete.link');
     Route::resource('solution', SolutionController::class);
     // Route::resource('technology', TechnologyController::class);
     Route::resource('technology', TechnologyResourceController::class);

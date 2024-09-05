@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin\ContactUs;
 
-use Carbon\Carbon;
-use App\Enums\OfficeType;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
-use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\Admin\ContactUs\ContactUsCountryRequest;
-use App\ViewModels\ContactUs\ContactUsCountry;
 use App\Actions\ContactUs\StoreContactUsCountryAction;
 use App\Actions\ContactUs\UpdateContactUsCountryAction;
+use App\Enums\OfficeType;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ContactUs\ContactUsCountryRequest;
 use App\Models\ContactUsCountry as ContactUsCountryModel;
+use App\ViewModels\ContactUs\ContactUsCountry;
+use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class RegionalOfficeController extends Controller
 {
@@ -21,12 +21,12 @@ class RegionalOfficeController extends Controller
 
         return view('admin.contact_us.regional_office.view', new ContactUsCountry());
     }
-    public function show(Request $request, $language)
+    public function show(Request $request, $language = 'en')
     {
 
         if ($request->ajax()) {
 
-            $data = ContactUsCountryModel::query()->where('type', OfficeType::REGIONAL_OFFICES);
+            $data = ContactUsCountryModel::query()->with('country')->where('type', OfficeType::REGIONAL_OFFICES);
             if ((!empty($request->from_date)) && (!empty($request->to_date))) {
                 $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }
@@ -36,7 +36,7 @@ class RegionalOfficeController extends Controller
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
                 ->editColumn('country', function ($row) use ($language) {
-                    return $row->translate('country', $language);
+                    return $row->country?->translate('title', $language);
                 })
                 ->addColumn('schedule', function ($row) {
                     $from = Carbon::parse($row->from_at)->format('l h:i A');
@@ -69,7 +69,7 @@ class RegionalOfficeController extends Controller
     }
     public function edit(Request $request, $id): View
     {
-        $StaticTable = ContactUsCountryModel::find($id);
+        $StaticTable = ContactUsCountryModel::with('country')->find($id);
         return view('admin.contact_us.regional_office.edit', new ContactUsCountry($StaticTable));
     }
     public function update(ContactUsCountryRequest $request, $id)
@@ -87,5 +87,5 @@ class RegionalOfficeController extends Controller
         ContactUsCountryModel::whereIn('id', $request->ids)->delete();
         return redirect()->back()->with('delete', 'Delete Contact');
     }
-    
+
 }

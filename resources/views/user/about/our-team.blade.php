@@ -19,6 +19,7 @@
             <img src="{{$fSection->getFirstMediaUrl('OurTeam')}}">
         </div>
 
+
     </div>
     @endif
     @if ($items->where('item','member-board')->count())

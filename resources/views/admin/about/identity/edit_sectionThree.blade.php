@@ -78,7 +78,7 @@
                                                             <div class="input-group">
                                                                 <div class=" col-md-10   mb-4">
                                                                     <input type="text" class="form-control"
-                                                                        name="attributes[][{{ $item->key }}]"
+                                                                        name="attributes[][content][{{ $item->key }}]"
                                                                         value="{{ $attribute->translate('content', $item->key) }}"
                                                                         placeholder="Enter text">
                                                                     <input type="hidden" class="form-control"

@@ -4,6 +4,8 @@ namespace App\ViewModels\ContactUs;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
 use App\Models\ContactUsCountry as ContactUsCountryModel;
+use App\Models\Country;
+
 class AuthorizedOfficeViewModel extends ViewModel
 {
     public  $StaticTable;
@@ -17,12 +19,14 @@ class AuthorizedOfficeViewModel extends ViewModel
     public  $SelectPages;
     public  $DataFull;
     public  $editRoute;
+    public  $countries;
      public function __construct($StaticTable = null)
     {
         $this->StaticTable = is_null($StaticTable) ? new ContactUsCountryModel(old()) : $StaticTable;
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();
+        $this->countries = Country::all();
         $this->routeCreate = route('admin.authorized-offices.create',Request()->query());
         $this->routeView = route('admin.authorized-offices.index',Request()->query());
         // $this->editRoute = route('admin.regional-offices.edit',['regional-offices'=> "5" ,''=>Request()->query()]);

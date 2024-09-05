@@ -88,6 +88,14 @@
                                                     </x-admin.form.label-end>
                                                 </div>
                                                 {{-- ----------end url --}}
+                                                <div class="col-md-12">
+                                                    <select name="category" class="form-control">
+                                                        <option selected="selected" disabled>Select
+                                                            Category</option>
+                                                        <option value="1">subsidiaries</option>
+                                                        <option value="2">Sister Companies</option>
+                                                    </select>
+                                                </div>
                                                 {{-- ----------first image --}}
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
@@ -126,8 +134,9 @@
                                                                     <div class="form-check">
                                                                         <x-admin.form.radio :checked="$StaticTable->status == $status
                                                                             ? 'checked'
-                                                                            : ''" name="status"
-                                                                            value="{{ $status }}" :model="$StaticTable">
+                                                                            : ''"
+                                                                            name="status" value="{{ $status }}"
+                                                                            :model="$StaticTable">
                                                                         </x-admin.form.radio>
                                                                         <label class="form-check-label"
                                                                             for="bsValidation6">{{ $status }}</label>
@@ -141,34 +150,40 @@
                                                     <div id="sections-container">
                                                         <div class="section mb-3">
                                                             <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <select name="attributes[0][category]" class="form-control" >
-                                                                        <option selected="selected" disabled>Select
-                                                                            Category</option>
-                                                                        <option value="1">subsidiaries</option>
-                                                                        <option value="2">Sister Companies</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <input type="number" class="form-control"
                                                                         name="attributes[0][since]" placeholder="Since">
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <input type="number" class="form-control"
                                                                         name="attributes[0][percent]"
                                                                         placeholder="Percent">
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <input type="file" class="form-control"
-                                                                        name="attributes[0][image]" accept=".jpg, .png, image/jpeg, image/png">
+                                                                <div class="col-md-4">
+                                                                    <select name="attributes[0][country_id]"
+                                                                        class="form-control">
+                                                                        <option selected="selected" disabled>Select Country
+                                                                        </option>
+                                                                        @foreach ($countries as $country)
+                                                                            <option value="{{ $country->id }}">
+                                                                                {{ $country->translate('title', app()->getLocale()) }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" id="add-section"
-                                                        class="btn btn-primary">+</button>
-                                                    <button type="button" id="remove-section"
-                                                        class="btn btn-danger">-</button>
+                                                    <div class="row mb-2">
+                                                        <div class="col-2">
+                                                            <button type="button" id="add-section"
+                                                                class="form-control">+</button>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <button type="button" id="remove-section"
+                                                                class="form-control">-</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 {{-- ----------status end --}}

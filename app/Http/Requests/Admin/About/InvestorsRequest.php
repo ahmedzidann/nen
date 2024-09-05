@@ -38,6 +38,7 @@ class InvestorsRequest extends FormRequest
             'pages_id' => ['required'],
             'sort' => ['nullable'],
             'status' => ['nullable'],
+            'category' => ['nullable','in:1,2'],
         ]);
     }
 
@@ -184,6 +185,7 @@ class InvestorsRequest extends FormRequest
             'url' => ['required','max:900','min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
+            'cat'=>'required'
         ]);
     }
 

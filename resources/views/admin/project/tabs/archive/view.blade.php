@@ -27,10 +27,10 @@
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Type')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Title')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Description')??'') }}</th>
+                            {{-- <th>{{ TranslationHelper::translate(ucfirst('Description')??'') }}</th> --}}
                             <th>{{ TranslationHelper::translate(ucfirst('Project')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Tabs')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th>
+                            {{-- <th>{{ TranslationHelper::translate(ucfirst('Tabs')??'') }}</th> --}}
+                            {{-- <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th> --}}
                             <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
                         </tr>
                     </thead>

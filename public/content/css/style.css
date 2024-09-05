@@ -3303,6 +3303,15 @@ margin-top: 75px;
     text-align: left;
 }
 
+.p_clamp_4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:6;
+    overflow: hidden;
+    color: #333333;
+    text-align: left;
+}
+
 .programe_content .show_bttn {
     background: #fff;
     border: none;
@@ -4259,9 +4268,22 @@ th {
     border-radius: 10px;
 }
 
+.objectives_ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 160%;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #fff;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 .objectives_ul li i {
-    font-size: 24px;
-    color: #930009;
+    color: #198754;
+    font-size: 30px;
 }
 
 .objectives_img {
@@ -4416,6 +4438,85 @@ th {
     font-size: 18px;
 }
 
+.objectiv_titling h1 {
+    font-weight: 600;
+    padding: 0;
+    color: #212121;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.objectiv_titling h1 ol{
+    padding: 0px ;
+    color: #930009;
+    margin: 0;
+}
+.Awards_head_titel.find_us_style{
+    margin-top: 0;
+}
+
+.serch_bttn{
+    background-color: #930009;
+    color: #fff;
+    border:1px solid transparent;
+    transition: all 0.3s;
+    border-radius: .375rem;
+    margin-top: 15px;
+}
+
+.serch_bttn:hover{
+    background-color:#fff !important;
+    color:#930009 !important;
+    border:1px solid #930009 !important;
+    
+}
+
+.label_con{
+    color: #000;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: left;
+    display: block;
+}
+
+.form-control.form_sty{border: 1px solid #e0dddd;padding: 10px;}
+
+.input_icon{
+    position: relative;
+}
+
+.input_icon .icon_shp {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    font-size: 24px;
+    color: #990000;
+}
+
+.sumb_btn {
+    border: none;
+    padding: 10px;
+    background: #990000;
+    color: #fff;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    gap: 9px;
+    border-radius: 10px;
+}
+
+.sumb_btn:hover {
+    background: hsl(0, 0%, 100%);
+    color:#990000;
+    border: 1px solid #990000;
+}
+
+.services_sec_tiiel.elment_style{
+    margin-top: 20px;
+}
 
 /* responsive */
 

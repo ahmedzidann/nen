@@ -73,20 +73,33 @@
 
                                                     {{-- ----------first image --}}
                                                     @if ($loop->first)
-                                                                                                        {{-- ----------first url --}}
-                                                    <div class="col-md-6">
-                                                        <x-admin.form.label-first star="*" class="form-label"
-                                                            name="url  {{ $item->name }}"></x-admin.form.label-first>
-                                                        <x-admin.form.input id="url" old="{{ 'url.' . $item->key }}"
-                                                            name="url" type="text"
-                                                            required="" placeholder="url {{ $item->name }}"
-                                                            class="form-control valid" :value="$StaticTable->translate('url', $item->key)">
-                                                        </x-admin.form.input>
-                                                        <x-admin.form.label-end star="*"
-                                                            name="please enter url  {{ $item->name }}">
-                                                        </x-admin.form.label-end>
-                                                    </div>
-                                                    {{-- ----------end url --}}
+                                                        {{-- ----------first url --}}
+                                                        <div class="col-md-6">
+                                                            <x-admin.form.label-first star="*" class="form-label"
+                                                                name="url  {{ $item->name }}"></x-admin.form.label-first>
+                                                            <x-admin.form.input id="url"
+                                                                old="{{ 'url.' . $item->key }}" name="url"
+                                                                type="text" required=""
+                                                                placeholder="url {{ $item->name }}"
+                                                                class="form-control valid" :value="$StaticTable->translate('url', $item->key)">
+                                                            </x-admin.form.input>
+                                                            <x-admin.form.label-end star="*"
+                                                                name="please enter url  {{ $item->name }}">
+                                                            </x-admin.form.label-end>
+                                                        </div>
+                                                        {{-- ----------end url --}}
+                                                        <div class="col-md-12">
+                                                            <select name="cat" class="form-control">
+                                                                <option selected="selected" disabled>Select
+                                                                    Category</option>
+                                                                <option value="1"
+                                                                    {{ $StaticTable->category == 1 ? 'selected' : '' }}>
+                                                                    subsidiaries</option>
+                                                                <option
+                                                                    value="2"{{ $StaticTable->category == 2 ? 'selected' : '' }}>
+                                                                    Sister Companies</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="col-md-12 mb-4">
 
                                                             <h6>الصورة الابعاد (90 * 90)</h6>
@@ -116,7 +129,8 @@
                                                                 placeholder="sort" class="form-control valid"
                                                                 :value="$StaticTable->sort">
                                                             </x-admin.form.input>
-                                                            <x-admin.form.label-end star="*" name="please enter sort">
+                                                            <x-admin.form.label-end star="*"
+                                                                name="please enter sort">
                                                             </x-admin.form.label-end>
                                                         </div>
                                                     @endif
@@ -154,37 +168,32 @@
                                                             @foreach ($StaticTable->investorAttributes as $k => $item)
                                                                 <div class="section mb-3">
                                                                     <div class="row">
-                                                                        <div class="col-md-3">
-                                                                            <select name="attributes[0][category]"
-                                                                                class="form-control">
-                                                                                <option selected="selected" disabled>Select
-                                                                                    Category</option>
-                                                                                <option value="1"
-                                                                                    {{ $item->category == 1 ? 'selected' : '' }}>
-                                                                                    subsidiaries
-                                                                                </option>
-                                                                                <option value="2"
-                                                                                    {{ $item->category == 2 ? 'selected' : '' }}>
-                                                                                    Sister Companies
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-md-3">
+                                                                        <div class="col-md-4">
                                                                             <input type="number" class="form-control"
                                                                                 name="attributes[{{ $k }}][since]"
-                                                                                value="{{ $item->since }}"
-                                                                                placeholder="Since">
+                                                                                placeholder="Since"
+                                                                                value="{{ $item->since }}">
                                                                         </div>
-                                                                        <div class="col-md-3">
+                                                                        <div class="col-md-4">
                                                                             <input type="number" class="form-control"
                                                                                 name="attributes[{{ $k }}][percent]"
-                                                                                value="{{ $item->percent }}"
-                                                                                placeholder="Percent">
+                                                                                placeholder="Percent"
+                                                                                value="{{ $item->percent }}">
                                                                         </div>
-                                                                        <div class="col-md-3">
-                                                                            <input type="file" class="form-control"
-                                                                                name="attributes[{{ $k }}][image]"
-                                                                                value="{{ $item->getFirstMediaUrl('image') ?? '' }} ">
+                                                                        <div class="col-md-4">
+                                                                            <select
+                                                                                name="attributes[{{ $k }}][country_id]"
+                                                                                class="form-control">
+                                                                                <option disabled>Select
+                                                                                    Country
+                                                                                </option>
+                                                                                @foreach ($countries as $country)
+                                                                                    <option value="{{ $country->id }}"
+                                                                                        {{ $item->country_id == $country->id ? 'selected' : '' }}>
+                                                                                        {{ $country->translate('title', app()->getLocale()) }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -193,10 +202,16 @@
                                                         </div>
 
                                                         <!-- Buttons to add or remove sections -->
-                                                        <button type="button" id="add-section"
-                                                            class="btn btn-success">Add Section</button>
-                                                        <button type="button" id="remove-section"
-                                                            class="btn btn-danger">Remove Section</button>
+                                                        <div class="row mb-2">
+                                                            <div class="col-2">
+                                                                <button type="button" id="add-section"
+                                                                    class="form-control">+</button>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <button type="button" id="remove-section"
+                                                                    class="form-control">-</button>
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                     <input type="hidden" name="submit2" value="{{ $item->key }}">
                                                     <div class="col-md-12">

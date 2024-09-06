@@ -20,14 +20,17 @@ Investors
                 {{ $fSection->title }}
             </h5>
             <div class="under-title-vector">
-                <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
+                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                    alt="vector">
             </div>
             <p class="fs1-1 text-muted pt-3 lh-base text-start">
                 {{ strip_tags($fSection->description) }}
             </p>
         </div>
         <div class="investors_img">
-            <img src="{{ $fSection->getFirstMediaUrl('StaticTable') }}">
+            <img src="{{ $fSection->getFirstMediaUrl('StaticTable') }}" loading="lazy"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
         </div>
     </div>
     <!-- End Investors Hero Section -->
@@ -520,57 +523,49 @@ Investors
                                                         transform="translate(4.692 16.514)">
                                                         <path id="Path_6688" data-name="Path 6688"
                                                             d="M404.913,56l30.742-13.5c0-.534-.037-1.069-.088-1.6L403.791,54.847C404.151,55.247,404.522,55.634,404.913,56Z"
-                                                            transform="translate(-403.791 -40.895)"
-                                                            fill="CCC" />
+                                                            transform="translate(-403.791 -40.895)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6872" data-name="Group 6872"
                                                         transform="translate(2.133 12.141)">
                                                         <path id="Path_6689" data-name="Path 6689"
                                                             d="M400.348,49.656,433.385,35.15c-.128-.485-.274-.968-.444-1.448L399.583,48.349C399.821,48.8,400.078,49.233,400.348,49.656Z"
-                                                            transform="translate(-399.583 -33.702)"
-                                                            fill="CCC" />
+                                                            transform="translate(-399.583 -33.702)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6873" data-name="Group 6873"
                                                         transform="translate(13.982 27.092)">
                                                         <path id="Path_6690" data-name="Path 6690"
                                                             d="M421.765,67.653l16.088-7.064a18.3,18.3,0,0,0,1.484-2.295l-20.266,8.9A18.352,18.352,0,0,0,421.765,67.653Z"
-                                                            transform="translate(-419.071 -58.294)"
-                                                            fill="CCC" />
+                                                            transform="translate(-419.071 -58.294)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6874" data-name="Group 6874"
                                                         transform="translate(8.416 21.399)">
                                                         <path id="Path_6691" data-name="Path 6691"
                                                             d="M411.541,62.093l25.824-11.339a18.266,18.266,0,0,0,.415-1.825L409.916,61.163A18.451,18.451,0,0,0,411.541,62.093Z"
-                                                            transform="translate(-409.916 -48.929)"
-                                                            fill="CCC" />
+                                                            transform="translate(-409.916 -48.929)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6875" data-name="Group 6875"
                                                         transform="translate(0.556 8.198)">
                                                         <path id="Path_6692" data-name="Path 6692"
                                                             d="M429.966,27.218,396.989,41.7c.123.488.259.973.424,1.457l33.338-14.638C430.507,28.068,430.242,27.639,429.966,27.218Z"
-                                                            transform="translate(-396.989 -27.218)"
-                                                            fill="CCC" />
+                                                            transform="translate(-396.989 -27.218)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6876" data-name="Group 6876"
                                                         transform="translate(0 4.705)">
                                                         <path id="Path_6693" data-name="Path 6693"
                                                             d="M426.628,21.472,396.075,34.888c0,.537.021,1.075.065,1.615l31.632-13.89C427.405,22.215,427.026,21.833,426.628,21.472Z"
-                                                            transform="translate(-396.074 -21.472)"
-                                                            fill="CCC" />
+                                                            transform="translate(-396.074 -21.472)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6877" data-name="Group 6877"
                                                         transform="translate(0.317 1.795)">
                                                         <path id="Path_6694" data-name="Path 6694"
                                                             d="M422.522,16.687,397.054,27.87a18.343,18.343,0,0,0-.458,1.844L424.189,17.6A18.3,18.3,0,0,0,422.522,16.687Z"
-                                                            transform="translate(-396.596 -16.687)"
-                                                            fill="CCC" />
+                                                            transform="translate(-396.596 -16.687)" fill="CCC" />
                                                     </g>
                                                     <g id="Group_6878" data-name="Group 6878"
                                                         transform="translate(2.475)">
                                                         <path id="Path_6695" data-name="Path 6695"
                                                             d="M417.066,13.734l-15.309,6.722a18.245,18.245,0,0,0-1.612,2.351l19.743-8.668A18.215,18.215,0,0,0,417.066,13.734Z"
-                                                            transform="translate(-400.145 -13.734)"
-                                                            fill="CCC" />
+                                                            transform="translate(-400.145 -13.734)" fill="CCC" />
                                                     </g>
                                                 </g>
                                             </g>
@@ -581,56 +576,48 @@ Investors
                                                     transform="translate(4.692 16.514)">
                                                     <path id="Path_6696" data-name="Path 6696"
                                                         d="M44.971,26.871l30.742-13.5c0-.534-.037-1.069-.088-1.6L43.849,25.72C44.209,26.12,44.58,26.507,44.971,26.871Z"
-                                                        transform="translate(-43.849 -11.768)"
-                                                        fill="777" />
+                                                        transform="translate(-43.849 -11.768)" fill="777" />
                                                 </g>
                                                 <g id="Group_6883" data-name="Group 6883"
                                                     transform="translate(2.133 12.141)">
                                                     <path id="Path_6697" data-name="Path 6697"
                                                         d="M40.406,20.529,73.443,6.023c-.128-.485-.273-.968-.444-1.448L39.641,19.222C39.879,19.673,40.136,20.106,40.406,20.529Z"
-                                                        transform="translate(-39.641 -4.575)"
-                                                        fill="777" />
+                                                        transform="translate(-39.641 -4.575)" fill="777" />
                                                 </g>
                                                 <g id="Group_6884" data-name="Group 6884"
                                                     transform="translate(13.982 27.092)">
                                                     <path id="Path_6698" data-name="Path 6698"
                                                         d="M61.822,38.526l16.089-7.064A18.331,18.331,0,0,0,79.4,29.167l-20.266,8.9A18.265,18.265,0,0,0,61.822,38.526Z"
-                                                        transform="translate(-59.129 -29.167)"
-                                                        fill="777" />
+                                                        transform="translate(-59.129 -29.167)" fill="777" />
                                                 </g>
                                                 <g id="Group_6885" data-name="Group 6885"
                                                     transform="translate(8.416 21.399)">
                                                     <path id="Path_6699" data-name="Path 6699"
                                                         d="M51.6,32.966,77.423,21.627a18.4,18.4,0,0,0,.415-1.825L49.974,32.037A18.3,18.3,0,0,0,51.6,32.966Z"
-                                                        transform="translate(-49.974 -19.802)"
-                                                        fill="777" />
+                                                        transform="translate(-49.974 -19.802)" fill="777" />
                                                 </g>
                                                 <g id="Group_6886" data-name="Group 6886"
                                                     transform="translate(0.556 8.199)">
                                                     <path id="Path_6700" data-name="Path 6700"
                                                         d="M70.024-1.908,37.047,12.572c.123.488.259.974.424,1.457L70.809-.61C70.565-1.059,70.3-1.488,70.024-1.908Z"
-                                                        transform="translate(-37.047 1.908)"
-                                                        fill="777" />
+                                                        transform="translate(-37.047 1.908)" fill="777" />
                                                 </g>
                                                 <g id="Group_6887" data-name="Group 6887"
                                                     transform="translate(0 4.705)">
                                                     <path id="Path_6701" data-name="Path 6701"
                                                         d="M66.686-7.655,36.133,5.761c0,.537.021,1.075.064,1.615L67.83-6.514C67.463-6.912,67.084-7.294,66.686-7.655Z"
-                                                        transform="translate(-36.132 7.655)"
-                                                        fill="777" />
+                                                        transform="translate(-36.132 7.655)" fill="777" />
                                                 </g>
                                                 <g id="Group_6888" data-name="Group 6888"
                                                     transform="translate(0.317 1.795)">
                                                     <path id="Path_6702" data-name="Path 6702"
                                                         d="M62.58-12.44,37.112-1.257A18.351,18.351,0,0,0,36.654.587L64.247-11.529A18.377,18.377,0,0,0,62.58-12.44Z"
-                                                        transform="translate(-36.654 12.44)"
-                                                        fill="777" />
+                                                        transform="translate(-36.654 12.44)" fill="777" />
                                                 </g>
                                                 <g id="Group_6889" data-name="Group 6889" transform="translate(2.475)">
                                                     <path id="Path_6703" data-name="Path 6703"
                                                         d="M57.124-15.393,41.815-8.671A18.248,18.248,0,0,0,40.2-6.32l19.742-8.669A18.2,18.2,0,0,0,57.124-15.393Z"
-                                                        transform="translate(-40.203 15.393)"
-                                                        fill="777" />
+                                                        transform="translate(-40.203 15.393)" fill="777" />
                                                 </g>
                                             </g>
                                         </g>

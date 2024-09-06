@@ -41,7 +41,7 @@
     <!-- End Acheivements Hero Section -->
     @endif
 
-
+    <!-- Old Desgin (Remove d-none Class to view it again-->
     <div class="bg_team_div d-none" style="background-image: url({{asset('content/images/team_view.jpeg')}});">
         <div class="nen_sec">
             <div class="flex_upper_div">
@@ -76,6 +76,7 @@
 
 
     </div>
+
     <!-- Start Acheivements Timeline Section -->
     <div id="acheivements-timeline-section" class="mt-md-5 mt-3">
         <div class="texts-data d-flex flex-column align-items-start">
@@ -86,9 +87,10 @@
                 <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
             </div>
             <p class="fs1-1 text-muted pt-3 lh-base text-start">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a type specimen book.
+                NEN is a trusted consulting firm with a proven track record in delivering innovative solutions across
+                various industries. With a focus on excellence, we provide expert guidance to help organizations achieve
+                their goals, streamline operations, and drive growth. Our team of experienced professionals is dedicated
+                to ensuring client success through tailored strategies and comprehensive consulting services.
             </p>
         </div>
 

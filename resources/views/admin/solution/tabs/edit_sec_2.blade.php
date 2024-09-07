@@ -84,7 +84,7 @@
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Icon">
                                                 </x-admin.form.label-first>
-                                                <x-admin.form.input old="icon"
+                                                {{-- <x-admin.form.input old="icon"
                                                     name="icon" type="text"
                                                     required="" placeholder="icon "
                                                     class="form-control valid"
@@ -92,7 +92,14 @@
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end star="*"
                                                     name="please enter icon ">
-                                                </x-admin.form.label-end>
+                                                </x-admin.form.label-end> --}}
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="solutionTabs"
+                                                        old="image" name="image" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
                                             </div>
                                             {{-- ----------first image--}}
 

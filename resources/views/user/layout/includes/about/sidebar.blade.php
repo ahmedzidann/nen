@@ -1,4 +1,4 @@
-@if (!str_contains(url()->current(), '/contact-us')))
+@if (!str_contains(url()->current(), '/contact-us'))
     <div class="aside_div">
         @if (isset($VCpages))
             @foreach ($VCpages as $page)

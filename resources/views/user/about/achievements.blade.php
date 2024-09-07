@@ -7,6 +7,7 @@
 @endsection
 @section('content')
 
+
     <div class="about_content">
         @if ($fSection =  $items->where('item','section-one')->first())
         <div class="investors_flex">

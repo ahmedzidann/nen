@@ -9,6 +9,7 @@ span{
 font-size:20px !important;
 }
 
+
 </style>
 @section('content')
 

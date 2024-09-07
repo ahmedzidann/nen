@@ -10,7 +10,9 @@ class StoreArchiveTabsAction {
     use ImageHelper;
 
     public function handle( array $data ) {
+
         foreach($data['body'] as $item){
+
             $ArchiveTabs = ProjectArchive::create([
                 'type' => $item['type'],
                 'url' => $item['url'],
@@ -19,6 +21,7 @@ class StoreArchiveTabsAction {
                 'project_id' =>$data['project_id'] ,
                 'tabs_id' => $data['tabs_id'] ,
             ]);
+            dd($item);
             if(!empty($item['image'])){
                 $this->ArchiveImage( $item['image'], $ArchiveTabs, 'firstFile' );
             }

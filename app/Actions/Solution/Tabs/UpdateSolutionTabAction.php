@@ -40,7 +40,7 @@ class UpdateSolutionTabAction
 
                 $solutionTab->update($data);
                 $firstIterator = 1;
-                if (count($data['file_title'][array_key_first($data['file_title'])]) > 0 && count($data['file'] ?? []) > 0) {
+                if (isset($data['file_title']) && count($data['file_title'][array_key_first($data['file_title'])]) > 0 && count($data['file'] ?? []) > 0) {
 
                     foreach ($data['file_title'][array_key_first($data['file_title'])] as $key => $value) {
                         if (!array_key_exists($key, $data['file_id'][array_key_first($data['file_id'])])) {
@@ -77,7 +77,7 @@ class UpdateSolutionTabAction
                 }
 
                 // $solutionTab->links()->delete();
-                if (count($data['links_title'][array_key_first($data['links_title'])]) > 0) {
+                if (isset($data['links_title']) && count($data['links_title'][array_key_first($data['links_title'])]) > 0) {
 
                     foreach ($data['links_title'][array_key_first($data['links_title'])] as $key => $value) {
                         if (!array_key_exists($key, $data['link_id'][array_key_first($data['link_id'])])) {

@@ -15,7 +15,7 @@
 <div class="about_content">
     @if($items->count())
     <div>
-        <div class="Awards_head_titel"  >
+        <div class="Awards_head_titel find_us_style"  >
             <h1>Countries</h1>
             <div class="tabs_div">
                 <ul class="nav nav-pills mb-3 Awards_bttn " id="pills-tab" role="tablist">
@@ -150,7 +150,7 @@
         <input type="hidden" name="country_id" value="{{request()->country_id}}">
 
         <div class="select_div mt-1">
-            <button class="btn btn-primary">search</button>
+            <button class="btn btn-primary serch_bttn">search</button>
         </div>
         </form>
         <div class="tabel_contact_us">
@@ -239,7 +239,7 @@
     </div>
     @else
     <div style="display: flex; justify-content: center;">
-        <p style="color:#999;">There is No Data Available</p>
+        <p class="alert alert-danger no-data" role="alert" style="color:#999;">There is No Data Available</p>
     </div>
     @endif
 </div>

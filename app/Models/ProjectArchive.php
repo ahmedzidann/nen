@@ -18,7 +18,7 @@ class ProjectArchive extends Model implements  HasMedia {
         'title',
         'description',
         'url',
-        'type',
+
         'image'
 
     ];

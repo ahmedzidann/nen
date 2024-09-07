@@ -21,6 +21,7 @@ Investors
             <img src="{{ $fSection->getFirstMediaUrl('StaticTable') }}">
         </div>
 
+
     </div>
     @endif
     @if ($items->where('item', 'section-two')->count())

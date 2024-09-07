@@ -91,12 +91,12 @@ class ArchiveTabsController extends Controller
                 ->editColumn('title', function ($row) use ($language) {
                     return $row->translate('title', $language);
                 })
-                ->editColumn('type', function ($row) use ($language) {
-                    return $row->translate('type', $language);
-                })
-                ->editColumn('description', function ($row) use ($language) {
-                    return $row->translate('description', $language);
-                })
+                // ->editColumn('type', function ($row) use ($language) {
+                //     return $row->translate('type', $language);
+                // })
+                // ->editColumn('description', function ($row) use ($language) {
+                //     return $row->translate('description', $language);
+                // })
                 ->editColumn('image', function ($row) use ($language) {
                     return $row->translate('image', $language);
                 })
@@ -105,14 +105,14 @@ class ArchiveTabsController extends Controller
                         return $row->Project->translate('title', $language);
                     }
                 })
-                ->editColumn('Tabs', function ($row) use ($language) {
-                    if (!empty($row->Tabs)) {
-                        return $row->Tabs->translate('name', $language);
-                    }
-                })
-                ->editColumn('created_at', function ($row) {
-                    return Carbon::parse($row->created_at)->format('Y-m-d');
-                })
+                // ->editColumn('Tabs', function ($row) use ($language) {
+                //     if (!empty($row->Tabs)) {
+                //         return $row->Tabs->translate('name', $language);
+                //     }
+                // })
+                // ->editColumn('created_at', function ($row) {
+                //     return Carbon::parse($row->created_at)->format('Y-m-d');
+                // })
                 ->addColumn('action', function ($row) use ($category, $subcategory) {
                     $route = route('admin.tabproject.archive.edit', [$row->id, 'tab=' . $category, 'project_id=' . $subcategory]);
                     return
@@ -178,7 +178,7 @@ class ArchiveTabsController extends Controller
         }
         return redirect()->back()->with('delete', 'Delete Archive');
     }
-    
+
    public function download($id){
         $file = ProjectArchive::findorfail($id)->getFirstMediaUrl('firstFile');
         if (isset($file)){

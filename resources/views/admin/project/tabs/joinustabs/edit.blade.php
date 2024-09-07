@@ -62,13 +62,14 @@
                                                                             value="{{ $attribute->translate('description', $item->key) }}"
                                                                             placeholder="Enter text">
                                                                         <input type="hidden" class="form-control"
-                                                                            name="register_keys[]" value="{{ $attribute->id }}"
+                                                                            name="register_keys[]"
+                                                                            value="{{ $attribute->id }}"
                                                                             placeholder="Enter text">
                                                                     </div>
                                                                     <div class="col-md-2 mb-4">
                                                                         <button type="button"
                                                                             class="form-control btn btn-primary elem_{{ $attribute->id }}"
-                                                                            onclick="removeGroup('elem_{{ $attribute->id }}')">-</button>
+                                                                             onclick="delete_join(this)" join-id = "{{$attribute->id}}">-</button>
                                                                     </div>
 
                                                                 </div>
@@ -93,135 +94,132 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-4">
-                                                            <x-admin.form.label-first star="*" class="form-label"
-                                                                name="Terms Attributes  {{ $item->key }}">
-                                                            </x-admin.form.label-first>
-                                                            @foreach ($StaticTable->where('type', 'terms') as $attribute)
-                                                                <div class="@if ($loop->first) terms-container @endif"
-                                                                    data-lang="{{ $item->key }}" class="col-md-12 mb-4">
-                                                                    <div class="input-group">
-                                                                        <div class=" col-md-10   mb-4">
-                                                                            <input type="text" class="form-control"
-                                                                                name="terms_attributes[][{{ $item->key }}]"
-                                                                                value="{{ $attribute->translate('description', $item->key) }}"
-                                                                                placeholder="Enter text">
-                                                                            <input type="hidden" class="form-control"
-                                                                                name="terms_keys[]" value="{{ $attribute->id }}"
-                                                                                placeholder="Enter text">
-                                                                        </div>
-                                                                        <div class="col-md-2 mb-4">
-                                                                            <button type="button"
-                                                                                class="form-control btn btn-primary elem_{{ $attribute->id }}"
-                                                                                onclick="removeGroup('elem_{{ $attribute->id }}')">-</button>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                            <div id="terms-container" class="col-md-12 mb-4">
-                                                                <div class="input-group new-chiled">
-                                                                    <div class="col-md-8 mb-4">
+                                                    </div>
+                                                    <div class="col-md-12 mb-4">
+                                                        <x-admin.form.label-first star="*" class="form-label"
+                                                            name="Terms Attributes  {{ $item->key }}">
+                                                        </x-admin.form.label-first>
+                                                        @foreach ($StaticTable->where('type', 'terms') as $attribute)
+                                                            <div class="@if ($loop->first) terms-container @endif"
+                                                                data-lang="{{ $item->key }}" class="col-md-12 mb-4">
+                                                                <div class="input-group">
+                                                                    <div class=" col-md-10   mb-4">
                                                                         <input type="text" class="form-control"
                                                                             name="terms_attributes[][{{ $item->key }}]"
+                                                                            value="{{ $attribute->translate('description', $item->key) }}"
+                                                                            placeholder="Enter text">
+                                                                        <input type="hidden" class="form-control"
+                                                                            name="terms_keys[]"
+                                                                            value="{{ $attribute->id }}"
                                                                             placeholder="Enter text">
                                                                     </div>
                                                                     <div class="col-md-2 mb-4">
                                                                         <button type="button"
-                                                                            class="form-control btn btn-primary"
-                                                                            onclick="addTermsInput()">+</button>
+                                                                            class="form-control btn btn-primary elem_{{ $attribute->id }}"
+                                                                             onclick="delete_join(this)" join-id = "{{$attribute->id}}">-</button>
                                                                     </div>
-                                                                    <div class="col-md-2 mb-4">
-                                                                        <button type="button"
-                                                                            class="form-control btn btn-danger"
-                                                                            onclick="removeTermsInput()">-</button>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
-                                                            {{-- ----------first image --}}
-                                                            @if ($loop->first)
-                                                                <div class="col-md-12 mb-4">
-                                                                    <x-admin.form.label-first
-                                                                        class="col-sm-3 col-form-label"
-                                                                        name="Register File Upload Image">
-                                                                    </x-admin.form.label-first>
-                                                                    <div class="col-sm-9">
-                                                                        <x-admin.form.input :model="$StaticTable->first()"
-                                                                            nameImage="JoinusTabs" old="image"
-                                                                            name="image" type="file" readonly=""
-                                                                            placeholder="Please Enter Register  Image"
-                                                                            id="image" class="dropify"
-                                                                            DataHeight="300"
-                                                                            accept=".jpg, .png, image/jpeg, image/png">
-                                                                        </x-admin.form.input>
-                                                                    </div>
+                                                        @endforeach
+                                                        <div id="terms-container" class="col-md-12 mb-4">
+                                                            <div class="input-group new-chiled">
+                                                                <div class="col-md-8 mb-4">
+                                                                    <input type="text" class="form-control"
+                                                                        name="terms_attributes[][{{ $item->key }}]"
+                                                                        placeholder="Enter text">
                                                                 </div>
-                                                            @endif
-                                                            {{-- ----------end image --}}
-                                                            {{--  terms  --}}
-
-                                                            {{-- ----------second image --}}
-
+                                                                <div class="col-md-2 mb-4">
+                                                                    <button type="button"
+                                                                        class="form-control btn btn-primary"
+                                                                        onclick="addTermsInput()">+</button>
+                                                                </div>
+                                                                <div class="col-md-2 mb-4">
+                                                                    <button type="button"
+                                                                        class="form-control btn btn-danger"
+                                                                        onclick="removeTermsInput()">-</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{-- ----------first image --}}
+                                                        @if ($loop->first)
                                                             <div class="col-md-12 mb-4">
                                                                 <x-admin.form.label-first class="col-sm-3 col-form-label"
-                                                                    name="Terms File Upload Image">
+                                                                    name="Register File Upload Image">
                                                                 </x-admin.form.label-first>
                                                                 <div class="col-sm-9">
                                                                     <x-admin.form.input :model="$StaticTable->first()"
-                                                                        nameImage="JoinusTerms" old="image2"
-                                                                        name="image2" type="file" readonly=""
-                                                                        placeholder="Please Enter Terms Image"
-                                                                        id="image2" class="dropify" DataHeight="300"
+                                                                        nameImage="JoinusTabs" old="image"
+                                                                        name="image" type="file" readonly=""
+                                                                        placeholder="Please Enter Register  Image"
+                                                                        id="image" class="dropify" DataHeight="300"
                                                                         accept=".jpg, .png, image/jpeg, image/png">
                                                                     </x-admin.form.input>
                                                                 </div>
                                                             </div>
-                                                            {{-- ----------end image --}}
-                                                            {{--  end terms  --}}
-                                                            @if ($loop->first)
-                                                                {{-- ----------status first --}}
-                                                                <div class="col-md-6 mb-4">
-                                                                    <x-admin.form.label-first class="form-label"
-                                                                        name="Checked switch checkbox status">
-                                                                    </x-admin.form.label-first>
-                                                                    <div class="col-sm-9">
-                                                                        <div class="d-flex align-items-center gap-3">
-                                                                            <div class="form-check">
-                                                                                @foreach (App\Models\Page::STATUS as $status)
-                                                                                    <div class="form-check">
-                                                                                        <x-admin.form.radio
-                                                                                            :checked="$StaticTable->first()
-                                                                                                ->status == $status
-                                                                                                ? 'checked'
-                                                                                                : ''"
-                                                                                            name="status"
-                                                                                            value="{{ $status }}"
-                                                                                            :model="$StaticTable->first()">
-                                                                                        </x-admin.form.radio>
-                                                                                        <label class="form-check-label"
-                                                                                            for="bsValidation6">{{ $status }}</label>
-                                                                                    </div>
-                                                                                @endforeach
-                                                                            </div>
+                                                        @endif
+                                                        {{-- ----------end image --}}
+                                                        {{--  terms  --}}
+
+                                                        {{-- ----------second image --}}
+
+                                                        <div class="col-md-12 mb-4">
+                                                            <x-admin.form.label-first class="col-sm-3 col-form-label"
+                                                                name="Terms File Upload Image">
+                                                            </x-admin.form.label-first>
+                                                            <div class="col-sm-9">
+                                                                <x-admin.form.input :model="$StaticTable->first()"
+                                                                    nameImage="JoinusTerms" old="image2" name="image2"
+                                                                    type="file" readonly=""
+                                                                    placeholder="Please Enter Terms Image" id="image2"
+                                                                    class="dropify" DataHeight="300"
+                                                                    accept=".jpg, .png, image/jpeg, image/png">
+                                                                </x-admin.form.input>
+                                                            </div>
+                                                        </div>
+                                                        {{-- ----------end image --}}
+                                                        {{--  end terms  --}}
+                                                        @if ($loop->first)
+                                                            {{-- ----------status first --}}
+                                                            <div class="col-md-6 mb-4">
+                                                                <x-admin.form.label-first class="form-label"
+                                                                    name="Checked switch checkbox status">
+                                                                </x-admin.form.label-first>
+                                                                <div class="col-sm-9">
+                                                                    <div class="d-flex align-items-center gap-3">
+                                                                        <div class="form-check">
+                                                                            @foreach (App\Models\Page::STATUS as $status)
+                                                                                <div class="form-check">
+                                                                                    <x-admin.form.radio :checked="$StaticTable->first()
+                                                                                        ->status == $status
+                                                                                        ? 'checked'
+                                                                                        : ''"
+                                                                                        name="status"
+                                                                                        value="{{ $status }}"
+                                                                                        :model="$StaticTable->first()">
+                                                                                    </x-admin.form.radio>
+                                                                                    <label class="form-check-label"
+                                                                                        for="bsValidation6">{{ $status }}</label>
+                                                                                </div>
+                                                                            @endforeach
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                {{-- ----------status end --}}
-                                                            @endif
-                                                            <input type="hidden" name="submit2"
-                                                                value="{{ $item->key }}">
-                                                            <div class="col-md-12">
-                                                                <div class="d-md-flex d-grid align-items-center gap-3">
-                                                                    <x-admin.form.submit
-                                                                        type="submit"></x-admin.form.submit>
-                                                                </div>
+                                                            </div>
+                                                            {{-- ----------status end --}}
+                                                        @endif
+                                                        <input type="hidden" name="submit2"
+                                                            value="{{ $item->key }}">
+                                                        <div class="col-md-12">
+                                                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                                                <x-admin.form.submit type="submit"></x-admin.form.submit>
                                                             </div>
                                                         </div>
-                                                        {{-- --------hatem --}}
                                                     </div>
+                                                    {{-- --------hatem --}}
                                                 </div>
                                             </div>
+                                        </div>
                                 </form>
                             @endforeach
                         </div>
@@ -302,6 +300,25 @@
                 const inputGroup = element.closest('.input-group');
                 if (inputGroup) {
                     inputGroup.remove();
+                }
+            });
+        }
+
+        function delete_join(button) {
+            var joinId = button.getAttribute('join-id');
+            var url = '{{ route('admin.tabproject.join.delete', ':join_id') }}';
+            url = url.replace(':join_id', joinId);
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    location.reload();
+                },
+                error: function(xhr) {
+                    alert('Failed to delete the join. Please try again.');
                 }
             });
         }

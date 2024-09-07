@@ -86,6 +86,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::get('help/contactus/edit/{id?}', [HelpTabsController::class, 'editcontactus'])->name('edit_help_contactus');
         Route::resource('help', HelpTabsController::class);
         Route::resource('joinus', JoinusTabsController::class);
+        Route::delete('join-us/{join_id}', [JoinusTabsController::class, 'deleteJoin'])->name('join.delete');
     });
 
     // clear route
@@ -104,7 +105,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     });
     Route::resource('education', EducationController::class);
     Route::resource('testing', TestingController::class);
-    Route::delete('testing/link/{link_id}', [SolutionController::class,'deleteLink'])->name('testing.delete.link');
+    Route::delete('testing/link/{link_id}', [SolutionController::class, 'deleteLink'])->name('testing.delete.link');
     Route::resource('solution', SolutionController::class);
     // Route::resource('technology', TechnologyController::class);
     Route::resource('technology', TechnologyResourceController::class);
@@ -119,7 +120,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     #### Elsdodey
 
     Route::resource('doc-validation', DocValidationController::class);
-    Route::resource('contct-us-country/services',FindUsController::class);
+    Route::resource('contct-us-country/services', FindUsController::class);
     Route::resource('contct-us-country/regional-offices', RegionalOfficeController::class)->except('destroy');
     Route::resource('about', AboutController::class);
     Route::post('contct-us-country/regional-offices-bulk-delete', [RegionalOfficeController::class, 'destroy'])->name('delete.regional-offices');

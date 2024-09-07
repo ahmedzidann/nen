@@ -37,7 +37,6 @@ Investors
     @endif
     @if ($items->where('item', 'section-two')->count())
 
-    <!-- Start Investors Statisctics Section -->
     <div class="bg_div d-none"
         style="background-image: url({{ $items->where('item', 'section-three')?->first()->getFirstMediaUrl('StaticTable') ?? content / images / women2 . png }});">
         <div class="number_div">
@@ -52,7 +51,7 @@ Investors
         </div>
 
     </div>
-
+    <!-- Start Investors Statisctics Section -->
     <div id="investors-statisctics-section" class="mt-md-5 mt-3 px-md-4 px-3 py-md-5 py-4">
         <div class="statisctic-items d-flex align-items-center justify-content-around gap-3 flex-wrap">
             @foreach ($items->where('item', 'section-two') as $item)
@@ -67,7 +66,6 @@ Investors
             </div>
             @endforeach
         </div>
-
     </div>
     <!-- End Investors Statisctics Section -->
 

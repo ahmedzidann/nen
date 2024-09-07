@@ -21,7 +21,6 @@ class StoreArchiveTabsAction {
                 'project_id' =>$data['project_id'] ,
                 'tabs_id' => $data['tabs_id'] ,
             ]);
-            dd($item);
             if(!empty($item['image'])){
                 $this->ArchiveImage( $item['image'], $ArchiveTabs, 'firstFile' );
             }

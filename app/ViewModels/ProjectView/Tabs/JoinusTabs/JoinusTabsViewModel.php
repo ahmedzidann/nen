@@ -30,18 +30,19 @@ class JoinusTabsViewModel extends ViewModel
         $this->routeView = route('admin.tabproject.joinus.index', Request()->query());
         $this->viewTable = 'joinus';
         $this->allTabs = Tabs::get();
-        $this->check = JoinusTabs::where('project_id', request('project_id'))->exists();
+        $this->check = JoinusTabs::where('project_id', request('project_id')??0)->exists();
+        $this->tabs = Tabs::where('slug',  request('tab')??'')->first();
     }
 
     public function action(): string
     {
-        return is_null($this->StaticTable->first()->id)
+        return is_null($this->StaticTable?->first()?->id)
         ? route('admin.tabproject.joinus.store')
         : route('admin.tabproject.joinus.update', $this->StaticTable->first()->id);
     }
 
     public function method(): string
     {
-        return is_null($this->StaticTable->first()->id) ? 'POST' : 'PUT';
+        return is_null($this->StaticTable?->first()?->id) ? 'POST' : 'PUT';
     }
 }

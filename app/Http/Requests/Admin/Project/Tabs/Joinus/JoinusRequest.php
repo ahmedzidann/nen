@@ -31,9 +31,10 @@ class JoinusRequest extends FormRequest
     public function validationStore()
     {
         $request = Request();
+
         return Validator::make($request->all(), [
-            'register_attributes.*.' => ['required'],
-            'terms_attributes.*.' => ['required'],
+            'register_attributes.*' => ['required'],
+            'terms_attributes.*' => ['required'],
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             'image2' => ['nullable', 'mimes:png,jpg,jpeg'],
             'status' => ['nullable'],

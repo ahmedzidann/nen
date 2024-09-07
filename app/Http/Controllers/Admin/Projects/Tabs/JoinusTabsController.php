@@ -83,7 +83,7 @@ class JoinusTabsController
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Program',
-                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . $request->project_id]),
+                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . request('project_id')]),
             ]);
         }
     }

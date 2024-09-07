@@ -88,23 +88,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 mb-4">
-                                                    <x-admin.form.label-first star="*" class="form-label"
-                                                        name="Register Description  {{ $translationFirst->name }}">
-                                                    </x-admin.form.label-first>
-                                                    <x-admin.form.text old="{{ 'description.' . $translationFirst->key }}"
-                                                        name="{{ 'description' . '[' . $translationFirst->key . ']' }}"
-                                                        type="text"
-                                                        placeholder="Description {{ ucfirst($translationFirst->name) }}"
-                                                        :value="$StaticTable->translate(
-                                                            'description',
-                                                            $translationFirst->key,
-                                                        )">
-                                                    </x-admin.form.text>
-                                                    <x-admin.form.label-end star="*"
-                                                        name="please enter Register Description  {{ $translationFirst->name }}">
-                                                    </x-admin.form.label-end>
-                                                </div>
                                                 {{-- ----------Description end --}}
                                                 {{-- ----------first image --}}
                                                 <div class="col-md-12 mb-4">
@@ -123,24 +106,6 @@
                                                 {{-- ----------end image --}}
                                                 {{--  terms  --}}
                                                 {{-- ----------Description second --}}
-                                                <div class="col-md-12 mb-4">
-                                                    <x-admin.form.label-first star="*" class="form-label"
-                                                        name="Terms Description  {{ $translationFirst->name }}">
-                                                    </x-admin.form.label-first>
-                                                    <x-admin.form.text
-                                                        old="{{ 'sub_description.' . $translationFirst->key }}"
-                                                        name="{{ 'sub_description' . '[' . $translationFirst->key . ']' }}"
-                                                        type="text"
-                                                        placeholder="Terms {{ ucfirst($translationFirst->name) }}"
-                                                        :value="$StaticTable->translate(
-                                                            'sub_description',
-                                                            $translationFirst->key,
-                                                        )">
-                                                    </x-admin.form.text>
-                                                    <x-admin.form.label-end star="*"
-                                                        name="please enter Terms Description  {{ $translationFirst->name }}">
-                                                    </x-admin.form.label-end>
-                                                </div>
                                                 {{-- ----------Description end --}}
                                                 {{-- ----------second image --}}
                                                 <div class="col-md-12 mb-4">

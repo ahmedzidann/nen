@@ -1,62 +1,75 @@
 <?php
 namespace App\Http\Requests\Admin\Project\Tabs\Joinus;
+
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
 
-class JoinusRequest extends FormRequest {
+class JoinusRequest extends FormRequest
+{
     /**
-    * Determine if the user is authorized to make this request.
-    */
+     * Determine if the user is authorized to make this request.
+     */
 
-    public function authorize(): bool {
+    public function authorize(): bool
+    {
         return true;
     }
 
     /**
-    * Get the validation rules that apply to the request.
-    *
-    * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-    */
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
 
-    public function rules(): array {
+    public function rules(): array
+    {
         return [
             //
         ];
     }
 
-    public function validationStore() {
+    public function validationStore()
+    {
         $request = Request();
-        return Validator::make( $request->all(), [
-            'description.*' => [ 'required', 'max:8000', 'min:2' ],
-            'sub_description.*' => [ 'required', 'max:8000', 'min:2' ],
-            'image'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
-            'image2'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
-            'status' => [ 'nullable' ],
-            'project_id' => [ 'nullable' ],
-            'tabs_id' => [ 'nullable' ],
-            'type' => [ 'nullable' ],
-        ] );
+        return Validator::make($request->all(), [
+            'register_attributes.*.' => ['required'],
+            'terms_attributes.*.' => ['required'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg'],
+            'image2' => ['nullable', 'mimes:png,jpg,jpeg'],
+            'status' => ['nullable'],
+            'project_id' => ['nullable'],
+            'tabs_id' => ['nullable'],
+            'type' => ['nullable'],
+        ]);
     }
 
-    public function validationUpdateEn() {
+    public function validationUpdateEn()
+    {
         $request = Request();
-        return Validator::make( $request->all(), [
-            'description.'.$request->submit2 => [ 'required', 'max:8000', 'min:2' ],
-            'sub_description.'.$request->submit2 => [ 'required', 'max:8000', 'min:2' ],
-            'image'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
-            'image2'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
-            'status' => [ 'nullable' ],
-            'project_id' => [ 'nullable' ],
-            'tabs_id' => [ 'nullable' ],
-            'type' => [ 'nullable' ],
-        ] );
+        return Validator::make($request->all(), [
+            'register_attributes.*' => ['required'],
+            'terms_attributes.*' => ['required'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg'],
+            'image2' => ['nullable', 'mimes:png,jpg,jpeg'],
+            'status' => ['nullable'],
+            'project_id' => ['nullable'],
+            'tabs_id' => ['nullable'],
+            'type' => ['nullable'],
+            'terms_keys.*' => ['nullable'],
+            'register_keys.*' => ['nullable'],
+            'submit2' => ['nullable'],
+        ]);
     }
 
-    public function validationUpdateAr() {
+    public function validationUpdateAr()
+    {
         $request = Request();
-        return Validator::make( $request->all(), [
-            'description.'.$request->submit2 => [ 'required', 'max:8000', 'min:2' ],
-            'sub_description.'.$request->submit2 => [ 'required', 'max:8000', 'min:2' ],
-        ] );
+        return Validator::make($request->all(), [
+            'register_attributes.*' => ['required'],
+            'terms_attributes.*' => ['required'],
+            'terms_keys.*' => ['nullable'],
+            'register_keys.*' => ['nullable'],
+            'submit2' => ['nullable'],
+        ]);
     }
 }

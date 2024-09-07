@@ -56,22 +56,26 @@
                                                     {{-- ----------end static --}}
                                                     <div class="col-md-12 mb-4">
                                                         <x-admin.form.label-first star="*" class="form-label"
-                                                            name="Title  {{ $translationFirst->name }}">
+                                                            name="Title  {{ $item->key }}">
                                                         </x-admin.form.label-first>
                                                         <x-admin.form.input old="{{ 'title.' . $translationFirst->key }}"
                                                             name="{{ 'title' . '[' . $item->key . ']' }}" type="text"
                                                             required=""
-                                                            placeholder="Title {{ $translationFirst->name }}"
+                                                            placeholder="Title {{ $item->key }}"
                                                             class="form-control valid" :value="$StaticTable->translate(
                                                                 'title',
-                                                                $translationFirst->key,
+                                                                $item->key,
                                                             )">
                                                         </x-admin.form.input>
                                                         <x-admin.form.label-end star="*"
-                                                            name="please enter title  {{ $translationFirst->name }}">
+                                                            name="please enter title  {{ $item->key }}">
                                                         </x-admin.form.label-end>
                                                     </div>
 
+                                                    <div class="col-md-12 mb-4">
+                                                        <x-admin.form.label-first star="*" class="form-label"
+                                                            name="Objective  {{ $item->key }}">
+                                                        </x-admin.form.label-first>
                                                     @foreach ($StaticTable->identityAttributes as $attribute)
                                                         <div class="@if ($loop->first) input-container @endif"
                                                             data-lang="{{ $item->key }}" class="col-md-12 mb-4">
@@ -87,7 +91,7 @@
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
-                                                                        class="form-control elem_{{ $attribute->id }}"
+                                                                        class="form-control btn btn-primary elem_{{ $attribute->id }}"
                                                                         onclick="removeGroup('elem_{{ $attribute->id }}')">-</button>
                                                                 </div>
 
@@ -102,11 +106,11 @@
                                                                     placeholder="Enter text">
                                                             </div>
                                                             <div class="col-md-2 mb-4">
-                                                                <button type="button" class="form-control"
+                                                                <button type="button" class="form-control btn btn-primary"
                                                                     onclick="addInput()">+</button>
                                                             </div>
                                                             <div class="col-md-2 mb-4">
-                                                                <button type="button" class="form-control"
+                                                                <button type="button" class="form-control btn btn-danger"
                                                                     onclick="removeInput()">-</button>
                                                             </div>
                                                         </div>
@@ -279,7 +283,6 @@
                 }
             });
         }
-
 
         function removeGroup(elementClass) {
             const elements = document.querySelectorAll('.' + elementClass);

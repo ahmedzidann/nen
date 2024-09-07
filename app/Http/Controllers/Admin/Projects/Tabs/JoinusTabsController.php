@@ -122,4 +122,17 @@ class JoinusTabsController
         foreach (JoinusTabs::find($request->id) as $static_table) {$static_table->delete();}
         return redirect()->back()->with('delete', 'Delete ProgramTabs');
     }
+    public function deleteJoin($join_id)
+    {
+        $join = JoinusTabs::find($join_id);
+
+        if ($join) {
+            // Delete the record
+            $join->delete();
+            return response()->json(['message' => 'join deleted successfully!']);
+        } else {
+            // Return an error response if the record does not exist
+            return response()->json(['message' => 'join not found.'], 404);
+        }
+    }
 }

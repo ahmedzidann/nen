@@ -2985,10 +2985,10 @@ z-index: 2;
         justify-content: flex-end;
     }
 }
+
 /* Start Custom Table */
 
 /* Start Custom Form */
-/* Main form container */
 .contact-form-section {
     background-color: #fff;
     border-radius: 15px;
@@ -2996,26 +2996,22 @@ z-index: 2;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Title styling */
 .contact-form-section .form-title {
     font-size: 24px;
     font-weight: bold;
     color: #d38b24;
 }
 
-/* Description under title */
 .contact-form-section .form-description {
     font-size: 16px;
     color: #666;
 }
 
-/* Form labels */
 .contact-form-section .form-label {
     font-size: 15px;
     color: #555;
 }
 
-/* Form control styling */
 .contact-form-section .form-control {
     background-color: #f8f9fa !important;
     border: 1px solid #f8f9fa;
@@ -3026,14 +3022,12 @@ z-index: 2;
     height: 3.2rem;
 }
 
-/* Form select */
 .contact-form-section .form-select {
     padding: 10px;
     background-color: #f8f9fa;
     border-radius: 10px;
 }
 
-/* Submit button */
 .contact-form-section .submit-button {
     background-color: #990000;
     border-color: #990000;
@@ -3050,6 +3044,110 @@ z-index: 2;
 }
 
 /* End Custom Form */
+
+/* Start Quick Search Section*/
+.global-search-section {
+    background: url(../images/objectives/objectives.svg) top right no-repeat, linear-gradient(17deg, rgba(122, 26, 34, 1) 0%, rgb(93 11 11) 50%, rgba(252, 176, 69, 1) 100%);
+    border-radius: 20px;
+    padding: 38px 23px 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.search-input,
+.search-select {
+    border-radius: 7px;
+    background-color: #fff;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+/* Start Hovering Custom Hovering Button style */
+.custom-button {
+    font-family: inherit;
+    font-size: 20px;
+    background: #212121;
+    color: white;
+    fill: rgb(155, 153, 153);
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    font-weight: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-button .svg-wrapper-1,
+.custom-button .svg-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.custom-button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-button:hover {
+    background: #000;
+}
+
+.custom-button:hover .svg-wrapper {
+    transform: scale(1.25);
+    transition: 0.5s linear;
+}
+
+.custom-button:hover svg {
+    transform: translateX(1.2em) scale(1.1);
+    fill: #fff;
+}
+
+.custom-button:hover span {
+    opacity: 0;
+    transition: 0.5s linear;
+}
+
+.custom-button:active {
+    transform: scale(0.95);
+}
+
+/* End Hovering Custom Hovering Button style */
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-label {
+        font-size: 12px;
+    }
+
+    .search-select {
+        font-size: 14px;
+    }
+
+    .search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* End Quick Search Section*/
+
 
 
 

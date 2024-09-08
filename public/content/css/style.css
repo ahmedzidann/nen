@@ -2738,16 +2738,21 @@ z-index: 2;
 /* End Edu 4 Me Section */
 
 .zoom-on-hover {
-    transition: transform 0.3s ease-in-out; /* Smooth zoom transition */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth zoom transition */
 }
+
 .zoom-on-hover:hover {
-    transform: scale(1.1); /* Zooms in the image */
+    transform: scale(1.1);
+    /* Zooms in the image */
 }
+
 .media-images {
     width: 100%;
     height: 240px;
     border-radius: 7px;
 }
+
 .media-images img {
     width: 100%;
     height: 100%;
@@ -2832,6 +2837,220 @@ z-index: 2;
 }
 
 /* End Custom Accordion  */
+
+/* Start Contact US Section */
+#contact-us-page {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+#contact-us-page .d-flex.align-items-start {
+    gap: initial;
+}
+
+#contact-us-page .flex-column {
+    flex-direction: column !important;
+}
+
+#contact-us-page .services-items-container {
+    padding: 1rem;
+    box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
+    border-radius: 15px;
+    background-color: var(--bg-white-color);
+}
+
+#contact-us-page .services-items-container .services-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+#contact-us-page .services-items-container .services-items .service-item {
+    background-color: #fafafa;
+    border-radius: 10px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+}
+
+#contact-us-page .services-items-container .services-items .service-item .service-item-box {
+    height: 35px;
+    width: 45px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+#contact-us-page .services-items-container .services-items .service-item .service-item-box img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+/* End Contact US Section */
+
+/* Start Custom Table */
+.table-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.office-table-container {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table-container .office-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.table-container .office-table thead th {
+    background-color: #990000;
+    color: #fff;
+    font-weight: bold;
+    text-align: start;
+    padding: 15px !important;
+    border-bottom: 2px solid #ddd;
+}
+
+.table-container .office-table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.table-container .country-info {
+    display: flex;
+    align-items: center;
+}
+
+.table-container .country-flag {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.table-container .table-header-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.table-container .office-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-container .office-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.table-container .office-table tbody td:last-child {
+    text-align: start;
+    white-space: nowrap;
+}
+
+.table-container .office-table tbody td {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .table-container .office-table thead {
+        display: none;
+    }
+
+    .table-container .office-table tbody td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .table-container .office-table tbody td:before {
+        content: attr(data-column);
+        position: absolute;
+        left: 15px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    .table-container .country-info {
+        justify-content: flex-end;
+    }
+}
+/* Start Custom Table */
+
+/* Start Custom Form */
+/* Main form container */
+.contact-form-section {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.contact-form-section .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d38b24;
+}
+
+/* Description under title */
+.contact-form-section .form-description {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Form labels */
+.contact-form-section .form-label {
+    font-size: 15px;
+    color: #555;
+}
+
+/* Form control styling */
+.contact-form-section .form-control {
+    background-color: #f8f9fa !important;
+    border: 1px solid #f8f9fa;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    font-size: 14px;
+    color: #495057;
+    height: 3.2rem;
+}
+
+/* Form select */
+.contact-form-section .form-select {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+/* Submit button */
+.contact-form-section .submit-button {
+    background-color: #990000;
+    border-color: #990000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form-section .submit-button:hover {
+    background-color: #dd0101;
+    color: #ffff;
+}
+
+/* End Custom Form */
+
 
 
 
@@ -4709,22 +4928,28 @@ th {
     justify-content: center;
 }
 
-.country_div {
+.country_div a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    border: 1px solid #000;
-    padding: 7px 30px;
+    border: 1px solid #bfb7b7;
+    gap: 24px;
+    padding: 8px 9px;
     width: 100%;
-    border-radius: 25px;
-    font-size: 18px;
+    border-radius: 6px;
     width: max-content;
 }
 
+.country_div .img-country-box {
+    height: 30px;
+    width: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
 .country_div img {
-    height: 25px;
-    width: 25px;
-    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
 }
 
 .map_location {

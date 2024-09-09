@@ -205,11 +205,11 @@
                                                         <div class="row mb-2">
                                                             <div class="col-2">
                                                                 <button type="button" id="add-section"
-                                                                    class="form-control">+</button>
+                                                                    class="form-control btn btn-success">+</button>
                                                             </div>
                                                             <div class="col-2">
                                                                 <button type="button" id="remove-section"
-                                                                    class="form-control">-</button>
+                                                                    class="form-control btn btn-danger"><i class="bx bxs-trash"></i></button>
                                                             </div>
                                                         </div>
                                                     @endif

@@ -43,6 +43,7 @@ use Composer\Semver\Constraint\ConstraintInterface;
 use Composer\Semver\Semver;
 use Composer\Spdx\SpdxLicenses;
 use Composer\Util\PackageInfo;
+use DateTimeInterface;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Formatter\OutputFormatter;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
@@ -493,7 +494,7 @@ EOT
                 $writeVersion = !$input->getOption('name-only') && !$input->getOption('path') && $showVersion;
                 $writeLatest = $writeVersion && $showLatest;
                 $writeDescription = !$input->getOption('name-only') && !$input->getOption('path');
-                $writeReleaseDate = $writeLatest && $input->getOption('sort-by-age');
+                $writeReleaseDate = $writeLatest && ($input->getOption('sort-by-age') || $format === 'json');
 
                 $hasOutdatedPackages = false;
 
@@ -535,10 +536,13 @@ EOT
                             $packageViewData['homepage'] = $package instanceof CompletePackageInterface ? $package->getHomepage() : null;
                             $packageViewData['source'] = PackageInfo::getViewSourceUrl($package);
                         }
-                        $nameLength = max($nameLength, strlen($package->getPrettyName()));
+                        $nameLength = max($nameLength, strlen($packageViewData['name']));
                         if ($writeVersion) {
                             $packageViewData['version'] = $package->getFullPrettyVersion();
-                            $versionLength = max($versionLength, strlen($package->getFullPrettyVersion()));
+                            if ($format === 'text') {
+                                $packageViewData['version'] = ltrim($packageViewData['version'], 'v');
+                            }
+                            $versionLength = max($versionLength, strlen($packageViewData['version']));
                         }
                         if ($writeReleaseDate) {
                             if ($package->getReleaseDate() !== null) {
@@ -547,14 +551,25 @@ EOT
                                     $packageViewData['release-age'] = 'from '.$packageViewData['release-age'];
                                 }
                                 $releaseDateLength = max($releaseDateLength, strlen($packageViewData['release-age']));
+                                $packageViewData['release-date'] = $package->getReleaseDate()->format(DateTimeInterface::ATOM);
                             } else {
                                 $packageViewData['release-age'] = '';
+                                $packageViewData['release-date'] = '';
                             }
                         }
                         if ($writeLatest && $latestPackage) {
                             $packageViewData['latest'] = $latestPackage->getFullPrettyVersion();
+                            if ($format === 'text') {
+                                $packageViewData['latest'] = ltrim($packageViewData['latest'], 'v');
+                            }
                             $packageViewData['latest-status'] = $this->getUpdateStatus($latestPackage, $package);
                             $latestLength = max($latestLength, strlen($packageViewData['latest']));
+
+                            if ($latestPackage->getReleaseDate() !== null) {
+                                $packageViewData['latest-release-date'] = $latestPackage->getReleaseDate()->format(DateTimeInterface::ATOM);
+                            } else {
+                                $packageViewData['latest-release-date'] = '';
+                            }
                         } elseif ($writeLatest) {
                             $packageViewData['latest'] = '[none matched]';
                             $packageViewData['latest-status'] = 'up-to-date';
@@ -1448,7 +1463,7 @@ EOT
         $stability = $composer->getPackage()->getMinimumStability();
         $flags = $composer->getPackage()->getStabilityFlags();
         if (isset($flags[$name])) {
-            $stability = array_search($flags[$name], BasePackage::$stabilities, true);
+            $stability = array_search($flags[$name], BasePackage::STABILITIES, true);
         }
 
         $bestStability = $stability;

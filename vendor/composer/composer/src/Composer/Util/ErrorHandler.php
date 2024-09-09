@@ -40,7 +40,7 @@ class ErrorHandler
         $isDeprecationNotice = $level === E_DEPRECATED || $level === E_USER_DEPRECATED;
 
         // error code is not included in error_reporting
-        if (!$isDeprecationNotice && !(error_reporting() & $level)) {
+        if (!$isDeprecationNotice && 0 === (error_reporting() & $level)) {
             return true;
         }
 
@@ -53,7 +53,7 @@ class ErrorHandler
             throw new \ErrorException($message, 0, $level, $file, $line);
         }
 
-        if (self::$io) {
+        if (self::$io !== null) {
             self::$io->writeError('<warning>Deprecation Notice: '.$message.' in '.$file.':'.$line.'</warning>');
             if (self::$io->isVerbose()) {
                 self::$io->writeError('<warning>Stack trace:</warning>');
@@ -63,7 +63,9 @@ class ErrorHandler
                     }
 
                     return null;
-                }, array_slice(debug_backtrace(), 2))));
+                }, array_slice(debug_backtrace(), 2)), function (?string $line) {
+                    return $line !== null;
+                }));
             }
         }
 

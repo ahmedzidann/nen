@@ -12,30 +12,39 @@ Identity
 
 <div class="about_content">
     @if ($fSection = $items->where('item','section-one')->first())
-    <div class="about_flex">
-        <div class="video_div">
-            <img class="video_img" src="{{$fSection->getFirstMediaUrl('StaticTable')}}" />
-            <span class="video_icon"><i class="bi bi-play-circle"></i></span>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content modal_syles">
-                        <div class="modal-header">
-
-                            <a href="#" class="bttn_close" data-bs-dismiss="modal" aria-label="Close"><i
-                                    class="bi bi-x-lg"></i></a>
+    <!-- Start About Section  -->
+    <section id="about-section">
+        <div class="container pb-md-5 pb-3 pt-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-7">
+                    <div class="text-start">
+                        <h5 class="global-title fw-semibold">
+                            {{ $fSection->title }}
+                        </h5>
+                        <div class="under-title-vector">
+                            <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="vector">
                         </div>
-                        <div class="modal-body">
-                            <iframe width="700" height="350" src="{{ $fSection->getFirstMediaUrl('StaticTable') }}">
-                            </iframe>
+                        <p class="fs1-1 text-muted pt-3 lh-base">
+                            {{ strip_tags($fSection->description) }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex align-items-stretch">
+                    <div class="about-image-item card border-0 w-100">
+                        <div class="about-image-container h-100">
+                            <img src="{{ asset('content/images/about-hero-image.avif') }}" alt="about image">
                         </div>
+                        <div class="blob"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+    <!-- End About Section  -->
 
+    <div class="about_flex d-none">
         <div class="about_titel_circle_progress">
             <div class="about_titel">
                 <h1>{{ $fSection->title }}</h1>
@@ -45,23 +54,56 @@ Identity
 
                 {{-- <a href="#" class="see_more">see more</a> --}}
             </div>
-
-            <div class="three_circles">
-                @foreach ($statistics as $row)
-                <div class="circle_content">
-                    <circle-progress class="progress_1" value="{{$row->value}}" max="100" text-format="percent">
-                    </circle-progress>
-                    <span class="text">{{$row->translate('title', app()->getLocale())}}</span>
-                </div>
-
-                @endforeach
-            </div>
+        </div>
+        <div class="video_div">
+            <img class="video_img" alt="video-icon1" loading="lazy"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                src="{{$fSection->getFirstMediaUrl('StaticTable')}}" />
+            <span class="video_icon"><i class="bi bi-play-circle"></i></span>
         </div>
     </div>
+
+    <!-- Start Progress Section  -->
+    <div id="progress-items" class="row justify-content-around mt-3 g-3 w-100">
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="progress-item d-flex flex-column align-items-center justify-content-center w-100 gap-2">
+                <div class="progress-circle" data-progress="100">
+                    <span class="progress-value">100%</span>
+                </div>
+            </div>
+            <span class="text fw-bold text-black-50">
+                Frontend Developer
+            </span>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="progress-item d-flex flex-column align-items-center justify-content-center w-100 gap-2">
+                <div class="progress-circle" data-progress="75">
+                    <span class="progress-value">75%</span>
+                </div>
+            </div>
+            <span class="text fw-bold text-black-50">
+                UI/UX Designer
+            </span>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="progress-item d-flex flex-column align-items-center justify-content-center w-100 gap-2">
+                <div class="progress-circle" data-progress="45">
+                    <span class="progress-value">45%</span>
+                </div>
+            </div>
+            <span class="text fw-bold text-black-50">
+                Backend Developer
+            </span>
+        </div>
+    </div>
+
+    <!-- End Progress Section  -->
     @endif
     @if ($items->where('item', 'section-two')->count())
-    <div class="bg_div" style="background-image: url({{ asset('content/images/imge2.jpeg') }})">
-        <div class="explain_div">
+
+     <!-- End Mission Vision Section  -->
+    <div class="about-explain mt-md-5 mt-3 px-md-4 px-3 py-md-5 py-4">
+        <div class="explain-content">
             <div class="d-flex align-items-start flex_action">
                 <div class="nav flex-column nav-pills our_visions me-3" id="v-pills-tab" role="tablist"
                     aria-orientation="vertical">
@@ -90,19 +132,18 @@ Identity
             </button> --}}
                 </div>
                 <div class="tab-content tab_horzintal" id="v-pills-tabContent">
-
                     @foreach ($items->where('item', 'section-two') as $item)
                     <div class="tab-pane fade @if ($loop->first) show active @endif"
                         id="v-pills-section-two-{{ $item->id }}" role="tabpanel"
                         aria-labelledby="v-pills-section-two-{{ $item->id }}-tab" tabindex="0">
-                        <p class="tab_p">
+                        <p class="tab-desc text-white-color position-relative">
                             {{ strip_tags($item->description) }}
                         </p>
                     </div>
                     @endforeach
                     {{-- <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                 aria-labelledby="v-pills-home-tab" tabindex="0">
-                <p class="tab_p">
+                <p class="tab-desc text-white-color position-relative">
                 “Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
@@ -112,7 +153,7 @@ Identity
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
                 tabindex="0">
-                <p class="tab_p">
+                <p class="tab-desc text-white-color position-relative">
                 “Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
@@ -122,7 +163,7 @@ Identity
             </div>
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                 aria-labelledby="v-pills-messages-tab" tabindex="0">
-                <p class="tab_p">
+                <p class="tab-desc text-white-color position-relative">
                 “Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
@@ -135,129 +176,79 @@ Identity
             </div>
         </div>
     </div>
+     <!-- End Mission Vision Section  -->
+
     @endif
     @if ($tSection = $items->where('item', 'section-three')->first())
-    <!-- <div class="objectives_div">
-            <div class="objectiv_titling">
-              <h1>{{ $tSection->title }}</h1>
-              <ul class="objectives_ul">
-                {!! $tSection->description !!}
-              </ul>
-            </div>
-
-            <div class="objectives_img">
-              <img src="{{ $tSection->getFirstMediaUrl('StaticTable') }}">
-            </div>
-        </div> -->
 
     <!-- <div class="objectives_div">
-                <div class="objectiv_titling">
-                    <h1>Our Objectives Of Company</h1>
-                    <ul class="objectives_ul">
-                        @foreach ($tSection->identityAttributes as $attribute)
-                            <li>
-                                <i class="bi bi-record-circle"></i>
-                                {{ $attribute->translate('content', app()->getLocale()) }}
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <div class="objectives_img">
-                    <img src="content/images/Rating.png" />
-                </div>
-            </div> -->
-
-    <div class="objectives_div">
         <div class="objectiv_titling">
-            <h1>  <img src="{{asset('content/images/small_icon/objective.png')}}"> <p>Our<ol>Objectives</ol> Of Company</p>
-
-            </h1>
+            <h1>Our Objectives Of Company</h1>
             <ul class="objectives_ul">
+                @foreach ($tSection->identityAttributes as $attribute)
                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Developing highly qualified calibers to keep pace with the requirements of the labor market.
-                 </li>
-
-                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Providing free educational resources and platforms to enabling self-education that would guarantee equal opportunities for young people everywhere
-                 </li>
-
-                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Expanding the range of our consultation services focusing on hyper growth sectors.
-                 </li>
-
-                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Promoting benefits of technological solutions for enhancing organizational capabilities and competencies with small businesses.
-                 </li>
-
-
-                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Leading a strong, comprehensive network of professional, socially responsible organizations dedicated to innovation and excellence.
-                 </li>
-
-                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Preparing a generation of qualified teachers, trainers, and lecturers capable of utilizing state-of-the-art technological solutions to facilitate education and learning.
-                 </li>
-
-                 <li>
-                    <i class="bi bi-check2-circle"></i>
-                    Support ambitious projects that lacking the resources required to properly develop their brilliant solutions.
-                 </li>
-
+                    <i class="bi bi-record-circle"></i>
+                    {{ $attribute->translate('content', app()->getLocale()) }}
+                </li>
+                @endforeach
             </ul>
         </div>
-
         <div class="objectives_img">
             <img src="content/images/Rating.png" />
         </div>
-    </div>
-    @endif
-    <!-- <div class="objectives_div">
-        <div class="objectiv_titling">
-          <h1>Our Objectives Of Company</h1>
-          <ul class="objectives_ul">
-            <li>
-              Developing highly qualified calibers to keep pace with the
-              requirements of the labor market.
-            </li>
-            <li>
-              Providing free educational resources and platforms to
-              enabling self-education that would guarantee equal
-              opportunities for young people everywhere
-            </li>
-            <li>
-              Expanding the range of our consultation services focusing on
-              hyper growth sectors.
-            </li>
-            <li>
-              Promoting benefits of technological solutions for enhancing
-              organizational capabilities and competencies with small
-              businesses.
-            </li>
-            <li>
-              Leading a strong, comprehensive network of professional,
-              socially responsible organizations dedicated to innovation
-              and excellence.
-            </li>
-            <li>
-              Preparing a generation of qualified teachers, trainers, and
-              lecturers capable of utilizing state-of-the-art
-              technological solutions to facilitate education and
-              learning.
-            </li>
-          </ul>
-        </div>
+    </div> -->
 
-        <div class="objectives_img">
-          <img src="content/images/Rating.png" />
+    @endif
+
+    <!-- Start Objectives Section  -->
+    <section id="objectives-section" class="mt-md-5 mt-3">
+        <h5 class="global-title fw-semibold">
+            Our Objectives Of Company
+        </h5>
+        <div class="under-title-vector">
+            <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
         </div>
-      </div> -->
+        <ul class="objectives-items d-flex flex-column mt-3 gap-3">
+            <li calss="objectives-item d-flex gap-1 lh-base">
+                <i class="bi bi-stars fs-4 text-warning"></i>
+                <span>
+                    Developing highly qualified calibers to keep pace with the
+                    requirements of the labor market.
+                </span>
+            </li>
+            <li calss="objectives-item d-flex gap-1 lh-base">
+                <i class="bi bi-stars fs-4 text-warning"></i>
+                Providing free educational resources and platforms to
+                enabling self-education that would guarantee equal
+                opportunities for young people everywhere
+            </li>
+            <li calss="objectives-item d-flex gap-1 lh-base">
+                <i class="bi bi-stars fs-4 text-warning"></i>
+                Expanding the range of our consultation services focusing on
+                hyper growth sectors.
+            </li>
+            <li calss="objectives-item d-flex gap-1 lh-base">
+                <i class="bi bi-stars fs-4 text-warning"></i>
+                Promoting benefits of technological solutions for enhancing
+                organizational capabilities and competencies with small
+                businesses.
+            </li>
+            <li calss="objectives-item d-flex gap-1 lh-base">
+                <i class="bi bi-stars fs-4 text-warning"></i>
+                Leading a strong, comprehensive network of professional,
+                socially responsible organizations dedicated to innovation
+                and excellence.
+            </li>
+            <li calss="objectives-item d-flex gap-1 lh-base">
+                <i class="bi bi-stars fs-4 text-warning"></i>
+                Preparing a generation of qualified teachers, trainers, and
+                lecturers capable of utilizing state-of-the-art
+                technological solutions to facilitate education and
+                learning.
+            </li>
+        </ul>
+    </section>
+    <!-- eND Objectives Section  -->
 </div>
 
 @endsection

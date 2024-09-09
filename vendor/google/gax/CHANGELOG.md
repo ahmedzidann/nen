@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.34.1](https://github.com/googleapis/gax-php/compare/v1.34.0...v1.34.1) (2024-08-13)
+
+
+### Bug Fixes
+
+* Disable universe domain check for MDS ([#575](https://github.com/googleapis/gax-php/issues/575)) ([a47a469](https://github.com/googleapis/gax-php/commit/a47a469d9ef76613c5d320539646323a5e7b978d))
+
+## [1.34.0](https://github.com/googleapis/gax-php/compare/v1.33.0...v1.34.0) (2024-05-29)
+
+
+### Features
+
+* Support new surface operations clients ([#569](https://github.com/googleapis/gax-php/issues/569)) ([fa06e73](https://github.com/googleapis/gax-php/commit/fa06e738fc63a3b9f70a26e6d20f30c582ef1870))
+
+## [1.33.0](https://github.com/googleapis/gax-php/compare/v1.32.0...v1.33.0) (2024-05-10)
+
+
+### Features
+
+* Support V2 OperationsClient in OperationResponse ([#564](https://github.com/googleapis/gax-php/issues/564)) ([7f8bb13](https://github.com/googleapis/gax-php/commit/7f8bb13f78463b1e7f2289ce5514763992806e5e))
+
+## [1.32.0](https://github.com/googleapis/gax-php/compare/v1.31.0...v1.32.0) (2024-04-24)
+
+
+### Features
+
+* Add a custom encoder in Serializer ([#554](https://github.com/googleapis/gax-php/issues/554)) ([be28b5a](https://github.com/googleapis/gax-php/commit/be28b5a859b674a3d398bdaab7ed86b93dd7a593))
+
+## [1.31.0](https://github.com/googleapis/gax-php/compare/v1.30.1...v1.31.0) (2024-04-22)
+
+
+### Features
+
+* Add the api header to the GapicClientTrait ([#553](https://github.com/googleapis/gax-php/issues/553)) ([cc102eb](https://github.com/googleapis/gax-php/commit/cc102ebdfd63019b1e6bcd51515be2a2cb13534d))
+
+
+### Bug Fixes
+
+* Add caching and micro optimizations in Serializer ([5a5d8a7](https://github.com/googleapis/gax-php/commit/5a5d8a763d8e2d470a6d960b788e7d2a938cd64f))
+* Pass auth http handler to update metadata call ([#557](https://github.com/googleapis/gax-php/issues/557)) ([6e04a50](https://github.com/googleapis/gax-php/commit/6e04a50d013f5686ec5e66c457b9b440b9bcde9e))
+
 ## [1.30.0](https://github.com/googleapis/gax-php/compare/v1.29.1...v1.30.0) (2024-02-28)
 
 

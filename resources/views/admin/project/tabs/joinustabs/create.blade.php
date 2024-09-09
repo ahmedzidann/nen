@@ -60,12 +60,12 @@
                                                                 name="register_attributes[][en]" placeholder="Enter text">
                                                         </div>
                                                         <div class="col-md-2 mb-4">
-                                                            <button type="button" class="form-control btn btn-primary"
+                                                            <button type="button" class="form-control btn btn-success"
                                                                 onclick="addRegisterInput()">+</button>
                                                         </div>
                                                         <div class="col-md-2 mb-4">
                                                             <button type="button" class="form-control btn btn-danger"
-                                                                onclick="removeRegisterInput()">-</button>
+                                                                onclick="removeRegisterInput()"><i class="bx bxs-trash"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,12 +79,12 @@
                                                                 name="terms_attributes[][en]" placeholder="Enter text">
                                                         </div>
                                                         <div class="col-md-2 mb-4">
-                                                            <button type="button" class="form-control btn btn-primary"
+                                                            <button type="button" class="form-control btn btn-success"
                                                                 onclick="addTermsInput()">+</button>
                                                         </div>
                                                         <div class="col-md-2 mb-4">
                                                             <button type="button" class="form-control btn btn-danger"
-                                                                onclick="removeTermsInput()">-</button>
+                                                                onclick="removeTermsInput()"><i class="bx bxs-trash"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>

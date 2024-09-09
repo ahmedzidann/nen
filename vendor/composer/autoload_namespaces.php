@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mcamara\\LaravelLocalization' => array($vendorDir . '/mcamara/laravel-localization/src'),
-    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );

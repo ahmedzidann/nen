@@ -132,4 +132,4 @@ Route::middleware('authAdmin:admin')->group(function () {
     
 });
 
-Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('admin.tabproject.archiveDownload');
+Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('tabproject.archiveDownload');

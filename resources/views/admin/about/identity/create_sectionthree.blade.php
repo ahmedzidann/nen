@@ -75,12 +75,12 @@
                                                                 placeholder="Enter text">
                                                         </div>
                                                         <div class="col-md-2 mb-4">
-                                                            <button type="button" class="form-control"
+                                                            <button type="button" class="form-control btn btn-success"
                                                                 onclick="addInput()">+</button>
                                                         </div>
                                                         <div class="col-md-2 mb-4">
-                                                            <button type="button" class="form-control"
-                                                                onclick="removeInput()">-</button>
+                                                            <button type="button" class="form-control btn btn-danger"
+                                                                onclick="removeInput()"><i class="bx bxs-trash"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>

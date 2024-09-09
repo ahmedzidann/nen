@@ -80,7 +80,6 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::get('section-two/edit', [AboutTabsController::class, 'createSectionTwo'])->name('edit_about_sectionTwo');
         Route::resource('program', ProgramTabsController::class);
         Route::resource('archive', ArchiveTabsController::class);
-        Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('archiveDownload');
         Route::get('program/download/{id}', [ProgramTabsController::class, 'download'])->name('programTabDownload');
         Route::get('help/contactus/create', [HelpTabsController::class, 'createcontactus'])->name('help_contactus');
         Route::get('help/contactus/edit/{id?}', [HelpTabsController::class, 'editcontactus'])->name('edit_help_contactus');
@@ -88,7 +87,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('joinus', JoinusTabsController::class);
         Route::delete('join-us/{join_id}', [JoinusTabsController::class, 'deleteJoin'])->name('join.delete');
     });
-
+    
     // clear route
     // clear route
     Route::get('/route-clear', function () {
@@ -130,5 +129,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
     Route::resource('contact-us-services', ServicesController::class)->except('destroy');
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
-
+    
 });
+
+Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('admin.tabproject.archiveDownload');

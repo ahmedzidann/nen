@@ -68,7 +68,7 @@
                                                                     </div>
                                                                     <div class="col-md-2 mb-4">
                                                                         <button type="button"
-                                                                            class="form-control btn btn-primary elem_{{ $attribute->id }}"
+                                                                            class="form-control btn btn-success elem_{{ $attribute->id }}"
                                                                              onclick="delete_join(this)" join-id = "{{$attribute->id}}">-</button>
                                                                     </div>
 
@@ -84,13 +84,13 @@
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
-                                                                        class="form-control btn btn-primary"
+                                                                        class="form-control btn btn-success"
                                                                         onclick="addRegisterInput()">+</button>
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
                                                                         class="form-control btn btn-danger"
-                                                                        onclick="removeRegisterInput()">-</button>
+                                                                        onclick="removeRegisterInput()"><i class="bx bxs-trash"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -115,7 +115,7 @@
                                                                     </div>
                                                                     <div class="col-md-2 mb-4">
                                                                         <button type="button"
-                                                                            class="form-control btn btn-primary elem_{{ $attribute->id }}"
+                                                                            class="form-control btn btn-success elem_{{ $attribute->id }}"
                                                                              onclick="delete_join(this)" join-id = "{{$attribute->id}}">-</button>
                                                                     </div>
 
@@ -131,13 +131,13 @@
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
-                                                                        class="form-control btn btn-primary"
+                                                                        class="form-control btn btn-success"
                                                                         onclick="addTermsInput()">+</button>
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
                                                                         class="form-control btn btn-danger"
-                                                                        onclick="removeTermsInput()">-</button>
+                                                                        onclick="removeTermsInput()"><i class="bx bxs-trash"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -235,7 +235,7 @@
 
     <script src="{{ asset('admin/project/tabs/joinus/js/edit.js') }}"></script>
     <script>
-        function addRegisterInput() {
+          function addRegisterInput() {
             // Create a new div element for the input group
             const newInputGroup = document.createElement('div');
             newInputGroup.classList.add('input-group');
@@ -247,11 +247,13 @@
             // Create the new input field
             const newInput = document.createElement('input');
             newInput.type = 'text';
+            newInput.name = 'register_attributes[][en]';
             newInput.classList.add('form-control');
             newInput.placeholder = 'Enter text';
 
             // Append the input to the input container
             inputContainer.appendChild(newInput);
+
 
             // Create the minus button container
             const minusButtonContainer = document.createElement('div');
@@ -271,56 +273,66 @@
             newInputGroup.appendChild(inputContainer);
             newInputGroup.appendChild(minusButtonContainer);
 
-            // Append the new input group to all language-specific containers
-            const translations = @json($translation);
-            const containers = document.querySelectorAll('.new-chiled');
-            containers.forEach((container, index) => {
-
-                const language = translations[index].key;
-                console.log(language);
-                const clonedInputGroup = newInputGroup.cloneNode(true);
-                clonedInputGroup.querySelector('input').name = `register_attributes[][${language}]`;
-                container.appendChild(clonedInputGroup);
-            });
+            // Append the new input group to the container
+            document.getElementById('register-container').appendChild(newInputGroup);
         }
 
         function removeRegisterInput() {
-            // Target all containers with the class 'new-chiled' across all languages
-            document.querySelectorAll('.new-chiled').forEach(container => {
-                const inputGroups = container.getElementsByClassName('input-group');
-                if (inputGroups.length > 1) {
-                    container.removeChild(inputGroups[inputGroups.length - 1]);
-                }
-            });
+            const container = document.getElementById('register-container');
+            const inputGroups = container.getElementsByClassName('input-group');
+            if (inputGroups.length > 1) {
+                container.removeChild(inputGroups[inputGroups.length - 1]);
+            }
         }
 
-        function removeGroup(elementClass) {
-            const elements = document.querySelectorAll('.' + elementClass);
-            elements.forEach(element => {
-                const inputGroup = element.closest('.input-group');
-                if (inputGroup) {
-                    inputGroup.remove();
-                }
-            });
+        function addTermsInput() {
+            // Create a new div element for the input group
+            const newInputGroup = document.createElement('div');
+            newInputGroup.classList.add('input-group');
+
+            // Create the input field container
+            const inputContainer = document.createElement('div');
+            inputContainer.classList.add('col-md-10', 'mb-4');
+
+            // Create the new input field
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'terms_attributes[][en]';
+            newInput.classList.add('form-control');
+            newInput.placeholder = 'Enter text';
+
+            // Append the input to the input container
+            inputContainer.appendChild(newInput);
+
+
+            // Create the minus button container
+            const minusButtonContainer = document.createElement('div');
+            minusButtonContainer.classList.add('col-md-2', 'mb-4');
+
+            // Create the new minus button
+            const minusButton = document.createElement('button');
+            minusButton.type = 'button';
+            minusButton.classList.add('form-control');
+            minusButton.textContent = '-';
+            minusButton.onclick = removeTermsInput;
+
+            // Append the minus button to its container
+            minusButtonContainer.appendChild(minusButton);
+
+            // Append all elements to the new input group
+            newInputGroup.appendChild(inputContainer);
+            newInputGroup.appendChild(minusButtonContainer);
+
+            // Append the new input group to the container
+            document.getElementById('terms-container').appendChild(newInputGroup);
         }
 
-        function delete_join(button) {
-            var joinId = button.getAttribute('join-id');
-            var url = '{{ route('admin.tabproject.join.delete', ':join_id') }}';
-            url = url.replace(':join_id', joinId);
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    location.reload();
-                },
-                error: function(xhr) {
-                    alert('Failed to delete the join. Please try again.');
-                }
-            });
+        function removeTermsInput() {
+            const container = document.getElementById('terms-container');
+            const inputGroups = container.getElementsByClassName('input-group');
+            if (inputGroups.length > 1) {
+                container.removeChild(inputGroups[inputGroups.length - 1]);
+            }
         }
     </script>
 @endsection

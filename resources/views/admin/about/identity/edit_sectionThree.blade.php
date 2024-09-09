@@ -91,8 +91,8 @@
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
-                                                                        class="form-control btn btn-primary elem_{{ $attribute->id }}"
-                                                                        onclick="removeGroup('elem_{{ $attribute->id }}')">-</button>
+                                                                        class="form-control btn btn-danger elem_{{ $attribute->id }}"
+                                                                        onclick="removeGroup('elem_{{ $attribute->id }}')"><i class="bx bxs-trash"></i></button>
                                                                 </div>
 
                                                             </div>
@@ -106,12 +106,12 @@
                                                                     placeholder="Enter text">
                                                             </div>
                                                             <div class="col-md-2 mb-4">
-                                                                <button type="button" class="form-control btn btn-primary"
+                                                                <button type="button" class="form-control btn btn-success"
                                                                     onclick="addInput()">+</button>
                                                             </div>
                                                             <div class="col-md-2 mb-4">
                                                                 <button type="button" class="form-control btn btn-danger"
-                                                                    onclick="removeInput()">-</button>
+                                                                    onclick="removeInput()"><i class="bx bxs-trash"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>

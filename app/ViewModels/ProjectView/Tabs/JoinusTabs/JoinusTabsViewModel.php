@@ -30,7 +30,9 @@ class JoinusTabsViewModel extends ViewModel
         $this->routeView = route('admin.tabproject.joinus.index', Request()->query());
         $this->viewTable = 'joinus';
         $this->allTabs = Tabs::get();
+        if(request('tab') == 'join-us'){
         $this->check = JoinusTabs::where('project_id', request('project_id')??0)->exists();
+        }
         $this->tabs = Tabs::where('slug',  request('tab')??'')->first();
     }
 

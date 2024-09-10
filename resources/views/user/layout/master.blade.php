@@ -59,8 +59,9 @@
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>Store</span></a>
                     <a href="#"><img
                             src="{{ asset('content/images/small_icon/lang_icon.svg') }}" /><a><span>Language</span></a>
-                        <a href="#"><img src="{{ asset('content/images/small_icon/media_icon.svg') }}" /><span>Media
-                                Center</span></a>
+                        <a href="#"><img src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
+                            <span>News Center</span>
+                        </a>
                 </div>
             </div>
         </div>

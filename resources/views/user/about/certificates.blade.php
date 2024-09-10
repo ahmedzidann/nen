@@ -40,7 +40,7 @@
             <div class="tab-pane fade @if($loop->first)show active @endif" id="pills-{{$sub->slug}}" role="tabpanel"
                 aria-labelledby="pills-{{$sub->slug}}-tab" tabindex="0">
 
-                <p class="fs1-1 text-muted lh-base">
+                <p class="global-description">
                     {!! $fs?->description !!}
                 </p>
 
@@ -98,7 +98,7 @@
                                                         href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                 @endif
                                             </p>
-                                            <p>
+                                            <p class="icons-item">
                                                 @if ($item->url)
                                                 <img src="{{url('content/images/small_icon/global.png')}}"><span><a
                                                         class="ref_coloring" href="{{$item->url}}">Website</a></span>

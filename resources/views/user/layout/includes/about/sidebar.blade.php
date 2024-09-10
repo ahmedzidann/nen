@@ -56,7 +56,9 @@
             @foreach (\App\Models\Project::where('pages_id', $page->id)->get() as $solution)
             <li>
                 <a class="{{ Route::is('projects.' . $page->slug . '') && $solution->id == Request()->project_id ? 'li_active' : '' }}"
-                    href="{{ route('projects.' . $page->slug . '', ['page_id' => $page->id, 'project_id' => $solution->id]) }}">{{ $solution->title }}</a>
+                    href="{{ route('projects.' . $page->slug . '', ['page_id' => $page->id, 'project_id' => $solution->id]) }}">
+                    {{ $solution->title }}
+                </a>
             </li>
             @endforeach
         </ul>

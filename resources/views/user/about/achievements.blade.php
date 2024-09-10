@@ -29,7 +29,7 @@
             <div class="under-title-vector">
                 <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
             </div>
-            <p class="fs1-1 text-muted pt-3 lh-base text-start">
+            <p class="global-description">
                 {{strip_tags($fSection->description)}}
             </p>
         </div>
@@ -86,7 +86,7 @@
             <div class="under-title-vector">
                 <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
             </div>
-            <p class="fs1-1 text-muted pt-3 lh-base text-start">
+            <p class="global-description">
                 NEN is a trusted consulting firm with a proven track record in delivering innovative solutions across
                 various industries. With a focus on excellence, we provide expert guidance to help organizations achieve
                 their goals, streamline operations, and drive growth. Our team of experienced professionals is dedicated
@@ -102,7 +102,7 @@
                     <h5 class="global-title">
                         {{$achievement->title}}
                     </h5>
-                    <p class="fs1-1 text-muted pt-3 lh-base text-start">
+                    <p class="global-description">
                         {!!$achievement->description!!}
                     </p>
                 </div>

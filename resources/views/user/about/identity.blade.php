@@ -69,7 +69,7 @@
                 @foreach ($statistics as $item)
                     <div class="col-md-4 col-sm-6 col-12">
                         <div class="progress-item d-flex flex-column align-items-center justify-content-center w-100 gap-2">
-                            <div class="progress-circle" data-progress="100">
+                            <div class="progress-circle" data-progress="{{ $item->value }}">
                                 <span class="progress-value">{{ $item->value }}%</span>
                             </div>
                         </div>

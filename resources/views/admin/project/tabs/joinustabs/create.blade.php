@@ -208,7 +208,7 @@
 
             // Append all elements to the new input group
             newInputGroup.appendChild(inputContainer);
-            newInputGroup.appendChild(minusButtonContainer);
+            // newInputGroup.appendChild(minusButtonContainer);
 
             // Append the new input group to the container
             document.getElementById('register-container').appendChild(newInputGroup);
@@ -258,7 +258,7 @@
 
             // Append all elements to the new input group
             newInputGroup.appendChild(inputContainer);
-            newInputGroup.appendChild(minusButtonContainer);
+            // newInputGroup.appendChild(minusButtonContainer);
 
             // Append the new input group to the container
             document.getElementById('terms-container').appendChild(newInputGroup);

@@ -24,7 +24,7 @@ Investors
                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                     alt="vector">
             </div>
-            <p class="fs1-1 text-muted pt-3 lh-base text-start">
+            <p class="global-description">
                 {{ strip_tags($fSection->description) }}
             </p>
         </div>
@@ -57,7 +57,7 @@ Investors
             @foreach ($items->where('item', 'section-two') as $item)
             <div class="statisctic-item d-flex flex-column align-items-center justify-content-center gap-3">
                 <img class="image-icons" src="{{ $item->getFirstMediaUrl('StaticTable') }}">
-                <h6 class="title text-secondary-color fs-5 fw-semibold fst-italic text-uppercase">
+                <h6 class="title text-secondary-color fs-5 fw-semibold text-uppercase">
                     {{ $item->title }}
                 </h6>
                 <p class="desc text-white-color fs-3">

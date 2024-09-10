@@ -18,7 +18,7 @@
                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                 alt="vector">
         </div>
-        <p class="fs1-1 text-muted pt-3 lh-base text-start">
+        <p class="global-description">
             {{strip_tags($fSection->description)}}
         </p>
     </div>
@@ -33,7 +33,7 @@
             <p class="sub-title">
                 Our Jobs Offers
             </p>
-            <h5 class="global-title fw-semibold">
+            <h5 class="global-title">
                 Some of the jobs offered
             </h5>
             <div class="under-title-vector">
@@ -55,7 +55,7 @@
                             <img src="{{$item->getFirstMediaUrl('StaticTable')}}" alt="Image">
                         </div>
                         <div class="basic-text d-flex flex-column gap-1">
-                            <p class="text-muted fs-5-2">{{$item->subtitle}}</p>
+                            <p class="global-description fs-5-2">{{$item->subtitle}}</p>
                             <h5>{{$item->title}}</h5>
                             @if ($date->isToday())
                             @endif

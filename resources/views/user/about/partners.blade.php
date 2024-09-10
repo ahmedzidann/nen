@@ -50,7 +50,7 @@
                         @endif
                     </div>
 
-                    <div class="ceryifcates_sec">
+                    <div class="cert-sec mt-md-5 mt-4">
                         <div class="texts-data d-flex flex-column align-items-start">
                             <h5 class="global-title">
                                 Our Partners
@@ -91,7 +91,7 @@
                                                             href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                     @endif
                                                 </p>
-                                                <p>
+                                                <p class="icons-item">
                                                     @if ($item->url)
                                                     <img src="{{url('content/images/small_icon/global.png')}}"><span><a
                                                             class="ref_coloring"
@@ -184,14 +184,14 @@
                                         @endif
 
                                         <div class="flex_icons_div">
-                                            <p>
+                                            <p class="icons-item">
                                                 @if ($item->getFirstMediaUrl('StaticTable2'))
                                                 <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a
                                                         class="ref_coloring"
                                                         href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                 @endif
                                             </p>
-                                            <p>
+                                            <p class="icons-item">
                                                 @if ($item->url)
                                                 <img src="{{url('content/images/small_icon/global.png')}}"><span><a
                                                         class="ref_coloring" href="{{$item->url}}">Website</a></span>
@@ -274,12 +274,12 @@
                                                 @endif
 
                                                 <div class="flex_icons_div">
-                                                    <p>
+                                                    <p class="icons-item">
                                                         @if ($item->getFirstMediaUrl('StaticTable2'))
                                                             <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                         @endif
                                                     </p>
-                                                    <p>
+                                                    <p class="icons-item">
                                                         @if ($item->url)
                                                             <img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="{{$item->url}}">Website</a></span>
                                                         @endif
@@ -387,7 +387,7 @@
                             ? `<img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" href="${item.media.filter(i => i.collection_name === 'StaticTable2')[0].original_url}">Reference</a></span>` 
                             : ''}
                     </p>
-                    <p>
+                    <p class="icons-item">
                         ${item.url 
                             ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="${item.url}">Website</a></span>` 
                             : ''}

@@ -483,171 +483,258 @@
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s"></script>
 <script>
 function initMap() {
-    // Map style configuration
-    var styledMapType = new google.maps.StyledMapType(
+    var darkStyle = new google.maps.StyledMapType(
         [{
-                "featureType": "all",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                    "saturation": 36
-                }, {
-                    "color": "#000000"
-                }, {
-                    "lightness": 40
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#212121'
                 }]
             },
             {
-                "featureType": "all",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                    "visibility": "on"
-                }, {
-                    "color": "#000000"
-                }, {
-                    "lightness": 16
+                elementType: 'labels.icon',
+                stylers: [{
+                    visibility: 'off'
                 }]
             },
             {
-                "featureType": "all",
-                "elementType": "labels.icon",
-                "stylers": [{
-                    "visibility": "off"
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#757575'
                 }]
             },
             {
-                "featureType": "administrative",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 20
+                elementType: 'labels.text.stroke',
+                stylers: [{
+                    color: '#212121'
                 }]
             },
             {
-                "featureType": "administrative",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 17
-                }, {
-                    "weight": 1.2
+                featureType: 'administrative',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#757575'
                 }]
             },
             {
-                "featureType": "landscape",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 20
+                featureType: 'administrative.country',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#9e9e9e'
                 }]
             },
             {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 21
+                featureType: 'administrative.land_parcel',
+                stylers: [{
+                    visibility: 'off'
                 }]
             },
             {
-                "featureType": "road.highway",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 17
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#bdbdbd'
                 }]
             },
             {
-                "featureType": "road.highway",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 29
-                }, {
-                    "weight": 0.2
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#757575'
                 }]
             },
             {
-                "featureType": "road.arterial",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 18
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#181818'
                 }]
             },
             {
-                "featureType": "road.local",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 16
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#616161'
                 }]
             },
             {
-                "featureType": "transit",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 19
+                featureType: 'poi.park',
+                elementType: 'labels.text.stroke',
+                stylers: [{
+                    color: '#1b1b1b'
                 }]
             },
             {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#0f252e"
-                }, {
-                    "lightness": 17
+                featureType: 'road',
+                elementType: 'geometry.fill',
+                stylers: [{
+                    color: '#2c2c2c'
+                }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#8a8a8a'
+                }]
+            },
+            {
+                featureType: 'road.arterial',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#373737'
+                }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#3c3c3c'
+                }]
+            },
+            {
+                featureType: 'road.highway.controlled_access',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#4e4e4e'
+                }]
+            },
+            {
+                featureType: 'road.local',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#616161'
+                }]
+            },
+            {
+                featureType: 'transit',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#757575'
+                }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#000000'
+                }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#3d3d3d'
                 }]
             }
         ], {
-            name: 'Styled Map'
+            name: 'Dark Map'
         }
     );
 
-    // Retrieve locations and zoom level from server-side
-    var locations = @json($locations);
-    var zoomLevel = @json($zoom);
+    var lightStyle = new google.maps.StyledMapType(
+        [{
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#f5f5f5'
+                }]
+            },
+            {
+                elementType: 'labels.icon',
+                stylers: [{
+                    visibility: 'off'
+                }]
+            },
+            {
+                elementType: 'labels.text.fill',
+                stylers: [{
+                    color: '#616161'
+                }]
+            },
+            {
+                elementType: 'labels.text.stroke',
+                stylers: [{
+                    color: '#f5f5f5'
+                }]
+            },
+            {
+                featureType: 'administrative.country',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#e6e6e6'
+                }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#e6e6e6'
+                }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{
+                    color: '#b0e0e6'
+                }]
+            }
+        ], {
+            name: 'Light Map'
+        }
+    );
 
-    // Ensure the map is centered on the first location in the array
-    var center = locations.length > 0 ? locations[0] : {
-        lat: 30.033333,
-        lng: 31.233334
-    };
-
-    // Initialize the map
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: zoomLevel || 2, // Default zoom level is 2 if not provided
-        center: center,
+        zoom: 2,
+        center: {
+            lat: 30.033333,
+            lng: 31.233334
+        },
         mapTypeControlOptions: {
-            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map', 'light_map']
         }
     });
 
-    // Apply the styled map
-    map.mapTypes.set('styled_map', styledMapType);
+    // Set default style as the light map
+    // map.mapTypes.set('light_map', lightStyle);
+    // map.setMapTypeId('light_map');
+
+    // Add the dark map style
+    // map.mapTypes.set('styled_map', darkStyle);
+
+    map.mapTypes.set('styled_map', darkStyle);
+    map.mapTypes.set('styled_map', map);
     map.setMapTypeId('styled_map');
 
-    // Place markers on the map for each location
+    // Add red markers for each location
+    var locations = @json($locations);
+    var icon = {
+        url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    };
+
     locations.forEach(function(location) {
         location.lat = parseFloat(location.lat);
         location.lng = parseFloat(location.lng);
-
         new google.maps.Marker({
             position: location,
-            map: map
+            map: map,
+            icon: icon
         });
     });
-}
 
+    // Toggle to Light Map
+    document.getElementById('lightMapButton').addEventListener('click', function() {
+        map.setMapTypeId('light_map');
+    });
+
+    // Toggle to Dark Map
+    document.getElementById('darkMapButton').addEventListener('click', function() {
+        map.setMapTypeId('styled_map');
+    });
+
+    // Ensure the map resizes properly when the window size changes
+    google.maps.event.addDomListener(window, 'resize', function() {
+        google.maps.event.trigger(map, 'resize');
+    });
+}
 
 document.addEventListener('DOMContentLoaded', initMap);
 </script>

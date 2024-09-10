@@ -259,7 +259,7 @@
 
             // Append all elements to the new input group
             newInputGroup.appendChild(inputContainer);
-            newInputGroup.appendChild(minusButtonContainer);
+            // newInputGroup.appendChild(minusButtonContainer);
 
             // Append the new input group to all language-specific containers
             const translations = @json($translation);

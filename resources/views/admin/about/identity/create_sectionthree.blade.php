@@ -234,7 +234,7 @@
 
             // Append all elements to the new input group
             newInputGroup.appendChild(inputContainer);
-            newInputGroup.appendChild(minusButtonContainer);
+            // newInputGroup.appendChild(minusButtonContainer);
 
             // Append the new input group to the container
             document.getElementById('input-container').appendChild(newInputGroup);

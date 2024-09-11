@@ -483,160 +483,22 @@
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyCoodzJh0ZG9GqhVOYutT9f_yoPyAilU3s"></script>
 <script>
 function initMap() {
-    // Map style configuration
-    var styledMapType = new google.maps.StyledMapType(
-        [{
-                "featureType": "all",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                    "saturation": 36
-                }, {
-                    "color": "#000000"
-                }, {
-                    "lightness": 40
-                }]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                    "visibility": "on"
-                }, {
-                    "color": "#000000"
-                }, {
-                    "lightness": 16
-                }]
-            },
-            {
-                "featureType": "all",
-                "elementType": "labels.icon",
-                "stylers": [{
-                    "visibility": "off"
-                }]
-            },
-            {
-                "featureType": "administrative",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 20
-                }]
-            },
-            {
-                "featureType": "administrative",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 17
-                }, {
-                    "weight": 1.2
-                }]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 20
-                }]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 21
-                }]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 17
-                }]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 29
-                }, {
-                    "weight": 0.2
-                }]
-            },
-            {
-                "featureType": "road.arterial",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 18
-                }]
-            },
-            {
-                "featureType": "road.local",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 16
-                }]
-            },
-            {
-                "featureType": "transit",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#000000"
-                }, {
-                    "lightness": 19
-                }]
-            },
-            {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#0f252e"
-                }, {
-                    "lightness": 17
-                }]
-            }
-        ], {
-            name: 'Styled Map'
-        }
-    );
-
-    // Retrieve locations and zoom level from server-side
-    var locations = @json($locations);
-    var zoomLevel = @json($zoom);
-
-    // Ensure the map is centered on the first location in the array
-    var center = locations.length > 0 ? locations[0] : {
+    // Default center location (latitude and longitude)
+    var center = {
         lat: 30.033333,
         lng: 31.233334
     };
 
     // Initialize the map
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: zoomLevel || 2, // Default zoom level is 2 if not provided
-        center: center,
-        mapTypeControlOptions: {
-            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
-        }
+        zoom: 2, // Default zoom level
+        center: center, // Center of the map
     });
 
-    // Apply the styled map
-    map.mapTypes.set('styled_map', styledMapType);
-    map.setMapTypeId('styled_map');
+    // Array of marker locations (you'll need this array from your server-side)
+    var locations = @json($locations);
 
-    // Place markers on the map for each location
+    // Add markers for each location
     locations.forEach(function(location) {
         location.lat = parseFloat(location.lat);
         location.lng = parseFloat(location.lng);
@@ -648,9 +510,10 @@ function initMap() {
     });
 }
 
-
+// Initialize the map after the DOM content is loaded
 document.addEventListener('DOMContentLoaded', initMap);
 </script>
+
 <script>
 function toggleDescription(button) {
     var description = button.previousElementSibling;

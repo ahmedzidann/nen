@@ -34,8 +34,7 @@
                         <div class="col-md-5 d-flex align-items-stretch">
                             <div class="about-image-item card border-0 w-100">
                                 <div class="about-image-container h-100">
-                                    <img src="{{ $fSection?->getFirstMediaUrl('StaticTable') }}"
-                                        alt="about image">
+                                    <img src="{{ $fSection?->getFirstMediaUrl('StaticTable') }}" alt="about image">
                                 </div>
                                 <div class="blob"></div>
                             </div>
@@ -163,21 +162,21 @@
         @endif
         @if ($tSection = $items->where('item', 'section-three')->first())
             <!-- <div class="objectives_div">
-                <div class="objectiv_titling">
-                    <h1>Our Objectives Of Company</h1>
-                    <ul class="objectives_ul">
-                        @foreach ($tSection->identityAttributes as $attribute)
+                    <div class="objectiv_titling">
+                        <h1>Our Objectives Of Company</h1>
+                        <ul class="objectives_ul">
+                            @foreach ($tSection->identityAttributes as $attribute)
     <li>
-                            <i class="bi bi-record-circle"></i>
-                            {{ $attribute->translate('content', app()->getLocale()) }}
-                        </li>
+                                <i class="bi bi-record-circle"></i>
+                                {{ $attribute->translate('content', app()->getLocale()) }}
+                            </li>
     @endforeach
-                    </ul>
-                </div>
-                <div class="objectives_img">
-                    <img src="content/images/Rating.png" />
-                </div>
-            </div> -->
+                        </ul>
+                    </div>
+                    <div class="objectives_img">
+                        <img src="content/images/Rating.png" />
+                    </div>
+                </div> -->
         @endif
 
         <!-- Start Objectives Section  -->
@@ -186,7 +185,7 @@
         @endphp
         <section id="objectives-section" class="mt-md-5 mt-3">
             <h5 class="global-title">
-                {{$tSection?->translate('title', app()->getLocale())}}
+                {{ $tSection?->translate('title', app()->getLocale()) }}
             </h5>
             <div class="under-title-vector">
                 <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">

@@ -6,7 +6,7 @@
         class="ref_styles active_ref {{ Route::is('about.' . $page->slug . '') ? 'active_link active' : '' }}">
         <div class="img_link">
             <img class="@if ($page->slug == 'identity') Identity_icon @endif" alt="{{ $page->name }}" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon-document.png') }}';"
                 src="{{ asset($page->getFirstMediaUrl('icon')) }}" />
             {{ $page->name }}
         </div>
@@ -19,7 +19,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon-document.png') }}';" alt="" />
             {{ $page->name }}
         </div>
     </a>
@@ -31,7 +31,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon-document.png') }}';" alt="" />
             {{ $page->name }}
         </div>
     </a>
@@ -44,7 +44,7 @@
             href="javascript:void(0)" onclick="toggleMenu(this)">
             <div class="img_link">
                 <img class="Identity_icon" src="content/images/small_icon/card.png" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon-document.png') }}';"
                     alt="icon-side">
                 {{ $page->name }}
             </div>
@@ -56,7 +56,9 @@
             @foreach (\App\Models\Project::where('pages_id', $page->id)->get() as $solution)
             <li>
                 <a class="{{ Route::is('projects.' . $page->slug . '') && $solution->id == Request()->project_id ? 'li_active' : '' }}"
-                    href="{{ route('projects.' . $page->slug . '', ['page_id' => $page->id, 'project_id' => $solution->id]) }}">{{ $solution->title }}</a>
+                    href="{{ route('projects.' . $page->slug . '', ['page_id' => $page->id, 'project_id' => $solution->id]) }}">
+                    {{ $solution->title }}
+                </a>
             </li>
             @endforeach
         </ul>
@@ -70,7 +72,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon-document.png') }}';" alt="" />
             {{ $page->name }}
         </div>
     </a>
@@ -82,7 +84,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon-document.png') }}';" alt="" />
             {{ $page->name }}
         </div>
     </a>

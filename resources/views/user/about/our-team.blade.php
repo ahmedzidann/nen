@@ -19,7 +19,7 @@
                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                 alt="vector">
         </div>
-        <p class="fs1-1 text-muted pt-3 lh-base text-start">
+        <p class="global-description">
             {{ strip_tags($fSection->description) }}
         </p>
     </div>
@@ -35,7 +35,7 @@
             <p class="sub-title">
                 Our Teams
             </p>
-            <h5 class="global-title fw-semibold">
+            <h5 class="global-title">
                 Meet our team
             </h5>
             <div class="under-title-vector">

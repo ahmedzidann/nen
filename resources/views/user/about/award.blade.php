@@ -28,10 +28,10 @@ span {
     <!-- Start Awards Hero Section -->
     <section id="awards-section">
         <div class="container pb-md-5 pb-3 pt-3">
-            <div class="row g-3 align-items-center">
+            <div class="row g-5 align-items-center">
                 <div class="col-md-7">
                     <div class="text-start">
-                        <h5 class="global-title fw-semibold">
+                        <h5 class="global-title">
                             {{$fSection->title}}
                         </h5>
                         <div class="under-title-vector">
@@ -39,7 +39,7 @@ span {
                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                 alt="vector">
                         </div>
-                        <p class="fs1-1 text-muted pt-3 lh-base">
+                        <p class="global-description">
                             {!! ($fSection->description)!!}
                         </p>
                     </div>

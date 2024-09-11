@@ -15,10 +15,10 @@
             <!-- Start About Section  -->
             <section id="about-section">
                 <div class="container pb-md-5 pb-3 pt-3">
-                    <div class="row g-3 align-items-center">
+                    <div class="row g-5 align-items-center">
                         <div class="col-md-7">
                             <div class="text-start">
-                                <h5 class="global-title fw-semibold">
+                                <h5 class="global-title">
                                     {{ $fSection->title }}
                                 </h5>
                                 <div class="under-title-vector">
@@ -26,7 +26,7 @@
                                         onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                         alt="vector">
                                 </div>
-                                <p class="fs1-1 text-muted pt-3 lh-base">
+                                <p class="global-description">
                                     {{ strip_tags($fSection->description) }}
                                 </p>
                             </div>
@@ -73,7 +73,7 @@
                                 <span class="progress-value">{{ $item->value }}%</span>
                             </div>
                         </div>
-                        <span class="text fw-bold text-black-50">
+                        <span class="text fw-bold text-black-50 mt-3">
                             {{ $item->translate('title', app()->getLocale()) }}
                         </span>
                     </div>
@@ -83,7 +83,7 @@
             <!-- End Progress Section  -->
         @endif
         @if ($items->where('item', 'section-two')->count())
-            <!-- End Mission Vision Section  -->
+            <!-- Start Mission Vision Section  -->
             <div class="about-explain mt-md-5 mt-3 px-md-4 px-3 py-md-5 py-4">
                 <div class="explain-content">
                     <div class="d-flex align-items-start flex_action">
@@ -119,14 +119,14 @@
                                 <div class="tab-pane fade @if ($loop->first) show active @endif"
                                     id="v-pills-section-two-{{ $item->id }}" role="tabpanel"
                                     aria-labelledby="v-pills-section-two-{{ $item->id }}-tab" tabindex="0">
-                                    <p class="tab-desc text-white-color position-relative">
+                                    <p class="global-description tab-desc text-white-color position-relative">
                                         {{ strip_tags($item->description) }}
                                     </p>
                                 </div>
                             @endforeach
                             {{-- <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                 aria-labelledby="v-pills-home-tab" tabindex="0">
-                <p class="tab-desc text-white-color position-relative">
+                <p class="global-description tab-desc text-white-color position-relative">
                 “Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
@@ -136,7 +136,7 @@
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
                 tabindex="0">
-                <p class="tab-desc text-white-color position-relative">
+                <p class="global-description tab-desc text-white-color position-relative">
                 “Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
@@ -146,7 +146,7 @@
             </div>
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                 aria-labelledby="v-pills-messages-tab" tabindex="0">
-                <p class="tab-desc text-white-color position-relative">
+                <p class="global-description tab-desc text-white-color position-relative">
                 “Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
@@ -185,8 +185,8 @@
             $tSection = $items->where('item', 'section-three')->first();
         @endphp
         <section id="objectives-section" class="mt-md-5 mt-3">
-            <h5 class="global-title fw-semibold">
-                {{ $tSection?->translate('title', app()->getLocale()) }}
+            <h5 class="global-title">
+                {{$tSection?->translate('title', app()->getLocale())}}
             </h5>
             <div class="under-title-vector">
                 <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">

@@ -57,10 +57,27 @@
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>E-wallet</span></a>
                     <a href="#"><img
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>Store</span></a>
-                    <a href="#"><img
-                            src="{{ asset('content/images/small_icon/lang_icon.svg') }}" /><a><span>Language</span></a>
-                        <a href="#"><img src="{{ asset('content/images/small_icon/media_icon.svg') }}" /><span>Media
-                                Center</span></a>
+
+                    <!-- Start Dropdown Languages button -->
+                    <div class="dropdown">
+                        <button style="background-color: transparent; outline: none !important;border: none !important;"
+                            class="btn btn-transparent dropdown-toggle d-flex justify-content-center align-items-center gap-1"
+                            type="button" id="dropdownMenuLangs" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="#"><img src="{{ asset('content/images/small_icon/lang_icon.svg') }}"
+                                    alt="Language Icon" /></a>
+                            <span>Language</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
+                            <li><a class="dropdown-item" href="#">Arabic</a></li>
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">Russian</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Dropdown Languages button -->
+
+                    <a href="#"><img src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
+                        <span>News Center</span>
+                    </a>
                 </div>
             </div>
         </div>

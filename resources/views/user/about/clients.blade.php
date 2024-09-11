@@ -33,7 +33,7 @@
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                             alt="vector">
                     </div>
-                    <p class="fs1-1 text-muted pt-3 lh-base">
+                    <p class="global-description">
                         {!! $fSection->description!!}
                     </p>
                 </div>
@@ -62,7 +62,7 @@
                 </li>
                 @endforeach
             </ul>
-            <div class="tab-content mt-3" id="pills-tabContent">
+            <div class="tab-content mt-md-4 mt-3" id="pills-tabContent">
                 @foreach ($subClients as $key=>$award)
                 <div class="tab-pane fade {{$loop->first ?" show active":''}}" id="pills-{{$award->slug}}"
                     role="tabpanel" aria-labelledby="pills-{{$award->slug}}-tab" tabindex="0">
@@ -72,7 +72,7 @@
                                 @foreach ($items->where('item', $award->slug) as $item)
                                 <div class="col-md-3 col-sm-6 col-12 d-flex mb-md-4 mb-3">
                                     <div
-                                        class="tab-item-container p-md-4 p-3 shadow-sm rounded-3 flex-grow-1 d-flex flex-column">
+                                        class="tab-item-container p-md-4 p-3 shadow-sm rounded-3 flex-grow-1 d-flex flex-column {{ $loop->iteration == 3 ? '' : '' }}">
                                         <div class="client-item">
                                             <div class="client-image-box">
                                                 <img src="{{$item->getFirstMediaUrl('StaticTable')}}" loading="lazy"

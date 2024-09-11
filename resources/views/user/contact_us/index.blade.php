@@ -20,6 +20,20 @@ Contact Us
     box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
     border-radius: 15px;
 }
+
+.static_map_image {
+    width: 100%;
+    height: 30rem;
+    box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.static_map_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
 </style>
 @endsection
 @section('content')
@@ -82,7 +96,11 @@ Contact Us
             </ul>
         </div>
 
-        <div id="map"></div>
+        <!-- <div id="map"></div> -->
+        <div class="static_map_image mt-md-4 mt-3 p-3">
+            <img src="{{ asset('content/images/contacts-static.jpg') }}" loading="lazy"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
+        </div>
 
         <div class="services-items-container mt-md-4 mt-3">
             <div class="services-items">

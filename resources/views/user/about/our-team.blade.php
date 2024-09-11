@@ -45,105 +45,152 @@
             </div>
         </div>
 
-        <div class="team-list row g-3 mt-3">
-            @foreach ($items->where('item','member-board') as $item)
-            <div class="col-xl-3 col-md-4 col-sm-6 col-12">
-                <div class="our-team p-3 rounded-3">
-                    <div class="pic shadow-sm">
-                        <img src="{{$item->getFirstMediaUrl('OurTeam')}}" loading="lazy"
-                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                            alt="Team Member">
-                        <ul class="social">
-                            <li><a target="_blank" href="{{$item->facebook}}" class="bi bi-facebook"></a></li>
-                            <li>
-                                <a target="_blank" href="https://wa.me/{{ $item->whatsapp }}"
-                                    class="bi bi-whatsapp"></a>                            </li>
-
-                            <li><a target="_blank" href="{{$item->instagram}}" class="bi bi-instagram"></a></li>
-                        </ul>
-                    </div>
-                    <div class="team-content">
-                        <div class="team-info">
-                            <h3 class="title">{{$item->name}}</h3>
-                            <span class="post">{{$item->jop}}</span>
+        <!-- Start Teams Tabs -->
+        <div class="tabs-items mt-md-4 mt-3">
+            <ul class="nav nav-tabs" id="teamTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="member-board-tab" data-bs-toggle="tab"
+                        data-bs-target="#member-board" type="button" role="tab" aria-controls="member-board"
+                        aria-selected="true">Member Board</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="financial-department-tab" data-bs-toggle="tab"
+                        data-bs-target="#financial-department" type="button" role="tab"
+                        aria-controls="financial-department" aria-selected="false">Financial Department</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="marketing-department-tab" data-bs-toggle="tab"
+                        data-bs-target="#marketing-department" type="button" role="tab"
+                        aria-controls="marketing-department" aria-selected="false">Marketing Department</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="it-department-tab" data-bs-toggle="tab" data-bs-target="#it-department"
+                        type="button" role="tab" aria-controls="it-department" aria-selected="false">IT
+                        Department</button>
+                </li>
+            </ul>
+            <div class="tab-content mt-3" id="teamTabContent">
+                <!-- Member Board -->
+                <div class="tab-pane fade show active" id="member-board" role="tabpanel"
+                    aria-labelledby="member-board-tab">
+                    <div class="team-list d-flex justify-content-center justify-content-md-start flex-wrap gap-1 mt-3">
+                        @foreach ($items->where('item', 'member-board') as $item)
+                        <div class="our-team p-3 rounded-3">
+                            <div class="pic shadow-sm">
+                                <img src="{{ $item->getFirstMediaUrl('OurTeam') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                    alt="Team Member">
+                                <ul class="social">
+                                    <li><a target="_blank" href="{{ $item->facebook }}" class="bi bi-facebook"></a></li>
+                                    <li><a target="_blank" href="https://wa.me/{{ $item->whatsapp }}"
+                                            class="bi bi-whatsapp"></a></li>
+                                    <li><a target="_blank" href="{{ $item->instagram }}" class="bi bi-instagram"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-content">
+                                <div class="team-info">
+                                    <h3 class="title">{{ $item->name }}</h3>
+                                    <span class="post text-center">{{ $item->jop }}</span>
+                                </div>
+                            </div>
                         </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Financial Department -->
+                <div class="tab-pane fade" id="financial-department" role="tabpanel"
+                    aria-labelledby="financial-department-tab">
+                    <div class="team-list d-flex justify-content-center justify-content-md-start flex-wrap gap-1 mt-3">
+                        @foreach ($items->where('item', 'financial-department') as $item)
+                        <!-- Repeat same structure as above -->
+                        <div class="our-team p-3 rounded-3">
+                            <div class="pic shadow-sm">
+                                <img src="{{ $item->getFirstMediaUrl('OurTeam') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                    alt="Team Member">
+                                <ul class="social">
+                                    <li><a target="_blank" href="{{ $item->facebook }}" class="bi bi-facebook"></a></li>
+                                    <li><a target="_blank" href="https://wa.me/{{ $item->whatsapp }}"
+                                            class="bi bi-whatsapp"></a></li>
+                                    <li><a target="_blank" href="{{ $item->instagram }}" class="bi bi-instagram"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-content">
+                                <div class="team-info">
+                                    <h3 class="title">{{ $item->name }}</h3>
+                                    <span class="post">{{ $item->jop }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Marketing Department -->
+                <div class="tab-pane fade" id="marketing-department" role="tabpanel"
+                    aria-labelledby="marketing-department-tab">
+                    <div class="team-list d-flex justify-content-center justify-content-md-start flex-wrap gap-1 mt-3">
+                        @foreach ($items->where('item', 'marketing-department') as $item)
+                        <!-- Repeat same structure as above -->
+                        <div class="our-team p-3 rounded-3">
+                            <div class="pic shadow-sm">
+                                <img src="{{ $item->getFirstMediaUrl('OurTeam') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                    alt="Team Member">
+                                <ul class="social">
+                                    <li><a target="_blank" href="{{ $item->facebook }}" class="bi bi-facebook"></a></li>
+                                    <li><a target="_blank" href="https://wa.me/{{ $item->whatsapp }}"
+                                            class="bi bi-whatsapp"></a></li>
+                                    <li><a target="_blank" href="{{ $item->instagram }}" class="bi bi-instagram"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-content">
+                                <div class="team-info">
+                                    <h3 class="title">{{ $item->name }}</h3>
+                                    <span class="post">{{ $item->jop }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- IT Department -->
+                <div class="tab-pane fade" id="it-department" role="tabpanel" aria-labelledby="it-department-tab">
+                    <div class="team-list d-flex justify-content-center justify-content-md-start flex-wrap gap-1 mt-3">
+                        @foreach ($items->where('item', 'it-department') as $item)
+                        <!-- Repeat same structure as above -->
+                        <div class="our-team p-3 rounded-3">
+                            <div class="pic shadow-sm">
+                                <img src="{{ $item->getFirstMediaUrl('OurTeam') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                    alt="Team Member">
+                                <ul class="social">
+                                    <li><a target="_blank" href="{{ $item->facebook }}" class="bi bi-facebook"></a></li>
+                                    <li><a target="_blank" href="https://wa.me/{{ $item->whatsapp }}"
+                                            class="bi bi-whatsapp"></a></li>
+                                    <li><a target="_blank" href="{{ $item->instagram }}" class="bi bi-instagram"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-content">
+                                <div class="team-info">
+                                    <h3 class="title">{{ $item->name }}</h3>
+                                    <span class="post">{{ $item->jop }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-            @endforeach
-
-            {{-- <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div> --}}
-
         </div>
+        <!-- End Teams Tabs -->
+
     </div>
     @endif
 </div>

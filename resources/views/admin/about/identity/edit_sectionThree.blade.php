@@ -60,12 +60,8 @@
                                                         </x-admin.form.label-first>
                                                         <x-admin.form.input old="{{ 'title.' . $translationFirst->key }}"
                                                             name="{{ 'title' . '[' . $item->key . ']' }}" type="text"
-                                                            required=""
-                                                            placeholder="Title {{ $item->key }}"
-                                                            class="form-control valid" :value="$StaticTable->translate(
-                                                                'title',
-                                                                $item->key,
-                                                            )">
+                                                            required="" placeholder="Title {{ $item->key }}"
+                                                            class="form-control valid" :value="$StaticTable->translate('title', $item->key)">
                                                         </x-admin.form.input>
                                                         <x-admin.form.label-end star="*"
                                                             name="please enter title  {{ $item->key }}">
@@ -76,143 +72,148 @@
                                                         <x-admin.form.label-first star="*" class="form-label"
                                                             name="Objective  {{ $item->key }}">
                                                         </x-admin.form.label-first>
-                                                    @foreach ($StaticTable->identityAttributes as $attribute)
-                                                        <div class="@if ($loop->first) input-container @endif"
-                                                            data-lang="{{ $item->key }}" class="col-md-12 mb-4">
-                                                            <div class="input-group">
-                                                                <div class=" col-md-10   mb-4">
+                                                        @foreach ($StaticTable->identityAttributes as $attribute)
+                                                            <div class="@if ($loop->first) input-container @endif"
+                                                                data-lang="{{ $item->key }}" class="col-md-12 mb-4">
+                                                                <div class="input-group">
+                                                                    <div class=" col-md-10   mb-4">
+                                                                        <input type="text" class="form-control"
+                                                                            name="attributes[][content][{{ $item->key }}]"
+                                                                            value="{{ $attribute->translate('content', $item->key) }}"
+                                                                            placeholder="Enter text">
+                                                                        <input type="hidden" class="form-control"
+                                                                            name="keys[]" value="{{ $attribute->id }}"
+                                                                            placeholder="Enter text">
+                                                                    </div>
+                                                                    <div class="col-md-2 mb-4">
+                                                                        <button type="button"
+                                                                            class="form-control btn btn-danger elem_{{ $attribute->id }}"
+                                                                            onclick="removeGroup('elem_{{ $attribute->id }}')"><i
+                                                                                class="bx bxs-trash"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        <div id="input-container" class="col-md-12 mb-4">
+                                                            <div class="input-group new-chiled">
+                                                                <div class="col-md-10 mb-4">
                                                                     <input type="text" class="form-control"
-                                                                        name="attributes[][content][{{ $item->key }}]"
-                                                                        value="{{ $attribute->translate('content', $item->key) }}"
-                                                                        placeholder="Enter text">
-                                                                    <input type="hidden" class="form-control"
-                                                                        name="keys[]" value="{{ $attribute->id }}"
+                                                                        name="attributes[][{{ $item->key }}]"
                                                                         placeholder="Enter text">
                                                                 </div>
                                                                 <div class="col-md-2 mb-4">
                                                                     <button type="button"
-                                                                        class="form-control btn btn-danger elem_{{ $attribute->id }}"
-                                                                        onclick="removeGroup('elem_{{ $attribute->id }}')"><i class="bx bxs-trash"></i></button>
+                                                                        class="form-control btn btn-danger"
+                                                                        onclick="removeInput()"><i
+                                                                            class="bx bxs-trash"></i></button>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-                                                    @endforeach
-                                                    <div id="input-container" class="col-md-12 mb-4">
-                                                        <div class="input-group new-chiled">
-                                                            <div class="col-md-8 mb-4">
-                                                                <input type="text" class="form-control"
-                                                                    name="attributes[][{{ $item->key }}]"
-                                                                    placeholder="Enter text">
-                                                            </div>
-                                                            <div class="col-md-2 mb-4">
-                                                                <button type="button" class="form-control btn btn-success"
-                                                                    onclick="addInput()">+</button>
-                                                            </div>
-                                                            <div class="col-md-2 mb-4">
-                                                                <button type="button" class="form-control btn btn-danger"
-                                                                    onclick="removeInput()"><i class="bx bxs-trash"></i></button>
-                                                            </div>
+                                                        <div class="col-md-2 mb-4">
+                                                            <button type="button" class="form-control btn btn-success"
+                                                                onclick="addInput()">+</button>
                                                         </div>
-                                                    </div>
-                                                    {{-- ----------Description first --}}
-                                                    <div class="col-md-12 mb-4">
-                                                        <x-admin.form.label-first star="*" class="form-label"
-                                                            name="Description  {{ $item->name }}">
-                                                        </x-admin.form.label-first>
-                                                        <x-admin.form.text old="{{ 'description.' . $item->key }}"
-                                                            name="{{ 'description' . '[' . $item->key . ']' }}"
-                                                            type="text"
-                                                            placeholder="Description {{ ucfirst($item->name) }}"
-                                                            :value="$StaticTable->translate(
-                                                                'description',
-                                                                $item->key,
-                                                            )">
-                                                        </x-admin.form.text>
-                                                        <x-admin.form.label-end star="*"
-                                                            name="please enter Name  {{ $item->name }}">
-                                                        </x-admin.form.label-end>
+                                                        {{-- ----------Description first --}}
+                                                        <div class="col-md-12 mb-4">
+                                                            <x-admin.form.label-first star="*" class="form-label"
+                                                                name="Description  {{ $item->name }}">
+                                                            </x-admin.form.label-first>
+                                                            <x-admin.form.text old="{{ 'description.' . $item->key }}"
+                                                                name="{{ 'description' . '[' . $item->key . ']' }}"
+                                                                type="text"
+                                                                placeholder="Description {{ ucfirst($item->name) }}"
+                                                                :value="$StaticTable->translate(
+                                                                    'description',
+                                                                    $item->key,
+                                                                )">
+                                                            </x-admin.form.text>
+                                                            <x-admin.form.label-end star="*"
+                                                                name="please enter Name  {{ $item->name }}">
+                                                            </x-admin.form.label-end>
 
-                                                    </div>
+                                                        </div>
 
-                                                    {{-- ----------Description end --}}
-                                                    {{-- ----------sort first --}}
-                                                    @if (Request()->category == 'about' && Request()->subcategory == 'identity' && Request()->item == 'section-one')
-                                                    @else
+                                                        {{-- ----------Description end --}}
+                                                        {{-- ----------sort first --}}
+                                                        @if (Request()->category == 'about' && Request()->subcategory == 'identity' && Request()->item == 'section-one')
+                                                        @else
+                                                            @if ($loop->first)
+                                                                <div class="col-md-12 mb-4">
+                                                                    <x-admin.form.label-first class="form-label"
+                                                                        name="sort">
+                                                                    </x-admin.form.label-first>
+                                                                    <x-admin.form.input old="{{ 'sort' }}"
+                                                                        name="{{ 'sort' }}" type="number"
+                                                                        required="" placeholder="sort"
+                                                                        class="form-control valid" :value="$StaticTable->sort">
+                                                                    </x-admin.form.input>
+                                                                    <x-admin.form.label-end star="*"
+                                                                        name="please enter sort">
+                                                                    </x-admin.form.label-end>
+                                                                </div>
+                                                                <div class="col-md-12 mb-4">
+                                                                    <h6>مقاس الصورة (350 * 350)</h6>
+
+                                                                    <x-admin.form.label-first star="*"
+                                                                        class="col-sm-3 col-form-label"
+                                                                        name="File Upload Image">
+                                                                    </x-admin.form.label-first>
+                                                                    <div class="col-sm-9">
+                                                                        <x-admin.form.input :model="$StaticTable"
+                                                                            nameImage="StaticTable" old="image"
+                                                                            name="image" type="file" readonly=""
+                                                                            placeholder="Please Enter Image"
+                                                                            id="image" class="dropify"
+                                                                            DataHeight="300"
+                                                                            accept=".jpg, .png, image/jpeg, image/png">
+                                                                        </x-admin.form.input>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        @endif
+                                                        {{-- ----------sort end --}}
                                                         @if ($loop->first)
-                                                            <div class="col-md-12 mb-4">
+                                                            {{-- ----------status first --}}
+                                                            <div class="col-md-6 mb-4">
                                                                 <x-admin.form.label-first class="form-label"
-                                                                    name="sort">
-                                                                </x-admin.form.label-first>
-                                                                <x-admin.form.input old="{{ 'sort' }}"
-                                                                    name="{{ 'sort' }}" type="number"
-                                                                    required="" placeholder="sort"
-                                                                    class="form-control valid" :value="$StaticTable->sort">
-                                                                </x-admin.form.input>
-                                                                <x-admin.form.label-end star="*"
-                                                                    name="please enter sort">
-                                                                </x-admin.form.label-end>
-                                                            </div>
-                                                            <div class="col-md-12 mb-4">
-                                                                <h6>مقاس الصورة (350 * 350)</h6>
-
-                                                                <x-admin.form.label-first star="*"
-                                                                    class="col-sm-3 col-form-label"
-                                                                    name="File Upload Image">
+                                                                    name="Checked switch checkbox status">
                                                                 </x-admin.form.label-first>
                                                                 <div class="col-sm-9">
-                                                                    <x-admin.form.input :model="$StaticTable"
-                                                                        nameImage="StaticTable" old="image"
-                                                                        name="image" type="file" readonly=""
-                                                                        placeholder="Please Enter Image" id="image"
-                                                                        class="dropify" DataHeight="300"
-                                                                        accept=".jpg, .png, image/jpeg, image/png">
-                                                                    </x-admin.form.input>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                    @endif
-                                                    {{-- ----------sort end --}}
-                                                    @if ($loop->first)
-                                                        {{-- ----------status first --}}
-                                                        <div class="col-md-6 mb-4">
-                                                            <x-admin.form.label-first class="form-label"
-                                                                name="Checked switch checkbox status">
-                                                            </x-admin.form.label-first>
-                                                            <div class="col-sm-9">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="form-check">
-                                                                        @foreach (App\Models\Page::STATUS as $status)
-                                                                            <div class="form-check">
-                                                                                <x-admin.form.radio :checked="$StaticTable->status ==
-                                                                                $status
-                                                                                    ? 'checked'
-                                                                                    : ''"
-                                                                                    name="status"
-                                                                                    value="{{ $status }}"
-                                                                                    :model="$StaticTable">
-                                                                                </x-admin.form.radio>
-                                                                                <label class="form-check-label"
-                                                                                    for="bsValidation6">{{ $status }}</label>
-                                                                            </div>
-                                                                        @endforeach
+                                                                    <div class="d-flex align-items-center gap-3">
+                                                                        <div class="form-check">
+                                                                            @foreach (App\Models\Page::STATUS as $status)
+                                                                                <div class="form-check">
+                                                                                    <x-admin.form.radio :checked="$StaticTable->status ==
+                                                                                    $status
+                                                                                        ? 'checked'
+                                                                                        : ''"
+                                                                                        name="status"
+                                                                                        value="{{ $status }}"
+                                                                                        :model="$StaticTable">
+                                                                                    </x-admin.form.radio>
+                                                                                    <label class="form-check-label"
+                                                                                        for="bsValidation6">{{ $status }}</label>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        {{-- ----------status end --}}
-                                                    @endif
-                                                    <input type="hidden" name="submit2" value="{{ $item->key }}">
-                                                    <div class="col-md-12">
-                                                        <div class="d-md-flex d-grid align-items-center gap-3">
-                                                            <x-admin.form.submit type="submit"></x-admin.form.submit>
+                                                            {{-- ----------status end --}}
+                                                        @endif
+                                                        <input type="hidden" name="submit2"
+                                                            value="{{ $item->key }}">
+                                                        <div class="col-md-12">
+                                                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                                                <x-admin.form.submit type="submit"></x-admin.form.submit>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    {{-- --------hatem --}}
                                                 </div>
-                                                {{-- --------hatem --}}
                                             </div>
                                         </div>
-                                    </div>
                                 </form>
                             @endforeach
                         </div>
@@ -250,16 +251,17 @@
             // Create the new minus button
             const minusButton = document.createElement('button');
             minusButton.type = 'button';
-            minusButton.classList.add('form-control');
-            minusButton.textContent = '-';
-            minusButton.onclick = removeInput;
+            minusButton.classList.add('form-control', 'btn', 'btn-danger', 'delete-chiled');
+            const icon = document.createElement('i');
+            icon.classList.add('bx', 'bxs-trash');
+            minusButton.appendChild(icon);
 
             // Append the minus button to its container
             minusButtonContainer.appendChild(minusButton);
 
             // Append all elements to the new input group
             newInputGroup.appendChild(inputContainer);
-            // newInputGroup.appendChild(minusButtonContainer);
+            newInputGroup.appendChild(minusButtonContainer);
 
             // Append the new input group to all language-specific containers
             const translations = @json($translation);
@@ -278,11 +280,13 @@
             // Target all containers with the class 'new-chiled' across all languages
             document.querySelectorAll('.new-chiled').forEach(container => {
                 const inputGroups = container.getElementsByClassName('input-group');
-                if (inputGroups.length > 1) {
+                if (inputGroups.length >= 0) {
+                    // Correct index to remove the last input group
                     container.removeChild(inputGroups[inputGroups.length - 1]);
                 }
             });
         }
+
 
         function removeGroup(elementClass) {
             const elements = document.querySelectorAll('.' + elementClass);
@@ -293,6 +297,9 @@
                 }
             });
         }
+        $(document).on('click', '.delete-chiled', function() {
+            removeInput();
+        })
     </script>
     <script src="{{ asset('admin/about/identity/js/edit.js') }}"></script>
     @include('admin.layouts.ckeditor.ckeditor')

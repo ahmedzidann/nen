@@ -70,19 +70,20 @@
                                                 </div>
                                                 <div id="input-container" class="col-md-12 mb-4">
                                                     <div class="input-group">
-                                                        <div class="col-md-8 mb-4">
-                                                            <input type="text" class="form-control" name="attributes[][en]"
-                                                                placeholder="Enter text">
-                                                        </div>
-                                                        <div class="col-md-2 mb-4">
-                                                            <button type="button" class="form-control btn btn-success"
-                                                                onclick="addInput()">+</button>
+                                                        <div class="col-md-10 mb-4">
+                                                            <input type="text" class="form-control"
+                                                                name="attributes[][en]" placeholder="Enter text">
                                                         </div>
                                                         <div class="col-md-2 mb-4">
                                                             <button type="button" class="form-control btn btn-danger"
-                                                                onclick="removeInput()"><i class="bx bxs-trash"></i></button>
+                                                                onclick="removeInput()"><i
+                                                                    class="bx bxs-trash"></i></button>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-2 mb-4">
+                                                    <button type="button" class="form-control btn btn-success"
+                                                        onclick="addInput()">+</button>
                                                 </div>
                                                 {{-- ----------Description first --}}
                                                 <div class="col-md-12 mb-4">
@@ -207,6 +208,10 @@
             const inputContainer = document.createElement('div');
             inputContainer.classList.add('col-md-10', 'mb-4');
 
+            // Create the minus button container
+            const minusButtonContainer = document.createElement('div');
+            minusButtonContainer.classList.add('col-md-2', 'mb-4');
+
             // Create the new input field
             const newInput = document.createElement('input');
             newInput.type = 'text';
@@ -218,23 +223,20 @@
             inputContainer.appendChild(newInput);
 
 
-            // Create the minus button container
-            const minusButtonContainer = document.createElement('div');
-            minusButtonContainer.classList.add('col-md-2', 'mb-4');
-
             // Create the new minus button
             const minusButton = document.createElement('button');
             minusButton.type = 'button';
-            minusButton.classList.add('form-control');
-            minusButton.textContent = '-';
-            minusButton.onclick = removeInput;
+            minusButton.classList.add('form-control', 'btn', 'btn-danger', 'delete-chiled');
+            const icon = document.createElement('i');
+            icon.classList.add('bx', 'bxs-trash');
+            minusButton.appendChild(icon);
 
             // Append the minus button to its container
             minusButtonContainer.appendChild(minusButton);
 
             // Append all elements to the new input group
             newInputGroup.appendChild(inputContainer);
-            // newInputGroup.appendChild(minusButtonContainer);
+            newInputGroup.appendChild(minusButtonContainer);
 
             // Append the new input group to the container
             document.getElementById('input-container').appendChild(newInputGroup);
@@ -247,6 +249,9 @@
                 container.removeChild(inputGroups[inputGroups.length - 1]);
             }
         }
+        $(document).on('click', '.delete-chiled', function() {
+            removeInput();
+        })
     </script>
     <script>
         function addRow() {

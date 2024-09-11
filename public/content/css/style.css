@@ -560,21 +560,18 @@ a {
     position: sticky;
     height: max-content;
     top: 15px;
-    background-image: linear-gradient(to right, #000000, #888b92);
+    /* background-image: linear-gradient(to right, #000000, #888b92); */
 }
 
 .a_ref.active {
-    /* background: #7a808f; */
     width: 100%;
-    /* padding: 7px 15px; */
     border-radius: 7px;
-    /* background-color: #d1651a; */
     border-bottom: 5px solid #d1651a;
     border-radius: 0;
 }
 
 .ref_styles.active {
-    background: #8a8383;
+    background: #990000;
     width: 100%;
     padding: 7px 15px;
     border-radius: 7px;
@@ -978,7 +975,7 @@ a {
 }
 
 #progress-items .progress-item .progress-circle {
-    background: conic-gradient(#3c3d3d 0%, #acadac 50%, #f5f5f5 50%, #f5f5f5 100%);
+    background: var(--bg-main-color);
 }
 
 #progress-items .progress-item .progress-circle[data-progress="25"] {
@@ -1975,7 +1972,7 @@ z-index: 2;
 
 .tabs-items p,
 .tabs-items span {
-    text-align: justify !important;
+    /* text-align: justify !important; */
     hyphens: auto !important;
     word-wrap: break-word !important;
     font-size: 1.1rem;
@@ -2577,6 +2574,7 @@ z-index: 2;
     margin-bottom: 50px;
     position: relative;
     z-index: 1;
+    width: 230px;
 }
 
 .our-team::after {
@@ -2596,6 +2594,10 @@ z-index: 2;
     width: 190px;
     height: 190px;
     margin: 0 auto;
+}
+
+.our-team .nav-link {
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .our-team .pic img {
@@ -2685,7 +2687,7 @@ z-index: 2;
 }
 
 .our-team:hover .title {
-    color: #00adae;
+    color: #990000;
 }
 
 .our-team .post {

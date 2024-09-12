@@ -111,40 +111,133 @@ Investors
                     <!-- <div class="subsidiaries__sec"> -->
                     <div class="">
                         @forelse ($subInvestors as $sub)
-                        <div class="subsidiaries_content">
-                            <div class="flg_div">
-                                <img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
-                            </div>
-                            <div class="subsidiaries_details">
-                                <h5>{{ $sub->translate('title', app()->getLocale()) }}</h5>
+                        <div class="two_cards">
+                            <div class="card ">
+                                <span> NEN for Information Technology</span>
+                                <div class="img">
+                                    <img src="{{asset('content/images/Image4.png')}}">
+                                </div>
                                 <div class="flags_sec">
-                                    @foreach ($sub->investorAttributes as $row)
                                     <div class="flag_icon_titel">
                                         <div class="sub_contennt">
-                                            <h6><img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
-                                                <p>Since : <span>{{ $row->since }}</span></p>
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Egypt.svg.webp')}}">
+
+                                                <p>Since : <span>2008</span></p>
                                             </h6>
                                             <h6>
-                                                <p>Sharing : <span>{{ $row->percent }}%</span></p>
+                                                <p>Sharing : <span>100%</span></p>
                                             </h6>
                                         </div>
 
                                     </div>
-                                    @endforeach
-                                    <div class="sub_contennt">
-                                        <h6><img src="{{ asset('content/images/small_icon/Flag_of_Kuwait.svg.webp') }}">
-                                            <p>Since : <span>2008</span></p>
-                                        </h6>
-                                        <h6>
-                                            <p>Sharing : <span>100%</span></p>
-                                        </h6>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Kuwait.svg.webp')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_the_United_Arab_Emirates.svg.png')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/gb.png')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/es.png')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
                                     </div>
 
-
+                                    <button> website
+                                    </button>
                                 </div>
-                                <a href="{{ $sub->url}}" class="website_link">Website</a>
-                            </div>
 
+                            </div>
+                            <div class="card ">
+                                <span> NEN BIO</span>
+                                <div class="img">
+                                    <img src="{{asset('content/images/Image5.png')}}">
+                                </div>
+                                <div class="flags_sec">
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Egypt.svg.webp')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Kuwait.svg.webp')}}">
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_the_United_Arab_Emirates.svg.png')}}">
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+
+                                    <button> website
+                                    </button>
+                                </div>
+
+                            </div>
                         </div>
                         @empty
                         <div id="empty-data-placeholder" class="p-3 mt-md-4 mt-3">
@@ -840,37 +933,134 @@ Investors
             </div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                 @if ($items->where('item', 'section-foure')->count())
-                <div class="subsidiaries_sec_content">
-                    <div class="subsidiaries__sec">
-                        @forelse ($sisInvestors as $sister)
-                        <div class="subsidiaries_content">
-                            <div class="flg_div">
-                                <img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
-                            </div>
-                            <div class="subsidiaries_details">
-                                <h5>{{$sister->translate('title', app()->getLocale())}}</h5>
+                <div class="two_cards">
+                            <div class="card ">
+                                <span> NEN for Information Technology</span>
+                                <div class="img">
+                                    <img src="{{asset('content/images/Image4.png')}}">
+                                </div>
                                 <div class="flags_sec">
-                                    @foreach ($sister->investorAttributes as $attr)
                                     <div class="flag_icon_titel">
                                         <div class="sub_contennt">
-                                            <h6><img src="{{ $item->getFirstMediaUrl('StaticTable') }}">
-                                                <p>Since : <span>{{ $attr->since}}</span></p>
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Egypt.svg.webp')}}">
+
+                                                <p>Since : <span>2008</span></p>
                                             </h6>
                                             <h6>
-                                                <p>Sharing : <span>{{ $attr->percent}}%</span></p>
+                                                <p>Sharing : <span>100%</span></p>
                                             </h6>
                                         </div>
 
                                     </div>
-                                    @endforeach
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Kuwait.svg.webp')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_the_United_Arab_Emirates.svg.png')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/gb.png')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                        <h6><img
+                                                    src="{{asset('content/images/small_icon/es.png')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+
+                                    <button> website
+                                    </button>
                                 </div>
-                                <a href="{{ $sister->url}}" class="website_link">Website</a>
+
+                            </div>
+                            <div class="card ">
+                                <span> NEN BIO</span>
+                                <div class="img">
+                                    <img src="{{asset('content/images/Image5.png')}}">
+                                </div>
+                                <div class="flags_sec">
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Egypt.svg.webp')}}">
+
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_Kuwait.svg.webp')}}">
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+                                    <div class="flag_icon_titel">
+                                        <div class="sub_contennt">
+                                            <h6><img
+                                                    src="{{asset('content/images/small_icon/Flag_of_the_United_Arab_Emirates.svg.png')}}">
+                                                <p>Since : <span>2008</span></p>
+                                            </h6>
+                                            <h6>
+                                                <p>Sharing : <span>100%</span></p>
+                                            </h6>
+                                        </div>
+
+                                    </div>
+
+                                    <button> website
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
-                        @empty
-                        @endforelse
-                    </div>
-                </div>
                 @endif
             </div>
         </div>

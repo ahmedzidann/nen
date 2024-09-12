@@ -1026,28 +1026,6 @@ a {
     z-index: 1;
 }
 
-/* Dynamic Gradient based on data-progress attribute */
-#progress-items .progress-item .progress-circle[data-progress="100"] {
-    background: conic-gradient(#00c853 0%, #00c853 100%, #f5f5f5 100%);
-    background: conic-gradient(#3c3d3d 0%, #acadac 100%, #f5f5f5 100%);
-}
-
-#progress-items .progress-item .progress-circle[data-progress="75"] {
-    background: conic-gradient(#3c3d3d 0%, #acadac 75%, #f5f5f5 75%, #f5f5f5 100%);
-}
-
-#progress-items .progress-item .progress-circle[data-progress="45"] {
-    background: conic-gradient(#3c3d3d 0%, #acadac 45%, #f5f5f5 45%, #f5f5f5 100%);
-}
-
-#progress-items .progress-item .progress-circle {
-    background: var(--bg-main-color);
-}
-
-#progress-items .progress-item .progress-circle[data-progress="25"] {
-    background: conic-gradient(#f44336 0%, #f44336 25%, #f5f5f5 25%, #f5f5f5 100%);
-}
-
 /* End Progress Section */
 
 /* Start About Explian Sections */

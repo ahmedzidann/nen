@@ -206,4 +206,23 @@ Identity
     <!-- eND Objectives Section  -->
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const progressCircles = document.querySelectorAll('.progress-circle');
+
+    progressCircles.forEach(circle => {
+        const progressValue = parseInt(circle.getAttribute('data-progress'), 10);
+
+        if (progressValue >= 50) {
+            circle.style.background =
+                `conic-gradient(#3c3d3d 0% ${progressValue}%, #acadac ${progressValue}%, #f5f5f5 100%)`;
+        } else {
+            // circle.style.background =
+            //     `conic-gradient(#ff9800 0% ${progressValue}%, #f5f5f5 ${progressValue}%, #f5f5f5 100%)`;
+            circle.style.background =
+                `conic-gradient(#3c3d3d 0% ${progressValue}%, #acadac ${progressValue}%, #f5f5f5 100%)`;
+        }
+    });
+});
+</script>
 @endsection

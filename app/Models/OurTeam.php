@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,38 +10,44 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
-
-class OurTeam extends Model implements  HasMedia
+class OurTeam extends Model implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable,HasTranslations, InteractsWithMedia;
+    use HasApiTokens, HasFactory, Notifiable, HasTranslations, InteractsWithMedia;
 
-   public $translatable = [
-      'title',
-      'name',
-      'jop',
-      'description'
-   ];
+    public $translatable = [
+        'title',
+        'name',
+        'jop',
+        'description',
+    ];
 
-   protected $fillable = [
-      'title',
-      'name',
-      'jop',
-      'status',
-      'item',
-      'pages_id',
-      'sort',
-      'description',
-      'facebook',
-      'whatsapp',
-      'instagrame'
-   ];
-     const STATUS = ['Active','Not Active'];
-       public function Page()
-       {
-         return $this->belongsTo(Page::class, 'pages_id');
-       }
+    protected $fillable = [
+        'title',
+        'name',
+        'jop',
+        'status',
+        'item',
+        'pages_id',
+        'sort',
+        'description',
+        'facebook',
+        'whatsapp',
+        'instagrame',
+        'management_id',
+    ];
+    const STATUS = ['Active', 'Not Active'];
+    public function Page()
+    {
+        return $this->belongsTo(Page::class, 'pages_id');
+    }
 
-       public function scopeActive($q){
-        $q->where('status',"active");
+    public function scopeActive($q)
+    {
+        $q->where('status', "active");
+    }
+
+    public function management()
+    {
+        return $this->belongsTo(Management::class, 'management_id');
     }
 }

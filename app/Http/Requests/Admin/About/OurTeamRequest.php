@@ -31,6 +31,7 @@ class OurTeamRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'management_id'=>'required|exists:management,id',
             'title.*' => ['required','max:255','min:2'],
             'description.*' => ['required','max:8000','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
@@ -44,9 +45,10 @@ class OurTeamRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'management_id'=>'required|exists:management,id',
             'name.*' => ['required','max:255','min:2'],
             'jop.*' => ['required','max:255','min:2'],
-            'image'=>['required','mimes:png,jpg,jpeg'],
+            'image'=>['sometimes','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'sort' => ['nullable'],
@@ -61,10 +63,11 @@ class OurTeamRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'management_id'=>'required|exists:management,id',
             'name.'.$request->submit2 => ['required','max:255','min:2'],
             'jop.'.$request->submit2 => ['required','max:255','min:2'],
             'description.*' => ['required','max:8000','min:2'],
-            'image'=>['required','mimes:png,jpg,jpeg'],
+            'image'=>['sometimes','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -78,9 +81,10 @@ class OurTeamRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
+            'management_id'=>'required|exists:management,id',
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'image'=>['sometimes','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],

@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\FindUs\CertificateController;
 use App\Http\Controllers\Admin\FindUs\FindUsController;
 use App\Http\Controllers\Admin\FindUs\LevelController;
 use App\Http\Controllers\Admin\FindUs\SpecializationController;
+use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\Admin\profile\RoleController;
@@ -56,6 +57,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('certificates', CertificateController::class);
     Route::resource('specializations', SpecializationController::class);
     Route::resource('find-us', FindUsController::class);
+    Route::resource('management', ManagementController::class)->except('destroy');
+    Route::post('management/management-bulk-delete', [ManagementController::class, 'destroy'])->name('delete.management');
 
     Route::name('about.')->prefix('about')->group(function () {
         Route::resource('identity', IdentityController::class);
@@ -87,7 +90,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('joinus', JoinusTabsController::class);
         Route::delete('join-us/{join_id}', [JoinusTabsController::class, 'deleteJoin'])->name('join.delete');
     });
-    
+
     // clear route
     // clear route
     Route::get('/route-clear', function () {
@@ -129,7 +132,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
     Route::resource('contact-us-services', ServicesController::class)->except('destroy');
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
-    
+
 });
 
 Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('tabproject.archiveDownload');

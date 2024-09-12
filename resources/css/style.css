@@ -2010,6 +2010,8 @@ circle-progress::part(text) {
   width: max-content;
 }
 
+
+
 /* responsive */
 
 @media (max-width:1200px) {

@@ -51,6 +51,20 @@
                                                     <input type="hidden" name="subcategory" value="{{ Request()->subcategory ?? '' }}">
                                                     <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                                     {{-- ----------first name --}}
+
+                                                                                                    <div class="col-md-6 mb-4">
+                                                    <x-admin.form.label-first class="form-label" name="Select Management">
+                                                    </x-admin.form.label-first>
+                                                    <select class="form-select select2" value="" name="management_id">
+                                                        <option selected="" value="" disabled>Select Mangement
+                                                        </option>
+                                                        @foreach ($managements as $management)
+                                                            <option value="{{$management->id}}" {{ $StaticTable->management_id == $management->id?'selected':'' }}>
+                                                                {{ $management->title }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                                     <div class="col-md-6">
                                                         <x-admin.form.label-first star="*" class="form-label"
                                                             name="name  {{ $item->name  }}"></x-admin.form.label-first>

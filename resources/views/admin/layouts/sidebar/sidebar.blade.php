@@ -306,6 +306,10 @@
                   <li class=""><a href="{{ route('admin.specializations.index') }}"><i
                               class='bx bx-radio-circle'></i>specializations</a></li>
               </ul>
+              <ul>
+                  <li class=""><a href="{{ route('admin.management.index') }}"><i
+                              class='bx bx-radio-circle'></i>Management</a></li>
+              </ul>
           </li>
           {{-- settings --}}
           {{-- Education --}}

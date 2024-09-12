@@ -3,6 +3,7 @@ namespace App\Http\Controllers\User\AboutUs;
 
 use App\Enums\InvestorType;
 use App\Http\Controllers\Controller;
+use App\Models\Management;
 use App\Models\OurTeam;
 use App\Models\Page;
 use App\Models\Slider;
@@ -94,11 +95,11 @@ class AboutController extends Controller
     {
         $achievement = Page::where('slug', 'our-team')->first();
         $slider = Slider::where('page_id', $achievement->id)->first();
+        $managements = Management::all();
 
         if ($achievement) {
-            $achievements = OurTeam::where("pages_id", $achievement->id)->active()->get();
-            $achievements = OurTeam::where("pages_id", $achievement->id)->active()->get();
-            return view('user.about.our-team', ['items' => $achievements, 'slider' => $slider]);
+            $achievements = OurTeam::where("pages_id", $achievement->id)->where('management_id', $managements->first()->id)->active()->get();
+            return view('user.about.our-team', ['items' => $achievements, 'slider' => $slider, 'managements' => $managements]);
         } else {
             abort(400, "error");
         }
@@ -161,5 +162,12 @@ class AboutController extends Controller
             ->paginate(10); // Adjust the number of items per page as needed
 
         return view('user.about.load_more_partners', ['partners' => $partners])->render();
+    }
+
+    public function getData($id)
+    {
+        $items = OurTeam::where('management_id', $id)->active()->get();
+        $data = view('user.about.team.content', ['items' => $items, 'management' => Management::find($id)])->render();
+        return response()->json(['data' => $data]);
     }
 }

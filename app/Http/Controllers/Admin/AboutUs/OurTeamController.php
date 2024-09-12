@@ -5,6 +5,7 @@ use App\Actions\OurTeam\StoreOurTeamTableAction;
 use App\Actions\OurTeam\UpdateOurTeamTableAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\About\OurTeamRequest;
+use App\Models\Management;
 use App\Models\OurTeam;
 use App\Models\Page;
 use App\ViewModels\AboutView\OurTeamTableViewModel;

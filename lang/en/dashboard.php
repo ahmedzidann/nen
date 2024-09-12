@@ -808,4 +808,6 @@
   'Select Management' => 'Select Management',
   'name  ' => 'Name  ',
   'jop  ' => 'Jop  ',
+  'please enter result  english' => 'Please enter result  english',
+  'result  english' => 'Result  english',
 );

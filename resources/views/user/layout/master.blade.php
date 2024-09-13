@@ -65,7 +65,7 @@
                             type="button" id="dropdownMenuLangs" data-bs-toggle="dropdown" aria-expanded="false">
                             <a href="#"><img src="{{ asset('content/images/small_icon/lang_icon.svg') }}"
                                     alt="Language Icon" /></a>
-                            <span>Language</span>
+                            <span class="span_lang">Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
                             <li><a class="dropdown-item" href="#">Arabic</a></li>

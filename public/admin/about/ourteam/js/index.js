@@ -30,8 +30,8 @@ $(function () {
                 name: 'id'
             },
             {
-                data: 'title',
-                name: 'title'
+                data: 'name',
+                name: 'name'
             },
             {
                 data: 'created_at',

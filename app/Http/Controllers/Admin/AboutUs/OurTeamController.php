@@ -42,8 +42,8 @@ class OurTeamController extends Controller
                 ->addIndexColumn()
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
-                ->editColumn('title', function ($row) use ($language) {
-                    return $row->translate('title', $language);
+                ->editColumn('name', function ($row) use ($language) {
+                    return $row->translate('name', $language);
                 })
                 ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
 

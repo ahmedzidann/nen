@@ -1,6 +1,7 @@
 <?php
 namespace App\ViewModels\AboutView;
 
+use App\Models\Management;
 use App\Models\OurTeam;
 use App\Models\Page;
 use App\Models\StaticTable;
@@ -19,6 +20,7 @@ class OurTeamTableViewModel extends ViewModel
     public  $allPage;
     public  $SelectPages;
     public  $DataFull;
+    public  $managements;
 
     public function __construct($StaticTable = null)
     {
@@ -35,6 +37,7 @@ class OurTeamTableViewModel extends ViewModel
         $this->routeView = route('admin.about.our-team.index',Request()->query());
         $this->viewTable = 'OurTeam';
         $this->allPage = Page::get();
+        $this->managements = Management::get();
         if(!empty(Request()->category) && !empty(Request()->subcategory)){
             $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
             $this->DataFull = OurTeam::where('item',Request()->item)->where('pages_id',$this->SelectPages->id??'')->first();

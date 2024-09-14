@@ -260,5 +260,4 @@
             fullDescription.style.display = "block";
         });
     });
-
 </script>

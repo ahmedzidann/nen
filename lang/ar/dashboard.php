@@ -803,4 +803,12 @@
   'please enter Register Description  arabic' => 'Please enter Register Description  arabic',
   'Sub Title  french' => 'Sub Title  french',
   'please enter Years Text  french' => 'Please enter Years Text  french',
+  'Management' => 'Management',
+  'management Create' => 'Management Create',
+  'management Edit' => 'Management Edit',
+  'Select Management' => 'Select Management',
+  'name  ' => 'Name  ',
+  'jop  ' => 'Jop  ',
+  'please enter result  english' => 'Please enter result  english',
+  'result  english' => 'Result  english',
 );

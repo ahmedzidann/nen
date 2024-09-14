@@ -76,7 +76,7 @@
                                                     </p>
                                                     <p>
 
-                                                        @if ($item->links[0]->reference)
+                                                        @if (array_key_exists(0, $item?->links->toArray()) && $item->links[0]->reference)
                                                         <img src="{{url('content/images/small_icon/global.png')}}"><span><a target="_blank"
                                                             class="ref_coloring" href="{{$item->links[0]->reference}}">Website</a></span>
                                                         @endif

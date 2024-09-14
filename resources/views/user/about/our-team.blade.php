@@ -68,7 +68,7 @@
                             aria-labelledby="{{ str_replace(' ', '-', strtolower($managements->first()->translate('title', 'en'))) }}-tab">
                             <div
                                 class="team-list d-flex justify-content-center justify-content-md-start flex-wrap gap-1 mt-3">
-                                @foreach ($items as $item)
+                                @foreach ($members as $item)
                                     <div class="our-team p-3 rounded-3">
                                         <div class="pic shadow-sm">
                                             <img src="{{ $item->getFirstMediaUrl('OurTeam') }}" loading="lazy"
@@ -127,93 +127,6 @@
                         has been the industry's standard dummy text.</p>
 
                 </div>
-
-                <div class="grid_dives">
-                    @foreach ($items as $item)
-                        <div class="grid_div_cont">
-                            <img src="{{ $item->getFirstMediaUrl('OurTeam') }}">
-                            <h5>{{ $item->name }}</h5>
-                            <p>{{ $item->jop }}</p>
-                            <div class="socail_flex_icons">
-                                <a href="{{ $item->facebook }}"><i class="bi bi-facebook"></i></a>
-                                <a href="{{ $item->whatsapp }}"><i class="bi bi-whatsapp"></i></a>
-                                <a href="{{ $item->instagrame }}"><i class="bi bi-instagram"></i></a>
-                            </div>
-                        </div>
-                    @endforeach
-                    {{-- <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="grid_div_cont">
-                    <img src="content/images/small_icon/karrly.png">
-                    <h5>Demi Wilkinson</h5>
-                    <p>Frontend Developer</p>
-                    <div class="socail_flex_icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div> --}}
-
-                </div>
-
             </div>
         @endif
     </div>

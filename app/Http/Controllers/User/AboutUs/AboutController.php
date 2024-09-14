@@ -98,8 +98,11 @@ class AboutController extends Controller
         $managements = Management::all();
 
         if ($achievement) {
-            $achievements = OurTeam::where("pages_id", $achievement->id)->where('management_id', $managements->first()->id)->active()->get();
-            return view('user.about.our-team', ['items' => $achievements, 'slider' => $slider, 'managements' => $managements]);
+            return view('user.about.our-team', [
+                'items' => OurTeam::where("pages_id", $achievement->id)->active()->get(),
+                'members' => OurTeam::where("pages_id", $achievement->id)->active()->where('management_id', $managements->first()->id)->get(),
+                'slider' => $slider, 'managements' => $managements,
+            ]);
         } else {
             abort(400, "error");
         }

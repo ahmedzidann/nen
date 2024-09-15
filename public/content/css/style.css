@@ -2296,6 +2296,93 @@ z-index: 2;
 
 /* End Swiper Slider */
 
+/* Start Empty State */
+.empty_state {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty_state .title {
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: normal;
+    color: var(--text-main-color);
+}
+
+.empty_state .description {
+    font-size: 14px;
+    margin: 0px;
+    color: #999;
+    text-align: center;
+}
+
+/* End Empty State */
+
+/* Start Hovering Layers Card */
+.hovering-layers-card {
+    position: relative;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hovering-layers-card .content {
+    position: relative;
+    /* Ensure the ::before and ::after are scoped to each content */
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hovering-layers-card .content::before,
+.hovering-layers-card .content::after {
+    position: absolute;
+    content: "";
+    top: -4%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: -1;
+    border-radius: inherit;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hovering-layers-card .content::before {
+    width: 90%;
+    height: 90%;
+    background: #797979;
+    z-index: -1;
+    border-radius: 6px;
+}
+
+.hovering-layers-card .content::after {
+    width: 80%;
+    height: 80%;
+    background: #990000b3;
+    z-index: -2;
+    border-radius: 6px;
+}
+
+.hovering-layers-card:hover {
+    transform: translate(0px, -18px);
+}
+
+.hovering-layers-card:hover .content::before {
+    rotate: -10deg;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hovering-layers-card:hover .content::after {
+    rotate: 10deg;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Start Hovering Layers Card */
+
 /* Start Partners Section */
 #partners-section {
     display: flex;
@@ -2343,6 +2430,19 @@ z-index: 2;
     gap: 5px;
 }
 
+.custom-read_more {
+    color: #fb4043 !important;
+    font-size: 14px !important;
+    transition: all 0.3s !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    border-bottom: none !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    width: max-content !important;
+    gap: 5px !important;
+}
+
 .new-card #cert-box .card_content {
     align-items: start;
     margin-bottom: 0;
@@ -2354,6 +2454,7 @@ z-index: 2;
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 4px;
 }
 
 .new-card #cert-box .cert-data .title-card {
@@ -2640,7 +2741,8 @@ z-index: 2;
 }
 
 .our-team .nav-link {
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
+    /* Prevent text wrapping */
 }
 
 .our-team .pic img {
@@ -2970,9 +3072,10 @@ z-index: 2;
     transition: all 1s ease-in-out;
     border-radius: 1rem;
 }
+
 #hovering-top-border-card .flex-column {
-  display: flex !important;
-  flex-direction: column !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .hovering-top-border {
@@ -3024,6 +3127,10 @@ z-index: 2;
 
 /* End Hovering Top Border Card */
 
+.shadow-item {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
 /* Start Custom Accordion  */
 #custom-accordion .accordion {
     display: flex;
@@ -3044,12 +3151,55 @@ z-index: 2;
     font-size: 18px;
     border-radius: 30px;
     color: #fff;
-    background: linear-gradient(17deg, rgb(72 71 71) 0%, rgb(149 149 149) 50%, rgb(254 254 254) 100%);
+    background: linear-gradient(17deg, rgb(0 0 0) 0%, rgb(0 0 0) 50%, rgb(100 100 100) 100%);
+    position: relative;
+    padding-right: 1.5rem;
+    /* Ensure enough space for the custom icon */
 }
 
-#custom-accordion .accordion .accordion-item .accordion-button::after,
-#custom-accordion .accordion .accordion-item .accordion-button:not(.collapsed)::after {
+/* Hide Bootstrap's default accordion icon (caret) */
+#custom-accordion .accordion .accordion-item .accordion-button::after {
+    display: none;
+    /* This hides the default Bootstrap icon */
+}
+
+/* Add custom plus (+) and minus (−) icons */
+#custom-accordion .accordion .accordion-item .accordion-button::before {
+    content: '\002B';
+    /* Unicode for plus sign (+) */
+    font-size: 1.2rem;
+    color: #fff;
+    /* White color for plus icon */
+    position: absolute;
+    right: 1rem;
+    /* Position the icon to the right */
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+#custom-accordion .accordion .accordion-item .accordion-button:not(.collapsed)::before {
+    content: '\2212';
+    /* Unicode for minus sign (−) */
+    font-size: 1.2rem;
+    color: #fff;
+    /* White color for minus icon */
+    transform: translateY(-50%);
+}
+
+/* Remove any potential borders on pseudo-elements */
+#custom-accordion .accordion .accordion-item .accordion-button::before,
+#custom-accordion .accordion .accordion-item .accordion-button:not(.collapsed)::before {
     border: none !important;
+}
+
+/* Accordion body background image */
+#custom-accordion .accordion .accordion-item .accordion-body {
+    background-image: url('../images/contact-us/dots-vector-img.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 15px;
 }
 
 /* End Custom Accordion  */

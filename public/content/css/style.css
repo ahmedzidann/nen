@@ -2318,7 +2318,7 @@ z-index: 2;
 }
 
 .empty_state svg {
-    width: 50%;
+    width: 45%;
 }
 
 .empty_state .title {
@@ -2353,9 +2353,8 @@ z-index: 2;
 }
 
 .hovering-lighted-card .bg {
-    top: 5px;
-    left: 5px;
     width: 94%;
+    height: 100%;
     z-index: 2;
     background: rgba(255, 255, 255, .95);
     backdrop-filter: blur(24px);

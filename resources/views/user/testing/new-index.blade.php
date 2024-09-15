@@ -53,9 +53,7 @@
                 </div>
             </div>
             @endif
-
             <hr>
-
             <div class="counter_sec">
                 @if ($items)
                 @forelse ($items->where('item','section-two') as $item)
@@ -67,7 +65,7 @@
                                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                     alt="count image">
                             </div>
-                            <h2>{{$item->title}}</h2>
+                            <h2 class="fs-4 fw-bold">{{$item->title}}</h2>
                             <p>{{$item->subtitle}}</p>
                         </div>
                     </div>

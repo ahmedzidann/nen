@@ -115,7 +115,7 @@ class AboutController extends Controller
         $slider = Slider::where('page_id', $achievement->id)->first();
 
         if ($achievement) {
-            $achievements = StaticTable::where("pages_id", $achievement->id)->active()->get();
+            $achievements = StaticTable::where("pages_id", $achievement->id)->active()->orderBy('month', 'DESC')->get();
             $years = $achievements->where('item', 'section-two')->pluck('years', 'years')->toArray();
             return view('user.about.achievements', ['items' => $achievements, 'years' => $years, 'slider' => $slider]);
         } else {

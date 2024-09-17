@@ -6,7 +6,7 @@
         class="ref_styles active_ref {{ Route::is('about.' . $page->slug . '') ? 'active_link active' : '' }}">
         <div class="img_link">
             <img class="@if ($page->slug == 'identity') Identity_icon @endif" alt="{{ $page->name }}" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');"
                 src="{{ asset($page->getFirstMediaUrl('icon')) }}" />
             {{ $page->name }}
         </div>
@@ -19,7 +19,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="{{ $page->name }}" />
             {{ $page->name }}
         </div>
     </a>
@@ -31,7 +31,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="{{ $page->name }}" />
             {{ $page->name }}
         </div>
     </a>
@@ -44,7 +44,7 @@
             href="javascript:void(0)" onclick="toggleMenu(this)">
             <div class="img_link">
                 <img class="Identity_icon" src="content/images/small_icon/card.png" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';"
+                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');"
                     alt="icon-side">
                 {{ $page->name }}
             </div>
@@ -72,7 +72,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="{{ $page->name }}" />
             {{ $page->name }}
         </div>
     </a>
@@ -84,7 +84,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="{{ $page->name }}" />
             {{ $page->name }}
         </div>
     </a>
@@ -96,7 +96,7 @@
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="{{ $page->name }}" />
             {{ $page->name }}
         </div>
     </a>
@@ -109,7 +109,7 @@
             href="javascript:void(0)" onclick="toggleMenu(this)">
             <div class="img_link">
                 <img class="Identity_icon" src="content/images/small_icon/card.png" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';"
+                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');"
                     alt="small_icon">
                 {{ $page->name }}
             </div>
@@ -135,21 +135,21 @@
     <a href="{{ route('contact-us', ['contact_offices' => 'regional-offices']) }}" class="ref_styles active_ref">
         <div class="img_link">
             <img class="Identity_icon" src="" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="" />
             Regional offices
         </div>
     </a>
     <a href="{{ route('contact-us', ['contact_offices' => 'authorized-offices']) }}" class="ref_styles active_ref ">
         <div class="img_link">
             <img class=" Identity_icon" src="" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="" />
             Authorized Offices
         </div>
     </a>
     <a href="{{route('contact-us', ['contact_offices' => 'regional-representatives'])}}" class="ref_styles active_ref ">
         <div class="img_link">
             <img class=" Identity_icon" src="" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}';" alt="" />
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="" />
             Regional Representatives
         </div>
     </a>

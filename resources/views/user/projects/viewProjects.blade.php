@@ -265,7 +265,7 @@
                     <div id="custom-accordion">
                         <div class="accordion accordion-help" id="accordionHelp">
                             @foreach($projects->getHelp as $index => $helpItem)
-                            <div class="accordion-item">
+                            <div class="accordion-item shadow-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button {{ $loop->first ? '' : 'collapsed' }}" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#help-collapseOne-{{$helpItem['id']}}"
@@ -731,7 +731,7 @@
 
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             @foreach ($projects->getHelp as $helpItem)
-                            <div class="accordion-item">
+                            <div class="accordion-item shadow-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseOne" aria-expanded="false"
@@ -898,7 +898,7 @@
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 @foreach($projects->getHelp as $helpItem)
-                <div class="accordion-item">
+                <div class="accordion-item shadow-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne-{{$helpItem['id']}}" aria-expanded="false"

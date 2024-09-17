@@ -68,8 +68,9 @@
                         <div class="grid_div new-card" id="partners-{{$sub->slug}}" data-page="1">
                             @foreach ($items->where('item',
                             'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
-                            <div id="cert-box" class="card">
-                                <div class="card_content">
+                            <div class="hovering-layers-card h-100 pb-3 {{ $loop->first ? '' : '' }}">
+                                <div id="cert-box" class="card h-100">
+                                <div class="card_content content">
                                     <div class="data-content-box">
                                         <div class="cert-data">
                                         <div class="image-box">
@@ -105,6 +106,7 @@
                                                 @endif
                                             </p>
                                         </div>
+                                </div>
                                 </div>
                             </div>
                             @endforeach

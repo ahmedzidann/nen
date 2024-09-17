@@ -2214,6 +2214,115 @@ z-index: 2;
 #acheivements-timeline-section em {
     font-style: initial !important;
 }
+.grid_sec {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 200px;
+    color: #fff;
+    row-gap: 25px;
+    position: relative;
+    padding: 45px 0 45px;
+}
+
+.two_flex_grid_sec .grid_sec:last-child {
+    padding-bottom: 0;
+}
+
+.grid_sec::after {
+    position: absolute;
+    content: "";
+    background-color: #ddd;
+    width: 1px;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.grid_sec .year_div:nth-child(odd) {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+ 
+}
+
+.grid_sec .year_div:nth-child(even) {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    padding-top: 50px;
+}
+
+.grid_sec .year_div:nth-child(odd)::after {
+    position: absolute;
+    content: "";
+    width: 85px;
+    height: 1px;
+    top: 12px;
+    background-color: #ddd;
+    right: -100px;
+}
+.grid_sec .year_div:nth-child(even)::after {
+    position: absolute;
+    content: "";
+    width: 85px;
+    height: 1px;
+    top: 61px;
+    background-color: #ddd;
+    left: -100px;
+}
+
+
+.grid_sec .year_div:nth-child(odd)::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #990000;
+    border-radius: 10px;
+    top: 56px;
+    right: -106px;
+    z-index: 1;
+}
+.grid_sec .year_div:nth-child(even)::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #990000;
+    border-radius: 10px;
+    top: 7px;
+    left: -106px;
+    z-index: 1;
+}
+
+.year_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.year_div p {
+    text-align: left;
+}
+
+.span_number {
+    background: #990000;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 55px;
+    position: absolute;
+    top: -55px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin: auto;
+}
 
 /* End Acheivements Timeline Section */
 
@@ -4353,118 +4462,7 @@ circle-progress::part(text) {
 margin-top: 75px;
 
 } */
-
-.grid_sec {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 200px;
-    color: #fff;
-    row-gap: 25px;
-    position: relative;
-    padding: 45px 0 45px;
-}
-
-.two_flex_grid_sec .grid_sec:last-child {
-    padding-bottom: 0;
-}
-
-.grid_sec::after {
-    position: absolute;
-    content: "";
-    background-color: #ddd;
-    width: 1px;
-    height: 100%;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-.grid_sec .year_div:nth-child(odd) {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    gap: 5px;
-    padding-top: 50px;
-}
-
-.grid_sec .year_div:nth-child(odd)::after {
-    position: absolute;
-    content: "";
-    width: 85px;
-    height: 1px;
-    top: 61px;
-    background-color: #ddd;
-    right: -100px;
-}
-
-.grid_sec .year_div:nth-child(odd)::before {
-    position: absolute;
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: #990000;
-    border-radius: 10px;
-    top: 56px;
-    right: -106px;
-    z-index: 1;
-}
-
-.grid_sec .year_div:nth-child(even) {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 5px;
-
-}
-
-.grid_sec .year_div:nth-child(even)::after {
-    position: absolute;
-    content: "";
-    width: 85px;
-    height: 1px;
-    top: 12px;
-    background-color: #ddd;
-    left: -100px;
-}
-
-.grid_sec .year_div:nth-child(even)::before {
-    position: absolute;
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: #990000;
-    border-radius: 10px;
-    top: 7px;
-    left: -106px;
-    z-index: 1;
-}
-
-.year_div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.year_div p {
-    text-align: left;
-}
-
-.span_number {
-    background: #990000;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 55px;
-    position: absolute;
-    top: -55px;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    margin: auto;
-}
-
+ 
 .swiper.Awards_slider .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
     content: 'next';

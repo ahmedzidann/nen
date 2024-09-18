@@ -326,7 +326,6 @@
                     <hr class="custom-hr mt-md-5 mt-4">
                     <div class="terms-section">
                         <div class="text-start">
-
                             <h5 class="global-title fw-semibold">
                                 Terms and Conditions
                             </h5>
@@ -337,23 +336,30 @@
                             </div>
                         </div>
                         <div class="flex_jon mt-md-4 mt-3">
-                            <ul class="terms_ul">
-                                @foreach ($projects->getJoinus->where('type', 'terms') as $joinus)
-                                @if(!empty($joinus['description']))
-                                <li class="mb-2">
-                                    {!! $joinus['description'] !!}
-                                </li>
-                                @endif
-                                @endforeach
-                            </ul>
-
-                            <div class="terms_img">
-                                @if ($projects->getJoinus->first())
-                                <img src="{{asset($projects->getJoinus->first()->getFirstMediaUrl('JoinusTerms'))}}"
-                                    loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                    alt="vector">
-                                @endif
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <ul class="terms_ul">
+                                        @foreach ($projects->getJoinus->where('type', 'terms') as $joinus)
+                                        @if(!empty($joinus['description']))
+                                        <li class="mb-2">
+                                           <p class="m-0 p-0">
+                                           {!! $joinus['description'] !!}
+                                           </p>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="terms_img">
+                                        @if ($projects->getJoinus->first())
+                                        <img src="{{asset($projects->getJoinus->first()->getFirstMediaUrl('JoinusTerms'))}}"
+                                            loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="vector">
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

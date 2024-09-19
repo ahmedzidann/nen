@@ -118,7 +118,7 @@
                                             @foreach ($sub->investorAttributes as $row)
                                                 <div class="flag_icon_titel">
                                                     <div class="sub_contennt">
-                                                        <h6><img src="{{ $sub->getFirstMediaUrl('StaticTable') }}">
+                                                        <h6><img src="{{ App\Models\Country::where('id', $row->country_id)->first()->getFirstMediaUrl('flag') }}">
                                                             <p>Since : <span>{{ $row->since }}</span></p>
                                                         </h6>
                                                         <h6>

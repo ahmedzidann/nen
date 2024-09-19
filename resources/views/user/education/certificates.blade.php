@@ -143,7 +143,7 @@
         </div>
         </div>
     {{-- </div> --}}
-    
+
 
  <!-- Old Desgin (Remove d-none Class to view it again-->
     <div class="about_content d-none">
@@ -275,8 +275,8 @@
         </div>
         </div>
     {{-- </div> --}}
-    
-    
+
+
     <script>
         function toggleDescription(button) {
             var description = button.previousElementSibling;

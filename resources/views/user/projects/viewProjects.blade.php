@@ -42,13 +42,16 @@
                 </li>
                 @endforeach
             </ul>
-            @if(!empty($projects->getAbout))
-            @foreach($projects->getAbout as $about)
+
             <hr class="custom-hr">
             <div class="tab-content mt-md-4 mt-3 text-start" id="pills-tabContent">
                 <!-- Start About Tab -->
+
                 <div class="tab-pane fade show active" id="pills-about" role="tabpanel"
                     aria-labelledby="pills-about-tab" tabindex="0">
+                    @if(!empty($projects->getAbout->count()))
+
+                    @foreach($projects->getAbout as $about)
                     <div class="who-us">
                         <div class="row g-3 align-items-center">
                             <div class="col-md-7 order-md-2">
@@ -196,14 +199,21 @@
                             @endif
                         </div>
                     </div>
+                    @endforeach
+                    @else
+                    @include('user.layout.includes.no-data')
+
+                    @endif
                 </div>
+
+
                 <!-- End About Tab -->
 
                 <!-- Start Programs Tab -->
                 <div class="tab-pane fade" id="pills-program" role="tabpanel" aria-labelledby="pills-program-tab"
                     tabindex="0">
                     <div class="all-programs-cards row g-3">
-                        @foreach($projects->getProgram as $program)
+                        @forelse($projects->getProgram as $program)
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="program-card {{ $loop->first ? '' : '' }}">
                                 <!-- Apply hover-effect class to first item -->
@@ -253,7 +263,10 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        @empty
+                        @include('user.layout.includes.no-data')
+                        @endforelse
+
 
                     </div>
                 </div>
@@ -264,7 +277,7 @@
                     tabindex="0">
                     <div id="custom-accordion">
                         <div class="accordion accordion-help" id="accordionHelp">
-                            @foreach($projects->getHelp as $index => $helpItem)
+                            @forelse($projects->getHelp as $index => $helpItem)
                             <div class="accordion-item shadow-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button {{ $loop->first ? '' : 'collapsed' }}" type="button"
@@ -282,7 +295,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                            @include('user.layout.includes.no-data')
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -374,7 +389,7 @@
 
                     <div class="documents-sections">
                         <div class="row g-3">
-                            @foreach($projects->getDocument as $doc)
+                            @forelse($projects->getDocument as $doc)
                             @if($doc->type == "pdf")
                             <div class="col-xl-4 col-md-6 col-12">
                                 <div id="hovering-top-border-card" class="document-content">
@@ -457,35 +472,38 @@
                                 </div>
                             </div>
                             @endif
-                            @endforeach
+                            @empty
+                            @include('user.layout.includes.no-data')
+                            @endforelse
                         </div>
                     </div>
 
                     <hr class="custom-hr">
-                    <div class="media_sec">
-                        <h6 class="line-before fs-3">
-                            Media
-                        </h6>
-                        <div class="media-images mt-3">
-                            <div class="row g-3">
-                                @foreach($projects->getDocument as $img )
-                                @if($img->type =="image")
-                                <div class="col-xl-3 col-md-4 col-sm-6 col-12">
-                                    <img class="shadow-sm zoom-on-hover"
-                                        src="{{ asset($img->getFirstMediaUrl('firstFile')) }}" loading="lazy"
-                                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                        alt="media images">
+                    @if($projects->getDocument->count())
+                        <div class="media_sec">
+                            <h6 class="line-before fs-3">
+                                Media
+                            </h6>
+                            <div class="media-images mt-3">
+                                <div class="row g-3">
+                                    @foreach($projects->getDocument as $img )
+                                    @if($img->type =="image")
+                                    <div class="col-xl-3 col-md-4 col-sm-6 col-12">
+                                        <img class="shadow-sm zoom-on-hover"
+                                            src="{{ asset($img->getFirstMediaUrl('firstFile')) }}" loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="media images">
+                                    </div>
+                                    @endif
+                                    @endforeach
                                 </div>
-                                @endif
-                                @endforeach
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <!-- End Archive Tab -->
             </div>
-            @endforeach
-            @endif
+
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravelcollective/html": "^6.4",
-        "livewire/livewire": "^3.3",
+        "livewire/livewire": "*",
         "mcamara/laravel-localization": "^1.8",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-medialibrary": "^10.0.0",

@@ -84,5 +84,6 @@ Route::get('Projects/{slug?}/{id?}', [ProjectController::class, 'index'])->name(
 Route::get('contact-us/{param?}', [ContactUsController::class, 'index'])->name('contact-us');
 Route::resource('contacts', ContactController::class)->only('store');
 Route::get('get-team-members/{id}', [AboutController::class, 'getData'])->name('get-team-members');
+Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->name('get-companies');
 
 //

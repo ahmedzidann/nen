@@ -25,9 +25,9 @@
                 <div class="col-md-7">
                     <h3 class="decorated-title">
                         {{$fSection->title}}
-                        <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
+                        <!-- <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                            alt="vector">
+                            alt="vector"> -->
                     </h3>
                     <div class="data">
                         <p

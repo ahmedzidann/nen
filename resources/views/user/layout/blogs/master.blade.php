@@ -83,32 +83,16 @@
             </div>
         </div>
 
-        @include('user.layout.includes.nav')
     </div>
 
     <!-- hero_img -->
-    <div class="section_photoe">
-        <div class="title_img">
-            <img class="img_team" src="@yield('cover_image') " />
-            <div class="titel_about_content">
-                <h1>{{ strtoupper(trim(\Illuminate\Support\Str::of(trim($__env->yieldContent('page_name')))->stripTags())) }}
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">@yield('parent_page_name')</a></li>
-                    <li class="breadcrumb-item">
-                        <a href="#">@yield('page_name')</a>
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </div>
     <!-- section_who_us -->
 
 
     <section class="about_sec">
         <div class="container">
             <div class="about_us_div">
-                @include('user.layout.includes.about.sidebar')
+
                 @yield('content')
             </div>
         </div>

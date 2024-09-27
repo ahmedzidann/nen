@@ -85,5 +85,11 @@ Route::get('contact-us/{param?}', [ContactUsController::class, 'index'])->name('
 Route::resource('contacts', ContactController::class)->only('store');
 Route::get('get-team-members/{id}', [AboutController::class, 'getData'])->name('get-team-members');
 Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->name('get-companies');
+Route::get('blogs', function () {
+    return view('user.blogs.index');
+})->name('blogs.index');
+Route::get('blogs/details', function () {
+    return view('user.blogs.details');
+})->name('blogs.details');
 
 //

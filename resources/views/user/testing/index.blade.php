@@ -89,7 +89,7 @@
                                     </div>
                                     @empty
                                         <div style="display: flex; justify-content: center;">
-                                            <p class="alert alert-danger no-data" role="alert"  style="color:#999;">There is No Data Available</p>
+                                            @include('user.layout.includes.no-data')
                                         </div>
                                     @endforelse
 

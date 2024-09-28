@@ -182,10 +182,8 @@ class InvestorsRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['nullable','max:255','min:2'],
-            'url' => ['required','max:900','min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
-            'cat'=>'required'
         ]);
     }
 

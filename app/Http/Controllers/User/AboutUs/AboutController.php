@@ -36,8 +36,7 @@ class AboutController extends Controller
         if ($investor) {
             $items = StaticTable::where("pages_id", $investor->id)->active()->get();
             $subInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes.country')->where('category', InvestorType::SUBDIDIARIES)->get();
-            $sisInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes.country')->where('category', InvestorType::SISTER_COMPANIES)->get();
-            return view('user.about.investors', ['items' => $items, 'sisInvestors' => $sisInvestors, 'subInvestors' => $subInvestors, 'slider' => $slider]);
+            return view('user.about.investors', ['items' => $items, 'rows' => $subInvestors, 'slider' => $slider]);
         } else {
             abort(400, "error");
         }
@@ -116,9 +115,9 @@ class AboutController extends Controller
 
         if ($achievement) {
             $achievements = StaticTable::where("pages_id", $achievement->id)->active()->orderBy('years', 'DESC')
-            ->orderBy('month', 'DESC')->get();
+                ->orderBy('month', 'DESC')->get();
             $years = $achievements->where('item', 'section-two')->pluck('years', 'years')->toArray();
-           
+
             return view('user.about.achievements', ['items' => $achievements, 'years' => $years, 'slider' => $slider]);
         } else {
             abort(400, "error");
@@ -173,6 +172,23 @@ class AboutController extends Controller
     {
         $items = OurTeam::where('management_id', $id)->active()->get();
         $data = view('user.about.team.content', ['items' => $items, 'management' => Management::find($id)])->render();
+        return response()->json(['data' => $data]);
+    }
+    public function getCompanies($type)
+    {
+        $investor = Page::where('slug', 'investors')->first();
+        if ($type == 'subsidiaries') {
+            $rows = StaticTable::where("pages_id", $investor->id)
+                ->active()->with('investorAttributes.country')
+                ->where('category', InvestorType::SUBDIDIARIES)
+                ->get();
+        } else {
+            $rows = StaticTable::where("pages_id", $investor->id)
+                ->active()->with('investorAttributes.country')
+                ->where('category', InvestorType::SISTER_COMPANIES)
+                ->get();
+        }
+        $data = view('user.about.companies.companies', ['rows' => $rows])->render();
         return response()->json(['data' => $data]);
     }
 }

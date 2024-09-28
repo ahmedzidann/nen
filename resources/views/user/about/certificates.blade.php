@@ -331,10 +331,10 @@
         var description = button.previousElementSibling;
         if (description.classList.contains('p_clamp_2')) {
             description.classList.remove('p_clamp_2');
-            button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+            button.innerHTML = 'Read More <i class="bi bi-chevron-up"></i>';
         } else {
             description.classList.add('p_clamp_2');
-            button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+            button.innerHTML = 'Show Less <i class="bi bi-chevron-down"></i>';
         }
     }
 

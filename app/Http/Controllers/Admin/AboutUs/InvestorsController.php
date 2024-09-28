@@ -173,7 +173,7 @@ class InvestorsController extends Controller
             return view('admin.about.investors.edit_sectionTwo', new InvestorsTableViewModel($investors));
         } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-three') {
             return view('admin.about.investors.edit_sectionThree', new InvestorsTableViewModel($investors));
-        } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-foure') {
+        } elseif ($request->subcategory == 'investors' && $request->item == 'section-foure') {
             return view('admin.about.investors.edit_sectionFoure', new InvestorsTableViewModel($investors));
         } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-five') {
             return view('admin.about.investors.edit_sectionFoure', new InvestorsTableViewModel($investors->load('investorAttributes')));
@@ -190,7 +190,7 @@ class InvestorsController extends Controller
                 $validator = $request->validationUpdateTwoEn();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-three') {
                 $validator = $request->validationUpdateThreeEn();
-            } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-foure') {
+            } elseif ( $request->subcategory == 'investors' && $request->item == 'section-foure') {
                 $validator = $request->validationUpdateFoureEn();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-five') {
                 $validator = $request->validationUpdateFoureEn();
@@ -204,7 +204,7 @@ class InvestorsController extends Controller
                 $validator = $request->validationUpdateTwoAr();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-three') {
                 $validator = $request->validationUpdateThreeAr();
-            } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-foure') {
+            } elseif ( $request->subcategory == 'investors' && $request->item == 'section-foure') {
 
                 $validator = $request->validationUpdateFoureAr();
                 $validator->validated()['category'] = $request->cat;

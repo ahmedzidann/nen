@@ -27,6 +27,7 @@
                                 {{ html_entity_decode(strip_tags($item->description)) }}
                             </p>
 
+
                             @if (strlen($item->description) >= 400)
                                 <a role='btn' onclick="toggleDescription(this)"
                                     class="mt-3 read_more read_more_btn">Read More

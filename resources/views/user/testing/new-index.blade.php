@@ -23,6 +23,7 @@
                         alt="vector">
                 </div>
             </div>
+
             @if ($fSection = $items)
                 <div id="about-section">
                     <div class="flex_sec_content row g-5 align-items-center">

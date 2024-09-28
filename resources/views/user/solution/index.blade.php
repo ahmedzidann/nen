@@ -105,9 +105,9 @@
                 <div class="about_des_div">
                     <h3 class="decorated-title">
                         {{$item->title}}
-                        <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
+                        <!-- <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                            alt="vector">
+                            alt="vector"> -->
                     </h3>
                     <!-- <span
                         class="description text-start before-vertical-line {{ strlen($item->description) >= 300 ? "p_clamp_2" : ''}}">
@@ -149,9 +149,9 @@
                     <!-- <h3>{{$item->title}}</h3> -->
                     <h3 class="decorated-title">
                         {{$item->title}}
-                        <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
+                        <!-- <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                            alt="vector">
+                            alt="vector"> -->
                     </h3>
 
 

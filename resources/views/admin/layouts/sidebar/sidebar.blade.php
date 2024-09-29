@@ -372,7 +372,17 @@
 
 
       {{-- Doc Validation --}}
-
+				<li>
+					<a class="has-arrow" href="javascript:;">
+						<div class="parent-icon"><i class="bx bx-error"></i>
+						</div>
+						<div class="menu-title">Blogs</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('admin.blogs.index') }}" ><i class='bx bx-radio-circle'></i>Blogs</a>
+						</li>
+					</ul>
+				</li>
       {{-- Doc Validation --}}
       @php
           $docValidation = App\Models\Page::find(8);

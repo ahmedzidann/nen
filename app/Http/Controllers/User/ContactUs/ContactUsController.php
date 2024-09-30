@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\ContactUs;
 
+use App\Enums\OfficeType;
 use App\Http\Controllers\Controller;
 use App\Models\ContactUsCountry;
 use App\Models\ContactUsService;
@@ -17,6 +18,8 @@ class ContactUsController extends Controller
         $services = ContactUsService::with('media')->get();
         $contacts = ContactUsCountry::with(['media', 'country'])->when($request->country, function ($query) use ($request) {
             return $query->where('country_id', $request->country);
+        })->when($request->contact_offices, function ($query) use ($request) {
+            return $query->where('type', OfficeType::getValue($request->contact_offices));
         })->get();
 
         $locations = $contacts->map(function ($contact) {

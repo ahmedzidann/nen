@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="{{ asset('content/css/vendors/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/kursor.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/bootstrap-icons.css') }}" />
-    <!-- <link rel="stylesheet" href="{{ asset('content/css/vendors/swiper-bundle.min.css') }}" /> -->
+    <link rel="stylesheet" href="{{ asset('content/css/vendors/swiper-bundle.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/style.css') }}" />
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     @yield('websiteStyle')
 </head>
 
@@ -120,7 +118,7 @@
     <section id="contact-us" class="pt-3 mt-md-5 mt-3">
         <div class="container">
             <div class="global-card p-0">
-                <div class="second-contact-bg py-4 px-4">
+                <div class="second-contact-bg py-5 px-4">
                     <div class="row justify-content-center">
                         <div class="col-lg-7 col-md-9">
                             <h1 class="text-center">
@@ -130,7 +128,7 @@
                                 We're here to help! Whether you have questions, feedback, or need support, reach out to
                                 us, and we'll be happy to assist you.
                             </p>
-                            <div class="d-flex justify-content-center mt-3">
+                            <div class="d-flex justify-content-center mt-5">
                                 <a class="btn btn-solid-main fs-5-2" data-tooltip="contact channel"
                                     href="./contact-us.html">
                                     Contact Us
@@ -528,14 +526,11 @@
     </nav>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-
     <script src="{{ asset('content/js/vendors/jquery.min.js') }}"></script>
     <script src="{{ asset('content/js/vendors/kursor.min.js') }}"></script>
     <script src="{{ asset('content/js/vendors/all.min.js') }}"></script>
     <script src="{{ asset('content/js/vendors/bootstrap.bundle.min.js') }}"></script>
-    <!-- <script src="{{ asset('content/js/vendors/swiper-bundle.min.js') }}"></script> -->
+    <script src="{{ asset('content/js/vendors/swiper-bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
     <script>

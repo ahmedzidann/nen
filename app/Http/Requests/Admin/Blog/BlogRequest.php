@@ -31,7 +31,7 @@ class BlogRequest extends FormRequest
             'content.*'=>'required',
             'categories_id.*'=>'required|exists:media_categories,id',
             'banner'=>'required|image',
-            'video'=>'required',
+            'video'=>'nullable',
             'is_active'=>'required|in:0,1',
             'published_at'=>'required|date',
              ];

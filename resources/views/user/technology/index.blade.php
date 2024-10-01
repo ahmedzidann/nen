@@ -37,10 +37,10 @@
                             {!! $fSection->description !!}
                         </p>
 
-                        @if (strlen($fSection->description) >= 300)
+                        {{-- @if (strlen($fSection->description) >= 300)
                         <a role='btn' onclick="toggleDescription(this)" class="mt-3 read_more read_more_btn">Read More
                             <i class="bi bi-chevron-down"></i></a>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
                 <div class="col-md-5">

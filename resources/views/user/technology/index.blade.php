@@ -25,7 +25,7 @@
             <div class="flex_sec_content row g-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="decorated-title" style="text-align: start !important;">
-                        {{ $fSection->title }}
+                        {{-- {{ $fSection->title }} --}}
                         <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                             alt="vector">

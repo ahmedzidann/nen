@@ -30,6 +30,7 @@
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                             alt="vector"> --}}
                     {{-- </h3> --}}
+
                     <div class="data">
                         <p
                             class="description lh-base before-vertical-line position-relative mt-3 pt-0 {{ strlen($fSection->description) >= 300 ?'p_clamp_2' : ''}}">

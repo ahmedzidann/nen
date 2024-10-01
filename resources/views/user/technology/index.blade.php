@@ -33,7 +33,7 @@
                     <div class="data">
                         <p
                             class="description lh-base before-vertical-line position-relative mt-3 pt-0 {{ strlen($fSection->description) >= 300 ?'p_clamp_2' : ''}}">
-                            {{ html_entity_decode(strip_tags($fSection->description)) }}
+                            {!! $fSection->description !!}
                         </p>
 
                         @if (strlen($fSection->description) >= 300)

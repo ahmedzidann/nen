@@ -108,7 +108,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label for="published_at">Publish Date</label>
-                                    {{-- <input type="datetime-local" class="form-control" id="published_at" name="published_at" value="{{ old('published_at', $blog->published_at ? $blog->published_at->format('Y-m-d\TH:i') : '') }}"> --}}
+                                    <input type="datetime-local" class="form-control" id="published_at" name="published_at" value="{{ old('published_at', $blog->published_at ? $blog->published_at : '') }}">
                                 </div>
                             </div>
                             

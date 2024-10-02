@@ -28,16 +28,16 @@
                 <div id="about-section">
                     <div class="flex_sec_content row g-5 align-items-center">
                         <div class="col-md-7">
-                            <h3 class="decorated-title">
+                            {{-- <h3 class="decorated-title">
                                 {{ $fSection->title }}
                                 <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
                                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                     alt="vector">
-                            </h3>
+                            </h3> --}}
                             <div class="data">
                                 <p
-                                    class="description lh-base before-vertical-line position-relative mt-3 pt-0 {{ strlen($fSection->description) >= 300 ? 'p_clamp_2' : '' }}">
-                                    {{ html_entity_decode(strip_tags($fSection->description)) }}
+                                    class="description lh-base before-vertical-line position-relative mt-3 pt-0 {{ strlen($fSection->description) >= 300 ? 'p_clamp_2' : '' }}" id="description_text">
+                                    
                                 </p>
 
                                 @if (strlen($fSection->description) >= 300)
@@ -90,15 +90,24 @@
 
 
     <script>
-        function toggleDescription(button) {
-            var description = button.previousElementSibling;
-            if (description.classList.contains('p_clamp_2')) {
-                description.classList.remove('p_clamp_2');
-                button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
-            } else {
-                description.classList.add('p_clamp_2');
-                button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Insert the description content from the server into the <p> element
+            const content = `{!! htmlspecialchars_decode($fSection->description, ENT_QUOTES | ENT_HTML5) !!}`;
+            const description = document.getElementById('description_text');
+            description.innerHTML = content;
+
+            // Define the toggleDescription function globally so it can be used in the HTML
+            window.toggleDescription = function(button) {
+                const description = button.previousElementSibling; // Get the previous <p> element
+
+                if (description.classList.contains('p_clamp_2')) {
+                    description.classList.remove('p_clamp_2');
+                    button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+                } else {
+                    description.classList.add('p_clamp_2');
+                    button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
+                }
+            };
+        });
     </script>
 @endsection

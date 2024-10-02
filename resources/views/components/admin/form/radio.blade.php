@@ -9,5 +9,5 @@
         @if ($model->status===$value)
         {{ 'checked' }}
         @endif
-    @endif
-> --}}
+    @endif--}}
+> 

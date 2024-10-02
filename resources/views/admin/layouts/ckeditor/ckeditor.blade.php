@@ -31,3 +31,16 @@ CKEDITOR.replace('sub_description[ar]', {
     filebrowserUploadUrl: "{{Route('upload.image',['_token'=>csrf_token()])}}"
 , });
 </script>
+
+<script>
+CKEDITOR.replace('content[en]', {
+    height: 300,
+    filebrowserUploadUrl: "{{Route('upload.image',['_token'=>csrf_token()])}}"
+, });
+</script>
+<script>
+CKEDITOR.replace('content[]', {
+    height: 300,
+    filebrowserUploadUrl: "{{Route('upload.image',['_token'=>csrf_token()])}}"
+, });
+</script>

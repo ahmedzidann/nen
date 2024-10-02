@@ -41,13 +41,12 @@ function initializeDataTable(selector, ajaxUrl, columns, buttons, extraData = {}
 
 function bulkDelete(table, deleteUrl) {
     $(document).on('click', '#bulk_delete', function () {
-
         var ids = [];
 
-        $('.users_checkbox:checked').each(function () {
+        $('.blogs_checkbox:checked').each(function () {
             ids.push($(this).val());
         });
-
+  console.log(ids);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

@@ -1,4 +1,4 @@
-@extends('user.layout.master')
+@extends('user.layout.blogs.master')
 @section('parent_page_name')
 Contact Us
 @endsection

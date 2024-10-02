@@ -82,6 +82,7 @@
                 </div>
             </div>
         </div>
+        @include('user.layout.includes.nav')
 
     </div>
 

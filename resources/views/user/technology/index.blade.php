@@ -9,7 +9,7 @@
     <style>
         .p_clamp_2 {
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 6;
             /* Number of lines you want to show */
             -webkit-box-orient: vertical;
             overflow: hidden;
@@ -195,7 +195,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Insert the description content from the server into the <p> element
-            const content = `{!! htmlspecialchars_decode($fSection->description, ENT_QUOTES | ENT_HTML5) !!}`;
+            const content = `{!! htmlspecialchars_decode($fSection->description??'', ENT_QUOTES | ENT_HTML5) !!}`;
             const description = document.getElementById('description_text');
             description.innerHTML = content;
 

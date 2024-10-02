@@ -16,7 +16,7 @@
             <!--end breadcrumb-->
             <hr />
             <input type="hidden" id="{{ $viewTable }}" value="{{ app()->getLocale() }}">
-            @if (Request()->item == 'section-one')
+            {{-- @if (Request()->item == 'section-one') --}}
                 @if (!empty($DataFull))
                     <div class="card">
                         <div class="card-header">
@@ -62,7 +62,7 @@
                 @else
                     <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
                 @endif
-            @endif
+            {{-- @endif --}}
 
             <div class="card-body">
                 <div class="table-responsive">

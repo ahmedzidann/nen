@@ -136,14 +136,11 @@ Contact Us
         </div>
         <!-- End Swiper Container -->
 
-        <!-- Static map image -->
         <div class="static_map_image mt-md-4 mt-3 p-3">
             <img src="{{ asset('content/images/contacts-static.jpg') }}" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                alt="Static Map">
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
         </div>
 
-        <!-- Services -->
         <div class="services-items-container mt-md-4 mt-3">
             <div class="services-items">
                 @forelse ($services as $service)
@@ -167,10 +164,260 @@ Contact Us
                     <p style="color:#999;">There is No Data Of Service Available</p>
                 </div>
                 @endforelse
+
             </div>
         </div>
 
-        <!-- Additional content here (tables, form, etc.) -->
+        @forelse ($contacts as $key=>$contact)
+
+        @if ($key == App\Enums\OfficeType::REGIONAL_REPRESENTATIVES)
+        <div id="representatives-table-section" class="mt-md-5 mt-3">
+            <h3 class="table-title line-before text-gray500 fs-5 mb-3">
+                Regional Representatives
+            </h3>
+            <div class="table-container">
+                <div class="table-responsive office-table-container">
+                    <table class="table office-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-globe-asia-australia"></i> Country
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-person"></i> Name</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($contact as $office)
+                            <tr>
+                                <td>
+                                    <div class="country-info">
+                                        <img src="{{ $office->country?->getFirstMediaUrl('flag') }}" loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="Flag of {{ $office->country?->translate('title', app()->getLocale()) }}"
+                                            class="country-flag">
+                                        <span>{{ $office->country?->translate('title', app()->getLocale()) }}</span>
+                                    </div>
+                                </td>
+                                <td>{{ $office->name }}</td>
+                                <td>{{ $office->phone }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if ($key == App\Enums\OfficeType::REGIONAL_OFFICES)
+        <div id="office-table-section" class="mt-md-5 mt-3">
+            <h3 class="table-title line-before text-gray500 fs-5 mb-3">
+                Regional Offices
+            </h3>
+            <div class="table-container">
+                <div class="table-responsive office-table-container">
+                    <table class="table office-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-globe-asia-australia"></i> Country
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-clock"></i> Times of work</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($contact as $office)
+                            <tr>
+                                <td>
+                                    <div class="country-info">
+                                        <img src="{{ $office->country?->getFirstMediaUrl('flag') }}" loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="Flag" class="country-flag">
+                                        <span>{{ $office->country?->translate('title', app()->getLocale()) }}</span>
+                                    </div>
+                                </td>
+                                <td>{{ $office->address }}</td>
+                                <td>{{ $office->phone }}</td>
+                                <td>
+                                    {{ Carbon\Carbon::parse($office->from_at)->format('l h:i A') . ' - ' . Carbon\Carbon::parse($office->to_at)->format('l h:i A') }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if ($key == App\Enums\OfficeType::AUTHORIZED_OFFICES)
+        <div id="authorized-offices-table-section" class="mt-md-5 mt-3">
+            <h3 class="table-title line-before text-gray500 fs-5 mb-3">
+                Authorized Offices
+            </h3>
+            <div class="table-container">
+                <div class="table-responsive office-table-container">
+                    <table class="table office-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-globe-asia-australia"></i> Country
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-clock"></i> Times of Work</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($contact as $office)
+                            <tr>
+                                <td>
+                                    <div class="country-info">
+                                        <img src="{{ $office->country?->getFirstMediaUrl('flag') }}" loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="Flag" class="country-flag">
+                                        <span>{{ $office->country?->translate('title', app()->getLocale()) }}</span>
+                                    </div>
+                                </td>
+                                <td>{{ $office->address }}</td>
+                                <td>{{ $office->phone }}</td>
+                                <td>
+                                    {{ Carbon\Carbon::parse($office->from_at)->format('l h:i A') . ' - ' . Carbon\Carbon::parse($office->to_at)->format('l h:i A') }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @empty
+        <div style="display: flex; justify-content: center;">
+            <p style="color:#999;">There is No Data Of Service Available</p>
+        </div>
+        @endforelse
+
+        <hr class="custom-hr">
+        <div class="contact-form-section p-4 rounded shadow">
+            <h3 class="form-title mb-4">
+                Let's Chat, Reach Out to Us
+            </h3>
+            <p class="form-description mb-4">
+                Enjoy the Arabic language, live with the splendor of the language of the Great Qur’an, and the beauty of
+                the Prophet’s Sunnah, learn about Arab culture, and benefit from the great Arab-Islamic heritage. Just
+                contact us.
+            </p>
+            <hr class="custom-hr">
+            <form id="contact_form" action="{{ route('contacts.store') }}" method="post">
+                @csrf
+                <div class="row">
+                    <!-- Department -->
+                    <div class="col-md-6 mb-3">
+                        <label for="department_input" class="form-label fw-bold">
+                            Select Department <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-select form-control" id="department_input" name="department" required>
+                            <option disabled="" hidden="" selected="">Department</option>
+                            <option value="0">Customer Service</option>
+                            <option value="1">Technical Support</option>
+                            <option value="2">Sales and Marketing</option>
+                            <option value="3">Operation and Quality</option>
+                            <option value="4">Purchase and Finance</option>
+                            <option value="5">International Testing</option>
+                            <option value="6">Education and Training</option>
+                        </select>
+                    </div>
+                    <!-- Name -->
+                    <div class="col-md-6 mb-3">
+                        <label for="name_input" class="form-label fw-bold">
+                            Enter Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="name_input" name="name" placeholder="Your Name"
+                            required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+                        <label for="email_input" class="form-label fw-bold">
+                            Enter Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email_input" name="email" placeholder="Your Email"
+                            required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6 mb-3">
+                        <label for="telephone_input" class="form-label fw-bold">
+                            Enter Phone Number <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="telephone_input" name="phone"
+                            placeholder="Your Phone Number" required>
+                    </div>
+
+                    <!-- Reference -->
+                    <div class="col-md-6 mb-3">
+                        <label for="reference_input" class="form-label fw-bold">
+                            Enter Reference <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="reference_input" name="reference"
+                            placeholder="Reference" required>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="col-md-6 mb-3">
+                        <label for="subject_input" class="form-label fw-bold">
+                            Enter Subject <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="subject_input" name="subject" placeholder="Subject"
+                            required>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="col-12 mb-4">
+                        <label for="message_input" class="form-label fw-bold">
+                            Enter Message <span class="text-danger">*</span>
+                        </label>
+                        <textarea class="form-control" id="message_input" name="message"
+                            placeholder="Leave us a message" rows="5" required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12 text-center mt-md-4 mt-3">
+                        <button type="submit"
+                            class="btn submit-button d-flex gap-3 align-items-center justify-content-center">
+                            <span>
+                                Send Message
+                            </span>
+                            <i class="bi bi-send icon_shp sumb_icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
     </div>
 </div>

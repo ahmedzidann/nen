@@ -829,4 +829,6 @@
   'please enter title  arabic' => 'Please enter title  arabic',
   'title  french' => 'Title  french',
   'please enter title  french' => 'Please enter title  french',
+  'Blog View' => 'Blog View',
+  'Select Categories' => 'Select Categories',
 );

@@ -40,6 +40,23 @@ class OfficeType
     }
 
     /**
+     * Get the value for a specific type.
+     *
+     * @param string $value
+     * @return int|null
+     */
+    public static function getValue(string $value): ?string
+    {
+        $names = [
+             'regional-offices' => self::REGIONAL_OFFICES ,
+             'authorized-offices' => self::AUTHORIZED_OFFICES ,
+             'regional-representatives' => self::REGIONAL_REPRESENTATIVES ,
+        ];
+
+        return $names[$value] ?? null;
+    }
+
+    /**
      * Validate if a given value is a valid enum value.
      *
      * @param string $value

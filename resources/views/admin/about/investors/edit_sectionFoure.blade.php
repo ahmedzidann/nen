@@ -18,16 +18,16 @@
                     <div class="card">
                         <div class="card-body">
                             <ul class="nav nav-tabs nav-danger" role="tablist">
-                                @foreach ($translation as $item)
+                                @foreach ($translation as $lang)
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link {{ $loop->first ? 'active' : '' }}" data-bs-toggle="tab"
-                                            href="#{{ $item->id }}" role="tab" aria-selected="true">
+                                            href="#{{ $lang->id }}" role="tab" aria-selected="true">
                                             <div class="d-flex align-items-center">
                                                 <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
                                                 </div>
                                                 <div class="tab-title">
                                                     {{ TranslationHelper::translate(ucfirst('Profile') ?? '') }}
-                                                    {{ ucfirst($item->name) }}</div>
+                                                    {{ ucfirst($lang->name) }}</div>
 
                                             </div>
                                         </a>
@@ -35,13 +35,13 @@
                                 @endforeach
                             </ul>
                             <input type="hidden" id="key_new" value="{{ $translation->count() }}">
-                            @foreach ($translation as $key => $item)
+                            @foreach ($translation as $key => $lang)
                                 <form method="post" id="myForm{{ $key }}" action="{{ $action ?? '' }}"
                                     enctype="multipart/form-data">
                                     @include('components.admin.form.csrf')
                                     <div class="tab-content py-3">
                                         <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
-                                            id="{{ $item->id }}" role="tabpanel">
+                                            id="{{ $lang->id }}" role="tabpanel">
                                             <div class="card-body p-4">
                                                 {{-- --------start --}}
                                                 <div class="card-body p-4 row">
@@ -58,15 +58,15 @@
                                                     {{-- ----------first title --}}
                                                     <div class="col-md-6">
                                                         <x-admin.form.label-first class="form-label"
-                                                            name="Title  {{ $item->name }}"></x-admin.form.label-first>
+                                                            name="Title  {{ $lang->name }}"></x-admin.form.label-first>
                                                         <x-admin.form.input id="title"
-                                                            old="{{ 'title.' . $item->key }}"
-                                                            name="{{ 'title' . '[' . $item->key . ']' }}" type="text"
-                                                            required="" placeholder="Title {{ $item->name }}"
-                                                            class="form-control valid" :value="$StaticTable->translate('title', $item->key)">
+                                                            old="{{ 'title.' . $lang->key }}"
+                                                            name="{{ 'title' . '[' . $lang->key . ']' }}" type="text"
+                                                            required="" placeholder="Title {{ $lang->name }}"
+                                                            class="form-control valid" :value="$StaticTable->translate('title', $lang->key)">
                                                         </x-admin.form.input>
                                                         <x-admin.form.label-end star="*"
-                                                            name="please enter Title  {{ $item->name }}">
+                                                            name="please enter Title  {{ $lang->name }}">
                                                         </x-admin.form.label-end>
                                                     </div>
                                                     {{-- ----------end title --}}
@@ -76,15 +76,15 @@
                                                         {{-- ----------first url --}}
                                                         <div class="col-md-6">
                                                             <x-admin.form.label-first star="*" class="form-label"
-                                                                name="url  {{ $item->name }}"></x-admin.form.label-first>
+                                                                name="url  {{ $lang->name }}"></x-admin.form.label-first>
                                                             <x-admin.form.input id="url"
-                                                                old="{{ 'url.' . $item->key }}" name="url"
+                                                                old="{{ 'url.' . $lang->key }}" name="url"
                                                                 type="text" required=""
-                                                                placeholder="url {{ $item->name }}"
-                                                                class="form-control valid" :value="$StaticTable->translate('url', $item->key)">
+                                                                placeholder="url {{ $lang->name }}"
+                                                                class="form-control valid" :value="$StaticTable->translate('url', $lang->key)">
                                                             </x-admin.form.input>
                                                             <x-admin.form.label-end star="*"
-                                                                name="please enter url  {{ $item->name }}">
+                                                                name="please enter url  {{ $lang->name }}">
                                                             </x-admin.form.label-end>
                                                         </div>
                                                         {{-- ----------end url --}}
@@ -213,7 +213,7 @@
                                                             </div>
                                                         </div>
                                                     @endif
-                                                    <input type="hidden" name="submit2" value="{{ $item->key }}">
+                                                    <input type="hidden" name="submit2" value="{{ $lang->key }}">
                                                     <div class="col-md-12">
                                                         <div class="d-md-flex d-grid align-items-center gap-3">
                                                             <x-admin.form.submit type="submit"></x-admin.form.submit>

@@ -174,7 +174,7 @@
                                                                     {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
                                                                     </x-admin.form.label-first> --}}
                                                                     <div class="col-sm-8">
-                                                                        <input disabled value='{{$link->reference }}'  name="links[]" type="text" required=""
+                                                                        <input  value='{{$link->reference }}'  name="links[]" type="text" required=""
                                                                              placeholder="links" class="form-control valid">
                                                                         {{-- </input> --}}
                                                                     </div>

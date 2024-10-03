@@ -35,6 +35,9 @@ class UpdateEducationAction
         }
         if (!is_null($linksTitleKey)) {
             self::unsetKeyFromArray($data['links_title'], $linksTitleKey);
+            unset($data['links'][0]);
+            $data['links'] = array_values($data['links']);
+            // self::unsetKeyFromArray($data['links'], $linksTitleKey);
         }
 
         DB::transaction(function () use ($data, $education) {
@@ -74,33 +77,37 @@ class UpdateEducationAction
                 }
 
                 if (count($data['links_title'][array_key_first($data['links_title'])]) > 0) {
-
+                    // dd($education->links());
+                    $education->links()->delete();
                     foreach ($data['links_title'][array_key_first($data['links_title'])] as $key => $value) {
-                        if (!array_key_exists($key, $data['link_id'][array_key_first($data['link_id'])])) {
+                        if (1) {
+                            $title[array_key_first($data['links_title'])] = $data['links_title'][array_key_first($data['links_title'])][$key];
+
                             EducationReference::create([
                                 'education_id' => $education->id,
                                 'reference' => $data['links'][$key],
-                                'title' => $data['links_title'][array_key_first($data['links_title'])][$key],
+                                'title' => $title,
                             ]);
                         }
                     }
 
                 }
 
-                if (isset($data['link_id'])) {
 
-                    foreach ($data['link_id'][array_key_first($data['link_id'])] as $key => $link) {
-                        if ($link != null) {
-                            $title[array_key_first($data['link_id'])] = $data['links_title'][array_key_first($data['link_id'])][$key];
-                            $l = EducationReference::find($link);
-                            $l->update([
-                                // "education_id"=>$education->id,
-                                "title" => $title,
-                                // "reference"=>$link,
-                            ]);
-                        }
-                    }
-                }
+                // if (isset($data['link_id'])) {
+
+                //     foreach ($data['link_id'][array_key_first($data['link_id'])] as $key => $link) {
+                //         if ($link != null) {
+                //             $title[array_key_first($data['link_id'])] = $data['links_title'][array_key_first($data['link_id'])][$key];
+                //             $l = EducationReference::find($link);
+                //             $l->update([
+                //                 // "education_id"=>$education->id,
+                //                 "title" => $title,
+                //                 // "reference"=>$link,
+                //             ]);
+                //         }
+                //     }
+                // }
 
                 $this->UpdateImage($data, $education, 'Education');
             } catch (\Exception $e) {

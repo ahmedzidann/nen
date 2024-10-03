@@ -37,6 +37,7 @@ class TechnologyContoller extends Controller
 
     public function index():View
     {
+
         $partner = Page::findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
 

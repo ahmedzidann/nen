@@ -74,6 +74,7 @@ class EducationController extends Controller
     }
     public function store(EducationRequest $request)
     {
+
         app(StoreEducationAction::class)->handle($request->validated());
         redirect()->route('admin.education.index')->with('add', 'Success Add Education');
         return response()->json([
@@ -89,6 +90,7 @@ class EducationController extends Controller
     }
     public function update(EducationRequest $request, $id)
     {
+        // dd($request->validated()['links_title']);
         $StaticTable = Education::find($id);
         app(UpdateEducationAction::class)->handle($StaticTable, $request->validated());
         return response()->json([

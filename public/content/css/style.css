@@ -3626,11 +3626,36 @@ z-index: 2;
 
 /* Start Quick Search Section*/
 .global-search-section {
-    background: url(../images/objectives/objectives.svg) top right no-repeat, linear-gradient(17deg, rgb(0 0 0) 0%, rgb(122 122 122) 50%, #ddd 100%);
-    /* background: url(../images/objectives/objectives.svg) top right no-repeat, linear-gradient(17deg, rgba(122, 26, 34, 1) 0%, rgb(93 11 11) 50%, rgba(252, 176, 69, 1) 100%); */
+    background-color: var(--bg-main-color);
     border-radius: 20px;
+    background-image: url(../images/banners-icons/apps-banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
     padding: 38px 23px 18px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures content stays within container */
+}
+
+.global-search-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    background-repeat: inherit;
+    background-position: inherit;
+    filter: blur(10px);
+    z-index: 0;
+}
+
+.global-search-section form {
+    position: relative;
+    z-index: 1; /* Ensure form content appears above background */
 }
 
 .search-label {
@@ -8259,3 +8284,17 @@ width: 100%;
 }
 
 /* End Hero Section */
+
+/* Gradient text for "Google Map" */
+.gradient-text {
+    background: linear-gradient(90deg, #34A853, #4285F4, #FBBC05, #EA4335);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.google-map-link .map-icon {
+    width: 25px;
+    height: 25px;
+}

@@ -83,20 +83,6 @@ Contact Us
     font-size: 1rem;
     color: #333;
 }
-
-/* Gradient text for "Google Map" */
-.gradient-text {
-    background: linear-gradient(90deg, #34A853, #4285F4, #FBBC05, #EA4335);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.google-map-link .map-icon {
-    width: 25px;
-    height: 25px;
-}
 </style>
 @endsection
 
@@ -263,7 +249,10 @@ Contact Us
                                         </div>
                                     </td>
                                     <td>{{ $office->name }}</td>
-                                    <td>{{ $office->phone }}</td>
+                                    <td>
+                                        <a style="color: #333;" href="tel:{{ $office->phone }}">{{ $office->phone }}</a>
+                                    </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

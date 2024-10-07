@@ -37,7 +37,7 @@
 
             @if ($fSection = $items->where('item', 'section-one')->first())
                 <div id="about-section">
-                    <div class="flex_sec_content row g-5 align-items-center">
+                    <div class="flex_sec_content row g-5">
                         <div class="col-md-7">
                             {{-- <h3 class="decorated-title" style="text-align: start !important;"> --}}
                             {{-- {{ $fSection->title }} --}}

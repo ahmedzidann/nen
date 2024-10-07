@@ -5,13 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('page_name')</title>
+
+    <!-- amCharts 4 Core -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <!-- amCharts 4 Maps -->
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <!-- amCharts 4 Geodata (World Map) -->
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <!-- amCharts 4 Animated Theme -->
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
     <link rel="shortcut icon" href="{{ asset('content/images/logo.svg') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/kursor.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/bootstrap-icons.css') }}" />
     <!-- <link rel="stylesheet" href="{{ asset('content/css/vendors/swiper-bundle.min.css') }}" /> -->
     <link rel="stylesheet" href="{{ asset('content/css/style.css') }}" />
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     @yield('websiteStyle')
 </head>
@@ -77,9 +87,9 @@
                     </div>
                     <!-- End Dropdown Languages button -->
 
-                    <a href="{{ route('blogs.index') }}" target="__blank"mg
-                            src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
-                        <span>News Center</span>
+                    <a href="{{ route('blogs.index') }}" target="__blank" mg
+                        src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
+                    <span>News Center</span>
                     </a>
                 </div>
             </div>
@@ -157,8 +167,8 @@
                     </div> -->
                     <div class="mt-4 text-white-color fs1-1">
                         <p class="text-center">
-                            <a href="https://www.google.com/maps?q=Riyadh+11433+Kingdom+of+Saudi+Arabia"
-                                target="_blank" style="color: inherit; text-decoration: none;">
+                            <a href="https://www.google.com/maps?q=Riyadh+11433+Kingdom+of+Saudi+Arabia" target="_blank"
+                                style="color: inherit; text-decoration: none;">
                                 <i class="bi bi-geo-alt-fill"></i> S. B. 10076 Riyadh 11433 Kingdom of Saudi Arabia
                             </a>
                         </p>
@@ -280,8 +290,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div id="subscribe"
-                                class="d-flex flex-column justify-content-center text-white-color mt-2">
+                            <div id="subscribe" class="d-flex flex-column justify-content-center text-white-color mt-2">
                                 <h6 class="tag-title">
                                     Subscribe Our Newsletter
                                 </h6>
@@ -291,9 +300,8 @@
                                     useful resources!
                                 </p>
                                 <div class="input-group rounded-pill overflow-hidden mt-4">
-                                    <input type="text" class="form-control border-0"
-                                        placeholder="Your email address" aria-label="Email"
-                                        aria-describedby="basic-addon-email">
+                                    <input type="text" class="form-control border-0" placeholder="Your email address"
+                                        aria-label="Email" aria-describedby="basic-addon-email">
                                     <span class="input-group-text border-0" id="basic-addon-email">
                                         <a
                                             class="join-btn text-white-color border-0 bg-main-color d-flex justify-content-center align-items-center rounded-circle">
@@ -322,8 +330,8 @@
                             </a>
                             <a href="{{ $about->twitter_link }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x"
-                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
-                                    stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
                                     <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
@@ -331,9 +339,9 @@
                             </a>
                             <a href="{{ $about->instagram_link }}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-brand-instagram" width="24"
-                                    height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path
                                         d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
@@ -378,14 +386,11 @@
                             </p>
 
                             <div class="socail_div">
-                                <a href="{{ $about->facebook_link }}" class="a_link"><i
-                                        class="bi bi-facebook"></i></a>
-                                <a href="{{ $about->twitter_link }}" class="a_link"><i
-                                        class="bi bi-twitter"></i></a>
+                                <a href="{{ $about->facebook_link }}" class="a_link"><i class="bi bi-facebook"></i></a>
+                                <a href="{{ $about->twitter_link }}" class="a_link"><i class="bi bi-twitter"></i></a>
                                 <a href="{{ $about->instagram_link }}" class="a_link"><i
                                         class="bi bi-instagram"></i></a>
-                                <a href="{{ $about->youtube_link }}" class="a_link"><i
-                                        class="bi bi-youtube"></i></a>
+                                <a href="{{ $about->youtube_link }}" class="a_link"><i class="bi bi-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -539,21 +544,21 @@
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
     <script>
-        function toggleReadMore() {
-            var dots = document.getElementById("dots");
-            var moreText = document.getElementById("more");
-            var btnText = document.getElementById("read-more-btn");
+    function toggleReadMore() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("read-more-btn");
 
-            if (dots.style.display === "none") {
-                dots.style.display = "inline";
-                btnText.innerHTML = "Read More";
-                moreText.style.display = "none";
-            } else {
-                dots.style.display = "none";
-                btnText.innerHTML = "Read Less";
-                moreText.style.display = "inline";
-            }
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read More";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read Less";
+            moreText.style.display = "inline";
         }
+    }
     </script>
     @yield('websiteScript')
 </body>

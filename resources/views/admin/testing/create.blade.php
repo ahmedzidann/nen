@@ -67,13 +67,14 @@
                                                 value="{{ Request()->item ?? '' }}"> --}}
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name Pages --}}
-                                            <div class="col-md-12 mb-4">
+                                            <input type="hidden"  value="{{$allPage->first()->id}}" name="pages_id">
+                                            {{-- <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Pages">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
                                                     name="pages_id" nameselect="pages" :model="$StaticTable">
                                                 </x-admin.form.dropdown>
-                                            </div>
+                                            </div> --}}
 
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name first --}}

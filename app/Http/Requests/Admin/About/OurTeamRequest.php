@@ -33,7 +33,7 @@ class OurTeamRequest extends FormRequest
         return Validator::make($request->all(), [
             'management_id'=>'required|exists:management,id',
             'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -66,7 +66,7 @@ class OurTeamRequest extends FormRequest
             'management_id'=>'required|exists:management,id',
             'name.'.$request->submit2 => ['required','max:255','min:2'],
             'jop.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'image'=>['sometimes','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -83,7 +83,7 @@ class OurTeamRequest extends FormRequest
         return Validator::make($request->all(), [
             'management_id'=>'required|exists:management,id',
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'image'=>['sometimes','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -104,7 +104,7 @@ class OurTeamRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
         ]);
     }
 }

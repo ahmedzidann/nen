@@ -26,13 +26,13 @@ class ProjectRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
@@ -43,7 +43,7 @@ class ProjectRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
@@ -54,7 +54,7 @@ class ProjectRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
         ]);
     }
 }

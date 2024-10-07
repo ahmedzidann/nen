@@ -19,7 +19,7 @@ class UpdateTestingAction
         DB::transaction(function () use ($data, $Testing) {
             try {
                 $this->UpdateImage($data, $Testing, 'Testing');
-                $Testing->update($data);   
+                $Testing->update($data);
                 if (isset($data['file_id'])) {
                     foreach ($data['file_id'][array_key_first($data['file_id'])] as $key => $file) {
                         if ($file != null) {
@@ -61,6 +61,7 @@ class UpdateTestingAction
                     }
                 } elseif (!isset($data['link_id']) && isset($data['links'])) {
                     foreach ($data['links'] as $key => $link) {
+                       if($link)
                         TestingReference::create([
                             "testing_id" => $Testing->id,
                             "title" => $data['links_title'][$key],
@@ -84,5 +85,5 @@ class UpdateTestingAction
             return $Testing;
         });
     }
-    
+
 }

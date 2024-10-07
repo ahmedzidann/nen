@@ -32,7 +32,7 @@ class CertificatesRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'childe_pages_id' => ['required'],
             'item' => ['required'],
@@ -48,10 +48,10 @@ class CertificatesRequest extends FormRequest
             'title.*' => ['required','max:255','min:2'],
             'subtitle.*' => ['required','max:255','min:2'],
             'subsubtitle.*' => ['nullable','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
-            'years_text.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
+            'years_text.*' => ['required','min:2'],
             'childe_pages_id' => ['required'],
-            'url.*' => ['required','max:8000','min:2'],
+            'url.*' => ['required','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'image2'=>['nullable'],
             'item' => ['required'],
@@ -66,11 +66,11 @@ class CertificatesRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'subtitle.'.$request->submit2 => ['required','max:255','min:2'],
             'subsubtitle.'.$request->submit2 => ['nullable','max:255','min:2'],
-            'years_text.'.$request->submit2 => ['required','max:8000','min:2'],
-            'url.'.$request->submit2 => ['required','max:8000','min:2'],
+            'years_text.'.$request->submit2 => ['required','min:2'],
+            'url.'.$request->submit2 => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'image2'=>['nullable'],
             'item' => ['required'],
@@ -84,7 +84,7 @@ class CertificatesRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -97,12 +97,12 @@ class CertificatesRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'subsubtitle.'.$request->submit2 => ['nullable','max:255','min:2'],
             'subtitle.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            'years_text.'.$request->submit2 => ['required','max:8000','min:2'],
-            'url.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
+            'years_text.'.$request->submit2 => ['required','min:2'],
+            'url.'.$request->submit2 => ['required','min:2'],
         ]);
     }
     public function validationUpdateAr()
@@ -110,7 +110,7 @@ class CertificatesRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
         ]);
     }
 }

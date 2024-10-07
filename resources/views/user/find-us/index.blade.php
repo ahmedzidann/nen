@@ -2,7 +2,7 @@
 @section('parent_page_name')Find Us @endsection
 @section('page_name'){{$tech->name}} @endsection
 @section('cover_image')
-{{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
+{{ isset($slider) ? asset('content/images/about_img.png') : asset('content/images/about_img.png')}}
 @endsection
 <style>
 #map {
@@ -19,69 +19,9 @@
 <div id="contact-us-page">
     <div class="container">
         @if($items->count())
-        <div class="texts-data d-flex flex-column align-items-start">
-            <h5 class="global-title">
-                Countries
-            </h5>
-            <div class="under-title-vector">
-                <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="vector">
-            </div>
-        </div>
-
-        <div class="second-tabs-items mt-md-4 mt-3">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <!-- Swiper -->
-                <div
-                    class="swiper mySwiper Awards_slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                    <div class="swiper-wrapper swipper_action" id="swiper-wrapper-310fc3c10e410f46158"
-                        aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-                        @foreach ($counties as $country)
-                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 7"
-                            style="margin-right: 10px;">
-                            <form id="countryForm-{{$country->id}}">
-                                <div class="country_div overflow-hidden" style="cursor: pointer">
-                                    <a href="{{ route('contact-us', ['country' => $country->id]) }}"
-                                        class="overflow-hidden">
-                                        <span class="fs-5 text-black-50">
-                                            {{$country->title}}
-                                        </span>
-                                        <input type="hidden" name="page_id" value="{{request()->page_id}}">
-                                        <input type="hidden" name="country_id" value="{{$country->id}}">
-                                        <div class="img-country-box">
-                                            <img src="{{$country->getFirstMediaUrl('flag')}}" loading="lazy"
-                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                                alt="Flag">
-                                        </div>
-                                    </a>
-                                </div>
-                            </form>
-                        </div>
-                        @endforeach
-
-
-
-
-                    </div>
-                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
-                        aria-controls="swiper-wrapper-310fc3c10e410f46158" aria-disabled="false"></div>
-                    <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button"
-                        aria-label="Previous slide" aria-controls="swiper-wrapper-310fc3c10e410f46158"
-                        aria-disabled="true"></div>
-                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                </div>
-
-
-
-            </ul>
-
-
-        </div>
-
         <div id="map"></div>
 
-        <div class="decriptioned-texts mt-md-5 mt-3 lh-base">
+        <!-- <div class="decriptioned-texts mt-md-5 mt-3 lh-base">
             <p class="fs-5-2 text-muted">
                 The National Network for Education is working to expand its educational impact across 28 countries by
                 providing professional training and international examination services, through more than 2,000
@@ -91,13 +31,23 @@
             </p>
         </div>
 
-        <hr class="custom-hr">
+        <hr class="custom-hr"> -->
 
         <div class="global-search-section mt-md-4 mt-3">
             <form>
-                <div class="row">
+                <div class="row g-3">
+                    <!-- Country -->
+                    <div class="col-xl-4 col-md-4 col-sm-6 col-12">
+                        <select name='country_id' class="form-select search-select" aria-label="Select country">
+                            <option value="" selected>Select Country</option>
+                            @foreach ($states as $state)
+                            <option value="{{$state->id}}">{{$state->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <!-- State -->
-                    <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-3">
+                    <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                         <!-- <label for="state" class="form-label search-label">State</label> -->
                         <select name='state_id' class="form-select search-select" aria-label="Select state">
                             <option value="" selected>Select State</option>
@@ -108,7 +58,7 @@
                     </div>
 
                     <!-- Level -->
-                    <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-3">
+                    <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                         <!-- <label for="level" class="form-label search-label">Level</label> -->
                         <select name='level_id' class="form-select search-select" aria-label="Select level">
                             <option value="" selected>Select Level</option>
@@ -119,7 +69,7 @@
                     </div>
 
                     <!-- Certificates -->
-                    <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-3">
+                    <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                         <!-- <label for="certificate" class="form-label search-label">Certificates</label> -->
                         <select class="form-select search-select" aria-label="Select certificates">
                             <option value="" selected>Select Certificates</option>
@@ -130,7 +80,7 @@
                     </div>
 
                     <!-- Specializations -->
-                    <div class="col-xl-3 col-md-4 col-sm-6 col-12 mb-3">
+                    <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                         <!-- <label for="specialization" class="form-label search-label">Specializations</label> -->
                         <select class="form-select search-select" aria-label="Select specializations">
                             <option value="" selected>Select Specializations</option>
@@ -139,27 +89,26 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="col-xl-4 col-md-4 col-sm-6 col-12">
+                        <button class="custom-button">
+                            <div class="svg-wrapper-1">
+                                <div class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"
+                                        class="icon">
+                                        <path
+                                            d="M9.5 3a6.5 6.5 0 1 1-5.08 10.54l-3.47 3.47a.75.75 0 0 1-1.06-1.06l3.47-3.47A6.5 6.5 0 0 1 9.5 3zm0 1.5a5 5 0 1 0 0 10 5 5 0 0 0 0-10z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span>Search</span>
+                        </button>
+                    </div>
                 </div>
 
                 <input type="hidden" name="page_id" value="{{request()->page_id}}">
                 <input type="hidden" name="country_id" value="{{request()->country_id}}">
-
-                <!-- Search Button aligned to end -->
-                <div class="d-flex justify-content-end">
-                    <button class="custom-button">
-                        <div class="svg-wrapper-1">
-                            <div class="svg-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"
-                                    class="icon">
-                                    <path
-                                        d="M9.5 3a6.5 6.5 0 1 1-5.08 10.54l-3.47 3.47a.75.75 0 0 1-1.06-1.06l3.47-3.47A6.5 6.5 0 0 1 9.5 3zm0 1.5a5 5 0 1 0 0 10 5 5 0 0 0 0-10z">
-                                    </path>
-                                </svg>
-                            </div>
-                        </div>
-                        <span>Search</span>
-                    </button>
-                </div>
             </form>
         </div>
 
@@ -178,13 +127,16 @@
                                     </div>
                                 </th>
                                 <th scope="col">
-                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address</div>
-                                </th>
-                                <th scope="col">
                                     <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
                                 </th>
                                 <th scope="col">
                                     <div class="table-header-icon"><i class="bi bi-clock"></i> Times of work</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>Location</div>
                                 </th>
                             </tr>
                         </thead>
@@ -199,12 +151,29 @@
                                         <span>{{ $item->state?->country?->title }}</span>
                                     </div>
                                 </td>
-                                <td>{{ $item->address }}</td>
-                                <td>{{ $item->phone }}</td>
+                                <td>
+                                    <a style="color: #333;" href="tel:{{ $item->phone }}">{{ $item->phone }}</a>
+                                </td>
+
                                 <td>
                                     {{ isset($item->from_at) ? Carbon\Carbon::parse($item->from_at)->format('l h:i A') : '' }}
                                     -
                                     {{ isset($item->to_at) ? Carbon\Carbon::parse($item->to_at)->format('l h:i A') : '' }}
+                                </td>
+                                <td>{{ $item->address }}</td>
+                                <td class="map-link-td">
+                                    <a href="https://www.google.com/maps/@35,33,9z?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                                        class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
+                                        target="_blank">
+                                        <span class="gradient-text">
+                                            Google Map
+                                        </span>
+                                        <img class="map-icon"
+                                            src="{{ asset('content/images/small_icon/google-map-icon.webp') }}"
+                                            loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="map icon">
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

@@ -90,14 +90,9 @@
     <!-- section_who_us -->
 
 
-    <section class="about_sec">
-        <div class="container">
-            <div class="about_us_div">
-
-                @yield('content')
-            </div>
-        </div>
-    </section>
+  <section class="page-content">
+  @yield('content')
+  </section>
 
     <!-- Start Contact Us Section -->
     <section id="contact-us" class="pt-3 mt-md-5 mt-3">

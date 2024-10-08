@@ -19,6 +19,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\Technology;
+
 
 class TechnologyContoller extends Controller
 {
@@ -41,7 +43,7 @@ class TechnologyContoller extends Controller
         $slider   = Slider::where('page_id',$partner->id)->first();
 
         if($partner){
-            $items = StaticTable::where("pages_id",request()->page_id)->active()->get();
+            $items = Technology::where("pages_id",request()->page_id)->active()->get();
 
             $subPartners = $partner->childe;
             // $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();

@@ -234,6 +234,9 @@ Contact Us
                                     <th scope="col">
                                         <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
                                     </th>
+                                    <th scope="col">
+                                        <div class="table-header-icon"><i class="bi bi-geo-alt"></i>Location</div>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -252,7 +255,20 @@ Contact Us
                                     <td>
                                         <a style="color: #333;" href="tel:{{ $office->phone }}">{{ $office->phone }}</a>
                                     </td>
-
+                                    <td class="map-link-td">
+                                        <a href="https://www.google.com/maps/@35,33,9z?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                                            class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
+                                            target="_blank">
+                                            <span class="gradient-text">
+                                                Google Map
+                                            </span>
+                                            <img class="map-icon"
+                                                src="{{ asset('content/images/small_icon/google-map-icon.webp') }}"
+                                                loading="lazy"
+                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                                alt="map icon">
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -278,13 +294,16 @@ Contact Us
                                         </div>
                                     </th>
                                     <th scope="col">
-                                        <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address</div>
-                                    </th>
-                                    <th scope="col">
                                         <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
                                     </th>
                                     <th scope="col">
                                         <div class="table-header-icon"><i class="bi bi-clock"></i> Times of work</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="table-header-icon"><i class="bi bi-geo-alt"></i>Location</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -299,10 +318,24 @@ Contact Us
                                             <span>{{ $office->country?->translate('title', app()->getLocale()) }}</span>
                                         </div>
                                     </td>
-                                    <td>{{ $office->address }}</td>
                                     <td>{{ $office->phone }}</td>
                                     <td>
                                         {{ Carbon\Carbon::parse($office->from_at)->format('l h:i A') . ' - ' . Carbon\Carbon::parse($office->to_at)->format('l h:i A') }}
+                                    </td>
+                                    <td>{{ $office->address }}</td>
+                                    <td class="map-link-td">
+                                        <a href="https://www.google.com/maps/@35,33,9z?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                                            class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
+                                            target="_blank">
+                                            <span class="gradient-text">
+                                                Google Map
+                                            </span>
+                                            <img class="map-icon"
+                                                src="{{ asset('content/images/small_icon/google-map-icon.webp') }}"
+                                                loading="lazy"
+                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                                alt="map icon">
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

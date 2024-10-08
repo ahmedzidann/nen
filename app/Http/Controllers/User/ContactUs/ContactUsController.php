@@ -25,12 +25,16 @@ class ContactUsController extends Controller
         $locations = $contacts->map(function ($contact) {
             if ($contact->lat && $contact->lng) {
                 return [
-                    'lat' => $contact->lat,
-                    'lng' => $contact->lng,
+                    'latitude' => (float) $contact->lat,
+                    'longitude' => (float) $contact->lng,
+                    "color" => OfficeType::getColor($contact->type),
+                    'title' =>  $contact?->name ?? "",
+                    'email' => $contact?->email ?? "",
+                    'phone' => $contact?->phone ?? "",
                 ];
             }
         });
-
+        
         return view('user.contact_us.index', [
             'countries' => $countries,
             'services' => $services,

@@ -705,7 +705,7 @@ a {
 }
 
 .Identity_icon {
-
+    filter: invert(1);
 }
 
 .Investors_icon {
@@ -2155,8 +2155,9 @@ z-index: 2;
 }
 
 #achievements-tab .d-flex.align-items-start {
-gap: 5px;
+    gap: 5px;
 }
+
 #acheivements-section {
     display: flex;
     flex-direction: column;
@@ -2172,7 +2173,7 @@ gap: 5px;
     flex-shrink: 0;
 }
 
- .achievements_img img {
+.achievements_img img {
     object-fit: fill;
     width: 100%;
     height: 100%;
@@ -3404,6 +3405,19 @@ gap: 5px;
 /* End Custom Accordion  */
 
 /* Start Contact US Section */
+
+.contact-us-page-bg {
+    position: relative;
+    min-height: 70vh;
+    background-image: url(../images/footer/footer-bg.svg);
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    background-image: url(../images/footer/footer-bg.svg);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+}
+
 #contact-us-page {
     display: flex;
     flex-direction: column;
@@ -3430,6 +3444,12 @@ gap: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
+}
+
+@media (max-width: 767px) {
+    #contact-us-page .services-items-container .services-items {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
 }
 
 #contact-us-page .services-items-container .services-items .service-item {
@@ -3606,11 +3626,36 @@ gap: 5px;
 
 /* Start Quick Search Section*/
 .global-search-section {
-    background: url(../images/objectives/objectives.svg) top right no-repeat, linear-gradient(17deg, rgb(0 0 0) 0%, rgb(122 122 122) 50%, #ddd 100%);
-    /* background: url(../images/objectives/objectives.svg) top right no-repeat, linear-gradient(17deg, rgba(122, 26, 34, 1) 0%, rgb(93 11 11) 50%, rgba(252, 176, 69, 1) 100%); */
+    background-color: var(--bg-main-color);
     border-radius: 20px;
+    background-image: url(../images/banners-icons/apps-banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
     padding: 38px 23px 18px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures content stays within container */
+}
+
+.global-search-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    background-repeat: inherit;
+    background-position: inherit;
+    filter: blur(10px);
+    z-index: 0;
+}
+
+.global-search-section form {
+    position: relative;
+    z-index: 1; /* Ensure form content appears above background */
 }
 
 .search-label {
@@ -8101,7 +8146,8 @@ width: 100%;
 .swiper-container {
     width: 100%;
     overflow: hidden;
-    position: relative; /* Ensure relative positioning for arrows */
+    position: relative;
+    /* Ensure relative positioning for arrows */
 }
 
 .swiper-container .swiper-wrapper {
@@ -8110,7 +8156,8 @@ width: 100%;
 }
 
 .swiper-container .swiper-slide {
-    width: auto !important; /* Ensure dynamic width for the tabs */
+    width: auto !important;
+    /* Ensure dynamic width for the tabs */
     flex-shrink: 0;
     margin-right: 10px;
 }
@@ -8120,12 +8167,15 @@ width: 100%;
         margin-right: 5px;
     }
 }
+
 .swiper-container .swiper-button-next {
-    right: 10px; /* Position on the right */
+    right: 10px;
+    /* Position on the right */
 }
 
 .swiper-container .swiper-button-prev {
-    left: 10px; /* Position on the left */
+    left: 10px;
+    /* Position on the left */
 }
 
 .swiper-container .slider-button {
@@ -8149,11 +8199,102 @@ width: 100%;
 .swiper-container .slider-next {
     right: 5px;
 }
+
 .swiper-container .slider-prev {
     left: 5px;
 }
+
 .swiper-container.swiper-horizontal {
     touch-action: pan-y;
     overflow: hidden !important;
 }
+
 /* End Swiper js */
+
+/* Start Hero Section */
+#hero-section {
+    min-height: 70vh;
+    position: relative;
+    background-color: var(--bg-main-color);
+    border-radius: 20px;
+    background-image: url("../images//banners-icons/apps-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    /* Ensure content stays within the container */
+    padding: 4rem;
+    color: var(--text-white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Add blur effect using ::before pseudo-element */
+#hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    /* Use the same background image */
+    background-size: inherit;
+    background-repeat: inherit;
+    background-position: inherit;
+    filter: blur(10px);
+    /* Adjust the blur level as needed */
+    z-index: 0;
+    /* Make sure it's behind the content */
+}
+
+/* Ensure that any content inside this container is above the background blur */
+#hero-section .content {
+    position: relative;
+    z-index: 1;
+}
+
+#hero-section .title {
+    font-size: 32px;
+    line-height: 50px;
+}
+
+#hero-section .description {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+#hero-section #social {
+    display: flex;
+    /* Add this to ensure correct display */
+}
+
+#hero-section #social .social-icon {
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    background-color: #FFFFFF33;
+}
+
+#hero-section #social:dir(rtl) svg {
+    transform: scaleX(-1);
+}
+
+/* End Hero Section */
+
+/* Gradient text for "Google Map" */
+.gradient-text {
+    background: linear-gradient(90deg, #34A853, #4285F4, #FBBC05, #EA4335);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.google-map-link .map-icon {
+    width: 25px;
+    height: 25px;
+}

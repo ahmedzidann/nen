@@ -256,7 +256,7 @@ Contact Us
                                         <a style="color: #333;" href="tel:{{ $office->phone }}">{{ $office->phone }}</a>
                                     </td>
                                     <td class="map-link-td">
-                                            <a href="https://www.google.com/maps/@ {{ $office->lat }},{{ $office->lng }},16z"
+                                            <a href="{{ 'https://www.google.com/maps/@' . trim($office->lat) . ',' . trim($office->lng) . ',16z' }}"
                                             class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
                                             target="_blank">
                                             <span class="gradient-text">
@@ -324,7 +324,7 @@ Contact Us
                                     </td>
                                     <td>{{ $office->address }}</td>
                                     <td class="map-link-td">
-                                            <a href="https://www.google.com/maps/@ {{ $office->lat }},{{ $office->lng }},16z"
+                                            <a href="{{ 'https://www.google.com/maps/@' . trim($office->lat) . ',' . trim($office->lng) . ',16z' }}"
                                             class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
                                             target="_blank">
                                             <span class="gradient-text">
@@ -392,7 +392,7 @@ Contact Us
                                     </td>
                                     <td>{{ $office->address }}</td>
                                     <td class="map-link-td">
-                                            <a href="https://www.google.com/maps/@ {{ $office->lat }},{{ $office->lng }},16z"
+                                            <a href="{{ 'https://www.google.com/maps/@' . trim($office->lat) . ',' . trim($office->lng) . ',16z' }}"
                                             class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
                                             target="_blank">
                                             <span class="gradient-text">

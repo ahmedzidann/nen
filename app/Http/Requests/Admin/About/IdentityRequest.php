@@ -31,7 +31,7 @@ class IdentityRequest extends FormRequest
         $request = Request();
         return Validator::make($request->all(), [
             'title.*' => ['required', 'max:255', 'min:2'],
-            'description.*' => ['required', 'max:8000', 'min:2'],
+            'description.*' => ['required', 'min:2'],
             'image' => ['required', 'mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -43,8 +43,8 @@ class IdentityRequest extends FormRequest
     {
         $request = Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required', 'max:8000', 'min:2'],
-            'description.*' => ['required', 'max:8000', 'min:2'],
+            'title.*' => ['required', 'min:2'],
+            'description.*' => ['required', 'min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'sort' => ['nullable'],
@@ -55,9 +55,9 @@ class IdentityRequest extends FormRequest
     {
         $request = Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required', 'max:8000', 'min:2'],
+            'title.*' => ['required', 'min:2'],
             'attributes.*' => ['nullable'],
-            'description.*' => ['required', 'max:8000'],
+            'description.*' => ['required'],
             'item' => ['required'],
             'image' => ['required', 'mimes:png,jpg,jpeg'],
             'pages_id' => ['required'],
@@ -70,7 +70,7 @@ class IdentityRequest extends FormRequest
         $request = Request();
         return Validator::make($request->all(), [
             'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -84,7 +84,7 @@ class IdentityRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.' . $request->submit2 => ['required', 'max:255'],
             'attributes.*.' . $request->submit2 => ['nullable'],
-            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
             'keys.*' => 'nullable',
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -98,7 +98,7 @@ class IdentityRequest extends FormRequest
         $request = Request();
         return Validator::make($request->all(), [
             'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -112,9 +112,9 @@ class IdentityRequest extends FormRequest
         $request = Request();
 
         return Validator::make($request->all(), [
-            'title' => ['required', 'max:8000'],
+            'title' => ['required'],
             'attributes.*.' . $request->submit2 => ['nullable'],
-            'description.' . $request->submit2 => ['required', 'max:8000'],
+            'description.' . $request->submit2 => ['required'],
             'keys.*' => 'nullable',
         ]);
     }
@@ -123,7 +123,7 @@ class IdentityRequest extends FormRequest
         $request = Request();
         return Validator::make($request->all(), [
             'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
             'statistics.title.' . $request->submit2 => ['required'],
             'statistics.value.*' => ['required'],
         ]);
@@ -133,7 +133,7 @@ class IdentityRequest extends FormRequest
         $request = Request();
         return Validator::make($request->all(), [
             'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $request->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
         ]);
     }
 }

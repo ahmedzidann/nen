@@ -29,14 +29,14 @@ class ProgramRequest extends FormRequest {
         $request = Request();
         return Validator::make( $request->all(), [
             'title.*' => [ 'nullable', 'max:255', 'min:2' ],
-            'description.*' => [ 'required', 'max:8000', 'min:2' ],
+            'description.*' => [ 'required', 'min:2' ],
             'image'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
             'status' => [ 'nullable' ],
             'project_id' => [ 'nullable' ],
             'tabs_id' => [ 'nullable' ],
             'type' => [ 'nullable' ],
-            'years_text.*' => [ 'required', 'max:8000', 'min:2' ],
-            'url.*' => [ 'required', 'max:8000', 'min:2' ],
+            'years_text.*' => [ 'required', 'min:2' ],
+            'url.*' => [ 'required', 'min:2' ],
             'image2'=>[ 'nullable' , 'mimes:pdf'],
             'sort' => [ 'nullable' ],
         ] );
@@ -46,14 +46,14 @@ class ProgramRequest extends FormRequest {
         $request = Request();
         return Validator::make( $request->all(), [
             'title.'.$request->submit2  => [ 'nullable', 'max:255', 'min:2' ],
-            'description.'.$request->submit2 => [ 'required', 'max:8000', 'min:2' ],
+            'description.'.$request->submit2 => [ 'required', 'min:2' ],
             'image'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
             'status' => [ 'nullable' ],
             'project_id' => [ 'nullable' ],
             'tabs_id' => [ 'nullable' ],
             // 'type' => [ 'nullable' ],
-            'years_text.*' => [ 'required', 'max:8000', 'min:2' ],
-            'url.*' => [ 'required', 'max:8000', 'min:2' ],
+            'years_text.*' => [ 'required', 'min:2' ],
+            'url.*' => [ 'required', 'min:2' ],
             'sort' => [ 'nullable' ],
             'image2'=>[ 'nullable' , 'mimes:pdf'],
         ] );
@@ -63,7 +63,7 @@ class ProgramRequest extends FormRequest {
         $request = Request();
         return Validator::make( $request->all(), [
             'title.'.$request->submit2  => [ 'nullable', 'max:255', 'min:2' ],
-            'description.'.$request->submit2 => [ 'required', 'max:8000', 'min:2' ],
+            'description.'.$request->submit2 => [ 'required', 'min:2' ],
         ] );
     }
 }

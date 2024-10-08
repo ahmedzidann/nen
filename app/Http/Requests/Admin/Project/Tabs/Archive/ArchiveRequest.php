@@ -30,7 +30,7 @@ class ArchiveRequest extends FormRequest {
         $request = Request();
         return Validator::make( $request->all(), [
             // 'title.*' => [ 'required', 'max:255' ],
-            // 'description.*' => [ 'nullable', 'max:8000' ],
+            // 'description.*' => [ 'nullable' ],
             'project_id' => [ 'nullable' ],
             'tabs_id' => [ 'nullable' ],
             // 'type' => [ 'required' ],
@@ -58,7 +58,7 @@ class ArchiveRequest extends FormRequest {
         $request = Request();
         return Validator::make( $request->all(), [
             'title.'.$request->submit2  => [ 'required', 'max:255' ],
-            'description.'.$request->submit2 => [ 'nullable', 'max:8000' ],
+            'description.'.$request->submit2 => [ 'nullable' ],
             'type' => [ 'required' ],
             'project_id' => [ 'nullable' ],
             'tabs_id' => [ 'nullable' ],

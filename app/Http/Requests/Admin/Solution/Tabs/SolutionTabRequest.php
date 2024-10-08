@@ -57,7 +57,7 @@ class SolutionTabRequest extends FormRequest
     'label2.*' => ['nullable','max:255','min:2'],
     'label3.*' => ['nullable','max:255','min:2'],
     'label4.*' => ['nullable','max:255','min:2'],
-    'description.*' => ['required','max:8000','min:2'],
+    'description.*' => ['required','min:2'],
     'image'=>['nullable','mimes:png,jpg,jpeg'],
     'status' => ['nullable'],
     'project_id' => ['nullable'],
@@ -68,7 +68,7 @@ class SolutionTabRequest extends FormRequest
     {
         return [
             'title.*' => ['required', 'max:255', 'min:2'],
-            'description.*' => ['required', 'max:8000', 'min:2'],
+            'description.*' => ['required', 'min:2'],
             'image' => ['required', 'mimes:png,jpg,jpeg'],
             // 'childe_pages_id' => ['required'],
             // 'item' => ['required'],
@@ -128,11 +128,11 @@ class SolutionTabRequest extends FormRequest
     {
         return [
             'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $this->submit2 => ['required', 'min:2'],
             'subtitle.' . $this->submit2 => ['required', 'max:255', 'min:2'],
             'subsubtitle.' . $this->submit2 => ['nullable', 'max:255', 'min:2'],
-            'years_text.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
-            'url.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'years_text.' . $this->submit2 => ['required', 'min:2'],
+            'url.' . $this->submit2 => ['required', 'min:2'],
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             'image2' => ['nullable'],
             'item' => ['required'],
@@ -145,7 +145,7 @@ class SolutionTabRequest extends FormRequest
     {
         return [
             'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $this->submit2 => ['required', 'min:2'],
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             // 'item' => ['required'],
             // 'pages_id' => ['required'],
@@ -184,7 +184,7 @@ class SolutionTabRequest extends FormRequest
     {
         return [
             'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'subtitle.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'subtitle.' . $this->submit2 => ['required', 'min:2'],
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             // 'item' => ['required'],
             // 'pages_id' => ['required'],
@@ -208,7 +208,7 @@ class SolutionTabRequest extends FormRequest
     {
         return [
             'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'subtitle.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'subtitle.' . $this->submit2 => ['required', 'min:2'],
             'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             // 'item' => ['required'],
             // 'pages_id' => ['required'],
@@ -232,19 +232,19 @@ class SolutionTabRequest extends FormRequest
     {
         return [
             'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $this->submit2 => ['required', 'min:2'],
             'subsubtitle.' . $this->submit2 => ['nullable', 'max:255', 'min:2'],
             'subtitle.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
-            'years_text.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
-            'url.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $this->submit2 => ['required', 'min:2'],
+            'years_text.' . $this->submit2 => ['required', 'min:2'],
+            'url.' . $this->submit2 => ['required', 'min:2'],
         ];
     }
     public function validationUpdateAr()
     {
         return [
             'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
-            'description.' . $this->submit2 => ['required', 'max:8000', 'min:2'],
+            'description.' . $this->submit2 => ['required', 'min:2'],
             "links" => ['nullable', 'array'],
             "links.*" => ['nullable', 'url'],
             'links_title.en.*' => ['nullable', 'string', 'required_with:links.*'],

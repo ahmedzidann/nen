@@ -26,43 +26,43 @@ class AchievementsRequest extends FormRequest
             //
         ];
     }
-    
+
     public function validationStore()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationStoreTwo()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'years' => ['required','max:255','min:2'],
-            'month' => ['required','max:255','min:2'],
+            'month' => ['required','max:255','min:1'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'sort' => ['nullable'],
             'status' => ['nullable'],
         ]);
     }
-    
+
     public function validationUpdateTwoEn()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'years' => ['required','max:255','min:2'],
-            'month' => ['required','max:255','min:2'],
+            'month' => ['required','max:255','min:1'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
@@ -74,20 +74,20 @@ class AchievementsRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
             'status' => ['required'],
         ]);
     }
-    
+
     public function validationUpdateTwoAr()
     {
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
         ]);
     }
     public function validationUpdateAr()
@@ -95,7 +95,7 @@ class AchievementsRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
         ]);
     }
 }

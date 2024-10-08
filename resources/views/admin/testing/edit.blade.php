@@ -43,10 +43,11 @@
                                             id="{{ $item->id }}" role="tabpanel">
                                             <div class="card-body p-4">
                                                 {{-- --------start --}}
+
                                                 <div class="card-body p-4 row">
                                                     {{-- ----------start static --}}
                                                     <input type="hidden" name="pages_id"
-                                                        value="{{ $SelectPages->id ?? '' }}">
+                                                        value="{{  $StaticTable->pages_id ?? '' }}">
                                                     <input type="hidden" name="category"
                                                         value="{{ Request()->category ?? '' }}">
                                                     <input type="hidden" name="subcategory"
@@ -55,7 +56,8 @@
                                                         value="{{ Request()->item ?? '' }}">
                                                     {{-- ----------end static --}}
                                                     {{-- ----------name Pages --}}
-                                                    @if ($loop->first)
+
+                                                    {{-- @if ($loop->first)
                                                         <div class="col-md-12 mb-4">
                                                             <x-admin.form.label-first class="form-label"
                                                                 name="Select Pages">
@@ -64,7 +66,7 @@
                                                                 name="pages_id" nameselect="pages" :model="$StaticTable">
                                                             </x-admin.form.dropdown>
                                                         </div>
-                                                    @endif
+                                                    @endif --}}
                                                     {{-- ----------end Pages --}}
                                                     {{-- ----------name first --}}
                                                     <div class="col-md-12 mb-4">

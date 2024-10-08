@@ -33,7 +33,7 @@ class CareersRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
             'subtitle.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'image'=>['required','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -50,7 +50,7 @@ class CareersRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.*'  => ['required','max:255','min:2'],
-            'description.*' => ['required','max:8000','min:2'],
+            'description.*' => ['required','min:2'],
             'subtitle.*' => ['required','max:255','min:2'],
             'item'      => ['required'],
             'pages_id'  => ['required'],
@@ -68,8 +68,8 @@ class CareersRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            'subtitle.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
+            'subtitle.'.$request->submit2 => ['required','min:2'],
 
             'item' => ['required'],
             'image' => ['required'],
@@ -87,7 +87,7 @@ class CareersRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'subtitle.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'item' => ['required'],
             'pages_id' => ['required'],
@@ -101,8 +101,8 @@ class CareersRequest extends FormRequest
         $request= Request();
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
-            'subtitle.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
+            'subtitle.'.$request->submit2 => ['required','min:2'],
         ]);
     }
     public function validationUpdateAr()
@@ -111,7 +111,7 @@ class CareersRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'subtitle.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','max:8000','min:2'],
+            'description.'.$request->submit2 => ['required','min:2'],
         ]);
     }
 }

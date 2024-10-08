@@ -2,6 +2,7 @@
 namespace App\ViewModels\TechnologyView;
 
 use App\Models\Page;
+use App\Models\Technology;
 use App\Models\StaticTable;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
@@ -21,7 +22,7 @@ class TechnologyViewModel extends ViewModel
 
     public function __construct($StaticTable = null)
     {
-        $this->StaticTable = is_null($StaticTable) ? new StaticTable(old()) : $StaticTable;
+        $this->StaticTable = is_null($StaticTable) ? new Technology(old()) : $StaticTable;
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();
@@ -31,10 +32,10 @@ class TechnologyViewModel extends ViewModel
         $this->allPage = Page::get();
         if(!empty(Request()->category) && !empty(Request()->subcategory)){
             $this->SelectPages = Page::where('slug',Request()->subcategory)->first();
-            $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
+            $this->DataFull = Technology::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
         }elseif(!empty(Request()->category)){
             $this->SelectPages = Page::where('slug',Request()->category)->first();
-            $this->DataFull = StaticTable::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
+            $this->DataFull = Technology::where('item',Request()->item)->where('pages_id',$this->SelectPages->id)->first();
         }else{
             $this->SelectPages = '';
             $this->DataFull = '';

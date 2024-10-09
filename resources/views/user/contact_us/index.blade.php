@@ -586,6 +586,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let locations = @json($locations);
 
     // Map over the locations to apply the am4core.color function
+    console.log(locations);
+    
     locations = locations.map(function(location) {
         return {
             ...location,
@@ -593,7 +595,6 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 
-console.log(locations);
 
     // Data points with specific colors and contact info for each location
     imageSeries.data =  locations;

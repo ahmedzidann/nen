@@ -256,7 +256,7 @@ Contact Us
                                         <a style="color: #333;" href="tel:{{ $office->phone }}">{{ $office->phone }}</a>
                                     </td>
                                     <td class="map-link-td">
-                                        <a href="https://www.google.com/maps/@35,33,9z?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                                            <a href="{{ 'https://www.google.com/maps/@' . trim($office->lat) . ',' . trim($office->lng) . ',16z' }}"
                                             class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
                                             target="_blank">
                                             <span class="gradient-text">
@@ -324,7 +324,7 @@ Contact Us
                                     </td>
                                     <td>{{ $office->address }}</td>
                                     <td class="map-link-td">
-                                        <a href="https://www.google.com/maps/@35,33,9z?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                                            <a href="{{ 'https://www.google.com/maps/@' . trim($office->lat) . ',' . trim($office->lng) . ',16z' }}"
                                             class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
                                             target="_blank">
                                             <span class="gradient-text">
@@ -392,7 +392,7 @@ Contact Us
                                     </td>
                                     <td>{{ $office->address }}</td>
                                     <td class="map-link-td">
-                                        <a href="https://www.google.com/maps/@35,33,9z?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                                            <a href="{{ 'https://www.google.com/maps/@' . trim($office->lat) . ',' . trim($office->lng) . ',16z' }}"
                                             class="google-map-link d-flex flex-nowrap gap-2 justify-content-around align-items-center"
                                             target="_blank">
                                             <span class="gradient-text">
@@ -582,48 +582,22 @@ document.addEventListener("DOMContentLoaded", function() {
     imageSeriesTemplate.propertyFields.longitude = "longitude";
     imageSeriesTemplate.propertyFields.fill = "color"; // Assign color from data
 
+    // Get the dynamic data from the backend
+    let locations = @json($locations);
+
+    // Map over the locations to apply the am4core.color function
+    console.log(locations);
+    
+    locations = locations.map(function(location) {
+        return {
+            ...location,
+            color: am4core.color(location.color) // Wrap color value with am4core.color
+        };
+    });
+
+
     // Data points with specific colors and contact info for each location
-    imageSeries.data = [{
-            "latitude": 48.8566,
-            "longitude": 2.3522,
-            "color": am4core.color("#FF5733"),
-            "title": "Paris",
-            "email": "paris@example.com",
-            "phone": "+33 1 23 45 67"
-        },
-        {
-            "latitude": 51.5074,
-            "longitude": -0.1278,
-            "color": am4core.color("#33C1FF"),
-            "title": "London",
-            "email": "london@example.com",
-            "phone": "+44 20 7946 0958"
-        },
-        {
-            "latitude": 40.7128,
-            "longitude": -74.0060,
-            "color": am4core.color("#33FF57"),
-            "title": "New York",
-            "email": "newyork@example.com",
-            "phone": "+1 212 123 4567"
-        },
-        {
-            "latitude": 35.6895,
-            "longitude": 139.6917,
-            "color": am4core.color("#FFC133"),
-            "title": "Tokyo",
-            "email": "tokyo@example.com",
-            "phone": "+81 3 1234 5678"
-        },
-        {
-            "latitude": -33.8688,
-            "longitude": 151.2093,
-            "color": am4core.color("#9933FF"),
-            "title": "Sydney",
-            "email": "sydney@example.com",
-            "phone": "+61 2 1234 5678"
-        }
-    ];
+    imageSeries.data =  locations;
 
     // Add tooltips for points
     imageSeriesTemplate.tooltipText = "{title}";

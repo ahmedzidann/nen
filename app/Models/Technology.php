@@ -16,12 +16,15 @@ class Technology extends Model implements  HasMedia
 
    public $translatable = [
       'title',
+      'subtitle',
       'description',
    ];
 
    protected $fillable = [
       'title',
+      'subtitle',
       'description',
+      'item',
       'status',
       'pages_id',
       'childe_pages_id',

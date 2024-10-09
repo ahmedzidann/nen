@@ -27,7 +27,7 @@ class ContactUsController extends Controller
                 return [
                     'latitude' => (float) $contact->lat,
                     'longitude' => (float) $contact->lng,
-                    "color" => OfficeType::getColor($contact->type),
+                    "color" => OfficeType::getColor($contact->type) ?? "#33C1FF",
                     'title' =>  $contact?->name ?? "",
                     'email' => $contact?->email ?? "",
                     'phone' => $contact?->phone ?? "",

@@ -20,10 +20,9 @@ class ContactUsController extends Controller
             return $query->where('country_id', $request->country);
         })->when($request->contact_offices, function ($query) use ($request) {
             return $query->where('type', OfficeType::getValue($request->contact_offices));
-        })->get();
+        });
 
-        $locations = $contacts->map(function ($contact) {
-            if ($contact->lat && $contact->lng) {
+        $locations = $contacts->where('lat', '!=', null)->where('lng', '!=', null)->get()->map(function ($contact) {
                 return [
                     'latitude' => (float) $contact->lat,
                     'longitude' => (float) $contact->lng,
@@ -32,13 +31,12 @@ class ContactUsController extends Controller
                     'email' => $contact?->email ?? "",
                     'phone' => $contact?->phone ?? "",
                 ];
-            }
         });
         
         return view('user.contact_us.index', [
             'countries' => $countries,
             'services' => $services,
-            'contacts' => $contacts->groupBy('type'),
+            'contacts' => $contacts->get()->groupBy('type'),
             'locations' => $locations->toArray(),
         ]);
     }

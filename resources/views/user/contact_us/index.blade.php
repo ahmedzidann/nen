@@ -593,6 +593,8 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 
+console.log(locations);
+
     // Data points with specific colors and contact info for each location
     imageSeries.data =  locations;
 

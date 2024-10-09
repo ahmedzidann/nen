@@ -22,17 +22,20 @@ class ContactUsController extends Controller
             return $query->where('type', OfficeType::getValue($request->contact_offices));
         });
 
-        $locations = $contacts->where('lat', '!=', null)->where('lng', '!=', null)->get()->map(function ($contact) {
+        $locations = (clone $contacts)->whereNotNull('lat')
+            ->whereNotNull('lng')
+            ->get()
+            ->map(function ($contact) {
                 return [
                     'latitude' => (float) $contact->lat,
                     'longitude' => (float) $contact->lng,
                     "color" => OfficeType::getColor($contact->type) ?? "#33C1FF",
-                    'title' =>  $contact?->name ?? "",
+                    'title' => $contact?->name ?? "",
                     'email' => $contact?->email ?? "",
                     'phone' => $contact?->phone ?? "",
                 ];
-        });
-        
+            });
+
         return view('user.contact_us.index', [
             'countries' => $countries,
             'services' => $services,

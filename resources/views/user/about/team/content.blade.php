@@ -17,7 +17,7 @@
                 <div class="team-content">
                     <div class="team-info">
                         <h3 class="title">{{$item->name}}</h3>
-                        <span class="post text-center">{{$item->job}}</span>
+                        <span class="post text-center">{{$item->jop}}</span>
                     </div>
                 </div>
             </div>

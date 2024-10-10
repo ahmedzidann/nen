@@ -61,11 +61,19 @@ class SliderController extends Controller
     {
         $validator = $request->validationStore();
         if ($validator->fails()) {
+
             return response()->json([
                 'status' => 400,
                 'errors' => $validator->messages()
             ]);
         } else {
+
+            if( Slider::where('page_id',$validator->validated()['page_id'])->count() ){
+                return response()->json([
+                    'status' => 400,
+                    'errors' => 'Slider Already Exists Please update it',
+                ], 400);
+            }
             app(StoreSliderAction::class)->handle($validator->validated());
             redirect()->route('admin.slider.index')->with('add', 'Success Add Slider');
             return response()->json([

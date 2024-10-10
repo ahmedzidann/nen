@@ -57,6 +57,23 @@ class OfficeType
     }
 
     /**
+     * Get the color for a specific type.
+     *
+     * @param string $value
+     * @return int|null
+     */
+    public static function getColor(string $value): ?string
+    {
+        $names = [
+              self::REGIONAL_OFFICES => "#FF5733" ,
+              self::AUTHORIZED_OFFICES => "#33C1FF" ,
+              self::REGIONAL_REPRESENTATIVES => "#33FF57" ,
+        ];
+
+        return $names[$value] ?? null;
+    }
+
+    /**
      * Validate if a given value is a valid enum value.
      *
      * @param string $value

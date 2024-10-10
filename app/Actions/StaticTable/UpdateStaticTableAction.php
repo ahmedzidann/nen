@@ -5,11 +5,12 @@ use App\Helper\ImageHelper;
 use App\Models\IdentityAttribute;
 use App\Models\StaticTable;
 use Illuminate\Support\Arr;
+use App\Models\Technology ;
 
 class UpdateStaticTableAction
 {
     use ImageHelper;
-    public function handle(StaticTable $static_table, array $data)
+    public function handle(Technology $static_table, array $data)
     {
         if (isset($data['cat'])) {
             $data['category'] = $data['cat'];

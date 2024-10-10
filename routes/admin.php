@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\Education\EducationController;
 use App\Http\Controllers\Admin\AboutUs\AchievementsController;
 use App\Http\Controllers\Admin\AboutUs\CertificatesController;
 use App\Http\Controllers\Admin\FindUs\SpecializationController;
+use App\Http\Controllers\Admin\Technology\TechnologyController;
 use App\Http\Controllers\Admin\Projects\Tabs\HelpTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\AboutTabsController;
 use App\Http\Controllers\Admin\ContactUs\RegionalOfficeController;

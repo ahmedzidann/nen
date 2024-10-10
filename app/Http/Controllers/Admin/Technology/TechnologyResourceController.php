@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\Technology as TechnologyModel;
 
 class TechnologyResourceController extends Controller
 {
@@ -30,7 +31,7 @@ class TechnologyResourceController extends Controller
                 $page = '';
             }
             if ($request->ajax()) {
-                $data = StaticTable::where('pages_id',$page->id??'')->where('item',$request->item)->select('*')->latest();
+                $data = TechnologyModel::where('item', $request->item)->where('pages_id',$page->id??'')->select('*')->latest();
                     if((!empty($request->from_date )) && (!empty($request->to_date))){
                             $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
                     }
@@ -62,7 +63,7 @@ class TechnologyResourceController extends Controller
     }
     public function store(TechnologyRequest $request)
     // public function store(Request $request)
-    {
+    {  
         if ($request->item == 'section-two'){
             $validator = $request->validationStoretwo();
         }else{
@@ -76,20 +77,7 @@ class TechnologyResourceController extends Controller
             ]);
         }else{
             app(StoreStaticTableAction::class)->handle($validator->validated());
-            // if ($request->category == 'about' && $request->subcategory == 'identity' && $request->item == 'section-three'){
-            //          foreach($request->description as $data){
-            //              StaticTable::create([
-            //              'pages_id'=>$request->pages_id,
-            //              'category'=>$request->category,
-            //              'subcategory'=>$request->subcategory,
-            //              'item'=>$request->item,
-            //              'sort'=>$request->sort,
-            //              'description'=>$data['en'],
-            //              ]);
-            //          }
-            // }else{
 
-            // }
             redirect()->route('admin.technology.index')->with('add','Success Add Technology');
             return response()->json([
                 'status'=>200,
@@ -100,7 +88,8 @@ class TechnologyResourceController extends Controller
     }
     public function edit(Request $request,int $identity):View
     {
-        $identity = StaticTable::find($identity);
+
+        $identity = TechnologyModel::find($identity);
         if ($request->item == 'section-two'){
 
             return view('admin.technology.edit_sectionTwo',new TechnologyViewModel($identity));
@@ -110,7 +99,7 @@ class TechnologyResourceController extends Controller
     }
     public function update(TechnologyRequest $request, int $identity)
     {
-        $identity = StaticTable::find($identity);
+        $identity = TechnologyModel::find($identity);
        if($request->submit2=='en'){
             if($request->item == 'section-two'){
               $validator = $request->validationUpdateTwoEn();
@@ -142,7 +131,7 @@ class TechnologyResourceController extends Controller
     }
     public function destroy(Request $request):RedirectResponse
     {
-        foreach(StaticTable::find($request->id) as $static_table){$static_table->delete();}
+        foreach(TechnologyModel::find($request->id) as $static_table){$static_table->delete();}
         return redirect()->back()->with('delete','Delete technology');
     }
 }

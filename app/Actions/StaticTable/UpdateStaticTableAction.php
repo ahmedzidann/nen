@@ -10,7 +10,7 @@ use App\Models\Technology ;
 class UpdateStaticTableAction
 {
     use ImageHelper;
-    public function handle(StaticTable $static_table, array $data)
+    public function handle( $static_table, array $data)
     {
         if (isset($data['cat'])) {
             $data['category'] = $data['cat'];

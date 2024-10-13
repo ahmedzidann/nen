@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Projects;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Project;
+use App\Models\Slider;
 use App\Models\StaticTable;
 use App\Models\Tabs;
 use Illuminate\Http\Request;

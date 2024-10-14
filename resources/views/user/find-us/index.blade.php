@@ -2,7 +2,7 @@
 @section('parent_page_name')Find Us @endsection
 @section('page_name'){{$tech->name}} @endsection
 @section('cover_image')
-{{ isset($slider) ? asset('content/images/about_img.png') : asset('content/images/about_img.png')}}
+{{ isset($slider) ?  $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png')}}
 @endsection
 <style>
 #map {

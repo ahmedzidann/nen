@@ -47,7 +47,10 @@
                 <div class="swiper-slide">
                     @if ($fs)
                     <div class="mt-3">
+                        @if ($fs->getFirstMediaUrl('StaticTable'))
+
                         <img class="" src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
+                        @endif
                     </div>
                     @endif
                 </div>

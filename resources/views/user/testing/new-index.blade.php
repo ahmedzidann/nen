@@ -3,7 +3,7 @@
     Testing
 @endsection
 @section('page_name')
-    Testing
+{{ $tech->name }}
 @endsection
 @section('cover_image')
     {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png') }}

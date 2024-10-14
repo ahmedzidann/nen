@@ -79,7 +79,7 @@ class FindUsController extends Controller
             $levels = Level::whereHas('findus')->get();
             $certs = Certificate::whereHas('findus')->get();
             $specs = Specialization::whereHas('findus')->get();
-            // dd($locations);
+
             return view('user.find-us.index', ['tech'=>$partner,'items'=>$items,
             'slider'=>$slider,
             'counties'=>$counties,

@@ -67,6 +67,11 @@
                 </div>
             </div>
             <!-- End Investors Statisctics Section -->
+
+            <div class="investors_img mt-md-5 mt-3">
+                    <img src="{{asset('content/images/investors-statistics.jpg') }}" loading="lazy"
+                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
+                </div>
         @endif
 
         <!-- Start Partner Section -->

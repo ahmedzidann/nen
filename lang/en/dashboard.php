@@ -835,4 +835,10 @@
   'Products View' => 'Products View',
   'Select Vendor' => 'Select Vendor',
   'Vendors' => 'Vendors',
+  'Education Description View' => 'Education Description View',
+  'Education Description' => 'Education Description',
+  'Education Type' => 'Education Type',
+  'Select Education Category' => 'Select Education Category',
+  'Select Page' => 'Select Page',
+  'Select Main Page' => 'Select Main Page',
 );

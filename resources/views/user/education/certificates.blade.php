@@ -20,8 +20,14 @@
                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                     alt="vector">
             </div>
+            <p class="global-description">
+                {!! $partner->educationDescription?->getTranslation('description', app()->getLocale()) !!}
+            </p>
         </div>
-
+        <div class="our-teams_img">
+            <img src="{{ asset('storage') . '/' . $partner->educationDescription?->image }}" loading="lazy"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
+        </div>
         <div class="tabs-items">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 @foreach ($subPartners as $sub)

@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ContactUs\ServicesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DocValidation\DocValidationController;
 use App\Http\Controllers\Admin\Education\EducationController;
+use App\Http\Controllers\Admin\Education\EducationDescriptionController;
 use App\Http\Controllers\Admin\FindUs\CategoryController;
 use App\Http\Controllers\Admin\FindUs\CertificateController;
 use App\Http\Controllers\Admin\FindUs\FindUsController;
@@ -68,6 +69,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('product-categories/bulk-delete', [ProductCategoryController::class, 'bulkDelete'])->name('product-categories.delete_bulck');
     Route::resource('products', ProductController::class)->except('destroy');
     Route::post('products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.delete_bulck');
+    Route::resource('education-descriptions', EducationDescriptionController::class)->except('destroy');
+    Route::post('education-descriptions/bulk-delete', [EducationDescriptionController::class, 'bulkDelete'])->name('education-descriptions.delete_bulck');
 
     Route::name('about.')->prefix('about')->group(function () {
         Route::resource('identity', IdentityController::class);
@@ -114,6 +117,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::prefix('settings')->group(function () {
         Route::resource('slider', SliderController::class)->names('slider');
     });
+    Route::get('child-pages/{page_id}',[ SliderController::class, 'getChildPages'])->name('get-child-pages');
     Route::resource('education', EducationController::class);
     Route::resource('testing', TestingController::class);
     Route::delete('testing/link/{link_id}', [SolutionController::class, 'deleteLink'])->name('testing.delete.link');

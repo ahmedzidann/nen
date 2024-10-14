@@ -54,10 +54,8 @@
                                   href="{{ route('admin.about.identity.index', ['category=about', 'subcategory=identity', 'item=section-two']) }}"><i
                                       class='bx bx-radio-circle'></i>Section two</a>
                           </li>
-                          <li
-                              class="{{ request()->is('*statistics*') ? 'mm-active' : '' }}">
-                              <a
-                                  href="{{ route('admin.about.statistics.index') }}"><i
+                          <li class="{{ request()->is('*statistics*') ? 'mm-active' : '' }}">
+                              <a href="{{ route('admin.about.statistics.index') }}"><i
                                       class='bx bx-radio-circle'></i>Statistics</a>
                           </li>
                           <li
@@ -372,17 +370,31 @@
 
 
       {{-- Doc Validation --}}
-				<li>
-					<a class="has-arrow" href="javascript:;">
-						<div class="parent-icon"><i class="bx bx-error"></i>
-						</div>
-						<div class="menu-title">Blogs</div>
-					</a>
-					<ul>
-						<li> <a href="{{ route('admin.blogs.index') }}" ><i class='bx bx-radio-circle'></i>Blogs</a>
-						</li>
-					</ul>
-				</li>
+      <li>
+          <a class="has-arrow" href="javascript:;">
+              <div class="parent-icon"><i class="bx bx-error"></i>
+              </div>
+              <div class="menu-title">Blogs</div>
+          </a>
+          <ul>
+              <li> <a href="{{ route('admin.blogs.index') }}"><i class='bx bx-radio-circle'></i>Blogs</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a class="has-arrow" href="javascript:;">
+              <div class="parent-icon"><i class="bx bx-error"></i>
+              </div>
+              <div class="menu-title">Products</div>
+          </a>
+          <ul>
+              <li> <a href="{{ route('admin.product-categories.index') }}"><i class='bx bx-radio-circle'></i>Product
+                      Categories</a>
+              </li>
+              <li> <a href="{{ route('admin.products.index') }}"><i class='bx bx-radio-circle'></i>Products</a>
+              </li>
+          </ul>
+      </li>
       {{-- Doc Validation --}}
       @php
           $docValidation = App\Models\Page::find(8);

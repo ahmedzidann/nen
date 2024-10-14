@@ -831,4 +831,9 @@
   'please enter title  french' => 'Please enter title  french',
   'Blog View' => 'Blog View',
   'Select Categories' => 'Select Categories',
+  'Product Categories View' => 'Product Categories View',
+  'product-categories' => 'Product-categories',
+  'Products View' => 'Products View',
+  'Select Vendor' => 'Select Vendor',
+  'Vendors' => 'Vendors',
 );

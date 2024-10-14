@@ -6,6 +6,7 @@ use App\Actions\Slider\StoreSliderAction;
 use App\Actions\Slider\UpdateSliderAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Slider\SliderRequest;
+use App\Models\Page;
 use App\Models\Slider;
 use App\ViewModels\SliderView\SliderViewModel;
 use Carbon\Carbon;
@@ -27,28 +28,28 @@ class SliderController extends Controller
 
     public function show(Request $request, $language)
     {
-            if ($request->ajax()) {
-                $data = Slider::select('*')->latest();
-                    if((!empty($request->from_date )) && (!empty($request->to_date))){
-                            $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
-                    }
-                    $category = $request->category;
-                return Datatables::of($data)
-                        ->addIndexColumn()
-                        ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
-                        ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        ->editColumn('title', function ($row) use($language)  {
-                                return $row->translate('title', $language);
-                        })
-                        ->editColumn('Page', function ($row) use($language)  {
-                            return $row->Pages->translate('name', $language);
-                        })
-                        ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-
-                        ->addColumn('action', function($row) use ($category) {return'<div class="d-flex order-actions"> <a href="'.route('admin.slider.edit',[$row->id,'category='.$category]).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
-                        ->rawColumns(['checkbox','action'])
-                        ->make(true);
+        if ($request->ajax()) {
+            $data = Slider::select('*')->latest();
+            if ((!empty($request->from_date)) && (!empty($request->to_date))) {
+                $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }
+            $category = $request->category;
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
+                ->editColumn('id', function () {static $count = 0; $count++;return $count;})
+                ->editColumn('title', function ($row) use ($language) {
+                    return $row->translate('title', $language);
+                })
+                ->editColumn('Page', function ($row) use ($language) {
+                    return $row->Pages->translate('name', $language);
+                })
+                ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
+
+                ->addColumn('action', function ($row) use ($category) {return '<div class="d-flex order-actions"> <a href="' . route('admin.slider.edit', [$row->id, 'category=' . $category]) . '" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
+                ->rawColumns(['checkbox', 'action'])
+                ->make(true);
+        }
 
     }
 
@@ -64,11 +65,11 @@ class SliderController extends Controller
 
             return response()->json([
                 'status' => 400,
-                'errors' => $validator->messages()
+                'errors' => $validator->messages(),
             ]);
         } else {
 
-            if( Slider::where('page_id',$validator->validated()['page_id'])->count() ){
+            if (Slider::where('page_id', $validator->validated()['page_id'])->count()) {
                 return response()->json([
                     'status' => 400,
                     'errors' => 'Slider Already Exists Please update it',
@@ -86,23 +87,22 @@ class SliderController extends Controller
 
     public function edit(Request $request, $id): View
     {
-        $StaticTable =Slider::find($id);
-        return view('admin.slider.edit',new SliderViewModel($StaticTable));
+        $StaticTable = Slider::find($id);
+        return view('admin.slider.edit', new SliderViewModel($StaticTable));
     }
 
     public function update(SliderRequest $request, $id)
     {
-        $StaticTable =Slider::find($id);
-       if($request->submit2=='en'){
-               $validator = $request->validationUpdateEn();
-       }else{
-                $validator = $request->validationUpdateAr();
-       }
-        if($validator->fails())
-        {
+        $StaticTable = Slider::find($id);
+        if ($request->submit2 == 'en') {
+            $validator = $request->validationUpdateEn();
+        } else {
+            $validator = $request->validationUpdateAr();
+        }
+        if ($validator->fails()) {
             return response()->json([
                 'status' => 400,
-                'errors' => $validator->messages()
+                'errors' => $validator->messages(),
             ]);
         } else {
             app(UpdateSliderAction::class)->handle($StaticTable, $validator->validated());
@@ -121,5 +121,11 @@ class SliderController extends Controller
             $static_table->delete();
         }
         return redirect()->back()->with('delete', 'Delete Slider');
+    }
+
+    public function getChildPages( $page_id)
+    {
+        $pages = Page::where('parent_id', $page_id)->get();
+        return response()->json(['data' => $pages]);
     }
 }

@@ -27,7 +27,7 @@ class SliderViewModel extends ViewModel {
         $this->routeView = route( 'admin.slider.index', Request()->query() );
         $this->viewTable = 'Slider';
         // $this->allPage = Page::WhereNull( 'parent_id' )->get();
-        $this->allPage = Page::get();
+        $this->allPage = Page::whereNull('parent_id')->get();
     }
 
     public function action(): string {

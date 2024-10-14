@@ -5,6 +5,7 @@ use App\Actions\StaticTable\UpdateStaticTableAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\About\IdentityRequest;
 use App\Models\Education;
+use App\Models\EducationDescription;
 use App\Models\OurTeam;
 use App\Models\Page;
 use App\Models\Slider;
@@ -25,7 +26,6 @@ class EducationController extends Controller
     public function index():View
     {
 
-
         if(Route::currentRouteName() == 'education.tqs'){
 
             return $this->tqsView();
@@ -36,7 +36,7 @@ class EducationController extends Controller
 
     public function certificatesView():View
     {
-        $partner = Page::findOrFail(request()->page_id);
+        $partner = Page::with('educationDescription')->findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
 
         if($partner){
@@ -51,7 +51,7 @@ class EducationController extends Controller
 
     public function tqsView():View
     {
-        $partner = Page::findOrFail(request()->page_id);
+        $partner = Page::with('educationDescription')->findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
 
         if($partner){

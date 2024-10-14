@@ -44,7 +44,7 @@
                     {!! $fs?->description !!}
                 </p>
 
-                <div class="swiper-slide">
+                {{-- <div class="swiper-slide">
                     @if ($fs)
                     <div class="mt-3">
                         @if ($fs->getFirstMediaUrl('StaticTable'))
@@ -54,7 +54,7 @@
                         @endif
                     </div>
                     @endif
-                </div>
+                </div> --}}
 
                 <div class="certifications_sec mt-md-4 mt-3">
                     <div class="text-start">

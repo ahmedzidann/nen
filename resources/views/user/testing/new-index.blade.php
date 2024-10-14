@@ -37,7 +37,7 @@
                             <div class="data">
                                 <p
                                     class="description lh-base before-vertical-line position-relative mt-3 pt-0 {{ strlen($fSection->description) >= 300 ? 'p_clamp_2' : '' }}" id="description_text">
-                                    
+
                                 </p>
 
                                 @if (strlen($fSection->description) >= 300)
@@ -92,7 +92,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Insert the description content from the server into the <p> element
-            const content = `{!! htmlspecialchars_decode($fSection->description, ENT_QUOTES | ENT_HTML5) !!}`;
+            const content =  @if($fSection)`{!!  htmlspecialchars_decode($fSection->description, ENT_QUOTES | ENT_HTML5)   !!}` @else "" @endif;
             const description = document.getElementById('description_text');
             description.innerHTML = content;
 

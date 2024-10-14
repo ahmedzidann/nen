@@ -701,11 +701,7 @@ a {
     height: 23px;
     width: 22px;
     border-radius: 2px;
-    /* filter: invert(0) brightness(0); */
-}
 
-.Identity_icon {
-    filter: invert(1);
 }
 
 .Investors_icon {

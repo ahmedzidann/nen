@@ -7,7 +7,7 @@
 @section('content')
 
 <!-- New Desgin -->
- <div id="certifications-section" class="container">
+<div id="certifications-section" class="container">
     <div class="text-start">
         <h5 class="global-title fw-semibold">
             Certifications
@@ -47,7 +47,11 @@
                 {{-- <div class="swiper-slide">
                     @if ($fs)
                     <div class="mt-3">
-                        <img class="" src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
+                        @if ($fs->getFirstMediaUrl('StaticTable'))
+
+                        <img class="w-100 rounded" style="height:25rem;" src="{{$fs->getFirstMediaUrl('StaticTable')}}"
+                            alt="{{$fs->title}}">
+                        @endif
                     </div>
                     @endif
                 </div> --}}
@@ -70,28 +74,29 @@
                             'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
                             <div class="hovering-layers-card h-100 pb-3 {{ $loop->first ? '' : '' }}">
                                 <div id="cert-box" class="card h-100">
-                                <div class="card_content content">
-                                    <div class="data-content-box">
-                                        <div class="cert-data">
-                                        <div class="image-box">
-                                            <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
-                                        </div>
-                                        <p class="title-card mt-2">{{$item->title}}</p>
-                                        <span class="mt-1 mb-2">({{$item->years_text}})</span>
-                                        </div>
-                                        <div>
-                                        <span
-                                            class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
-                                            {{ html_entity_decode(strip_tags($item->description)) }}
-                                        </span>
+                                    <div class="card_content content">
+                                        <div class="data-content-box">
+                                            <div class="cert-data">
+                                                <div class="image-box">
+                                                    <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
+                                                </div>
+                                                <p class="title-card mt-2">{{$item->title}}</p>
+                                                <span class="mt-1 mb-2">({{$item->years_text}})</span>
+                                            </div>
+                                            <div>
+                                                <span
+                                                    class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                                    {{ html_entity_decode(strip_tags($item->description)) }}
+                                                </span>
 
-                                        @if (strlen($item->description) >= 200)
-                                        <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More
-                                            <i class="bi bi-chevron-down"></i></a>
-                                        @endif
+                                                @if (strlen($item->description) >= 200)
+                                                <a role='btn' onclick="toggleDescription(this)" class="read_more">Read
+                                                    More
+                                                    <i class="bi bi-chevron-down"></i></a>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="icons-data">
+                                        <div class="icons-data">
                                             <p class="icons-item">
                                                 @if ($item->getFirstMediaUrl('StaticTable2'))
                                                 <img src="{{url('content/images/small_icon/archive-book.png')}}">
@@ -106,7 +111,7 @@
                                                 @endif
                                             </p>
                                         </div>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
@@ -148,7 +153,7 @@
     </div>
 </div>
 
-   <!-- Old Desgin (Remove d-none Class to view it again-->
+<!-- Old Desgin (Remove d-none Class to view it again-->
 <div class="about_content d-none">
     <h1>CERTIFICATES</h1>
     <div class="tabs_div">
@@ -213,8 +218,9 @@
 
 
                     <div class="grid_div_bttn">
-                        <div class="grid_div"  id="partners-{{$sub->slug}}" data-page="1">
-                            @foreach ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
+                        <div class="grid_div" id="partners-{{$sub->slug}}" data-page="1">
+                            @foreach ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->take(6)
+                            as $item)
                             <div class="card card_styles">
                                 <div class="card_content">
                                     <div class="iso_div">
@@ -225,28 +231,30 @@
 
                                         <p>{{$item->title}} <span>({{$item->years_text}})</span></p>
                                     </div>
-                                    <div class="iso_titels "  >
-                                        <span class="description text-start {{ strlen($item->description)>= 200 ? "p_clamp_2":''}}">
-                                        {{ html_entity_decode(strip_tags($item->description)) }}
+                                    <div class="iso_titels ">
+                                        <span
+                                            class="description text-start {{ strlen($item->description)>= 200 ? "p_clamp_2":''}}">
+                                            {{ html_entity_decode(strip_tags($item->description)) }}
                                         </span>
 
 
 
                                         @if (strlen($item->description)>= 200)
-                                            <a  role='btn' onclick="toggleDescription(this)" class="read_more" >Read More <i class="bi bi-chevron-down"></i></a>
+                                        <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i
+                                                class="bi bi-chevron-down"></i></a>
                                         @endif
                                         <div class="flex_icons_div">
                                             <p>
                                                 @if ($item->getFirstMediaUrl('StaticTable2'))
                                                 <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a
-                                                    class="ref_coloring"
-                                                    href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                        class="ref_coloring"
+                                                        href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
                                                 @endif
                                             </p>
                                             <p>
                                                 @if ($item->url)
                                                 <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                    class="ref_coloring" href="{{$item->url}}">Website</a></span>
+                                                        class="ref_coloring" href="{{$item->url}}">Website</a></span>
                                                 @endif
                                             </p>
                                         </div>
@@ -264,7 +272,9 @@
 
                     {{-- <a href="#" class="see_more_bttn">See More <span><i class="bi bi-chevron-down"></i></span></a> --}}
                     @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
-                        <a href="#" class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,{{app()->getLocale()}})">See More <span><i class="bi bi-chevron-down"></i></span></a>
+                    <a href="#" class="see_more_bttn" data-slug="{{$sub->slug}}"
+                        onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,{{app()->getLocale()}})">See
+                        More <span><i class="bi bi-chevron-down"></i></span></a>
                     @endif
                 </div>
             </div>
@@ -327,68 +337,73 @@
 </div>
 
 <script>
-    function toggleDescription(button) {
-        var description = button.previousElementSibling;
-        if (description.classList.contains('p_clamp_2')) {
-            description.classList.remove('p_clamp_2');
-            button.innerHTML = 'Read More <i class="bi bi-chevron-up"></i>';
-        } else {
-            description.classList.add('p_clamp_2');
-            button.innerHTML = 'Show Less <i class="bi bi-chevron-down"></i>';
-        }
+function toggleDescription(button) {
+    var description = button.previousElementSibling;
+    if (description.classList.contains('p_clamp_2')) {
+        description.classList.remove('p_clamp_2');
+        button.innerHTML = 'Read More <i class="bi bi-chevron-up"></i>';
+    } else {
+        description.classList.add('p_clamp_2');
+        button.innerHTML = 'Show Less <i class="bi bi-chevron-down"></i>';
     }
+}
 
-    function htmlspecialchars(str) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
-        return str.replace(/[&<>"']/g, function(m) { return map[m]; });
-    }
-    function stripTags(input) {
+function htmlspecialchars(str) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return str.replace(/[&<>"']/g, function(m) {
+        return map[m];
+    });
+}
+
+function stripTags(input) {
     // Use a regular expression to match HTML tags and replace them with an empty string
     return input.replace(/<\/?[^>]+(>|$)/g, "");
-    }
+}
 
 
 
-    function escapeHTML(str) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
+function escapeHTML(str) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
 
-        return str.replace(/[&<>"']/g, function(m) { return map[m]; });
-        }
+    return str.replace(/[&<>"']/g, function(m) {
+        return map[m];
+    });
+}
 
-        function loadMorePartners(event, slug, slug_id, lang) {
+function loadMorePartners(event, slug, slug_id, lang) {
 
-event.preventDefault();
-var container = document.getElementById('partners-' + slug);
-var page = parseInt(container.getAttribute('data-page'));
-var newPage = page + 1;
+    event.preventDefault();
+    var container = document.getElementById('partners-' + slug);
+    var page = parseInt(container.getAttribute('data-page'));
+    var newPage = page + 1;
 
-// Fetching items through a data attribute (ensure items are available globally in the blade)
-var items = @json($items->where('item', 'section-two')->values());
-var subItems = items.filter(item => item.childe_pages_id == slug_id);
-var start = page * 2;
-var end = start + 2;
-var newItems = subItems.slice(start, end);
-console.log(items);
-console.log(newItems);
+    // Fetching items through a data attribute (ensure items are available globally in the blade)
+    var items = @json($items->where('item', 'section-two')->values());
+    var subItems = items.filter(item => item.childe_pages_id == slug_id);
+    var start = page * 2;
+    var end = start + 2;
+    var newItems = subItems.slice(start, end);
+    console.log(items);
+    console.log(newItems);
 
-// Creating new cards for each new item
-newItems.forEach(item => {
-    var card = document.createElement('div');
-    card.className = 'card';
-    card.id = 'cert-box';
-    card.innerHTML = `
+    // Creating new cards for each new item
+    newItems.forEach(item => {
+        var card = document.createElement('div');
+        card.className = 'card';
+        card.id = 'cert-box';
+        card.innerHTML = `
         <div class="card_content">
             <div class="data-content-box">
                 <div class="cert-data">
@@ -416,18 +431,17 @@ newItems.forEach(item => {
         </div>
     `;
 
-    // Append the new card to the container
-    container.appendChild(card);
-});
+        // Append the new card to the container
+        container.appendChild(card);
+    });
 
-// Hide the "See More" button if there are no more items to load
-if (((subItems.length / 6) - newPage) < 0) {
-    document.getElementById('see_more_bttn').style.display = 'none';
+    // Hide the "See More" button if there are no more items to load
+    if (((subItems.length / 6) - newPage) < 0) {
+        document.getElementById('see_more_bttn').style.display = 'none';
+    }
+
+    // Update the page attribute for the next load
+    container.setAttribute('data-page', newPage);
 }
-
-// Update the page attribute for the next load
-container.setAttribute('data-page', newPage);
-}
-
 </script>
 @endsection

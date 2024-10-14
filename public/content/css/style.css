@@ -2098,9 +2098,13 @@ z-index: 2;
     gap: 20px;
 }
 
+#investors-section .investors_img {
+    width: 100%;
+}
 #investors-section .investors_img img {
     border-radius: 1.5rem;
     object-fit: fill;
+    width: 100%;
 }
 
 #investors-section .d-flex.align-items-start {
@@ -2883,7 +2887,7 @@ z-index: 2;
 #our-teams-section {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    /* align-items: start; */
     gap: 20px;
 }
 
@@ -3763,7 +3767,7 @@ z-index: 2;
     width: 100%;
     height: 425px;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .clients-sec {
@@ -6607,7 +6611,7 @@ th {
         width: 100%;
         height: 325px;
         border-radius: 10px;
-        object-fit: cover;
+        object-fit: fill;
     }
 
     .whou_us_img {
@@ -8293,4 +8297,18 @@ width: 100%;
 .google-map-link .map-icon {
     width: 25px;
     height: 25px;
+}
+
+.swiper-tab {
+    text-transform: capitalize !important;
+    color: var(--text-main-color) !important;
+    background-color: transparent !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 10px  !important;
+    border: none !important;
+    font-size: 1.2rem !important;
+}
+.swiper-tab.active {
+    color: #fff !important;
+    background: #990000 !important;
 }

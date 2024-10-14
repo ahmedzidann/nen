@@ -336,6 +336,12 @@
                   <div class="menu-title">{{ $education->name }}</div>
               </a>
               <ul>
+                  <li class="">
+
+                      <a
+                          href="{{ route('admin.education-descriptions.index') }}">
+                          <i class='bx bx-radio-circle'></i>Education Descriptions</a>
+                  </li>
                   @foreach ($education->childe as $ch)
                       {{-- <li class="">
 

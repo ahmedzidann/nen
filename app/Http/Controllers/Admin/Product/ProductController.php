@@ -117,8 +117,9 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::get();
         $langs = TranslationKey::get();
+        $vendors = FindUs::get();
         $product->load(['images', 'category']);
-        return view('admin.products.edit', compact('product', 'categories', 'langs'));
+        return view('admin.product.products.edit', compact('product', 'categories', 'langs', 'vendors'));
     }
 
     /**
@@ -140,13 +141,11 @@ class ProductController extends Controller
                 }
                 $data['main_image'] = FileUploadHelper::uploadImage($request->file('main_image'), 'products');
             }
-
             // Update the product
             $product->update($data);
-
             // Handle additional images
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $index => $image) {
+            if ($request->has('images')) {
+                foreach ($request->images as $index => $image) {
                     $path = FileUploadHelper::uploadImage($image, 'products');
                     $product->images()->create([
                         'image' => $path,

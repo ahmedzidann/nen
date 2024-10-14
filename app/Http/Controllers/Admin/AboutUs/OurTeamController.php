@@ -5,7 +5,6 @@ use App\Actions\OurTeam\StoreOurTeamTableAction;
 use App\Actions\OurTeam\UpdateOurTeamTableAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\About\OurTeamRequest;
-use App\Models\Management;
 use App\Models\OurTeam;
 use App\Models\Page;
 use App\ViewModels\AboutView\OurTeamTableViewModel;
@@ -42,8 +41,12 @@ class OurTeamController extends Controller
                 ->addIndexColumn()
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
-                ->editColumn('name', function ($row) use ($language) {
-                    return $row->translate('name', $language);
+                ->editColumn('name', function ($row) use ($language, $request) {
+                    if (!$request->item == 'section-one') {
+                        return $row->translate('name', $language);
+                    } else {
+                        return $row->translate('title', $language);
+                    }
                 })
                 ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
 

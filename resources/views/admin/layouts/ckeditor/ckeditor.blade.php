@@ -16,6 +16,12 @@ CKEDITOR.replace('description[ar]', {
     filebrowserUploadUrl: "{{Route('upload.image',['_token'=>csrf_token()])}}"
 , });
 </script>
+<script>
+CKEDITOR.replace('description[fr]', {
+    height: 300,
+    filebrowserUploadUrl: "{{Route('upload.image',['_token'=>csrf_token()])}}"
+, });
+</script>
 
 
 

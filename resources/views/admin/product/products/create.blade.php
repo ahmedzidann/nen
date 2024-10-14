@@ -12,8 +12,8 @@
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div class="breadcrumb-title pe-3">
-                    <a href="{{ route('admin.blogs.index') }}">
-                        blogs
+                    <a href="{{ route('admin.products.index') }}">
+                        Products
                     </a>
                 </div>
                 <div class="ps-3">
@@ -22,7 +22,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i
                                         class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ str_replace('-', ' ', ucfirst('blogs')) }}
+                                {{ str_replace('-', ' ', ucfirst('Products')) }}
                             </li>
                         </ol>
                     </nav>
@@ -100,8 +100,8 @@
                                                 </div>
                                                 <div class="form-group col-md-6 ">
                                                     <label for="price">Price</label>
-                                                    <input type="number" class="form-control" id="price"
-                                                        name="price" value="{{ old('price') }}" required>
+                                                    <input type="number" class="form-control" id="price" name="price"
+                                                        value="{{ old('price') }}" required>
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="description">Description in English</label>
@@ -138,14 +138,14 @@
                                                                 name="titles[][en]" placeholder="Image Title">
                                                         </div>
                                                         <div class="col-auto">
-                                                            <button type="button"
-                                                                class="btn btn-danger remove-image">Remove</button>
+                                                            <button type="button" class="btn btn-danger remove-image"><i
+                                                                    class="bx bxs-trash"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <button type="button" class="btn btn-secondary mb-3" id="add-image">Add
-                                                    Another Image</button>
+                                                <button type="button" class="btn btn-success mb-3" id="add-image"><i
+                                                        class="bx bx-plus"></i></button>
 
                                             </div>
                                         </div>
@@ -195,7 +195,7 @@
                     <input type="text" class="form-control" name="image_titles[]" placeholder="Image Title">
                 </div>
                 <div class="col-auto">
-                    <button type="button" class="btn btn-danger remove-image">Remove</button>
+                    <button type="button" class="btn btn-danger remove-image"><i class="bx bxs-trash"></i></button>
                 </div>
             `;
             container.appendChild(newRow);

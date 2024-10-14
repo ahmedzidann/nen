@@ -3,7 +3,7 @@
     Technology
 @endsection
 @section('page_name')
-    Technology
+{{ $tech->name }}
 @endsection
 @section('websiteStyle')
     <style>

@@ -25,20 +25,20 @@ class SliderRequest extends FormRequest {
         return Validator::make( $request->all(), [
             'title.*' => [ 'required', 'max:255', 'min:2' ],
             'description.*' => [ 'required', 'min:2' ],
-            'image'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
-            'icon'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
+            'image'=>[ 'nullable',  ],
+            'icon'=>[ 'nullable',  ],
             'page_id' => [ 'nullable' ],
             'status' => [ 'nullable' ],
         ] );
     }
-
+//'mimes:png,jpg,jpeg'
     public function validationUpdateEn() {
         $request = Request();
         return Validator::make( $request->all(), [
             'title.'.$request->submit2 => [ 'required', 'max:255', 'min:2' ],
             'description.'.$request->submit2 => [ 'required', 'min:2' ],
-            'image'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
-            'icon'=>[ 'nullable', 'mimes:png,jpg,jpeg' ],
+            'image'=>[ 'nullable',  ],
+            'icon'=>[ 'nullable', ],
             'page_id' => [ 'nullable' ],
             'status' => [ 'nullable' ],
         ] );

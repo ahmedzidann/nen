@@ -18,6 +18,7 @@ class AboutController extends Controller
     {
         $identity = Page::where('slug', 'identity')->first();
         $slider = Slider::where('page_id', $identity->id)->first();
+        // dd($slider);
         $statistics = Statistic::limit(3)->get();
         if ($identity) {
             $identities = StaticTable::where("pages_id", $identity->id)->with('identityAttributes')->active()->get();

@@ -31,7 +31,8 @@ class ContactUsController extends Controller
                     'longitude' => (float) $contact->lng,
                     "color" => OfficeType::getColor($contact->type) ?? "#33C1FF",
                     'title' => $contact?->name ?? "",
-                    'email' => $contact?->email ?? "",
+                    'country' => $contact->country?->title,
+                    'address' => $contact->address,
                     'phone' => $contact?->phone ?? "",
                 ];
             });

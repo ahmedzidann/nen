@@ -4,7 +4,9 @@
     @foreach ($foreach as $item)
         @if (isset($model->id))
             {{--  edit  --}}
-            <option value="{{ $item->id }}" {{ $item->id == $model->$name ? 'selected' : '' }}>{{ $item->name }}
+            <option value="{{ $item->id }}" @if (isset($name)) {{ $item->id == $model->$name ? 'selected' : '' }} @endif @isset($param)
+                {{ $item->id == $param ? 'selected' : '' }} 
+            @endisset>{{ $item->name }}
             </option>
         @else
             {{--  create  --}}

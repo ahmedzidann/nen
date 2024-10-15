@@ -21,6 +21,7 @@ class Blog extends Model
         'content',
         'banner',
         'video',
+        'sort',
         'is_active',
         'published_at',
     ];

@@ -15,6 +15,8 @@ class Management extends Model
 
     protected $fillable = [
         'title',
+        'sort',
+        'status',
     ];
 
 }

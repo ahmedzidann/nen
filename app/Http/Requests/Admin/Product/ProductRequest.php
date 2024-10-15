@@ -50,6 +50,7 @@ class ProductRequest extends FormRequest
                 'titles.*' => 'nullable',
                 'is_active' => 'nullable|boolean',
                 'sort' => 'nullable|numeric',
+                'keys' => 'nullable|array',
             ];
 
         }

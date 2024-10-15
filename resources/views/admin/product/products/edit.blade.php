@@ -4,6 +4,9 @@
 @endsection
 
 @section('cssadmin')
+    {{-- start toastr --}}
+    <link rel="stylesheet" href="{{ asset('toastr/css/toastr.min.css') }}" />
+    {{-- end toastr --}}
 @endsection
 
 @section('contentadmin')
@@ -125,8 +128,13 @@
                                                                 id="main_image" name="main_image"
                                                                 data-default-file="{{ asset('storage') . '/' . $product->main_image }}">
                                                         </div>
+                                                        <div class="form-group col-md-6 ">
+                                                            <label for="sort">Sort:</label>
+                                                            <input type="number" class="form-control" id="sort"
+                                                                name="sort"
+                                                                value="{{ old('sort', $product->sort ?? '') }}" required>
+                                                        </div>
                                                         <div class="form-group col-md-6">
-                                                            <label>Status</label>
                                                             <div class="form-check">
                                                                 <input type="radio" class="form-check-input"
                                                                     id="activeOption" value="1" name="is_active"
@@ -146,25 +154,30 @@
 
                                                     <div id="image-container">
                                                         @foreach ($product->images as $image)
+                                                            <input type="hidden" name="keys[]"
+                                                                value="{{ $image->id }}">
                                                             <div class="row mb-3 image-row">
-                                                                <div class="col">
+                                                                <div class="col-6">
                                                                     <input type="file" class="form-control"
                                                                         name="images[]" accept="image/*">
                                                                 </div>
+
                                                                 <div class="col">
                                                                     <input type="text" class="form-control"
-                                                                        name="titles[en]" placeholder="Image Title"
+                                                                        name="titles[][en]" placeholder="Image Title"
                                                                         value="{{ $image->getTranslation('title', 'en') }}">
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <button type="button"
-                                                                        class="btn btn-danger remove-image"><i class="bx bxs-trash"></i></button>
+                                                                        class="btn btn-danger remove-image"
+                                                                        onclick="deleteRow({{ $image->id }})"><i
+                                                                            class="bx bxs-trash"></i></button>
                                                                 </div>
                                                             </div>
                                                         @endforeach
                                                     </div>
-                                                    <button type="button" class="btn btn-success mb-3"
-                                                        id="add-image"><i class="bx bx-plus"></i></button>
+                                                    <button type="button" class="btn btn-success mb-3" id="add-image"><i
+                                                            class="bx bx-plus"></i></button>
                                                 @endif
                                             </div>
                                         </div>
@@ -192,6 +205,9 @@
 
 @section('jsadmin')
     @include('admin.layouts.ckeditor.ckeditor')
+    {{-- start toastr --}}
+    <script src="{{ asset('toastr/js/toastr.min.js') }}"></script>
+    {{-- end toastr --}}
     <script src="{{ asset('admin/custom/js/edit.js') }}"></script>
     <script>
         $('.select2').select2({
@@ -211,7 +227,7 @@
                     <input type="file" class="form-control" name="images[]" accept="image/*">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="image_titles[]" placeholder="Image Title">
+                    <input type="text" class="form-control" name="titles[][en]" placeholder="Image Title">
                 </div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger remove-image"><i class="bx bxs-trash"></i></button>
@@ -225,5 +241,31 @@
                 e.target.closest('.image-row').remove();
             }
         });
+
+        function deleteRow(ImageId) {
+            $.ajax({
+                url: '{{ route('admin.delete-image') }}',
+                method: 'POST',
+                data: {
+                    image_id: ImageId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    toastr.success(response.message, 'Success!', {
+                        timeOut: 11000
+                    });
+                    e.target.closest('.image-row').remove();
+
+                },
+                error: function(error) {
+                    toast.error(error, 'error!', {
+                        timeOut: 11000
+                    });
+
+                }
+            });
+
+
+        }
     </script>
 @endsection

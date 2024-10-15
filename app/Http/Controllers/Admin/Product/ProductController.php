@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Models\FindUs;
 use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
+use App\Models\Product\ProductImage;
 use App\Models\TranslationKey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -80,7 +81,6 @@ class ProductController extends Controller
 
             // Create the product
             $product = Product::create($data);
-
             // Handle additional images
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $index => $image) {
@@ -143,24 +143,38 @@ class ProductController extends Controller
             }
             // Update the product
             $product->update($data);
-            // Handle additional images
-            if ($request->has('images')) {
-                foreach ($request->images as $index => $image) {
-                    $path = FileUploadHelper::uploadImage($image, 'products');
-                    $product->images()->create([
-                        'image' => $path,
-                        'title' => $request->titles[$index] ?? '',
-                    ]);
+
+// Handle additional images
+            $existingImageIds = $product->images->pluck('id')->toArray();
+            $updatedImageIds = $request->keys ?? [];
+            $imagesToDelete = array_diff($existingImageIds, $updatedImageIds);
+
+// Delete removed images
+            foreach ($imagesToDelete as $imageId) {
+                $image = ProductImage::find($imageId);
+                if ($image) {
+                    FileUploadHelper::deleteFile($image->image);
+                    $image->delete();
                 }
             }
 
-            // Remove images if any are marked for deletion
-            if ($request->has('removed_images')) {
-                foreach ($request->removed_images as $imageId) {
-                    $image = $product->images()->find($imageId);
-                    if ($image) {
-                        FileUploadHelper::deleteFile($image->image);
-                        $image->delete();
+            // Update or create images
+            if ($request->has('titles')) {
+                foreach ($request->titles as $index => $title) {
+                    $imageData = [
+                        'title' => $title, // Assuming 'en' is always present
+                    ];
+
+                    if (isset($request->images[$index])) {
+                        $imageData['image'] = FileUploadHelper::uploadImage($request->images[$index], 'products');
+                    }
+
+                    if (isset($request->keys[$index])) {
+                        // Update existing image
+                        ProductImage::where('id', $request->keys[$index])->update($imageData);
+                    } else {
+                        // Create new image
+                        $product->images()->create($imageData);
                     }
                 }
             }
@@ -226,5 +240,22 @@ class ProductController extends Controller
                 'message' => 'An error occurred while deleting products. Please try again or contact support.',
             ], 500);
         }
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $image = ProductImage::findOrFail($request->image_id);
+
+        if ($image->image) {
+            FileUploadHelper::deleteFile($image->image);
+        }
+
+        $image->delete();
+        
+        return response()->json([
+            'status' => 200,
+            'message' => 'Image deleted successfully',
+        ]);
+
     }
 }

@@ -33,6 +33,7 @@ class BlogRequest extends FormRequest
             'banner'=>'required|image',
             'video'=>'nullable',
             'is_active'=>'required|in:0,1',
+            'sort'=>'nullable',
             'published_at'=>'required|date',
              ];
         }else{
@@ -44,6 +45,7 @@ class BlogRequest extends FormRequest
             'banner'=>'sometimes|image',
             'video'=>'sometimes',
             'is_active'=>'sometimes|in:0,1',
+            'sort'=>'nullable',
             'published_at'=>'sometimes|date',
              ];
         }

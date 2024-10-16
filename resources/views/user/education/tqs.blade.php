@@ -22,7 +22,7 @@
             </div>
         @endif
         <div class="tabs-items">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            {{-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 @foreach ($subPartners as $sub)
                     <li class="nav-item" role="presentation">
                         <button class="nav-link @if ($loop->first) active @endif proj_bttn"
@@ -31,7 +31,29 @@
                             aria-controls="pills-{{ $sub->slug }}" aria-selected="true">{{ $sub->name }}</button>
                     </li>
                 @endforeach
-            </ul>
+            </ul> --}}
+            <div class="swiper-container">
+                <!-- Swiper Wrapper for Tabs -->
+                <div class="swiper-wrapper px-5">
+                    @foreach ($subPartners as $sub)
+                        <?php $string = str_replace(' ', '-', strtolower($sub->slug)); ?>
+                        <div class="swiper-slide nav-item" role="presentation">
+                            <button class="nav-link swiper-tab @if ($loop->first) active @endif"
+                                id="pills-{{ $sub->slug }}-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-{{ $sub->slug }}" type="button" role="tab"
+                                aria-controls="pills-{{ $sub->slug }}" aria-selected="true">{{ $sub->slug }}</button>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Swiper Navigation Buttons -->
+                <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide">
+                    <i class="fa fa-chevron-left"></i>
+                </div>
+                <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide">
+                    <i class="fa fa-chevron-right"></i>
+                </div>
+            </div>
 
             <div class="tab-content certificates_h" id="pills-tabContent">
                 @foreach ($subPartners as $sub)
@@ -123,4 +145,56 @@
             </div>
         </div>
     </div>
+@endsection
+@section('websiteScript')
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Custom tab handling
+    document.querySelectorAll('.nav-link').forEach(tab => {
+        tab.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-link.active').forEach(activeTab => {
+                activeTab.classList.remove('active');
+            });
+
+            // Remove active class from all tab panes
+            document.querySelectorAll('.tab-pane.active').forEach(activePane => {
+                activePane.classList.remove('show', 'active');
+            });
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Show and activate the corresponding tab pane
+            const id = this.getAttribute('aria-controls');
+            const tabPane = document.getElementById(id);
+            if (tabPane) {
+                tabPane.classList.add('show', 'active');
+            } else {
+                console.error(`Tab pane with id "${id}" not found`);
+            }
+        });
+    });
+
+    // Initialize Swiper
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        freeMode: true,
+        navigation: {
+            nextEl: '.slider-next',
+            prevEl: '.slider-prev',
+        },
+        keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+        },
+        mousewheel: {
+            forceToAxis: true,
+        }
+    });
+});
+    </script>
 @endsection

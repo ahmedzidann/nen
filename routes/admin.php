@@ -69,6 +69,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('product-categories/bulk-delete', [ProductCategoryController::class, 'bulkDelete'])->name('product-categories.delete_bulck');
     Route::resource('products', ProductController::class)->except('destroy');
     Route::post('products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.delete_bulck');
+    Route::post('product-image', [ProductController::class, 'deleteImage'])->name('delete-image');
     Route::resource('education-descriptions', EducationDescriptionController::class)->except('destroy');
     Route::post('education-descriptions/bulk-delete', [EducationDescriptionController::class, 'bulkDelete'])->name('education-descriptions.delete_bulck');
 

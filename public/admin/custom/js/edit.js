@@ -41,6 +41,7 @@
               },
               error: function (xhr) {
                   toastr.error(xhr.responseText, 'Error!', { timeOut: 11000 });
+                  
               },
               complete: function () {
                   // Re-enable submit button and remove loader

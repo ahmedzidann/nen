@@ -50,6 +50,10 @@ class LevelController extends Controller
     }
     public function store(Request $request):RedirectResponse
     {
+        $validateData = $request->validate([
+            'title'=>'required|max:255',
+            'category_id'=>'required|exists:pages,id',
+        ]);
         // app(StoreAdminAction::class)->handle($request->validated());
         Level::create([
             "title" => $request->title,
@@ -59,7 +63,7 @@ class LevelController extends Controller
     }
     public function edit(Admin $admin):View
     {
-        return view('admin.levels.crud',new LevelViewModel($admin));
+        return view('level.crud',new LevelViewModel($admin));
     }
     public function update(UpdateAdminRequest $request, Admin $admin):RedirectResponse
     {

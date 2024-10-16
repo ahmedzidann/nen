@@ -114,6 +114,11 @@
                                                     <input type="file" class="form-control-file dropify" id="main_image"
                                                         name="main_image">
                                                 </div>
+                                                <div class="form-group col-md-6 ">
+                                                    <label for="sort">Sort:</label>
+                                                    <input type="number" class="form-control" id="sort" name="sort"
+                                                        value="{{ old('sort') }}" required>
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <div class="form-check">
                                                         <input type="radio" class="form-check-input" id="activeOption"
@@ -121,8 +126,8 @@
                                                         <label class="form-check-label" for="activeOption">Active</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input type="radio" class="form-check-input" id="inactiveOption"
-                                                            value="0" name="is_active">
+                                                        <input type="radio" class="form-check-input"
+                                                            id="inactiveOption" value="0" name="is_active">
                                                         <label class="form-check-label"
                                                             for="inactiveOption">Inactive</label>
                                                     </div>
@@ -130,7 +135,7 @@
                                                 <div id="image-container">
                                                     <div class="row mb-3 image-row">
                                                         <div class="col">
-                                                            <input type="file" class="form-control" name="images[]"
+                                                            <input type="file" class="form-control imageUpload" name="images[]"
                                                                 accept="image/*">
                                                         </div>
                                                         <div class="col">
@@ -189,10 +194,10 @@
             newRow.className = 'row mb-3 image-row';
             newRow.innerHTML = `
                 <div class="col">
-                    <input type="file" class="form-control" name="images[]" accept="image/*">
+                    <input type="file" class="form-control imageUpload" name="images[]" accept="image/*">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="image_titles[]" placeholder="Image Title">
+                    <input type="text" class="form-control" name="titles[][en]" placeholder="Image Title">
                 </div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger remove-image"><i class="bx bxs-trash"></i></button>

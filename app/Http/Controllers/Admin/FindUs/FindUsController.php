@@ -113,7 +113,7 @@ class FindUsController extends Controller
 
         $fus->update($data);
         // app(UpdateAdminAction::class)->handle($admin,$request->validated());
-        return redirect()->route('admin.countries.index')->with('edit','Update Admin');
+        return redirect()->route('admin.find-us.index')->with('edit','Update Admin');
     }
     public function destroy(Request $request):RedirectResponse
     {

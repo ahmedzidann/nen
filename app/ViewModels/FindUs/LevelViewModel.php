@@ -1,12 +1,13 @@
 <?php
 namespace App\ViewModels\FindUs;
+use App\Models\Page;
 use App\Models\Admin;
-use App\Models\Category;
-use App\Models\Country;
 use App\Models\Level;
+use App\Models\Country;
+use App\Models\Category;
 use App\Models\TranslationKey;
-use Spatie\Permission\Models\Role;
 use Spatie\ViewModels\ViewModel;
+use Spatie\Permission\Models\Role;
 
 class LevelViewModel extends ViewModel
 {
@@ -23,7 +24,7 @@ class LevelViewModel extends ViewModel
     {
         $this->admin = is_null($admin) ? new Level(old()) : $admin;
         $this->type = is_null($admin)?'Create':'Edit' ;
-        $this->cats = Category::all();
+        $this->cats = Page::whereNull('parent_id')->get();
         $this->translation = TranslationKey::get();
         // $this->AdminRole = is_null($admin) ? new Country(old()) : $admin->roles->pluck('name','name')->first();
         $this->routeCreate = route('admin.levels.create');

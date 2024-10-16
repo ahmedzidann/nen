@@ -51,13 +51,49 @@
                                                         name="Title  {{ $translationFirst->name }}">
                                                     </x-admin.form.label-first>
                                                     <x-admin.form.input old="{{ 'title.' . $translationFirst->key }}"
-                                                        name="{{ 'title' . '[' . $translationFirst->key . ']' }}" type="text"
-                                                        required="" placeholder="Title {{ $translationFirst->name }}"
-                                                        class="form-control valid" :value="$management->translate('title', $translationFirst->key)">
+                                                        name="{{ 'title' . '[' . $translationFirst->key . ']' }}"
+                                                        type="text" required=""
+                                                        placeholder="Title {{ $translationFirst->name }}"
+                                                        class="form-control valid" :value="$management->translate(
+                                                            'title',
+                                                            $translationFirst->key,
+                                                        )">
                                                     </x-admin.form.input>
                                                     <x-admin.form.label-end star="*"
                                                         name="please enter Title  {{ $translationFirst->name }}">
                                                     </x-admin.form.label-end>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <x-admin.form.label-first class="form-label" name="sort">
+                                                    </x-admin.form.label-first>
+                                                    <x-admin.form.input old="{{ 'sort' }}"
+                                                        name="{{ 'sort' }}" type="number" required=""
+                                                        placeholder="sort" class="form-control valid" :value="$management->sort">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star="*" name="please enter sort">
+                                                    </x-admin.form.label-end>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <x-admin.form.label-first class="form-label"
+                                                        name="Checked switch checkbox status">
+                                                    </x-admin.form.label-first>
+                                                    <div class="col-sm-9">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div class="form-check">
+                                                                @foreach (App\Models\Page::STATUS as $status)
+                                                                    <div class="form-check">
+                                                                        <x-admin.form.radio :checked="$management->status == $status
+                                                                            ? 'checked'
+                                                                            : ''" name="status"
+                                                                            value="{{ $status }}" :model="$management">
+                                                                        </x-admin.form.radio>
+                                                                        <label class="form-check-label"
+                                                                            for="bsValidation6">{{ $status }}</label>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 {{-- ----------status end --}}
                                                 <div class="col-md-12">

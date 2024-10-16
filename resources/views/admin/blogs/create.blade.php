@@ -103,6 +103,11 @@
                                                     <input type="file" class="form-control-file dropify" id="video"
                                                         name="video" accept="*">
                                                 </div>
+                                                <div class="form-group col-md-6 ">
+                                                    <label for="sort">Sort:</label>
+                                                    <input type="number" class="form-control" id="sort"
+                                                        name="sort" value="{{ old('sort') }}" required>
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <div class="form-check">
                                                         <input type="radio" class="form-check-input" id="activeOption"
@@ -110,8 +115,8 @@
                                                         <label class="form-check-label" for="activeOption">Active</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input type="radio" class="form-check-input" id="inactiveOption"
-                                                            value="0" name="is_active">
+                                                        <input type="radio" class="form-check-input"
+                                                            id="inactiveOption" value="0" name="is_active">
                                                         <label class="form-check-label"
                                                             for="inactiveOption">Inactive</label>
                                                     </div>

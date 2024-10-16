@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use App\Models\Management;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Management;
 use App\ViewModels\Management\ManagementViewModel;
+use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class ManagementController extends Controller
 {
@@ -57,6 +57,8 @@ class ManagementController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title.*' => ['required'],
+            'sort' => 'nullable',
+            'status' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -83,6 +85,8 @@ class ManagementController extends Controller
         if ($request->submit2 == 'en') {
             $validator = Validator::make($request->all(), [
                 'title.' . $request->submit2 => ['required'],
+                'sort' => 'nullable',
+                'status' => 'nullable',
             ]);
         } else {
             $validator = Validator::make($request->all(), [
@@ -96,7 +100,7 @@ class ManagementController extends Controller
             ]);
         } else {
 
-            $management->update( $validator->validated());
+            $management->update($validator->validated());
 
             return response()->json([
                 'status' => 200,

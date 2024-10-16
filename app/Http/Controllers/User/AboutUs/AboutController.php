@@ -95,7 +95,7 @@ class AboutController extends Controller
     {
         $achievement = Page::where('slug', 'our-team')->first();
         $slider = Slider::where('page_id', $achievement->id)->first();
-        $managements = Management::orderBy('sort','DESC')->get();
+        $managements = Management::orderBy('sort','ASC')->get();
 
         if ($achievement) {
             return view('user.about.our-team', [

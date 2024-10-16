@@ -842,4 +842,6 @@
   'Select Education Category' => 'Select Education Category',
   'Select Page' => 'Select Page',
   'Select Main Page' => 'Select Main Page',
+  'Page  ' => 'Page  ',
+  'levels Edit' => 'Levels Edit',
 );

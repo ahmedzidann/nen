@@ -76,8 +76,10 @@ Route::group(['prefix' => 'doc-validation', 'as' => 'doc-validation.', 'name' =>
 Route::group(['prefix' => 'find-us', 'as' => 'find-us.', 'name' => 'find-us.'], function () {
     foreach (Page::where('parent_id', Page::where('slug', 'find-us')->first()->id)->get() as $page) {
         Route::get($page->slug, [FindUsController::class, 'index'])->name($page->slug);
+        
     }
 });
+Route::get('find-us/data', [FindUsController::class, 'getData'])->name('find-us.data');
 
 //Projects Routes
 Route::get('Projects/{slug?}/{id?}', [ProjectController::class, 'index'])->name('projects');

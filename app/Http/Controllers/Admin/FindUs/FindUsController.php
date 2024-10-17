@@ -56,6 +56,7 @@ class FindUsController extends Controller
             'level_id' => 'required|exists:levels,id',
             'certificate_id' => 'required|exists:certificates,id',
             "specialization_id" =>"required",
+            "state_id" =>"required",
             // Add other validation rules as needed
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',
@@ -92,6 +93,7 @@ class FindUsController extends Controller
             'level_id' => 'required|exists:levels,id',
             'certificate_id' => 'required|exists:certificates,id',
             "specialization_id" =>"required",
+            "state_id" =>"required",
             // Add other validation rules as needed
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',

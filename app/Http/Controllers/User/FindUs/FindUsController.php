@@ -1,31 +1,68 @@
 <?php
 namespace App\Http\Controllers\User\FindUs;
 
-use App\Models\Page;
-use App\Models\Level;
-use App\Models\State;
-use App\Models\FindUs;
-use App\Models\Slider;
-use App\Models\Country;
-use App\Models\Certificate;
-use Illuminate\Http\Request;
-use App\Models\Specialization;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
+use App\Models\FindUs;
+use App\Models\Level;
+use App\Models\Page;
+use App\Models\Slider;
+use App\Models\Specialization;
+use App\Models\State;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class FindUsController extends Controller
 {
+    public function getData()
+    {
+        $query = FindUs::query()
+            ->when(request()->category_id, function ($q) {
+                return $q->where('page_id', request()->category_id);
+            })
+            ->when(request()->state_id, function ($q) {
+                return $q->where('state_id', request()->state_id);
+            })
+            ->when(request()->country_id, function ($q) {
+                return $q->whereHas('state', function ($t) {
+                    $t->where('country_id', request()->country_id);
+                });
 
-    // public function index():View
-    // {
+            })
+            ->when(request()->level_id, function ($q) {
+                return $q->whereHas('state', function ($t) {
+                    $t->where('level_id', request()->level_id);
+                });
 
-    //     if(Route::currentRouteName() == 'education.tqs'){
+            })
+            ->when(request()->specialization_id, function ($q) {
+                return $q->whereHas('state', function ($t) {
+                    $t->where('specialization_id', request()->specialization_id);
+                });
 
-    //         return $this->tqsView();
-    //     };
-    //     return $this->certificatesView();
-    // }
+            });
+            
+        return DataTables::of($query)
+            ->addColumn('country', function ($item) {
+                return $item->state?->country?->title;
+            })
+            ->addColumn('flag_url', function ($item) {
+                // return asset('content/images/small_icon/Flag_of_' . $item->state?->country?->title . '.svg.webp');
+                return $item->state->country->getFirstMediaUrl('flag');
+                ;
+            })
+        // ->addColumn('work_times', function ($item) {
+        //     return [
+        //         'from_at' => $item->from_at ? \Carbon\Carbon::parse($item->from_at)->format('l h:i A') : '',
+        //         'to_at' => $item->to_at ? \Carbon\Carbon::parse($item->to_at)->format('l h:i A') : '',
+        //     ];
+        // })
+            ->addColumn('map_url', function ($item) {
+                return "https://www.google.com/maps/?q={$item->lat},{$item->lng}";
+            })
+            ->toJson();
+    }
 
     public function index(): View
     {
@@ -64,7 +101,7 @@ class FindUsController extends Controller
                 })->get();
 
             $levels = Level::whereHas('findus')->get();
-            $certs = Certificate::whereHas('findus')->get();
+            $categories = Page::where('parent_id', 10)->get();
             $specs = Specialization::whereHas('findus')->get();
 
             return view('user.find-us.index', ['tech' => $partner, 'items' => $items,
@@ -74,7 +111,7 @@ class FindUsController extends Controller
                 "locations" => $locations,
                 "zoom" => $zoom,
                 "levels" => $levels,
-                "certs" => $certs,
+                "categories" => $categories,
                 "specs" => $specs,
             ]);
         } else {
@@ -83,38 +120,4 @@ class FindUsController extends Controller
 
     }
 
-    public function getData(Request $request)
-    {
-        $query = FindUs::query()
-            ->where("page_id", $request->page_id)
-            ->when($request->state_id, function ($q) use ($request) {
-                return $q->where('state_id', $request->state_id);
-            })
-            ->when($request->country_id, function ($q) use ($request) {
-                return $q->whereHas('state', function ($t) use ($request) {
-                    $t->where('country_id', $request->country_id);
-                });
-
-            });
-            // dd($query->get());
-        return DataTables::of($query)
-            ->addColumn('country', function ($item) {
-                return $item->state?->country?->title;
-            })
-            ->addColumn('flag_url', function ($item) {
-                // return asset('content/images/small_icon/Flag_of_' . $item->state?->country?->title . '.svg.webp');
-                return $item->state->country->getFirstMediaUrl('flag');
-;
-            })
-            // ->addColumn('work_times', function ($item) {
-            //     return [
-            //         'from_at' => $item->from_at ? \Carbon\Carbon::parse($item->from_at)->format('l h:i A') : '',
-            //         'to_at' => $item->to_at ? \Carbon\Carbon::parse($item->to_at)->format('l h:i A') : '',
-            //     ];
-            // })
-            ->addColumn('map_url', function ($item) {
-                return "https://www.google.com/maps/?q={$item->lat},{$item->lng}";
-            })
-            ->toJson();
-    }
 }

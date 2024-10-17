@@ -30,12 +30,25 @@
                 <div id="map"></div>
                 <div class="global-search-section mt-md-4 mt-3">
                     <form>
+                        @csrf
                         <div class="row g-3">
+
+                            <!-- Categories -->
+                            <div class="col-xl-4 col-md-4 col-sm-6 col-12">
+                                <!-- <label for="certificate" class="form-label search-label">Certificates</label> -->
+                                <select class="form-select search-select" name="category_id" id="category_id"
+                                    aria-label="Select Category">
+                                    <option value="" selected disabled>Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <!-- Level -->
                             <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                                 <!-- <label for="level" class="form-label search-label">Level</label> -->
-                                <select name='level_id' class="form-select search-select" aria-label="Select level">
+                                <select name='level_id' id="level_id" class="form-select search-select" aria-label="Select level">
                                     <option value="" selected disabled>Select Level</option>
                                     @foreach ($levels as $level)
                                         <option value="{{ $level->id }}">{{ $level->title }}</option>
@@ -43,21 +56,10 @@
                                 </select>
                             </div>
 
-                            <!-- Certificates -->
-                            <div class="col-xl-4 col-md-4 col-sm-6 col-12">
-                                <!-- <label for="certificate" class="form-label search-label">Certificates</label> -->
-                                <select class="form-select search-select" aria-label="Select certificates">
-                                    <option value="" selected disabled>Select Certificates</option>
-                                    @foreach ($certs as $certificate)
-                                        <option value="{{ $certificate->id }}">{{ $certificate->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
                             <!-- Specializations -->
                             <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                                 <!-- <label for="specialization" class="form-label search-label">Specializations</label> -->
-                                <select class="form-select search-select" aria-label="Select specializations">
+                                <select class="form-select search-select" name="specialization_id" id="specialization_id" aria-label="Select specializations">
                                     <option value="" selected disabled>Select Specializations</option>
                                     @foreach ($specs as $specializations)
                                         <option value="{{ $specializations->id }}">{{ $specializations->title }}</option>
@@ -67,7 +69,8 @@
 
                             <!-- Country -->
                             <div class="col-xl-4 col-md-4 col-sm-6 col-12">
-                                <select name='country_id' class="form-select search-select" aria-label="Select country">
+                                <select name='country_id' class="form-select search-select" id="country_id"
+                                    aria-label="Select country">
                                     <option value="" selected disabled>Select Country</option>
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}">{{ $country->title }}</option>
@@ -235,7 +238,8 @@
 
                 <form>
                     <div class="select_div">
-                        <select name='country_id' class="form-select" aria-label="Default select example">
+                        <select name='country_id' class="form-select" id="country_id"
+                            aria-label="Default select example">
                             <option value="">select country</option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country->id }}">{{ $country->title }}</option>
@@ -248,17 +252,20 @@
                                 <option value="{{ $state->id }}">{{ $state->title }}</option>
                             @endforeach
                         </select>
+                        <!-- Categories -->
+                        <!-- <label for="certificate" class="form-label search-label">Certificates</label> -->
+                        <select class="form-select search-select" name="category_id" aria-label="Select Category">
+                            <option value="" selected disabled>Select Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+
                         <select name='level_id' class="form-select" aria-label="Default select example">
                             <option value="" selected disabled>select level</option>
 
                             @foreach ($levels as $level)
                                 <option value="{{ $level->id }}">{{ $state->title }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected="" selected disabled>select certificates</option>
-                            @foreach ($certs as $certificate)
-                                <option value="{{ $certificate->id }}">{{ $certificate->title }}</option>
                             @endforeach
                         </select>
 
@@ -349,18 +356,25 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
     <script>
-        $(document).ready(function() {
-            let stateId = $('#state_id').val();
+        var stateId;
+        var categoryId;
+        var countryId;
+        var level_id;
+        var specialization_id;
 
-            $('#findUsTable').DataTable({
+        $(document).ready(function() {
+            let table = $('#findUsTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('find-us.data') }}',
                     data: function(d) {
                         d.page_id = '{{ request('page_id') }}';
-                        d.country_id = '{{ request('country_id') }}';
+                        d.country_id = countryId;
+                        d.category_id = categoryId;
                         d.state_id = stateId;
+                        d.level_id = level_id;
+                        d.specialization_id = specialization_id;
                     }
                 },
                 columns: [{
@@ -416,6 +430,16 @@
                         }
                     },
                 ]
+            });
+
+            $(' #country_id, #category_id, #state_id, #level_id, #specialization_id').on('change', function() {
+                stateId = $('#state_id').val();
+                categoryId = $('#category_id').val();
+                countryId = $('#country_id').val();
+                level_id = $('#level_id').val();
+                specialization_id = $('#specialization_id').val();
+
+                table.draw();
             });
         });
     </script>

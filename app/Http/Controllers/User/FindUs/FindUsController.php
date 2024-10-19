@@ -17,7 +17,7 @@ class FindUsController extends Controller
 {
     public function getData()
     {
-        $query = FindUs::query()
+        $query = FindUs::query()->where("page_id", request()->page_id)
             ->when(request()->category_id, function ($q) {
                 return $q->where('page_id', request()->category_id);
             })
@@ -28,7 +28,6 @@ class FindUsController extends Controller
                 return $q->whereHas('state', function ($t) {
                     $t->where('country_id', request()->country_id);
                 });
-
             })
             ->when(request()->level_id, function ($q) {
                 return $q->whereHas('state', function ($t) {
@@ -42,7 +41,7 @@ class FindUsController extends Controller
                 });
 
             });
-            
+
         return DataTables::of($query)
             ->addColumn('country', function ($item) {
                 return $item->state?->country?->title;

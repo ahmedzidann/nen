@@ -29,7 +29,7 @@
             @if ($items->count())
                 <div id="map"></div>
                 <div class="global-search-section mt-md-4 mt-3">
-                    <form>
+                    <form action="{{ request()->url() }}">
                         @csrf
                         <div class="row g-3">
 
@@ -48,7 +48,8 @@
                             <!-- Level -->
                             <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                                 <!-- <label for="level" class="form-label search-label">Level</label> -->
-                                <select name='level_id' id="level_id" class="form-select search-select" aria-label="Select level">
+                                <select name='level_id' id="level_id" class="form-select search-select"
+                                    aria-label="Select level">
                                     <option value="" selected disabled>Select Level</option>
                                     @foreach ($levels as $level)
                                         <option value="{{ $level->id }}">{{ $level->title }}</option>
@@ -59,7 +60,8 @@
                             <!-- Specializations -->
                             <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                                 <!-- <label for="specialization" class="form-label search-label">Specializations</label> -->
-                                <select class="form-select search-select" name="specialization_id" id="specialization_id" aria-label="Select specializations">
+                                <select class="form-select search-select" name="specialization_id" id="specialization_id"
+                                    aria-label="Select specializations">
                                     <option value="" selected disabled>Select Specializations</option>
                                     @foreach ($specs as $specializations)
                                         <option value="{{ $specializations->id }}">{{ $specializations->title }}</option>
@@ -109,7 +111,7 @@
                         </div>
 
                         <input type="hidden" name="page_id" value="{{ request()->page_id }}">
-                        <input type="hidden" name="country_id" value="{{ request()->country_id }}">
+                        {{-- <input type="hidden" name="country_id" value="{{ request()->country_id }}"> --}}
                     </form>
                 </div>
 
@@ -370,7 +372,7 @@
                     url: '{{ route('find-us.data') }}',
                     data: function(d) {
                         d.page_id = '{{ request('page_id') }}';
-                        d.country_id = countryId;
+                        d.country_id = countryId || '{{ request()->country_id }}';
                         d.category_id = categoryId;
                         d.state_id = stateId;
                         d.level_id = level_id;

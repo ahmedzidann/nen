@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('titleadmin')
-    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Blog'))) }}
+    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Resources'))) }}
 @endsection
 @section('cssadmin')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
@@ -63,15 +63,16 @@
                                                     class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Category')) }}
                                                     <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
                                                 <select class="form-select w-100" id="category_id"
-                                                    data-placeholder="Choose Category" name="main_category_id">
+                                                    data-placeholder="Choose Category" name="main_category">
 
                                                     <option selected="" value="" disabled selected>
                                                         {{ ucfirst(TranslationHelper::translate('Select Category')) }}
                                                     </option>
                                                     @foreach ($categories as $category)
                                                         }
-                                                        <option value="{{ $category->id }}">
-                                                            {{ $category->name }}</option>
+                                                        <option value="{{ $category->slug }}"
+                                                            data-id="{{ $category->id }}">
+                                                            {{ $category->slug }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -80,7 +81,7 @@
                                                     class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Sub Category')) }}
                                                     <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
                                                 <select class="form-select w-100" id="sub_categories"
-                                                    data-placeholder="Choose Sub Category" name="sub_category_id">
+                                                    data-placeholder="Choose Sub Category" name="sub_category">
 
                                                     <option selected="" value="" disabled selected>
                                                         {{ ucfirst(TranslationHelper::translate('Select Sub Category')) }}
@@ -88,25 +89,40 @@
 
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-6 mt-3">
-                                                <label for="title">Title in English</label>
-                                                <input type="text" class="form-control" id="title" name="title[en]"
-                                                    value="{{ old('title[en]') }}" required>
+                                            <div id="resourceRows">
+                                                <div class="resource-row">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-4">
+                                                            <label for="title">Title in English</label>
+                                                            <input type="text" class="form-control" name="title[][en]"
+                                                                required>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="form-label">Resource Type</label>
+                                                            <select class="form-select resource-type" name="type[]">
+                                                                <option value="" disabled selected>Select Resource
+                                                                    Type</option>
+                                                                <option value="image">Image</option>
+                                                                <option value="file">File</option>
+                                                                <option value="url">URL</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-3 resource-input-container">
+                                                            <!-- Dynamic input will be appended here -->
+                                                        </div>
+                                                        <div class="col-md-1 d-flex align-items-end">
+                                                            <button type="button" class="btn btn-danger remove-row mb-3"><i
+                                                                    class="bx bxs-trash"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6 mt-3">
-                                                <label
-                                                    class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Resource Type')) }}
-                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
-                                                <select class="form-select w-100" id="resource_type"
-                                                    data-placeholder="Choose Resource Type" name="type">
 
-                                                    <option selected="" value="" disabled selected>
-                                                        {{ ucfirst(TranslationHelper::translate('Select Resource Type')) }}
-                                                    </option>
-                                                    <option value="image">image</option>
-                                                    <option value="file">file</option>
-                                                    <option value="url">url</option>
-                                                </select>
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-success" id="addRow"><i
+                                                            class=" bx bx-plus-medical"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +151,7 @@
     <script>
         $(document).ready(function() {
             $('#category_id').on('change', function() {
-                var selectedValue = this.value;
+                var selectedValue = $(this).find(':selected').data('id');
                 let url = '{{ route('admin.get-child-pages', ['page_id' => ':id']) }}';
                 url = url.replace(':id', selectedValue); // Replace the placeholder with the actual ID
 
@@ -156,7 +172,8 @@
                                 // Create a new option element
                                 var option = $('<option></option>')
                                     .attr('value', item
-                                        .id) // Assuming each item has an 'id' property
+                                        .slug
+                                    ) // Assuming each item has an 'id' property
                                     .text(item
                                         .slug
                                     ); // Assuming each item has a 'name' property
@@ -179,51 +196,73 @@
         });
     </script>
     <script>
-        document.getElementById('resource_type').addEventListener('change', function() {
-            // Remove any existing dynamic input fields
-            const existingDynamicFields = document.querySelector('.dynamic-fields');
-            if (existingDynamicFields) {
-                existingDynamicFields.remove();
+        $(document).ready(function() {
+            // Add new row
+            $('#addRow').click(function() {
+                let newRow = $('.resource-row:first').clone();
+                newRow.find('input').val('');
+                newRow.find('select').val('');
+                newRow.find('.resource-input-container').empty();
+                $('#resourceRows').append(newRow);
+                updateResourceIndexes();
+            });
+
+            // Remove row
+            $(document).on('click', '.remove-row', function() {
+                if ($('.resource-row').length > 1) {
+                    $(this).closest('.resource-row').remove();
+                    updateResourceIndexes();
+                }
+            });
+
+            // Handle resource type change
+            $(document).on('change', '.resource-type', function() {
+                let container = $(this).closest('.row').find('.resource-input-container');
+                let rowIndex = $(this).closest('.resource-row').index();
+                container.empty();
+
+                switch ($(this).val()) {
+                    case 'image':
+                        container.append(`
+                            <label class="form-label">Upload Image</label>
+                            <input type="file" class="form-control" name="resource[${rowIndex}]" accept="image/*" required>
+                        `);
+                        break;
+                    case 'file':
+                        container.append(`
+                            <label class="form-label">Upload File</label>
+                            <input type="file" class="form-control" name="resource[${rowIndex}]" required>
+                        `);
+                        break;
+                    case 'url':
+                        container.append(`
+                            <label class="form-label">Enter URL</label>
+                            <input type="url" class="form-control" name="resource[${rowIndex}]" required>
+                        `);
+                        break;
+                }
+            });
+
+            // Update indexes for all resource inputs
+            function updateResourceIndexes() {
+                $('.resource-row').each(function(index) {
+                    let container = $(this).find('.resource-input-container');
+                    let input = container.find('input');
+                    if (input.length) {
+                        let currentName = input.attr('name');
+                        if (currentName) {
+                            if (currentName.includes('[file]')) {
+                                input.attr('name', `resource[${index}][file]`);
+                            } else if (currentName.includes('[url]')) {
+                                input.attr('name', `resource[${index}][url]`);
+                            }
+                        }
+                    }
+                });
             }
 
-            const selectedType = this.value;
-            const formContent = document.createElement('div');
-            formContent.className = 'dynamic-fields card-body p-4 row';
-
-            let inputHTML = '';
-
-            switch (selectedType) {
-                case 'image':
-                    inputHTML = `
-                <div class="col-md-12">
-                    <label class="form-label">Image File</label>
-                    <input type="file" class="form-control dropify" name="resource" accept="image/*" required>
-                </div>`;
-                    break;
-
-                case 'file':
-                    inputHTML = `
-                <div class="col-md-12">
-                    <label class="form-label">File Upload</label>
-                    <input type="file" class="form-control" name="resource" required>
-                </div>`;
-                    break;
-
-                case 'url':
-                    inputHTML = `
-                <div class="col-md-12">
-                    <label class="form-label">URL</label>
-                    <input type="url" class="form-control" name="resource" required placeholder="https://">
-                </div>`;
-                    break;
-            }
-
-            formContent.innerHTML = inputHTML;
-
-            // Insert the new fields before the submit button div
-            const submitButtonDiv = document.querySelector('.d-md-flex.d-grid');
-            submitButtonDiv.parentNode.insertBefore(formContent, submitButtonDiv);
-            $('.dropify').dropify();
+            // Initialize first row
+            $('.resource-type:first').trigger('change');
         });
     </script>
 @endsection

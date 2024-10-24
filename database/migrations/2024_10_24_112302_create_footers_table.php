@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\StaticTable;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -12,14 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resources', function (Blueprint $table) {
+        Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->string('main_category');
-            $table->string('sub_category');
-            $table->mediumText('title');
-            $table->string('type');
-            $table->string('resource');
+            $table->tinyInteger('type');
+            $table->mediumText('title')->nullable();
+            $table->string('url')->nullable();
             $table->enum('status', StaticTable::STATUS)->default('Active');
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resources');
+        Schema::dropIfExists('footers');
     }
 };

@@ -19,28 +19,23 @@ class ResourceController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Resource::query();
+            $data = Resource::query()->select('main_category', 'sub_category')->distinct();
             $language = app()->getLocale(); // Get current language
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" name="checkbox[]" class="form-check-input blogs_checkbox" value="' . $row->id . '" />';
+                    return '<input type="checkbox" name="checkbox[]" class="form-check-input blogs_checkbox" data-sub-category="' . $row->sub_category . '"  data-main-category="' . $row->main_category . '" />';
                 })
-                ->editColumn('id', function () {
+                ->addColumn('id', function () {
                     static $count = 0;
                     $count++;
                     return $count;
                 })
-                ->editColumn('title', function ($row) use ($language) {
-                    return $row->translate('title', $language);
-                })
-                ->editColumn('created_at', function ($row) {
-                    return $row->created_at->format('Y-m-d');
-                })
                 ->addColumn('action', function ($row) {
+                    $id = Resource::query()->where(['main_category' => $row->main_category, 'sub_category' => $row->sub_category])->first()->id;
                     return '<div class="d-flex order-actions">
-                                <a href="' . route('admin.resources.edit', $row->id) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
+                                <a href="' . route('admin.resources.edit', $id) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
                             </div>';
                 })
                 ->rawColumns(['checkbox', 'action'])
@@ -64,12 +59,23 @@ class ResourceController extends Controller
      */
     public function store(ResourceRequest $request)
     {
-        $data = $request->validated();
-        if (in_array($request->type, ['image', 'file']) && $request->hasFile('resource')) {
-            $data['resource'] = FileUploadHelper::uploadImage($request->file('resource'), 'resources');
-        }
+        foreach ($request->type as $index => $type) {
+            if ($type == 'image' && $request->resource[$index]) {
+                $data['resource'] = FileUploadHelper::uploadImage($request->resource[$index], 'resources');
+            }
+            if ($type == 'file' && $request->resource[$index]) {
+                $data['resource'] = FileUploadHelper::uploadFile($request->resource[$index], 'resources');
+            }
+            if ($type == 'url' && $request->resource[$index]) {
+                $data['resource'] = $request->resource[$index];
+            }
 
-        Resource::create($data);
+            $data['main_category'] = $request->main_category;
+            $data['sub_category'] = $request->sub_category;
+            $data['title'] = $request->title[$index];
+            $data['type'] = $type;
+            Resource::create($data);
+        }
 
         redirect()->route('admin.resources.index')->with('success', 'Success Add Product Category');
         return response()->json([
@@ -87,37 +93,149 @@ class ResourceController extends Controller
     {
         $categories = Page::whereNull('parent_id')->get();
         $langs = TranslationKey::get();
-        return view('admin.resources.edit', compact('resource', 'langs', 'categories'));
+        $resources = Resource::where([
+            "main_category" => $resource->main_category,
+            "sub_category" => $resource->sub_category,
+        ])->get();
+        return view('admin.resources.edit', compact('resource', 'resources', 'langs', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ResourceRequest $request, Resource $resource)
+    public function update(ResourceRequest $request, Resource $id)
     {
-        $data = $request->validated();
+        $validData = $request->validated();
+        foreach ($validData['keys'] as $index => $key) {
+            $data = [];
 
-        if (in_array($request->type, ['image', 'file']) && $request->hasFile('resource')) {
-            FileUploadHelper::deleteFile($resource->resource);
-            $data['resource'] = FileUploadHelper::uploadImage($request->file('resource'), 'resources');
+            // Handle file uploads if present
+            if (isset($validData['resource'][$index])) {
+                $resource = Resource::find($key);
+
+                if ($request->type[$index] == 'image') {
+                    // Delete old image if exists
+                    if ($resource->resource) {
+                        FileUploadHelper::deleteFile($resource->resource);
+                    }
+                    $data['resource'] = FileUploadHelper::uploadImage($validData['resource'][$index], 'resources');
+                }
+
+                if ($request->type[$index] == 'file') {
+                    // Delete old file if exists
+                    if ($resource->resource) {
+                        FileUploadHelper::deleteFile($resource->resource);
+                    }
+                    $data['resource'] = FileUploadHelper::uploadFile($validData['resource'][$index], 'resources');
+                }
+                if ($request->type[$index] == 'url') {
+                    // Delete old file if exists
+                    if ($resource->resource) {
+                        FileUploadHelper::deleteFile($resource->resource);
+                    }
+                    $data['resource'] = $validData['resource'][$index];
+                }
+
+            }
+
+            // Update basic information
+            $data['main_category'] = $validData['main_category'];
+            $data['sub_category'] = $validData['sub_category'];
+            $data['title'] = $validData['title'][$index];
+            $data['type'] = $validData['type'][$index];
+
+            // Update the resource record
+            Resource::where('id', $key)->update($data);
         }
 
-        $resource->update($data);
+        $newData = array_diff_key($validData['title'], $validData['keys']);
+
+        if (count($newData) > 0) {
+            foreach ($newData as $index => $key) {
+                $new = [];
+                if ($request->type[$index] == 'image') {
+                    $new['resource'] = FileUploadHelper::uploadImage($validData['resource'][$index], 'resources');
+                }
+
+                if ($request->type[$index] == 'file') {
+                    $new['resource'] = FileUploadHelper::uploadFile($validData['resource'][$index], 'resources');
+                }
+                if ($request->type[$index] == 'url') {
+                    $new['resource'] = $validData['resource'][$index];
+                }
+
+                // Update basic information
+                $new['main_category'] = $validData['main_category'];
+                $new['sub_category'] = $validData['sub_category'];
+                $new['title'] = $validData['title'][$index];
+                $new['type'] = $validData['type'][$index];
+
+                // Update the resource record
+                Resource::create($new);
+            }
+        }
 
         return response()->json([
             'status' => 200,
-            'message' => 'Update Product Category',
+            'message' => 'Success Update Resource',
             'redirect_url' => route('admin.resources.index'),
         ]);
     }
 
+    public function destroy(Resource $resource)
+    {
+
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function bulkDelete(Request $request)
     {
-        Resource::whereIn('id', $request->ids)->delete();
+        try {
+            foreach ($request->categories as $category) {
+                // First get all resources that match the category criteria
+                $resources = Resource::where([
+                    "main_category" => $category["main_category"],
+                    "sub_category" => $category["sub_category"],
+                ])->get();
 
-        return redirect()->back()->with('success', 'Resources Deleted');
+                // Delete associated files first
+                foreach ($resources as $resource) {
+                    if ($resource->type === 'image' || $resource->type === 'file') {
+                        FileUploadHelper::deleteFile($resource->resource);
+                    }
+                }
+
+                // Then delete the records
+                Resource::where([
+                    "main_category" => $category["main_category"],
+                    "sub_category" => $category["sub_category"],
+                ])->delete();
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Resources deleted successfully',
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error deleting resources: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+    public function deleteResource($resource_id)
+    {
+        $resource = Resource::find($resource_id);
+
+        if ($resource) {
+            // Delete the record
+            $resource->delete();
+            return response()->json(['message' => 'Resource deleted successfully!']);
+        } else {
+            // Return an error response if the record does not exist
+            return response()->json(['message' => 'Resource not found.'], 404);
+        }
     }
 }

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('titleadmin')
-    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Resources' . ' View'))) }}
+    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Footer Data' . ' View'))) }}
 @endsection
 @section('cssadmin')
 @endsection
@@ -23,7 +23,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i
                                         class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ str_replace('-', ' ', ucfirst('Resources')) }}
+                                {{ str_replace('-', ' ', ucfirst('Footer Data')) }}
                             </li>
                         </ol>
                     </nav>
@@ -35,7 +35,7 @@
                 <div class="card-header">
 
                     <br>
-                    <a href="{{ route('admin.resources.create') }}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
+                    <a href="{{route('admin.footer.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
                         <i class="bx bxs-plus-square"></i>{{ TranslationHelper::translate(ucfirst('Create') ?? '') }}
                     </a>
                     <button type="button" class="btn btn-secondary btn-xs " name="bulk_delete" id="bulk_delete"><i
@@ -51,8 +51,9 @@
                             <tr>
                                 <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                                 <th>{{ TranslationHelper::translate(ucfirst('#') ?? '') }}</th>
-                                <th>{{ TranslationHelper::translate(ucfirst('Category') ?? '') }}</th>
-                                <th>{{ TranslationHelper::translate(ucfirst('Sub Category') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('title') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('Type') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('Created At') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Processes') ?? '') }}</th>
                             </tr>
                         </thead>
@@ -72,7 +73,7 @@
 
     <script>
         var language = $('#Admins').val();
-        let url = '{{ route('admin.resources.index') }}'
+        let url = '{{ route('admin.footer.index') }}'
         url = url.replace(':id', language);
         $(document).ready(function() {
             var table = initializeDataTable(
@@ -88,10 +89,13 @@
                         data: 'id'
                     },
                     {
-                        data: 'main_category'
+                        data: 'title'
                     },
                     {
-                        data: 'sub_category'
+                        data: 'type'
+                    },
+                    {
+                        data: 'created_at'
                     },
                     {
                         data: 'action',
@@ -107,11 +111,9 @@
                     }
                 ], {} // Extra data to pass with the request (optional)
             );
-            bulkDeleteResources(table, "{{ route('admin.resources.delete_bulck') }}");
+            bulkDelete(table, "{{ route('admin.footer.delete_bulck') }}");
 
             // Setup bulk delete functionality
         });
-
-
     </script>
 @endsection

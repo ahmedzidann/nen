@@ -843,4 +843,13 @@
   'Select Main Page' => 'Select Main Page',
   'Page  ' => 'Page  ',
   'levels Edit' => 'Levels Edit',
+  'Resources View' => 'Resources View',
+  'Select Resource Type' => 'Select Resource Type',
+  'Resource Type' => 'Resource Type',
+  'Select Sub Category' => 'Select Sub Category',
+  'Sub Category' => 'Sub Category',
+  'resources' => 'Resources',
+  'Footer Data View' => 'Footer Data View',
+  'Footer Data' => 'Footer Data',
+  'Resources' => 'Resources',
 );

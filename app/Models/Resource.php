@@ -15,8 +15,8 @@ class Resource extends Model
 
     protected $fillable = [
         'title',
-        'main_category_id',
-        'sub_category_id',
+        'main_category',
+        'sub_category',
         'type',
         'resource',
         'status',

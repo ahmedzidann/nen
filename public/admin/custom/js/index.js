@@ -94,3 +94,66 @@ function bulkDelete(table, deleteUrl) {
         });
     });
 }
+
+function bulkDeleteResources(table, deleteUrl) {
+    $(document).on('click', '#bulk_delete', function () {
+
+        var ids = [];
+        var categories = [];
+
+        $('.blogs_checkbox:checked').each(function () {
+            ids.push($(this).val());
+            categories.push({
+                main_category: $(this).data('main-category'),
+                sub_category: $(this).data('sub-category')
+            });
+        });
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (ids.length > 0) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: deleteUrl,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        data: {
+                            categories: categories // Passing categories data
+                        },
+                        success: function (response) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your item has been deleted.',
+                                'success'
+                            );
+                            table.draw(); // Reload table data
+                        },
+                        error: function (xhr) {
+                            Swal.fire(
+                                'Error!',
+                                'An error occurred while deleting the item.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            } else {
+                Swal.fire(
+                    'Error!',
+                    'Please select at least one item.',
+                    'error'
+                );
+            }
+        });
+    });
+}

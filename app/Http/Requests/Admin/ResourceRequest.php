@@ -21,13 +21,21 @@ class ResourceRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'title.*' => 'required',
-            'main_category_id' => 'required|exists:pages,id',
-            'sub_category_id' => 'required|exists:pages,id',
-            'type' => 'required|in:image,file,url',
-            'resource' => 'required',
+            'main_category' => 'required|exists:pages,slug',
+            'sub_category' => 'required|exists:pages,slug',
+            'type.*' => 'required|in:image,file,url',
+            'resource.*' => 'required',
             'status' => 'nullable',
         ];
+        if ($this->getMethod() == 'post') {
+            return $rules;
+        } else {
+            return $rules + [
+                'keys.*' => 'sometimes',
+            ];
+
+        }
     }
 }

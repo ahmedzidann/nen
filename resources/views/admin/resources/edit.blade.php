@@ -65,16 +65,16 @@
                                                             <span style="color: red">{{ $star ?? '' }}</span> </label>
                                                         <br>
                                                         <select class="form-select w-100" id="category_id"
-                                                            data-placeholder="Choose Category" name="main_category_id">
+                                                            data-placeholder="Choose Category" name="main_category">
 
                                                             <option selected="" value="" disabled selected>
                                                                 {{ ucfirst(TranslationHelper::translate('Select Category')) }}
                                                             </option>
                                                             @foreach ($categories as $category)
-                                                                }
-                                                                <option value="{{ $category->id }}"
-                                                                    {{ $resource->main_category_id == $category->id ? 'selected' : '' }}>
-                                                                    {{ $category->name }}</option>
+                                                                <option value="{{ $category->slug }}"
+                                                                    {{ $resource->main_category == $category->slug ? 'selected' : '' }}
+                                                                    data-id="{{ $category->id }}">
+                                                                    {{ $category->slug }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -84,7 +84,7 @@
                                                             <span style="color: red">{{ $star ?? '' }}</span> </label>
                                                         <br>
                                                         <select class="form-select w-100" id="sub_categories"
-                                                            data-placeholder="Choose Sub Category" name="sub_category_id">
+                                                            data-placeholder="Choose Sub Category" name="sub_category">
 
                                                             <option selected="" value="" disabled selected>
                                                                 {{ ucfirst(TranslationHelper::translate('Select Sub Category')) }}
@@ -93,34 +93,82 @@
                                                         </select>
                                                     </div>
                                                 @endif
-                                                <div class="form-group col-md-6">
-                                                    <label for="title_{{ $lang->key }}">Title in
-                                                        {{ ucfirst($lang->name) }}</label>
-                                                    <input type="text" class="form-control"
-                                                        id="title_{{ $lang->key }}" name="title[{{ $lang->key }}]"
-                                                        value="{{ old('title.' . $lang->key, $resource->getTranslation('title', $lang->key)) }}"
-                                                        required>
+
+                                                <div id="resourceRows">
+                                                    @if ($loop->first)
+                                                        @foreach ($resources as $index => $item)
+                                                            <input type="hidden" name="keys[]"
+                                                                value="{{ $item->id }}">
+                                                            <div class="resource-row">
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-4">
+                                                                        <label for="title">Title in English</label>
+                                                                        <input type="text" class="form-control"
+                                                                            name="title[][{{ $lang->key }}]"
+                                                                            value="{{ $item->translate('title', $lang->key) }}"
+                                                                            required>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label class="form-label">Resource Type</label>
+                                                                        <select class="form-select resource-type"
+                                                                            name="type[]">
+                                                                            <option value="" disabled selected>Select
+                                                                                Resource
+                                                                                Type</option>
+                                                                            <option value="image"
+                                                                                {{ $item->type == 'image' ? 'selected' : '' }}>
+                                                                                Image
+                                                                            </option>
+                                                                            <option value="file"
+                                                                                {{ $item->type == 'file' ? 'selected' : '' }}>
+                                                                                File
+                                                                            </option>
+                                                                            <option value="url"
+                                                                                {{ $item->type == 'url' ? 'selected' : '' }}>
+                                                                                URL
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-3 resource-input-container">
+                                                                        @if ($item->type == 'image')
+                                                                            <label class="form-label">Upload Image</label>
+                                                                            <input type="file" class="form-control"
+                                                                                name="resource[{{ $index }}]"
+                                                                                accept="image/*">
+                                                                        @elseif ($item->type == 'file')
+                                                                            <label class="form-label">Upload File</label>
+                                                                            <input type="file" class="form-control"
+                                                                                name="resource[{{ $index }}]">
+                                                                        @elseif ($item->type == 'url')
+                                                                            <label class="form-label">Enter URL</label>
+                                                                            <input type="url" class="form-control"
+                                                                                name="resource[{{ $index }}]"
+                                                                                value="{{ $item->resource }}">
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="col-md-1 d-flex align-items-end">
+                                                                        <button type="button"
+                                                                            onclick="delete_resource(this)"
+                                                                            resource-id="{{ $resource->id }}"
+                                                                            class="btn btn-danger remove-row mb-3"><i
+                                                                                class="bx bxs-trash"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+
                                                 </div>
                                                 @if ($loop->first)
-                                                    <div class="col-md-6 mt-3">
-                                                        <label
-                                                            class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Resource Type')) }}
-                                                            <span style="color: red">{{ $star ?? '' }}</span> </label>
-                                                        <br>
-                                                        <select class="form-select w-100" id="resource_type"
-                                                            data-placeholder="Choose Resource Type" name="type"
-                                                            data-current-type="{{ $resource->type }}"
-                                                            data-current-value="{{ $resource->resource }}">
-
-                                                            <option selected="" value="" disabled selected>
-                                                                {{ ucfirst(TranslationHelper::translate('Select Resource Type')) }}
-                                                            </option>
-                                                            <option value="image">image</option>
-                                                            <option value="file">file</option>
-                                                            <option value="url">url</option>
-                                                        </select>
+                                                    <div class="row mt-3">
+                                                        <div class="col-12">
+                                                            <button type="button" class="btn btn-success"
+                                                                id="addRow"><i
+                                                                    class=" bx bx-plus-medical"></i></button>
+                                                        </div>
                                                     </div>
                                                 @endif
+
                                             </div>
                                         </div>
                                     @endforeach
@@ -150,7 +198,7 @@
     <script>
         $(document).ready(function() {
             $('#category_id').on('change', function() {
-                var selectedValue = this.value;
+                var selectedValue = $(this).find(':selected').data('id');
                 let url = '{{ route('admin.get-child-pages', ['page_id' => ':id']) }}';
                 url = url.replace(':id', selectedValue); // Replace the placeholder with the actual ID
 
@@ -171,7 +219,8 @@
                                 // Create a new option element
                                 var option = $('<option></option>')
                                     .attr('value', item
-                                        .id) // Assuming each item has an 'id' property
+                                        .slug
+                                    ) // Assuming each item has an 'id' property
                                     .text(item
                                         .slug
                                     ); // Assuming each item has a 'name' property
@@ -192,175 +241,130 @@
                 });
             });
         });
-        @if ($resource->main_category_id)
-            (function getChild() {
-                var selectedValue = '{{ $resource->main_category_id }}';
-                var subSelectedValue = '{{ $resource->sub_category_id }}';
-                let url = '{{ route('admin.get-child-pages', ['page_id' => ':id']) }}';
-                url = url.replace(':id', selectedValue); // Replace the placeholder with the actual ID
 
-                $.ajax({
-                    url: url, // Replace with your server endpoint
-                    type: 'GET', // or 'POST' depending on your requirement
-                    data: {
-                        page_id: selectedValue // Send the page_id in the request
-                    },
-                    success: function(response) {
-                        $('#sub_categories').empty().append(
-                            '<option value="" disabled selected>Select a child page</option>'
-                        );
+        (function getChild() {
+            var selectedValue = $('#category_id').find(':selected').data('id');
+            var chiled = "{{ $resource->sub_category }}";
+            let url = '{{ route('admin.get-child-pages', ['page_id' => ':id']) }}';
+            url = url.replace(':id', selectedValue); // Replace the placeholder with the actual ID
 
-                        if (response.data && response.data.length > 0) {
-                            // Assuming response.data is an array of objects
-                            response.data.forEach(function(item) {
-                                // Create a new option element
-                                var option = $('<option></option>')
-                                    .attr('value', item
-                                        .id)
-                                    .text(item
-                                        .slug
-                                    ); // Assuming each item has a 'name' property
-                                if (item.id == subSelectedValue) {
-                                    option.prop('selected', true);
-                                }
-                                // Append the option to the select element
-                                $('#sub_categories').append(option);
-                            });
-                        } else {
-                            // Optionally, you can add a default message if there are no options
-                            $('#sub_categories').append(
-                                '<option disabled>No child pages available</option>');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle the error
-                        console.error('AJAX Error:', status, error);
+            $.ajax({
+                url: url, // Replace with your server endpoint
+                type: 'GET', // or 'POST' depending on your requirement
+                data: {
+                    page_id: selectedValue // Send the page_id in the request
+                },
+                success: function(response) {
+                    $('#sub_categories').empty().append(
+                        '<option value="" disabled selected>Select a child page</option>'
+                    );
+
+                    if (response.data && response.data.length > 0) {
+                        // Assuming response.data is an array of objects
+                        response.data.forEach(function(item) {
+                            // Create a new option element
+                            var option = $('<option></option>')
+                                .attr('value', item
+                                    .slug)
+                                .text(item
+                                    .slug
+                                ); // Assuming each item has a 'name' property
+                            if (item.slug == chiled) {
+                                option.prop('selected', true);
+                            }
+                            // Append the option to the select element
+                            $('#sub_categories').append(option);
+                        });
+                    } else {
+                        // Optionally, you can add a default message if there are no options
+                        $('#sub_categories').append(
+                            '<option disabled>No child pages available</option>');
                     }
-                });
-            })();
-        @endif
-    </script>
-    <script>
-        document.getElementById('resource_type').addEventListener('change', function() {
-            // Remove any existing dynamic input fields
-            const existingDynamicFields = document.querySelector('.dynamic-fields');
-            if (existingDynamicFields) {
-                existingDynamicFields.remove();
-            }
-
-            const selectedType = this.value;
-            const formContent = document.createElement('div');
-            formContent.className = 'dynamic-fields card-body p-4 row';
-
-            let inputHTML = '';
-
-            switch (selectedType) {
-                case 'image':
-                    inputHTML = `
-                <div class="col-md-12">
-                    <label class="form-label">Image File</label>
-                    <input type="file" class="form-control dropify" name="resource" accept="image/*" required>
-                </div>`;
-                    break;
-
-                case 'file':
-                    inputHTML = `
-                <div class="col-md-12">
-                    <label class="form-label">File Upload</label>
-                    <input type="file" class="form-control" name="resource" required>
-                </div>`;
-                    break;
-
-                case 'url':
-                    inputHTML = `
-                <div class="col-md-12">
-                    <label class="form-label">URL</label>
-                    <input type="url" class="form-control" name="resource" required placeholder="https://">
-                </div>`;
-                    break;
-            }
-
-            formContent.innerHTML = inputHTML;
-
-            // Insert the new fields before the submit button div
-            const submitButtonDiv = document.querySelector('.d-md-flex.d-grid');
-            submitButtonDiv.parentNode.insertBefore(formContent, submitButtonDiv);
-            $('.dropify').dropify();
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const resourceTypeSelect = document.getElementById('resource_type');
-            const currentType = resourceTypeSelect.getAttribute('data-current-type');
-            const currentValue = resourceTypeSelect.getAttribute('data-current-value');
-            const storageUrl = document.querySelector('meta[name="storage-url"]')?.getAttribute('content') ||
-                '/storage/';
-
-            // Set initial resource type
-            if (currentType) {
-                resourceTypeSelect.value = currentType;
-                generateResourceField(currentType, currentValue);
-            }
-
-            resourceTypeSelect.addEventListener('change', function() {
-                generateResourceField(this.value, null);
-            });
-
-            function generateResourceField(selectedType, existingValue) {
-                // Remove any existing dynamic input fields
-                const existingDynamicFields = document.querySelector('.dynamic-fields');
-                if (existingDynamicFields) {
-                    existingDynamicFields.remove();
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error
+                    console.error('AJAX Error:', status, error);
                 }
+            });
+        })();
+    </script>
 
-                const formContent = document.createElement('div');
-                formContent.className = 'dynamic-fields card-body p-4 row';
+    <script>
+        var index = {{ count($resources) }};
+        $(document).ready(function() {
 
-                let inputHTML = '';
-                switch (selectedType) {
+            // Get the count
+
+            $('#addRow').click(function() {
+                let newRow = $('.resource-row:first').clone();
+                newRow.find('input').val('');
+                newRow.find('select').val('');
+                newRow.find('.resource-input-container').empty();
+                $('#resourceRows').append(newRow);
+                updateResourceIndexes();
+                ++index
+            });
+
+            // Remove row
+            $(document).on('click', '.remove-row', function() {
+                if ($('.resource-row').length > 1) {
+                    --index
+                    $(this).closest('.resource-row').remove();
+                    updateResourceIndexes();
+                }
+            });
+
+            // Handle resource type change
+            $(document).on('change', '.resource-type', function() {
+                let container = $(this).closest('.row').find('.resource-input-container');
+                let rowIndex = $(this).closest('.resource-row').index();
+                container.empty();
+
+                switch ($(this).val()) {
                     case 'image':
-                        const fullImagePath = existingValue ? `${storageUrl}${existingValue}` : '';
-                        inputHTML = `
-                    <div class="col-md-12">
-                        <input type="file" 
-                            class="form-control dropify" 
-                            name="resource" 
-                            accept="image/*" 
-                            data-default-file="${fullImagePath}"
-                            ${!existingValue ? 'required' : ''}>
-                        <input type="hidden" name="existing_resource" value="${existingValue || ''}">
-                    </div>`;
+                        container.append(`
+                            <label class="form-label">Upload Image</label>
+                            <input type="file" class="form-control" name="resource[${index}]" accept="image/*" >
+                        `);
                         break;
-
                     case 'file':
-                        const fullFilePath = existingValue ? `${storageUrl}${existingValue}` : '';
-                        inputHTML = `
-                    <div class="col-md-12">
-                        <input type="file" class="form-control" name="resource" ${!existingValue ? 'required' : ''}>
-                        <input type="hidden" name="existing_resource" value="${existingValue || ''}">
-                    </div>`;
+                        container.append(`
+                            <label class="form-label">Upload File</label>
+                            <input type="file" class="form-control" name="resource[${index}]" >
+                        `);
                         break;
-
                     case 'url':
-                        inputHTML = `
-                    <div class="col-md-12">
-                        <label class="form-label">URL</label>
-                        <input type="url" class="form-control" name="resource" value="${existingValue || ''}" required placeholder="https://">
-                    </div>`;
+                        container.append(`
+                            <label class="form-label">Enter URL</label>
+                            <input type="url" class="form-control" name="resource[${index}]" >
+                        `);
                         break;
                 }
-
-                formContent.innerHTML = inputHTML;
-
-                // Insert the new fields before the submit button div
-                const submitButtonDiv = document.querySelector('.d-md-flex.d-grid');
-                submitButtonDiv.parentNode.insertBefore(formContent, submitButtonDiv);
-
-                // Reinitialize dropify if it exists
-                if (selectedType === 'image' && typeof $.fn.dropify !== 'undefined') {
-                    $('.dropify').dropify({});
-                }
-            }
+            });
         });
+    </script>
+    <script>
+        function delete_resource(button) {
+            // Access the link-id attribute
+            var linkId = button.getAttribute('resource-id');
+            if (linkId) {
+
+                var url = '{{ route('admin.resources.delete.resource', ':resource') }}';
+                url = url.replace(':resource', linkId);
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(xhr) {
+                        alert('Failed to delete the link. Please try again.');
+                    }
+                });
+            }
+        }
     </script>
 @endsection

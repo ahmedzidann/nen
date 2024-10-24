@@ -308,6 +308,10 @@
                   <li class=""><a href="{{ route('admin.management.index') }}"><i
                               class='bx bx-radio-circle'></i>Management</a></li>
               </ul>
+              <ul>
+                  <li class=""><a href="{{ route('admin.footer.index') }}"><i
+                              class='bx bx-radio-circle'></i>Footer Data</a></li>
+              </ul>
           </li>
           {{-- settings --}}
           {{-- Education --}}

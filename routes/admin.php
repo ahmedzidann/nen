@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\FindUs\CertificateController;
 use App\Http\Controllers\Admin\FindUs\FindUsController;
 use App\Http\Controllers\Admin\FindUs\LevelController;
 use App\Http\Controllers\Admin\FindUs\SpecializationController;
+use App\Http\Controllers\Admin\Footer\FooterController;
 use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\Product\ProductCategoryController;
@@ -75,6 +76,9 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('education-descriptions/bulk-delete', [EducationDescriptionController::class, 'bulkDelete'])->name('education-descriptions.delete_bulck');
     Route::resource('resources', ResourceController::class)->except('destroy');
     Route::post('resources/bulk-delete', [ResourceController::class, 'bulkDelete'])->name('resources.delete_bulck');
+    Route::delete('resources/delete/{resource_id}', [ResourceController::class, 'deleteResource'])->name('resources.delete.resource');
+    Route::resource('footer', FooterController::class)->except('destroy');
+    Route::post('footer/bulk-delete', [FooterController::class, 'bulkDelete'])->name('footer.delete_bulck');
 
     Route::name('about.')->prefix('about')->group(function () {
         Route::resource('identity', IdentityController::class);

@@ -117,6 +117,7 @@ class EducationDescriptionController extends Controller
                 'education_descriptions'
             );
         }
+
         $description->update($validatedData);
 
         return response()->json([

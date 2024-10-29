@@ -853,4 +853,12 @@
   'Footer Data View' => 'Footer Data View',
   'Footer Data' => 'Footer Data',
   'Resources' => 'Resources',
+  'Profit Value' => 'Profit Value',
+  'Revenue Value' => 'Revenue Value',
+  'Capital Value' => 'Capital Value',
+  'Year' => 'Year',
+  'Investor Statistics' => 'Investor Statistics',
+  'Select Year' => 'Select Year',
+  'Investor Statistics View' => 'Investor Statistics View',
+  'investor-statistics' => 'Investor-statistics',
 );

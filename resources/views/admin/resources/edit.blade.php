@@ -95,19 +95,22 @@
                                                 @endif
 
                                                 <div id="resourceRows">
-                                                    @if ($loop->first)
-                                                        @foreach ($resources as $index => $item)
+                                                    {{-- @if ($loop->first) --}}
+                                                    @foreach ($resources as $index => $item)
+                                                        @if ($lang->key == 'en')
                                                             <input type="hidden" name="keys[]"
                                                                 value="{{ $item->id }}">
-                                                            <div class="resource-row">
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-4">
-                                                                        <label for="title">Title in English</label>
-                                                                        <input type="text" class="form-control"
-                                                                            name="title[][{{ $lang->key }}]"
-                                                                            value="{{ $item->translate('title', $lang->key) }}"
-                                                                            required>
-                                                                    </div>
+                                                        @endif
+                                                        <div class="resource-row">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="title">Title in English</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="title[{{ $index }}][{{ $lang->key }}]"
+                                                                        value="{{ $item->translate('title', $lang->key) }}"
+                                                                        required>
+                                                                </div>
+                                                                @if ($lang->key == 'en')
                                                                     <div class="col-md-4">
                                                                         <label class="form-label">Resource Type</label>
                                                                         <select class="form-select resource-type"
@@ -153,10 +156,12 @@
                                                                             class="btn btn-danger remove-row mb-3"><i
                                                                                 class="bx bxs-trash"></i></button>
                                                                     </div>
-                                                                </div>
+                                                                @endif
+
                                                             </div>
-                                                        @endforeach
-                                                    @endif
+                                                        </div>
+                                                    @endforeach
+                                                    {{-- @endif --}}
 
                                                 </div>
                                                 @if ($loop->first)
@@ -301,8 +306,21 @@
                 newRow.find('select').val('');
                 newRow.find('.resource-input-container').empty();
                 $('#resourceRows').append(newRow);
-                updateResourceIndexes();
-                ++index
+                newRow.find('[name]').each(function() {
+                    let nameAttr = $(this).attr('name');
+                    if (nameAttr && nameAttr.includes('title')) {
+                        // Replace the index in the name, assuming it follows the pattern title[0][en]
+                        $(this).attr('name', nameAttr.replace(/\[0\]/, `[${index}]`));
+                        console.log(this);
+
+                    }
+                    if (nameAttr && nameAttr.includes('type')) {
+                        // Replace the index in the name, assuming it follows the pattern title[0][en]
+                        $(this).attr('name', nameAttr.replace(/\[\]/, `[${index}]`));
+                        console.log(this);
+
+                    }
+                });
             });
 
             // Remove row
@@ -310,7 +328,6 @@
                 if ($('.resource-row').length > 1) {
                     --index
                     $(this).closest('.resource-row').remove();
-                    updateResourceIndexes();
                 }
             });
 
@@ -341,6 +358,7 @@
                         break;
                 }
             });
+            ++index
         });
     </script>
     <script>

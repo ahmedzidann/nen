@@ -50,7 +50,8 @@
                                 @endforeach
                             </ul>
 
-                            <form id="myForm" action="{{ route('admin.education-descriptions.update', ['education_description' => $description->id]) }}"
+                            <form id="myForm"
+                                action="{{ route('admin.education-descriptions.update', ['education_description' => $description->id]) }}"
                                 method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -62,15 +63,15 @@
                                             <div class="card-body p-4 row">
                                                 <div class="form-group col-md-12">
                                                     <label for="description">Description in {{ $lang->name }}</label>
-                                                    <textarea class="form-control" id="description" name="description[{{ $lang->key }}]">{{ old('description.' . $lang->key, $description->getTranslation('description', $lang->key)) }}</textarea>
+                                                    <textarea class="form-control" name="description[{{ $lang->key }}]">{{ $description->getTranslation('description', $lang->key) }}</textarea>
                                                 </div>
                                                 @if ($loop->first)
                                                     <div class="card-body p-4 row">
                                                         <div class="form-group col-md-12">
                                                             <label for="main_image" Image</label>
-                                                            <input type="file" class="form-control-file dropify"
-                                                                id="image" name="image"
-                                                                data-default-file="{{ asset('storage') . '/' . $description->image }}">
+                                                                <input type="file" class="form-control-file dropify"
+                                                                    id="image" name="image"
+                                                                    data-default-file="{{ asset('storage') . '/' . $description->image }}">
                                                         </div>
                                                     </div>
                                                 @endif

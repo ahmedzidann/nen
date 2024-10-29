@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\FindUs\FindUsController;
 use App\Http\Controllers\Admin\FindUs\LevelController;
 use App\Http\Controllers\Admin\FindUs\SpecializationController;
 use App\Http\Controllers\Admin\Footer\FooterController;
+use App\Http\Controllers\Admin\InvestorStatisticsController;
 use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\Product\ProductCategoryController;
@@ -79,6 +80,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::delete('resources/delete/{resource_id}', [ResourceController::class, 'deleteResource'])->name('resources.delete.resource');
     Route::resource('footer', FooterController::class)->except('destroy');
     Route::post('footer/bulk-delete', [FooterController::class, 'bulkDelete'])->name('footer.delete_bulck');
+    Route::resource('investor-statistics', InvestorStatisticsController::class)->except('destroy');
+    Route::post('investor-statistics/bulk-delete', [InvestorStatisticsController::class, 'bulkDelete'])->name('investor-statistics.delete_bulck');
 
     Route::name('about.')->prefix('about')->group(function () {
         Route::resource('identity', IdentityController::class);

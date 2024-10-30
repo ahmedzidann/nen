@@ -42,10 +42,10 @@ class OurTeamController extends Controller
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
                 ->editColumn('name', function ($row) use ($language, $request) {
-                    if (!$request->item == 'section-one') {
-                        return $row->translate('name', $language);
-                    } else {
+                    if ($request->item == 'section-one') {
                         return $row->translate('title', $language);
+                    } else {
+                        return $row->translate('name', $language);
                     }
                 })
                 ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})

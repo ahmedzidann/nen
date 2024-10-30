@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Admin\AboutUs;
 
-use App\Actions\StaticTable\StoreStaticTableAction;
 use App\Actions\StaticTable\UpdateStaticTableAction;
 use App\Helper\ImageHelper;
 use App\Http\Controllers\Controller;
@@ -154,9 +153,12 @@ class InvestorsController extends Controller
                 'errors' => $validator->messages(),
             ]);
         } else {
-            $staticTable = app(StoreStaticTableAction::class)->handle($validator->validated());
+            $StaticTable = StaticTable::create($validator->validated());
+            $this->StoreImage($validator->validated(), $StaticTable, 'StaticTable');
+            $this->StoreImage2($validator->validated(), $StaticTable, 'StaticTable2');
+
             if ($request->has('attributes')) {
-                $staticTable->investorAttributes()->createMany(array_map(fn($item) => $item, $request['attributes']));
+                $StaticTable->investorAttributes()->createMany(array_map(fn($item) => $item, $request['attributes']));
             }
             redirect()->route('admin.about.investors.index')->with('add', 'Success Add Investors');
             return response()->json([
@@ -190,7 +192,7 @@ class InvestorsController extends Controller
                 $validator = $request->validationUpdateTwoEn();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-three') {
                 $validator = $request->validationUpdateThreeEn();
-            } elseif ( $request->subcategory == 'investors' && $request->item == 'section-foure') {
+            } elseif ($request->subcategory == 'investors' && $request->item == 'section-foure') {
                 $validator = $request->validationUpdateFoureEn();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-five') {
                 $validator = $request->validationUpdateFoureEn();
@@ -204,7 +206,7 @@ class InvestorsController extends Controller
                 $validator = $request->validationUpdateTwoAr();
             } elseif ($request->category == 'about' && $request->subcategory == 'investors' && $request->item == 'section-three') {
                 $validator = $request->validationUpdateThreeAr();
-            } elseif ( $request->subcategory == 'investors' && $request->item == 'section-foure') {
+            } elseif ($request->subcategory == 'investors' && $request->item == 'section-foure') {
 
                 $validator = $request->validationUpdateFoureAr();
                 $validator->validated()['category'] = $request->cat;

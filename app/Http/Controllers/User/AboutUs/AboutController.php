@@ -100,7 +100,7 @@ class AboutController extends Controller
         if ($achievement) {
             return view('user.about.our-team', [
                 'items' => OurTeam::where("pages_id", $achievement->id)->active()->orderBy('sort','ASC')->get(),
-                'members' => OurTeam::where("pages_id", $achievement->id)->active()->where('management_id', $managements->first()->id)->orderBy('sort','DESC')->get(),
+                'members' => OurTeam::where("pages_id", $achievement->id)->active()->where('management_id', $managements->first()->id)->orderBy('sort','ASC')->get(),
                 'slider' => $slider, 'managements' => $managements,
             ]);
         } else {

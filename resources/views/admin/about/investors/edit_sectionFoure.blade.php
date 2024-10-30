@@ -89,7 +89,7 @@
                                                         </div>
                                                         {{-- ----------end url --}}
                                                         <div class="col-md-12">
-                                                            <select name="cat" class="form-control">
+                                                            <select name="category" class="form-control">
                                                                 <option selected="selected" disabled>Select
                                                                     Category</option>
                                                                 <option value="1"

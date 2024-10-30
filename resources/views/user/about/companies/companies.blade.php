@@ -1,30 +1,50 @@
-@forelse ($rows as $sister)
-
-    <div class="subsidiaries_content">
-        <div class="flg_div">
-            <img src="{{ $sister->getFirstMediaUrl('StaticTable') }}">
-        </div>
-        <div class="subsidiaries_details">
-            <h5>{{ $sister->translate('title', app()->getLocale()) }}</h5>
-            <div class="flags_sec">
-                @foreach ($sister->investorAttributes as $attr)
-                    <div class="flag_icon_titel">
-                        <div class="sub_contennt">
-                            <h6><img
-                                    src="{{ App\Models\Country::where('id', $attr->country_id)->first()->getFirstMediaUrl('flag') }}">
-                                <p>Since : <span>{{ $attr->since }}</span></p>
-                            </h6>
-                            <h6>
-                                <p>Sharing : <span>{{ $attr->percent }}%</span></p>
-                            </h6>
+<div class="row g-3">
+    @forelse ($rows as $sub)
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+            <div class="subsidiaries_content">
+                <div class="first">
+                    <h5 class="title">{{ $sub->translate('title', app()->getLocale()) }}</h5>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="flg_div">
+                            <img src="{{ $sub->getFirstMediaUrl('StaticTable') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="vector">
                         </div>
-
                     </div>
-                @endforeach
+                    <div class="subsidiaries_details">
+                        <div class="flags_sec">
+                            @foreach ($sub->investorAttributes as $row)
+                                <div class="flag_icon_titel">
+                                    <div class="sub_contennt">
+                                        <h6>
+                                            <img src="{{ App\Models\Country::where('id', $row->country_id)->first()->getFirstMediaUrl('flag') }}"
+                                                loading="lazy"
+                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                                alt="vector">
+                                            <p>Since : <span
+                                                    class="mt-0 pt-0">{{ $row->since }}</span>
+                                            </p>
+                                        </h6>
+                                        <h6>
+                                            <p>Sharing : <span
+                                                    class="mt-0 pt-0">{{ $row->percent }}%</span>
+                                            </p>
+                                        </h6>
+                                    </div>
+
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ $sub->url }}"
+                    class="website_link mt-0 p-2 text-center">Website</a>
+
             </div>
-            <a href="{{ $sister->url }}" class="website_link">Website</a>
         </div>
-    </div>
-@empty
-    @include('user.layout.includes.no-data')
-@endforelse
+    @empty
+        @include('user.layout.includes.no-data')
+    @endforelse
+
+</div>

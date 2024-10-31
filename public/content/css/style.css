@@ -2101,6 +2101,7 @@ z-index: 2;
 #investors-section .investors_img {
     width: 100%;
 }
+
 #investors-section .investors_img img {
     border-radius: 1.5rem;
     object-fit: fill;
@@ -3448,7 +3449,8 @@ z-index: 2;
 
 @media (max-width: 767px) {
     #contact-us-page .services-items-container .services-items {
-        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-columns: 1fr;
+        /* Single column layout */
     }
 }
 
@@ -3635,7 +3637,8 @@ z-index: 2;
     position: relative;
     padding: 38px 23px 18px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Ensures content stays within container */
+    overflow: hidden;
+    /* Ensures content stays within container */
 }
 
 .global-search-section::before {
@@ -3655,7 +3658,8 @@ z-index: 2;
 
 .global-search-section form {
     position: relative;
-    z-index: 1; /* Ensure form content appears above background */
+    z-index: 1;
+    /* Ensure form content appears above background */
 }
 
 .search-label {
@@ -6202,7 +6206,8 @@ th {
     }
 
     .flex-column {
-        flex-direction: unset !important;
+        flex-direction: column !important;
+        gap: 5px !important;
     }
 
     .container,
@@ -6857,6 +6862,18 @@ width: 100%;
 }
 
 @media(max-width:768px) {
+
+    .statisctic-items {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .toggel_header a i {
         font-size: 40px;
     }
@@ -7004,7 +7021,8 @@ width: 100%;
     }
 
     .flex-column {
-        flex-direction: unset !important;
+        flex-direction: column !important;
+        gap: 5px !important;
     }
 
     .nav.nav-pills.our_visions {
@@ -8304,11 +8322,17 @@ width: 100%;
     color: var(--text-main-color) !important;
     background-color: transparent !important;
     border-radius: 10px 10px 0 0 !important;
-    padding: 10px  !important;
+    padding: 10px !important;
     border: none !important;
     font-size: 1.2rem !important;
 }
+
 .swiper-tab.active {
     color: #fff !important;
     background: #990000 !important;
+}
+
+.global-description p,
+span {
+    font-size: 1.1rem !important;
 }

@@ -10,13 +10,46 @@ Identity
 @endsection
 @section('content')
 
+<style>
+.about-image-item .banner-image {
+    height: 60vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1rem;
+    border-radius: 14px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.about-image-item .banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+@media(max-width:768px) {
+    .row>* {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+}
+</style>
 <div class="about_content">
     @if ($fSection = $items->where('item', 'section-one')->first())
     <!-- Start About Section  -->
     <section id="about-section">
-        <div class="container pb-md-5 pb-3 pt-3">
-            <div class="row g-5 align-items-center">
-                <div class="col-md-7">
+        <div class="container pb-md-5 pb-3">
+            <div class="row g-4 align-items-center w-100">
+                <div class="col-12 w-100">
+                    <div class="about-image-item border-0 w-100">
+                        <div class="banner-image">
+                            <img src="{{ $fSection?->getFirstMediaUrl('StaticTable') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about image">
+                        </div>
+                        <!-- <div class="blob"></div> -->
+                    </div>
+                </div>
+                <div class="col-12 w-100">
                     <div class="text-start">
                         <h5 class="global-title">
                             {{ $fSection->title }}
@@ -31,39 +64,10 @@ Identity
                         </p>
                     </div>
                 </div>
-                <div class="col-md-5 d-flex align-items-stretch">
-                    <div class="about-image-item card border-0 w-100">
-                        <div class="about-image-container h-100">
-                            <img src="{{ $fSection?->getFirstMediaUrl('StaticTable') }}" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about image">
-                        </div>
-                        <div class="blob"></div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <!-- End About Section  -->
-
-    <div class="about_flex d-none">
-        <div class="about_titel_circle_progress">
-            <div class="about_titel">
-                <h1>{{ $fSection->title }}</h1>
-                <p>
-                    {{ strip_tags($fSection->description) }}
-                </p>
-
-                {{-- <a href="#" class="see_more">see more</a> --}}
-            </div>
-        </div>
-        <div class="video_div">
-            <img class="video_img" alt="video-icon1" loading="lazy"
-                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                src="{{ $fSection->getFirstMediaUrl('StaticTable') }}" />
-            <span class="video_icon"><i class="bi bi-play-circle"></i></span>
-        </div>
-    </div>
 
     <!-- Start Progress Section  -->
     <div id="progress-items" class="row justify-content-around mt-3 g-3 w-100">

@@ -103,7 +103,7 @@ span {
                     role="tabpanel" aria-labelledby="pills-{{ $award->slug }}-tab">
                     <div class="tabs_content">
                         @foreach ($items->where('item', $award->slug) as $item)
-                        <div class="tab-item-container p-md-4 p-3 shadow-sm rounded-3">
+                        <div class="tab-item-container p-md-4 p-3 shadow-sm rounded-3 mb-3">
                             <div class="award-info d-flex flex-wrap align-items-center gap-3">
                                 <div class="logo-box shadow-sm rounded-3 overflow-hidden">
                                     <img class="logo_img" src="{{ $item->getFirstMediaUrl('StaticTable') }}"

@@ -74,7 +74,7 @@
                                     <div
                                         class="tab-item-container p-md-4 p-3 shadow-sm rounded-3 flex-grow-1 d-flex flex-column {{ $loop->iteration == 3 ? '' : '' }}">
                                         <div class="client-item">
-                                            <div class="client-image-box">
+                                            <div class="client-image-box w-100">
                                                 <img src="{{$item->getFirstMediaUrl('StaticTable')}}" loading="lazy"
                                                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
                                             </div>

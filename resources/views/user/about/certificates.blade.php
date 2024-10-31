@@ -6,6 +6,13 @@
 @endsection
 @section('content')
 
+<style>
+.global-description p,
+span {
+    font-size: 1.1rem !important;
+}
+</style>
+
 <!-- New Desgin -->
 <div id="certifications-section" class="container">
     <div class="text-start">
@@ -50,107 +57,107 @@
                         @if ($fs->getFirstMediaUrl('StaticTable'))
 
                         <img class="w-100 rounded" style="height:25rem;" src="{{$fs->getFirstMediaUrl('StaticTable')}}"
-                            alt="{{$fs->title}}">
-                        @endif
-                    </div>
-                    @endif
-                </div> --}}
+                alt="{{$fs->title}}">
+                @endif
+            </div>
+            @endif
+        </div> --}}
 
-                <div class="certifications_sec mt-md-4 mt-3">
-                    <div class="text-start">
-                        <h5 class="global-title fw-semibold">
-                            Our Certifications
-                        </h5>
-                        <div class="under-title-vector">
-                            <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="vector">
-                        </div>
-                    </div>
-
-                    <div class="grid_div_bttn">
-                        <div class="grid_div new-card" id="partners-{{$sub->slug}}" data-page="1">
-                            @foreach ($items->where('item',
-                            'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
-                            <div class="hovering-layers-card h-100 pb-3 {{ $loop->first ? '' : '' }}">
-                                <div id="cert-box" class="card h-100">
-                                    <div class="card_content content">
-                                        <div class="data-content-box">
-                                            <div class="cert-data">
-                                                <div class="image-box">
-                                                    <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
-                                                </div>
-                                                <p class="title-card mt-2">{{$item->title}}</p>
-                                                <span class="mt-1 mb-2">({{$item->years_text}})</span>
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
-                                                    {{ html_entity_decode(strip_tags($item->description)) }}
-                                                </span>
-
-                                                @if (strlen($item->description) >= 200)
-                                                <a role='btn' onclick="toggleDescription(this)" class="read_more">Read
-                                                    More
-                                                    <i class="bi bi-chevron-down"></i></a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="icons-data">
-                                            <p class="icons-item">
-                                                @if ($item->getFirstMediaUrl('StaticTable2'))
-                                                <img src="{{url('content/images/small_icon/archive-book.png')}}">
-                                                <span><a class="ref_coloring"
-                                                        href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
-                                                @endif
-                                            </p>
-                                            <p class="icons-item">
-                                                @if ($item->url)
-                                                <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                        class="ref_coloring" href="{{$item->url}}">Website</a></span>
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                        @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
-                        <a href="#" id='see_more_bttn' class="see-more-btn" data-slug="{{$sub->slug}}"
-                            onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">
-                            <button class="Btn">
-                                <div class="sign">
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <div class="text">See More</div>
-                            </button>
-                        </a>
-                        @endif
-                    </div>
-
-                    @if ($items->where('item', 'section-two')->where('childe_pages_id', $sub->id)->count() > 6)
-                    <a href="#" id='see_more_bttn' class="see-more-btn mt-md-4 mt-3" data-slug="{{$sub->slug}}"
-                        onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">
-                        <button class="Btn">
-                            <div class="sign">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="text">See More</div>
-                        </button>
-                    </a>
-                    @endif
+        <div class="certifications_sec mt-md-4 mt-3">
+            <div class="text-start">
+                <h5 class="global-title fw-semibold">
+                    Our Certifications
+                </h5>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
+                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                        alt="vector">
                 </div>
             </div>
-            @endforeach
+
+            <div class="grid_div_bttn">
+                <div class="grid_div new-card" id="partners-{{$sub->slug}}" data-page="1">
+                    @foreach ($items->where('item',
+                    'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
+                    <div class="hovering-layers-card h-100 pb-3 {{ $loop->first ? '' : '' }}">
+                        <div id="cert-box" class="card h-100">
+                            <div class="card_content content">
+                                <div class="data-content-box">
+                                    <div class="cert-data">
+                                        <div class="image-box">
+                                            <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
+                                        </div>
+                                        <p class="title-card mt-2">{{$item->title}}</p>
+                                        <span class="mt-1 mb-2">({{$item->years_text}})</span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                            {{ html_entity_decode(strip_tags($item->description)) }}
+                                        </span>
+
+                                        @if (strlen($item->description) >= 200)
+                                        <a role='btn' onclick="toggleDescription(this)" class="read_more">Read
+                                            More
+                                            <i class="bi bi-chevron-down"></i></a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="icons-data">
+                                    <p class="icons-item">
+                                        @if ($item->getFirstMediaUrl('StaticTable2'))
+                                        <img src="{{url('content/images/small_icon/archive-book.png')}}">
+                                        <span><a class="ref_coloring"
+                                                href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                        @endif
+                                    </p>
+                                    <p class="icons-item">
+                                        @if ($item->url)
+                                        <img src="{{url('content/images/small_icon/global.png')}}"><span><a
+                                                class="ref_coloring" href="{{$item->url}}">Website</a></span>
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
+                <a href="#" id='see_more_bttn' class="see-more-btn" data-slug="{{$sub->slug}}"
+                    onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">
+                    <button class="Btn">
+                        <div class="sign">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="text">See More</div>
+                    </button>
+                </a>
+                @endif
+            </div>
+
+            @if ($items->where('item', 'section-two')->where('childe_pages_id', $sub->id)->count() > 6)
+            <a href="#" id='see_more_bttn' class="see-more-btn mt-md-4 mt-3" data-slug="{{$sub->slug}}"
+                onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">
+                <button class="Btn">
+                    <div class="sign">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="text">See More</div>
+                </button>
+            </a>
+            @endif
         </div>
     </div>
+    @endforeach
+</div>
+</div>
 </div>
 
 <!-- Old Desgin (Remove d-none Class to view it again-->

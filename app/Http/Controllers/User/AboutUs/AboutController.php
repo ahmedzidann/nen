@@ -171,7 +171,7 @@ class AboutController extends Controller
 
     public function getData($id)
     {
-        $items = OurTeam::where('management_id', $id)->active()->get();
+        $items = OurTeam::where('management_id', $id)->active()->orderBy('sort','ASC')->get();
         $data = view('user.about.team.content', ['items' => $items, 'management' => Management::find($id)])->render();
         return response()->json(['data' => $data]);
     }

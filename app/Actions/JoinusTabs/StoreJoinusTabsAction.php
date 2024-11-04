@@ -14,7 +14,7 @@ class StoreJoinusTabsAction
             foreach ($data['register_attributes'] as $key => $value) {
                 $JoinusTabs = JoinusTabs::create([
                     'status' => $data['status'],
-                    'project_id' => $data['project_id'],
+                    'project_id' => request('project_id'),
                     'tabs_id' => $data['tabs_id'],
                     'description' => $value,
                     'type' => 'register',

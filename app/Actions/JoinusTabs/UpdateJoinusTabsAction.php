@@ -19,7 +19,7 @@ class UpdateJoinusTabsAction
                     if ($value[array_key_first($value)] != null) {
                         JoinusTabs::create([
                             'status' => $JoinusTabs->status,
-                            'project_id' => $JoinusTabs->project_id,
+                            'project_id' => request('project_id'),
                             'tabs_id' => $JoinusTabs->tabs_id,
                             'description' => $value,
                             'type' => 'register',

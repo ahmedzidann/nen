@@ -45,6 +45,12 @@ $(function () {
                 orderable: true,
                 searchable: true
             },
+            {
+                data: 'TabsData',
+                name: 'TabsData',
+                orderable: false,
+                searchable: false
+            },
         ],
         dom: 'lBfrtip',
         buttons: [{

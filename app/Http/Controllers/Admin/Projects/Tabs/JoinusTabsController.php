@@ -23,6 +23,7 @@ class JoinusTabsController
     {
         if ($request->ajax()) {
             $Tabs = Tabs::where('slug', $request->category)->first();
+            $TabsData = Tabs::where('type', 'project')->get();
             $data = JoinusTabs::select('*')->where('tabs_id', $Tabs->id)->where('project_id', $request->subcategory)->limit(1)->get();
             if ((!empty($request->from_date)) && (!empty($request->to_date))) {
                 $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
@@ -47,7 +48,38 @@ class JoinusTabsController
                     }
                 })
                 ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
+                ->addColumn('TabsData', function ($row) use ($category, $subcategory,  $TabsData) {
+                    $options = '';
+                    foreach ($TabsData as $item) {
+                        if ($item->slug == 'about') {
+                            $options .= '<li><a width="100%"  href="' . route('admin.tabproject.about.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                        } elseif ($item->slug == 'program') {
+                            $options .= '<li><a href="' . route('admin.tabproject.program.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                        } elseif ($item->slug == 'help') {
+                            $options .= '<li><a href="' . route('admin.tabproject.help.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                        } elseif ($item->slug == 'join-us') {
+                            $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                        } elseif ($item->slug == 'archive') {
+                            $options .= '<li><a href="' . route('admin.tabproject.archive.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                        } else {
+                            $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                        }
+                    };
 
+                    return
+                    '
+                        <div class="order-actions">
+                        <div class="dropdown">
+                            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Tabs
+                            </button>
+                            <ul class="dropdown-menu dragdown">
+                                ' . $options . '
+                            </ul>
+                        </div>
+                        ';
+                })
                 ->addColumn('action', function ($row) use ($category, $subcategory) {
                     $route = route('admin.tabproject.joinus.edit', [$row->id, 'tab=' . $category, 'project_id=' . $subcategory]);
                     return
@@ -57,7 +89,7 @@ class JoinusTabsController
                         <a href="' . $route . '" class="m-auto"><i class="bx bxs-edit"></i></a>
                         ';
                 })
-                ->rawColumns(['checkbox', 'action'])
+                ->rawColumns(['checkbox', 'action', 'TabsData'])
                 ->make(true);
         }
 
@@ -83,7 +115,7 @@ class JoinusTabsController
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Program',
-                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' .$request->tabs_id, 'project_id=' . request('project_id')]),
+                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $request->tabs_id, 'project_id=' . request('project_id')]),
             ]);
         }
     }
@@ -91,7 +123,7 @@ class JoinusTabsController
     {
         $joinUs = JoinusTabs::find($id);
         $StaticTable = JoinusTabs::where(['tabs_id' => $joinUs->tabs_id, 'project_id' => $joinUs->project_id])->get();
-        return view('admin.project.tabs.joinustabs.edit', new JoinusTabsViewModel(route('admin.tabproject.joinus.update',  $joinUs->id), 'PUT',$StaticTable));
+        return view('admin.project.tabs.joinustabs.edit', new JoinusTabsViewModel(route('admin.tabproject.joinus.update', $joinUs->id), 'PUT', $StaticTable));
     }
 
     public function update(JoinusRequest $request, $id)

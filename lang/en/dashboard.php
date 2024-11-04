@@ -860,4 +860,5 @@
   'Select Year' => 'Select Year',
   'Investor Statistics View' => 'Investor Statistics View',
   'investor-statistics' => 'Investor-statistics',
+  'TabsData' => 'TabsData',
 );

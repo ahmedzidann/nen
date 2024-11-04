@@ -22,7 +22,7 @@ class JoinusTabsViewModel extends ViewModel
 
     public function __construct($StaticTable = null)
     {
-        $this->StaticTable = empty($StaticTable) ? new JoinusTabs(old()) : $StaticTable;
+        $this->StaticTable = is_null($StaticTable) ? new JoinusTabs(old()) : $StaticTable;
         $this->type = empty($StaticTable) ? 'Create' : 'Edit';
         $this->translation = TranslationKey::get();
         $this->translationFirst = TranslationKey::first();
@@ -38,13 +38,13 @@ class JoinusTabsViewModel extends ViewModel
 
     public function action(): string
     {
-        return is_null($this->StaticTable?->first()?->id)
+        return  is_null($this->StaticTable->first())
         ? route('admin.tabproject.joinus.store')
         : route('admin.tabproject.joinus.update', $this->StaticTable->first()->id);
     }
 
     public function method(): string
     {
-        return is_null($this->StaticTable?->first()?->id) ? 'POST' : 'PUT';
+        return request()->route()->getName() == 'admin.tabproject.joinus.create' ? 'POST' : 'PUT';
     }
 }

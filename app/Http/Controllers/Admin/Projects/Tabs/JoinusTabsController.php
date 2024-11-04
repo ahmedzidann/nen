@@ -108,12 +108,11 @@ class JoinusTabsController
                 'errors' => $validator->messages(),
             ]);
         } else {
-            $Tabs = Tabs::find($request->tabs_id);
             app(UpdateJoinusTabsAction::class)->handle($StaticTable, $validator->validated());
             return response()->json([
                 'status' => 200,
                 'message' => 'Update Program',
-                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . request('project_id')]),
+                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $StaticTable->tabs_id, 'project_id=' . request('project_id')]),
             ]);
         }
 

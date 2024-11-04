@@ -48,8 +48,8 @@ class ArchiveRequest extends FormRequest {
             'tabs_id' => [ 'nullable' ],
             'title.'.$request->submit2  => [ 'required', 'max:255' ],
             'type' => [ 'required' ],
-            'url' => [ 'required_if:type,url', 'nullable' ],
-            'image'=>[ 'nullable', 'required_if:type,image,pdf' ],
+            'url' => [  'nullable' ],
+            'image'=>[ 'nullable' ],
 
         ] );
     }
@@ -62,8 +62,8 @@ class ArchiveRequest extends FormRequest {
             'type' => [ 'required' ],
             'project_id' => [ 'nullable' ],
             'tabs_id' => [ 'nullable' ],
-            'url' => [ 'required_if:type,url', 'nullable' ],
-            'image'=>[ 'nullable',  'required_if:type,image,pdf' ],
+            'url' => [ 'nullable' ],
+            'image'=>[ 'nullable' ],
 
         ] );
     }

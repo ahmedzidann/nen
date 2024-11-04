@@ -73,6 +73,7 @@
                                 <th>{{ TranslationHelper::translate(ucfirst('Tabs') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Created At') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Processes') ?? '') }}</th>
+                                <th>{{ TranslationHelper::translate(ucfirst('TabsData') ?? '') }}</th>
                             </tr>
                         </thead>
 

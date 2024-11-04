@@ -89,6 +89,7 @@ class JoinusTabsController
     }
     public function edit(Request $request, $id): View
     {
+
         $joinUs = JoinusTabs::find($id);
         $StaticTable = JoinusTabs::where(['tabs_id' => $joinUs->tabs_id, 'project_id' => $joinUs->project_id])->get();
         return view('admin.project.tabs.joinustabs.edit', new JoinusTabsViewModel($StaticTable));
@@ -119,13 +120,14 @@ class JoinusTabsController
     }
     public function destroy(Request $request): RedirectResponse
     {
-        foreach (JoinusTabs::find($request->id) as $static_table) {$static_table->delete();}
+        foreach (JoinusTabs::find($request->id) as $static_table) {
+            JoinusTabs::where('tabs_id', $static_table->tabs_id)->delete();
+        }
         return redirect()->back()->with('delete', 'Delete ProgramTabs');
     }
     public function deleteJoin($join_id)
     {
         $join = JoinusTabs::find($join_id);
-
         if ($join) {
             // Delete the record
             $join->delete();

@@ -12,14 +12,14 @@ class UpdateJoinusTabsAction
         if (array_key_exists('register_attributes', $data)) {
             foreach ($data['register_attributes'] as $key => $value) {
                 if (array_key_exists('register_keys', $data) && array_key_exists($key, $data['register_keys'])) {
-                    JoinusTabs::where('id', $data['register_keys'][$key])->update([
+                    JoinusTabs::where('id', $data['register_keys'][$key])->update( [
                         'description->' . $data['submit2'] => $value[$data['submit2']],
                     ]);
                 } else {
                     if ($value[array_key_first($value)] != null) {
                         JoinusTabs::create([
                             'status' => $JoinusTabs->status,
-                            'project_id' => request('project_id'),
+                            'project_id' => $JoinusTabs->project_id,
                             'tabs_id' => $JoinusTabs->tabs_id,
                             'description' => $value,
                             'type' => 'register',

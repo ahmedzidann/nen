@@ -48,7 +48,7 @@ class JoinusTabsController
                     }
                 })
                 ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
-                ->addColumn('TabsData', function ($row) use ($category, $subcategory,  $TabsData) {
+                ->addColumn('TabsData', function ($row) use ($TabsData) {
                     $options = '';
                     foreach ($TabsData as $item) {
                         if ($item->slug == 'about') {
@@ -67,7 +67,7 @@ class JoinusTabsController
                     };
 
                     return
-                    '
+                        '
                         <div class="order-actions">
                         <div class="dropdown">
                             <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -77,6 +77,7 @@ class JoinusTabsController
                             <ul class="dropdown-menu dragdown">
                                 ' . $options . '
                             </ul>
+                        </div>
                         </div>
                         ';
                 })

@@ -47,7 +47,7 @@
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name first --}}
                                                 <input type="hidden" name="project_id" value="{{ Request()->project_id }}">
-                                                <input type="hidden" name="tabs_id" value="{{ $tabs->id ?? '' }}">
+                                                <input type="hidden" name="tabs_id" value="{{ Request()->tab }}">
                                                 <input type="hidden" name="type" value="">
                                                 {{-- ----------Description first --}}
                                                 <x-admin.form.label-first star="*" class="form-label"

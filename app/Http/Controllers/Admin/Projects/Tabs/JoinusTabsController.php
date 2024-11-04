@@ -65,7 +65,8 @@ class JoinusTabsController
 
     public function create(Request $request): View
     {
-        return view('admin.project.tabs.joinustabs.create', new JoinusTabsViewModel());
+
+        return view('admin.project.tabs.joinustabs.create', new JoinusTabsViewModel(route('admin.tabproject.joinus.store'), 'POST'));
     }
 
     public function store(JoinusRequest $request)
@@ -77,22 +78,20 @@ class JoinusTabsController
                 'errors' => $validator->messages(),
             ]);
         } else {
-            $Tabs = Tabs::find($request->tabs_id);
             app(StoreJoinusTabsAction::class)->handle($validator->validated());
-            redirect()->route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . request('project_id')])->with('add', 'Success Add Program');
+            redirect()->route('admin.tabproject.joinus.index', ['tab=' . $request->tabs_id, 'project_id=' . request('project_id')])->with('add', 'Success Add Program');
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Program',
-                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . request('project_id')]),
+                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' .$request->tabs_id, 'project_id=' . request('project_id')]),
             ]);
         }
     }
     public function edit(Request $request, $id): View
     {
-
         $joinUs = JoinusTabs::find($id);
         $StaticTable = JoinusTabs::where(['tabs_id' => $joinUs->tabs_id, 'project_id' => $joinUs->project_id])->get();
-        return view('admin.project.tabs.joinustabs.edit', new JoinusTabsViewModel($StaticTable));
+        return view('admin.project.tabs.joinustabs.edit', new JoinusTabsViewModel(route('admin.tabproject.joinus.update',  $joinUs->id), 'PUT',$StaticTable));
     }
 
     public function update(JoinusRequest $request, $id)
@@ -110,10 +109,11 @@ class JoinusTabsController
             ]);
         } else {
             app(UpdateJoinusTabsAction::class)->handle($StaticTable, $validator->validated());
+            $tab = Tabs::where('id', $StaticTable->tabs_id)->first();
             return response()->json([
                 'status' => 200,
                 'message' => 'Update Program',
-                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $StaticTable->tabs_id, 'project_id=' . request('project_id')]),
+                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $tab->slug, 'project_id=' . request('project_id')]),
             ]);
         }
 

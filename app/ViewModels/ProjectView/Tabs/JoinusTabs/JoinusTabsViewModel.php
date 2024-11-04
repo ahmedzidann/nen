@@ -19,8 +19,10 @@ class JoinusTabsViewModel extends ViewModel
     public $allTabs;
     public $tabs;
     public $check;
+    public $action;
+    public $method;
 
-    public function __construct($StaticTable = null)
+    public function __construct($action = null, $method = null, $StaticTable = null)
     {
         $this->StaticTable = is_null($StaticTable) ? new JoinusTabs(old()) : $StaticTable;
         $this->type = empty($StaticTable) ? 'Create' : 'Edit';
@@ -30,21 +32,21 @@ class JoinusTabsViewModel extends ViewModel
         $this->routeView = route('admin.tabproject.joinus.index', Request()->query());
         $this->viewTable = 'joinus';
         $this->allTabs = Tabs::get();
-        if(request('tab') == 'join-us'){
-        $this->check = JoinusTabs::where('project_id', request('project_id')??0)->exists();
+        if (request('tab') == 'join-us') {
+            $this->check = JoinusTabs::where('project_id', request('project_id') ?? 0)->exists();
         }
-        $this->tabs = Tabs::where('slug',  request('tab')??'')->first();
+        $this->tabs = Tabs::where('slug', request('tab') ?? '')->first();
+        $this->action = $action;
+        $this->method = $method;
     }
 
-    public function action(): string
+    public function action(): string|null
     {
-        return  is_null($this->StaticTable->first())
-        ? route('admin.tabproject.joinus.store')
-        : route('admin.tabproject.joinus.update', $this->StaticTable->first()->id);
+        return $this->action;
     }
 
-    public function method(): string
+    public function method(): string|null
     {
-        return request()->route()->getName() == 'admin.tabproject.joinus.create' ? 'POST' : 'PUT';
+        return $this->method;
     }
 }

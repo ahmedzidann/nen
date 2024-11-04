@@ -79,7 +79,7 @@ class JoinusTabsController
         } else {
             $Tabs = Tabs::find($request->tabs_id);
             app(StoreJoinusTabsAction::class)->handle($validator->validated());
-            redirect()->route('admin.tabproject.joinus.index')->with('add', 'Success Add Program');
+            redirect()->route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . request('project_id')])->with('add', 'Success Add Program');
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Program',
@@ -108,11 +108,12 @@ class JoinusTabsController
                 'errors' => $validator->messages(),
             ]);
         } else {
+            $Tabs = Tabs::find($request->tabs_id);
             app(UpdateJoinusTabsAction::class)->handle($StaticTable, $validator->validated());
             return response()->json([
                 'status' => 200,
                 'message' => 'Update Program',
-                'redirect_url' => route('admin.tabproject.joinus.index'),
+                'redirect_url' => route('admin.tabproject.joinus.index', ['tab=' . $Tabs->slug, 'project_id=' . request('project_id')]),
             ]);
         }
 

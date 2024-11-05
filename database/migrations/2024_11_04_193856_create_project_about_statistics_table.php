@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_about_statisctics', function (Blueprint $table) {
+        Schema::create('project_about_statistics', function (Blueprint $table) {
             $table->id();
             $table->mediumText('title')->nullable();
             $table->mediumInteger('value')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_about_statisctics');
+        Schema::dropIfExists('project_about_statistics');
     }
 };

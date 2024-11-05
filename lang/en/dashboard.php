@@ -861,4 +861,10 @@
   'Investor Statistics View' => 'Investor Statistics View',
   'investor-statistics' => 'Investor-statistics',
   'TabsData' => 'TabsData',
+  'ProjectAboutStatistic View' => 'ProjectAboutStatistic View',
+  'ProjectAboutStatistic Create' => 'ProjectAboutStatistic Create',
+  '+50' => '+50',
+  'Value  english' => 'Value  english',
+  'ProjectAboutStatistic Edit' => 'ProjectAboutStatistic Edit',
+  'tabproject Edit' => 'Tabproject Edit',
 );

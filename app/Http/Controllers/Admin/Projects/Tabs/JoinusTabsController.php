@@ -48,21 +48,23 @@ class JoinusTabsController
                     }
                 })
                 ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
-                ->addColumn('TabsData', function ($row) use ($TabsData) {
+                ->addColumn('TabsData', function ($row) use ($TabsData, $request) {
                     $options = '';
                     foreach ($TabsData as $item) {
                         if ($item->slug == 'about') {
-                            $options .= '<li><a width="100%"  href="' . route('admin.tabproject.about.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                            $options .= '<li><a width="100%"  href="' . route('admin.tabproject.about.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
                         } elseif ($item->slug == 'program') {
-                            $options .= '<li><a href="' . route('admin.tabproject.program.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                            $options .= '<li><a href="' . route('admin.tabproject.program.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
                         } elseif ($item->slug == 'help') {
-                            $options .= '<li><a href="' . route('admin.tabproject.help.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                            $options .= '<li><a href="' . route('admin.tabproject.help.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
                         } elseif ($item->slug == 'join-us') {
-                            $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                            $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
                         } elseif ($item->slug == 'archive') {
-                            $options .= '<li><a href="' . route('admin.tabproject.archive.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                            $options .= '<li><a href="' . route('admin.tabproject.archive.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
+                        } elseif ($item->slug == 'statistics') {
+                            $options .= '<li><a href="' . route('admin.tabproject.statistics.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
                         } else {
-                            $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
+                            $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' .$request->subcategory]) . '">' . $item->name . '</a></li>';
                         }
                     };
 

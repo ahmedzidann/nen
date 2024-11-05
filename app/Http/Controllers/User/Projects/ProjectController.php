@@ -17,7 +17,7 @@ class ProjectController extends Controller
     {
         $page = Page::findOrFail(request()->page_id);
         $slider = Slider::where('page_id', $page->id)->first();
-        $tabs = Tabs::where('type','project')->get();
+        $tabs = Tabs::where('type','project')->where('slug','!=', 'statistics')->get();
         $slug = $page->slug;
         $id = $page->id;
         $projects = Project::findOrFail(request()->project_id);

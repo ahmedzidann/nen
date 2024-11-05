@@ -48,54 +48,7 @@
                                             {{-- ----------start static --}}
                                             <input type="hidden" name="category"
                                                 value="{{ Request()->category ?? '' }}">
-                                            {{-- ----------end static --}}
-                                            {{-- ----------name first --}}
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label1  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label1" old="{{ 'label1.'.$item->key }}"
-                                                    name="{{ 'label1'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label1 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label1', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label1  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label2  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label2" old="{{ 'label2.'.$item->key }}"
-                                                    name="{{ 'label2'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label2 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label2', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label2  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label3  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label3" old="{{ 'label3.'.$item->key }}"
-                                                    name="{{ 'label3'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label3 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label3', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label3  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label4  {{ $item->name  }}"></x-admin.form.label-first>
-                                                <x-admin.form.input id="label4" old="{{ 'label4.'.$item->key }}"
-                                                    name="{{ 'label4'.'['.$item->key.']' }}" type="text" required=""
-                                                    placeholder="label4 {{ $item->name }}" class="form-control valid"
-                                                    :value="$StaticTable->translate('label4', $item->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end name="please enter label4  {{ $item->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            {{-- ----------name first --}}
-                                            {{-- ----------Description first --}}
+
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Description  {{ $item->name  }}">

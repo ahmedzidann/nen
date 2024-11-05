@@ -33,7 +33,8 @@ $(function () {
             },
             {
                 data: 'Page',
-                name: 'page_id'
+                name: 'Page',
+                searchable: true
             },
             {
                 data: 'created_at',

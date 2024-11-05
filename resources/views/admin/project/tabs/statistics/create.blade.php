@@ -61,7 +61,7 @@
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Value  {{ $translationFirst->name  }}">
                                                 </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'value' }}" name="value" type="number" required="" placeholder="+50" class="form-control valid" :value="$StaticTable->value">
+                                                <x-admin.form.input old="{{ 'value' }}" name="value" type="text" required="" placeholder="+50" class="form-control valid" :value="$StaticTable->value">
                                                 </x-admin.form.input>
                                                 <x-admin.form.label-end name="please enter value">
                                                 </x-admin.form.label-end>

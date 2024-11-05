@@ -69,7 +69,7 @@
                                                                 name="Value  {{ $translationFirst->name }}">
                                                             </x-admin.form.label-first>
                                                             <x-admin.form.input old="{{ 'value' }}" name="value"
-                                                                type="number" required="" placeholder="+50"
+                                                                type="text" required="" placeholder="+50"
                                                                 class="form-control valid" :value="$StaticTable->value">
                                                             </x-admin.form.input>
                                                             <x-admin.form.label-end name="please enter value">

@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('project_about_statistics', function (Blueprint $table) {
             $table->id();
             $table->mediumText('title')->nullable();
-            $table->mediumInteger('value')->nullable();
+            $table->string('value')->nullable();
             $table->unsignedBigInteger('project_id')->nullable();
             $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('tab_id')->nullable();

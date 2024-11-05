@@ -51,64 +51,6 @@
                                             <input type="hidden" name="project_id" value="{{ Request()->project_id }}">
                                             <input type="hidden" name="tabs_id" value="{{ $tabs->id??'' }}">
                                             <input type="hidden" name="type" value="slide">
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label1  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'label1.'.$translationFirst->key }}"
-                                                    name="{{ 'label1'.'['.$translationFirst->key.']' }}" type="text"
-                                                    required="" placeholder="label1 {{ $translationFirst->name }}"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->translate('label1', $translationFirst->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end
-                                                    name="please enter label1  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label2  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'label2.'.$translationFirst->key }}"
-                                                    name="{{ 'label2'.'['.$translationFirst->key.']' }}" type="text"
-                                                    required="" placeholder="label2 {{ $translationFirst->name }}"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->translate('label2', $translationFirst->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end
-                                                    name="please enter label2  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label3  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'label3.'.$translationFirst->key }}"
-                                                    name="{{ 'label3'.'['.$translationFirst->key.']' }}" type="text"
-                                                    required="" placeholder="label3 {{ $translationFirst->name }}"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->translate('label3', $translationFirst->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end
-                                                    name="please enter label3  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            <div class="col-md-3 mb-4">
-                                                <x-admin.form.label-first class="form-label"
-                                                    name="label4  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'label4.'.$translationFirst->key }}"
-                                                    name="{{ 'label4'.'['.$translationFirst->key.']' }}" type="text"
-                                                    required="" placeholder="label4 {{ $translationFirst->name }}"
-                                                    class="form-control valid"
-                                                    :value="$StaticTable->translate('label4', $translationFirst->key)">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end star="*"
-                                                    name="please enter label4  {{ $translationFirst->name  }}">
-                                                </x-admin.form.label-end>
-                                            </div>
                                             {{-- ----------name first --}}
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">

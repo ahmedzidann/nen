@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
-class ProjectAboutStatisctic extends Model implements HasMedia
+class ProjectAboutStatistic extends Model implements HasMedia
 {
     use HasFactory, HasTranslations, InteractsWithMedia;
     public $translatable = [
@@ -22,5 +22,12 @@ class ProjectAboutStatisctic extends Model implements HasMedia
         'sort',
         'status',
     ];
-
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
+    public function tab()
+    {
+        return $this->belongsTo(Tabs::class, 'tab_id');
+    }
 }

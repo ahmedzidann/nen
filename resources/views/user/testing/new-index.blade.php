@@ -31,9 +31,9 @@
                         <div class="col-12">
                             {{-- <h3 class="decorated-title">
                                 {{ $fSection->title }}
-                    <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
+                    <!-- <img src="{{ asset('content/images/dec-vector.svg') }}" loading="lazy"
                         onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                        alt="vector">
+                        alt="vector"> -->
                     </h3> --}}
                             <div class="data">
                                 <p class="description lh-base before-vertical-line position-relative mt-3 pt-0 {{ strlen($fSection->description) >= 300 ? 'p_clamp_2' : '' }}"

@@ -1,15 +1,15 @@
 $(function () {
-    var language = $('#slider').val();
+    var language = $('#program').val();
     var url = new URL(window.location.href);
-    var category = url.searchParams.get("category");
-    var subcategory = url.searchParams.get("subcategory");
+    var category = url.searchParams.get("tab");
+    var subcategory = url.searchParams.get("project_id");
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
         autoWidth: false,
         ajax: {
-            url: `/admin/settings/slider/${language}`,
+            url: `/admin/tab-project/statistics/${language}`,
             data: function (d) {
                 d.from_date = $('.datepickerto').val();
                 d.to_date = $('.datepickerfrom').val();
@@ -32,9 +32,16 @@ $(function () {
                 name: 'title'
             },
             {
-                data: 'Page',
-                name: 'Page',
-                searchable: true
+                data: 'value',
+                name: 'value'
+            },
+            {
+                data: 'project_id',
+                name: 'project_id'
+            },
+            {
+                data: 'tab_id',
+                name: 'tab_id'
             },
             {
                 data: 'created_at',
@@ -108,6 +115,8 @@ $(function () {
 
     $('.selectAll').on('change', function () {
         var isChecked = $(this).is(':checked');
+
+        // Set all checkboxes in the table body to the same state as the "Select All" checkbox
         table.rows().every(function () {
             $(this.node()).find('input[type="checkbox"]').prop('checked', isChecked);
         });
@@ -131,7 +140,7 @@ $(function () {
             if (id.length > 0) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/admin/settings/slider/test",
+                        url: "/admin/tab-project/statistics/test",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -161,9 +170,9 @@ $(function () {
                 }
             } else {
                 Swal.fire(
-                'Error!',
-                'Please select least one check.',
-                'error'
+                    'Error!',
+                    'Please select least one check.',
+                    'error'
                 );
             }
         });

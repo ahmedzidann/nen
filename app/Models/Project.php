@@ -41,6 +41,10 @@ class Project extends Model implements HasMedia
     {
         return $this->hasMany(AboutTabs::class, 'project_id')->where('status', 'Active');
     }
+    public function getStatistics()
+    {
+        return $this->hasMany(ProjectAboutStatistic::class, 'project_id')->where('status', 'Active');
+    }
     public function getProgram()
     {
         return $this->hasMany(ProgramTabs::class, 'project_id')->where('status', 'Active');

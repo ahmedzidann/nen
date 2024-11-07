@@ -40,6 +40,7 @@ use App\Http\Controllers\Admin\Projects\Tabs\ArchiveTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\HelpTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\JoinusTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\ProgramTabsController;
+use App\Http\Controllers\Admin\Projects\Tabs\StatisticsTabsController;
 use App\Http\Controllers\Admin\Resource\ResourceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\Solution\SolutionController;
@@ -112,6 +113,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('help', HelpTabsController::class);
         Route::resource('joinus', JoinusTabsController::class);
         Route::delete('join-us/{join_id}', [JoinusTabsController::class, 'deleteJoin'])->name('join.delete');
+        Route::resource('statistics', StatisticsTabsController::class);
     });
 
     // clear route

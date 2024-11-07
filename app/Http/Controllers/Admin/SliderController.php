@@ -36,6 +36,11 @@ class SliderController extends Controller
             $category = $request->category;
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->filterColumn('Page', function ($query, $keyword) {
+                    $query->whereHas('Pages', function ($q) use ($keyword) {
+                        $q->whereRaw("LOWER(JSON_EXTRACT(name, '$.en')) LIKE LOWER(?)", ["%{$keyword}%"]);
+                    });
+                })
                 ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
                 ->editColumn('id', function () {static $count = 0; $count++;return $count;})
                 ->editColumn('title', function ($row) use ($language) {
@@ -123,7 +128,7 @@ class SliderController extends Controller
         return redirect()->back()->with('delete', 'Delete Slider');
     }
 
-    public function getChildPages( $page_id)
+    public function getChildPages($page_id)
     {
         $pages = Page::where('parent_id', $page_id)->get();
         return response()->json(['data' => $pages]);

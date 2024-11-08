@@ -867,4 +867,10 @@
   'Value  english' => 'Value  english',
   'ProjectAboutStatistic Edit' => 'ProjectAboutStatistic Edit',
   'tabproject Edit' => 'Tabproject Edit',
+  'Address  french' => 'Address  french',
+  'Roles View' => 'Roles View',
+  'Role View' => 'Role View',
+  'Username french' => 'Username french',
+  'Roles Data' => 'Roles Data',
+  'Username  french' => 'Username  french',
 );

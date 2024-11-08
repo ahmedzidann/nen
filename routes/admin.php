@@ -57,6 +57,7 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('admins', AdminController::class);
     Route::resource('users', UsersController::class);
     Route::resource('roles', RoleController::class);
+    Route::post('roles-bulck-delete', [RoleController::class, 'bulkDelete'])->name('roles.bulckdelete');
     Route::resource('pages', PagesController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('states', StateController::class);

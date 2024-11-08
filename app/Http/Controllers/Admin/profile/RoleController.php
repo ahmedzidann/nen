@@ -1,62 +1,97 @@
 <?php
 namespace App\Http\Controllers\Admin\profile;
-use App\Actions\Role\StoreRoleAction;
-use App\Actions\Role\UpdateRoleAction;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Roles\StoreRoleRequest;
-use App\Http\Requests\Roles\UpdateRoleRequest;
-use App\Models\Permission;
-use App\Models\Role;
-use App\ViewModels\Roles\RolesViewModel;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
+use App\Http\Controllers\Controller;
+use App\ViewModels\Roles\RolesViewModel;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
+use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
 {
-public function index(Request $request):View
-{
-    $roles = Role::Search();
-    return view('admin.roles.index',compact('roles'))->with('i', ($request->input('page', 1) - 1) * 5);
-}
 
-
-public function create():View
-{
-    return view('admin.roles.create',new RolesViewModel());
-}
-
-public function store(StoreRoleRequest $request):RedirectResponse
-{
-    app(StoreRoleAction::class)->handle($request->validated());
-    return redirect()->route('admin.roles.index')->with('add','Role created successfully');
-}
-
-public function show(Role $role):View
-{
-    $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")->where("role_has_permissions.role_id",$role->id)->get();
-    return view('admin.roles.show',compact('role','rolePermissions'));
-}
-
-public function edit(Role $role):View
-{
-    $permission = Permission::get();
-    $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$role->id)
-    ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')->all();
-    return view('admin.roles.edit',compact('role','permission','rolePermissions'));
-}
-
-    public function update(UpdateRoleRequest $request, Role $role):RedirectResponse
+    public function index(Request $request)
     {
-        app(UpdateRoleAction::class)->handle($role,$request->validated());
-        return redirect()->route('admin.roles.index')->with('edit','Role updated successfully');
+        if ($request->ajax()) {
+
+            $rows = Role::query();
+            return DataTables::of($rows)
+                ->addIndexColumn()
+                ->addColumn('checkbox', function ($row) {
+                    return '<input type="checkbox" name="checkbox[]" class="form-check-input roles_checkbox" value="' . $row->id . '" />';
+                })
+                ->editColumn('id', function () {
+                    static $count = 0;
+                    $count++;
+                    return $count;
+                })
+                ->addColumn('action', function ($row) {
+                    return '<div class="d-flex order-actions">
+                                <a href="' . route('admin.roles.edit', $row->id) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
+                            </div>';
+                })
+                ->editColumn('created_at', function ($row) {
+                    return date('Y/m/d', strtotime($row->created_at));
+                })
+
+                ->escapeColumns([])
+                ->make(true);
+        }
+
+        return view('admin.roles.view', new RolesViewModel());
     }
 
-    public function destroy(Role $role):RedirectResponse
+    public function show()
     {
-        $role->delete();
-        return redirect()->route('admin.roles.index')->with('delete','Role deleted successfully');
+
+    }
+    public function create()
+    {
+        return view('admin.roles.create', new RolesViewModel());
+    }
+
+    public function store(Request $request)
+    {
+        $validData = $this->validate($request, [
+            'name' => 'required|unique:roles,name',
+            'permission' => 'nullable',
+        ]);
+        // dd($validData);
+        $role = Role::create(['name' => $request->input('name'), 'guard_name' => 'admin']);
+
+        $role->syncPermissions($request->input('permission'));
+
+      return  redirect()->route('admin.roles.index')->with('success', 'Success Add Data Role');
+    }
+
+    public function edit(Role $role)
+    {
+
+        return view('admin.roles.edit', new RolesViewModel($role));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'nullable',
+        ]);
+        $role = Role::find($id);
+        $old = $role;
+        $role->name = $request->input('name');
+
+        $role->save();
+        $role->syncPermissions($request->input('permission'));
+
+       return  redirect()->route('admin.roles.index')->with('success', 'Success Update Data Role');
+    }
+
+   public function bulkDelete(Request $request)
+    {
+         Role::whereIn('id', $request->id)->delete();
+
+        return redirect()->back()->with('success', 'Delete Role');
     }
 }

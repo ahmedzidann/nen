@@ -8336,3 +8336,9 @@ width: 100%;
 span {
     font-size: 1.1rem !important;
 }
+
+#quick-access .documents-sections .document-content{
+    box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
+    border-radius: 4px;
+    background-color: white;
+}

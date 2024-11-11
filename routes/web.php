@@ -7,6 +7,7 @@ use App\Http\Controllers\User\DocValidation\DocValidationController;
 use App\Http\Controllers\User\Education\EducationController;
 use App\Http\Controllers\User\FindUs\FindUsController;
 use App\Http\Controllers\User\Projects\ProjectController;
+use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
@@ -80,6 +81,7 @@ Route::group(['prefix' => 'find-us', 'as' => 'find-us.', 'name' => 'find-us.'], 
     }
 });
 Route::get('find-us/data', [FindUsController::class, 'getData'])->name('find-us.data');
+Route::get('resources-data', [ResourceController::class, 'getResources'])->name('resources-data.get');
 
 //Projects Routes
 Route::get('Projects/{slug?}/{id?}', [ProjectController::class, 'index'])->name('projects');

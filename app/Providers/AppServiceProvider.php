@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\About;
 use App\Models\Page;
+use App\Models\About;
+use App\Models\Footer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
         $findus = Page::where('parent_id', Page::where('slug', 'find-us')->first()->id)
             ->where('navbar', 'Active')->get();
 
+        $footerData = Footer::where('status', 'Active')->get()->groupBy('type');
+
+
         $about = About::first();
         View::composer('user.about.*', function ($view) use ($pages) {
             $view->with('VCpages', $pages);
@@ -75,6 +79,12 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('about', $about);
         });
+
+        View::composer('*', function ($view) use ($footerData) {
+
+            $view->with('footerData', $footerData);
+        });
+
 
         // Paginator::useBootstrap(); // here we have added code.
     }

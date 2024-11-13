@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="about_content">
-    <h5>Solution</h5>
+    <!-- <h5>Solution</h5> -->
     <h2>{{$solution->title}}</h2>
 
     <div class="tabs_div">

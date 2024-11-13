@@ -25,7 +25,7 @@
             </p>
         </div>
         @if ($partner->educationDescription?->image)
-            <div class="our-teams_img">
+            <div class="banner-image-container rounded">
                 <img src="{{ asset('storage') . '/' . $partner->educationDescription?->image }}" loading="lazy"
                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';">
             </div>

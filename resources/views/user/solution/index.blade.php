@@ -8,9 +8,9 @@
 
 <div class="about_content">
     <div class="text-start">
-        <p class="global-description">
+        <!-- <p class="global-description">
             Solution
-        </p>
+        </p> -->
         <h5 class="global-title">
             {{$solution->title}}
         </h5>

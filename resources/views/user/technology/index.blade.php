@@ -24,7 +24,7 @@ Technology
 <div class="technology">
     <div class="container">
         <div class="text-start">
-            <h6 class="fs-5 mb-1 text-muted">Education</h6>
+            <!-- <h6 class="fs-5 mb-1 text-muted">Education</h6> -->
             <h5 class="global-title">
                 {{ $tech->name }}
             </h5>

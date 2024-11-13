@@ -2860,6 +2860,7 @@ z-index: 2;
     flex-direction: column;
     align-items: start;
     gap: 20px;
+    overflow: hidden;
 }
 
 #certifications-section .certifications_img img {
@@ -8341,4 +8342,16 @@ span {
     box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
     border-radius: 4px;
     background-color: white;
+}
+
+
+.banner-image-container {
+    height: 65vh;
+    width: 100%;
+    overflow: hidden;
+}
+.banner-image-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
 }

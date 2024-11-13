@@ -77,7 +77,7 @@
 }
 
 .img-cover {
-    object-fit: cover;
+    object-fit: fill;
 }
 
 textarea.form-control {
@@ -521,7 +521,7 @@ a {
 .img_team {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: fill;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
@@ -795,7 +795,7 @@ a {
 .whou_us_img img {
     width: 100%;
     height: 350px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .bg_div {
@@ -1815,7 +1815,7 @@ top: 0;
 .video_div img {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 12px;
 }
 
@@ -1865,7 +1865,7 @@ top: 0;
 .w-icons {
     height: 60px;
     width: 60px;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 7px;
 }
 
@@ -1913,7 +1913,7 @@ top: 0;
     width: 100%;
     height: 350px;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 /* .tab_horzintal {
@@ -2368,7 +2368,7 @@ z-index: 2;
     border-radius: 20px;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 #awards-section .card {
@@ -3179,7 +3179,7 @@ z-index: 2;
 .program-card .image-box-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .program-card .title {
@@ -3783,7 +3783,7 @@ z-index: 2;
     height: 90px;
     display: block;
     margin: 0 auto;
-    object-fit: cover;
+    object-fit: fill;
     width: 90px;
     border-radius: 7px;
 }
@@ -4125,7 +4125,7 @@ margin-top: auto; */
     width: 100%;
     height: 350px;
     border-radius: 12px;
-    object-fit: cover;
+    object-fit: fill;
     object-position: center;
 }
 
@@ -4216,7 +4216,7 @@ circle-progress::part(text) {
     width: 110px;
     height: 110px;
     border-radius: 5px;
-    object-fit: cover;
+    object-fit: fill;
     object-position: top;
 }
 
@@ -4587,7 +4587,7 @@ margin-top: 75px;
     width: 100%;
     border-radius: 12px;
     height: 225px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .programe_content .flex_icons_div {
@@ -5027,7 +5027,7 @@ margin-top: 75px;
     height: 400px;
     width: 100%;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .size_div {
@@ -5042,7 +5042,7 @@ margin-top: 75px;
 .frame_img img {
     width: 60px;
     height: 60px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .whou_us_img {
@@ -5090,7 +5090,7 @@ margin-top: 75px;
 .about_des_div_img img {
     width: 370px;
     height: 370px;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px;
 }
 
@@ -5428,7 +5428,7 @@ th {
 .right_side img {
     width: 100%;
     height: 350px;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px;
 }
 
@@ -6330,7 +6330,7 @@ th {
         width: 100%;
         min-width: unset;
         /* height: 300px; */
-        object-fit: cover;
+        object-fit: fill;
     }
 
     .Awards_titel h1 {

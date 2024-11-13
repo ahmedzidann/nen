@@ -233,7 +233,7 @@
                                                                 <img
                                                                     src="{{ url('content/images/small_icon/archive-book.png') }}"><span><a
                                                                         target="_blank" class="ref_coloring"
-                                                                        href="{{ asset('storage/education/' . $item->files[0]->file) }}">Reference</a></span>
+                                                                        href="{{ asset('storage/education/' . $item->files[0]->file) }}">{{ TranslationHelper::translateWeb(ucfirst('references')??'') }}</a></span>
                                                             @endif
                                                         </p>
                                                         <p>

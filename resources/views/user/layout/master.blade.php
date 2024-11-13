@@ -151,36 +151,7 @@
             <div class="global-card p-0">
                 <div class="second-contact-bg py-4 px-4">
                     <div id="quick-access">
-                        <div class="d-flex flex-column justify-content-center align-items-center gap-1">
-                            <h5 class="global-title mb-0 text-dark">
-                                Quick Access
-                            </h5>
-                            <div class="under-title-vector">
-                                <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                    alt="vector">
-                            </div>
-                        </div>
-                        <!--Start Swiper Container -->
-                        <div class="tabs-items mt-md-4 mt-3">
-                            <div class="swiper-container">
-                                <!-- Swiper Wrapper for Tabs -->
-                                <div class="swiper-wrapper px-5" id="resources-data">
-                                    {{-- resources here --}}
-                                </div>
 
-                                <!-- Swiper Navigation Buttons -->
-                                <div class="slider-button slider-prev" tabindex="0" role="button"
-                                    aria-label="Previous slide">
-                                    <i class="fa fa-chevron-left"></i>
-                                </div>
-                                <div class="slider-button slider-next" tabindex="0" role="button"
-                                    aria-label="Next slide">
-                                    <i class="fa fa-chevron-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Swiper Container -->
                     </div>
                     <hr />
                     <div class="row justify-content-center">
@@ -240,15 +211,15 @@
                                     </div>
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(1, $footerData)) --}}
-                                            @foreach ($footerData[1] as $certificate)
-                                                <a href="{{ $certificate->url }}"
-                                                    class="item d-flex align-items-center gap-1" target="__blank">
-                                                    <i class="bi bi-arrow-right"></i>
-                                                    <span>
-                                                        {{ $certificate->title }}
-                                                    </span>
-                                                </a>
-                                            @endforeach
+                                        @foreach ($footerData[1] as $certificate)
+                                            <a href="{{ $certificate->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <i class="bi bi-arrow-right"></i>
+                                                <span>
+                                                    {{ $certificate->title }}
+                                                </span>
+                                            </a>
+                                        @endforeach
                                         {{-- @endif --}}
                                     </div>
                                 </div>
@@ -258,15 +229,15 @@
                                     </div>
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(2, $footerData)) --}}
-                                            @foreach ($footerData[2] as $portal)
-                                                <a href="{{ $portal->url }}"
-                                                    class="item d-flex align-items-center gap-1" target="__blank">
-                                                    <i class="bi bi-arrow-right"></i>
-                                                    <span>
-                                                        {{ $portal->title }}
-                                                    </span>
-                                                </a>
-                                            @endforeach
+                                        @foreach ($footerData[2] as $portal)
+                                            <a href="{{ $portal->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <i class="bi bi-arrow-right"></i>
+                                                <span>
+                                                    {{ $portal->title }}
+                                                </span>
+                                            </a>
+                                        @endforeach
                                         {{-- @endif --}}
                                     </div>
                                 </div>
@@ -276,15 +247,15 @@
                                     </div>
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(3, $footerData)) --}}
-                                            @foreach ($footerData[3] as $subsidiaries)
-                                                <a href="{{ $subsidiaries->url }}"
-                                                    class="item d-flex align-items-center gap-1" target="__blank">
-                                                    <i class="bi bi-arrow-right"></i>
-                                                    <span>
-                                                        {{ $subsidiaries->title }}
-                                                    </span>
-                                                </a>
-                                            @endforeach
+                                        @foreach ($footerData[3] as $subsidiaries)
+                                            <a href="{{ $subsidiaries->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <i class="bi bi-arrow-right"></i>
+                                                <span>
+                                                    {{ $subsidiaries->title }}
+                                                </span>
+                                            </a>
+                                        @endforeach
                                         {{-- @endif --}}
                                     </div>
                                 </div>
@@ -639,7 +610,7 @@
                     .then(data => {
                         console.log('data:', data);
                         if (data.status === 'success' && data.data) {
-                            document.getElementById('resources-data').innerHTML += data.data;
+                            document.getElementById('quick-access').innerHTML += data.data;
                         }
                     })
                     .catch(error => {

@@ -29,8 +29,7 @@
 <style>
     /* Style for Swiper Navigation */
     .slider-button {
-        margin-top: 15px;
-        /* Space between content and arrows */
+        /* margin-top: 15px; */
         text-align: center;
     }
 

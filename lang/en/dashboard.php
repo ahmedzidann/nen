@@ -1,6 +1,4 @@
-<?php
-
-return array (
+<?php return array (
   'Be Careful' => 'Be Careful',
   'Delete' => 'Delete',
   'Close' => 'Close',
@@ -898,4 +896,5 @@ return array (
   'Label4 arabic' => 'Label4 arabic',
   'please enter label4  arabic' => 'Please enter label4  arabic',
   '#' => '#',
+  'Years Text french' => 'Years Text french',
 );

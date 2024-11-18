@@ -10,7 +10,7 @@ class StoreStaticTableAction
     use ImageHelper;
     public function handle(array $data)
     {
-        $StaticTable = Technology::create($data);
+        $StaticTable = StaticTable::create($data);
         $this->StoreImage($data, $StaticTable, 'StaticTable');
         $this->StoreImage2($data, $StaticTable, 'StaticTable2');
 

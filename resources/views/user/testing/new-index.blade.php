@@ -43,7 +43,7 @@
 
                                 @if (strlen($fSection->description) >= 300)
                                     <a role='btn' onclick="toggleDescription(this)"
-                                        class="mt-3 read_more read_more_btn">Read More
+                                        class="mt-3 read_more read_more_btn">{{ TranslationHelper::translateWeb(ucfirst('Read More')??'') }}
                                         <i class="bi bi-chevron-down"></i></a>
                                 @endif
                             </div>

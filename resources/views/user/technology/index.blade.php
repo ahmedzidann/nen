@@ -54,7 +54,7 @@ Technology
                         </p>
 
                         @if (strlen($fSection->description) >= 300)
-                        <a role='btn' onclick="toggleDescription(this)" class="mt-3 read_more read_more_btn">Read More
+                        <a role='btn' onclick="toggleDescription(this)" class="mt-3 read_more read_more_btn">{{ TranslationHelper::translateWeb(ucfirst('Read More')??'') }}
                             <i class="bi bi-chevron-down"></i></a>
                         @endif
                     </div>
@@ -115,8 +115,8 @@ Technology
                 <circle cx="483.183" cy="138.58" r="4.633" fill="#990000"></circle>
                 <circle cx="467.22" cy="158.92" r="11.107" fill="#990000"></circle>
             </svg>
-            <h3 class="title">No data</h3>
-            <p class="description">There have been no data in this section yet</p>
+            <h3 class="title">{{ TranslationHelper::translateWeb(ucfirst('No data')??'') }}</h3>
+            <p class="description">{{ TranslationHelper::translateWeb(ucfirst('There have been no data in this section yet')??'') }}</p>
         </div>
         @endif
 
@@ -182,8 +182,8 @@ Technology
                     <circle cx="483.183" cy="138.58" r="4.633" fill="#990000"></circle>
                     <circle cx="467.22" cy="158.92" r="11.107" fill="#990000"></circle>
                 </svg>
-                <h3 class="title">No data</h3>
-                <p class="description">There have been no data in this section yet</p>
+                <h3 class="title">{{ TranslationHelper::translateWeb(ucfirst('No data')??'') }}</h3>
+                <p class="description">{{ TranslationHelper::translateWeb(ucfirst('No data')??'') }}</p>
             </div>
             @endforelse
         </div>

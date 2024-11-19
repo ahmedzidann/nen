@@ -10,7 +10,7 @@
 <div id="partners-section">
     <div class="texts-data d-flex flex-column align-items-start">
         <h5 class="global-title">
-            Strategic Partners
+            {{ TranslationHelper::translateWeb(ucfirst('Strategic Partners')??'') }}
         </h5>
         <div class="under-title-vector">
             <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
@@ -88,14 +88,14 @@
                                                     @if ($item->getFirstMediaUrl('StaticTable2'))
                                                     <img src="{{url('content/images/small_icon/archive-book.png')}}">
                                                     <span><a class="ref_coloring"
-                                                            href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                            href="{{$item->getFirstMediaUrl('StaticTable2')}}">{{ TranslationHelper::translateWeb(ucfirst('Reference')??'') }}</a></span>
                                                     @endif
                                                 </p>
                                                 <p class="icons-item">
                                                     @if ($item->url)
                                                     <img src="{{url('content/images/small_icon/global.png')}}"><span><a
                                                             class="ref_coloring"
-                                                            href="{{$item->url}}">Website</a></span>
+                                                            href="{{$item->url}}">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a></span>
                                                     @endif
                                                 </p>
                                             </div>
@@ -113,7 +113,7 @@
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
-                                    <div class="text">See More</div>
+                                    <div class="text">{{ TranslationHelper::translateWeb(ucfirst('See More')??'') }}</div>
                                 </button>
                             </a>
                             @endif
@@ -157,8 +157,8 @@
                 </div>
 
                 <div class="ceryifcates_sec">
-                    <h1>Our Partners</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h1>{{ TranslationHelper::translateWeb(ucfirst('Our Partners')??'') }}</h1>
+                    <p>{{ TranslationHelper::translateWeb(ucfirst('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')??'') }}</p>
 
                     <div class="grid_div_bttn">
                         <div class="grid_div" id="partners-{{$sub->slug}}" data-page="1">
@@ -188,13 +188,13 @@
                                                 @if ($item->getFirstMediaUrl('StaticTable2'))
                                                 <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a
                                                         class="ref_coloring"
-                                                        href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                        href="{{$item->getFirstMediaUrl('StaticTable2')}}">{{ TranslationHelper::translateWeb(ucfirst('Reference')??'') }}</a></span>
                                                 @endif
                                             </p>
                                             <p class="icons-item">
                                                 @if ($item->url)
                                                 <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                        class="ref_coloring" href="{{$item->url}}">Website</a></span>
+                                                        class="ref_coloring" href="{{$item->url}}">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a></span>
                                                 @endif
                                             </p>
                                         </div>
@@ -218,7 +218,7 @@
 
 <!-- Old Desgin (Remove d-none Class to view it again-->
     <div class="about_content text-start d-none">
-        <h1>STRATEGIC PARTNERS</h1>
+        <h1>{{ TranslationHelper::translateWeb(ucfirst('STRATEGIC PARTNERS')??'') }}</h1>
 
         <div class="tabs_div">
             <ul class="nav nav-pills mb-3 text-start" id="pills-tab" role="tablist">
@@ -250,8 +250,8 @@
                     </div>
 
                     <div class="ceryifcates_sec">
-                        <h1>Our Partners</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <h1>{{ TranslationHelper::translateWeb(ucfirst('Our Partners')??'') }}</h1>
+                        <p>{{ TranslationHelper::translateWeb(ucfirst('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')??'') }}</p>
 
                         <div class="grid_div_bttn">
                             <div class="grid_div" id="partners-{{$sub->slug}}" data-page="1">

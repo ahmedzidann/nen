@@ -105,8 +105,7 @@
                                 Get in Touch with Us
                             </h1>
                             <p class="fs-5-2 text-center text-muted mt-2">
-                                We're here to help! Whether you have questions, feedback, or need support, reach out to
-                                us, and we'll be happy to assist you.
+                                {{ TranslationHelper::translateWeb(ucfirst('We re here to help! Whether you have questions, feedback, or need support, reach out to us, and we ll be happy to assist you.')??'') }}
                             </p>
                             <div class="d-flex justify-content-center mt-5">
                                 <a class="btn btn-solid-main fs-5-2" data-tooltip="contact channel"

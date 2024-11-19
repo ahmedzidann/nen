@@ -34,19 +34,19 @@
             @endif
             @endforeach
             {{-- <li class="nav-item" role="presentation">
-                <button class="nav-link proj_bttn" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false" tabindex="-1">About </button>
+                <button class="nav-link proj_bttn" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false" tabindex="-1">{{ TranslationHelper::translateWeb(ucfirst('About')??'') }} </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link proj_bttn active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Program</button>
+                <button class="nav-link proj_bttn active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">{{ TranslationHelper::translateWeb(ucfirst('Program')??'') }}</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link proj_bttn" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">Help</button>
+                <button class="nav-link proj_bttn" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">{{ TranslationHelper::translateWeb(ucfirst('Help')??'') }}</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">Document</button>
+                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" tabindex="-1">{{ TranslationHelper::translateWeb(ucfirst('Document')??'') }}</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-join" type="button" role="tab" aria-controls="pills-join" aria-selected="false" tabindex="-1">Join us</button>
+                <button class="nav-link proj_bttn" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-join" type="button" role="tab" aria-controls="pills-join" aria-selected="false" tabindex="-1">{{ TranslationHelper::translateWeb(ucfirst('Join us')??'') }}</button>
             </li> --}}
         </ul>
         <div class="tab-content" id="pills-tabContent">
@@ -272,8 +272,8 @@
                 <circle cx="483.183" cy="138.58" r="4.633" fill="#990000"></circle>
                 <circle cx="467.22" cy="158.92" r="11.107" fill="#990000"></circle>
             </svg>
-            <h3 class="title">No data</h3>
-            <p class="description">There have been no data in this section yet</p>
+            <h3 class="title">{{ TranslationHelper::translateWeb(ucfirst('No data')??'') }}</h3>
+            <p class="description">{{ TranslationHelper::translateWeb(ucfirst('There have been no data in this section yet')??'') }}</p>
         </div>
         @endforelse
     </div>
@@ -292,7 +292,7 @@
                     Call Us
                 </span>
                 <h4 class="">
-                    do you have questions? Do not hesitate to contact us
+                    {{ TranslationHelper::translateWeb(ucfirst('do you have questions? Do not hesitate to contact us')??'') }}
                 </h4>
                 <a href="#" class="bttn_service">
                     <img src="{{url('content/images/small_icon/chat.png')}}">
@@ -305,7 +305,7 @@
             <div id="representatives-table-section" class="mt-md-5 mt-3">
                 <hr />
                 <h3 class="table-title line-before text-gray500 fs-5 mb-3">
-                    Regional Representatives
+                    {{ TranslationHelper::translateWeb(ucfirst('Regional Representatives')??'') }}
                 </h3>
                 <div class="table-container">
                     <div class="table-responsive office-table-container">
@@ -314,14 +314,14 @@
                                 <tr>
                                     <th scope="col">
                                         <div class="table-header-icon">
-                                            <i class="bi bi-globe-asia-australia"></i> Country
+                                            <i class="bi bi-globe-asia-australia"></i> {{ TranslationHelper::translateWeb(ucfirst('Country')??'') }}
                                         </div>
                                     </th>
                                     <th scope="col">
-                                        <div class="table-header-icon"><i class="bi bi-person"></i> Name</div>
+                                        <div class="table-header-icon"><i class="bi bi-person"></i> {{ TranslationHelper::translateWeb(ucfirst('Name')??'') }}</div>
                                     </th>
                                     <th scope="col">
-                                        <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone</div>
+                                        <div class="table-header-icon"><i class="bi bi-telephone"></i> {{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -341,7 +341,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="3" class="text-center">No representatives available.</td>
+                                    <td colspan="3" class="text-center">{{ TranslationHelper::translateWeb(ucfirst('No representatives available.')??'') }}</td>
                                 </tr>
                                 @endforelse
                             </tbody>

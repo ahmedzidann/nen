@@ -88,7 +88,7 @@
                             </path>
                         </svg>
                         <span>
-                            subsidiaries
+                            {{ TranslationHelper::translateWeb(ucfirst('subsidiaries')??'') }}
                         </span>
                     </button>
                 </li>
@@ -103,7 +103,7 @@
                             </path>
                         </svg>
                         <span>
-                            Sister Companies
+                            {{ TranslationHelper::translateWeb(ucfirst('Sister Companies')??'') }}
                         </span>
                     </button>
                 </li>
@@ -155,7 +155,7 @@
                                             </div>
                                         </div>
                                         <a href="{{ $sub->url }}"
-                                            class="website_link mt-0 p-2 text-center">Website</a>
+                                            class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a>
 
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                             </div>
                                         </div>
                                         <a href="{{ $sub->url }}"
-                                            class="website_link mt-0 p-2 text-center">Website</a>
+                                            class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a>
 
                                     </div>
                                 </div>

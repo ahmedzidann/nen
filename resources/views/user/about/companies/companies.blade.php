@@ -21,12 +21,12 @@
                                             loading="lazy"
                                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                             alt="vector">
-                                        <p>Since : <span
+                                        <p>{{ TranslationHelper::translateWeb(ucfirst('Since')??'') }} : <span
                                                 class="mt-0 pt-0">{{ $row->since }}</span>
                                         </p>
                                     </h6>
                                     <h6>
-                                        <p>Sharing : <span
+                                        <p>{{ TranslationHelper::translateWeb(ucfirst('Sharing')??'') }} : <span
                                                 class="mt-0 pt-0">{{ $row->percent }}%</span>
                                         </p>
                                     </h6>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <a href="{{ $sub->url }}"
-                class="website_link mt-0 p-2 text-center">Website</a>
+                class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a>
 
         </div>
     </div>

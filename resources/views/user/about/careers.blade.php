@@ -34,7 +34,7 @@
                 Our Jobs Offers
             </p>
             <h5 class="global-title">
-                Some of the jobs offered
+                {{ TranslationHelper::translateWeb(ucfirst('Some of the jobs offered')??'') }}
             </h5>
             <div class="under-title-vector">
                 <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
@@ -116,8 +116,8 @@
 
     <div class="teams_sec">
         <div class="our_team_titels">
-            <h1>Some of the jobs offered</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <h1>{{ TranslationHelper::translateWeb(ucfirst('Some of the jobs offered')??'') }}</h1>
+            <p>{{ TranslationHelper::translateWeb(ucfirst('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')??'') }}</p>
 
         </div>
         @if ($items->where('item','section-two')->count())
@@ -134,7 +134,7 @@
                     <div class="frame_card_content">
                         <h6>{{$item->subtitle}}</h6>
                         <h5>{{$item->title}}</h5> @if ($date->isToday())
-                        <span class="span_style">New Post</span>
+                        <span class="span_style">{{ TranslationHelper::translateWeb(ucfirst('New Post')??'') }}</span>
                         @endif
 
                         <div class="small_icons_div">
@@ -148,7 +148,7 @@
                             {{ html_entity_decode(strip_tags($fSection->description)) }}</span>
                         @if (strlen($fSection->description)>= 200)
 
-                        <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i
+                        <a role='btn' onclick="toggleDescription(this)" class="read_more">{{ TranslationHelper::translateWeb(ucfirst('Read More.')??'') }} <i
                                 class="bi bi-chevron-down"></i></a>
                         @endif
                         {{-- <a href="#" class="read_more">Read More <i class="bi bi-chevron-down"></i></a> --}}

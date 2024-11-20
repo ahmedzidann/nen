@@ -35,15 +35,15 @@ Achievements
     <!-- Start Achievements Timeline Section -->
     <div id="achievements-timeline-section" class="mt-md-5 mt-3">
         <div class="texts-data d-flex flex-column align-items-start">
-            <h5 class="global-title">NEN is a professional consulting company</h5>
+            <h5 class="global-title">{{ TranslationHelper::translateWeb(ucfirst('NEN is a professional consulting company')??'') }}</h5>
             <div class="under-title-vector">
                 <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
             </div>
             <p class="global-description">
-                NEN is a trusted consulting firm with a proven track record in delivering innovative solutions across
+               {{ TranslationHelper::translateWeb(ucfirst(' NEN is a trusted consulting firm with a proven track record in delivering innovative solutions across
                 various industries. With a focus on excellence, we provide expert guidance to help organizations achieve
                 their goals, streamline operations, and drive growth. Our team of experienced professionals is dedicated
-                to ensuring client success through tailored strategies and comprehensive consulting services.
+                to ensuring client success through tailored strategies and comprehensive consulting services.')??'') }}
             </p>
         </div>
 

@@ -74,25 +74,25 @@
 
 
             {{-- <li class="li_category">
-              <a href="#" class="a_ref">Education <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('Education')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li>
             <li class="li_category">
-              <a href="#" class="a_ref">Testing <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('Testing')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li>
             <li class="li_category">
-              <a href="#" class="a_ref">Solution <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('Solution')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li>
             <li class="li_category">
-              <a href="#" class="a_ref">Technology <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('Technology')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li> --}}
             {{-- <li class="li_category">
-              <a href="#" class="a_ref">DOC Validation <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('DOC Validation')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li class="li_category">
             <li class="li_category">
-              <a href="#" class="a_ref">Join Us <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('Join Us')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li>
             <li class="li_category">
-              <a href="#" class="a_ref">Find Us <span><i class="bi bi-chevron-down"></i></span></a>
+              <a href="#" class="a_ref">{{ TranslationHelper::translateWeb(ucfirst('Find Us')??'') }} <span><i class="bi bi-chevron-down"></i></span></a>
             </li> --}}
           </ul>
         </div>

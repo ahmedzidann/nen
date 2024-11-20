@@ -105,17 +105,17 @@ Identity
                     {{-- <button class="nav-link active tab_state w_nav_link" id="v-pills-home-tab" data-bs-toggle="pill"
                 data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
                 aria-selected="true">
-                Our Vision
+                {{ TranslationHelper::translateWeb(ucfirst('Our Vision')??'') }}
             </button>
             <button class="nav-link tab_state bttn_tab w_nav_link" id="v-pills-profile-tab" data-bs-toggle="pill"
                 data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
                 aria-selected="false">
-                Our Mission
+                {{ TranslationHelper::translateWeb(ucfirst('Our Mission')??'') }}
             </button>
             <button class="nav-link tab_state bttn_tab w_nav_link" id="v-pills-messages-tab" data-bs-toggle="pill"
                 data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
                 aria-selected="false">
-                Objectives
+                {{ TranslationHelper::translateWeb(ucfirst('Objectives')??'') }}
             </button> --}}
                 </div>
                 <div class="tab-content tab_horzintal" id="v-pills-tabContent">
@@ -131,31 +131,31 @@ Identity
                     {{-- <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                 aria-labelledby="v-pills-home-tab" tabindex="0">
                 <p class="global-description tab-desc text-white-color position-relative">
-                “Human civilization only through development and
+                {{ TranslationHelper::translateWeb(ucfirst('“Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
                 Technology & Educational Solutions; ushering in an era of
-                digital transformation & capabilities optimization.
+                digital transformation & capabilities optimization.')??'') }}
                 </p>
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
                 tabindex="0">
                 <p class="global-description tab-desc text-white-color position-relative">
-                “Human civilization only through development and
+                {{ TranslationHelper::translateWeb(ucfirst('“Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
                 Technology & Educational Solutions; ushering in an era of
-                digital transformation & capabilities optimization.
+                digital transformation & capabilities optimization.')??'') }}
                 </p>
             </div>
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                 aria-labelledby="v-pills-messages-tab" tabindex="0">
                 <p class="global-description tab-desc text-white-color position-relative">
-                “Human civilization only through development and
+                {{ TranslationHelper::translateWeb(ucfirst('“Human civilization only through development and
                 innovation can exist harmoniously on the planet.” Become a
                 global market leader in the fields of Information
                 Technology & Educational Solutions; ushering in an era of
-                digital transformation & capabilities optimization.
+                digital transformation & capabilities optimization.')??'') }}
 
                 </p>
             </div> --}}

@@ -67,20 +67,20 @@
 
 
                                                 @if (strlen($item->description)>= 200)
-                                                    <a  role='btn' onclick="toggleDescription(this)" class="read_more" >Read More <i class="bi bi-chevron-down"></i></a>
+                                                    <a  role='btn' onclick="toggleDescription(this)" class="read_more" >{{ TranslationHelper::translateWeb(ucfirst('Read More')??'') }} <i class="bi bi-chevron-down"></i></a>
                                                 @endif
                                                 <div class="flex_icons_div">
                                                     <p>
                                                         @if ($item->getFirstMediaUrl('StaticTable2'))
                                                         <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a
                                                             class="ref_coloring"
-                                                            href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
+                                                            href="{{$item->getFirstMediaUrl('StaticTable2')}}">{{ TranslationHelper::translateWeb(ucfirst('Reference')??'') }}</a></span>
                                                         @endif
                                                     </p>
                                                     <p>
                                                         @if ($item->url)
                                                         <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                            class="ref_coloring" href="{{$item->url}}">Website</a></span>
+                                                            class="ref_coloring" href="{{$item->url}}">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a></span>
                                                         @endif
                                                     </p>
                                                 </div>

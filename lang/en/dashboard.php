@@ -897,4 +897,5 @@
   'please enter label4  arabic' => 'Please enter label4  arabic',
   '#' => '#',
   'Years Text french' => 'Years Text french',
+  'Years Text  french' => 'Years Text  french',
 );

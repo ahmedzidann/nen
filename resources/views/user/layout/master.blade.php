@@ -152,19 +152,19 @@
                     <div id="quick-access">
 
                     </div>
-                    <hr />
+                    <hr id="line" style="display:none;" />
                     <div class="row justify-content-center">
                         <div class="col-lg-7 col-md-9">
                             <h4 class="text-center">
-                                {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us')??'') }}
+                                {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us') ?? '') }}
                             </h4>
                             <p class="fs-5-2 text-center text-muted mt-2">
-                                {{ TranslationHelper::translateWeb(ucfirst('We re here to help! Whether you have questions, feedback, or need support, reach out to us, and we ll be happy to assist you.')??'') }}
+                                {{ TranslationHelper::translateWeb(ucfirst('We re here to help! Whether you have questions, feedback, or need support, reach out to us, and we ll be happy to assist you.') ?? '') }}
                             </p>
                             <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-solid-main fs-5-2" data-tooltip="contact channel"
                                     href="./contact-us.html">
-                                   {{ TranslationHelper::translateWeb(ucfirst(' Contact Us')??'') }}
+                                    {{ TranslationHelper::translateWeb(ucfirst(' Contact Us') ?? '') }}
                                 </a>
                             </div>
                         </div>
@@ -223,7 +223,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="tag-title mb-3">
-                                        {{ TranslationHelper::translateWeb(ucfirst('PORTALS')??'') }}
+                                        {{ TranslationHelper::translateWeb(ucfirst('PORTALS') ?? '') }}
                                     </div>
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(2, $footerData)) --}}
@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="tag-title mb-3">
-                                        {{ TranslationHelper::translateWeb(ucfirst('SUBSIDIARIES')??'') }}
+                                        {{ TranslationHelper::translateWeb(ucfirst('SUBSIDIARIES') ?? '') }}
                                     </div>
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(3, $footerData)) --}}
@@ -263,12 +263,15 @@
                             <div id="subscribe"
                                 class="d-flex flex-column justify-content-center text-white-color mt-2">
                                 <h6 class="tag-title">
-                                    {{ TranslationHelper::translateWeb(ucfirst('Subscribe Our Newsletter')??'') }}
+                                    {{ TranslationHelper::translateWeb(ucfirst('Subscribe Our Newsletter') ?? '') }}
                                 </h6>
                                 <p class="desc fs-5-2 mt-2">
-                                    {{ TranslationHelper::translateWeb(ucfirst('Join our newsletter and be the first to know about new product releases, discounts,
-                                    and
-                                    useful resources!')??'') }}
+                                    {{ TranslationHelper::translateWeb(
+                                        ucfirst('Join our newsletter and be the first to know about new product releases, discounts,
+                                                                                                                                                and
+                                                                                                                                                useful resources!') ??
+                                            '',
+                                    ) }}
                                 </p>
                                 <div class="input-group rounded-pill overflow-hidden mt-4">
                                     <input type="text" class="form-control border-0"
@@ -287,7 +290,7 @@
                     <hr class="mt-5 hr text-white-color">
                     <div class="d-flex align-items-center justify-content-between flex-wrap mt-4 gap-3">
                         <p class="text-white-color text-gray-light fs1-1">
-                            {{ TranslationHelper::translateWeb(ucfirst('Copyright © 2008 - 2024 NEN | National Education Network')??'') }}
+                            {{ TranslationHelper::translateWeb(ucfirst('Copyright © 2008 - 2024 NEN | National Education Network') ?? '') }}
                         </p>
                         <div class="d-flex align-items-center gap-md-3 gap-2">
                             <a href="{{ $about->facebook_link }}">
@@ -372,30 +375,35 @@
 
                     <div class="col-lg-2 col-md-12 col-sm-12">
                         <div class="footer_content">
-                            <h4>{{ TranslationHelper::translateWeb(ucfirst('COMPANY')??'') }}</h4>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('About')??'') }}</a>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Features')??'') }}</a>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Works')??'') }}</a>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Career')??'') }}</a>
+                            <h4>{{ TranslationHelper::translateWeb(ucfirst('COMPANY') ?? '') }}</h4>
+                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('About') ?? '') }}</a>
+                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Features') ?? '') }}</a>
+                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Works') ?? '') }}</a>
+                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Career') ?? '') }}</a>
                         </div>
                     </div>
 
                     <div class="col-lg-2 col-md-12 col-sm-12">
                         <div class="footer_content">
-                            <h4>{{ TranslationHelper::translateWeb(ucfirst('Help')??'') }}</h4>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Customer Support')??'') }}</a>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Delivery Details')??'') }}</a>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Terms & Conditions')??'') }}</a>
-                            <a href="#">{{ TranslationHelper::translateWeb(ucfirst('Privacy Policy')??'') }}</a>
+                            <h4>{{ TranslationHelper::translateWeb(ucfirst('Help') ?? '') }}</h4>
+                            <a
+                                href="#">{{ TranslationHelper::translateWeb(ucfirst('Customer Support') ?? '') }}</a>
+                            <a
+                                href="#">{{ TranslationHelper::translateWeb(ucfirst('Delivery Details') ?? '') }}</a>
+                            <a
+                                href="#">{{ TranslationHelper::translateWeb(ucfirst('Terms & Conditions') ?? '') }}</a>
+                            <a
+                                href="#">{{ TranslationHelper::translateWeb(ucfirst('Privacy Policy') ?? '') }}</a>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer_content">
-                            <h4>{{ TranslationHelper::translateWeb(ucfirst('Newsletter')??'') }}</h4>
+                            <h4>{{ TranslationHelper::translateWeb(ucfirst('Newsletter') ?? '') }}</h4>
                             <div class="input_btn">
                                 <input type="text" placeholder="Enter your Email addres" />
-                                <button class="subscribe_btn">{{ TranslationHelper::translateWeb(ucfirst('Newsletter')??'') }}</button>
+                                <button
+                                    class="subscribe_btn">{{ TranslationHelper::translateWeb(ucfirst('Newsletter') ?? '') }}</button>
                             </div>
                         </div>
                     </div>
@@ -418,89 +426,111 @@
                 <i class="bi bi-x-circle"></i>
             </div>
             <ul class="mobile_ul">
-                <li class="mobile_li"><a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Home')??'') }}</a></li>
+                <li class="mobile_li"><a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Home') ?? '') }}</a></li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('About')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('About') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>
-                            <a href="#" class="insted_mobile_link">{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}<i class="bi bi-chevron-down"></i></a>
+                            <a href="#"
+                                class="insted_mobile_link">{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}<i
+                                    class="bi bi-chevron-down"></i></a>
                             <ul class="small_ul_menu">
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 3')??'') }}</li>
+                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
+                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 3') ?? '') }}</li>
                             </ul>
                         </li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 4')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 4') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Projects')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Projects') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>
-                            <a href="#" class="insted_mobile_link">{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}<i class="bi bi-chevron-down"></i></a>
+                            <a href="#"
+                                class="insted_mobile_link">{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}<i
+                                    class="bi bi-chevron-down"></i></a>
                             <ul class="small_ul_menu">
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 3')??'') }}</li>
+                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
+                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 3') ?? '') }}</li>
                             </ul>
                         </li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 4')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 4') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Education')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Education') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Testing')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Testing') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Solution')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Solution') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Technology')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Technology') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
                     <a href="#" class="mobile_link">
-                        {{ TranslationHelper::translateWeb(ucfirst('DOC Validation')??'') }}<i class="bi bi-chevron-down"></i></a>
+                        {{ TranslationHelper::translateWeb(ucfirst('DOC Validation') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Join Us')??'') }} <i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Join Us') ?? '') }} <i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
                     </ul>
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Find Us')??'') }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Find Us') ?? '') }}<i
+                            class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1')??'') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2')??'') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
+                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
                     </ul>
                 </li>
             </ul>
@@ -581,7 +611,6 @@
     @endsection
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('welcome Omar');
 
             var currentUrl = window.location.href;
 
@@ -609,6 +638,7 @@
                         console.log('data:', data);
                         if (data.status === 'success' && data.data) {
                             document.getElementById('quick-access').innerHTML += data.data;
+                            document.getElementById('line').style.display = 'block';
                         }
                     })
                     .catch(error => {

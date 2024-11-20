@@ -76,4 +76,16 @@
   'Select Category' => 'Select Category',
   'Select state' => 'Select state',
   'Select country' => 'Select country',
+  'Location' => 'Location',
+  'Usefull Links' => 'Usefull Links',
+  'Join our newsletter and be the first to know about new product releases, discounts,
+                                                                                                                                                and
+                                                                                                                                                useful resources!' => 'Join our newsletter and be the first to know about new product releases  discounts 
+                                                                                                                                                and
+                                                                                                                                                useful resources!',
+  'Sister Companies' => 'Sister Companies',
+  'Sharing' => 'Sharing',
+  'Subsidiaries' => 'Subsidiaries',
+  'Since' => 'Since',
+  'Scince' => 'Scince',
 );

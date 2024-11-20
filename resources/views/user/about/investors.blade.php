@@ -88,7 +88,7 @@
                             </path>
                         </svg>
                         <span>
-                            {{ TranslationHelper::translateWeb(ucfirst('subsidiaries')??'') }}
+                            {{ TranslationHelper::translateWeb(ucfirst('subsidiaries') ?? '') }}
                         </span>
                     </button>
                 </li>
@@ -103,7 +103,7 @@
                             </path>
                         </svg>
                         <span>
-                            {{ TranslationHelper::translateWeb(ucfirst('Sister Companies')??'') }}
+                            {{ TranslationHelper::translateWeb(ucfirst('Sister Companies') ?? '') }}
                         </span>
                     </button>
                 </li>
@@ -137,14 +137,18 @@
                                                                         loading="lazy"
                                                                         onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                                         alt="vector">
-                                                                    <p>Since : <span
+                                                                    <p>{{ TranslationHelper::translateWeb(ucfirst('Scince') ?? '') }}
+                                                                        : <span
                                                                             class="mt-0 pt-0">{{ $row->since }}</span>
                                                                     </p>
                                                                 </h6>
                                                                 <h6>
-                                                                    <p>Sharing : <span
-                                                                            class="mt-0 pt-0">{{ $row->percent }}%</span>
-                                                                    </p>
+                                                                    @if ($row->percent && $row->percent > 0)
+                                                                        <p>{{ TranslationHelper::translateWeb(ucfirst('Sharing') ?? '') }}
+                                                                            : <span
+                                                                                class="mt-0 pt-0">{{ $row->percent }}%</span>
+                                                                        </p>
+                                                                    @endif
                                                                 </h6>
                                                             </div>
 
@@ -155,7 +159,7 @@
                                             </div>
                                         </div>
                                         <a href="{{ $sub->url }}"
-                                            class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a>
+                                            class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website') ?? '') }}</a>
 
                                     </div>
                                 </div>
@@ -184,7 +188,7 @@
                                                 </div>
                                             </div>
                                             <div class="subsidiaries_details">
-                                                <div class="flags_sec align-items-start" >
+                                                <div class="flags_sec align-items-start">
                                                     @foreach ($sub->investorAttributes as $row)
                                                         <div class="flag_icon_titel">
                                                             <div class="sub_contennt">
@@ -193,14 +197,18 @@
                                                                         loading="lazy"
                                                                         onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                                         alt="vector">
-                                                                    <p>Since : <span
+                                                                    <p>{{ TranslationHelper::translateWeb(ucfirst('Since') ?? '') }}
+                                                                        : <span
                                                                             class="mt-0 pt-0">{{ $row->since }}</span>
                                                                     </p>
                                                                 </h6>
                                                                 <h6>
-                                                                    <p>Sharing : <span
-                                                                            class="mt-0 pt-0">{{ $row->percent }}%</span>
-                                                                    </p>
+                                                                    @if ($row->percent && $row->percent > 0)
+                                                                        <p>{{ TranslationHelper::translateWeb(ucfirst('Sharing') ?? '') }}
+                                                                            : <span
+                                                                                class="mt-0 pt-0">{{ $row->percent }}%</span>
+                                                                        </p>
+                                                                    @endif
                                                                 </h6>
                                                             </div>
 
@@ -211,7 +219,7 @@
                                             </div>
                                         </div>
                                         <a href="{{ $sub->url }}"
-                                            class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a>
+                                            class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website') ?? '') }}</a>
 
                                     </div>
                                 </div>
@@ -236,13 +244,13 @@
                         let url = '{{ route('get-companies', ['type' => ':id']) }}'.replace(':id',
                             type);
                         console.log(url);
-                        
+
                         // Make the AJAX request using fetch
                         fetch(url)
                             .then(response => response.json()) // Parse the JSON data
                             .then(data => {
                                 console.log(data);
-                                
+
                                 document.getElementById('container').innerHTML = data.data;
                                 // Here, you can use the data to dynamically update the UI
                             })

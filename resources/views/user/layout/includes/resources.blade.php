@@ -1,7 +1,7 @@
 @if (count($resources) > 0)
     <div class="d-flex flex-column justify-content-center align-items-center gap-1">
         <h5 class="global-title mb-0 text-dark">
-            Quick Access
+            {{ TranslationHelper::translateWeb(ucfirst('Useful Links')??'') }}
         </h5>
         <div class="under-title-vector">
             <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"

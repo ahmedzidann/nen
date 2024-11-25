@@ -88,4 +88,5 @@
   'Subsidiaries' => 'Subsidiaries',
   'Since' => 'Since',
   'Scince' => 'Scince',
+  'Useful Links' => 'Useful Links',
 );

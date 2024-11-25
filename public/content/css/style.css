@@ -1146,15 +1146,15 @@ a {
 }
 
 #contact-us .global-card {
-    background-image: url(../images/contact-us/contact-bg1.svg);
+    /* background-image: url(../images/contact-us/contact-bg1.svg);
     background-position: right;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 #contact-us .second-contact-bg {
-    background-image: url(../images/contact-us/contact-bg-2.svg);
+    /* background-image: url(../images/contact-us/contact-bg-2.svg);
     background-position: left;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 @media (max-width: 767px) {
@@ -1171,14 +1171,34 @@ a {
 
 /* Start Footer Section */
 #footer.home-footer {
-    padding-top: 2.5rem !important;
+    padding-top: 2.6rem !important;
 }
 
 #footer {
+    position: relative;
     background-color: #000;
     background-image: url(../images/footer/footer-bg.svg);
     background-position: right;
     background-repeat: no-repeat;
+}
+
+#footer .float-quick-access {
+    position: absolute;
+    background: #ffffffa8;
+    z-index: 3;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
+}
+
+#footer i,
+#footer svg {
+    font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
@@ -1199,13 +1219,13 @@ a {
     }
 
     #footer #subscribe .input-group .form-control {
-        height: 3rem !important;
+        height: 2.6rem !important;
     }
 
     #footer #subscribe .input-group .join-btn {
-        width: 2rem !important;
-        min-width: 2rem !important;
-        height: 2rem !important;
+        width: 1.6rem !important;
+        min-width: 1.6rem !important;
+        height: 1.6rem !important;
     }
 
     #footer #subscribe .input-group {
@@ -1217,6 +1237,19 @@ a {
     background-image: url(../images/footer/footer-bg-2.svg);
     background-position: bottom left;
     background-repeat: no-repeat;
+}
+
+#footer .iso-content .image-box {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+#footer .iso-content .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 #footer a:hover {
@@ -1236,7 +1269,7 @@ a {
 }
 
 #footer .items .item,
-#footer #subscribe .desc {
+#footer .desc {
     position: relative;
     color: #f5d9d9d0;
     font-size: 1.1rem;
@@ -1269,7 +1302,7 @@ a {
 }
 
 #footer #subscribe .input-group .form-control {
-    height: 3.5rem;
+    height: 2.6rem;
 }
 
 #footer #subscribe .input-group .input-group-text {
@@ -1277,9 +1310,15 @@ a {
 }
 
 #footer #subscribe .input-group .join-btn {
-    width: 2.5rem;
-    min-width: 2.5rem;
-    height: 2.5rem;
+    width: 1.6rem;
+    min-width: 1.6rem;
+    height: 1.6rem;
+}
+
+#footer .logo {
+    -webkit-filter: invert(100%);
+    /* Safari/Chrome */
+    filter: invert(100%);
 }
 
 /* End Footer Section */
@@ -8338,7 +8377,7 @@ span {
     font-size: 1.1rem !important;
 }
 
-#quick-access .documents-sections .document-content{
+#quick-access .documents-sections .document-content {
     box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
     border-radius: 4px;
     background-color: white;
@@ -8350,6 +8389,7 @@ span {
     width: 100%;
     overflow: hidden;
 }
+
 .banner-image-container img {
     height: 100%;
     width: 100%;

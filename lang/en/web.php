@@ -89,4 +89,10 @@
   'Since' => 'Since',
   'Scince' => 'Scince',
   'Useful Links' => 'Useful Links',
+  'Strategic Partners' => 'Strategic Partners',
+  'See More' => 'See More',
+  'STRATEGIC PARTNERS' => 'STRATEGIC PARTNERS',
+  'Do you have questions? Do not hesitate to contact us' => 'Do you have questions  Do not hesitate to contact us',
+  'Regional Representatives' => 'Regional Representatives',
+  'Name' => 'Name',
 );

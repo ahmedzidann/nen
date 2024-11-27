@@ -120,7 +120,7 @@
     <div class="section_photoe">
         <div class="title_img">
             <img class="img_team" src="@yield('cover_image') " />
-            <div class="titel_about_content">
+            <!-- <div class="titel_about_content">
                 <h1>{{ strtoupper(trim(\Illuminate\Support\Str::of(trim($__env->yieldContent('page_name')))->stripTags())) }}
                 </h1>
                 <ol class="breadcrumb">
@@ -129,11 +129,83 @@
                         <a href="#">@yield('page_name')</a>
                     </li>
                 </ol>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- section_who_us -->
 
+    <!-- Start Quick Access Section UI -->
+    <div id="quick-access-card" class="position-relative mt-4">
+        <div class="container py-4">
+            <div class="row g-3">
+                <!-- Card 1: Add Brand Profiles -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-blue">
+                        <div class="brand-card-icon">
+                            <i class="bi bi-plus-lg"></i>
+                        </div>
+                        <div class="brand-card-title">Add Brand Profiles</div>
+                    </div>
+                </div>
+
+                <!-- Card 2: AI Analytics -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-pink">
+                        <div class="brand-card-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+                        <div class="brand-card-title">AI Analytics</div>
+                        <div class="brand-card-category">Data Science</div>
+                    </div>
+                </div>
+
+                <!-- Card 3: AI Vision -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-green">
+                        <div class="brand-card-icon">
+                            <i class="bi bi-eye-fill"></i>
+                        </div>
+                        <div class="brand-card-title">AI Vision</div>
+                        <div class="brand-card-category">Computer Vision</div>
+                    </div>
+                </div>
+
+                <!-- Card 4: AI Chatbots -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-yellow">
+                        <div class="brand-card-icon">
+                            <i class="bi bi-chat-square-dots"></i>
+                        </div>
+                        <div class="brand-card-title">AI Chatbots</div>
+                        <div class="brand-card-category">Conversational AI</div>
+                    </div>
+                </div>
+
+                <!-- Card 5: AI Robotics -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-purple">
+                        <div class="brand-card-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <div class="brand-card-title">AI Robotics</div>
+                        <div class="brand-card-category">Automation</div>
+                    </div>
+                </div>
+
+                <!-- Card 6: AI Tools -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-teal">
+                        <div class="brand-card-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <div class="brand-card-title">AI Tools</div>
+                        <div class="brand-card-category">Utilities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Quick Access Section UI -->
 
     <section class="about_sec">
         <div class="container">
@@ -208,83 +280,121 @@
         <div class="footer-second-bg">
             <div class="container">
                 <div class="pt-md-5 pt-3 pb-md-4 pb-3">
-                    <div class="d-flex justify-content-center">
+                    <!-- <div class="d-flex justify-content-center">
                         <div class="image-box d-flex justify-content-center">
                             <img src="{{ asset('content/images/logo.svg') }}" class="logo" alt="white-logo">
                         </div>
                     </div>
+                    <hr class="hr text-white-color"> -->
 
-                    <hr class="hr text-white-color">
-                    <div class="row g-3 py-2">
-
-                        <div class="col-md-7 mt-3">
+                    <div class="row g-3 pt-3">
+                        <div class="col-md-8">
                             <div class="row g-3">
-                                <div class="col-md-10">
-                                    <h4 class="text-white-color text-uppercase">
-                                        {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us') ?? '') }}
-                                    </h4>
-                                    <p class="desc fs-5-2 mt-2">
-                                        {{ TranslationHelper::translateWeb(ucfirst('We re here to help! Whether you have questions, feedback, or need support, reach out to us, and we ll be happy to assist you.') ?? '') }}
-                                    </p>
-                                    <div class="d-flex align-items-center gap-md-3 gap-2 mt-md-4 mt-3">
-                                        <!-- Facebook -->
-                                        <a href="{{ $about->facebook_link }}" class="text-white">
-                                            <i class="bi bi-facebook"></i>
-                                        </a>
-                                        <!-- Twitter -->
-                                        <a href="{{ $about->twitter_link }}" class="text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-brand-x" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                                            </svg>
-                                        </a>
-                                        <!-- Instagram -->
-                                        <a href="{{ $about->instagram_link }}" class="text-white">
-                                            <i class="bi bi-instagram"></i>
-                                        </a>
-                                        <!-- YouTube -->
-                                        <a href="{{ $about->youtube_link }}" class="text-white">
-                                            <i class="bi bi-youtube"></i>
-                                        </a>
-                                        <!-- VK -->
-                                        <a href="{{ $about->vk_link }}" class="text-white">
-                                            <svg fill="#ffffff" width="26px" height="26px" viewBox="0 0 0.78 0.78"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.762 0.188a0.279 0.279 0 0 1 -0.035 0.073l0.001 -0.001q-0.022 0.036 -0.052 0.084 -0.026 0.038 -0.028 0.039a0.042 0.042 0 0 0 -0.009 0.02l0 0a0.029 0.029 0 0 0 0.009 0.017l0.013 0.014q0.104 0.107 0.117 0.148a0.029 0.029 0 0 1 -0.004 0.027l0 0a0.032 0.032 0 0 1 -0.025 0.009h0c-0.011 0 -0.021 -0.004 -0.029 -0.01l0 0a0.228 0.228 0 0 1 -0.031 -0.031l0 0q-0.022 -0.025 -0.04 -0.043 -0.058 -0.055 -0.085 -0.055l-0.002 0a0.026 0.026 0 0 0 -0.014 0.004l0 0a0.025 0.025 0 0 0 -0.005 0.019v0a0.422 0.422 0 0 0 -0.001 0.046v-0.001q0.001 0.002 0.001 0.005a0.025 0.025 0 0 1 -0.009 0.02l0 0a0.104 0.104 0 0 1 -0.053 0.009l0 0a0.27 0.27 0 0 1 -0.139 -0.041l0.001 0.001A0.387 0.387 0 0 1 0.136 0.465l-0.001 -0.001a0.858 0.858 0 0 1 -0.08 -0.13l-0.002 -0.005A0.813 0.813 0 0 1 0.012 0.238l-0.002 -0.006a0.218 0.218 0 0 1 -0.01 -0.05l0 -0.001q0 -0.025 0.029 -0.025h0.085q0.001 0 0.003 0c0.008 0 0.016 0.003 0.021 0.007l0 0c0.007 0.007 0.011 0.016 0.014 0.026l0 0a0.826 0.826 0 0 0 0.052 0.117l-0.002 -0.004a0.474 0.474 0 0 0 0.053 0.084l-0.001 -0.001q0.026 0.032 0.041 0.032l0.001 0a0.013 0.013 0 0 0 0.011 -0.007l0 0a0.059 0.059 0 0 0 0.004 -0.026v0a0.104 0.104 0 0 0 -0.01 -0.041l0 0.001a0.098 0.098 0 0 0 -0.015 -0.023l0 0a0.036 0.036 0 0 1 -0.01 -0.02l0 0c0 -0.006 0.003 -0.01 0.007 -0.014l0 0a0.022 0.022 0 0 1 0.015 -0.006h0.135a0.021 0.021 0 0 1 0.018 0.007l0 0a0.044 0.044 0 0 1 0.005 0.025v0a0.033 0.033 0 0 0 0.004 0.019l0 0a0.013 0.013 0 0 0 0.011 0.006h0a0.031 0.031 0 0 0 0.015 -0.005l0 0q0.013 -0.009 0.023 -0.021l0 0a0.507 0.507 0 0 0 0.054 -0.073l0.001 -0.002c0.011 -0.019 0.023 -0.041 0.034 -0.065l0.002 -0.005 0.014 -0.029a0.036 0.036 0 0 1 0.036 -0.025h0q0.035 0 0.026 0.032z" />
-                                            </svg>
-                                        </a>
-                                        <!-- Telegram -->
-                                        <a href="{{ $about->telegram_link }}" class="text-white">
-                                            <i class="bi bi-telegram"></i>
-                                        </a>
-                                        <!-- Email -->
-                                        <a href="mailto:{{ $about->email }}" class="text-white">
-                                            <i class="bi bi-envelope"></i>
-                                        </a>
+                                <div class="col-md-4">
+                                    <div class="tag-title mb-3">
+                                        Certifications
                                     </div>
-
+                                    <div class="items d-flex flex-column gap-3">
+                                        {{-- @if (array_key_exists(1, $footerData)) --}}
+                                        @foreach ($footerData[1] as $certificate)
+                                        <a href="{{ $certificate->url }}" class="item d-flex align-items-center gap-1"
+                                            target="__blank">
+                                            <!-- <i class="bi bi-arrow-right"></i> -->
+                                            <span>&gt;</span>
+                                            <span>
+                                                {{ $certificate->title }}
+                                            </span>
+                                        </a>
+                                        @endforeach
+                                        {{-- @endif --}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="tag-title mb-3">
+                                        {{ TranslationHelper::translateWeb(ucfirst('PORTALS') ?? '') }}
+                                    </div>
+                                    <div class="items d-flex flex-column gap-3">
+                                        {{-- @if (array_key_exists(2, $footerData)) --}}
+                                        @foreach ($footerData[2] as $portal)
+                                        <a href="{{ $portal->url }}" class="item d-flex align-items-center gap-1"
+                                            target="__blank">
+                                            <!-- <i class="bi bi-arrow-right"></i> -->
+                                            <span>&gt;</span>
+                                            <span>
+                                                {{ $portal->title }}
+                                            </span>
+                                        </a>
+                                        @endforeach
+                                        {{-- @endif --}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="tag-title mb-3">
+                                        {{ TranslationHelper::translateWeb(ucfirst('SUBSIDIARIES') ?? '') }}
+                                    </div>
+                                    <div class="items d-flex flex-column gap-3">
+                                        {{-- @if (array_key_exists(3, $footerData)) --}}
+                                        @foreach ($footerData[3] as $subsidiaries)
+                                        <a href="{{ $subsidiaries->url }}" class="item d-flex align-items-center gap-1"
+                                            target="__blank">
+                                            <!-- <i class="bi bi-arrow-right"></i> -->
+                                            <span>&gt;</span>
+                                            <span>
+                                                {{ $subsidiaries->title }}
+                                            </span>
+                                        </a>
+                                        @endforeach
+                                        {{-- @endif --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div id="subscribe" class="d-flex flex-column justify-content-center text-white-color mt-2">
                                 <h6 class="tag-title">
-                                    {{ TranslationHelper::translateWeb(ucfirst('Subscribe Our Newsletter') ?? '') }}
+                                    {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us') ?? '') }}
                                 </h6>
-                                <p class="desc fs-5-2 mt-2">
-                                    {{ TranslationHelper::translateWeb(
-                                        ucfirst('Join our newsletter and be the first to know about new product releases, discounts,
-                                                                                                                                                and
-                                                                                                                                                useful resources!') ??
-                                            '',
-                                    ) }}
-                                </p>
+                                <div class="d-flex align-items-center gap-md-3 gap-2 mt-md-4 mt-3">
+                                    <!-- Facebook -->
+                                    <a href="{{ $about->facebook_link }}" class="text-white">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                    <!-- Twitter -->
+                                    <a href="{{ $about->twitter_link }}" class="text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-x" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                                        </svg>
+                                    </a>
+                                    <!-- Instagram -->
+                                    <a href="{{ $about->instagram_link }}" class="text-white">
+                                        <i class="bi bi-instagram"></i>
+                                    </a>
+                                    <!-- YouTube -->
+                                    <a href="{{ $about->youtube_link }}" class="text-white">
+                                        <i class="bi bi-youtube"></i>
+                                    </a>
+                                    <!-- VK -->
+                                    <a href="{{ $about->vk_link }}" class="text-white">
+                                        <svg fill="#ffffff" width="26px" height="26px" viewBox="0 0 0.78 0.78"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.762 0.188a0.279 0.279 0 0 1 -0.035 0.073l0.001 -0.001q-0.022 0.036 -0.052 0.084 -0.026 0.038 -0.028 0.039a0.042 0.042 0 0 0 -0.009 0.02l0 0a0.029 0.029 0 0 0 0.009 0.017l0.013 0.014q0.104 0.107 0.117 0.148a0.029 0.029 0 0 1 -0.004 0.027l0 0a0.032 0.032 0 0 1 -0.025 0.009h0c-0.011 0 -0.021 -0.004 -0.029 -0.01l0 0a0.228 0.228 0 0 1 -0.031 -0.031l0 0q-0.022 -0.025 -0.04 -0.043 -0.058 -0.055 -0.085 -0.055l-0.002 0a0.026 0.026 0 0 0 -0.014 0.004l0 0a0.025 0.025 0 0 0 -0.005 0.019v0a0.422 0.422 0 0 0 -0.001 0.046v-0.001q0.001 0.002 0.001 0.005a0.025 0.025 0 0 1 -0.009 0.02l0 0a0.104 0.104 0 0 1 -0.053 0.009l0 0a0.27 0.27 0 0 1 -0.139 -0.041l0.001 0.001A0.387 0.387 0 0 1 0.136 0.465l-0.001 -0.001a0.858 0.858 0 0 1 -0.08 -0.13l-0.002 -0.005A0.813 0.813 0 0 1 0.012 0.238l-0.002 -0.006a0.218 0.218 0 0 1 -0.01 -0.05l0 -0.001q0 -0.025 0.029 -0.025h0.085q0.001 0 0.003 0c0.008 0 0.016 0.003 0.021 0.007l0 0c0.007 0.007 0.011 0.016 0.014 0.026l0 0a0.826 0.826 0 0 0 0.052 0.117l-0.002 -0.004a0.474 0.474 0 0 0 0.053 0.084l-0.001 -0.001q0.026 0.032 0.041 0.032l0.001 0a0.013 0.013 0 0 0 0.011 -0.007l0 0a0.059 0.059 0 0 0 0.004 -0.026v0a0.104 0.104 0 0 0 -0.01 -0.041l0 0.001a0.098 0.098 0 0 0 -0.015 -0.023l0 0a0.036 0.036 0 0 1 -0.01 -0.02l0 0c0 -0.006 0.003 -0.01 0.007 -0.014l0 0a0.022 0.022 0 0 1 0.015 -0.006h0.135a0.021 0.021 0 0 1 0.018 0.007l0 0a0.044 0.044 0 0 1 0.005 0.025v0a0.033 0.033 0 0 0 0.004 0.019l0 0a0.013 0.013 0 0 0 0.011 0.006h0a0.031 0.031 0 0 0 0.015 -0.005l0 0q0.013 -0.009 0.023 -0.021l0 0a0.507 0.507 0 0 0 0.054 -0.073l0.001 -0.002c0.011 -0.019 0.023 -0.041 0.034 -0.065l0.002 -0.005 0.014 -0.029a0.036 0.036 0 0 1 0.036 -0.025h0q0.035 0 0.026 0.032z" />
+                                        </svg>
+                                    </a>
+                                    <!-- Telegram -->
+                                    <a href="{{ $about->telegram_link }}" class="text-white">
+                                        <i class="bi bi-telegram"></i>
+                                    </a>
+                                    <!-- Email -->
+                                    <a href="mailto:{{ $about->email }}" class="text-white">
+                                        <i class="bi bi-envelope"></i>
+                                    </a>
+                                </div>
                                 <div class="input-group border-0 overflow-hidden mt-2">
                                     <input type="text" class="form-control border-0" placeholder="Your email address"
                                         aria-label="Email" aria-describedby="basic-addon-email">
@@ -317,70 +427,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-
-                    <hr class="hr text-white-color">
-                    <div class="row g-3">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <div class="tag-title mb-3">
-                                    Certifications
-                                </div>
-                                <div class="items d-flex flex-column gap-3">
-                                    {{-- @if (array_key_exists(1, $footerData)) --}}
-                                    @foreach ($footerData[1] as $certificate)
-                                    <a href="{{ $certificate->url }}" class="item d-flex align-items-center gap-1"
-                                        target="__blank">
-                                        <!-- <i class="bi bi-arrow-right"></i> -->
-                                        <span>&gt;</span>
-                                        <span>
-                                            {{ $certificate->title }}
-                                        </span>
-                                    </a>
-                                    @endforeach
-                                    {{-- @endif --}}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tag-title mb-3">
-                                    {{ TranslationHelper::translateWeb(ucfirst('PORTALS') ?? '') }}
-                                </div>
-                                <div class="items d-flex flex-column gap-3">
-                                    {{-- @if (array_key_exists(2, $footerData)) --}}
-                                    @foreach ($footerData[2] as $portal)
-                                    <a href="{{ $portal->url }}" class="item d-flex align-items-center gap-1"
-                                        target="__blank">
-                                        <!-- <i class="bi bi-arrow-right"></i> -->
-                                        <span>&gt;</span>
-                                        <span>
-                                            {{ $portal->title }}
-                                        </span>
-                                    </a>
-                                    @endforeach
-                                    {{-- @endif --}}
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="tag-title mb-3">
-                                    {{ TranslationHelper::translateWeb(ucfirst('SUBSIDIARIES') ?? '') }}
-                                </div>
-                                <div class="items d-flex flex-column gap-3">
-                                    {{-- @if (array_key_exists(3, $footerData)) --}}
-                                    @foreach ($footerData[3] as $subsidiaries)
-                                    <a href="{{ $subsidiaries->url }}" class="item d-flex align-items-center gap-1"
-                                        target="__blank">
-                                        <!-- <i class="bi bi-arrow-right"></i> -->
-                                        <span>&gt;</span>
-                                        <span>
-                                            {{ $subsidiaries->title }}
-                                        </span>
-                                    </a>
-                                    @endforeach
-                                    {{-- @endif --}}
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <hr class="hr text-white-color">
                     <div class="d-flex align-items-center justify-content-between flex-wrap mt-4 gap-3">
@@ -390,12 +436,12 @@
                         <div class="d-flex align-items-center gap-md-3 gap-2">
                             <a href="{{ $about->terms }}">
                                 <p class="text-white-color">
-                                    Terms And Conditions
+                                    Terms
                                 </p>
                             </a>
                             <a href="{{ $about->privacy }}">
                                 <p class="text-white-color">
-                                    Privacy And Policy
+                                    Policy
                                 </p>
                             </a>
                             <a href="{{ $about->gdpr }}">

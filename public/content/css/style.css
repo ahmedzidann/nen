@@ -592,7 +592,7 @@ a {
 }
 
 .about_sec {
-    padding-top: 65px;
+    padding-top: 2.5rem;
 }
 
 .about_us_div {
@@ -8395,3 +8395,129 @@ span {
     width: 100%;
     object-fit: fill;
 }
+
+/* Start Quick Access Styles */
+#quick-access-card .brand-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    padding-bottom: 15px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    text-align: center;
+}
+
+#quick-access-card .brand-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+#quick-access-card .brand-card .brand-card-icon {
+    /* width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin: auto; */
+
+    width: 36px;
+    border-radius: 4px;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: beige;
+}
+
+#quick-access-card .brand-card .brand-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#quick-access-card .brand-card .brand-card-category {
+    background: rgba(0, 0, 0, 0.05);
+    color: #555;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* Light Colored Gradient Backgrounds for Cards */
+.brand-card.light-blue {
+    background: linear-gradient(135deg, #ebf8ff, #d0e9ff);
+    color: #005f99;
+}
+
+.brand-card.light-pink {
+    background: linear-gradient(135deg, #ffeef2, #ffc8d0);
+    color: #992a5b;
+}
+
+.brand-card.light-green {
+    background: linear-gradient(135deg, #ecfdf5, #d0f7e6);
+    color: #0d805f;
+}
+
+.brand-card.light-yellow {
+    background: linear-gradient(135deg, #fffbeb, #ffefd2);
+    color: #9f7e00;
+}
+
+.brand-card.light-purple {
+    background: linear-gradient(135deg, #f3e8ff, #e1d0f7);
+    color: #4a008f;
+}
+
+.brand-card.light-teal {
+    background: linear-gradient(135deg, #e6fcf7, #d0f5eb);
+    color: #007f73;
+}
+/* Hover Effects */
+.brand-card.light-blue:hover {
+    background: #005f99 !important;
+}
+
+.brand-card.light-pink:hover {
+    background: #992a5b !important;
+}
+
+.brand-card.light-green:hover {
+    background: #0d805f !important;
+}
+
+.brand-card.light-yellow:hover {
+    background: #9f7e00 !important;
+}
+
+.brand-card.light-purple:hover {
+    background: #4a008f !important;
+}
+
+.brand-card.light-teal:hover {
+    background: #007f73 !important;
+}
+
+#quick-access-card .brand-card:hover .brand-card-title {
+    color: white !important;
+}
+#quick-access-card .brand-card:hover .brand-card-category {
+    color: white !important;
+    background-color: #fff9f954 !important;
+}
+
+@media (max-width: 768px) {
+    #quick-access-card  .row>* {
+        padding-right: 0.75rem !important;
+        padding-left: 0.75rem !important;
+    }
+}
+
+/* End Quick Access Styles */

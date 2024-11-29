@@ -88,4 +88,6 @@
   'Subsidiaries' => 'Subsidiaries',
   'Since' => 'Since',
   'Scince' => 'Scince',
+  'Regional Offices' => 'Regional Offices',
+  'Useful Links' => 'Useful Links',
 );

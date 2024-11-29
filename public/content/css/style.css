@@ -522,8 +522,8 @@ a {
     width: 100%;
     height: 400px;
     object-fit: fill;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    /* border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px; */
 }
 
 .title_img::after {
@@ -534,8 +534,8 @@ a {
     height: 100%;
     top: 0;
     right: 0;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    /* border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px; */
 }
 
 .titel_img_content {
@@ -8402,10 +8402,12 @@ span {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 10px;
-    padding-bottom: 15px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     height: 100%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 #quick-access-card .brand-card:hover {
@@ -8414,110 +8416,143 @@ span {
 }
 
 #quick-access-card .brand-card .brand-card-icon {
-    /* width: 70px;
-    height: 70px;
-    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
-    margin: auto; */
-
-    width: 36px;
-    border-radius: 4px;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
     font-size: 24px;
-    background: beige;
+    background: #990000;
+    color: #fff;
 }
 
 #quick-access-card .brand-card .brand-card-title {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 5px;
-    color: #333;
+    color: #000;
 }
 
 #quick-access-card .brand-card .brand-card-category {
-    background: rgba(0, 0, 0, 0.05);
-    color: #555;
+    background: rgba(153, 0, 0, 0.05);
+    /* Light shade of #990000 */
+    color: #990000;
     font-size: 12px;
     padding: 3px 8px;
-    border-radius: 12px;
+    border-radius: 2px;
     display: inline-block;
     margin-top: 5px;
 }
 
-/* Light Colored Gradient Backgrounds for Cards */
+/* Darker Gradient Backgrounds for Cards */
 .brand-card.light-blue {
-    background: linear-gradient(135deg, #ebf8ff, #d0e9ff);
-    color: #005f99;
+    background: linear-gradient(135deg, #ffeded, #d9aaaa);
+    color: #990000;
 }
 
 .brand-card.light-pink {
-    background: linear-gradient(135deg, #ffeef2, #ffc8d0);
-    color: #992a5b;
+    background: linear-gradient(135deg, #ffe8e8, #f9bbbb);
+    color: #990000;
 }
 
 .brand-card.light-green {
-    background: linear-gradient(135deg, #ecfdf5, #d0f7e6);
-    color: #0d805f;
+    background: linear-gradient(135deg, #fcecec, #d7a4a4);
+    color: #990000;
 }
 
 .brand-card.light-yellow {
-    background: linear-gradient(135deg, #fffbeb, #ffefd2);
-    color: #9f7e00;
+    background: linear-gradient(135deg, #ffe4e4, #f7b6b6);
+    color: #990000;
 }
 
 .brand-card.light-purple {
-    background: linear-gradient(135deg, #f3e8ff, #e1d0f7);
-    color: #4a008f;
+    background: linear-gradient(135deg, #fae4e4, #dab8b8);
+    color: #990000;
 }
 
 .brand-card.light-teal {
-    background: linear-gradient(135deg, #e6fcf7, #d0f5eb);
-    color: #007f73;
+    background: linear-gradient(135deg, #fdeeee, #d9b8b8);
+    color: #990000;
 }
+
 /* Hover Effects */
 .brand-card.light-blue:hover {
-    background: #005f99 !important;
+    background: #000 !important;
 }
 
 .brand-card.light-pink:hover {
-    background: #992a5b !important;
+    background: #000 !important;
 }
 
 .brand-card.light-green:hover {
-    background: #0d805f !important;
+    background: #000 !important;
 }
 
 .brand-card.light-yellow:hover {
-    background: #9f7e00 !important;
+    background: #000 !important;
 }
 
 .brand-card.light-purple:hover {
-    background: #4a008f !important;
+    background: #000 !important;
 }
 
 .brand-card.light-teal:hover {
-    background: #007f73 !important;
+    background: #000 !important;
 }
 
 #quick-access-card .brand-card:hover .brand-card-title {
     color: white !important;
 }
+
 #quick-access-card .brand-card:hover .brand-card-category {
     color: white !important;
-    background-color: #fff9f954 !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#quick-access-card .brand-card:hover .brand-card-icon {
+    color: #990000;
+    background-color: #fff;
 }
 
 @media (max-width: 768px) {
-    #quick-access-card  .row>* {
+    #quick-access-card .row>* {
         padding-right: 0.75rem !important;
         padding-left: 0.75rem !important;
     }
 }
 
 /* End Quick Access Styles */
+
+
+/* Start Navigation Bar */
+#banner-quick-access {
+    display: flex;
+    background-color: #000;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#banner-quick-access .nav-item {
+    color: #fff;
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    transition: background 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+#banner-quick-access .nav-item i {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+#banner-quick-access.nav-item.active,
+#banner-quick-access .nav-item:hover {
+    background-color: #990000;
+    color: #fff;
+}
+
+/* End Qucik Navigation Bar */

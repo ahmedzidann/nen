@@ -131,12 +131,42 @@
                 </ol>
             </div> -->
         </div>
+
+        <!-- Start Quick Navigation Bar -->
+        <div id="banner-quick-access">
+            <div class="nav-item">
+                <i class="bi bi-telephone-fill"></i>
+                <span>CONTACTS</span>
+            </div>
+            <div class="nav-item">
+                <i class="bi bi-award"></i>
+                <span>INTERNATIONAL CERTIFICATES</span>
+            </div>
+            <div class="nav-item active">
+                <i class="bi bi-journal-check"></i>
+                <span>BOOK YOUR EXAM</span>
+            </div>
+            <div class="nav-item">
+                <i class="bi bi-patch-check-fill"></i>
+                <span>VERIFY YOUR CERTIFICATE</span>
+            </div>
+            <div class="nav-item">
+                <i class="bi bi-mortarboard-fill"></i>
+                <span>VIRTUAL ACADEMY</span>
+            </div>
+            <div class="nav-item">
+                <i class="bi bi-calendar-event-fill"></i>
+                <span>LIVE EVENTS</span>
+            </div>
+        </div>
+        <!-- End Quick Navigation Bar -->
+
     </div>
     <!-- section_who_us -->
 
     <!-- Start Quick Access Section UI -->
     <div id="quick-access-card" class="position-relative mt-4">
-        <div class="container py-4">
+        <div class="container">
             <div class="row g-3">
                 <!-- Card 1: Add Brand Profiles -->
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
@@ -144,7 +174,9 @@
                         <div class="brand-card-icon">
                             <i class="bi bi-plus-lg"></i>
                         </div>
-                        <div class="brand-card-title">Add Brand Profiles</div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">Add Brand Profiles</div>
+                        </div>
                     </div>
                 </div>
 
@@ -154,8 +186,10 @@
                         <div class="brand-card-icon">
                             <i class="bi bi-bar-chart"></i>
                         </div>
-                        <div class="brand-card-title">AI Analytics</div>
-                        <div class="brand-card-category">Data Science</div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Analytics</div>
+                            <div class="brand-card-category">Data Science</div>
+                        </div>
                     </div>
                 </div>
 
@@ -165,8 +199,10 @@
                         <div class="brand-card-icon">
                             <i class="bi bi-eye-fill"></i>
                         </div>
-                        <div class="brand-card-title">AI Vision</div>
-                        <div class="brand-card-category">Computer Vision</div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Vision</div>
+                            <div class="brand-card-category">Computer Vision</div>
+                        </div>
                     </div>
                 </div>
 
@@ -176,8 +212,10 @@
                         <div class="brand-card-icon">
                             <i class="bi bi-chat-square-dots"></i>
                         </div>
-                        <div class="brand-card-title">AI Chatbots</div>
-                        <div class="brand-card-category">Conversational AI</div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Chatbots</div>
+                            <div class="brand-card-category">Conversational AI</div>
+                        </div>
                     </div>
                 </div>
 
@@ -187,8 +225,10 @@
                         <div class="brand-card-icon">
                             <i class="bi bi-robot"></i>
                         </div>
-                        <div class="brand-card-title">AI Robotics</div>
-                        <div class="brand-card-category">Automation</div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Robotics</div>
+                            <div class="brand-card-category">Automation</div>
+                        </div>
                     </div>
                 </div>
 
@@ -198,8 +238,10 @@
                         <div class="brand-card-icon">
                             <i class="bi bi-tools"></i>
                         </div>
-                        <div class="brand-card-title">AI Tools</div>
-                        <div class="brand-card-category">Utilities</div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Tools</div>
+                            <div class="brand-card-category">Utilities</div>
+                        </div>
                     </div>
                 </div>
             </div>

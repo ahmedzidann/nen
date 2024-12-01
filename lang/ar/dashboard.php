@@ -893,4 +893,6 @@
   '#' => '#',
   'Years Text french' => 'Years Text french',
   'Years Text  french' => 'Years Text  french',
+  'Sidebar-Resources View' => 'Sidebar-Resources View',
+  'Sidebar Resources' => 'Sidebar Resources',
 );

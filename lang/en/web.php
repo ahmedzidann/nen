@@ -95,4 +95,5 @@
   'Do you have questions? Do not hesitate to contact us' => 'Do you have questions  Do not hesitate to contact us',
   'Regional Representatives' => 'Regional Representatives',
   'Name' => 'Name',
+
 );

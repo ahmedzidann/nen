@@ -49,8 +49,8 @@
                                 @endforeach
                             </ul>
                             <form id="myForm"
-                                action="{{ route('admin.sidebar-resources.update', ['sidebar_resource' => $resource->id]) }}" method="post"
-                                enctype="multipart/form-data">
+                                action="{{ route('admin.sidebar-resources.update', ['sidebar_resource' => $resource->id]) }}"
+                                method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="tab-content py-3">
@@ -103,14 +103,14 @@
                                                         @endif
                                                         <div class="resource-row">
                                                             <div class="row">
-                                                                <div class="form-group col-md-3">
+                                                                <div class="form-group col-md-2">
                                                                     <label for="title">Title in English</label>
                                                                     <input type="text" class="form-control"
                                                                         name="title[{{ $index }}][{{ $lang->key }}]"
                                                                         value="{{ $item->translate('title', $lang->key) }}"
                                                                         required>
                                                                 </div>
-                                                                <div class="form-group col-md-3">
+                                                                <div class="form-group col-md-2">
                                                                     <label for="title">Sub Title in English</label>
                                                                     <input type="text" class="form-control"
                                                                         name="sub_title[{{ $index }}][{{ $lang->key }}]"
@@ -118,20 +118,27 @@
                                                                         required>
                                                                 </div>
                                                                 @if ($lang->key == 'en')
+                                                                    <div class="form-group col-md-2">
+                                                                        <label for="url">Enter Url</label>
+                                                                        <input type="url" class="form-control"
+                                                                            name="url[]" value="{{ $item->url }}" required>
+                                                                    </div>
                                                                     <div class="form-group col-md-3">
                                                                         <label class="form-label">Upload Image</label>
                                                                         <input type="file" class="form-control"
-                                                                            name="image[]" accept="image/*" value="{{ $item->resource }}">
+                                                                            name="image[]" accept="image/*"
+                                                                            value="{{ $item->resource }}">
                                                                     </div>
                                                                     <div class="form-group col-md-2">
                                                                         <label for="title">Select Type</label>
-                                                                        <select name="type[]" class="form-control" id="">
+                                                                        <select name="type[]" class="form-control"
+                                                                            id="">
                                                                             <option value="1"
                                                                                 {{ $item->type == 1 ? 'selected' : '' }}>
                                                                                 Upper Section
                                                                             </option>
                                                                             <option value="2"
-                                                                                {{ $item->type == 1 ? 'selected' : '' }}>
+                                                                                {{ $item->type == 2 ? 'selected' : '' }}>
                                                                                 Lower Section</option>
                                                                         </select>
                                                                     </div>
@@ -301,6 +308,12 @@
 
                     }
                     if (nameAttr && nameAttr.includes('type')) {
+                        // Replace the index in the name, assuming it follows the pattern title[0][en]
+                        $(this).attr('name', nameAttr.replace(/\[\]/, `[${index}]`));
+                        console.log(this);
+
+                    }
+                    if (nameAttr && nameAttr.includes('url')) {
                         // Replace the index in the name, assuming it follows the pattern title[0][en]
                         $(this).attr('name', nameAttr.replace(/\[\]/, `[${index}]`));
                         console.log(this);

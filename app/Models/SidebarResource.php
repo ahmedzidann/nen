@@ -17,6 +17,7 @@ class SidebarResource extends Model
     protected $fillable = [
         'title',
         'sub_title',
+        'url',
         'main_category',
         'sub_category',
         'type',

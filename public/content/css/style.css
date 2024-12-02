@@ -8541,6 +8541,11 @@ span {
     font-size: 14px;
     transition: background 0.3s, color 0.3s;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 #banner-quick-access .nav-item i {

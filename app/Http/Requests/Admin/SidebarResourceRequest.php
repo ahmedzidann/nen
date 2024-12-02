@@ -28,6 +28,7 @@ class SidebarResourceRequest extends FormRequest
             'sub_category' => 'required|exists:pages,slug',
             'type.*' => 'required|in:1,2',
             'image.*' => 'required|image',
+            'url.*' => 'required|url',
             'status' => 'nullable',
         ];
         if ($this->getMethod() == 'post') {

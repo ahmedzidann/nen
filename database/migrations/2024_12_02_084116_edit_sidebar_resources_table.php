@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('sidebar_resources', function (Blueprint $table) {
             $table->tinyInteger('type')->change();
             $table->mediumText('sub_title')->nullable()->after('title');
+            $table->string('url')->nullable()->after('sub_title');
         });
 
     }
@@ -26,7 +27,7 @@ return new class extends Migration
     {
         Schema::table('sidebar_resources', function (Blueprint $table) {
             $table->string('type')->change();
-            $table->dropColumn('sub_title');
+            $table->dropColumn(['sub_title', 'url']);
         });
 
     }

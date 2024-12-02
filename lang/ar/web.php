@@ -95,5 +95,7 @@
   'Do you have questions? Do not hesitate to contact us' => 'Do you have questions  Do not hesitate to contact us',
   'Regional Representatives' => 'Regional Representatives',
   'Name' => 'Name',
-
+  'Regional Offices' => 'Regional Offices',
+  'Resources' => 'Resources',
+  'Our team is here to assist you with all your needs.' => 'Our team is here to assist you with all your needs.',
 );

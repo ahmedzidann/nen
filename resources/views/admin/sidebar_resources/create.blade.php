@@ -92,17 +92,22 @@
                                             <div id="resourceRows">
                                                 <div class="resource-row">
                                                     <div class="row">
-                                                        <div class="form-group col-md-3">
+                                                        <div class="form-group col-md-2">
                                                             <label for="title">Title in English</label>
                                                             <input type="text" class="form-control" name="title[][en]"
                                                                 required>
                                                         </div>
-                                                        <div class="form-group col-md-3">
+                                                        <div class="form-group col-md-2">
                                                             <label for="title">Sub Title in English</label>
                                                             <input type="text" class="form-control"
                                                                 name="sub_title[][en]" required>
                                                         </div>
-                                                        <div class="form-group col-md-3">
+                                                        <div class="form-group col-md-2">
+                                                            <label for="title">Enter Url</label>
+                                                            <input type="text" class="form-control"
+                                                                name="url[]" required>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
                                                             <label class="form-label">Upload Image</label>
                                                             <input type="file" class="form-control" name="image[]"
                                                                 accept="image/*" required>

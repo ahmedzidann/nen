@@ -23,10 +23,11 @@ class SidebarResourceRequest extends FormRequest
     {
         $rules = [
             'title.*' => 'required',
+            'sub_title.*' => 'required',
             'main_category' => 'required|exists:pages,slug',
             'sub_category' => 'required|exists:pages,slug',
-            'type.*' => 'required|in:image,file,url',
-            'resource.*' => 'required',
+            'type.*' => 'required|in:1,2',
+            'image.*' => 'required|image',
             'status' => 'nullable',
         ];
         if ($this->getMethod() == 'post') {

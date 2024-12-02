@@ -59,21 +59,15 @@ class SidebarResourceController extends Controller
      */
     public function store(SidebarResourceRequest $request)
     {
-        foreach ($request->type as $index => $type) {
-            if ($type == 'image' && $request->resource[$index]) {
-                $data['resource'] = FileUploadHelper::uploadImage($request->resource[$index], 'sidebar_resources');
+        foreach ($request->title as $index => $title) {
+            if ($request->image[$index]) {
+                $data['resource'] = FileUploadHelper::uploadImage($request->image[$index], 'sidebar_resources');
             }
-            if ($type == 'file' && $request->resource[$index]) {
-                $data['resource'] = FileUploadHelper::uploadFile($request->resource[$index], 'sidebar_resources');
-            }
-            if ($type == 'url' && $request->resource[$index]) {
-                $data['resource'] = $request->resource[$index];
-            }
-
             $data['main_category'] = $request->main_category;
             $data['sub_category'] = $request->sub_category;
-            $data['title'] = $request->title[$index];
-            $data['type'] = $type;
+            $data['title'] = $title;
+            $data['sub_title'] = $request->sub_title[$index];
+            $data['type'] = $request->type[$index];
             SidebarResource::create($data);
         }
 
@@ -107,42 +101,28 @@ class SidebarResourceController extends Controller
     public function update(SidebarResourceRequest $request, $id)
     {
         $validData = $request->validated();
+      
         foreach ($validData['keys'] as $index => $key) {
             $data = [];
 
             // Handle file uploads if present
-            if (isset($validData['resource'][$index])) {
+            if (isset($validData['image'][$index])) {
                 $resource = SidebarResource::find($key);
 
-                if ($request->type[$index] == 'image') {
+                if ($request->image[$index]) {
                     // Delete old image if exists
                     if ($resource->resource) {
                         FileUploadHelper::deleteFile($resource->resource);
                     }
-                    $data['resource'] = FileUploadHelper::uploadImage($validData['resource'][$index], 'resources');
+                    $data['resource'] = FileUploadHelper::uploadImage($validData['image'][$index], 'sidebar-resources');
                 }
-
-                if ($request->type[$index] == 'file') {
-                    // Delete old file if exists
-                    if ($resource->resource) {
-                        FileUploadHelper::deleteFile($resource->resource);
-                    }
-                    $data['resource'] = FileUploadHelper::uploadFile($validData['resource'][$index], 'resources');
-                }
-                if ($request->type[$index] == 'url') {
-                    // Delete old file if exists
-                    if ($resource->resource) {
-                        FileUploadHelper::deleteFile($resource->resource);
-                    }
-                    $data['resource'] = $validData['resource'][$index];
-                }
-
             }
 
             // Update basic information
             $data['main_category'] = $validData['main_category'];
             $data['sub_category'] = $validData['sub_category'];
             $data['title'] = $validData['title'][$index];
+            $data['sub_title'] = $validData['sub_title'][$index];
             $data['type'] = $validData['type'][$index];
 
             // Update the resource record
@@ -154,21 +134,15 @@ class SidebarResourceController extends Controller
         if (count($newData) > 0) {
             foreach ($newData as $index => $key) {
                 $new = [];
-                if ($request->type[$index] == 'image') {
-                    $new['resource'] = FileUploadHelper::uploadImage($validData['resource'][$index], 'resources');
-                }
-
-                if ($request->type[$index] == 'file') {
-                    $new['resource'] = FileUploadHelper::uploadFile($validData['resource'][$index], 'resources');
-                }
-                if ($request->type[$index] == 'url') {
-                    $new['resource'] = $validData['resource'][$index];
+                if ($request->image[$index]) {
+                    $new['resource'] = FileUploadHelper::uploadImage($validData['image'][$index], 'sidebar-resources');
                 }
 
                 // Update basic information
                 $new['main_category'] = $validData['main_category'];
                 $new['sub_category'] = $validData['sub_category'];
                 $new['title'] = $validData['title'][$index];
+                $new['sub_title'] = $validData['sub_title'][$index];
                 $new['type'] = $validData['type'][$index];
 
                 // Update the resource record
@@ -182,7 +156,6 @@ class SidebarResourceController extends Controller
             'redirect_url' => route('admin.sidebar-resources.index'),
         ]);
     }
-
 
     /**
      * Remove the specified resource from storage.

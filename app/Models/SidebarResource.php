@@ -11,10 +11,12 @@ class SidebarResource extends Model
     use HasFactory, HasTranslations;
     public $translatable = [
         'title',
+        'sub_title',
     ];
 
     protected $fillable = [
         'title',
+        'sub_title',
         'main_category',
         'sub_category',
         'type',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SidebarResource\SidebarResourceController;
 use App\Http\Controllers\User\AboutUs\AboutController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ContactUs\ContactUsController;
@@ -82,6 +83,8 @@ Route::group(['prefix' => 'find-us', 'as' => 'find-us.', 'name' => 'find-us.'], 
 });
 Route::get('find-us/data', [FindUsController::class, 'getData'])->name('find-us.data');
 Route::get('resources-data', [ResourceController::class, 'getResources'])->name('resources-data.get');
+Route::get('sidebar-resources-upper-data', [SidebarResourceController::class, 'getUpperResources'])->name('sidebar-resources-upper-data.get');
+Route::get('sidebar-resources-lower-data', [SidebarResourceController::class, 'getLowerResources'])->name('sidebar-resources-lower-data.get');
 
 //Projects Routes
 Route::get('Projects/{slug?}/{id?}', [ProjectController::class, 'index'])->name('projects');

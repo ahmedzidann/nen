@@ -319,6 +319,10 @@
                                   class='bx bx-radio-circle'></i>Resources</a></li>
                   </ul>
                   <ul>
+                      <li class=""><a href="{{ route('admin.sidebar-resources.index') }}"><i
+                                  class='bx bx-radio-circle'></i>Sidebar Resources</a></li>
+                  </ul>
+                  <ul>
                       <li class=""><a href="{{ route('admin.footer.index') }}"><i
                                   class='bx bx-radio-circle'></i>Footer Data</a></li>
                   </ul>

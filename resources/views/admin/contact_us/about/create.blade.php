@@ -71,21 +71,6 @@
                                                     name="please enter Facebook Link">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            {{-- ----------facebook image--}}
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first  class="col-sm-3 col-form-label"
-                                                    name="File Upload Image">
-                                                </x-admin.form.label-first>
-                                                <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="facebook"
-                                                        old="facebook" name="facebook" type="file" readonly=""
-                                                        placeholder="Please Enter Facebook Image" id="image" class="dropify"
-                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                                    </x-admin.form.input>
-                                                </div>
-                                            </div>
-                                            {{-- ----------end image--}}
-
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="twitter Link">
@@ -100,20 +85,6 @@
                                                     name="please enter twitter Link">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            {{-- ----------twitter image--}}
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first  class="col-sm-3 col-form-label"
-                                                    name="File Upload Image">
-                                                </x-admin.form.label-first>
-                                                <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="twitter"
-                                                        old="twitter" name="twitter" type="file" readonly=""
-                                                        placeholder="Please Enter twitter Image" id="image" class="dropify"
-                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                                    </x-admin.form.input>
-                                                </div>
-                                            </div>
-                                            {{-- ----------end image--}}
                                             
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
@@ -129,20 +100,6 @@
                                                     name="please enter instagram Link">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            {{-- ----------instagram image--}}
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first  class="col-sm-3 col-form-label"
-                                                    name="File Upload Image">
-                                                </x-admin.form.label-first>
-                                                <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="instagram"
-                                                        old="instagram" name="instagram" type="file" readonly=""
-                                                        placeholder="Please Enter instagram Image" id="image" class="dropify"
-                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                                    </x-admin.form.input>
-                                                </div>
-                                            </div>
-                                            {{-- ----------end image--}}
 
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
@@ -158,20 +115,6 @@
                                                     name="please enter youtube Link">
                                                 </x-admin.form.label-end>
                                             </div>
-                                            {{-- ----------youtube image--}}
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first  class="col-sm-3 col-form-label"
-                                                    name="File Upload Image">
-                                                </x-admin.form.label-first>
-                                                <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="youtube"
-                                                        old="youtube" name="youtube" type="file" readonly=""
-                                                        placeholder="Please Enter youtube Image" id="image" class="dropify"
-                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                                    </x-admin.form.input>
-                                                </div>
-                                            </div>
-                                            {{-- ----------end image--}}
                                             <div class="col-md-12">
                                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                                     <x-admin.form.submit type="submit"></x-admin.form.submit>

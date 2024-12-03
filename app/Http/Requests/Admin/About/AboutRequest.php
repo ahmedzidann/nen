@@ -32,6 +32,8 @@ class AboutRequest extends FormRequest
                 'instagram' => 'required|image',
                 'youtube_link' => 'required|url',
                 'youtube' => 'required|image',
+                'whats_number' => 'required|max:255',
+                'telegram_number' => 'required|max:255',
             ];
         } else {
             return [
@@ -44,6 +46,8 @@ class AboutRequest extends FormRequest
                 'instagram' => 'sometimes|image',
                 'youtube_link' => 'sometimes|url',
                 'youtube' => 'sometimes|image',
+                'whats_number' => 'required|max:255',
+                'telegram_number' => 'required|max:255',
             ];
         }
     }

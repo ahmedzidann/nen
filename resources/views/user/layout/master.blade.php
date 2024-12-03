@@ -193,7 +193,7 @@
         <div class="float-quick-access p-2">
             <div class="d-flex flex-column gap-3">
                 <!-- Chat Icon -->
-                <a href="https://example.com/chat" target="_blank">
+                {{-- <a href="https://example.com/chat" target="_blank">
                     <svg width="24px" height="24px" viewBox="0 0 0.96 0.96" xmlns="http://www.w3.org/2000/svg">
                         <g fill="none" fill-rule="evenodd">
                             <path cx="16" cy="16" r="16" fill="#1C98F7"
@@ -202,14 +202,14 @@
                                 d="M0.488 0.7a0.345 0.345 0 0 0 0.063 -0.01 0.171 0.171 0 0 0 0.078 0.005 0.03 0.03 0 0 1 0.003 0c0.009 0 0.022 0.005 0.039 0.017v-0.019a0.018 0.018 0 0 1 0.009 -0.016q0.012 -0.007 0.022 -0.015c0.026 -0.022 0.041 -0.051 0.041 -0.082q0 -0.016 -0.005 -0.03 0.012 -0.022 0.019 -0.046A0.138 0.138 0 0 1 0.78 0.579c0 0.042 -0.02 0.081 -0.054 0.11a0.18 0.18 0 0 1 -0.018 0.013v0.044c0 0.015 -0.017 0.024 -0.03 0.015a0.45 0.45 0 0 0 -0.036 -0.024 0.09 0.09 0 0 0 -0.011 -0.006q-0.015 0.002 -0.031 0.002c-0.042 0 -0.081 -0.013 -0.112 -0.034zm-0.224 -0.088C0.211 0.567 0.18 0.505 0.18 0.439c0 -0.135 0.128 -0.244 0.284 -0.244s0.284 0.108 0.284 0.244c0 0.135 -0.128 0.244 -0.284 0.244q-0.026 0 -0.052 -0.004c-0.007 0.002 -0.037 0.019 -0.079 0.05 -0.015 0.011 -0.037 0 -0.037 -0.018v-0.075a0.27 0.27 0 0 1 -0.031 -0.023m0.148 0.02q0.002 0 0.004 0c0.015 0.003 0.031 0.004 0.047 0.004 0.132 0 0.237 -0.089 0.237 -0.198 0 -0.108 -0.105 -0.198 -0.237 -0.198 -0.132 0 -0.237 0.089 -0.237 0.198 0 0.052 0.025 0.102 0.068 0.139 0.011 0.009 0.023 0.018 0.036 0.025 0.007 0.004 0.012 0.012 0.012 0.02v0.043c0.033 -0.022 0.056 -0.033 0.071 -0.033m-0.07 -0.147c-0.021 0 -0.037 -0.017 -0.037 -0.037 0 -0.02 0.017 -0.037 0.037 -0.037s0.037 0.016 0.037 0.037 -0.017 0.037 -0.037 0.037m0.121 0c-0.021 0 -0.037 -0.017 -0.037 -0.037 0 -0.02 0.017 -0.037 0.037 -0.037s0.037 0.016 0.037 0.037 -0.017 0.037 -0.037 0.037m0.121 0c-0.021 0 -0.037 -0.017 -0.037 -0.037 0 -0.02 0.017 -0.037 0.037 -0.037s0.037 0.016 0.037 0.037 -0.017 0.037 -0.037 0.037" />
                         </g>
                     </svg>
-                </a>
+                </a> --}}
                 <!-- Telegram Icon -->
-                <a href="https://example.com/telegram" target="_blank" class="text-decoration-none"
+                <a href="https://t.me/+{{ $about->telegram_number }}" target="_blank" class="text-decoration-none"
                     aria-label="Telegram">
                     <i class="bi bi-telegram text-primary fs-4"></i>
                 </a>
                 <!-- WhatsApp Icon -->
-                <a href="https://example.com/whatsapp" target="_blank" class="text-decoration-none"
+                <a href="https://wa.me/{{ $about->whats_number }}" target="_blank" class="text-decoration-none"
                     aria-label="WhatsApp">
                     <i class="bi bi-whatsapp text-success fs-4"></i>
                 </a>
@@ -297,11 +297,11 @@
                                 </h6>
                                 <div class="d-flex align-items-center gap-md-3 gap-2 mt-md-4 mt-3">
                                     <!-- Facebook -->
-                                    <a href="{{ $about->facebook_link }}" class="text-white">
+                                    <a href="{{ $about->facebook_link }}" class="text-white" target="_blank">
                                         <i class="bi bi-facebook"></i>
                                     </a>
                                     <!-- Twitter -->
-                                    <a href="{{ $about->twitter_link }}" class="text-white">
+                                    <a href="{{ $about->twitter_link }}" class="text-white" target="_blank">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="icon icon-tabler icon-tabler-brand-x" width="24"
                                             height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
@@ -312,15 +312,15 @@
                                         </svg>
                                     </a>
                                     <!-- Instagram -->
-                                    <a href="{{ $about->instagram_link }}" class="text-white">
+                                    <a href="{{ $about->instagram_link }}" class="text-white" target="_blank">
                                         <i class="bi bi-instagram"></i>
                                     </a>
                                     <!-- YouTube -->
-                                    <a href="{{ $about->youtube_link }}" class="text-white">
+                                    <a href="{{ $about->youtube_link }}" class="text-white" target="_blank">
                                         <i class="bi bi-youtube"></i>
                                     </a>
                                     <!-- VK -->
-                                    <a href="{{ $about->vk_link }}" class="text-white">
+                                    <a href="{{ $about->vk_link }}" class="text-white" target="_blank">
                                         <svg fill="#ffffff" width="26px" height="26px" viewBox="0 0 0.78 0.78"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -328,11 +328,11 @@
                                         </svg>
                                     </a>
                                     <!-- Telegram -->
-                                    <a href="{{ $about->telegram_link }}" class="text-white">
+                                    <a href="{{ $about->telegram_link }}" class="text-white" target="_blank">
                                         <i class="bi bi-telegram"></i>
                                     </a>
                                     <!-- Email -->
-                                    <a href="mailto:{{ $about->email }}" class="text-white">
+                                    <a href="mailto:{{ $about->email }}" class="text-white" target="_blank">
                                         <i class="bi bi-envelope"></i>
                                     </a>
                                 </div>

@@ -115,7 +115,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="sub_title[{{ $index }}][{{ $lang->key }}]"
                                                                         value="{{ $item->translate('sub_title', $lang->key) }}"
-                                                                        required>
+                                                                        >
                                                                 </div>
                                                                 @if ($lang->key == 'en')
                                                                     <div class="form-group col-md-2">

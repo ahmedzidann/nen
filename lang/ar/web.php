@@ -98,4 +98,5 @@
   'Regional Offices' => 'Regional Offices',
   'Resources' => 'Resources',
   'Our team is here to assist you with all your needs.' => 'Our team is here to assist you with all your needs.',
+  'Reach out to us for any inquiries or support.' => 'Reach out to us for any inquiries or support.',
 );

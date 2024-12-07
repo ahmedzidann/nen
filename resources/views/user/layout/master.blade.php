@@ -52,7 +52,7 @@
 
     <!-- Start Loader -->
     <div class="loader-wrapper">
-        <div class="custom-loader"></div>
+        <!-- <div class="custom-loader"></div> -->
 
         <!-- Other Loader -->
         <!-- <div class="new-loader">
@@ -61,6 +61,13 @@
             <div class="loader-bar bar-3"></div>
             <div class="loader-bar bar-4"></div>
         </div> -->
+
+        <div class="loading">
+            <svg width="64px" height="48px">
+                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+            </svg>
+        </div>
     </div>
     <!-- End Loader -->
 
@@ -315,7 +322,7 @@
     <!-- End Contact Us Section -->
 
     <!-- Start Footer Section -->
-    <footer id="footer" class="home-footer">
+    <footer id="footer" class="home-footer pt-3 mt-md-5 mt-3">
         <!-- Start Float Quick Access -->
         <div class="float-quick-access p-2">
             <div class="d-flex flex-column gap-3">
@@ -346,7 +353,7 @@
 
         <div class="footer-second-bg">
             <div class="container">
-                <div class="pt-md-5 pt-3 pb-md-4 pb-3">
+                <div class="py-3">
                     <!-- <div class="d-flex justify-content-center">
                         <div class="image-box d-flex justify-content-center">
                             <img src="{{ asset('content/images/logo.svg') }}" class="logo" alt="white-logo">
@@ -743,6 +750,8 @@
                     if (data.status === 'success' && data.data) {
                         document.getElementById('quick-access').innerHTML += data.data;
                         document.getElementById('line').style.display = 'block';
+                    } else {
+                        document.getElementById('contact-us').style.display = 'none';
                     }
                 })
                 .catch(error => {

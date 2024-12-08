@@ -92,29 +92,43 @@
                                             <div id="resourceRows">
                                                 <div class="resource-row">
                                                     <div class="row">
-                                                        <div class="form-group col-md-4">
+                                                        <div class="form-group col-md-2">
                                                             <label for="title">Title in English</label>
                                                             <input type="text" class="form-control" name="title[][en]"
                                                                 required>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <label class="form-label">Resource Type</label>
-                                                            <select class="form-select resource-type" name="type[]">
-                                                                <option value="" disabled selected>Select Resource
-                                                                    Type</option>
-                                                                <option value="image">Image</option>
-                                                                <option value="file">File</option>
-                                                                <option value="url">URL</option>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="title">Sub Title in English</label>
+                                                            <input type="text" class="form-control"
+                                                                name="sub_title[][en]" required>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="title">Enter Url</label>
+                                                            <input type="text" class="form-control"
+                                                                name="url[]" required>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label class="form-label">Upload Image</label>
+                                                            <input type="file" class="form-control" name="image[]"
+                                                                accept="image/*" required>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="title">Select Type</label>
+                                                            <select name="type[]" class="form-control" id="">
+                                                                <option value="1" selected>Upper Section</option>
+                                                                <option value="2">Lower Section</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-3 resource-input-container">
-                                                            <!-- Dynamic input will be appended here -->
-                                                        </div>
                                                         <div class="col-md-1 d-flex align-items-end">
-                                                            <button type="button" class="btn btn-danger remove-row mb-3"><i
+                                                            <button type="button" class="btn btn-danger remove-row "><i
                                                                     class="bx bxs-trash"></i></button>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-3 resource-input-container">
+                                                        <!-- Dynamic input will be appended here -->
+                                                    </div>
+
                                                 </div>
                                             </div>
 
@@ -201,7 +215,7 @@
             $('#addRow').click(function() {
                 let newRow = $('.resource-row:first').clone();
                 newRow.find('input').val('');
-                newRow.find('select').val('');
+                newRow.find('select').val(1);
                 newRow.find('.resource-input-container').empty();
                 $('#resourceRows').append(newRow);
                 updateResourceIndexes();

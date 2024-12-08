@@ -49,8 +49,8 @@
                                 @endforeach
                             </ul>
                             <form id="myForm"
-                                action="{{ route('admin.resources.update', ['resource' => $resource->id]) }}" method="post"
-                                enctype="multipart/form-data">
+                                action="{{ route('admin.sidebar-resources.update', ['sidebar_resource' => $resource->id]) }}"
+                                method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="tab-content py-3">
@@ -103,51 +103,44 @@
                                                         @endif
                                                         <div class="resource-row">
                                                             <div class="row">
-                                                                <div class="form-group col-md-4">
+                                                                <div class="form-group col-md-2">
                                                                     <label for="title">Title in English</label>
                                                                     <input type="text" class="form-control"
                                                                         name="title[{{ $index }}][{{ $lang->key }}]"
                                                                         value="{{ $item->translate('title', $lang->key) }}"
                                                                         required>
                                                                 </div>
+                                                                <div class="form-group col-md-2">
+                                                                    <label for="title">Sub Title in English</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="sub_title[{{ $index }}][{{ $lang->key }}]"
+                                                                        value="{{ $item->translate('sub_title', $lang->key) }}"
+                                                                        >
+                                                                </div>
                                                                 @if ($lang->key == 'en')
-                                                                    <div class="col-md-4">
-                                                                        <label class="form-label">Resource Type</label>
-                                                                        <select class="form-select resource-type"
-                                                                            name="type[]">
-                                                                            <option value="" disabled selected>Select
-                                                                                Resource
-                                                                                Type</option>
-                                                                            <option value="image"
-                                                                                {{ $item->type == 'image' ? 'selected' : '' }}>
-                                                                                Image
-                                                                            </option>
-                                                                            <option value="file"
-                                                                                {{ $item->type == 'file' ? 'selected' : '' }}>
-                                                                                File
-                                                                            </option>
-                                                                            <option value="url"
-                                                                                {{ $item->type == 'url' ? 'selected' : '' }}>
-                                                                                URL
-                                                                            </option>
-                                                                        </select>
+                                                                    <div class="form-group col-md-2">
+                                                                        <label for="url">Enter Url</label>
+                                                                        <input type="url" class="form-control"
+                                                                            name="url[]" value="{{ $item->url }}" required>
                                                                     </div>
-                                                                    <div class="col-md-3 resource-input-container">
-                                                                        @if ($item->type == 'image')
-                                                                            <label class="form-label">Upload Image</label>
-                                                                            <input type="file" class="form-control"
-                                                                                name="resource[{{ $index }}]"
-                                                                                accept="image/*">
-                                                                        @elseif ($item->type == 'file')
-                                                                            <label class="form-label">Upload File</label>
-                                                                            <input type="file" class="form-control"
-                                                                                name="resource[{{ $index }}]">
-                                                                        @elseif ($item->type == 'url')
-                                                                            <label class="form-label">Enter URL</label>
-                                                                            <input type="url" class="form-control"
-                                                                                name="resource[{{ $index }}]"
-                                                                                value="{{ $item->resource }}">
-                                                                        @endif
+                                                                    <div class="form-group col-md-3">
+                                                                        <label class="form-label">Upload Image</label>
+                                                                        <input type="file" class="form-control"
+                                                                            name="image[]" accept="image/*"
+                                                                            value="{{ $item->resource }}">
+                                                                    </div>
+                                                                    <div class="form-group col-md-2">
+                                                                        <label for="title">Select Type</label>
+                                                                        <select name="type[]" class="form-control"
+                                                                            id="">
+                                                                            <option value="1"
+                                                                                {{ $item->type == 1 ? 'selected' : '' }}>
+                                                                                Upper Section
+                                                                            </option>
+                                                                            <option value="2"
+                                                                                {{ $item->type == 2 ? 'selected' : '' }}>
+                                                                                Lower Section</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="col-md-1 d-flex align-items-end">
                                                                         <button type="button"
@@ -303,7 +296,7 @@
             $('#addRow').click(function() {
                 let newRow = $('.resource-row:first').clone();
                 newRow.find('input').val('');
-                newRow.find('select').val('');
+                newRow.find('select').val(1);
                 newRow.find('.resource-input-container').empty();
                 $('#resourceRows').append(newRow);
                 newRow.find('[name]').each(function() {
@@ -320,6 +313,18 @@
                         console.log(this);
 
                     }
+                    if (nameAttr && nameAttr.includes('url')) {
+                        // Replace the index in the name, assuming it follows the pattern title[0][en]
+                        $(this).attr('name', nameAttr.replace(/\[\]/, `[${index}]`));
+                        console.log(this);
+
+                    }
+                    if (nameAttr && nameAttr.includes('image')) {
+                        // Replace the index in the name, assuming it follows the pattern title[0][en]
+                        $(this).attr('name', nameAttr.replace(/\[\]/, `[${index}]`));
+                        console.log(this);
+
+                    }
                 });
             });
 
@@ -331,33 +336,6 @@
                 }
             });
 
-            // Handle resource type change
-            $(document).on('change', '.resource-type', function() {
-                let container = $(this).closest('.row').find('.resource-input-container');
-                let rowIndex = $(this).closest('.resource-row').index();
-                container.empty();
-
-                switch ($(this).val()) {
-                    case 'image':
-                        container.append(`
-                            <label class="form-label">Upload Image</label>
-                            <input type="file" class="form-control" name="resource[${index}]" accept="image/*" >
-                        `);
-                        break;
-                    case 'file':
-                        container.append(`
-                            <label class="form-label">Upload File</label>
-                            <input type="file" class="form-control" name="resource[${index}]" >
-                        `);
-                        break;
-                    case 'url':
-                        container.append(`
-                            <label class="form-label">Enter URL</label>
-                            <input type="url" class="form-control" name="resource[${index}]" >
-                        `);
-                        break;
-                }
-            });
             ++index
         });
     </script>

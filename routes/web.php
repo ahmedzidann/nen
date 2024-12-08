@@ -98,5 +98,8 @@ Route::get('blogs', function () {
 Route::get('blogs/details', function () {
     return view('user.blogs.details');
 })->name('blogs.details');
+Route::get('home', function () {
+    return view('user.home.home');
+});
 
 //

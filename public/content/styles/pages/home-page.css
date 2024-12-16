@@ -1,0 +1,796 @@
+/* Import the button styles */
+@import url('content/styles/buttons.css');
+
+/* Import the variables styles */
+@import url('content/styles/variables.css');
+
+.text-align-justify {
+    text-align: justify !important;
+}
+
+.clipped-border-card {
+    padding: 1.5px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #990000 0%, #d633ff00 56.28%), linear-gradient(0deg, #ffffff4d, #ffffff26);
+    clip-path: polygon(90% 0, 100% 15%, 100% 75%, 100% 100%, 0 100%, 0 0);
+    cursor: pointer;
+}
+
+.clipped-border-card:hover {
+    background: linear-gradient(180deg, #000 0%, #d633ff00 56.28%), linear-gradient(0deg, #ffffff4d, #ffffff26);
+}
+
+.clipped-item-card {
+    border-radius: 20px;
+    padding: 1.9rem 1.5rem;
+    clip-path: polygon(90% 0, 100% 15%, 100% 75%, 100% 100%, 0 100%, 0 0);
+}
+
+#home-page {
+    /* background-color: lightblue; */
+}
+
+#home-page .section-bundries {
+    padding-block: 2rem;
+}
+
+/* Start Stats Section */
+#stats-section {
+    padding-top: 5rem;
+}
+
+#stats-section .subheading {
+    color: var(--text-main-color);
+    background-color: #77889930;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 2px 16px;
+    border-radius: 5px;
+}
+
+#stats-section .stats-card {
+    width: 100%;
+    min-height: 150px;
+    background: linear-gradient(to bottom,
+            rgb(34, 34, 36) 0%,
+            rgb(10, 10, 11) 80%,
+            #990000 100%);
+    border-radius: 15px;
+    /* box-shadow: rgb(0,0,0,0.7) 5px 10px 50px ,rgb(0,0,0,0.7) -5px 0px 250px; */
+    display: flex;
+    color: white;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#stats-section .stats-card .counter-text {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2px;
+}
+
+#stats-section .stats-card .counter-text .count {
+    font-size: 2rem !important;
+    font-weight: 600;
+}
+
+#stats-section .stats-card .counter-text .count-tag {
+    font-size: 1rem !important;
+    font-weight: 400;
+}
+
+#stats-section .stats-card .label-text {
+    font-size: 18px;
+    margin-top: 0px;
+    font-weight: 500;
+}
+
+#stats-section .stats-card .image-box {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 50%;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+#stats-section .stats-card .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+#stats-section .stats-card .card:hover>.image-box {
+    width: 33px;
+    height: 33px;
+}
+
+
+/* End Stats Section */
+
+/* Start About Section Styles */
+#home-page #about-company-section {
+    /* padding-top: 5rem; */
+    background-image: url(../../images/pages/home-page/about-bg.svg);
+    background-repeat: no-repeat;
+    background-position: 5% 50px;
+    background-size: 12rem;
+
+    background: var(--bg-main-color);
+}
+
+#home-page #about-company-section .description {
+    text-align: justify !important;
+}
+
+#home-page #about-company-section .about-img {
+    height: 450px;
+    width: 100%;
+    border-radius: 7px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+#home-page #about-company-section .about-img img {
+    height: 100%;
+    width: 100%;
+}
+
+:dir(rtl) #home-page #about-company-section {
+    background-position: 95% 50px;
+}
+
+#home-page #about-company-section .about-img .about-layer {
+    width: 200px;
+    height: 200px;
+    background-color: #99999936;
+    transform: rotate(39deg);
+    top: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+:dir(rtl) #home-page #about-company-section .about-img .about-layer {
+    left: 0;
+    right: inherit;
+}
+
+@media (max-width: 992px) {
+    #home-page #about-company-section .w-75 {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #home-page #about-company-section {
+        padding-top: 2rem;
+        background-size: 10rem;
+    }
+
+    #home-page #about-company-section .title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    #home-page #about-company-section .title {
+        font-size: 1.3rem;
+    }
+
+    #home-page #about-company-section .about-layer {
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+/* End About Section Styles */
+
+/* Start Projects Section Styles */
+#home-page #projects-section {
+    /* Styles for the step section */
+}
+
+#home-page #projects-section .global-title {
+    font-size: 2rem !important;
+}
+
+#home-page #projects-section .image-box {
+    width: 100%;
+    height: 170px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#home-page #projects-section .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+#home-page #projects-section .step {
+    background-color: #9a9a9a29;
+    /* color: var(--text-white-color); */
+
+    border-radius: 16px;
+    padding: 0.9rem;
+    min-height: 15rem;
+}
+
+#home-page #projects-section .step-num {
+    background-color: var(--bg-main-color);
+    color: var(--text-white-color);
+    width: 2.8rem;
+    min-width: 2.8rem;
+    height: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Special step styles */
+#home-page #projects-section .special-step {
+    background-color: #000000;
+    border: 2px solid var(--bg-main-color);
+    background-image: url(../../images/pages/home-page/step-bg.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: fill;
+    color: var(--text-white-color);
+}
+
+@media (max-width: 576px) {
+    #home-page #projects-section .fs-5 {
+        font-size: 1.1rem !important;
+    }
+}
+
+#join .join-img {
+    width: 75%;
+}
+
+#contact-us .contact-img {
+    height: 28rem;
+}
+
+
+/* End Projects Section Styles */
+
+/* Start Education Section Styles */
+#home-page #education-section {
+    background-color: #990000;
+    /* Background color */
+    position: relative;
+    background-image: url(../../images/footer/footer-bg.svg), url(../../images/footer/footer-bg.svg);
+    /* Multiple background images */
+    background-position: left top, right bottom;
+    /* Position for each image */
+    background-repeat: no-repeat, no-repeat;
+    /* Prevent repetition for both images */
+    background-size: contain, contain;
+    /* Adjust size of each image */
+}
+
+#home-page #education-section .clipped-item-card {
+    background-color: var(--bg-white-color);
+    background-image: url(../../images/footer/footer-bg-2.svg);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+}
+
+#home-page #education-section .description {
+    color: #000000ab;
+}
+
+#home-page #education-section .box-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+#home-page #education-section .item-content:hover .item-overlay {
+    background: radial-gradient(circle, rgb(158 158 158 / 42%) 0%, rgba(255, 255, 255, 0) 65%);
+    inset: 0;
+}
+
+#home-page #education-section .clipped-item-card:hover .box-icon {
+    background-color: #990000;
+}
+
+/* End Education Section Styles */
+
+/* Start Testing Section Styles */
+#testing-section {
+    padding-top: 6rem;
+}
+
+#testing-section .testing-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-main-color);
+}
+
+#testing-section .testing-description {
+    font-size: 1rem;
+    color: var(--text-main-color);
+}
+
+#testing-section .testing-img {
+    width: 90%;
+    border-radius: 20px;
+    background-color: var(--bg-main-color);
+    z-index: 2;
+}
+
+#testing-section .testing-img img {
+    border-radius: 20px;
+}
+
+#testing-section .layer {
+    border-radius: 20px;
+    position: absolute;
+}
+
+#testing-section .layer-one {
+    height: 90%;
+    width: 90%;
+    background-color: var(--bg-main-color);
+    right: 6%;
+    z-index: 1;
+}
+
+#testing-section .layer-two {
+    height: 80%;
+    width: 80%;
+    background-color: var(--grey-400);
+    right: 2%;
+    z-index: 0;
+}
+
+#testing-section .subheading {
+    color: var(--text-main-color);
+    background-color: #77889930;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 2px 16px;
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #testing-section {
+        padding-top: 2rem;
+    }
+
+    #testing-section .testing-title {
+        font-size: 1.5rem;
+    }
+
+    #testing-section .testing-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 567px) {
+    #testing-section {
+        padding-top: 1rem;
+    }
+
+    #testing-section .testing-title {
+        font-size: 1.2rem;
+    }
+
+    #testing-section .testing-img {
+        width: 100%;
+    }
+
+    #testing-section .layer-one {
+        left: 0;
+        right: inherit;
+        bottom: -6%;
+    }
+
+    #testing-section .layer-two {
+        bottom: -12%;
+        left: 0;
+        right: inherit;
+    }
+}
+
+/* End Testing Section Styles */
+
+/* Start Solutions Section Styles */
+#home-page #solutions-section {}
+
+#home-page #solutions-section .duties-title {
+    color: #333333;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+#home-page #solutions-section .duties-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#home-page #solutions-section .type-title {
+    background: linear-gradient(268.94deg, #990000 -5.98%, #000 95.88%);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 17px;
+    text-align: center;
+}
+
+#home-page #solutions-section .duties-items-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#home-page #solutions-section .duties-item-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+#home-page #solutions-section .duties-item-img {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+}
+
+#home-page #solutions-section .duties-items-details {
+    text-align: left;
+}
+
+#home-page #solutions-section .duties-item-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 0.5rem;
+}
+
+#home-page #solutions-section .duties-item-description {
+    font-size: 14px;
+    color: #666666;
+}
+
+@media (max-width: 576px) {
+    #home-page #solutions-section .duties-title {
+        font-size: 24px;
+    }
+
+    #home-page #solutions-section .duties-item-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* End Solutions Section Styles */
+
+/* Start Technology Section Styles */
+#home-page #technology-section {}
+
+#home-page #technology-section article .article-img {
+    height: 350px;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+#home-page #technology-section article .article-img img {
+    height: 100%;
+    width: 100%;
+}
+
+#home-page #technology-section article .arrow-icon {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border: 1px solid #4b4e60;
+    /* transition: all 0.3s ease-in-out; */
+}
+
+/* End Technology Section Styles */
+
+/* Start Doc Validation Section Styles */
+#home-page #doc-validation-section {
+    /* background-color: aquamarine; */
+}
+
+.doc-validation .doc-icon {
+    width: 75px;
+    height: 75px;
+}
+
+.doc-validation-card .doc-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.doc-validation-card .circle {
+    font-size: 9px;
+}
+
+.doc-validation-card .text-item {
+    color: #d3d3d3;
+}
+
+.doc-validation-card .title:after {
+    content: "";
+    position: absolute;
+    width: 3rem;
+    height: 2px;
+    background-color: var(--bg-white-color);
+    bottom: -3px;
+    left: 0;
+}
+
+.doc-validation-card .number {
+    right: 18px;
+    font-size: 12rem;
+    top: -20px;
+    color: #880000;
+    z-index: -1;
+    font-weight: 700;
+}
+
+/* End Doc Validation Section Styles */
+
+/* Start Join Us Section Styles */
+#home-page #join-us-section {
+    /* background-color: #990000; */
+}
+
+/* Section Styling */
+#home-page #join-us-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#home-page #join-us-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#home-page #join-us-section p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* World Map Styling */
+#home-page #join-us-section .world-map {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    background: url("https://convenitconsultants.com/wp-content/uploads/2023/12/Map.svg") no-repeat center center;
+    background-size: cover;
+    border-radius: 14px;
+    height: 460px;
+}
+
+#home-page #join-us-section .map-dot {
+    position: absolute;
+    background-color: #990000;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Map Dot Positions */
+#home-page #join-us-section .map-dot.usa {
+    top: 50%;
+    left: 20%;
+}
+
+#home-page #join-us-section .map-dot.europe {
+    top: 35%;
+    left: 50%;
+}
+
+#home-page #join-us-section .map-dot.asia {
+    top: 40%;
+    left: 70%;
+}
+
+#home-page #join-us-section .map-dot.australia {
+    bottom: 10%;
+    right: 15%;
+}
+
+/* Contact Cards */
+#home-page #join-us-section .contact-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#home-page #join-us-section .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+#home-page #join-us-section .contact-card i {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #990000;
+}
+
+/* Links Styling */
+#home-page #join-us-section .email-link,
+#home-page #join-us-section .phone-link,
+#home-page #join-us-section .map-link {
+    color: #990000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#home-page #join-us-section .email-link:hover,
+#home-page #join-us-section .phone-link:hover,
+#home-page #join-us-section .map-link:hover {
+    text-decoration: underline;
+}
+
+/* End Join Us Section Styles */
+
+/* Start Find Us Section Styles */
+#home-page #find-us-section {
+    background-color: #dfdfdfdd;
+}
+
+#home-page #find-us-section {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+#home-page #find-us-section .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#home-page #find-us-section .description {
+    color: #333;
+    max-width: 700px;
+    margin: 1rem auto;
+}
+
+#home-page #find-us-section .location-section {
+    margin-top: 3rem;
+}
+
+@media (min-width: 992px) {
+    #home-page #find-us-section .location-section .location-item {
+        border-left: 1px solid #ddd;
+        /* Adjust the border color as needed */
+        padding-left: 1.5rem;
+        /* Add some spacing */
+    }
+}
+
+#home-page #find-us-section .location-item {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#home-page #find-us-section .country-flag {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: fill;
+    margin-top: 1rem;
+}
+
+#home-page #find-us-section .location-item .country-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+#home-page #find-us-section .location-item .country-location {
+    color: #555;
+    margin: 0;
+}
+
+/* End Find Us Section Styles */
+
+/* Start Contact Us Section Styles */
+#contact-us-section {}
+
+#contact-us-section .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#contact-us-section .section-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+#contact-us-section .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#contact-us-section .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#contact-us-section input,
+textarea {
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: #f1f1f1;
+    border: none;
+    height: 3.9rem;
+    border-radius: 0.625rem;
+    padding: 1rem;
+}
+
+#contact-us-section input:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#contact-us-section .radio-group {
+    display: flex;
+    gap: 1rem;
+}
+
+#contact-us-section .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: .375em .75em .375em .375em;
+    transition: .25s ease;
+    color: #d9d9d9;
+    border: 1px solid #d9d9d9;
+    height: 40px;
+    border-radius: 4px;
+}
+
+#contact-us-section .error-message {
+    color: red;
+    font-size: 0.875rem;
+    display: none;
+}
+
+#contact-us-section .contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+/* End Contact Us Section Styles */

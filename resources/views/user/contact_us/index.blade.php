@@ -96,12 +96,12 @@
                     <div class="col-lg-9 col-md-11 col-sm-12 col-12">
                         <div class="content d-flex align-items-center justify-content-center flex-column">
                             <h1 id="hero-title" class="title text-center text-capitalize fw-bold">
-                                Contacts
+                                {{ TranslationHelper::translateWeb(ucfirst('Contacts')??'') }}
                             </h1>
                             <div class="col-lg-9 col-md-11 col-sm-12 col-12">
                                 <p class="description text-center mt-3">
-                                    Reach out to us for any inquiries or support. <br>
-                                    Our team is here to assist you with all your needs.
+                                    {{ TranslationHelper::translateWeb(ucfirst('Reach out to us for any inquiries or support.')??'') }}<br>
+                                    {{ TranslationHelper::translateWeb(ucfirst('Our team is here to assist you with all your needs.')??'') }}
                                 </p>
                             </div>
                             <div id="social" class="mt-md-5 mt-3">
@@ -177,9 +177,9 @@
                         <div class="modal-content">
                             <button class="close-btn" onclick="closeModal()">×</button>
                             <h3 id="modalTitle"></h3>
-                            <p><strong>Country:</strong> <span id="modalCountry"></span></p>
-                            <p><strong>Address:</Address>:</strong> <span id="modalEmail"></span></p>
-                            <p><strong>Phone:</strong> <span id="modalPhone"></span></p>
+                            <p><strong>{{ TranslationHelper::translateWeb(ucfirst('Country')??'') }}:</strong> <span id="modalCountry"></span></p>
+                            <p><strong>{{ TranslationHelper::translateWeb(ucfirst('Address')??'') }}:</Address>:</strong> <span id="modalEmail"></span></p>
+                            <p><strong>{{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}:</strong> <span id="modalPhone"></span></p>
                         </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@
                             </div>
                         @empty
                             <div class="py-4" style="display: flex; justify-content: center;">
-                                <p style="color:#999;">There is No Data Of Service Available</p>
+                                <p style="color:#999;">{{ TranslationHelper::translateWeb(ucfirst('There is No Data Of Service Available')??'') }}</p>
                             </div>
                         @endforelse
 
@@ -230,14 +230,14 @@
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-person"></i> Name</div>
+                                                    <div class="table-header-icon"><i class="bi bi-person"></i> {{ TranslationHelper::translateWeb(ucfirst('Name')??'') }}</div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone
+                                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> {{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>Location
+                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>{{ TranslationHelper::translateWeb(ucfirst('Location')??'') }}
                                                     </div>
                                                 </th>
                                             </tr>
@@ -288,7 +288,7 @@
                     @if ($key == App\Enums\OfficeType::REGIONAL_OFFICES)
                         <div id="office-table-section" class="mt-md-5 mt-3">
                             <h3 class="table-title line-before text-gray500 fs-5 mb-3">
-                                Regional Offices
+                                {{ TranslationHelper::translateWeb(ucfirst('Regional Offices')??'') }}
                             </h3>
                             <div class="table-container">
                                 <div class="table-responsive office-table-container">
@@ -298,23 +298,22 @@
                                                 <th scope="col">
                                                     <div class="table-header-icon"><i
                                                             class="bi bi-globe-asia-australia"></i>
-                                                        Country
+                                                        {{ TranslationHelper::translateWeb(ucfirst('Country')??'') }}
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone
+                                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> {{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-clock"></i> Times of
-                                                        work</div>
+                                                    <div class="table-header-icon"><i class="bi bi-clock"></i> {{ TranslationHelper::translateWeb(ucfirst('Times of work')??'') }}</div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address
+                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> {{ TranslationHelper::translateWeb(ucfirst('Address')??'') }}
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>Location
+                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>{{ TranslationHelper::translateWeb(ucfirst('Location')??'') }}
                                                     </div>
                                                 </th>
                                             </tr>
@@ -378,19 +377,18 @@
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> Phone
+                                                    <div class="table-header-icon"><i class="bi bi-telephone"></i> {{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-clock"></i> Times of
-                                                        Work</div>
+                                                    <div class="table-header-icon"><i class="bi bi-clock"></i> {{ TranslationHelper::translateWeb(ucfirst('Times of Work')??'') }}</div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> Address
+                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i> {{ TranslationHelper::translateWeb(ucfirst('Address')??'') }}
                                                     </div>
                                                 </th>
                                                 <th scope="col">
-                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>Location
+                                                    <div class="table-header-icon"><i class="bi bi-geo-alt"></i>{{ TranslationHelper::translateWeb(ucfirst('Location')??'') }}
                                                     </div>
                                                 </th>
                                             </tr>

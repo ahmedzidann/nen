@@ -898,4 +898,17 @@
   '#' => '#',
   'Years Text french' => 'Years Text french',
   'Years Text  french' => 'Years Text  french',
+<<<<<<< HEAD
+=======
+  'Sidebar-Resources View' => 'Sidebar-Resources View',
+  'Sidebar Resources' => 'Sidebar Resources',
+  'please enter youtube_link' => 'Please enter youtube link',
+  'File Upload instagram' => 'File Upload instagram',
+  'please enter instagram_link' => 'Please enter instagram link',
+  'please enter telegram number' => 'Please enter telegram number',
+  'Telegram_number' => 'Telegram number',
+  'please enter whats number' => 'Please enter whats number',
+  'Whats_number' => 'Whats number',
+  'please enter instagram Link' => 'Please enter instagram Link',
+>>>>>>> 1770a234f839313d35707833a826457c5528fd84
 );

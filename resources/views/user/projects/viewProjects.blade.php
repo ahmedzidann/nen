@@ -59,7 +59,7 @@
                                         <div class="col-md-7 order-md-2">
                                             <div class="who-us-titles text-start">
                                                 <h5 class="line-before">
-                                                    Who we do for you
+                                                    {{ TranslationHelper::translateWeb(ucfirst('Who we do for you')??'') }}
                                                 </h5>
                                                 @if (!empty($about->shortDescription))
                                                     <p id="shortDescription"
@@ -77,7 +77,7 @@
                                                 @if (strlen($about->description) >= 400)
                                                     <a href="#" onclick="toggleDescription2(this)" id="learnMoreBtn"
                                                         class="btn_detail mt-3">
-                                                        Show More
+                                                        {{ TranslationHelper::translateWeb(ucfirst('Show More')??'') }}
                                                     </a>
                                                 @endif
                                             </div>
@@ -128,21 +128,21 @@
                                             <button class="nav-link active tab_active" id="chalange_btn_tab"
                                                 data-bs-toggle="pill" data-bs-target="#challang_tab" type="button"
                                                 role="tab" aria-controls="challang_tab" aria-selected="true">
-                                                Challenge
+                                                {{ TranslationHelper::translateWeb(ucfirst('Challenge')??'') }}
                                             </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link btn_tabs" id="solution_btn_tab" data-bs-toggle="pill"
                                                 data-bs-target="#solution_tab" type="button" role="tab"
                                                 aria-controls="solution_tab" aria-selected="false">
-                                                Solution
+                                                {{ TranslationHelper::translateWeb(ucfirst('Solution')??'') }}
                                             </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link btn_tabs" id="result_btn_tab" data-bs-toggle="pill"
                                                 data-bs-target="#result_tab" type="button" role="tab"
                                                 aria-controls="result_tab" aria-selected="false">
-                                                Result
+                                                {{ TranslationHelper::translateWeb(ucfirst('Result')??'') }}
                                             </button>
                                         </li>
 
@@ -207,7 +207,7 @@
                                             </p>
                                             @if (strlen($program->description) >= 200)
                                                 <a onclick="toggleDescription(this)" class="read_more">
-                                                    Show More
+                                                    {{ TranslationHelper::translateWeb(ucfirst('Show More')??'') }}
                                                     <i class="bi bi-chevron-down"></i>
                                                 </a>
                                             @endif
@@ -221,7 +221,7 @@
                                                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                             alt="archive">
                                                         <span>
-                                                            Reference
+                                                            {{ TranslationHelper::translateWeb(ucfirst('Reference')??'') }}
                                                         </span>
                                                     </p>
                                                 </a>
@@ -233,7 +233,7 @@
                                                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                             alt="vector">
                                                         <span>
-                                                            Website
+                                                            {{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}
                                                         </span>
                                                     </p>
                                                 </a>
@@ -297,9 +297,9 @@
                                         alt="share">
 
                                     <p class="">
-                                        Preparing a generation of qualified teachers, trainers, and lecturers capable of
+                                        {{ TranslationHelper::translateWeb(ucfirst('Preparing a generation of qualified teachers, trainers, and lecturers capable of
                                         utilizing state-of-the-art technological solutions to facilitate education and
-                                        learning.
+                                        learning.')??'') }}
                                     </p>
 
                                 </div>

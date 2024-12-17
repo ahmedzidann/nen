@@ -82,7 +82,7 @@
                             </path>
                         </svg>
                         <span>
-                            subsidiaries
+                            {{ TranslationHelper::translateWeb(ucfirst('subsidiaries')??'') }}
                         </span>
                     </button>
                 </li>
@@ -96,7 +96,7 @@
                             </path>
                         </svg>
                         <span>
-                            Sister Companies
+                            {{ TranslationHelper::translateWeb(ucfirst('Sister Companies')??'') }}
                         </span>
                     </button>
                 </li>
@@ -128,10 +128,10 @@
                                                             <img src="{{ App\Models\Country::where('id', $row->country_id)->first()->getFirstMediaUrl('flag') }}" loading="lazy"
                                                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                                 alt="vector">
-                                                            <p>Since : <span class="mt-0 pt-0">{{ $row->since }}</span></p>
+                                                            <p>{{ TranslationHelper::translateWeb(ucfirst('Since')??'') }} : <span class="mt-0 pt-0">{{ $row->since }}</span></p>
                                                         </h6>
                                                         <h6>
-                                                            <p>Sharing : <span class="mt-0 pt-0">{{ $row->percent }}%</span></p>
+                                                            <p>{{ TranslationHelper::translateWeb(ucfirst('Sharing')??'') }} : <span class="mt-0 pt-0">{{ $row->percent }}%</span></p>
                                                         </h6>
                                                     </div>
 
@@ -141,7 +141,7 @@
                                         </div>
                                     </div>
                                     </div>
-                                    <a href="{{ $sub->url }}" class="website_link mt-0 p-2 text-center">Website</a>
+                                    <a href="{{ $sub->url }}" class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a>
 
                                 </div>
                             </div>

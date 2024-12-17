@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\Projects\Tabs\JoinusTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\ProgramTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\StatisticsTabsController;
 use App\Http\Controllers\Admin\Resource\ResourceController;
+use App\Http\Controllers\Admin\SidebarResource\SidebarResourceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\Solution\SolutionController;
 use App\Http\Controllers\Admin\Solution\Tabs\SolutionTabController;
@@ -80,6 +81,9 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('resources', ResourceController::class)->except('destroy');
     Route::post('resources/bulk-delete', [ResourceController::class, 'bulkDelete'])->name('resources.delete_bulck');
     Route::delete('resources/delete/{resource_id}', [ResourceController::class, 'deleteResource'])->name('resources.delete.resource');
+    Route::resource('sidebar-resources', SidebarResourceController::class)->except('destroy');
+    Route::post('sidebar-resources/bulk-delete', [SidebarResourceController::class, 'bulkDelete'])->name('sidebar-resources.delete_bulck');
+    Route::delete('sidebar-resources/delete/{resource_id}', [SidebarResourceController::class, 'deleteResource'])->name('sidebar-resources.delete.resource');
     Route::resource('footer', FooterController::class)->except('destroy');
     Route::post('footer/bulk-delete', [FooterController::class, 'bulkDelete'])->name('footer.delete_bulck');
     Route::resource('investor-statistics', InvestorStatisticsController::class)->except('destroy');

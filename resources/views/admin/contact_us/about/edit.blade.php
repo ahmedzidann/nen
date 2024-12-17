@@ -68,21 +68,6 @@
                                                                 name="please enter facebook_link">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        {{-- ----------facebook image --}}
-                                                        <div class="col-md-12 mb-4">
-                                                            <x-admin.form.label-first class="col-sm-3 col-form-label"
-                                                                name="File Upload Facebook">
-                                                            </x-admin.form.label-first>
-                                                            <div class="col-sm-9">
-                                                                <x-admin.form.input :model="$StaticTable" nameImage="facebook"
-                                                                    old="facebook" name="facebook" type="file"
-                                                                    readonly="" placeholder="Please Enter Image"
-                                                                    id="image" class="dropify" DataHeight="300"
-                                                                    accept=".jpg, .png, image/jpeg, image/png">
-                                                                </x-admin.form.input>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----------end image --}}
 
                                                         <div class="col-md-12 mb-4">
                                                             <x-admin.form.input old="{{ 'twitter_link' }}" name="twitter_link"
@@ -93,22 +78,6 @@
                                                                 name="please enter twitter_link">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        {{-- ----------twitter image --}}
-                                                        <div class="col-md-12 mb-4">
-                                                            <x-admin.form.label-first class="col-sm-3 col-form-label"
-                                                                name="File Upload twitter">
-                                                            </x-admin.form.label-first>
-                                                            <div class="col-sm-9">
-                                                                <x-admin.form.input :model="$StaticTable" nameImage="twitter"
-                                                                    old="twitter" name="twitter" type="file"
-                                                                    readonly="" placeholder="Please Enter Image"
-                                                                    id="image" class="dropify" DataHeight="300"
-                                                                    accept=".jpg, .png, image/jpeg, image/png">
-                                                                </x-admin.form.input>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----------end image --}}
-
                                                         <div class="col-md-12 mb-4">
                                                             <x-admin.form.input old="{{ 'instagram_link' }}" name="instagram_link"
                                                                 type="url" required="" placeholder="instagram_link"
@@ -118,22 +87,6 @@
                                                                 name="please enter instagram_link">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        {{-- ----------instagram image --}}
-                                                        <div class="col-md-12 mb-4">
-                                                            <x-admin.form.label-first class="col-sm-3 col-form-label"
-                                                                name="File Upload instagram">
-                                                            </x-admin.form.label-first>
-                                                            <div class="col-sm-9">
-                                                                <x-admin.form.input :model="$StaticTable" nameImage="instagram"
-                                                                    old="instagram" name="instagram" type="file"
-                                                                    readonly="" placeholder="Please Enter Image"
-                                                                    id="image" class="dropify" DataHeight="300"
-                                                                    accept=".jpg, .png, image/jpeg, image/png">
-                                                                </x-admin.form.input>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----------end image --}}
-
                                                         <div class="col-md-12 mb-4">
                                                             <x-admin.form.input old="{{ 'instagram_link' }}" name="instagram_link"
                                                                 type="url" required="" placeholder="instagram_link"
@@ -143,21 +96,6 @@
                                                                 name="please enter instagram_link">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        {{-- ----------instagram image --}}
-                                                        <div class="col-md-12 mb-4">
-                                                            <x-admin.form.label-first class="col-sm-3 col-form-label"
-                                                                name="File Upload instagram">
-                                                            </x-admin.form.label-first>
-                                                            <div class="col-sm-9">
-                                                                <x-admin.form.input :model="$StaticTable" nameImage="instagram"
-                                                                    old="instagram" name="instagram" type="file"
-                                                                    readonly="" placeholder="Please Enter Image"
-                                                                    id="image" class="dropify" DataHeight="300"
-                                                                    accept=".jpg, .png, image/jpeg, image/png">
-                                                                </x-admin.form.input>
-                                                            </div>
-                                                        </div>
-                                                        {{-- ----------end image --}}
                                                         <div class="col-md-12 mb-4">
                                                             <x-admin.form.input old="{{ 'youtube_link' }}" name="youtube_link"
                                                                 type="url" required="" placeholder="youtube_link"
@@ -167,21 +105,24 @@
                                                                 name="please enter youtube_link">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        {{-- ----------youtube image --}}
                                                         <div class="col-md-12 mb-4">
-                                                            <x-admin.form.label-first class="col-sm-3 col-form-label"
-                                                                name="File Upload youtube">
-                                                            </x-admin.form.label-first>
-                                                            <div class="col-sm-9">
-                                                                <x-admin.form.input :model="$StaticTable" nameImage="youtube"
-                                                                    old="youtube" name="youtube" type="file"
-                                                                    readonly="" placeholder="Please Enter Image"
-                                                                    id="image" class="dropify" DataHeight="300"
-                                                                    accept=".jpg, .png, image/jpeg, image/png">
-                                                                </x-admin.form.input>
-                                                            </div>
+                                                            <x-admin.form.input old="{{ 'whats_number' }}" name="whats_number"
+                                                                type="text" required="" placeholder="whats_number"
+                                                                class="form-control valid" :value="$StaticTable->whats_number">
+                                                            </x-admin.form.input>
+                                                            <x-admin.form.label-end star="*"
+                                                                name="please enter whats number">
+                                                            </x-admin.form.label-end>
                                                         </div>
-                                                        {{-- ----------end image --}}
+                                                        <div class="col-md-12 mb-4">
+                                                            <x-admin.form.input old="{{ 'telegram_number' }}" name="telegram_number"
+                                                                type="text" required="" placeholder="telegram_number"
+                                                                class="form-control valid" :value="$StaticTable->telegram_number">
+                                                            </x-admin.form.input>
+                                                            <x-admin.form.label-end star="*"
+                                                                name="please enter telegram number">
+                                                            </x-admin.form.label-end>
+                                                        </div>
 
                                                     @endif
                                                     {{-- ----------end image --}}

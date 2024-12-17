@@ -62,7 +62,7 @@
                                 <!-- <label for="specialization" class="form-label search-label">Specializations</label> -->
                                 <select class="form-select search-select" name="specialization_id" id="specialization_id"
                                     aria-label="Select specializations">
-                                    <option value="" selected disabled>Select Specializations</option>
+                                    <option value="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('Select Specializations')??'') }}</option>
                                     @foreach ($specs as $specializations)
                                         <option value="{{ $specializations->id }}">{{ $specializations->title }}</option>
                                     @endforeach
@@ -73,7 +73,7 @@
                             <div class="col-xl-4 col-md-4 col-sm-6 col-12">
                                 <select name='country_id' class="form-select search-select" id="country_id"
                                     aria-label="Select country">
-                                    <option value="" selected disabled>Select Country</option>
+                                    <option value="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('Select Country')??'') }}</option>
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}">{{ $country->title }}</option>
                                     @endforeach
@@ -85,7 +85,7 @@
                                 <!-- <label for="state" class="form-label search-label">State</label> -->
                                 <select name='state_id' id="state_id" class="form-select search-select"
                                     aria-label="Select state">
-                                    <option value="" selected disabled>Select State</option>
+                                    <option value="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('Select State')??'') }}</option>
                                     @foreach ($states as $state)
                                         <option value="{{ $state->id }}">{{ $state->title }}</option>
                                     @endforeach
@@ -124,11 +124,11 @@
                         <table id="findUsTable" class="table office-table " style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Country</th>
-                                    <th>Phone</th>
+                                    <th>{{ TranslationHelper::translateWeb(ucfirst('Country')??'') }}</th>
+                                    <th>{{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}</th>
                                     {{-- <th>Times of work</th> --}}
-                                    <th>Address</th>
-                                    <th>Location</th>
+                                    <th>{{ TranslationHelper::translateWeb(ucfirst('Address')??'') }}</th>
+                                    <th>{{ TranslationHelper::translateWeb(ucfirst('Location')??'') }}</th>
                                 </tr>
                             </thead>
                         </table>
@@ -136,7 +136,7 @@
                 </div>
             @else
                 <div style="display: flex; justify-content: center;">
-                    <p class="alert alert-danger no-data" role="alert" style="color:#999;">There is No Data Available
+                    <p class="alert alert-danger no-data" role="alert" style="color:#999;">{{ TranslationHelper::translateWeb(ucfirst('There is No Data Available')??'') }}
                     </p>
                 </div>
             @endif
@@ -187,13 +187,13 @@
                 </div>
                 <div id="map"></div>
                 <div class="services_sec_tiiel">
-                    <p class="p_desc_service">The National Network for Education is working to expand its educational
+                    <p class="p_desc_service">{{ TranslationHelper::translateWeb(ucfirst('The National Network for Education is working to expand its educational
                         impact
                         across 28
                         countries by providing professional training and international examination services, through
                         more than 2,000 accredited training centers, 900 accredited trainers, 500 accredited testing
                         centers, and 100 accredited invigilators. To ensure a strong, globally recognized
-                        certification for learning and assessment with a commitment to excellence.</p>
+                        certification for learning and assessment with a commitment to excellence.')??'') }}.</p>
                     <div class="services_sec">
                         <a href="#" class="bttn_service">
                             <img src="content/images/small_icon/chat.png">
@@ -206,7 +206,7 @@
                         <a href="#" class="bttn_service">
                             <img src="content/images/small_icon/tech.png">
                             <div class="flex_servic_icon">
-                                <p>technical support</p>
+                                <p>{{ TranslationHelper::translateWeb(ucfirst('technical support')??'') }}</p>
                                 <h6>support@nen-global.org</h6>
                             </div>
                         </a>
@@ -214,7 +214,7 @@
                         <a href="#" class="bttn_service">
                             <img src="content/images/small_icon/accredit.png">
                             <div class="flex_servic_icon">
-                                <p>Credits</p>
+                                <p>{{ TranslationHelper::translateWeb(ucfirst('Credits')??'') }}</p>
                                 <h6>acc@nen-global.org</h6>
                             </div>
                         </a>
@@ -222,7 +222,7 @@
                         <a href="#" class="bttn_service">
                             <img src="content/images/small_icon/sales.png">
                             <div class="flex_servic_icon">
-                                <p>the sales</p>
+                                <p>{{ TranslationHelper::translateWeb(ucfirst('the sales')??'') }}</p>
                                 <h6>sales@nen-global.org</h6>
                             </div>
                         </a>
@@ -230,7 +230,7 @@
                         <a href="#" class="bttn_service">
                             <img src="content/images/small_icon/inttest.png">
                             <div class="flex_servic_icon">
-                                <p>International tests</p>
+                                <p>{{ TranslationHelper::translateWeb(ucfirst('International tests')??'') }}</p>
                                 <h6>tca@nen-global.org</h6>
                             </div>
                         </a>
@@ -242,13 +242,13 @@
                     <div class="select_div">
                         <select name='country_id' class="form-select" id="country_id"
                             aria-label="Default select example">
-                            <option value="">select country</option>
+                            <option value="">{{ TranslationHelper::translateWeb(ucfirst('select country')??'') }}</option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country->id }}">{{ $country->title }}</option>
                             @endforeach
                         </select>
                         <select name='state_id' class="form-select" aria-label="Default select example">
-                            <option value="" selected disabled>select state</option>
+                            <option value="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('select state')??'') }}</option>
 
                             @foreach ($states as $state)
                                 <option value="{{ $state->id }}">{{ $state->title }}</option>
@@ -257,14 +257,14 @@
                         <!-- Categories -->
                         <!-- <label for="certificate" class="form-label search-label">Certificates</label> -->
                         <select class="form-select search-select" name="category_id" aria-label="Select Category">
-                            <option value="" selected disabled>Select Category</option>
+                            <option value="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('Select Category')??'') }}</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
 
                         <select name='level_id' class="form-select" aria-label="Default select example">
-                            <option value="" selected disabled>select level</option>
+                            <option value="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('select level')??'') }}</option>
 
                             @foreach ($levels as $level)
                                 <option value="{{ $level->id }}">{{ $state->title }}</option>
@@ -272,7 +272,7 @@
                         </select>
 
                         <select class="form-select" aria-label="Default select example">
-                            <option selected="" selected disabled>select specializations</option>
+                            <option selected="" selected disabled>{{ TranslationHelper::translateWeb(ucfirst('select specializations')??'') }}</option>
                             @foreach ($specs as $specializations)
                                 <option value="{{ $specializations->id }}">{{ $specializations->title }}</option>
                             @endforeach
@@ -286,11 +286,11 @@
                     <input type="hidden" name="country_id" value="{{ request()->country_id }}">
 
                     <div class="select_div mt-1">
-                        <button class="btn btn-primary serch_bttn">search</button>
+                        <button class="btn btn-primary serch_bttn">{{ TranslationHelper::translateWeb(ucfirst('search')??'') }}</button>
                     </div>
                 </form>
                 <div class="tabel_contact_us">
-                    <h3 class="txt-center-bold">Regional offices
+                    <h3 class="txt-center-bold">{{ TranslationHelper::translateWeb(ucfirst('Regional offices')??'') }}
                     </h3>
                     <div class="table-responsive">
                         <div class="office-table Find_us_tabel">
@@ -299,20 +299,20 @@
                                     <tr>
                                         <th>
                                             <div class="flex_img_country"><i class="bi bi-globe-asia-australia"></i>
-                                                Country
+                                                {{ TranslationHelper::translateWeb(ucfirst('Country')??'') }}
                                             </div>
                                         </th>
                                         <th>
-                                            <div class="flex_img_country"><i class="bi bi-geo-alt"></i>address<div>
+                                            <div class="flex_img_country"><i class="bi bi-geo-alt"></i>{{ TranslationHelper::translateWeb(ucfirst('address')??'') }}<div>
                                                 </div>
                                             </div>
                                         </th>
                                         <th>
-                                            <div class="flex_img_country"><i class="bi bi-telephone"></i> Phone
+                                            <div class="flex_img_country"><i class="bi bi-telephone"></i> {{ TranslationHelper::translateWeb(ucfirst('Phone')??'') }}
                                             </div>
                                         </th>
                                         <th>
-                                            <div class="flex_img_country"><i class="bi bi-clock"></i> times of work
+                                            <div class="flex_img_country"><i class="bi bi-clock"></i> {{ TranslationHelper::translateWeb(ucfirst('times of work')??'') }}
                                             </div>
                                         </th>
                                     </tr>
@@ -347,7 +347,7 @@
             </div>
         @else
             <div style="display: flex; justify-content: center;">
-                <p class="alert alert-danger no-data" role="alert" style="color:#999;">There is No Data Available</p>
+                <p class="alert alert-danger no-data" role="alert" style="color:#999;">{{ TranslationHelper::translateWeb(ucfirst('There is No Data Available')??'') }}</p>
             </div>
         @endif
     </div>

@@ -133,7 +133,7 @@ span {
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <div class="text">See More</div>
+                        <div class="text">{{ TranslationHelper::translateWeb(ucfirst('See More')??'') }}</div>
                     </button>
                 </a>
                 @endif
@@ -149,7 +149,7 @@ span {
                                 stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <div class="text">See More</div>
+                    <div class="text">{{ TranslationHelper::translateWeb(ucfirst('See More')??'') }}</div>
                 </button>
             </a>
             @endif
@@ -220,8 +220,8 @@ span {
 
 
                 <div class="ceryifcates_sec">
-                    <h1>Our CERTIFICATES</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <h1>{{ TranslationHelper::translateWeb(ucfirst('Our CERTIFICATES')??'') }}</h1>
+                    <p>{{ TranslationHelper::translateWeb(ucfirst('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')??'') }}</p>
 
 
                     <div class="grid_div_bttn">
@@ -289,7 +289,7 @@ span {
             {{-- <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                 aria-labelledby="pills-home-tab" tabindex="0">
                 <div class="explain_titel">
-                    <p>National Education Network sought various accreditations, including strategic,
+                    <p>{{ TranslationHelper::translateWeb(ucfirst('National Education Network sought various accreditations, including strategic,
                         technological, and educational, as well as recognition from prominent global
                         companies specializing in technological, academic, and governmental testing.
                         Many international companies rely on these test centers to conduct skill and
@@ -297,7 +297,7 @@ span {
                         accreditations from these companies in a legitimate, fair, and organized manner.
                         National Education Network has successfully administered over 100,000
                         international tests across different domains in recent years, emphasizing its
-                        experience and expertise in this area.</p>
+                        experience and expertise in this area..')??'') }}</p>
                     <!-- Swiper -->
                     <div class="swiper mySwiper partners_slider">
                         <div class="swiper-wrapper">
@@ -320,15 +320,15 @@ span {
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                     aria-labelledby="pills-profile-tab" tabindex="0">
                     <div class="explain_titel">
-                        <p>National Education Network sought various accreditations, including strategic,
-                            technological, and educational, as well as recognition from prominent global
-                            companies specializing in technological, academic, and governmental testing.
-                            Many international companies rely on these test centers to conduct skill and
-                            quality assessments worldwide, and National Education Network aimed to obtain
-                            accreditations from these companies in a legitimate, fair, and organized manner.
-                            National Education Network has successfully administered over 100,000
-                            international tests across different domains in recent years, emphasizing its
-                            experience and expertise in this area.</p>
+                        <p>{{ TranslationHelper::translateWeb(ucfirst('National Education Network sought various accreditations, including strategic,
+                        technological, and educational, as well as recognition from prominent global
+                        companies specializing in technological, academic, and governmental testing.
+                        Many international companies rely on these test centers to conduct skill and
+                        quality assessments worldwide, and National Education Network aimed to obtain
+                        accreditations from these companies in a legitimate, fair, and organized manner.
+                        National Education Network has successfully administered over 100,000
+                        international tests across different domains in recent years, emphasizing its
+                        experience and expertise in this area..')??'') }}p>
 
                     </div>
                 </div>

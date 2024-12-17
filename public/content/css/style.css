@@ -522,8 +522,8 @@ a {
     width: 100%;
     height: 400px;
     object-fit: fill;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    /* border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px; */
 }
 
 .title_img::after {
@@ -534,8 +534,8 @@ a {
     height: 100%;
     top: 0;
     right: 0;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    /* border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px; */
 }
 
 .titel_img_content {
@@ -592,7 +592,7 @@ a {
 }
 
 .about_sec {
-    padding-top: 65px;
+    padding-top: 2.5rem;
 }
 
 .about_us_div {
@@ -1146,15 +1146,15 @@ a {
 }
 
 #contact-us .global-card {
-    background-image: url(../images/contact-us/contact-bg1.svg);
+    /* background-image: url(../images/contact-us/contact-bg1.svg);
     background-position: right;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 #contact-us .second-contact-bg {
-    background-image: url(../images/contact-us/contact-bg-2.svg);
+    /* background-image: url(../images/contact-us/contact-bg-2.svg);
     background-position: left;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 @media (max-width: 767px) {
@@ -1171,14 +1171,34 @@ a {
 
 /* Start Footer Section */
 #footer.home-footer {
-    padding-top: 2.5rem !important;
+    padding-top: 2rem !important;
 }
 
 #footer {
+    position: relative;
     background-color: #000;
     background-image: url(../images/footer/footer-bg.svg);
     background-position: right;
     background-repeat: no-repeat;
+}
+
+#footer .float-quick-access {
+    position: absolute;
+    background: #ffffffa8;
+    z-index: 3;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
+}
+
+#footer i,
+#footer svg {
+    font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
@@ -1199,13 +1219,13 @@ a {
     }
 
     #footer #subscribe .input-group .form-control {
-        height: 3rem !important;
+        height: 2.6rem !important;
     }
 
     #footer #subscribe .input-group .join-btn {
-        width: 2rem !important;
-        min-width: 2rem !important;
-        height: 2rem !important;
+        width: 1.6rem !important;
+        min-width: 1.6rem !important;
+        height: 1.6rem !important;
     }
 
     #footer #subscribe .input-group {
@@ -1217,6 +1237,19 @@ a {
     background-image: url(../images/footer/footer-bg-2.svg);
     background-position: bottom left;
     background-repeat: no-repeat;
+}
+
+#footer .iso-content .image-box {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+#footer .iso-content .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 #footer a:hover {
@@ -1236,7 +1269,7 @@ a {
 }
 
 #footer .items .item,
-#footer #subscribe .desc {
+#footer .desc {
     position: relative;
     color: #f5d9d9d0;
     font-size: 1.1rem;
@@ -1269,7 +1302,7 @@ a {
 }
 
 #footer #subscribe .input-group .form-control {
-    height: 3.5rem;
+    height: 2.6rem;
 }
 
 #footer #subscribe .input-group .input-group-text {
@@ -1277,9 +1310,15 @@ a {
 }
 
 #footer #subscribe .input-group .join-btn {
-    width: 2.5rem;
-    min-width: 2.5rem;
-    height: 2.5rem;
+    width: 1.6rem;
+    min-width: 1.6rem;
+    height: 1.6rem;
+}
+
+#footer .logo {
+    -webkit-filter: invert(100%);
+    /* Safari/Chrome */
+    filter: invert(100%);
 }
 
 /* End Footer Section */
@@ -4422,6 +4461,38 @@ circle-progress::part(text) {
     border-radius: 20px;
     animation: loader 2s ease-in-out infinite;
 }
+
+/* Puls Loader */
+.loading svg polyline {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.loading svg polyline#back {
+    fill: none;
+    stroke: #ff4d5033;
+}
+
+.loading svg polyline#front {
+    fill: none;
+    stroke: #990000;
+    stroke-dasharray: 48, 144;
+    stroke-dashoffset: 192;
+    animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+    72.5% {
+        opacity: 0;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 
 .bar-1 {
     background: linear-gradient(to right, #00e6e6, #00ccff, #0099ff, #0066ff);
@@ -8338,7 +8409,7 @@ span {
     font-size: 1.1rem !important;
 }
 
-#quick-access .documents-sections .document-content{
+#quick-access .documents-sections .document-content {
     box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47);
     border-radius: 4px;
     background-color: white;
@@ -8350,8 +8421,175 @@ span {
     width: 100%;
     overflow: hidden;
 }
+
 .banner-image-container img {
     height: 100%;
     width: 100%;
     object-fit: fill;
 }
+
+/* Start Quick Access Styles */
+#quick-access-card .brand-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#quick-access-card .brand-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+#quick-access-card .brand-card .brand-card-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: #990000;
+    color: #fff;
+}
+
+#quick-access-card .brand-card .brand-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+#quick-access-card .brand-card .brand-card-category {
+    background: rgba(153, 0, 0, 0.05);
+    /* Light shade of #990000 */
+    color: #990000;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* Darker Gradient Backgrounds for Cards */
+.brand-card.light-blue {
+    background: linear-gradient(135deg, #ffeded, #d9aaaa);
+    color: #990000;
+}
+
+.brand-card.light-pink {
+    background: linear-gradient(135deg, #ffe8e8, #f9bbbb);
+    color: #990000;
+}
+
+.brand-card.light-green {
+    background: linear-gradient(135deg, #fcecec, #d7a4a4);
+    color: #990000;
+}
+
+.brand-card.light-yellow {
+    background: linear-gradient(135deg, #ffe4e4, #f7b6b6);
+    color: #990000;
+}
+
+.brand-card.light-purple {
+    background: linear-gradient(135deg, #fae4e4, #dab8b8);
+    color: #990000;
+}
+
+.brand-card.light-teal {
+    background: linear-gradient(135deg, #fdeeee, #d9b8b8);
+    color: #990000;
+}
+
+/* Hover Effects */
+.brand-card.light-blue:hover {
+    background: #000 !important;
+}
+
+.brand-card.light-pink:hover {
+    background: #000 !important;
+}
+
+.brand-card.light-green:hover {
+    background: #000 !important;
+}
+
+.brand-card.light-yellow:hover {
+    background: #000 !important;
+}
+
+.brand-card.light-purple:hover {
+    background: #000 !important;
+}
+
+.brand-card.light-teal:hover {
+    background: #000 !important;
+}
+
+#quick-access-card .brand-card:hover .brand-card-title {
+    color: white !important;
+}
+
+#quick-access-card .brand-card:hover .brand-card-category {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#quick-access-card .brand-card:hover .brand-card-icon {
+    color: #990000;
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    #quick-access-card .row>* {
+        padding-right: 0.75rem !important;
+        padding-left: 0.75rem !important;
+    }
+}
+
+/* End Quick Access Styles */
+
+
+/* Start Navigation Bar */
+#banner-quick-access {
+    display: flex;
+    background-color: #000;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#banner-quick-access .nav-item {
+    color: #fff;
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    transition: background 0.3s, color 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#banner-quick-access .nav-item i {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+#banner-quick-access.nav-item.active,
+#banner-quick-access .nav-item:hover {
+    background-color: #990000;
+    color: #fff;
+}
+
+/* End Qucik Navigation Bar */

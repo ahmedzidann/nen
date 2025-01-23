@@ -1559,38 +1559,67 @@ Home
             </div>
             <div class="row justify-content-center align-items-center mt-5 gap-4">
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Academic</p>
+                    <div class=content>
+                        <p>Academic</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+
+                    </div>
+
                     <div class="cover">
                         <img class="w-100 h-100"
                             src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp" alt="">
+                        <p>Academic</p>
+
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Professional</p>
+                    <div class=content>
+
+                        <p>Professional</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
                     <div class="cover">
                         <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/doc_team.jpg" alt="">
+                        <p>Professional</p>
+
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Centers</p>
+                    <div class=content>
+
+                        <p>Centers</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
                     <div class="cover">
                         <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/about.jpg" alt="">
+                        <p>Centers</p>
+
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Agents</p>
+                    <div class=content>
+                        <p>Agents</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
                     <div class="cover">
                         <img class="w-100 h-100"
                             src="https://www.globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg"
                             alt="">
+                        <p>Agents</p>
+
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>International Cards</p>
+                    <div class=content>
+                        <p>International Cards</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
                     <div class="cover">
                         <img class="w-100 h-100"
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aZpkugDl106LnBdxudqbifCp7-x4UWIQ7dIV-AWwIv0VfXeVGJJb226s5fMi7LweoFg&usqp=CAU"
                             alt="">
+                        <p>International Cards</p>
+
                     </div>
                 </div>
             </div>
@@ -1793,7 +1822,8 @@ Home
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                                stroke-linejoin="round">
+                                            </g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path
                                                     d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
@@ -1910,7 +1940,8 @@ Home
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                                stroke-linejoin="round">
+                                            </g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path
                                                     d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
@@ -2027,7 +2058,8 @@ Home
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                                stroke-linejoin="round">
+                                            </g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path
                                                     d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
@@ -2144,7 +2176,8 @@ Home
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                                stroke-linejoin="round">
+                                            </g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path
                                                     d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
@@ -2261,7 +2294,8 @@ Home
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
+                                                stroke-linejoin="round">
+                                            </g>
                                             <g id="SVGRepo_iconCarrier">
                                                 <path
                                                     d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"

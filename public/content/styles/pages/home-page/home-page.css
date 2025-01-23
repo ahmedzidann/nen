@@ -1022,6 +1022,25 @@ textarea:focus {
     color: #000;
 }
 
+#join-our-team .book .content {
+    margin-left: 15px;
+    text-align: center;
+}
+
+#join-our-team .book .content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    max-height: calc(1.2em * 3);
+    line-height: 1.2em;
+}
+
+#join-our-team .book .content p:last-child {
+    font-size: 16px;
+}
+
 #join-our-team .cover {
     overflow: hidden;
     top: 0;
@@ -1047,6 +1066,19 @@ textarea:focus {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+}
+
+#join-our-team .cover p {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 #join-our-team .book:hover .cover {

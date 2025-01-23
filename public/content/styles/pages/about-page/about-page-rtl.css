@@ -1,0 +1,60 @@
+@media (max-width: 1200px) {
+    .rtl .span_number {
+        left: auto;
+        right: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .rtl .grid_sec::after {
+        right: 22px;
+        left: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .rtl .grid_sec .year_div::before {
+        left: auto !important;
+        right: -5px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .rtl .grid_sec .year_div::after {
+        left: auto !important;
+        right: 0 !important;
+    }
+}
+
+.rtl .year_div p {
+    text-align: right;
+}
+
+@media (max-width: 1200px) {
+    .rtl .grid_sec .year_div {
+        padding-right: 50px;
+        padding-left: initial;
+    }
+}
+
+@media (max-width: 1200px) {
+    .rtl .grid_sec {
+        padding-right: 22px;
+        padding-left: initial;
+    }
+}
+
+.rtl .see-more-btn .Btn:hover .sign {
+    padding-right: 20px;
+    padding-left: initial;
+}
+
+.rtl .see-more-btn .Btn:hover .text {
+    padding-left: 10px;
+    padding-right: initial;
+}
+
+.rtl .see-more-btn .text {
+    left: 0%;
+    right: initial;
+}

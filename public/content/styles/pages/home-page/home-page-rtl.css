@@ -1,0 +1,26 @@
+.rtl .scaleX-rtl {
+    transform: scaleX(-1) !important;
+}
+
+.rtl #stats-section .stats-card .image-box {
+    left: 15px !important;
+    right: initial !important;
+}
+
+.rtl #about-company-section .about-content .title,
+.rtl #testing-section .testing-title {
+    text-align: justify !important;
+}
+
+.rtl .doc-validation-card .title:after {
+    right: 0 !important;
+}
+
+
+.rtl .clipped-border-card {
+    clip-path: polygon(11% 0, 100% 0, 100% 30%, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0% 18%) !important;
+} 
+.rtl .clipped-item-card {
+    clip-path: polygon(100% 0, 100% 15%, 100% 75%, 100% 100%, 0 100%, 0 0);
+}
+

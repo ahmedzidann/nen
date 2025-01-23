@@ -1,0 +1,11 @@
+.rtl .text-start{
+    text-align: right !important;
+}
+.rtl #custom-accordion .accordion .accordion-item .accordion-button {
+    padding-right: 1.5rem;
+    padding-left: initial;
+}
+.rtl .before-vertical-line::after {
+    right: 0;
+    left: initial;
+}

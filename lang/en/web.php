@@ -120,4 +120,6 @@
   'Credits' => 'Credits',
   'The sales' => 'The sales',
   'International tests' => 'International tests',
+  'Times of Work' => 'Times of Work',
+  'There is No Data Available' => 'There is No Data Available',
 );

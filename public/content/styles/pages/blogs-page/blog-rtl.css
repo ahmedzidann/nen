@@ -1,0 +1,105 @@
+/* 
+body{
+  font-family: Tajawal,sans-serif !important;
+
+}
+header .search svg {
+    left: 10px ;
+    right: auto;
+    transform: rotate(180deg);
+
+}
+.language{
+    right: auto !important;
+}
+#langButton{
+    &::after{
+      left: -7px;
+      right: inherit;
+    }
+  }
+.cards .card .category{
+    right: 20px;
+    left: auto;
+}
+
+@media (max-width: 700px) {
+}
+.list{
+    position: relative;
+    left:0;
+}
+@media (max-width: 700px) {
+  .global-card.active{
+    left: 10px;
+    right: auto;
+    width: fit-content;
+  }
+
+}
+.dropdown-menu {
+    text-align: start;
+}
+@media (max-width: 767px) {
+
+    .lang-card.active {
+        left: 10px;
+        right: auto;
+        top: 60px;
+    }
+
+    header .search input.open {
+      left: 0;
+      right: inherit;
+      z-index: 5;
+    }
+}
+a {
+  .go{
+
+    right: 10px;
+    left: inherit;
+    transform: rotate(180degs);
+  }
+
+}
+.footer {
+  text-align: center;
+  .tag-title {
+    text-align: right;
+  }
+  #subscribe{
+    text-align: right;
+  }
+
+  a{
+
+    &.item{
+
+      &:hover{
+        transform: translateX(-20px);
+      }
+    }
+  }
+}
+.droupdown-arrow{
+  left: 25px;
+  right: inherit;
+}
+.lang-card {
+
+  button{
+    padding: 5px 10px 5px 35px !important;
+  }
+
+}
+
+.dd ul {
+  gap: 0px;
+  top: 0;
+}
+
+.lang-card.active {
+  padding:10px 10px 10px 15px !important;
+
+} */

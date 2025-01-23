@@ -1,0 +1,15 @@
+.rtl .line-before {
+    padding-right: 60px;
+    padding-left: initial;
+}
+.rtl .line-before:before {
+    right: 0;
+    left: initial;
+}
+.rtl .hover-effect,.rtl .program-card:hover {
+    box-shadow: #c1282a 7px 7px, #e9e3e3 2px 3px 15px;
+}
+.rtl #custom-accordion .accordion .accordion-item .accordion-button::before {
+    left: 1rem ;
+    right: initial ;
+}

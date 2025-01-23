@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="{{ asset('content/styles/buttons.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/styles/variables.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('content/styles/pages/home-page.css') }}" />
+    <link rel="stylesheet" href="{{ asset('content/styles/pages/home-page/home-page.css') }}" />
+    <link rel="stylesheet" href="{{ asset('content/styles/pages/home-page/home-page-rtl.css') }}" />
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
@@ -72,9 +73,9 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="#">Arabic</a></li>
-                            <li><a class="dropdown-item" href="#">English</a></li>
-                            <li><a class="dropdown-item" href="#">Russian</a></li>
+                            <li><a class="dropdown-item" href="#" name="arabic">Arabic</a></li>
+                            <li><a class="dropdown-item" href="#" name="english">English</a></li>
+                            <li><a class="dropdown-item" href="#" name="russian">Russian</a></li>
                         </ul>
                     </div>
                     <!-- End Dropdown Languages button -->
@@ -489,6 +490,7 @@
 
     <script src="{{ asset('content/js/pages/home-page.js') }}"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
+
     <!-- End Scripts -->
 
 
@@ -577,6 +579,51 @@
         }
 
     });
+
+    // function handleLanguage(buttons) {
+    //     if (typeof window !== 'undefined') {
+    //         localStorage.setItem('lang', localStorage.getItem('lang') || 'en');
+    //         document.querySelectorAll(buttons).forEach(btn => {
+    //             btn.addEventListener('click', () => {
+    //                 let langCode;
+    //                 langCode = btn.getAttribute('name') === 'english' ? 'en' :
+    //                     btn.getAttribute('name') === 'arabic' ? 'ar' :
+    //                     'ru'; // Default to Russian if the button is neither 'english' nor 'arabic'
+    //                 if (window.localStorage.getItem('lang') !== langCode) {
+    //                     window.localStorage.setItem('lang', langCode);
+    //                     window.location.reload();
+    //                 }
+    //             });
+    //         });
+    //     }
+    //     initializePageLanguage()
+    // }
+
+    // function initializePageLanguage() {
+    //     if (typeof window === 'undefined') return;
+
+    //     const lang = localStorage.getItem('lang') || 'en';
+    //     console.log(lang)
+    //     document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+    //     if (lang === 'ar') {
+    //         document.body.classList.add('rtl'); // Add RTL class for Arabic language
+    //         document.body.style.direction = 'rtl';
+    //         document.body.style.textAlign = 'right';
+    //     } else {
+    //         document.body.classList.remove('rtl'); // Remove RTL class for other languages
+    //     }
+
+    //     if (lang === 'ar') {
+    //         document.querySelectorAll('.swiper-btn').forEach((btn, index) => {
+    //             btn.classList.replace(index === 0 ? 'back-btn' : 'next-btn', index === 0 ? 'next-btn' :
+    //                 'back-btn');
+    //         });
+    //     }
+    // }
+
+    // Call the function after the page is loaded and the DOM is available
+    handleLanguage('.dropdown-menu .dropdown-item');
     </script>
     <!-- End Document UI Scripts Logic -->
 </body>

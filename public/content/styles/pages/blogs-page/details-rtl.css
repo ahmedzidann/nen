@@ -1,0 +1,122 @@
+/* Main font styling */
+body {
+  font-family: Tajawal, sans-serif !important;
+}
+
+/* Adjust position of the category marker */
+.category::after {
+  right: 48%;
+}
+
+/* Positioning for search icon in the header */
+header .search svg {
+  left: 10px;
+  right: auto;
+}
+
+/* Language button styling */
+#langButton {
+  &::after {
+    left: -10px;
+    right: inherit;
+  }
+}
+
+/* Adjust position of the author name marker */
+.author-name::after {
+  left: 66% !important;
+}
+
+/* Invert SVG elements except specific classes */
+svg:not(.bi-arrow-up-short, .no-rotate) {
+  transform: scale(-1);
+}
+
+/* Article title styling */
+.article-title {
+  &::before {
+    right: 0;
+    left: inherit;
+  }
+}
+
+/* Explanation text alignment */
+.explan {
+  text-align: right;
+}
+
+/* Rotate SVG elements in the latest content section */
+.latest .content svg {
+  transform: rotate(180deg);
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 767px) {
+  .lang-card.active {
+    left: 10px;
+    right: auto;
+    top: 60px;
+  }
+
+  header .search input.open {
+    left: 0;
+    right: inherit;
+    z-index: 5;
+  }
+
+  .article-title h1 {
+    font-size: 1.8rem;
+    padding-left: 0;
+    padding-right: 50px;
+    color: #990000;
+    text-align: justify !important;
+    hyphens: auto;
+    word-wrap: break-word;
+    margin-bottom: 6px;
+  }
+}
+
+/* Close button alignment */
+.close-popup {
+  left: 10px;
+  right: inherit !important;
+}
+
+/* Footer styling */
+.footer {
+  text-align: center;
+
+  .tag-title {
+    text-align: right;
+  }
+
+  #subscribe {
+    text-align: right;
+  }
+
+  a {
+    &.item {
+      &:hover {
+        transform: translateX(-20px);
+      }
+    }
+  }
+}
+
+/* Language card button padding */
+.lang-card {
+  button {
+    padding: 5px 10px 5px 35px !important;
+  }
+}
+
+/* Dropdown menu adjustments */
+.dd ul {
+  gap: 0px;
+  top: 0;
+}
+
+/* Active language card padding */
+.lang-card.active {
+  padding: 10px 10px 10px 15px !important;
+}

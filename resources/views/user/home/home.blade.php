@@ -17,127 +17,185 @@ Home
 
 @section('content')
 <div id="home-page">
+    <!-- Start Quick Access Section UI -->
+    <div id="quick-access-card" class="position-relative mt-4">
+        <div class="container">
+            <div class="row g-3">
+                <!-- Card 1: Add Brand Profiles -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-blue">
+                        <div class="brand-card-icon">
+                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
+                        </div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">Add Brand Profiles</div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Start Stats Section -->
-    <section id="stats-section" class="section-bundries">
-        <div class="container mx-auto">
-            <div class="subheading">Our Statistics</div>
-            <div class="texts-data d-flex flex-column">
-                <h5 class="global-title">
-                    Your Ultimate Choice To Be Certified
-                </h5>
-                <div class="under-title-vector">
-                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                <!-- Card 2: AI Analytics -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-pink">
+                        <div class="brand-card-icon">
+                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
+                        </div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Analytics</div>
+                            <div class="brand-card-category">Data Science</div>
+                        </div>
+                    </div>
                 </div>
-                <p class="description text-align-justify">
-                    NEN | National Education Network for Communication and Information Technology with the main offices
-                    in [London, Dubai, Cairo, Amman, and Tashkent] established@2008, to offer high-standard professional
-                    services and enterprise solutions to help organizations to meet their business needs and identify
-                    their goals, in cooperation with worldwide technology leaders.
-                </p>
-            </div>
-            <div class="row justify-content-center w-100 mt-3 g-3">
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">15</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Years
-                        </p>
-                        <div class="image-box">
+
+                <!-- Card 3: AI Vision -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-green">
+                        <div class="brand-card-icon">
                             <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
+                        </div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Vision</div>
+                            <div class="brand-card-category">Computer Vision</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count-tag">$</span>
-                            <span class="count">1.5–2</span>
-                            <span class="count-tag">M</span>
-                        </p>
-                        <p class="label-text">
-                            Reduced Expenses
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+
+                <!-- Card 4: AI Chatbots -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-yellow">
+                        <div class="brand-card-icon">
+                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
+                        </div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Chatbots</div>
+                            <div class="brand-card-category">Conversational AI</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">28</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Countries
-                        </p>
-                        <div class="image-box">
+
+                <!-- Card 5: AI Robotics -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-purple">
+                        <div class="brand-card-icon">
                             <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
+                        </div>
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Robotics</div>
+                            <div class="brand-card-category">Automation</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">21</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Solutions
-                        </p>
-                        <div class="image-box">
+
+                <!-- Card 6: AI Tools -->
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                    <div class="brand-card light-teal">
+                        <div class="brand-card-icon">
                             <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">74</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Projects
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">10K</span>
-                            <span class="count-tag">+</span>
-                        </p>
-                        <p class="label-text">
-                            Customers
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
+                        <div class="card-texts">
+                            <div class="brand-card-title">AI Tools</div>
+                            <div class="brand-card-category">Utilities</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- End Quick Access Section UI -->
+
+    <!-- Start Features Section -->
+    <section id="features-section" class="section-bundries">
+        <div class="container">
+            <div class="d-flex justify-content-center flex-column">
+                <h2 class="feature-title">FEATURES & ADVANTAGES</h2>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                </div>
+            </div>
+            <p class="mt-2 description">
+                NEN | National Education Network for Communication and Information Technology with the main offices
+                in [London, Dubai, Cairo, Amman, and Tashkent] established@2008, to offer high-standard professional
+                services
+                and enterprise solutions to help organizations
+                to meet their business needs and identify their goals, in cooperation with worldwide technology leaders
+                ...
+            </p>
+            <div class="features row justify-content-around align-items-center gap-md-2">
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>15</span>
+                    <p class="text-center">Years</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <span>28</span>
+                    <p class="text-center">Countries</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>21</span>
+                    <p class="text-center">Solutions</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>74</span>
+                    <p class="text-center">Projects</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-users"></i>
+                    <span>10K+</span>
+                    <p class="text-center">Customers</p>
+                </div>
+
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span>50+</span>
+                    <p class="text-center">Innovations</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-award"></i>
+                    <span>30+</span>
+                    <p class="text-center">Awards</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-user-check"></i>
+                    <span>100%</span>
+                    <p class="text-center">Satisfaction</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-people-group"></i>
+                    <span>5K+</span>
+                    <p class="text-center">Partners</p>
+                </div>
+                <div
+                    class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>200+</span>
+                    <p class="text-center">Clients</p>
+                </div>
+            </div>
     </section>
-    <!-- End Stats Section -->
+    <!-- End Features Section -->
 
     <!-- Start About Section -->
     <section id="about-company-section" class="section-bundries">
@@ -164,9 +222,14 @@ Home
                 </div>
                 <div class="col-md-5">
                     <div class="position-relative about-img">
-                        <img src="{{ asset('content/images/pages/home-page/hero-home-page.webp') }}" loading="lazy"
+                        <!-- <img src="{{ asset('content/images/pages/home-page/hero-home-page.webp') }}" loading="lazy"
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                            alt="about-img" class="w-100 h-100">
+                            alt="about-img" class="w-100 h-100"> -->
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sQ22pm-xvrE"
+                            title="4K 100% Royalty-Free Stock Footage | Technology HUD Element Intro Background | No Copyright Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         <div class="position-absolute about-layer"></div>
                     </div>
                 </div>
@@ -774,6 +837,7 @@ Home
     <!-- Start Technology Section -->
     <section id="technology-section" class="section-bundries">
         <div class="container mx-auto">
+            <div class="subheading">Category</div>
             <div class="texts-data d-flex flex-column">
                 <h5 class="global-title">
                     Our Technology
@@ -785,7 +849,115 @@ Home
                     Get every thing about AI when reading Article and News
                 </p>
             </div>
-            <div class="row mt-4 mx-0">
+            <div class="articles row d-flex flex-nowrap overflow-hidden mt-4 mx-0">
+                <div class=" col-md-6 col-lg-4 mb-lg-0 mb-4">
+                    <article>
+                        <div class="article-img w-100 mb-3">
+                            <img src="{{ asset('content/images/pages/home-page/hero-home-page.webp') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="article-img" class="w-100 h-100 shadow-sm">
+                        </div>
+                        <div class="d-flex justify-content-between flex-column gap-3 text-md-start text-center">
+                            <div>
+                                <h5 class="fs-5-2 lh-sm text-main-color text-align-justify">
+                                    NEN Technology in Marketing and Advertising
+                                </h5>
+                                <p
+                                    class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter article-description text-align-justify mb-0">
+                                    Welcome to our AI Image Generation website, where creativity meets
+                                    technology!
+                                    Harnessing the power of artificial intelligence, we bring you a world of
+                                    limitless possibilities for image creation and transformation.
+                                </p>
+                            </div>
+                            <a href="./blog-details.html"
+                                class="d-flex align-items-center justify-content-center justify-content-md-start gap-4">
+                                <span
+                                    class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                            fill="#000" />
+                                    </svg>
+                                </span>
+                                <span class="text-main-color">Read more</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-lg-0 mb-4">
+                    <article>
+                        <div class="article-img w-100 mb-3">
+                            <img src="{{ asset('content/images/about.jpg') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="article-img" class="w-100 h-100 shadow-sm">
+                        </div>
+                        <div class="d-flex justify-content-between flex-column gap-3 text-md-start text-center">
+                            <div>
+                                <h5 class="fs-5-2 lh-sm text-main-color text-align-justify">
+                                    NEN Technology in Marketing and Advertising
+                                </h5>
+                                <p
+                                    class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter article-description text-align-justify mb-0">
+                                    Welcome to our AI Image Generation website, where creativity meets
+                                    technology!
+                                    Harnessing the power of artificial intelligence, we bring you a world of
+                                    limitless possibilities for image creation and transformation.
+                                </p>
+                            </div>
+                            <a href="./blog-details.html"
+                                class="d-flex align-items-center justify-content-center justify-content-md-start gap-4">
+                                <span
+                                    class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                            fill="#000" />
+                                    </svg>
+                                </span>
+                                <span class="text-main-color">Read more</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-lg-0 mb-4">
+                    <article>
+                        <div class="article-img w-100 mb-3">
+                            <img src="{{ asset('content/images/doc_team.jpg') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="article-img" class="w-100 h-100 shadow-sm">
+                        </div>
+                        <div class="d-flex justify-content-between flex-column gap-3 text-md-start text-center">
+                            <div>
+                                <h5 class="fs-5-2 lh-sm text-main-color text-align-justify">
+                                    NEN Technology in Marketing and Advertising
+                                </h5>
+                                <p
+                                    class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter article-description text-align-justify mb-0">
+                                    Welcome to our AI Image Generation website, where creativity meets
+                                    technology!
+                                    Harnessing the power of artificial intelligence, we bring you a world of
+                                    limitless possibilities for image creation and transformation.
+                                </p>
+                            </div>
+                            <a href="./blog-details.html"
+                                class="d-flex align-items-center justify-content-center justify-content-md-start gap-4">
+                                <span
+                                    class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                            fill="#000" />
+                                    </svg>
+                                </span>
+                                <span class="text-main-color">Read more</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
                 <div class="col-md-6 col-lg-4 mb-lg-0 mb-4">
                     <article>
                         <div class="article-img w-100 mb-3">
@@ -895,7 +1067,24 @@ Home
                     </article>
                 </div>
             </div>
-
+            <div class="scroll-btns d-flex align-items-center justify-content-center gap-2 mt-4">
+                <button class="scroll-left" id="prev" aria-label="Scroll Left" title="Scroll Left">
+                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                fill="#000" />
+                        </svg>
+                    </span>
+                </button>
+                <button class="scroll-right" id="next" aria-label="Scroll Right" title="Scroll Right">
+                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                fill="#000" />
+                        </svg> </button>
+            </div>
             <div class="d-flex justify-content-center mt-md-4 mt-3">
                 <button class="btn btn-solid-main">
                     <span>
@@ -923,7 +1112,7 @@ Home
                 </p>
             </div>
         </div>
-        <div id="item-list" class="bg-main-color py-md-5 py-3 mt-md-4 mt-3">
+        <div id="item-list" class=" py-md-5 py-3 mt-md-4 mt-3">
             <div class="container mx-auto">
                 <div class="row g-3 mx-0">
                     <div class="col-lg-4 col-md-6">
@@ -1107,17 +1296,6 @@ Home
     <!-- Start Find Us Section -->
     <section id="find-us-section" class="section-bundries">
         <div class="container mx-auto">
-            <div class="texts-data d-flex flex-column">
-                <h5 class="title">
-                    Find Us
-                </h5>
-                <p class="description">
-                    WE ARE A TEAM OF INNOVATORS WHO VALUE SKILL, IMAGINATION, AND ELEGANT SOLUTIONS. EXCEPTEUR SINT
-                    OCCAECAT CUPIDATAT NON PROVIDENT.
-
-                </p>
-            </div>
-
             <div class="row justify-content-center">
                 <button class="btn btn-solid-main w-auto">SEE OPEN POSITIONS</button>
             </div>
@@ -1174,8 +1352,129 @@ Home
     </section>
     <!-- End Find Us Section -->
 
+    <!-- Start Stats Section -->
+    <section id="stats-section" class="section-bundries">
+        <div class="container mx-auto">
+            <div class="subheading">Our Statistics</div>
+            <div class="texts-data d-flex flex-column">
+                <h5 class="global-title">
+                    Your Ultimate Choice To Be Certified
+                </h5>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                </div>
+                <p class="description text-align-justify">
+                    NEN | National Education Network for Communication and Information Technology with the main offices
+                    in [London, Dubai, Cairo, Amman, and Tashkent] established@2008, to offer high-standard professional
+                    services and enterprise solutions to help organizations to meet their business needs and identify
+                    their goals, in cooperation with worldwide technology leaders.
+                </p>
+            </div>
+            <div class="row justify-content-center w-100 mt-3 g-3">
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">15</span>
+                            <span class="count-tag">#</span>
+                        </p>
+                        <p class="label-text">
+                            Years
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count-tag">$</span>
+                            <span class="count">1.5–2</span>
+                            <span class="count-tag">M</span>
+                        </p>
+                        <p class="label-text">
+                            Reduced Expenses
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">28</span>
+                            <span class="count-tag">#</span>
+                        </p>
+                        <p class="label-text">
+                            Countries
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">21</span>
+                            <span class="count-tag">#</span>
+                        </p>
+                        <p class="label-text">
+                            Solutions
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">74</span>
+                            <span class="count-tag">#</span>
+                        </p>
+                        <p class="label-text">
+                            Projects
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">10K</span>
+                            <span class="count-tag">+</span>
+                        </p>
+                        <p class="label-text">
+                            Customers
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Stats Section -->
+
     <!-- Start Contact Section -->
-    <section id="contact-us-section" class="section-bundries">
+    <!-- <section id="contact-us-section" class="section-bundries">
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-6">
@@ -1248,10 +1547,835 @@ Home
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Contact Section -->
+    <!-- Start Join our Team -->
+    <section id="join-our-team" class="section-bundries">
+        <div class="container mx-auto">
+            <div class="texts-data align-items-center">
+                <p class="text-main-color mb-0">
+                    Join Us
+                </p>
+                <h1>
+                    Join us with our team
+                </h1>
+                <p>
+                    We have the team and know-how to help you scale 10x faster.
+                </p>
+
+            </div>
+            <div class="row justify-content-center align-items-center mt-5 gap-4">
+
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <p>Hello</p>
+                    <div class="cover">
+                        <img class="w-100 h-100"
+                            src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp" alt="">
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <p>Hello</p>
+                    <div class="cover">
+                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/doc_team.jpg" alt="">
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <p>Hello</p>
+                    <div class="cover">
+                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/about.jpg" alt="">
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <p>Hello</p>
+                    <div class="cover">
+                        <img class="w-100 h-100"
+                            src="https://www.globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg"
+                            alt="">
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <p>Hello</p>
+                    <div class="cover">
+                        <img class="w-100 h-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aZpkugDl106LnBdxudqbifCp7-x4UWIQ7dIV-AWwIv0VfXeVGJJb226s5fMi7LweoFg&usqp=CAU"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Join our Team -->
+    <!-- Start Check -->
+    <section id="check-section" class="section-bundries">
+        <div class="container mx-auto">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h2 class="global-title">Check-In Regulations</h2>
+                    <div class="under-title-vector">
+                        <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter mb-0">The
+                        test proctor is authorized to end the test, hide test results,
+                        or
+                        block the candidates account if the test taker failed to apply the following instructions.</p>
+                </div>
+            </div>
+            <div class="row g-4 mt-3">
+                <div class="col-md-6 col-lg-4 col-12 h-100">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex gap-2 align-items-center">
+                                <i class="fa-solid fa-handshake card-icon"></i>
+                                <h5 class="card-title">Cooperations</h5>
+                            </div>
+                            <p class="card-text">Cooperating with the proctor during the inspection process.</p>
+                        </div>
+                        <i class="fa-solid fa-handshake card-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-12 h-100">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex gap-2 align-items-center">
+                                <i class="fa-solid fa-id-card card-icon"></i>
+                                <h5 class="card-title">Identification</h5>
+                            </div>
+
+                            <p class="card-text">Bring the original Valid National ID or Passport.</p>
+                        </div>
+                        <i class="fa-solid fa-id-card card-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-12 h-100">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex gap-2 align-items-center"><i class="fa-solid fa-camera card-icon"></i>
+                                <h5 class="card-title">Facial Recognition</h5>
+                            </div>
+
+                            <p class="card-text">Sitting properly in front of the camera or wearing stuff that may hide
+                                his/her face.</p>
+                        </div>
+                        <i class="fa-solid fa-camera card-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-12 h-100">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex gap-2 align-items-center"><i class="fa-solid fa-phone card-icon"></i>
+                                <h5 class="card-title">Violations</h5>
+                            </div>
+                            <p class="card-text">Using banned stuff such as test preparation material, mobile phones.
+                            </p>
+                        </div>
+                        <i class="fa-solid fa-phone card-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-12 h-100">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex gap-2 align-items-center"><i class="fa-solid fa-utensils card-icon"></i>
+                                <h5 class="card-title">Manners</h5>
+                            </div>
+                            <p class="card-text">Eating, drinking, or side-talking during the test, or leaving the room
+                                before ending.</p>
+                        </div>
+                        <i class="fa-solid fa-utensils card-icon"></i>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-12 h-100">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="d-flex gap-2 align-items-center"> <i
+                                    class="fa-solid fa-user-secret card-icon"></i>
+                                <h5 class="card-title">Deception</h5>
+                            </div>
+                            <p class="card-text">All attempts of copying questions or answers are prohibited.</p>
+                        </div>
+                        <i class="fa-solid fa-user-secret card-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 note">
+                <h6 class="mb-2">
+                    <i class="fa-solid fa-pen-to-square card-icon"></i>
+                    note
+                </h6>
+                <p>In case of technical problems or power cuts, the test will be resumed where it stopped while safely
+                    keeping the remaining time, and test takers are not allowed to leave the room unless they have
+                    waited for at least 30 minutes. Then the proctor will fill out the status report and then the test
+                    taker shall decide whether to resume the test or repeat</p>
+            </div>
+        </div>
+    </section>
+    <!-- End Check -->
+    <!-- Start Blogs -->
+    <section id="blogs-section" class="section-bundries">
+        <div class="container mx-auto">
+            <div>
+                <h2 class="global-title">Our Blogs</h2>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                </div>
+            </div>
+            <div class="blogs d-flex align-item-center flex-nowrap gap-2 overflow-hidden px-2 mt-4">
+                <div class="card border-0 col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-black text-decoration-none">
+                        <div class="img-container">
+                            <img class="card-img w-100 h-100 object-fit-cover rounded-2"
+                                src="https://wakeb-tech-site.vercel.app/images/useCases/cases/solar.webp "
+                                alt="A fashionista's guide to wanderlust">
+
+                        </div>
+                        <div class="card-body d-flex flex-column  justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <div
+                                        class="date d-flex align-items-center my-1  position-relative fs-6 fw-normal opacity-75 gap-4">
+                                        <span class="Publication-date d-flex gap-2 align-items-center">
+                                            <svg class="no-rotate" fill="#000000" width="18" viewBox="0 0 35 35"
+                                                data-name="Layer 2" id="a866a81f-2948-4418-8bd5-1a5193c5f74e"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M29.545,34.75H5.455a5.211,5.211,0,0,1-5.2-5.2V8.56a5.21,5.21,0,0,1,5.205-5.2h24.09a5.21,5.21,0,0,1,5.2,5.205V29.545A5.211,5.211,0,0,1,29.545,34.75ZM5.455,5.855A2.708,2.708,0,0,0,2.75,8.56V29.545a2.709,2.709,0,0,0,2.705,2.7h24.09a2.708,2.708,0,0,0,2.7-2.7V8.56a2.707,2.707,0,0,0-2.7-2.7Z">
+                                                    </path>
+                                                    <path
+                                                        d="M33.5,17.331H1.541a1.25,1.25,0,0,1,0-2.5H33.5a1.25,1.25,0,0,1,0,2.5Z">
+                                                    </path>
+                                                    <path
+                                                        d="M9.459,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,9.459,9.155Z">
+                                                    </path>
+                                                    <path
+                                                        d="M25.542,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,25.542,9.155Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                            20 Jan 2024 </span>
+                                        <span class="read-time d-flex gap-2 align-items-center">
+                                            <svg fill="#000000" width="18" version="1.1" id="Layer_1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                                xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M423.127,396.636l-30.258-30.258 l-26.49,26.49l30.258,30.258c-33.551,28.279-75.697,46.657-121.905,50.598v-42.896h-37.463v42.896 c-46.207-3.941-88.354-22.319-121.905-50.598l30.258-30.258l-26.49-26.49l-30.258,30.258 c-28.279-33.551-46.657-75.697-50.598-121.905h42.896v-37.463H38.275c3.941-46.207,22.319-88.354,50.598-121.905l30.258,30.258 l26.49-26.49l-30.258-30.258c33.551-28.279,75.697-46.657,121.905-50.598v42.896h37.463V38.275 c46.207,3.941,88.354,22.319,121.905,50.598l-30.258,30.258l26.49,26.49l30.258-30.258 c28.279,33.551,46.657,75.697,50.598,121.905h-42.896v37.463h42.896C469.784,320.939,451.405,363.085,423.127,396.636z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                    <g>
+                                                        <g>
+                                                            <polygon
+                                                                points="274.732,237.268 274.732,118.634 237.268,118.634 237.268,274.732 355.902,274.732 355.902,237.268 ">
+                                                            </polygon>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            8 minutes ago </span>
+                                    </div>
+                                    <h4 class="card-title text-truncate fs-3 mb-1">A fashionista's guide to wanderlust
+                                    </h4>
+                                    <div class="description">
+                                        <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                            Explore the intersection of fashion and travel as we dive into the wardrobes
+                                            of globetrotters.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="profile justify-content-between d-flex align-items-center gap-2">
+                                    <div class="name d-flex gap-2">
+                                        <svg width="15" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                        Lifestyle
+                                    </div>
+                                    <svg width="20" class="go" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z"
+                                                fill="#000000"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card border-0 col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-black text-decoration-none">
+                        <div class="img-container">
+                            <img class="card-img w-100 h-100 object-fit-cover rounded-2"
+                                src="https://wakeb-tech-site.vercel.app/images/useCases/cases/solar.webp "
+                                alt="A fashionista's guide to wanderlust">
+
+                        </div>
+                        <div class="card-body d-flex flex-column  justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <div
+                                        class="date d-flex align-items-center my-1  position-relative fs-6 fw-normal opacity-75 gap-4">
+                                        <span class="Publication-date d-flex gap-2 align-items-center">
+                                            <svg class="no-rotate" fill="#000000" width="18" viewBox="0 0 35 35"
+                                                data-name="Layer 2" id="a866a81f-2948-4418-8bd5-1a5193c5f74e"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M29.545,34.75H5.455a5.211,5.211,0,0,1-5.2-5.2V8.56a5.21,5.21,0,0,1,5.205-5.2h24.09a5.21,5.21,0,0,1,5.2,5.205V29.545A5.211,5.211,0,0,1,29.545,34.75ZM5.455,5.855A2.708,2.708,0,0,0,2.75,8.56V29.545a2.709,2.709,0,0,0,2.705,2.7h24.09a2.708,2.708,0,0,0,2.7-2.7V8.56a2.707,2.707,0,0,0-2.7-2.7Z">
+                                                    </path>
+                                                    <path
+                                                        d="M33.5,17.331H1.541a1.25,1.25,0,0,1,0-2.5H33.5a1.25,1.25,0,0,1,0,2.5Z">
+                                                    </path>
+                                                    <path
+                                                        d="M9.459,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,9.459,9.155Z">
+                                                    </path>
+                                                    <path
+                                                        d="M25.542,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,25.542,9.155Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                            20 Jan 2024 </span>
+                                        <span class="read-time d-flex gap-2 align-items-center">
+                                            <svg fill="#000000" width="18" version="1.1" id="Layer_1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                                xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M423.127,396.636l-30.258-30.258 l-26.49,26.49l30.258,30.258c-33.551,28.279-75.697,46.657-121.905,50.598v-42.896h-37.463v42.896 c-46.207-3.941-88.354-22.319-121.905-50.598l30.258-30.258l-26.49-26.49l-30.258,30.258 c-28.279-33.551-46.657-75.697-50.598-121.905h42.896v-37.463H38.275c3.941-46.207,22.319-88.354,50.598-121.905l30.258,30.258 l26.49-26.49l-30.258-30.258c33.551-28.279,75.697-46.657,121.905-50.598v42.896h37.463V38.275 c46.207,3.941,88.354,22.319,121.905,50.598l-30.258,30.258l26.49,26.49l30.258-30.258 c28.279,33.551,46.657,75.697,50.598,121.905h-42.896v37.463h42.896C469.784,320.939,451.405,363.085,423.127,396.636z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                    <g>
+                                                        <g>
+                                                            <polygon
+                                                                points="274.732,237.268 274.732,118.634 237.268,118.634 237.268,274.732 355.902,274.732 355.902,237.268 ">
+                                                            </polygon>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            8 minutes ago </span>
+                                    </div>
+                                    <h4 class="card-title text-truncate fs-3 mb-1">A fashionista's guide to wanderlust
+                                    </h4>
+                                    <div class="description">
+                                        <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                            Explore the intersection of fashion and travel as we dive into the wardrobes
+                                            of globetrotters.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="profile justify-content-between d-flex align-items-center gap-2">
+                                    <div class="name d-flex gap-2">
+                                        <svg width="15" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                        Lifestyle
+                                    </div>
+                                    <svg width="20" class="go" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z"
+                                                fill="#000000"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card border-0 col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-black text-decoration-none">
+                        <div class="img-container">
+                            <img class="card-img w-100 h-100 object-fit-cover rounded-2"
+                                src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp "
+                                alt="A fashionista's guide to wanderlust">
+
+                        </div>
+                        <div class="card-body d-flex flex-column  justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <div
+                                        class="date d-flex align-items-center my-1  position-relative fs-6 fw-normal opacity-75 gap-4">
+                                        <span class="Publication-date d-flex gap-2 align-items-center">
+                                            <svg class="no-rotate" fill="#000000" width="18" viewBox="0 0 35 35"
+                                                data-name="Layer 2" id="a866a81f-2948-4418-8bd5-1a5193c5f74e"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M29.545,34.75H5.455a5.211,5.211,0,0,1-5.2-5.2V8.56a5.21,5.21,0,0,1,5.205-5.2h24.09a5.21,5.21,0,0,1,5.2,5.205V29.545A5.211,5.211,0,0,1,29.545,34.75ZM5.455,5.855A2.708,2.708,0,0,0,2.75,8.56V29.545a2.709,2.709,0,0,0,2.705,2.7h24.09a2.708,2.708,0,0,0,2.7-2.7V8.56a2.707,2.707,0,0,0-2.7-2.7Z">
+                                                    </path>
+                                                    <path
+                                                        d="M33.5,17.331H1.541a1.25,1.25,0,0,1,0-2.5H33.5a1.25,1.25,0,0,1,0,2.5Z">
+                                                    </path>
+                                                    <path
+                                                        d="M9.459,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,9.459,9.155Z">
+                                                    </path>
+                                                    <path
+                                                        d="M25.542,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,25.542,9.155Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                            20 Jan 2024 </span>
+                                        <span class="read-time d-flex gap-2 align-items-center">
+                                            <svg fill="#000000" width="18" version="1.1" id="Layer_1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                                xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M423.127,396.636l-30.258-30.258 l-26.49,26.49l30.258,30.258c-33.551,28.279-75.697,46.657-121.905,50.598v-42.896h-37.463v42.896 c-46.207-3.941-88.354-22.319-121.905-50.598l30.258-30.258l-26.49-26.49l-30.258,30.258 c-28.279-33.551-46.657-75.697-50.598-121.905h42.896v-37.463H38.275c3.941-46.207,22.319-88.354,50.598-121.905l30.258,30.258 l26.49-26.49l-30.258-30.258c33.551-28.279,75.697-46.657,121.905-50.598v42.896h37.463V38.275 c46.207,3.941,88.354,22.319,121.905,50.598l-30.258,30.258l26.49,26.49l30.258-30.258 c28.279,33.551,46.657,75.697,50.598,121.905h-42.896v37.463h42.896C469.784,320.939,451.405,363.085,423.127,396.636z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                    <g>
+                                                        <g>
+                                                            <polygon
+                                                                points="274.732,237.268 274.732,118.634 237.268,118.634 237.268,274.732 355.902,274.732 355.902,237.268 ">
+                                                            </polygon>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            8 minutes ago </span>
+                                    </div>
+                                    <h4 class="card-title text-truncate fs-3 mb-1">A fashionista's guide to wanderlust
+                                    </h4>
+                                    <div class="description">
+                                        <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                            Explore the intersection of fashion and travel as we dive into the wardrobes
+                                            of globetrotters.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="profile justify-content-between d-flex align-items-center gap-2">
+                                    <div class="name d-flex gap-2">
+                                        <svg width="15" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                        Lifestyle
+                                    </div>
+                                    <svg width="20" class="go" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z"
+                                                fill="#000000"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card border-0 col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-black text-decoration-none">
+                        <div class="img-container">
+                            <img class="card-img w-100 h-100 object-fit-cover rounded-2"
+                                src="https://wakeb-tech-site.vercel.app/images/useCases/cases/solar.webp "
+                                alt="A fashionista's guide to wanderlust">
+
+                        </div>
+                        <div class="card-body d-flex flex-column  justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <div
+                                        class="date d-flex align-items-center my-1  position-relative fs-6 fw-normal opacity-75 gap-4">
+                                        <span class="Publication-date d-flex gap-2 align-items-center">
+                                            <svg class="no-rotate" fill="#000000" width="18" viewBox="0 0 35 35"
+                                                data-name="Layer 2" id="a866a81f-2948-4418-8bd5-1a5193c5f74e"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M29.545,34.75H5.455a5.211,5.211,0,0,1-5.2-5.2V8.56a5.21,5.21,0,0,1,5.205-5.2h24.09a5.21,5.21,0,0,1,5.2,5.205V29.545A5.211,5.211,0,0,1,29.545,34.75ZM5.455,5.855A2.708,2.708,0,0,0,2.75,8.56V29.545a2.709,2.709,0,0,0,2.705,2.7h24.09a2.708,2.708,0,0,0,2.7-2.7V8.56a2.707,2.707,0,0,0-2.7-2.7Z">
+                                                    </path>
+                                                    <path
+                                                        d="M33.5,17.331H1.541a1.25,1.25,0,0,1,0-2.5H33.5a1.25,1.25,0,0,1,0,2.5Z">
+                                                    </path>
+                                                    <path
+                                                        d="M9.459,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,9.459,9.155Z">
+                                                    </path>
+                                                    <path
+                                                        d="M25.542,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,25.542,9.155Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                            20 Jan 2024 </span>
+                                        <span class="read-time d-flex gap-2 align-items-center">
+                                            <svg fill="#000000" width="18" version="1.1" id="Layer_1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                                xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M423.127,396.636l-30.258-30.258 l-26.49,26.49l30.258,30.258c-33.551,28.279-75.697,46.657-121.905,50.598v-42.896h-37.463v42.896 c-46.207-3.941-88.354-22.319-121.905-50.598l30.258-30.258l-26.49-26.49l-30.258,30.258 c-28.279-33.551-46.657-75.697-50.598-121.905h42.896v-37.463H38.275c3.941-46.207,22.319-88.354,50.598-121.905l30.258,30.258 l26.49-26.49l-30.258-30.258c33.551-28.279,75.697-46.657,121.905-50.598v42.896h37.463V38.275 c46.207,3.941,88.354,22.319,121.905,50.598l-30.258,30.258l26.49,26.49l30.258-30.258 c28.279,33.551,46.657,75.697,50.598,121.905h-42.896v37.463h42.896C469.784,320.939,451.405,363.085,423.127,396.636z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                    <g>
+                                                        <g>
+                                                            <polygon
+                                                                points="274.732,237.268 274.732,118.634 237.268,118.634 237.268,274.732 355.902,274.732 355.902,237.268 ">
+                                                            </polygon>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            8 minutes ago </span>
+                                    </div>
+                                    <h4 class="card-title text-truncate fs-3 mb-1">A fashionista's guide to wanderlust
+                                    </h4>
+                                    <div class="description">
+                                        <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                            Explore the intersection of fashion and travel as we dive into the wardrobes
+                                            of globetrotters.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="profile justify-content-between d-flex align-items-center gap-2">
+                                    <div class="name d-flex gap-2">
+                                        <svg width="15" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                        Lifestyle
+                                    </div>
+                                    <svg width="20" class="go" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z"
+                                                fill="#000000"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card border-0 col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-black text-decoration-none">
+                        <div class="img-container">
+                            <img class="card-img w-100 h-100 object-fit-cover rounded-2"
+                                src="https://wakeb-tech-site.vercel.app/images/useCases/cases/solar.webp "
+                                alt="A fashionista's guide to wanderlust">
+
+                        </div>
+                        <div class="card-body d-flex flex-column  justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <div
+                                        class="date d-flex align-items-center my-1  position-relative fs-6 fw-normal opacity-75 gap-4">
+                                        <span class="Publication-date d-flex gap-2 align-items-center">
+                                            <svg class="no-rotate" fill="#000000" width="18" viewBox="0 0 35 35"
+                                                data-name="Layer 2" id="a866a81f-2948-4418-8bd5-1a5193c5f74e"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M29.545,34.75H5.455a5.211,5.211,0,0,1-5.2-5.2V8.56a5.21,5.21,0,0,1,5.205-5.2h24.09a5.21,5.21,0,0,1,5.2,5.205V29.545A5.211,5.211,0,0,1,29.545,34.75ZM5.455,5.855A2.708,2.708,0,0,0,2.75,8.56V29.545a2.709,2.709,0,0,0,2.705,2.7h24.09a2.708,2.708,0,0,0,2.7-2.7V8.56a2.707,2.707,0,0,0-2.7-2.7Z">
+                                                    </path>
+                                                    <path
+                                                        d="M33.5,17.331H1.541a1.25,1.25,0,0,1,0-2.5H33.5a1.25,1.25,0,0,1,0,2.5Z">
+                                                    </path>
+                                                    <path
+                                                        d="M9.459,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,9.459,9.155Z">
+                                                    </path>
+                                                    <path
+                                                        d="M25.542,9.155a1.249,1.249,0,0,1-1.25-1.25V1.5a1.25,1.25,0,0,1,2.5,0V7.905A1.25,1.25,0,0,1,25.542,9.155Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                            20 Jan 2024 </span>
+                                        <span class="read-time d-flex gap-2 align-items-center">
+                                            <svg fill="#000000" width="18" version="1.1" id="Layer_1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                                xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M423.127,396.636l-30.258-30.258 l-26.49,26.49l30.258,30.258c-33.551,28.279-75.697,46.657-121.905,50.598v-42.896h-37.463v42.896 c-46.207-3.941-88.354-22.319-121.905-50.598l30.258-30.258l-26.49-26.49l-30.258,30.258 c-28.279-33.551-46.657-75.697-50.598-121.905h42.896v-37.463H38.275c3.941-46.207,22.319-88.354,50.598-121.905l30.258,30.258 l26.49-26.49l-30.258-30.258c33.551-28.279,75.697-46.657,121.905-50.598v42.896h37.463V38.275 c46.207,3.941,88.354,22.319,121.905,50.598l-30.258,30.258l26.49,26.49l30.258-30.258 c28.279,33.551,46.657,75.697,50.598,121.905h-42.896v37.463h42.896C469.784,320.939,451.405,363.085,423.127,396.636z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                    <g>
+                                                        <g>
+                                                            <polygon
+                                                                points="274.732,237.268 274.732,118.634 237.268,118.634 237.268,274.732 355.902,274.732 355.902,237.268 ">
+                                                            </polygon>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            8 minutes ago </span>
+                                    </div>
+                                    <h4 class="card-title text-truncate fs-3 mb-1">A fashionista's guide to wanderlust
+                                    </h4>
+                                    <div class="description">
+                                        <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                            Explore the intersection of fashion and travel as we dive into the wardrobes
+                                            of globetrotters.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="profile justify-content-between d-flex align-items-center gap-2">
+                                    <div class="name d-flex gap-2">
+                                        <svg width="15" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                                                    stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                        Lifestyle
+                                    </div>
+                                    <svg width="20" class="go" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z"
+                                                fill="#000000"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-btns d-flex align-items-center justify-content-center gap-2 mt-4">
+                <button class="scroll-left" id="prevBlog" aria-label="Scroll Left" title="Scroll Left">
+                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                fill="#000" />
+                        </svg>
+                    </span>
+                </button>
+                <button class="scroll-right" id="nextBlog" aria-label="Scroll Right" title="Scroll Right">
+                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
+                                fill="#000" />
+                        </svg> </button>
+            </div>
+            <button class="btn btn-solid-main m-auto mt-4">
+                See More
+                <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
+            </button>
+        </div>
+</div>
+</section>
+<!-- End Blogs -->
 
 </div>
+<script>
+const articlesWrapper = document.querySelector('.articles');
+const articles = document.querySelectorAll('.articles article');
+const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+const articleWidth = articles[0].clientWidth;
+
+nextButton.addEventListener('click', () => {
+    articlesWrapper.scrollBy({
+        left: articleWidth,
+        behavior: 'smooth',
+    });
+});
+
+prevButton.addEventListener('click', () => {
+    articlesWrapper.scrollBy({
+        left: -articleWidth,
+        behavior: 'smooth',
+    });
+});
+const blogContainer = document.querySelector('.blogs');
+const prevBlog = document.getElementById('prevBlog');
+const nextBlog = document.getElementById('nextBlog');
+
+const scrollAmount = 300;
+
+prevBlog.addEventListener('click', () => {
+    blogContainer.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+    });
+});
+
+nextBlog.addEventListener('click', () => {
+    blogContainer.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+});
+</script>
 @endsection
 
 @section('websiteScript')

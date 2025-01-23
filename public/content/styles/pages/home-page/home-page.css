@@ -34,6 +34,94 @@
     padding-block: 2rem;
 }
 
+/* Start Quick Access Styles */
+#quick-access-card .brand-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#quick-access-card .brand-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+#quick-access-card .brand-card .brand-card-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: #990000;
+    color: #fff;
+}
+
+#quick-access-card .brand-card:hover .brand-card-icon img {
+    width: 500px;
+}
+
+#quick-access-card .brand-card .brand-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+#quick-access-card .brand-card .brand-card-category {
+    background: rgba(153, 0, 0, 0.05);
+    /* Light shade of #990000 */
+    color: #990000;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* End Quick Access Styles */
+
+/* Start Feature Section */
+#features-section .feature-title {
+    font-weight: 600;
+    color: #990000 !important;
+    hyphens: auto;
+    word-wrap: break-word;
+    margin-bottom: 6px;
+}
+
+#features-section .description {
+    color: #666666;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+}
+
+#features-section .features svg {
+    margin-top: 10px;
+    font-size: 24px;
+    clear: both;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#features-section .features span {
+    color: #990000;
+    font-size: 38px !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* End Feature Section */
+
 /* Start Stats Section */
 #stats-section {
     padding-top: 5rem;
@@ -489,6 +577,33 @@
 /* Start Technology Section Styles */
 #home-page #technology-section {}
 
+#home-page #technology-section .subheading {
+    color: var(--text-main-color);
+    background-color: #77889930;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: fit-content;
+    padding: 2px 16px;
+    border-radius: 5px;
+}
+
+#home-page #technology-section .articles {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    #home-page #technology-section .articles {
+        width: 390px;
+        margin-left: 23px !important;
+    }
+}
+
+#home-page #technology-section article {
+    scroll-snap-align: start;
+
+}
+
 #home-page #technology-section article .article-img {
     height: 350px;
     border-radius: 7px;
@@ -500,7 +615,8 @@
     width: 100%;
 }
 
-#home-page #technology-section article .arrow-icon {
+#home-page #technology-section article .arrow-icon,
+#home-page #technology-section .scroll-btns .arrow-icon {
     width: 50px;
     min-width: 50px;
     height: 50px;
@@ -508,11 +624,47 @@
     /* transition: all 0.3s ease-in-out; */
 }
 
+#home-page #technology-section .scroll-btns button {
+    outline: 0;
+    border: 0;
+    background: 0;
+}
+
+#home-page #technology-section .scroll-btns .scroll-left {
+    transform: rotate(180deg);
+    top: 50%;
+    left: 0px;
+}
+
 /* End Technology Section Styles */
 
 /* Start Doc Validation Section Styles */
 #home-page #doc-validation-section {
     /* background-color: aquamarine; */
+}
+
+#home-page #doc-validation-section #item-list {
+    position: relative;
+    background: url('https://img.freepik.com/free-vector/abstract-blue-lights-background_1182-609.jpg?t=st=1737576062~exp=1737579662~hmac=d299a5de8926ba8f6e085190fdead0a8177a1ebc89b7d029998cfd9502c9726f&w=740') center/cover no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+#home-page #doc-validation-section #item-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#home-page #doc-validation-section #item-list>* {
+    position: relative;
+    z-index: 2;
 }
 
 .doc-validation .doc-icon {
@@ -657,7 +809,7 @@
 
 /* Start Find Us Section Styles */
 #home-page #find-us-section {
-    background-color: #dfdfdfdd;
+    /* background-color: #dfdfdfdd; */
 }
 
 #home-page #find-us-section {
@@ -794,3 +946,205 @@ textarea:focus {
 }
 
 /* End Contact Us Section Styles */
+/* Start Join our Team */
+#join-our-team {
+    background-color: #4b4e6018;
+}
+
+#join-our-team h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#join-our-team p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+#join-our-team .book {
+    /* From Uiverse.io by eslam-hany */
+
+    position: relative;
+    border-radius: 10px;
+    width: 220px;
+    height: 300px;
+    background-color: whitesmoke;
+    -webkit-box-shadow: 1px 1px 5px #000;
+    box-shadow: 1px 1px 5px #000;
+    -webkit-transform: preserve-3d;
+    -ms-transform: preserve-3d;
+    transform: preserve-3d;
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #000;
+}
+
+#join-our-team .cover {
+    top: 0;
+    position: absolute;
+    background-color: lightgray;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform-origin: 0;
+    -ms-transform-origin: 0;
+    transform-origin: 0;
+    -webkit-box-shadow: 1px 1px 12px #000;
+    box-shadow: 1px 1px 12px #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#join-our-team .book:hover .cover {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: rotatey(-80deg);
+    -ms-transform: rotatey(-80deg);
+    transform: rotatey(-80deg);
+}
+
+#join-our-team .book p {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+/* End Join Our Team */
+
+/* Start Check Section */
+#check-section .card {
+    border: 3px solid rgba(128, 128, 128, 0.086);
+    min-height: 170px;
+    position: relative;
+}
+
+#check-section .card .card-body svg {
+    width: 25px;
+    height: 25px;
+    color: #c20303;
+}
+
+#check-section .card .card-body h5 {
+    margin-bottom: 0;
+    color: #c20303;
+}
+
+#check-section .card .card-body .card-text {
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+#check-section .card>svg {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 0;
+    opacity: .3;
+    bottom: 0;
+    color: #c20303;
+}
+
+#check-section .note {
+    background-color: rgba(128, 128, 128, 0.199);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#check-section .note h6 {
+    font-size: 1.5rem;
+    color: #990000;
+    letter-spacing: 1px;
+}
+
+#check-section .note p {
+    font-size: 17px;
+}
+
+/* End Check Section */
+/* Start Blogs Section */
+#blogs-section {
+    background-color: #4b4e6018;
+
+}
+
+#blogs-section .cards .card .category {
+    background-color: rgba(169, 169, 169, 1);
+    top: 20px;
+    left: 20px;
+}
+
+#blogs-section .cards .card .card-body .description .card-text {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+#blogs-section .scroll-btns .arrow-icon {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border: 1px solid #4b4e60;
+    /* transition: all 0.3s ease-in-out; */
+}
+
+#blogs-section .scroll-btns button {
+    outline: 0;
+    border: 0;
+    background: 0;
+}
+
+#blogs-section .scroll-btns .scroll-left {
+    transform: rotate(180deg);
+    top: 50%;
+    left: 0px;
+}
+
+#blogs-section .blogs {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+#blogs-section .blogs .card {
+    scroll-snap-align: start;
+}
+
+#blogs-section .blogs .card .img-container {
+    height: 350px;
+}
+
+#blogs-section .blogs .card .img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+@media (max-width: 768px) {
+    #blogs-section .blogs {
+        width: 390px;
+        margin-left: 23px !important;
+        padding: 0 !important;
+    }
+}
+
+/* End Blogs Section */

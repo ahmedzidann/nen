@@ -581,7 +581,6 @@ h4.category {
 .pagination-btn:hover {
   background-color: #eee;
   color: black;
-
 }
 
 /* End Pagination Styles */
@@ -596,11 +595,7 @@ h4.category {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   position: relative;
-
-
 }
-
-
 
 .booking img {
   filter: blur(2px);
@@ -618,8 +613,6 @@ h4.category {
   margin: 35px 0;
   width: fit-content;
 }
-
-
 
 .article::after {
   content: "";
@@ -667,12 +660,10 @@ h4.category {
 
 .article .article-content p {
   z-index: 5 !important;
-
 }
 
 .article .article-content h3 {
   z-index: 5 !important;
-
 }
 
 .booking .booking-content h2,
@@ -697,8 +688,6 @@ h4.category {
     justify-content: center;
     align-items: center;
   }
-
-
 
   .booking .booking-content button {
     margin: 0px;
@@ -737,97 +726,3 @@ h4.category {
 }
 
 /* End Ads Styles */
-/* Start Footer */
-.footer {
-  background-color: #000;
-  color: #fff;
-  padding: 40px 80px;
-  margin-top: 80px;
-  text-align: center;
-
-  .desc {
-    font-size: 1.15rem;
-    color: #f5d9d9d0;
-  }
-
-  .tag-title {
-    text-align: left;
-  }
-
-  .location,
-  .email {
-    a {
-      font-size: 1.1rem;
-    }
-  }
-
-  .email {
-    padding-bottom: 45px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.237);
-  }
-
-  #subscribe {
-    text-align: left;
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
-
-    &.item {
-      color: #f5d9d9d0;
-      transition: .3s;
-
-      &:hover {
-        color: white;
-        transform: translateX(20px);
-      }
-    }
-  }
-
-  input {
-    height: 50px;
-  }
-}
-
-@media (max-width:1024px) {
-  .footer {
-
-    padding: 40px 10px;
-
-  }
-}
-
-
-.tag-title {
-  font-size: 1.6rem;
-}
-
-/* End footer */
-
-/* Start To Top Button Styles */
-.top {
-  padding: 7px;
-  right: 30px;
-  bottom: 30px;
-  transition: 0.5s;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 5px 15px;
-  background-color: black;
-  border: 1px solid black;
-  box-shadow: 0 2px 22px 10px rgba(255, 255, 255, 0.8);
-
-  svg {
-    fill: white;
-  }
-
-  &:hover {
-    background-color: white;
-    border: 1px solid #990000;
-
-    svg {
-      fill: #990000;
-    }
-  }
-}
-
-/* End To Top Button Styles */

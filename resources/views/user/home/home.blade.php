@@ -193,7 +193,9 @@ Home
                     <span>200+</span>
                     <p class="text-center">Clients</p>
                 </div>
+
             </div>
+        </div>
     </section>
     <!-- End Features Section -->
 
@@ -225,7 +227,8 @@ Home
                         <!-- <img src="{{ asset('content/images/pages/home-page/hero-home-page.webp') }}" loading="lazy"
                             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                             alt="about-img" class="w-100 h-100"> -->
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sQ22pm-xvrE"
+                        <iframe id="videoFrame" width="100%" height="100%"
+                            src="https://www.youtube.com/embed/sQ22pm-xvrE"
                             title="4K 100% Royalty-Free Stock Footage | Technology HUD Element Intro Background | No Copyright Video"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1069,7 +1072,8 @@ Home
             </div>
             <div class="scroll-btns d-flex align-items-center justify-content-center gap-2 mt-4">
                 <button class="scroll-left" id="prev" aria-label="Scroll Left" title="Scroll Left">
-                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                    <span
+                        class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
@@ -1078,7 +1082,8 @@ Home
                     </span>
                 </button>
                 <button class="scroll-right" id="next" aria-label="Scroll Right" title="Scroll Right">
-                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                    <span
+                        class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
@@ -1216,6 +1221,114 @@ Home
     </section>
     <!-- End Doc Validation Section -->
 
+    <!-- Start Stats Section -->
+    <section id="stats-section" class="section-bundries">
+        <div class="container mx-auto">
+            <div class="texts-data d-flex flex-column">
+                <h5 class="global-title">
+                    Find US
+                </h5>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                </div>
+                <p class="description text-align-justify">
+                    NEN | We have offices in major cities around the world, providing professional services and
+                    solutions to help businesses achieve their goals.
+                    Our team works closely with global technology leaders to ensure the highest standards in everything
+                    we do.
+                </p>
+            </div>
+            <div class="row justify-content-center w-100 mt-3 g-3">
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">1</span>
+                        </p>
+                        <p class="label-text">
+                            Training Centers
+                        </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">2</span>
+
+                        </p>
+                        <p class="label-text">
+                            Testing Centers </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">3</span>
+                        </p>
+                        <p class="label-text">
+                            Recruitment Centers </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">4</span>
+                        </p>
+                        <p class="label-text">
+                            Authorized Agent </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">5</span>
+                        </p>
+                        <p class="label-text">
+                            Representive Agents </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="stats-card p-md-4 p-3">
+                        <p class="counter-text">
+                            <span class="count">6</span>
+                        </p>
+                        <p class="label-text">
+                            Education Partners </p>
+                        <div class="image-box">
+                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about-img" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Stats Section -->
     <!-- Start Join Us Section -->
     <section id="join-us-section" class="section-bundries">
         <div class="container mx-auto">
@@ -1292,13 +1405,10 @@ Home
         </div>
     </section>
     <!-- End Join Us Section -->
-
+    <hr>
     <!-- Start Find Us Section -->
     <section id="find-us-section" class="section-bundries">
         <div class="container mx-auto">
-            <div class="row justify-content-center">
-                <button class="btn btn-solid-main w-auto">SEE OPEN POSITIONS</button>
-            </div>
 
             <!-- Locations Section -->
             <div class="row location-section justify-content-center">
@@ -1349,129 +1459,12 @@ Home
             </div>
 
         </div>
+        <div class="row justify-content-center">
+            <button class="btn btn-solid-main w-auto">CONTACT NOW</button>
+        </div>
     </section>
     <!-- End Find Us Section -->
 
-    <!-- Start Stats Section -->
-    <section id="stats-section" class="section-bundries">
-        <div class="container mx-auto">
-            <div class="subheading">Our Statistics</div>
-            <div class="texts-data d-flex flex-column">
-                <h5 class="global-title">
-                    Your Ultimate Choice To Be Certified
-                </h5>
-                <div class="under-title-vector">
-                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
-                </div>
-                <p class="description text-align-justify">
-                    NEN | National Education Network for Communication and Information Technology with the main offices
-                    in [London, Dubai, Cairo, Amman, and Tashkent] established@2008, to offer high-standard professional
-                    services and enterprise solutions to help organizations to meet their business needs and identify
-                    their goals, in cooperation with worldwide technology leaders.
-                </p>
-            </div>
-            <div class="row justify-content-center w-100 mt-3 g-3">
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">15</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Years
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count-tag">$</span>
-                            <span class="count">1.5–2</span>
-                            <span class="count-tag">M</span>
-                        </p>
-                        <p class="label-text">
-                            Reduced Expenses
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">28</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Countries
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">21</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Solutions
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">74</span>
-                            <span class="count-tag">#</span>
-                        </p>
-                        <p class="label-text">
-                            Projects
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="stats-card p-md-4 p-3">
-                        <p class="counter-text">
-                            <span class="count">10K</span>
-                            <span class="count-tag">+</span>
-                        </p>
-                        <p class="label-text">
-                            Customers
-                        </p>
-                        <div class="image-box">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about-img" class="w-100 h-100">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Stats Section -->
 
     <!-- Start Contact Section -->
     <!-- <section id="contact-us-section" class="section-bundries">
@@ -1565,28 +1558,27 @@ Home
 
             </div>
             <div class="row justify-content-center align-items-center mt-5 gap-4">
-
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Hello</p>
+                    <p>Academic</p>
                     <div class="cover">
                         <img class="w-100 h-100"
                             src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp" alt="">
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Hello</p>
+                    <p>Professional</p>
                     <div class="cover">
                         <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/doc_team.jpg" alt="">
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Hello</p>
+                    <p>Centers</p>
                     <div class="cover">
                         <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/about.jpg" alt="">
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Hello</p>
+                    <p>Agents</p>
                     <div class="cover">
                         <img class="w-100 h-100"
                             src="https://www.globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg"
@@ -1594,7 +1586,7 @@ Home
                     </div>
                 </div>
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <p>Hello</p>
+                    <p>International Cards</p>
                     <div class="cover">
                         <img class="w-100 h-100"
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aZpkugDl106LnBdxudqbifCp7-x4UWIQ7dIV-AWwIv0VfXeVGJJb226s5fMi7LweoFg&usqp=CAU"
@@ -1615,8 +1607,8 @@ Home
                         <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <p class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter mb-0">The
+                <div>
+                    <p>The
                         test proctor is authorized to end the test, hide test results,
                         or
                         block the candidates account if the test taker failed to apply the following instructions.</p>
@@ -2310,7 +2302,8 @@ Home
             </div>
             <div class="scroll-btns d-flex align-items-center justify-content-center gap-2 mt-4">
                 <button class="scroll-left" id="prevBlog" aria-label="Scroll Left" title="Scroll Left">
-                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                    <span
+                        class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
@@ -2319,7 +2312,8 @@ Home
                     </span>
                 </button>
                 <button class="scroll-right" id="nextBlog" aria-label="Scroll Right" title="Scroll Right">
-                    <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                    <span
+                        class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
@@ -2337,6 +2331,7 @@ Home
 
 </div>
 <script>
+// articles carousel
 const articlesWrapper = document.querySelector('.articles');
 const articles = document.querySelectorAll('.articles article');
 const nextButton = document.getElementById('next');
@@ -2356,6 +2351,9 @@ prevButton.addEventListener('click', () => {
         behavior: 'smooth',
     });
 });
+
+// Blogs carousel
+
 const blogContainer = document.querySelector('.blogs');
 const prevBlog = document.getElementById('prevBlog');
 const nextBlog = document.getElementById('nextBlog');

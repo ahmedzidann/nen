@@ -67,7 +67,8 @@
 }
 
 #quick-access-card .brand-card:hover .brand-card-icon img {
-    width: 500px;
+    filter: brightness(90%) invert(1);
+
 }
 
 #quick-access-card .brand-card .brand-card-title {
@@ -118,6 +119,11 @@
     font-size: 38px !important;
     font-weight: bold;
     text-align: center;
+}
+
+#features-section .features div:hover {
+    background-color: rgba(255, 0, 0, 0.099);
+    border-radius: 4px;
 }
 
 /* End Feature Section */
@@ -624,6 +630,26 @@
     /* transition: all 0.3s ease-in-out; */
 }
 
+#home-page #technology-section .scroll-btns .arrow-icon.scroll {
+    background-color: black !important;
+    transition: all 0.3s ease-in-out;
+}
+
+#home-page #technology-section .scroll-btns .arrow-icon.scroll:hover {
+    background-color: white !important;
+    /* transition: all 0.3s ease-in-out; */
+}
+
+#home-page #technology-section .scroll-btns .arrow-icon.scroll svg {
+    filter: brightness(90%) invert(1);
+    /* transition: all 0.3s ease-in-out; */
+}
+
+#home-page #technology-section .scroll-btns .arrow-icon.scroll:hover svg {
+    filter: none;
+    /* transition: all 0.3s ease-in-out; */
+}
+
 #home-page #technology-section .scroll-btns button {
     outline: 0;
     border: 0;
@@ -648,6 +674,10 @@
     background: url('https://img.freepik.com/free-vector/abstract-blue-lights-background_1182-609.jpg?t=st=1737576062~exp=1737579662~hmac=d299a5de8926ba8f6e085190fdead0a8177a1ebc89b7d029998cfd9502c9726f&w=740') center/cover no-repeat;
     background-attachment: fixed;
     overflow: hidden;
+}
+
+#home-page #doc-validation-section #item-list .doc-icon {
+    filter: brightness(0%) invert(1);
 }
 
 #home-page #doc-validation-section #item-list::before {
@@ -709,6 +739,7 @@
 
 /* Start Join Us Section Styles */
 #home-page #join-us-section {
+    background-image: url(../../../../content/images/pages/home-page/find-us-bg.svg);
     /* background-color: #990000; */
 }
 
@@ -810,11 +841,13 @@
 /* Start Find Us Section Styles */
 #home-page #find-us-section {
     /* background-color: #dfdfdfdd; */
+    background-image: url(../../../../content/images/pages/home-page/find-us-bg.svg);
 }
 
 #home-page #find-us-section {
     text-align: center;
     padding: 4rem 1rem;
+    padding-top: 0;
 }
 
 #home-page #find-us-section .title {
@@ -990,6 +1023,7 @@ textarea:focus {
 }
 
 #join-our-team .cover {
+    overflow: hidden;
     top: 0;
     position: absolute;
     background-color: lightgray;
@@ -1021,6 +1055,8 @@ textarea:focus {
     -webkit-transform: rotatey(-80deg);
     -ms-transform: rotatey(-80deg);
     transform: rotatey(-80deg);
+    -webkit-box-shadow: 1px 1px 12px #0000004a;
+    box-shadow: 1px 1px 12px #0000004a;
 }
 
 #join-our-team .book p {
@@ -1035,6 +1071,7 @@ textarea:focus {
     border: 3px solid rgba(128, 128, 128, 0.086);
     min-height: 170px;
     position: relative;
+    overflow: hidden;
 }
 
 #check-section .card .card-body svg {
@@ -1079,6 +1116,30 @@ textarea:focus {
     font-size: 17px;
 }
 
+#check-section .card:hover .card-body {
+    background-color: black;
+}
+
+#check-section .card:hover .card-body h5 {
+    color: white;
+}
+
+#check-section .card:hover .card-body .card-text {
+    color: white;
+}
+
+#check-section .card:hover>svg {
+    color: white;
+}
+
+#check-section .card:hover .card-body svg {
+    color: white;
+}
+
+#check-section .card:hover .card-body h5 {
+    color: white;
+}
+
 /* End Check Section */
 /* Start Blogs Section */
 #blogs-section {
@@ -1108,6 +1169,26 @@ textarea:focus {
     /* transition: all 0.3s ease-in-out; */
 }
 
+#blogs-section .scroll-btns .arrow-icon.scroll {
+    background-color: black !important;
+    transition: all 0.3s ease-in-out;
+}
+
+#blogs-section .scroll-btns .arrow-icon.scroll:hover {
+    background-color: white !important;
+    /* transition: all 0.3s ease-in-out; */
+}
+
+#blogs-section .scroll-btns .arrow-icon.scroll svg {
+    filter: brightness(90%) invert(1);
+    /* transition: all 0.3s ease-in-out; */
+}
+
+#blogs-section .scroll-btns .arrow-icon.scroll:hover svg {
+    filter: none;
+    /* transition: all 0.3s ease-in-out; */
+}
+
 #blogs-section .scroll-btns button {
     outline: 0;
     border: 0;
@@ -1127,10 +1208,21 @@ textarea:focus {
 
 #blogs-section .blogs .card {
     scroll-snap-align: start;
+    overflow: hidden;
+    transition: .3s;
 }
 
 #blogs-section .blogs .card .img-container {
+    overflow: hidden;
     height: 350px;
+}
+
+#blogs-section .blogs .card .img-container img {
+    transition: .3s;
+}
+
+#blogs-section .blogs .card:hover .img-container img {
+    transform: scale(1.1);
 }
 
 #blogs-section .blogs .card .img-container img {

@@ -161,7 +161,7 @@
     <!-- End Contact Us Section -->
 
     <!-- Start Footer Section -->
-    <footer id="footer" class="home-footer pt-3 mt-md-5 mt-3">
+    <footer id="footer" class="home-footer">
         <!-- Start Float Quick Access -->
         <div class="float-quick-access p-2">
             <div class="d-flex flex-column gap-3">

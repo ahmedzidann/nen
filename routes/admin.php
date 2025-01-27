@@ -46,6 +46,7 @@ use App\Http\Controllers\Admin\SidebarResource\SidebarResourceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\Solution\SolutionController;
 use App\Http\Controllers\Admin\Solution\Tabs\SolutionTabController;
+use App\Http\Controllers\Admin\Summary\SummaryController;
 use App\Http\Controllers\Admin\Technology\TechnologyResourceController;
 use App\Http\Controllers\Admin\Testing\TestingController;
 use App\Http\Controllers\CountryController;
@@ -138,6 +139,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::get('child-pages/{page_id}', [SliderController::class, 'getChildPages'])->name('get-child-pages');
     Route::resource('education', EducationController::class);
     Route::resource('testing', TestingController::class);
+    Route::resource('summary', SummaryController::class);
+    Route::delete('summary/link/{link_id}', [SummaryController::class, 'deleteLink'])->name('summary-delete.link');
     Route::delete('testing/link/{link_id}', [SolutionController::class, 'deleteLink'])->name('testing.delete.link');
     Route::resource('solution', SolutionController::class);
     // Route::resource('technology', TechnologyController::class);

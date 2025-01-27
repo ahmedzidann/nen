@@ -100,4 +100,26 @@
   'Our team is here to assist you with all your needs.' => 'Our team is here to assist you with all your needs.',
   'Reach out to us for any inquiries or support.' => 'Reach out to us for any inquiries or support.',
   'Contacts' => 'Contacts',
+  'Select Specializations' => 'Select Specializations',
+  'Select Country' => 'Select Country',
+  'Select State' => 'Select State',
+  'The National Network for Education is working to expand its educational
+                        impact
+                        across 28
+                        countries by providing professional training and international examination services, through
+                        more than 2,000 accredited training centers, 900 accredited trainers, 500 accredited testing
+                        centers, and 100 accredited invigilators. To ensure a strong, globally recognized
+                        certification for learning and assessment with a commitment to excellence.' => 'The National Network for Education is working to expand its educational
+                        impact
+                        across 28
+                        countries by providing professional training and international examination services  through
+                        more than 2 000 accredited training centers  900 accredited trainers  500 accredited testing
+                        centers  and 100 accredited invigilators. To ensure a strong  globally recognized
+                        certification for learning and assessment with a commitment to excellence.',
+  'Technical support' => 'Technical support',
+  'Credits' => 'Credits',
+  'The sales' => 'The sales',
+  'International tests' => 'International tests',
+  'Times of Work' => 'Times of Work',
+  'There is No Data Available' => 'There is No Data Available',
 );

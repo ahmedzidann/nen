@@ -15,67 +15,30 @@
     <!-- amCharts 4 Animated Theme -->
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('content/images/logo.svg') }}" />
+
+    <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('content/css/vendors/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/kursor.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/vendors/bootstrap-icons.css') }}" />
-    <!-- <link rel="stylesheet" href="{{ asset('content/css/vendors/swiper-bundle.min.css') }}" /> -->
+
+    <!-- Your Custom Styles -->
+    <link rel="stylesheet" href="{{ asset('content/styles/global-rules.css') }}" />
+    <link rel="stylesheet" href="{{ asset('content/styles/buttons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('content/styles/variables.css') }}" />
     <link rel="stylesheet" href="{{ asset('content/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('content/styles/pages/global-rules-rtl.css') }}" />
-    <link rel="stylesheet" href="{{ asset('content/styles/pages/about-page/about-page-rtl.css') }}" />
-    <link rel="stylesheet" href="{{ asset('content/styles/pages/projects-page/projects-page-rtl.css') }}" />
-    <link rel="stylesheet" href="{{ asset('content/styles/pages/find-us-page/find-us.rtl.css') }}" />
+    <link rel="stylesheet" href="{{ asset('content/styles/pages/home-page/home-page.css') }}" />
+    <link rel="stylesheet" href="{{ asset('content/styles/pages/home-page/home-page-rtl.css') }}" />
 
-
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
     @yield('websiteStyle')
 </head>
 
-<style>
-/* Style for Swiper Navigation */
-.slider-button {
-    /* margin-top: 15px; */
-    text-align: center;
-}
-
-/* Center navigation arrows on small screens (991px and below) */
-@media (max-width: 991px) {
-    .slider-button {
-        position: static;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-}
-</style>
 
 <body>
-
-    <!-- <div class="loader-wrapper">
-        <div class="loader"></div>
-    </div> -->
-
-    <!-- Start Loader -->
-    <div class="loader-wrapper">
-        <!-- <div class="custom-loader"></div> -->
-
-        <!-- Other Loader -->
-        <!-- <div class="new-loader">
-            <div class="loader-bar bar-1"></div>
-            <div class="loader-bar bar-2"></div>
-            <div class="loader-bar bar-3"></div>
-            <div class="loader-bar bar-4"></div>
-        </div> -->
-
-        <div class="loading">
-            <svg width="64px" height="48px">
-                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
-                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
-            </svg>
-        </div>
-    </div>
-    <!-- End Loader -->
-
     <!--start_header  -->
     <div class="header_section">
         <div class="container">
@@ -132,16 +95,6 @@
     <div class="section_photoe">
         <div class="title_img">
             <img class="img_team" src="@yield('cover_image') " />
-            <!-- <div class="titel_about_content">
-                <h1>{{ strtoupper(trim(\Illuminate\Support\Str::of(trim($__env->yieldContent('page_name')))->stripTags())) }}
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">@yield('parent_page_name')</a></li>
-                    <li class="breadcrumb-item">
-                        <a href="#">@yield('page_name')</a>
-                    </li>
-                </ol>
-            </div> -->
         </div>
 
         <!-- Start Quick Navigation Bar -->
@@ -189,110 +142,8 @@
     </div>
     <!-- section_who_us -->
 
-    <!-- Start Quick Access Section UI -->
-    <div id="quick-access-card" class="position-relative mt-4">
-        <div class="container">
-            <div class="row g-3">
-                <!-- Card 1: Add Brand Profiles -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-blue">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">Add Brand Profiles</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: AI Analytics -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-pink">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Analytics</div>
-                            <div class="brand-card-category">Data Science</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3: AI Vision -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-green">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Vision</div>
-                            <div class="brand-card-category">Computer Vision</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4: AI Chatbots -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-yellow">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Chatbots</div>
-                            <div class="brand-card-category">Conversational AI</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5: AI Robotics -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-purple">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Robotics</div>
-                            <div class="brand-card-category">Automation</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6: AI Tools -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-teal">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Tools</div>
-                            <div class="brand-card-category">Utilities</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Quick Access Section UI -->
-
-    <section class="about_sec">
-        <div class="container">
-            <div class="about_us_div">
-                @include('user.layout.includes.about.sidebar')
-                @yield('content')
-            </div>
-        </div>
+    <section class="content-ui">
+        @yield('content')
     </section>
 
     <!-- Start Contact Us Section -->
@@ -303,23 +154,6 @@
                     <div id="quick-access">
 
                     </div>
-                    <!-- <hr id="line" style="display:none;" />
-                    <div class="row justify-content-center">
-                        <div class="col-lg-7 col-md-9">
-                            <h4 class="text-center">
-                                {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us') ?? '') }}
-                            </h4>
-                            <p class="fs-5-2 text-center text-muted mt-2">
-                                {{ TranslationHelper::translateWeb(ucfirst('We re here to help! Whether you have questions, feedback, or need support, reach out to us, and we ll be happy to assist you.') ?? '') }}
-                            </p>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-solid-main fs-5-2" data-tooltip="contact channel"
-                                    href="./contact-us.html">
-                                    {{ TranslationHelper::translateWeb(ucfirst(' Contact Us') ?? '') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -327,7 +161,7 @@
     <!-- End Contact Us Section -->
 
     <!-- Start Footer Section -->
-    <footer id="footer" class="home-footer pt-3 mt-md-5 mt-3">
+    <footer id="footer" class="home-footer">
         <!-- Start Float Quick Access -->
         <div class="float-quick-access p-2">
             <div class="d-flex flex-column gap-3">
@@ -359,13 +193,6 @@
         <div class="footer-second-bg">
             <div class="container">
                 <div class="py-3">
-                    <!-- <div class="d-flex justify-content-center">
-                        <div class="image-box d-flex justify-content-center">
-                            <img src="{{ asset('content/images/logo.svg') }}" class="logo" alt="white-logo">
-                        </div>
-                    </div>
-                    <hr class="hr text-white-color"> -->
-
                     <div class="row g-3 pt-3">
                         <div class="col-md-8">
                             <div class="row g-3">
@@ -654,35 +481,21 @@
     </nav>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-
+    <!-- Start Scripts -->
     <script src="{{ asset('content/js/vendors/jquery.min.js') }}"></script>
     <script src="{{ asset('content/js/vendors/kursor.min.js') }}"></script>
     <script src="{{ asset('content/js/vendors/all.min.js') }}"></script>
     <script src="{{ asset('content/js/vendors/bootstrap.bundle.min.js') }}"></script>
-    <!-- <script src="{{ asset('content/js/vendors/swiper-bundle.min.js') }}"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
+
+    <script src="{{ asset('content/js/pages/home-page.js') }}"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
-    <script>
-    function toggleReadMore() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("read-more-btn");
 
-        if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Read More";
-            moreText.style.display = "none";
-        } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "Read Less";
-            moreText.style.display = "inline";
-        }
-    }
-    </script>
+    <!-- End Scripts -->
+
+
+    <!-- Start Document UI Scripts Logic -->
     @yield('websiteScript')
-
     @section('websiteScript')
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -773,7 +586,6 @@
     //         document.querySelectorAll(buttons).forEach(btn => {
     //             btn.addEventListener('click', () => {
     //                 let langCode;
-    //                 console.log(btn.getAttribute('name'))
     //                 langCode = btn.getAttribute('name') === 'english' ? 'en' :
     //                     btn.getAttribute('name') === 'arabic' ? 'ar' :
     //                     'ru'; // Default to Russian if the button is neither 'english' nor 'arabic'
@@ -792,7 +604,6 @@
 
     //     const lang = localStorage.getItem('lang') || 'en';
     //     console.log(lang)
-
     //     document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 
     //     if (lang === 'ar') {
@@ -814,6 +625,7 @@
     // Call the function after the page is loaded and the DOM is available
     handleLanguage('.dropdown-menu .dropdown-item');
     </script>
+    <!-- End Document UI Scripts Logic -->
 </body>
 
 </html>

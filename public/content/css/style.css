@@ -8447,6 +8447,15 @@ span {
     transform: translateY(-5px);
 }
 
+#quick-access-card .brand-card:hover .brand-card-icon img {
+    filter: grayscale(100%);
+}
+
+#quick-access-card .brand-card:hover .brand-card-icon img {
+    filter: brightness(90%) invert(1);
+
+}
+
 #quick-access-card .brand-card .brand-card-icon {
     width: 36px;
     height: 36px;

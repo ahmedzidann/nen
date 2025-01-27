@@ -1,0 +1,8 @@
+.rtl .form-select{
+    background-position: left .75rem center !important;
+}
+.rtl .custom-button .svg-wrapper-1, .custom-button .svg-wrapper {
+    position: absolute !important;
+    left: 5px !important;
+    top: 71% !important;
+  }

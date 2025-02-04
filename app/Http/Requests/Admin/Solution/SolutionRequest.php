@@ -43,6 +43,7 @@ class SolutionRequest extends FormRequest
             'fax' => ['nullable'],
             'whatsapp' => ['nullable'],
             'status' => ['nullable'],
+            'show_in_home' => 'required|in:1,0',
         ]);
     }
     public function validationUpdateEn()
@@ -61,6 +62,7 @@ class SolutionRequest extends FormRequest
             'fax' => ['nullable'],
             'whatsapp' => ['nullable'],
             'status' => ['nullable'],
+            'show_in_home' => 'required|in:1,0',
         ]);
     }
     public function validationUpdateAr()

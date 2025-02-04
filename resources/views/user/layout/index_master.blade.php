@@ -96,49 +96,6 @@
         <div class="title_img">
             <img class="img_team" src="@yield('cover_image') " />
         </div>
-
-        <!-- Start Quick Navigation Bar -->
-        <div id="banner-quick-access">
-            <div class="nav-item">
-                <!-- <i class="bi bi-telephone-fill"></i> -->
-                <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>CONTACTS</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>INTERNATIONAL CERTIFICATES</span>
-            </div>
-            <div class="nav-item active">
-                <img src="https://dev.nendemo2024.xyz/media/603/cup.png" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>BOOK YOUR EXAM</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>VERIFY YOUR CERTIFICATE</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>VIRTUAL ACADEMY</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>LIVE EVENTS</span>
-            </div>
-        </div>
-        <!-- End Quick Navigation Bar -->
-
     </div>
     <!-- section_who_us -->
 

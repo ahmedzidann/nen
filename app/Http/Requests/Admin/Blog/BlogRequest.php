@@ -23,31 +23,32 @@ class BlogRequest extends FormRequest
      */
     public function rules(): array
     {
-        if($this->getMethod() == 'POST')
-        {
+        if ($this->getMethod() == 'POST') {
             return [
-            'title.*'=>'required|max:255',
-            'mini_desc.*'=>'required|max:600',
-            'content.*'=>'required',
-            'categories_id.*'=>'required|exists:media_categories,id',
-            'banner'=>'required|image',
-            'video'=>'nullable',
-            'is_active'=>'required|in:0,1',
-            'sort'=>'nullable',
-            'published_at'=>'required|date',
-             ];
-        }else{
+                'title.*' => 'required|max:255',
+                'mini_desc.*' => 'required|max:600',
+                'content.*' => 'required',
+                'categories_id.*' => 'required|exists:media_categories,id',
+                'banner' => 'required|image',
+                'video' => 'nullable',
+                'is_active' => 'required|in:0,1',
+                'show_in_home' => 'required|in:0,1',
+                'sort' => 'nullable',
+                'published_at' => 'required|date',
+            ];
+        } else {
             return [
-            'title.*'=>'sometimes|max:255',
-            'mini_desc.*'=>'sometimes|max:600',
-            'content.*'=>'sometimes',
-            'categories_id.*'=>'sometimes|exists:media_categories,id',
-            'banner'=>'sometimes|image',
-            'video'=>'sometimes',
-            'is_active'=>'sometimes|in:0,1',
-            'sort'=>'nullable',
-            'published_at'=>'sometimes|date',
-             ];
+                'title.*' => 'sometimes|max:255',
+                'mini_desc.*' => 'sometimes|max:600',
+                'content.*' => 'sometimes',
+                'categories_id.*' => 'sometimes|exists:media_categories,id',
+                'banner' => 'sometimes|image',
+                'video' => 'sometimes',
+                'is_active' => 'sometimes|in:0,1',
+                'show_in_home' => 'required|in:0,1',
+                'sort' => 'nullable',
+                'published_at' => 'sometimes|date',
+            ];
         }
     }
 
@@ -64,7 +65,7 @@ class BlogRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'status' => 400,
-            'errors'=>$validator->errors()
+            'errors' => $validator->errors()
         ], 400));
     }
 }

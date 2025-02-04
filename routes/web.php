@@ -12,12 +12,10 @@ use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
+use App\Http\Controllers\Web\HomeController;
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return 'asd';
-});
 
 Route::group(['prefix' => 'about', 'as' => 'about.', 'name' => 'about.'], function () {
     Route::get('identity', [AboutController::class, 'identity'])->name('identity');
@@ -98,8 +96,6 @@ Route::get('blogs', function () {
 Route::get('blogs/details', function () {
     return view('user.blogs.details');
 })->name('blogs.details');
-Route::get('home', function () {
-    return view('user.home.home');
-});
+Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
 
 //

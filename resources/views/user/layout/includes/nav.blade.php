@@ -4,7 +4,7 @@
           <ul class="ul_pages">
             @foreach (App\Models\Page::where('parent_id',null)->get() as $page)
             @if ($page->slug=='home' )
-                <a href="#" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} </a>
+                <a href="{{ route('web.home') }}" class="a_ref {{ Route::is(''.$page->slug.'.*')? "active": ""}}">{{$page->name}} </a>
 
             @elseif ($page->slug=='about' || $page->slug=='education' || $page->slug=='testing' || $page->slug=='technology' ||  $page->slug=="doc-validation" ||  $page->slug=="find-us")
             <li class="li_category">

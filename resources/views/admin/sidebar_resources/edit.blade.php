@@ -114,14 +114,14 @@
                                                                     <label for="title">Sub Title in English</label>
                                                                     <input type="text" class="form-control"
                                                                         name="sub_title[{{ $index }}][{{ $lang->key }}]"
-                                                                        value="{{ $item->translate('sub_title', $lang->key) }}"
-                                                                        >
+                                                                        value="{{ $item->translate('sub_title', $lang->key) }}">
                                                                 </div>
                                                                 @if ($lang->key == 'en')
                                                                     <div class="form-group col-md-2">
                                                                         <label for="url">Enter Url</label>
                                                                         <input type="url" class="form-control"
-                                                                            name="url[]" value="{{ $item->url }}" required>
+                                                                            name="url[]" value="{{ $item->url }}"
+                                                                            required>
                                                                     </div>
                                                                     <div class="form-group col-md-3">
                                                                         <label class="form-label">Upload Image</label>
@@ -171,6 +171,29 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                <div class="col-md-6 mb-4">
+                                    <x-admin.form.label-first class="form-label" name="SHow In Home">
+                                    </x-admin.form.label-first>
+                                    <div class="col-sm-9">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="form-check">
+                                                <div class="form-check">
+                                                    <x-admin.form.radio :checked="$resource->show_in_home == true ? 'checked' : ''" name="show_in_home"
+                                                        value="1" :model="$resource">
+                                                    </x-admin.form.radio>
+                                                    <label class="form-check-label" for="bsValidation6">yes</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <x-admin.form.radio :checked="$resource->show_in_home == false ? 'checked' : ''" name="show_in_home"
+                                                        value="0" :model="$resource">
+                                                    </x-admin.form.radio>
+                                                    <label class="form-check-label" for="bsValidation6">no</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="d-md-flex d-grid align-items-center gap-3">
                                         <button type="submit" class="btn btn-primary px-4"

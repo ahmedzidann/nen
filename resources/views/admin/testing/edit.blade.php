@@ -47,7 +47,7 @@
                                                 <div class="card-body p-4 row">
                                                     {{-- ----------start static --}}
                                                     <input type="hidden" name="pages_id"
-                                                        value="{{  $StaticTable->pages_id ?? '' }}">
+                                                        value="{{ $StaticTable->pages_id ?? '' }}">
                                                     <input type="hidden" name="category"
                                                         value="{{ Request()->category ?? '' }}">
                                                     <input type="hidden" name="subcategory"
@@ -176,6 +176,39 @@
                                                             </div>
                                                         </div>
                                                         {{-- ----------status end --}}
+                                                        <div class="col-md-6 mb-4">
+                                                            <x-admin.form.label-first class="form-label"
+                                                                name="SHow In Home">
+                                                            </x-admin.form.label-first>
+                                                            <div class="col-sm-9">
+                                                                <div class="d-flex align-items-center gap-3">
+                                                                    <div class="form-check">
+                                                                        <div class="form-check">
+                                                                            <x-admin.form.radio :checked="$StaticTable->show_in_home ==
+                                                                            true
+                                                                                ? 'checked'
+                                                                                : ''"
+                                                                                name="show_in_home" value="1"
+                                                                                :model="$StaticTable">
+                                                                            </x-admin.form.radio>
+                                                                            <label class="form-check-label"
+                                                                                for="bsValidation6">yes</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <x-admin.form.radio :checked="$StaticTable->show_in_home ==
+                                                                            false
+                                                                                ? 'checked'
+                                                                                : ''"
+                                                                                name="show_in_home" value="0"
+                                                                                :model="$StaticTable">
+                                                                            </x-admin.form.radio>
+                                                                            <label class="form-check-label"
+                                                                                for="bsValidation6">no</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                     <div class=" mb-4">
                                                         <div class="col-md-12">

@@ -104,8 +104,8 @@
                                                         </div>
                                                         <div class="form-group col-md-2">
                                                             <label for="title">Enter Url</label>
-                                                            <input type="text" class="form-control"
-                                                                name="url[]" required>
+                                                            <input type="text" class="form-control" name="url[]"
+                                                                required>
                                                         </div>
                                                         <div class="form-group col-md-2">
                                                             <label class="form-label">Upload Image</label>
@@ -129,6 +129,29 @@
                                                         <!-- Dynamic input will be appended here -->
                                                     </div>
 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="SHow In Home">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <div class="form-check">
+                                                            <div class="form-check">
+                                                                <x-admin.form.radio name="show_in_home" value="1" >
+                                                                </x-admin.form.radio>
+                                                                <label class="form-check-label"
+                                                                    for="bsValidation6">yes</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <x-admin.form.radio checked='checked' name="show_in_home"
+                                                                    value="0" >
+                                                                </x-admin.form.radio>
+                                                                <label class="form-check-label"
+                                                                    for="bsValidation6">no</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 

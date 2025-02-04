@@ -26,6 +26,7 @@ class Education extends Model implements HasMedia
         'pages_id',
         'childe_pages_id',
         'sort',
+        'show_in_home'
     ];
     const STATUS = ['Active', 'Not Active'];
     public function Page()

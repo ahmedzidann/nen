@@ -36,6 +36,7 @@ class ProjectRequest extends FormRequest
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
+            'show_in_home' => 'required|in:1,0',
         ]);
     }
     public function validationUpdateEn()
@@ -47,6 +48,7 @@ class ProjectRequest extends FormRequest
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
+            'show_in_home' => 'required|in:1,0',
         ]);
     }
     public function validationUpdateAr()

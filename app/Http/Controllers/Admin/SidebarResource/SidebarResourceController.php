@@ -102,6 +102,7 @@ class SidebarResourceController extends Controller
     public function update(SidebarResourceRequest $request, $id)
     {
         $validData = $request->validated();
+
         foreach ($validData['keys'] as $index => $key) {
             $data = [];
 
@@ -125,6 +126,7 @@ class SidebarResourceController extends Controller
             $data['sub_title'] = $validData['sub_title'][$index];
             $data['type'] = $validData['type'][$index];
             $data['url'] = $validData['url'][$index];
+            $data['show_in_home'] = $validData['show_in_home'];
             // Update the resource record
             SidebarResource::where('id', $key)->update($data);
         }

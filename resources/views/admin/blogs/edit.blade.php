@@ -117,11 +117,18 @@
                                         <input type="number" class="form-control" id="sort" name="sort"
                                             value="{{ old('sort', $blog->sort ?? 0) }}" required>
                                     </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="published_at">Publish Date</label>
+                                        <input type="datetime-local" class="form-control" id="published_at"
+                                            name="published_at"
+                                            value="{{ old('published_at', $blog->published_at ? $blog->published_at : '') }}">
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label>Status</label>
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="activeOption" value="1"
-                                                name="is_active" {{ $blog->is_active ? 'checked' : '' }}>
+                                            <input type="radio" class="form-check-input" id="activeOption"
+                                                value="1" name="is_active" {{ $blog->is_active ? 'checked' : '' }}>
                                             <label class="form-check-label" for="activeOption">Active</label>
                                         </div>
                                         <div class="form-check">
@@ -132,11 +139,22 @@
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="published_at">Publish Date</label>
-                                        <input type="datetime-local" class="form-control" id="published_at"
-                                            name="published_at"
-                                            value="{{ old('published_at', $blog->published_at ? $blog->published_at : '') }}">
+                                        <x-admin.form.label-first class="form-label" name="SHow In Home">
+                                        </x-admin.form.label-first>
+                                        <div class="form-check">
+                                            <input type="radio" class="form-check-input" id="show_in_home_yes"
+                                                value="1" name="show_in_home"
+                                                {{ $blog->show_in_home == 1 ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="show_in_home_yes">Yes</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" class="form-check-input" id="show_in_home_no"
+                                                value="0" name="show_in_home"
+                                                {{ $blog->show_in_home == 0 ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="show_in_home_no">No</label>
+                                        </div>
                                     </div>
+
                                 </div>
 
                                 <div class="col-md-12">

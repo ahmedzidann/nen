@@ -906,4 +906,13 @@
   'Summary View' => 'Summary View',
   'Summary Create' => 'Summary Create',
   'Summary Edit' => 'Summary Edit',
+  'SHow In Home' => 'SHow In Home',
+  'Title ' => 'Title ',
+  'levels' => 'Levels',
+  'Content' => 'Content',
+  'FeatureAdvantages Create' => 'FeatureAdvantages Create',
+  'FeatureAdvantages View' => 'FeatureAdvantages View',
+  'Sub_title english' => 'Sub title english',
+  'Sub title english' => 'Sub title english',
+  'FeatureAdvantages Edit' => 'FeatureAdvantages Edit',
 );

@@ -29,6 +29,7 @@ class Project extends Model implements HasMedia
         'status',
         'pages_id',
         'sort',
+        'show_in_home',
     ];
 
     const STATUS = ['Active', 'Not Active'];

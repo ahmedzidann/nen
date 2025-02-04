@@ -45,6 +45,7 @@ class TestingRequest extends FormRequest
             "file_title.en.*" => ['nullable', 'required_with:file.*'],
             "video" => 'nullable|mimetypes:video/mp4,video/quicktime',
             'submit2' => 'nullable',
+            'show_in_home' => 'required|in:1,0',
 
         ]);
     }
@@ -70,8 +71,7 @@ class TestingRequest extends FormRequest
             "file_title.ar.*" => ['nullable', 'required_with:file.*'],
             "file_id.*" => ['nullable'],
             'submit2' => 'nullable',
-
-
+            'show_in_home' => 'required|in:1,0',
         ]);
     }
     public function validationUpdateAr()
@@ -90,6 +90,7 @@ class TestingRequest extends FormRequest
             'links_title.ar.*' => ['nullable', 'required_with:links.*'],
             "file_id.ar.*" => ['nullable'],
             'submit2' => 'nullable',
+            'show_in_home' => 'required|in:1,0',
 
         ]);
     }

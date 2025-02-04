@@ -23,5 +23,6 @@ class SidebarResource extends Model
         'type',
         'resource',
         'status',
+        'show_in_home',
     ];
 }

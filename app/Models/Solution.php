@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,44 +12,44 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
 
-class Solution extends Model implements  HasMedia
+class Solution extends Model implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable,HasTranslations, InteractsWithMedia;
+  use HasApiTokens, HasFactory, Notifiable, HasTranslations, InteractsWithMedia;
 
-   public $translatable = [
-      'title',
-      'description',
-   ];
+  public $translatable = [
+    'title',
+    'description',
+  ];
 
-   protected $fillable = [
-      'title',
-      'description',
-      'status',
-      'pages_id',
-      'tabs_id',
-      'sort',
-      'email',
-      'address',
-      'phone',
-      'phone2',
-      'fax',
-      'whatsapp'
+  protected $fillable = [
+    'title',
+    'description',
+    'status',
+    'pages_id',
+    'tabs_id',
+    'sort',
+    'email',
+    'address',
+    'phone',
+    'phone2',
+    'fax',
+    'whatsapp',
+    'show_in_home',
 
-   ];
-     const STATUS = ['Active','Not Active'];
-       public function Page()
-       {
-         return $this->belongsTo(Page::class, 'pages_id');
-       }
-       public function Tabs()
-       {
-         return $this->belongsTo(Tabs::class, 'tabs_id');
-       }
+  ];
+  const STATUS = ['Active', 'Not Active'];
+  public function Page()
+  {
+    return $this->belongsTo(Page::class, 'pages_id');
+  }
+  public function Tabs()
+  {
+    return $this->belongsTo(Tabs::class, 'tabs_id');
+  }
 
 
-       public function ChildePage()
-       {
-         return $this->belongsTo(Page::class, 'pages_id');
-       }
-
+  public function ChildePage()
+  {
+    return $this->belongsTo(Page::class, 'pages_id');
+  }
 }

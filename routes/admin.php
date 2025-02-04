@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DocValidation\DocValidationController;
 use App\Http\Controllers\Admin\Education\EducationController;
 use App\Http\Controllers\Admin\Education\EducationDescriptionController;
+use App\Http\Controllers\Admin\FeatureAdvantages\FeatureAdvantagesController;
 use App\Http\Controllers\Admin\FindUs\CategoryController;
 use App\Http\Controllers\Admin\FindUs\CertificateController;
 use App\Http\Controllers\Admin\FindUs\FindUsController;
@@ -81,6 +82,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('education-descriptions/bulk-delete', [EducationDescriptionController::class, 'bulkDelete'])->name('education-descriptions.delete_bulck');
     Route::resource('resources', ResourceController::class)->except('destroy');
     Route::post('resources/bulk-delete', [ResourceController::class, 'bulkDelete'])->name('resources.delete_bulck');
+    Route::resource('feature-advantages', FeatureAdvantagesController::class)->except('destroy');
+    Route::post('feature-advantages/bulk-delete', [FeatureAdvantagesController::class, 'bulkDelete'])->name('feature-advantages.delete_bulck');
     Route::delete('resources/delete/{resource_id}', [ResourceController::class, 'deleteResource'])->name('resources.delete.resource');
     Route::resource('sidebar-resources', SidebarResourceController::class)->except('destroy');
     Route::post('sidebar-resources/bulk-delete', [SidebarResourceController::class, 'bulkDelete'])->name('sidebar-resources.delete_bulck');

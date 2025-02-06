@@ -12,6 +12,8 @@ use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
+use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\Web\BlogDetailsController;
 use App\Http\Controllers\Web\HomeController;
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
@@ -90,12 +92,8 @@ Route::get('contact-us/{param?}', [ContactUsController::class, 'index'])->name('
 Route::resource('contacts', ContactController::class)->only('store');
 Route::get('get-team-members/{id}', [AboutController::class, 'getData'])->name('get-team-members');
 Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->name('get-companies');
-Route::get('blogs', function () {
-    return view('user.blogs.index');
-})->name('blogs.index');
-Route::get('blogs/details', function () {
-    return view('user.blogs.details');
-})->name('blogs.details');
+Route::get('blogs', BlogController::class)->name('blogs.index');
+Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.details');
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
 
 //

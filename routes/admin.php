@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AboutUs\InvestorsController;
 use App\Http\Controllers\Admin\AboutUs\OurTeamController;
 use App\Http\Controllers\Admin\AboutUs\PartnersController;
 use App\Http\Controllers\Admin\Blog\BlogController;
+use App\Http\Controllers\Admin\Blog\MediaCategoryController;
 use App\Http\Controllers\Admin\ContactUs\AuthorizedOfficeController;
 use App\Http\Controllers\Admin\ContactUs\RegionalOfficeController;
 use App\Http\Controllers\Admin\ContactUs\RegionalRepresentativeController;
@@ -73,6 +74,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('management/management-bulk-delete', [ManagementController::class, 'destroy'])->name('delete.management');
     Route::resource('blogs', BlogController::class)->except('destroy');
     Route::post('blogs/bulk-delete', [BlogController::class, 'bulkDelete'])->name('blogs.delete_bulck');
+    Route::resource('media-categories', MediaCategoryController::class)->except('destroy');
+    Route::post('media-categories/bulk-delete', [MediaCategoryController::class, 'bulkDelete'])->name('media-categories.delete_bulck');
     Route::resource('product-categories', ProductCategoryController::class)->except('destroy');
     Route::post('product-categories/bulk-delete', [ProductCategoryController::class, 'bulkDelete'])->name('product-categories.delete_bulck');
     Route::resource('products', ProductController::class)->except('destroy');

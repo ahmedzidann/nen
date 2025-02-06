@@ -915,4 +915,6 @@
   'Sub_title english' => 'Sub title english',
   'Sub title english' => 'Sub title english',
   'FeatureAdvantages Edit' => 'FeatureAdvantages Edit',
+  'Media Category View' => 'Media Category View',
+  'Media Category' => 'Media Category',
 );

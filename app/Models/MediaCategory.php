@@ -4,12 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class MediaCategory extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
-    protected $guarded = [];
+    public $translatable = [
+        'title',
+        'mini_desc',
+    ];
+    protected $fillable = [
+        'title',
+        'mini_desc',
+        'image',
+    ];
+
 
     public function blogs()
     {

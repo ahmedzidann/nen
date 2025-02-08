@@ -1301,6 +1301,11 @@ a {
     border: 2px solid #f5d9d9;
 }
 
+.rtl #footer #subscribe .input-group {
+    direction: ltr;
+}
+
+
 #footer #subscribe .input-group .form-control {
     height: 2.6rem;
 }

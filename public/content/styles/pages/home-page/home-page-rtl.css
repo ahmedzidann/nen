@@ -19,8 +19,23 @@
 
 .rtl .clipped-border-card {
     clip-path: polygon(11% 0, 100% 0, 100% 30%, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0% 18%) !important;
-} 
+}
+
 .rtl .clipped-item-card {
     clip-path: polygon(100% 0, 100% 15%, 100% 75%, 100% 100%, 0 100%, 0 0);
 }
 
+.rtl .doc-validation-card .number {
+    left: 18px;
+    right: initial;
+
+}
+
+.rtl #check-section .card>svg {
+    right: initial;
+    left: 0;
+}
+
+.rtl .profile>svg {
+    transform: scaleX(-1);
+}

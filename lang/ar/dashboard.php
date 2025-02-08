@@ -903,4 +903,7 @@
   'please enter whats number' => 'Please enter whats number',
   'Whats_number' => 'Whats number',
   'please enter instagram Link' => 'Please enter instagram Link',
+  'Summary View' => 'Summary View',
+  'Summary Create' => 'Summary Create',
+  'Summary Edit' => 'Summary Edit',
 );

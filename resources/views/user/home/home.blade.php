@@ -261,7 +261,7 @@
                                             {{ $education->title }}
                                         </h4>
                                         <p class="text-black-50 fs-5-2 mt-4 description text-align-justify">
-                                            {!! $education->description !!}
+                                            {!! Illuminate\Support\Str::limit($education->description, 300) !!}
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between gap-3 flex-wrap">

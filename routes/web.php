@@ -16,6 +16,7 @@ use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\BlogDetailsController;
 use App\Http\Controllers\Web\HomeController;
 use App\Models\Page;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 
@@ -95,5 +96,8 @@ Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->na
 Route::get('blogs', BlogController::class)->name('blogs.index');
 Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.details');
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
-
+Route::get('/migrate', function () {
+    Artisan::call('migrate');
+    return 'Migrations have been run successfully!';
+});
 //

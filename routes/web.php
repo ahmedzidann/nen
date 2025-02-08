@@ -96,8 +96,8 @@ Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->na
 Route::get('blogs', BlogController::class)->name('blogs.index');
 Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.details');
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
-Route::get('/migrate', function () {
-    Artisan::call('migrate');
+Route::get('/link', function () {
+    Artisan::call('storage:link');
     return 'Migrations have been run successfully!';
 });
 //

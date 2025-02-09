@@ -243,8 +243,7 @@ Blog Details
                             <button id="copyLinkBtn" class="copy" name="copyLink" aria-label="Copy link to clipboard"
                                 title="Copy the link to clipboard">
                                 <span class="copied">Copied</span>
-                                <span data-text-end="Copied!" data-text-initial="Copy to clipboard"
-                                    class="tooltip"></span>
+
                                 <span>
                                     <svg xml:space="preserve" style="enable-background:new 0 0 512 512"
                                         class="no-rotate" viewBox="0 0 6.35 6.35" y="0" x="0" height="20" width="20"

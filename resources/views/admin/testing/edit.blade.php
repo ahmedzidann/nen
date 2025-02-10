@@ -82,6 +82,12 @@
                                                             name="please enter Title  {{ $item->name }}">
                                                         </x-admin.form.label-end>
                                                     </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="mini_desc_{{ $item->key }}">Mini Description in
+                                                            {{ ucfirst($item->name) }}</label>
+                                                        <textarea class="form-control" id="mini_desc_{{ $item->key }}" name="mini_desc[{{ $item->key }}]"
+                                                            rows="3">{{ old('mini_desc.' . $item->key, $StaticTable->getTranslation('mini_desc', $item->key)) }}</textarea>
+                                                    </div>
                                                     {{-- ----------name first --}}
                                                     {{-- ----------Description first --}}
                                                     <div class="col-md-12 mb-4">

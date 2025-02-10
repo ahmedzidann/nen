@@ -77,12 +77,12 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-6 ">
+                                                <div class="form-group col-md-12 ">
                                                     <label for="title">Title in English</label>
                                                     <input type="text" class="form-control" id="title"
                                                         name="title[en]" value="{{ old('title[en]') }}" required>
                                                 </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-12">
                                                     <label for="mini_desc">Mini Description in English</label>
                                                     <textarea class="form-control " id="mini_desc" name="mini_desc['en']" rows="1">{{ old('mini_desc[en]') }}</textarea>
 

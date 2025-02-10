@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests\Admin\Education;
 
 use Illuminate\Contracts\Validation\Validator;
@@ -26,6 +27,7 @@ class EducationRequest extends FormRequest
         if ($this->isMethod('post')) {
             return [
                 'title.*' => ['required', 'max:255', 'min:2'],
+                'mini_desc.*' => ['nullable', 'max:1000'],
                 'description.*' => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
                 'pages_id' => ['nullable'],
@@ -43,6 +45,7 @@ class EducationRequest extends FormRequest
         } elseif ($this->isMethod('put') && $this->submit2 == 'en') {
             return [
                 'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
+                'mini_desc.*' => ['nullable', 'max:1000'],
                 'description.' . $this->submit2 => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
                 'pages_id' => ['nullable'],
@@ -65,6 +68,7 @@ class EducationRequest extends FormRequest
         } elseif ($this->isMethod('put') && $this->submit2 != 'en') {
             return [
                 'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
+                'mini_desc.' . $this->submit2 => ['nullable', 'max:1000'],
                 'description.' . $this->submit2 => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
                 'childe_pages_id' => ['nullable'],

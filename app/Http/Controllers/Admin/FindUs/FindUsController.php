@@ -34,9 +34,6 @@ class FindUsController extends Controller
                         ->addIndexColumn()
                         ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="'.$row->id.'" />';})
                         ->editColumn('id', function ()  { static $count = 0; $count++; return $count; })
-                        // ->editColumn('title', function ($row) use($language)  {
-                        //         return $row->translate('title', $language);
-                        // })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
                         ->addColumn('action', function($row){return'<div class="d-flex order-actions"> <a href="'.route('admin.find-us.edit',$row->id).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])

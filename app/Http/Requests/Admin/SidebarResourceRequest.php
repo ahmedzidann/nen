@@ -30,6 +30,7 @@ class SidebarResourceRequest extends FormRequest
             'image.*' => 'required|image',
             'url.*' => 'required|url',
             'status' => 'nullable',
+            'show_in_home' => 'required|in:1,0',
         ];
         if ($this->getMethod() == 'post') {
             return $rules;

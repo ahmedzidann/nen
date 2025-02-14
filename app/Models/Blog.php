@@ -23,6 +23,7 @@ class Blog extends Model
         'video',
         'sort',
         'is_active',
+        'show_in_home',
         'published_at',
     ];
 

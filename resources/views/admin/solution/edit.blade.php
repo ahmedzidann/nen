@@ -76,7 +76,8 @@
                                                     <div class="col-md-12 mb-4">
                                                         <x-admin.form.label-first star="*" class="form-label"
                                                             name="Title  {{ $item->name }}"></x-admin.form.label-first>
-                                                        <x-admin.form.input id="title" old="{{ 'title.' . $item->key }}"
+                                                        <x-admin.form.input id="title"
+                                                            old="{{ 'title.' . $item->key }}"
                                                             name="{{ 'title' . '[' . $item->key . ']' }}" type="text"
                                                             required="" placeholder="Title {{ $item->name }}"
                                                             class="form-control valid" :value="$StaticTable->translate('title', $item->key)">
@@ -92,7 +93,8 @@
                                                             name="Description  {{ $item->name }}">
                                                         </x-admin.form.label-first>
                                                         <x-admin.form.text old="{{ 'description.' . $item->key }}"
-                                                            name="{{ 'description' . '[' . $item->key . ']' }}" type="text"
+                                                            name="{{ 'description' . '[' . $item->key . ']' }}"
+                                                            type="text"
                                                             placeholder="Description {{ ucfirst($item->name) }}"
                                                             :value="$StaticTable->translate(
                                                                 'description',
@@ -223,6 +225,39 @@
                                                             </div>
                                                         </div>
                                                         {{-- ----------status end --}}
+                                                        <div class="col-md-6 mb-4">
+                                                            <x-admin.form.label-first class="form-label"
+                                                                name="SHow In Home">
+                                                            </x-admin.form.label-first>
+                                                            <div class="col-sm-9">
+                                                                <div class="d-flex align-items-center gap-3">
+                                                                    <div class="form-check">
+                                                                        <div class="form-check">
+                                                                            <x-admin.form.radio :checked="$StaticTable->show_in_home ==
+                                                                            true
+                                                                                ? 'checked'
+                                                                                : ''"
+                                                                                name="show_in_home" value="1"
+                                                                                :model="$StaticTable">
+                                                                            </x-admin.form.radio>
+                                                                            <label class="form-check-label"
+                                                                                for="bsValidation6">yes</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <x-admin.form.radio :checked="$StaticTable->show_in_home ==
+                                                                            false
+                                                                                ? 'checked'
+                                                                                : ''"
+                                                                                name="show_in_home" value="0"
+                                                                                :model="$StaticTable">
+                                                                            </x-admin.form.radio>
+                                                                            <label class="form-check-label"
+                                                                                for="bsValidation6">no</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                     <input type="hidden" name="submit2" value="{{ $item->key }}">
                                                     <div class="col-md-12">

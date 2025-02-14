@@ -497,6 +497,10 @@ h4.category {
   }
 }
 
+.rtl .swiper-btn {
+  transform: scaleX(-1);
+}
+
 .blogs .categorates button.active {
   background-color: #990000;
   color: white;
@@ -566,6 +570,9 @@ h4.category {
   justify-content: center;
 }
 
+.rtl .pagination-btn svg {
+  transform: scaleX(-1);
+}
 
 .pagination-btn.active {
   &:hover {

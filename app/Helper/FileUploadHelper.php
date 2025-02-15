@@ -65,7 +65,7 @@ class FileUploadHelper
      */
     public static function uploadImage(UploadedFile $file, string $path, string $disk = 'public')
     {
-        if (!in_array($file->getClientOriginalExtension(), ['jpg', 'jpeg', 'png', 'gif'])) {
+        if (!in_array($file->getClientOriginalExtension(), ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
             throw new \InvalidArgumentException('Invalid image file type.');
         }
         return self::uploadFile($file, $path, $disk);

@@ -109,7 +109,7 @@
                 class="booking-content d-flex py-3 px-4 w-100 h-100 text-white justify-content-lg-end justify-content-sm-center flex-column">
                 <h2 class="fs-3 z-2">Explore more to get your comfort zone</h2>
                 <p class="z-2 text-white mt-3 mb-4">Book your perfect stay with us.</p>
-                <button class=" booking  p-2 rounded z-2" name="bookingButton" aria-label="Book now">Booking Now
+                <button class=" booking  p-2 rounded z-2" name="bookingButton" aria-label="Book now" onclick="window.location.href='https://your-booking-link.com';">Booking Now
                 </button>
 
             </div>

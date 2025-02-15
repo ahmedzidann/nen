@@ -917,4 +917,6 @@
   'FeatureAdvantages Edit' => 'FeatureAdvantages Edit',
   'Media Category View' => 'Media Category View',
   'Media Category' => 'Media Category',
+  'Advertisement' => 'Advertisement',
+  'Advertisements' => 'Advertisements',
 );

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('titleadmin')
-    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Blog'))) }}
+    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Advertisement'))) }}
 @endsection
 @section('cssadmin')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
@@ -12,8 +12,8 @@
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div class="breadcrumb-title pe-3">
-                    <a href="{{ route('admin.blogs.index') }}">
-                        blogs
+                    <a href="{{ route('admin.advertisements.index') }}">
+                        advertisements
                     </a>
                 </div>
                 <div class="ps-3">
@@ -22,7 +22,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i
                                         class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ str_replace('-', ' ', ucfirst('blogs')) }}
+                                {{ str_replace('-', ' ', ucfirst('advertisements')) }}
                             </li>
                         </ol>
                     </nav>
@@ -49,7 +49,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <form id="myForm" action="{{ route('admin.blogs.store') }}" method="post"
+                            <form id="myForm" action="{{ route('admin.advertisements.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -59,24 +59,6 @@
                                         <div class="card-body p-4">
                                             {{-- --------start --}}
                                             <div class="card-body p-4 row">
-                                                <div class="col-md-12">
-                                                    <label
-                                                        class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Categories')) }}
-                                                        <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
-                                                    <select class="form-select multiple-select-field w-100"
-                                                        data-placeholder="Choose Categories" name="categories_id[]"
-                                                        multiple>
-
-                                                        <option selected="" value="" disabled selected>
-                                                            {{ ucfirst(TranslationHelper::translate('Select Categories')) }}
-                                                        </option>
-                                                        @foreach ($categories as $item)
-                                                            }
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->title }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
                                                 <div class="form-group col-md-12 ">
                                                     <label for="title">Title in English</label>
                                                     <input type="text" class="form-control" id="title"
@@ -87,32 +69,16 @@
                                                     <textarea class="form-control " id="mini_desc" name="mini_desc[en]" rows="1">{{ old('mini_desc[en]') }}</textarea>
 
                                                 </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="content">Content in English</label>
-                                                    <textarea class="form-control " id="content" name="content[en]">{{ old('content[en]') }}</textarea>
-
+                                                <div class="form-group col-md-12 ">
+                                                    <label for="title">Link</label>
+                                                    <input type="url" class="form-control" id="link"
+                                                        name="link" value="">
                                                 </div>
 
                                                 <div class="form-group col-md-12">
-                                                    <label for="banner">Banner Image</label>
-                                                    <input type="file" class="form-control-file dropify" id="banner"
-                                                        name="banner">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label for="video">video</label>
-                                                    <input type="file" class="form-control-file dropify" id="video"
-                                                        name="video" accept="*">
-                                                </div>
-                                                <div class="form-group col-md-6 ">
-                                                    <label for="sort">Sort:</label>
-                                                    <input type="number" class="form-control" id="sort" name="sort"
-                                                        value="{{ old('sort') }}" required>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label for="published_at">Publish Date</label>
-                                                    <input type="datetime-local" class="form-control" id="published_at"
-                                                        name="published_at" value="{{ old('published_at') }}">
+                                                    <label for="image"> Image</label>
+                                                    <input type="file" class="form-control-file dropify" id="image"
+                                                        name="image">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <div class="form-check">
@@ -121,27 +87,12 @@
                                                         <label class="form-check-label" for="activeOption">Active</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input type="radio" class="form-check-input"
-                                                            id="inactiveOption" value="0" name="is_active">
+                                                        <input type="radio" class="form-check-input" id="inactiveOption"
+                                                            value="0" name="is_active">
                                                         <label class="form-check-label"
                                                             for="inactiveOption">Inactive</label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <x-admin.form.label-first class="form-label" name="SHow In Home">
-                                                    </x-admin.form.label-first>
-                                                    <div class="form-check">
-                                                        <input type="radio" class="form-check-input"
-                                                            id="show_in_home_yes" value="1" name="show_in_home">
-                                                        <label class="form-check-label" for="show_in_home_yes">Yes</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input type="radio" class="form-check-input"
-                                                            id="show_in_home_no" value="0" name="show_in_home" checked>
-                                                        <label class="form-check-label" for="show_in_home_no">No</label>
-                                                    </div>
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>

@@ -83,6 +83,8 @@
     }
   }
 
+
+
   h5 {
     margin-bottom: 20px;
     font-size: 22px;
@@ -101,6 +103,11 @@
   padding: 5px;
   border: 1px solid #990000;
   border-radius: 50%;
+}
+
+.rtl .close-popup {
+  left: 10px;
+  right: initial !important;
 }
 
 @media (max-width:1024px) {
@@ -187,6 +194,16 @@
     border-radius: 15px;
   }
 
+
+}
+
+.rtl .article-title::before {
+  left: initial;
+  right: 0;
+}
+
+.rtl .under-title-vector {
+  text-align: justify;
 }
 
 .article-title h1 {
@@ -438,6 +455,10 @@ video {
 
 .bread-crumb svg {
   width: 15px;
+}
+
+.rtl .bread-crumb svg {
+  transform: scaleX(-1);
 }
 
 .bread-crumb span a {

@@ -37,6 +37,7 @@ class TechnologyRequest extends FormRequest
             'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],
             'status' => ['nullable'],
+            'show_in_home' => 'required|in:0,1',
             "item"  =>['required'],
             "subcategory"  =>['required'],
             // "links" =>['nullable','array'],
@@ -59,6 +60,7 @@ class TechnologyRequest extends FormRequest
             'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],
             'status' => ['nullable'],
+            'show_in_home' => 'required|in:0,1',
             "item"  =>['required'],
             "subcategory"  =>['required'],
             // "links" =>['nullable','array'],
@@ -87,6 +89,7 @@ class TechnologyRequest extends FormRequest
             'status' => ['nullable'],
             "item"  =>['required'],
             "subcategory"  =>['required'],
+            'show_in_home' => 'required|in:0,1',
         ]);
     }
 
@@ -103,6 +106,7 @@ class TechnologyRequest extends FormRequest
             'status' => ['nullable'],
             "item"  =>['required'],
             "subcategory"  =>['required'],
+            'show_in_home' => 'required|in:0,1',
         ]);
     }
 
@@ -118,6 +122,7 @@ class TechnologyRequest extends FormRequest
             'status' => ['nullable'],
             "item"  =>['required'],
             "subcategory"  =>['required'],
+            'show_in_home' => 'required|in:0,1',
 
         ]);
     }
@@ -135,6 +140,7 @@ class TechnologyRequest extends FormRequest
             'status' => ['nullable'],
             "item"  =>['required'],
             "subcategory"  =>['required'],
+            'show_in_home' => 'required|in:0,1',
         ]);
     }
 }

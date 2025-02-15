@@ -406,7 +406,11 @@
                   <div class="menu-title">Blogs</div>
               </a>
               <ul>
+                  <li> <a href="{{ route('admin.media-categories.index') }}"><i class='bx bx-radio-circle'></i>Blogs Categories</a>
+                  </li>
                   <li> <a href="{{ route('admin.blogs.index') }}"><i class='bx bx-radio-circle'></i>Blogs</a>
+                  </li>
+                  <li> <a href="{{ route('admin.advertisements.index') }}"><i class='bx bx-radio-circle'></i>Advertisements</a>
                   </li>
               </ul>
           </li>

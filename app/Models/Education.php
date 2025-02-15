@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Models\Page;
@@ -16,11 +17,13 @@ class Education extends Model implements HasMedia
 
     public $translatable = [
         'title',
+        'mini_desc',
         'description',
     ];
 
     protected $fillable = [
         'title',
+        'mini_desc',
         'description',
         'status',
         'pages_id',

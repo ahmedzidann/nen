@@ -348,41 +348,43 @@
             </div>
         </div>
         <!-- End Article -->
-
-        <!-- Start video -->
-        <div class="video ">
-            <div class="explan p-2 w-100">
-                <h2 class="fs-2 ">Explanatory Video</h2>
-                <div class="under-title-vector">
-                    <img src="https://dev.nendemo2024.xyz/content/images/vector-title.svg" loading="lazy" alt="vector">
+        @if ($blog->video)
+            <!-- Start video -->
+            <div class="video ">
+                <div class="explan p-2 w-100">
+                    <h2 class="fs-2 ">Explanatory Video</h2>
+                    <div class="under-title-vector">
+                        <img src="https://dev.nendemo2024.xyz/content/images/vector-title.svg" loading="lazy"
+                            alt="vector">
+                    </div>
                 </div>
-            </div>
-            <div class="video-container">
-                <video id="myVideo">
-                    <source src="{{ asset('storage/') . '/' . $blog->video }}" type="video/mp4">
-                </video>
-                <!-- Overlay content -->
-                <div class="overlay" id="overlay">
-                    <button class="resume" id="playPauseButton" name="playPause" aria-label="Play or Pause"
-                        title="Click to play or pause the video"> <svg width="100px" fill="#ffffff" height="200px"
-                            version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 52 52" xml:space="preserve">
-                            <g stroke-width="0"></g>
-                            <g stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g>
+                <div class="video-container">
+                    <video id="myVideo">
+                        <source src="{{ asset('storage/') . '/' . $blog->video }}" type="video/mp4">
+                    </video>
+                    <!-- Overlay content -->
+                    <div class="overlay" id="overlay">
+                        <button class="resume" id="playPauseButton" name="playPause" aria-label="Play or Pause"
+                            title="Click to play or pause the video"> <svg width="100px" fill="#ffffff" height="200px"
+                                version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 52 52" xml:space="preserve">
+                                <g stroke-width="0"></g>
+                                <g stroke-linecap="round" stroke-linejoin="round"></g>
                                 <g>
-                                    <path
-                                        d="M26,0C11.663,0,0,11.663,0,26s11.663,26,26,26s26-11.663,26-26S40.337,0,26,0z M26,50C12.767,50,2,39.233,2,26 S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z">
-                                    </path>
-                                    <polygon points="32,36.783 32,15.438 14.043,25.806 "></polygon>
+                                    <g>
+                                        <path
+                                            d="M26,0C11.663,0,0,11.663,0,26s11.663,26,26,26s26-11.663,26-26S40.337,0,26,0z M26,50C12.767,50,2,39.233,2,26 S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z">
+                                        </path>
+                                        <polygon points="32,36.783 32,15.438 14.043,25.806 "></polygon>
+                                    </g>
                                 </g>
-                            </g>
-                        </svg>
-                    </button>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- End video -->
+            <!-- End video -->
+        @endif
         <!-- start Latest  -->
         <div class="latest">
             <div>

@@ -99,6 +99,7 @@ class TechnologyResourceController extends Controller
     }
     public function update(TechnologyRequest $request, int $identity)
     {
+        
         $identity = TechnologyModel::find($identity);
        if($request->submit2=='en'){
             if($request->item == 'section-two'){

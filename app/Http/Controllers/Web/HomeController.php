@@ -107,7 +107,7 @@ class HomeController extends Controller
     */
    public function getTechnologies()
    {
-      return Technology::where('status', 'Active')->latest()->get();
+      return Technology::query()->where('show_in_home', true)->where('status', 'Active')->latest()->limit(6)->get();
    }
 
    /**

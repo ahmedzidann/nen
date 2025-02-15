@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin\Testing;
 
 use App\Actions\Testing\StoreTestingAction;
@@ -48,8 +49,14 @@ class TestingController extends Controller
             $item = $request->item ?? "";
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
-                ->editColumn('id', function () {static $count = 0; $count++;return $count;})
+                ->addColumn('checkbox', function ($row) {
+                    return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';
+                })
+                ->editColumn('id', function () {
+                    static $count = 0;
+                    $count++;
+                    return $count;
+                })
                 ->editColumn('title', function ($row) use ($language) {
                     return $row->translate('title', $language);
                 })
@@ -59,13 +66,16 @@ class TestingController extends Controller
                         return $row->Page->translate('name', $language);
                     }
                 })
-                ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
+                ->editColumn('created_at', function ($row) {
+                    return Carbon::parse($row->created_at)->format('Y-m-d');
+                })
 
-                ->addColumn('action', function ($row) use ($category, $subcategory, $item) {return '<div class="d-flex order-actions"> <a href="' . route('admin.testing.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a></div> ';})
+                ->addColumn('action', function ($row) use ($category, $subcategory, $item) {
+                    return '<div class="d-flex order-actions"> <a href="' . route('admin.testing.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a></div> ';
+                })
                 ->rawColumns(['checkbox', 'action'])
                 ->make(true);
         }
-
     }
     public function create(Request $request): View
     {
@@ -117,11 +127,12 @@ class TestingController extends Controller
                 'redirect_url' => route('admin.testing.index', ['category=' . $request->category, 'subcategory=' . $request->subcategory]),
             ]);
         }
-
     }
     public function destroy(Request $request): RedirectResponse
     {
-        foreach (Testing::find($request->id) as $static_table) {$static_table->delete();}
+        foreach (Testing::find($request->id) as $static_table) {
+            $static_table->delete();
+        }
         return redirect()->back()->with('delete', 'Delete Testing');
     }
 }

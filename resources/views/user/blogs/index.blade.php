@@ -102,35 +102,43 @@
 
     <!-- Start Ads -->
     <div class="ads m-4 d-grid gap-3">
-        <div class="booking text-black position-relative rounded overflow-hidden">
-            <img src="https://wakeb-tech-site.vercel.app/images/useCases/cases/wind.webp" alt="Destination"
-                class="position-absolute w-100 top-0 start-0 object-fit-cover h-100" />
-            <div id="booking"
-                class="booking-content d-flex py-3 px-4 w-100 h-100 text-white justify-content-lg-end justify-content-sm-center flex-column">
-                <h2 class="fs-3 z-2">Explore more to get your comfort zone</h2>
-                <p class="z-2 text-white mt-3 mb-4">Book your perfect stay with us.</p>
-                <button class=" booking  p-2 rounded z-2" name="bookingButton" aria-label="Book now" onclick="window.location.href='https://your-booking-link.com';">Booking Now
-                </button>
+        @if (isset($advertisements[0]))
+            <div class="booking text-black position-relative rounded overflow-hidden">
+                <img src="{{ asset('storage') . '/' . $advertisements[0]->image }}" alt="Destination"
+                    class="position-absolute w-100 top-0 start-0 object-fit-cover h-100" />
+                <div id="booking"
+                    class="booking-content d-flex py-3 px-4 w-100 h-100 text-white justify-content-lg-end justify-content-sm-center flex-column">
+                    <h2 class="fs-3 z-2"> {{ $advertisements[0]->title }} </h2>
+                    <p class="z-2 text-white mt-3 mb-4"> {{ $advertisements[0]->mini_desc }} </p>
+                    <button class=" booking  p-2 rounded z-2" name="bookingButton" aria-label="Book now"
+                        onclick="window.open('{{ $advertisements[0]->link }}', '_blank');">Booking Now
+                    </button>
 
+                </div>
             </div>
-        </div>
+        @endif
+        @if (isset($advertisements[1]))
+            <div class="article
+                        position-relative rounded">
+                <img src="{{ asset('storage') . '/' . $advertisements[1]->image }}" alt="Clothes"
+                    class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover rounded" />
+                <div id="article"
+                    class="article-content d-flex py-3 px-4 w-100 h-100 text-white justify-content-lg-end justify-content-sm-center flex-column">
+                    <p class="fs-4 z-2"> {{ $advertisements[1]->title }}</p>
+                    <h3 class="fs-1 z-2">{{ $advertisements[1]->mini_desc }} </h3>
+                </div>
+            </div>
+        @endif
+        @if (isset($advertisements[2]))
+            <div id="beyond" class="beyond position-relative">
+                <img src="{{ asset('storage') . '/' . $advertisements[2]->image }}" alt="Scenic Image"
+                    class="w-100 rounded" />
+                <h2 class="position-absolute top-50  start-50 translate-middle text-center text-white fs-2">
+                    {{ $advertisements[2]->title }}
+                </h2>
+            </div>
+        @endif
 
-        <div class="article position-relative rounded">
-            <img src="https://cdn3.pixelcut.app/7/20/uncrop_hero_bdf08a8ca6.jpg" alt="Clothes"
-                class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover rounded" />
-            <div id="article"
-                class="article-content d-flex py-3 px-4 w-100 h-100 text-white justify-content-lg-end justify-content-sm-center flex-column">
-                <p class="fs-4 z-2">Article Available</p>
-                <h3 class="fs-1 z-2">78</h3>
-            </div>
-        </div>
-        <div id="beyond" class="beyond position-relative">
-            <img src="https://img-cdn.pixlr.com/image-generator/history/65661ff66061274d12af3e59/1b1b22a1-56ad-4002-9705-b95bf8c5bc4e/medium.webp"
-                alt="Scenic Image" class="w-100 rounded" />
-            <h2 class="position-absolute top-50  start-50 translate-middle text-center text-white fs-2">
-                Beyond accommodation, creating memories of a lifetime
-            </h2>
-        </div>
     </div>
 
     <!-- toTop button -->

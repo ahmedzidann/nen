@@ -70,11 +70,11 @@
 
             <div class="investors_img mt-md-5 mt-3 row align-items-center justify-content-between">
                 <!-- <img src="{{ asset('content/images/investors-statistics.jpg') }}" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"> -->
-                    <div id="chartdiv" class="col-lg-7 col-12" style=" height:280px;"></div>
-                    <div id="chartdiv2"class="col-lg-5 col-12" style=" height:300px; max-width:100%;direction:ltr"></div>
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"> -->
+                <div id="chartdiv" class="col-lg-7 col-12" style=" height:280px;"></div>
+                <div id="chartdiv2"class="col-lg-5 col-12" style=" height:300px; max-width:100%;direction:ltr"></div>
 
-                </div>
+            </div>
         @endif
         <!-- Start Partner Section -->
         <div id="partner-section" class="tabs-items mt-md-5 mt-3">
@@ -236,10 +236,10 @@
         <!-- End Partner Section -->
     @endsection
     @section('websiteScript')
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 document.querySelectorAll('.nav-link').forEach(tab => {
@@ -267,278 +267,121 @@
             });
             am5.ready(function() {
 
-// Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv");
+                // Create root element
+                // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+                var root = am5.Root.new("chartdiv");
 
 
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
+                // Set themes
+                // https://www.amcharts.com/docs/v5/concepts/themes/
+                root.setThemes([
+                    am5themes_Animated.new(root)
+                ]);
 
 
-// Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
-var chart = root.container.children.push(am5percent.PieChart.new(root, {
-  layout: root.verticalLayout
-}));
+                // Create chart
+                // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+                var chart = root.container.children.push(am5percent.PieChart.new(root, {
+                    layout: root.verticalLayout
+                }));
 
 
-// Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
-var series = chart.series.push(am5percent.PieSeries.new(root, {
-  valueField: "value",
-  categoryField: "category"
-}));
+                // Create series
+                // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+                var series = chart.series.push(am5percent.PieSeries.new(root, {
+                    valueField: "value",
+                    categoryField: "category"
+                }));
 
 
-// Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
-series.data.setAll([
-  { value: 10, category: "Education" },
-  { value: 9, category: "Technology" },
-  { value: 6, category: "Business" },
-]);
+                // Set data
+                // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+                let revenueData = @json(
+                    $revenueCategories->map(function ($item) {
+                        return [
+                            'value' => $item['percentage'],
+                            'category' => $item['title'],
+                        ];
+                    }));
+                console.log(revenueData);
+
+                series.data.setAll(revenueData);
 
 
-// Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
-series.appear(1000, 100);
+                // Play initial series animation
+                // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+                series.appear(1000, 100);
 
-}); // end am5.ready()
-am5.ready(function() {
+            }); // end am5.ready()
 
-
-// Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv2");
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
+            let statisticsData = @json($statistics);
+            let chartData = statisticsData.map(item => ({
+                date: new Date(item.year, 0, 1).getTime(), // Convert year to a date format
+                capital: item.capital_value,
+                revenue: item.revenue_value,
+                profit: item.profit_value
+            }));
 
 
-// Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
-var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
-  panY: true,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  pinchZoomX: true,
-  paddingLeft: 0
-}));
+            am5.ready(function() {
+                var root = am5.Root.new("chartdiv2");
+                root.setThemes([am5themes_Animated.new(root)]);
 
+                var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                    panX: true,
+                    panY: true,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    pinchZoomX: true
+                }));
 
-// Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-cursor.lineX.set("forceHidden", true);
-cursor.lineY.set("forceHidden", true);
+                var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+                    baseInterval: {
+                        timeUnit: "year",
+                        count: 1
+                    },
+                    renderer: am5xy.AxisRendererX.new(root, {
+                        minorGridEnabled: true,
+                        minGridDistance: 90
+                    })
+                }));
 
-// Generate random data
-var date = new Date();
-date.setHours(0, 0, 0, 0);
+                var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                    renderer: am5xy.AxisRendererY.new(root, {})
+                }));
 
-var value = 20;
-function generateData() {
-  value = am5.math.round(Math.random() * 10 - 4.8 + value, 1);
-  if (value < 0) {
-    value = Math.random() * 10;
-  }
+                function createSeries(name, field, color) {
+                    var series = chart.series.push(am5xy.LineSeries.new(root, {
+                        name: name,
+                        xAxis: xAxis,
+                        yAxis: yAxis,
+                        valueYField: field,
+                        valueXField: "date",
+                        tooltip: am5.Tooltip.new(root, {
+                            labelText: "{valueY}"
+                        })
+                    }));
 
-  if (value > 100) {
-    value = 100 - Math.random() * 10;
-  }
-  am5.time.add(date, "day", 1);
-  return {
-    date: date.getTime(),
-    value: value
-  };
-}
+                    series.strokes.template.setAll({
+                        stroke: am5.color(color),
+                        strokeWidth: 2
+                    });
 
-function generateDatas(count) {
-  var data = [];
-  for (var i = 0; i < count; ++i) {
-    data.push(generateData());
-  }
-  return data;
-}
+                    series.appear(1000);
+                    return series;
+                }
 
+                var seriesCapital = createSeries("Capital", "capital", 0x1f77b4); // Blue
+                var seriesRevenue = createSeries("Revenue", "revenue", 0xff7f0e); // Orange
+                var seriesProfit = createSeries("Profit", "profit", 0x2ca02c); // Green
 
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  baseInterval: {
-    timeUnit: "day",
-    count: 1
-  },
-  renderer: am5xy.AxisRendererX.new(root, {
-    minorGridEnabled: true,
-    minGridDistance: 90
-  })
-}));
+                seriesCapital.data.setAll(chartData);
+                seriesRevenue.data.setAll(chartData);
+                seriesProfit.data.setAll(chartData);
 
-var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererY.new(root, {})
-}));
-
-
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var series = chart.series.push(am5xy.LineSeries.new(root, {
-  name: "Series",
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "value",
-  valueXField: "date",
-  tooltip: am5.Tooltip.new(root, {
-    labelText: "{valueY}"
-  })
-}));
-
-series.fills.template.setAll({
-  fillOpacity: 0.2,
-  visible: true
-});
-
-
-// Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
-}));
-
-// DRAGGABLE RANGE
-// add series range
-var rangeDataItem = yAxis.makeDataItem({});
-yAxis.createAxisRange(rangeDataItem);
-
-// create container for all elements, you can put anything you want top it
-var container = am5.Container.new(root, {
-  centerY: am5.p50,
-  draggable: true,
-  layout: root.horizontalLayout
-})
-
-// restrict from being dragged vertically
-container.adapters.add("x", function() {
-  return 0;
-});
-
-// restrict from being dragged outside of plot
-container.adapters.add("y", function(y) {
-  return Math.max(0, Math.min(chart.plotContainer.height(), y));
-});
-
-// change range when y changes
-container.events.on("dragged", function() {
-  updateLabel();
-});
-
-// this is needed for the bullets to be interactive, above the plot
-yAxis.topGridContainer.children.push(container);
-
-// create bullet and set container as a bullets sprite
-rangeDataItem.set("bullet", am5xy.AxisBullet.new(root, {
-  sprite: container
-}));
-
-// decorate grid of a range
-rangeDataItem.get("grid").setAll({
-  strokeOpacity: 1,
-  visible: true,
-  stroke: am5.color(0x000000),
-  strokeDasharray: [2, 2]
-})
-
-// create background for the container
-var background = am5.RoundedRectangle.new(root, {
-  fill: am5.color(0xffffff),
-  fillOpacity: 1,
-  strokeOpacity: 0.5,
-  cornerRadiusTL: 0,
-  cornerRadiusBL: 0,
-  cursorOverStyle: "ns-resize",
-  stroke: am5.color(0xff0000)
-})
-
-container.set("background", background);
-
-// add label to container, this one will show value and text
-var label = container.children.push(am5.Label.new(root, {
-  paddingTop: 5,
-  paddingBottom: 5
-}))
-
-// add x button 
-var xButton = container.children.push(am5.Button.new(root, {
-  cursorOverStyle: "pointer",
-  paddingTop: 5,
-  paddingBottom: 5,
-  paddingLeft: 2,
-  paddingRight: 8
-}))
-
-// add label to the button (you can add icon instead of a label)
-xButton.set("label", am5.Label.new(root, {
-  text: "X",
-  paddingBottom: 0,
-  paddingTop: 0,
-  paddingRight: 0,
-  paddingLeft: 0,
-  fill: am5.color(0xff0000)
-}))
-
-// modify background of x button
-xButton.get("background").setAll({
-  strokeOpacity: 0,
-  fillOpacity: 0
-})
-
-// dispose item when x button is clicked
-xButton.events.on("click", function() {
-  yAxis.disposeDataItem(rangeDataItem);
-})
-
-function updateLabel(value) {
-  var y = container.y();
-  var position = yAxis.toAxisPosition(y / chart.plotContainer.height());
-
-  if(value == null){
-    value = yAxis.positionToValue(position);
-  }
-
-  label.set("text", root.numberFormatter.format(value, "#.00") + ">Stop loss");
-
-  rangeDataItem.set("value", value);
-}
-
-// when data is validated, set range value to the middle
-series.events.on("datavalidated", () => {
-  var max = yAxis.getPrivate("max", 1);
-  var min = yAxis.getPrivate("min", 0);
-
-  var value = min + (max - min) / 2;
-  rangeDataItem.set("value", value);
-  updateLabel(value);
-})
-
-// Set data
-var data = generateDatas(300);
-series.data.setAll(data);
-
-// Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
-series.appear(1000);
-chart.appear(1000, 100);
-
-
-}); // end am5.ready()
-</script>
+                chart.appear(1000, 100);
+            });
+        </script>
 
         </script>
     @endsection

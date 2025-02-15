@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Http\Controllers\User\AboutUs;
 
 use App\Enums\InvestorType;
 use App\Http\Controllers\Controller;
+use App\Models\InvestorStatistics;
 use App\Models\Management;
 use App\Models\OurTeam;
 use App\Models\Page;
+use App\Models\RevenueCategory;
 use App\Models\Slider;
 use App\Models\StaticTable;
 use App\Models\Statistic;
@@ -26,22 +29,22 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function investors(): View
     {
         $investor = Page::where('slug', 'investors')->first();
         $slider = Slider::where('page_id', $investor->id)->first();
+        $statistics = InvestorStatistics::all();
+        $revenueCategories = RevenueCategory::all();
 
         if ($investor) {
             $items = StaticTable::where("pages_id", $investor->id)->active()->get();
             $subInvestors = StaticTable::where("pages_id", $investor->id)->active()->with('investorAttributes.country')->where('category', InvestorType::SUBDIDIARIES)->get();
-            return view('user.about.investors', ['items' => $items, 'rows' => $subInvestors, 'slider' => $slider]);
+            return view('user.about.investors', ['items' => $items, 'rows' => $subInvestors, 'slider' => $slider, 'statistics' => $statistics, 'revenueCategories' => $revenueCategories]);
         } else {
             abort(400, "error");
         }
-
     }
 
     public function careers(): View
@@ -56,7 +59,6 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function awards(): View
@@ -72,7 +74,6 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function clients(): View
@@ -88,25 +89,24 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function our_team(): View
     {
         $achievement = Page::where('slug', 'our-team')->first();
         $slider = Slider::where('page_id', $achievement->id)->first();
-        $managements = Management::orderBy('sort','ASC')->get();
+        $managements = Management::orderBy('sort', 'ASC')->get();
 
         if ($achievement) {
             return view('user.about.our-team', [
-                'items' => OurTeam::where("pages_id", $achievement->id)->active()->orderBy('sort','ASC')->get(),
-                'members' => OurTeam::where("pages_id", $achievement->id)->active()->where('management_id', $managements->first()->id)->orderBy('sort','ASC')->get(),
-                'slider' => $slider, 'managements' => $managements,
+                'items' => OurTeam::where("pages_id", $achievement->id)->active()->orderBy('sort', 'ASC')->get(),
+                'members' => OurTeam::where("pages_id", $achievement->id)->active()->where('management_id', $managements->first()->id)->orderBy('sort', 'ASC')->get(),
+                'slider' => $slider,
+                'managements' => $managements,
             ]);
         } else {
             abort(400, "error");
         }
-
     }
 
     public function achievements(): View
@@ -123,7 +123,6 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function certificates(): View
@@ -139,7 +138,6 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function partners(): View
@@ -156,7 +154,6 @@ class AboutController extends Controller
         } else {
             abort(400, "error");
         }
-
     }
 
     public function loadMorePartners(Request $request, $subPartnerId)
@@ -171,7 +168,7 @@ class AboutController extends Controller
 
     public function getData($id)
     {
-        $items = OurTeam::where('management_id', $id)->active()->orderBy('sort','ASC')->get();
+        $items = OurTeam::where('management_id', $id)->active()->orderBy('sort', 'ASC')->get();
         $data = view('user.about.team.content', ['items' => $items, 'management' => Management::find($id)])->render();
         return response()->json(['data' => $data]);
     }

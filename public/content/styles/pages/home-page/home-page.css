@@ -8,6 +8,10 @@
     text-align: justify !important;
 }
 
+.z-2 {
+    z-index: 2;
+}
+
 .clipped-border-card {
     padding: 1.5px;
     border-radius: 20px;

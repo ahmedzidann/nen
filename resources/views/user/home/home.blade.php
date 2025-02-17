@@ -101,7 +101,7 @@
                                 leaders
                             </p>
                             <div class="mt-4">
-                                <button class="btn btn-light border justify-content-sm-start justify-content-center">
+                                <button class="btn btn-light border justify-content-sm-start justify-content-center" onclick="window.open('https://www.google.com', '_blank')">
                                     Learn More
                                 </button>
                             </div>
@@ -223,7 +223,7 @@
     </div>
 
     <div class="d-flex justify-content-center mt-md-4 mt-3">
-        <button class="btn btn-solid-main">
+        <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
             <span>
                 Learn More
             </span>
@@ -264,7 +264,7 @@
                                                 {{ Illuminate\Support\Str::limit($education->mini_desc ?? '', 300) }}
                                             </p>
                                         </div>
-                                        <div class="d-flex justify-content-between gap-3 flex-wrap">
+                                        <div class="d-flex justify-content-between gap-3 flex-wrap z-2">
                                             <div
                                                 class="box-icon d-flex justify-content-center align-items-center arrow-bg mb-0">
                                                 <!-- <img src="./images/home/cases/arrow.svg" alt="arrow"> -->
@@ -275,7 +275,7 @@
                                                         fill="#fff" />
                                                 </svg>
                                             </div>
-                                            <a href="#"
+                                            <a href="https://www.google.com/?hl=ar" target="_blank"
                                                 class="text-main-color d-flex gap-3 align-items-center text-uppercase fs-8 apply-now-btn">
                                                 See More
                                                 <span>
@@ -296,7 +296,7 @@
                 </div>
 
                 {{-- <div class="d-flex justify-content-center mt-md-4 mt-3">
-                    <button class="btn btn-solid-main">
+                    <button class="btn btn-solid-main"onclick="window.open('https://www.google.com', '_blank')">
                         <span>
                             See More
                         </span>
@@ -350,7 +350,7 @@
                             </div>
                             <div class="d-flex justify-content-md-start justify-content-center mt-4">
                                 <span class="button-border w-content">
-                                    <a class="btn btn-solid-main navbar-button">
+                                    <a class="btn btn-solid-main navbar-button" href="https://www.google.com/?hl=ar" target="_blank">
                                         Learn More
                                     </a>
                                 </span>
@@ -371,7 +371,7 @@
                                 </div>
                                 <div class="d-flex justify-content-md-start justify-content-center mt-4">
                                     <span class="button-border w-content">
-                                        <a class="btn btn-solid-main navbar-button">
+                                        <a class="btn btn-solid-main navbar-button" href="https://www.google.com/?hl=ar" target="_blank">
                                             Learn More
                                         </a>
                                     </span>
@@ -393,7 +393,8 @@
                 @endif
 
                 <div class="d-flex justify-content-center mt-md-5 mt-3">
-                    <button class="btn btn-solid-main">
+                    <button class="btn btn-solid-main"
+                    onclick="window.open('https://www.google.com', '_blank')">
                         <span>
                             See More
                         </span>
@@ -449,12 +450,10 @@
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-center mt-md-5 mt-3">
-                    <button class="btn btn-solid-main">
-                        <span>
-                            See More
-                        </span>
+                <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
+                    <span>See More</span>
                         <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
-                    </button>
+                </button>
                 </div>
             </div>
         </section>
@@ -537,7 +536,7 @@
                             </svg> </button>
                 </div>
                 <div class="d-flex justify-content-center mt-md-4 mt-3">
-                    <button class="btn btn-solid-main">
+                    <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
                         <span>
                             See More
                         </span>
@@ -657,7 +656,7 @@
 
         <div class="container mx-auto">
             <div class="d-flex justify-content-center mt-md-4 mt-3">
-                <button class="btn btn-solid-main">
+                <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
                     <span>
                         See More
                     </span>

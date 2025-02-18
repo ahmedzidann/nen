@@ -100,4 +100,8 @@ Route::get('/link', function () {
     Artisan::call('storage:link');
     return 'Migrations have been run successfully!';
 });
+Route::get('/migrate', function () {
+    Artisan::call('migrate');
+    return 'Migrations have been run successfully!';
+});
 //

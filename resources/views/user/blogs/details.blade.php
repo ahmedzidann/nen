@@ -386,7 +386,8 @@
                 <!-- End video -->
             @endif
             <!-- start Latest  -->
-            <div class="latest">
+            {{-- @if ()
+                 <div class="latest">
                 <div>
                     <h2 class="fs-2 fw-bold">Latest Articles</h2>
                     <div class="under-title-vector border-1">
@@ -398,6 +399,7 @@
                 <div class="row" id="latestArticles">
                 </div>
             </div>
+            @endif --}}
 
             <!-- End Latest  -->
 

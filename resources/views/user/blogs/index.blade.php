@@ -204,13 +204,12 @@
             const list = document.querySelector('.list');
             if (!list) return
             slidesData.forEach((data, index) => {
-                const destination = lang === 'ar' ? data.destinationAr : data.destinationAr;
-                const title = lang === 'ar' ? data.titleAr : data.titleAr;
-                const description = lang === 'ar' ? data.descriptionAr : data.descriptionAr;
-                const category = lang === 'ar' ? data.categoryAr : data.categoryAr;
-                const publicationDate = lang === 'ar' ? data.profileAr.publicationDate : data.profile
-                    .publicationDate;
-                const readTime = lang === 'ar' ? data.profileAr.readTime : data.profile.readTime;
+                const destination =  data.destination;
+                const title = data.title;
+                const description = data.description;
+                const category = data.category;
+                const publicationDate = data.profile.publicationDate;
+                const readTime = data.profile.readTime;
                 list.innerHTML += `  
 
   <div class="item position-relative overflow-hidden" style="min-width:100%;">
@@ -275,7 +274,7 @@
             let categoratesDiv = document.querySelector('.categorates');
             if (!categoratesDiv) return;
 
-            let categorateName = lang === 'ar' ? categorateListAr : categorateList;Ar
+            let categorateName = categorateList;
 
             categorateName.forEach((categorate, i) => {
                 const categorateBtn = document.createElement('button');
@@ -576,11 +575,11 @@
             const endIndex = startIndex + itemsPerPage;
             const paginatedData = articlesData.slice(startIndex, endIndex);
             paginatedData.forEach(article => {
-                const category = lang === 'ar' ? article.categoryAr : article.categoryAr;
-                const title = lang === 'ar' ? article.titleAr : article.titleAr;
-                const description = lang === 'ar' ? article.descriptionAr : article.descriptionAr;
-                const publicationDate = lang === 'ar' ? article.dateAr : article.dateAr;
-                const readTime = lang === 'ar' ? article.readTimeAr : article.readTimeAr;
+                const category = article.category;
+                const title = article.title;
+                const description = article.description;
+                const publicationDate = article.date;
+                const readTime = article.readTime;
                 const card = document.createElement('div');
                 card.classList.add('card', 'border-0', 'py-2', 'col-12', 'col-md-6', 'col-lg-4')
                 card.innerHTML = `      

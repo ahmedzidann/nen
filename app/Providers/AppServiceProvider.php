@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Page;
 use App\Models\About;
 use App\Models\Footer;
+use App\Models\SidebarResource;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -44,7 +45,8 @@ class AppServiceProvider extends ServiceProvider
             ->where('navbar', 'Active')->get();
 
         $footerData = Footer::where('status', 'Active')->get()->groupBy('type');
-
+        $upperSection = SidebarResource::where('show_in_home', true)->where('type', 1)->latest()->get();
+        $lowerSection = SidebarResource::where('show_in_home', true)->where('type', 2)->latest()->get();
 
         $about = About::first();
         View::composer('user.about.*', function ($view) use ($pages) {
@@ -75,9 +77,11 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('ss', $solutionPages);
         });
-        View::composer('*', function ($view) use ($about) {
+        View::composer('*', function ($view) use ($about, $upperSection, $lowerSection) {
 
             $view->with('about', $about);
+            $view->with('upperSection', $upperSection);
+            $view->with('lowerSection', $lowerSection);
         });
 
         View::composer('*', function ($view) use ($footerData) {

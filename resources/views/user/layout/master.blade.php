@@ -150,43 +150,18 @@
 
         <!-- Start Quick Navigation Bar -->
         <div id="banner-quick-access">
-            <div class="nav-item">
-                <!-- <i class="bi bi-telephone-fill"></i> -->
-                <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>CONTACTS</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>INTERNATIONAL CERTIFICATES</span>
-            </div>
-            <div class="nav-item active">
-                <img src="https://dev.nendemo2024.xyz/media/603/cup.png" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>BOOK YOUR EXAM</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>VERIFY YOUR CERTIFICATE</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>VIRTUAL ACADEMY</span>
-            </div>
-            <div class="nav-item">
-                <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                    alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                <span>LIVE EVENTS</span>
-            </div>
+            @if (count($upperSection) > 0)
+                @foreach ($upperSection as $row)
+                    <a href="{{ $row->url }}" target="_blank">
+                        <div class="nav-item">
+                            <img src="{{ asset('/storage') . '/' . $row->resource }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('/storage') . '/' . $row->resource }}';"
+                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
+                            <span>{{ $row->title }}</span>
+                        </div>
+                    </a>
+                @endforeach
+            @endif
         </div>
         <!-- End Quick Navigation Bar -->
 
@@ -197,94 +172,29 @@
     <div id="quick-access-card" class="position-relative mt-4">
         <div class="container">
             <div class="row g-3">
-                <!-- Card 1: Add Brand Profiles -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-blue">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">Add Brand Profiles</div>
-                        </div>
-                    </div>
-                </div>
+                @if (count($lowerSection) > 0)
+                    <div class="container">
+                        <div class="row g-3">
+                            @foreach ($lowerSection as $row)
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
+                                    <div class="brand-card light-blue">
+                                        <div class="brand-card-icon">
+                                            <img src="{{ asset('/storage') . '/' . $row->resource }}" loading="lazy"
+                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                                alt="icon"
+                                                style="width: 25px; height: 25px; border-radius: 4px;" />
+                                        </div>
+                                        <div class="card-texts">
+                                            <div class="brand-card-title">{{ $row->title }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
 
-                <!-- Card 2: AI Analytics -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-pink">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Analytics</div>
-                            <div class="brand-card-category">Data Science</div>
                         </div>
                     </div>
-                </div>
+                @endif
 
-                <!-- Card 3: AI Vision -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-green">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Vision</div>
-                            <div class="brand-card-category">Computer Vision</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4: AI Chatbots -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-yellow">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/747/careers.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Chatbots</div>
-                            <div class="brand-card-category">Conversational AI</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5: AI Robotics -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-purple">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Robotics</div>
-                            <div class="brand-card-category">Automation</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6: AI Tools -->
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
-                    <div class="brand-card light-teal">
-                        <div class="brand-card-icon">
-                            <img src="https://dev.nendemo2024.xyz/media/750/team.svg" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                        </div>
-                        <div class="card-texts">
-                            <div class="brand-card-title">AI Tools</div>
-                            <div class="brand-card-category">Utilities</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

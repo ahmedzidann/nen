@@ -204,7 +204,7 @@
             const list = document.querySelector('.list');
             if (!list) return
             slidesData.forEach((data, index) => {
-                const destination =  data.destination;
+                const destination = data.destination;
                 const title = data.title;
                 const description = data.description;
                 const category = data.category;

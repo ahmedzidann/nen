@@ -68,9 +68,9 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="#" name="arabic">Arabic</a></li>
-                            <li><a class="dropdown-item" href="#" name="english">English</a></li>
-                            <li><a class="dropdown-item" href="#" name="russian">Russian</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ar') }}" name="arabic">Arabic</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}" name="english">English</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ru') }}" name="russian">Russian</a></li>
                         </ul>
                     </div>
 

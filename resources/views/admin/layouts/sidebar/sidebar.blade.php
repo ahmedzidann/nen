@@ -93,6 +93,12 @@
                                       href="{{ route('admin.about.investors.index', ['category=about', 'subcategory=investors', 'item=section-foure']) }}"><i
                                           class='bx bx-radio-circle'></i>Section foure</a>
                               </li>
+                              <li
+                                  class="{{ $route == 'about' && $route_two == 'investor-statistics' && Request()->item == 'investor-statistics' ? 'mm-active' : '' }}">
+                                  <a
+                                      href="{{ route('admin.investor-statistics.index', ['category=about', 'subcategory=investors', 'item=section-foure']) }}"><i
+                                          class='bx bx-radio-circle'></i>Investor Statistics</a>
+                              </li>
                               {{-- <li class="{{ $route=='about' && $route_two=='investors' && Request()->item=='section-five' ?'mm-active':'' }}"><a href="{{ route('admin.about.investors.index',['category=about','subcategory=investors','item=section-five']) }}" ><i class='bx bx-radio-circle'></i>Section five</a></li> --}}
                           </ul>
                       </li>
@@ -398,80 +404,6 @@
 
 
       {{-- Doc Validation --}}
-      @can('show Doc Validation')
-          <li>
-              <a class="has-arrow" href="javascript:;">
-                  <div class="parent-icon"><i class="bx bx-error"></i>
-                  </div>
-                  <div class="menu-title">Blogs</div>
-              </a>
-              <ul>
-                  <li> <a href="{{ route('admin.media-categories.index') }}"><i class='bx bx-radio-circle'></i>Blogs Categories</a>
-                  </li>
-                  <li> <a href="{{ route('admin.blogs.index') }}"><i class='bx bx-radio-circle'></i>Blogs</a>
-                  </li>
-                  <li> <a href="{{ route('admin.advertisements.index') }}"><i class='bx bx-radio-circle'></i>Advertisements</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-              <a class="has-arrow" href="javascript:;">
-                  <div class="parent-icon"><i class="bx bx-error"></i>
-                  </div>
-                  <div class="menu-title">Products</div>
-              </a>
-              <ul>
-                  <li> <a href="{{ route('admin.product-categories.index') }}"><i class='bx bx-radio-circle'></i>Product
-                          Categories</a>
-                  </li>
-                  <li> <a href="{{ route('admin.products.index') }}"><i class='bx bx-radio-circle'></i>Products</a>
-                  </li>
-              </ul>
-          </li>
-
-          {{-- Doc Validation --}}
-          @php
-              $docValidation = App\Models\Page::find(8);
-          @endphp
-          <li>
-              <a class="has-arrow" href="javascript:;">
-                  <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                  </div>
-                  <div class="menu-title">{{ $docValidation->name }}</div>
-              </a>
-              <ul>
-                  @foreach ($docValidation->childe as $ch)
-                      {{-- <li class="">
-
-                            <a href="{{ route('admin.solution.index',['category='.$ch->slug]) }}" >
-                            <i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
-                        </li> --}}
-                      {{--
-                        <li>
-                            <a class="has-arrow" href="javascript:;">
-                                <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                                </div>
-                                <div class="menu-title">{{$ch->name}}</div>
-                            </a>
-                            <ul> --}}
-
-                      <li class="">
-
-                          <a
-                              href="{{ route('admin.doc-validation.index', ['category=' . $docValidation->slug, 'subcategory=' . $ch->slug]) }}">
-                              <i class='bx bx-radio-circle'></i>{{ $ch->name }}</a>
-                      </li>
-
-
-                      {{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
-                      {{-- </ul> --}}
-          </li>
-          @endforeach
-          {{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
-          </ul>
-          </li>
-      @endcan
-
       {{-- End Doc Validation --}}
       @can('show Testing')
 
@@ -591,7 +523,85 @@
               </ul>
           </li>
       @endcan
+      @can('show Doc Validation')
+
+          @php
+              $docValidation = App\Models\Page::find(8);
+          @endphp
+          <li>
+              <a class="has-arrow" href="javascript:;">
+                  <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                  </div>
+                  <div class="menu-title">{{ $docValidation->name }}</div>
+              </a>
+              <ul>
+                  @foreach ($docValidation->childe as $ch)
+                      {{-- <li class="">
+
+                            <a href="{{ route('admin.solution.index',['category='.$ch->slug]) }}" >
+                            <i class='bx bx-radio-circle'></i>{{$ch->name}}</a>
+                        </li> --}}
+                      {{--
+                        <li>
+                            <a class="has-arrow" href="javascript:;">
+                                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                                </div>
+                                <div class="menu-title">{{$ch->name}}</div>
+                            </a>
+                            <ul> --}}
+
+                      <li class="">
+
+                          <a
+                              href="{{ route('admin.doc-validation.index', ['category=' . $docValidation->slug, 'subcategory=' . $ch->slug]) }}">
+                              <i class='bx bx-radio-circle'></i>{{ $ch->name }}</a>
+                      </li>
+
+
+                      {{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
+                      {{-- </ul> --}}
+          </li>
+          @endforeach
+          {{-- <li class=""><a href="{{ route('admin.solution.index',['category='.App\Models\Page::find(4)->slug]) }}" ><i class='bx bx-radio-circle'></i>Section</a></li> --}}
+          </ul>
+          </li>
+      @endcan
       {{-- End Contact Us  --}}
+      <li class="menu-label">Store</li>
+
+      @can('show Doc Validation')
+          <li>
+              <a class="has-arrow" href="javascript:;">
+                  <div class="parent-icon"><i class="bx bx-error"></i>
+                  </div>
+                  <div class="menu-title">Blogs</div>
+              </a>
+              <ul>
+                  <li> <a href="{{ route('admin.media-categories.index') }}"><i class='bx bx-radio-circle'></i>Blogs
+                          Categories</a>
+                  </li>
+                  <li> <a href="{{ route('admin.blogs.index') }}"><i class='bx bx-radio-circle'></i>Blogs</a>
+                  </li>
+                  <li> <a href="{{ route('admin.advertisements.index') }}"><i
+                              class='bx bx-radio-circle'></i>Advertisements</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a class="has-arrow" href="javascript:;">
+                  <div class="parent-icon"><i class="bx bx-error"></i>
+                  </div>
+                  <div class="menu-title">Products</div>
+              </a>
+              <ul>
+                  <li> <a href="{{ route('admin.product-categories.index') }}"><i class='bx bx-radio-circle'></i>Product
+                          Categories</a>
+                  </li>
+                  <li> <a href="{{ route('admin.products.index') }}"><i class='bx bx-radio-circle'></i>Products</a>
+                  </li>
+              </ul>
+          </li>
+      @endcan
 
       {{-- end Testing  --}}
       {{-- item --}}

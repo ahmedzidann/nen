@@ -32,21 +32,21 @@
 </head>
 
 <style>
-/* Style for Swiper Navigation */
-.slider-button {
-    /* margin-top: 15px; */
-    text-align: center;
-}
-
-/* Center navigation arrows on small screens (991px and below) */
-@media (max-width: 991px) {
+    /* Style for Swiper Navigation */
     .slider-button {
-        position: static;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
+        /* margin-top: 15px; */
+        text-align: center;
     }
-}
+
+    /* Center navigation arrows on small screens (991px and below) */
+    @media (max-width: 991px) {
+        .slider-button {
+            position: static;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    }
 </style>
 
 <body>
@@ -110,9 +110,13 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="#" name="arabic">Arabic</a></li>
-                            <li><a class="dropdown-item" href="#" name="english">English</a></li>
-                            <li><a class="dropdown-item" href="#" name="russian">Russian</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ar') }}"
+                                    name="arabic">Arabic</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"
+                                    name="english">English</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ru') }}"
+                                    name="russian">Russian</a></li>
+
                         </ul>
                     </div>
                     <!-- End Dropdown Languages button -->
@@ -376,14 +380,14 @@
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(1, $footerData)) --}}
                                         @foreach ($footerData[1] as $certificate)
-                                        <a href="{{ $certificate->url }}" class="item d-flex align-items-center gap-1"
-                                            target="__blank">
-                                            <!-- <i class="bi bi-arrow-right"></i> -->
-                                            <span>&gt;</span>
-                                            <span>
-                                                {{ $certificate->title }}
-                                            </span>
-                                        </a>
+                                            <a href="{{ $certificate->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <!-- <i class="bi bi-arrow-right"></i> -->
+                                                <span>&gt;</span>
+                                                <span>
+                                                    {{ $certificate->title }}
+                                                </span>
+                                            </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -395,14 +399,14 @@
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(2, $footerData)) --}}
                                         @foreach ($footerData[2] as $portal)
-                                        <a href="{{ $portal->url }}" class="item d-flex align-items-center gap-1"
-                                            target="__blank">
-                                            <!-- <i class="bi bi-arrow-right"></i> -->
-                                            <span>&gt;</span>
-                                            <span>
-                                                {{ $portal->title }}
-                                            </span>
-                                        </a>
+                                            <a href="{{ $portal->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <!-- <i class="bi bi-arrow-right"></i> -->
+                                                <span>&gt;</span>
+                                                <span>
+                                                    {{ $portal->title }}
+                                                </span>
+                                            </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -414,14 +418,14 @@
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(3, $footerData)) --}}
                                         @foreach ($footerData[3] as $subsidiaries)
-                                        <a href="{{ $subsidiaries->url }}" class="item d-flex align-items-center gap-1"
-                                            target="__blank">
-                                            <!-- <i class="bi bi-arrow-right"></i> -->
-                                            <span>&gt;</span>
-                                            <span>
-                                                {{ $subsidiaries->title }}
-                                            </span>
-                                        </a>
+                                            <a href="{{ $subsidiaries->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <!-- <i class="bi bi-arrow-right"></i> -->
+                                                <span>&gt;</span>
+                                                <span>
+                                                    {{ $subsidiaries->title }}
+                                                </span>
+                                            </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -429,7 +433,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div id="subscribe" class="d-flex flex-column justify-content-center text-white-color mt-2">
+                            <div id="subscribe"
+                                class="d-flex flex-column justify-content-center text-white-color mt-2">
                                 <h6 class="tag-title">
                                     {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us') ?? '') }}
                                 </h6>
@@ -441,9 +446,9 @@
                                     <!-- Twitter -->
                                     <a href="{{ $about->twitter_link }}" class="text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-brand-x" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
+                                            class="icon icon-tabler icon-tabler-brand-x" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
                                             <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
@@ -475,8 +480,9 @@
                                     </a>
                                 </div>
                                 <div class="input-group border-0 overflow-hidden mt-2">
-                                    <input type="text" class="form-control border-0" placeholder="Your email address"
-                                        aria-label="Email" aria-describedby="basic-addon-email">
+                                    <input type="text" class="form-control border-0"
+                                        placeholder="Your email address" aria-label="Email"
+                                        aria-describedby="basic-addon-email">
                                     <span class="input-group-text border-0" id="basic-addon-email">
                                         <a
                                             class="join-btn text-white-color border-0 bg-main-color d-flex justify-content-center align-items-center rounded-circle">
@@ -554,7 +560,8 @@
                         class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Home') ?? '') }}</a></li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('About') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('About') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>
@@ -571,7 +578,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Projects') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Projects') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>
@@ -588,7 +596,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Education') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Education') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
@@ -597,7 +606,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Testing') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Testing') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
@@ -606,7 +616,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Solution') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Solution') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
@@ -614,7 +625,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Technology') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Technology') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
@@ -633,7 +645,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Join Us') ?? '') }} <i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Join Us') ?? '') }} <i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
@@ -642,7 +655,8 @@
                 </li>
 
                 <li class="mobile_li">
-                    <a href="#" class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Find Us') ?? '') }}<i
+                    <a href="#"
+                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Find Us') ?? '') }}<i
                             class="bi bi-chevron-down"></i></a>
                     <ul class="sub_mobile_menu">
                         <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
@@ -665,154 +679,154 @@
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
     <script>
-    function toggleReadMore() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("read-more-btn");
+        function toggleReadMore() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("read-more-btn");
 
-        if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Read More";
-            moreText.style.display = "none";
-        } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "Read Less";
-            moreText.style.display = "inline";
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read More";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read Less";
+                moreText.style.display = "inline";
+            }
         }
-    }
     </script>
     @yield('websiteScript')
 
     @section('websiteScript')
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Swiper after DOM is fully loaded
-        const swiper = new Swiper('.swiper-container', {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            freeMode: true,
-            navigation: {
-                nextEl: '.slider-next',
-                prevEl: '.slider-prev',
-            },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-            mousewheel: {
-                forceToAxis: true,
-            },
-            // Responsive breakpoints for Swiper
-            breakpoints: {
-                1200: {
-                    slidesPerView: 4, // Large desktops
-                    spaceBetween: 30,
-                },
-                992: {
-                    slidesPerView: 3, // Medium desktops
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize Swiper after DOM is fully loaded
+                const swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 'auto',
                     spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 2, // Tablets
-                    spaceBetween: 15,
-                },
-                576: {
-                    slidesPerView: 1, // Small screens
-                    spaceBetween: 10,
-                },
-            },
-        });
-    });
-    </script>
+                    freeMode: true,
+                    navigation: {
+                        nextEl: '.slider-next',
+                        prevEl: '.slider-prev',
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true,
+                    },
+                    mousewheel: {
+                        forceToAxis: true,
+                    },
+                    // Responsive breakpoints for Swiper
+                    breakpoints: {
+                        1200: {
+                            slidesPerView: 4, // Large desktops
+                            spaceBetween: 30,
+                        },
+                        992: {
+                            slidesPerView: 3, // Medium desktops
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 2, // Tablets
+                            spaceBetween: 15,
+                        },
+                        576: {
+                            slidesPerView: 1, // Small screens
+                            spaceBetween: 10,
+                        },
+                    },
+                });
+            });
+        </script>
     @endsection
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
 
-        var currentUrl = window.location.href;
+            var currentUrl = window.location.href;
 
-        var urlParts = currentUrl.split('/');
+            var urlParts = currentUrl.split('/');
 
-        if (urlParts.length > 3) {
-            let url = "{{ route('resources-data.get') }}";
-            var lang = urlParts[3];
-            var keysAfterLang = urlParts.slice(4);
-            var keysAfterLang = urlParts.slice(4);
-            keysAfterLang = keysAfterLang.map(part => part.split('?')[0]);
-            let params = new URLSearchParams({
-                main_category: keysAfterLang[0],
-                sub_category: keysAfterLang[1],
-            });
-            let urlWithParams = `${url}?${params.toString()}`;
-
-            fetch(urlWithParams, {
-                    method: 'GET'
-                })
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('data:', data);
-                    if (data.status === 'success' && data.data) {
-                        document.getElementById('quick-access').innerHTML += data.data;
-                        document.getElementById('line').style.display = 'block';
-                    } else {
-                        document.getElementById('contact-us').style.display = 'none';
-                    }
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
+            if (urlParts.length > 3) {
+                let url = "{{ route('resources-data.get') }}";
+                var lang = urlParts[3];
+                var keysAfterLang = urlParts.slice(4);
+                var keysAfterLang = urlParts.slice(4);
+                keysAfterLang = keysAfterLang.map(part => part.split('?')[0]);
+                let params = new URLSearchParams({
+                    main_category: keysAfterLang[0],
+                    sub_category: keysAfterLang[1],
                 });
+                let urlWithParams = `${url}?${params.toString()}`;
 
-        }
+                fetch(urlWithParams, {
+                        method: 'GET'
+                    })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('data:', data);
+                        if (data.status === 'success' && data.data) {
+                            document.getElementById('quick-access').innerHTML += data.data;
+                            document.getElementById('line').style.display = 'block';
+                        } else {
+                            document.getElementById('contact-us').style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
 
-    });
+            }
 
-    function handleLanguage(buttons) {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('lang', localStorage.getItem('lang') || 'en');
-            document.querySelectorAll(buttons).forEach(btn => {
-                btn.addEventListener('click', () => {
-                    let langCode;
-                    console.log(btn.getAttribute('name'))
-                    langCode = btn.getAttribute('name') === 'english' ? 'en' :
-                        btn.getAttribute('name') === 'arabic' ? 'ar' :
-                        'ru'; // Default to Russian if the button is neither 'english' nor 'arabic'
-                    if (window.localStorage.getItem('lang') !== langCode) {
-                        window.localStorage.setItem('lang', langCode);
-                        window.location.reload();
-                    }
+        });
+
+        function handleLanguage(buttons) {
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('lang', localStorage.getItem('lang') || 'en');
+                document.querySelectorAll(buttons).forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        let langCode;
+                        console.log(btn.getAttribute('name'))
+                        langCode = btn.getAttribute('name') === 'english' ? 'en' :
+                            btn.getAttribute('name') === 'arabic' ? 'ar' :
+                            'ru'; // Default to Russian if the button is neither 'english' nor 'arabic'
+                        if (window.localStorage.getItem('lang') !== langCode) {
+                            window.localStorage.setItem('lang', langCode);
+                            window.location.reload();
+                        }
+                    });
                 });
-            });
-        }
-        initializePageLanguage()
-    }
-
-    function initializePageLanguage() {
-        if (typeof window === 'undefined') return;
-
-        const lang = localStorage.getItem('lang') || 'en';
-        console.log(lang)
-
-        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-
-        if (lang === 'ar') {
-            document.body.classList.add('rtl'); // Add RTL class for Arabic language
-            document.body.style.direction = 'rtl';
-            document.body.style.textAlign = 'right';
-        } else {
-            document.body.classList.remove('rtl'); // Remove RTL class for other languages
+            }
+            initializePageLanguage()
         }
 
-        if (lang === 'ar') {
-            document.querySelectorAll('.swiper-btn').forEach((btn, index) => {
-                btn.classList.replace(index === 0 ? 'back-btn' : 'next-btn', index === 0 ? 'next-btn' :
-                    'back-btn');
-            });
-        }
-    }
+        function initializePageLanguage() {
+            if (typeof window === 'undefined') return;
 
-    // Call the function after the page is loaded and the DOM is available
-    handleLanguage('.dropdown-menu .dropdown-item');
+            const lang = localStorage.getItem('lang') || 'en';
+            console.log(lang)
+
+            document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            if (lang === 'ar') {
+                document.body.classList.add('rtl'); // Add RTL class for Arabic language
+                document.body.style.direction = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.classList.remove('rtl'); // Remove RTL class for other languages
+            }
+
+            if (lang === 'ar') {
+                document.querySelectorAll('.swiper-btn').forEach((btn, index) => {
+                    btn.classList.replace(index === 0 ? 'back-btn' : 'next-btn', index === 0 ? 'next-btn' :
+                        'back-btn');
+                });
+            }
+        }
+
+        // Call the function after the page is loaded and the DOM is available
+        handleLanguage('.dropdown-menu .dropdown-item');
     </script>
 </body>
 

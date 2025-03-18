@@ -68,16 +68,20 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="#">Arabic</a></li>
-                            <li><a class="dropdown-item" href="#">English</a></li>
-                            <li><a class="dropdown-item" href="#">Russian</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ar') }}"
+                                    name="arabic">Arabic</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"
+                                    name="english">English</a></li>
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ru') }}"
+                                    name="russian">Russian</a></li>
+
                         </ul>
                     </div>
                     <!-- End Dropdown Languages button -->
 
                     <a href="{{ route('blogs.index') }}" target="__blank"mg
-                            src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
-                        <span>News Center</span>
+                        src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
+                    <span>News Center</span>
                     </a>
                 </div>
             </div>
@@ -125,7 +129,7 @@
                                 Get in Touch with Us
                             </h1>
                             <p class="fs-5-2 text-center text-muted mt-2">
-{{ TranslationHelper::translateWeb(ucfirst("We're here to help! Whether you have questions, feedback, or need support, reach out to us, and we'll be happy to assist you.") ?? '') }}
+                                {{ TranslationHelper::translateWeb(ucfirst("We're here to help! Whether you have questions, feedback, or need support, reach out to us, and we'll be happy to assist you.") ?? '') }}
 
                             </p>
                             <div class="d-flex justify-content-center mt-5">

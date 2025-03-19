@@ -1241,7 +1241,6 @@
                     <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
                 </button>
             </div>
-            </div>
         </section>
         <!-- End Blogs -->
     @endif

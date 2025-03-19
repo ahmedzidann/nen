@@ -73,13 +73,10 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ar') }}"
-                                    name="arabic">Arabic</a></li>
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"
-                                    name="english">English</a></li>
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ru') }}"
-                                    name="russian">Russian</a></li>
-
+                            @foreach (App\Models\TranslationKey::get() as $lang)
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($lang->key) }}"
+                                    name="arabic">{{ $lang->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- End Dropdown Languages button -->

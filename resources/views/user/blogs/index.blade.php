@@ -185,7 +185,6 @@
                         date: '{{ $blog->created_at->format('j F Y') }}',
                         readTime: '{{ $blog->created_at->diffForHumans() }}',
                         title: '{{ $blog->title }}',
-                        description: '{{ $blog->mini_desc }}.',
                         author: {
                             name: "Maximilian Bartholomew",
                             imgSrc: "./images/people/person2.jpg"

@@ -110,12 +110,11 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ar') }}"
-                                    name="arabic">Arabic</a></li>
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}"
-                                    name="english">English</a></li>
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ru') }}"
-                                    name="russian">Russian</a></li>
+                            @foreach (App\Models\TranslationKey::get() as $lang)
+                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($lang->key) }}"
+                                    name="arabic">{{ $lang->name }}</a></li>
+                            @endforeach
+
 
                         </ul>
                     </div>
@@ -149,20 +148,17 @@
         </div>
 
         <!-- Start Quick Navigation Bar -->
-        <div id="banner-quick-access">
-            @if (count($upperSection) > 0)
-                @foreach ($upperSection as $row)
-                    <a href="{{ $row->url }}" target="_blank">
-                        <div class="nav-item">
-                            <img src="{{ asset('/storage') . '/' . $row->resource }}" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('/storage') . '/' . $row->resource }}';"
-                                alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
-                            <span>{{ $row->title }}</span>
-                        </div>
-                    </a>
-                @endforeach
-            @endif
-        </div>
+    <div id="banner-quick-access">
+        @foreach ($upperSection as $resource)
+            <div class="nav-item">
+                <!-- <i class="bi bi-telephone-fill"></i> -->
+                <img src="{{ asset('/storage') . '/' . $resource->resource }}" loading="lazy"
+                    onerror="this.onerror=null;this.src='https://dev.nendemo2024.xyz/media/748/investors.svg';" alt="icon"
+                    style="width: 25px; height: 25px; border-radius: 4px;" />
+                <span>{{ $resource->title }}</span>
+            </div>
+        @endforeach
+    </div>
         <!-- End Quick Navigation Bar -->
 
     </div>

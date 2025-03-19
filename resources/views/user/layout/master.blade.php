@@ -152,7 +152,7 @@
         <div id="banner-quick-access">
             @if (count($upperSection) > 0)
                 @foreach ($upperSection as $row)
-                    <a href="{{ $row->url }}" target="_blank">
+                    <a href="{{ $row->url }}" target="_blank" class="d-flex flex-grow-1">
                         <div class="nav-item">
                             <img src="{{ asset('/storage') . '/' . $row->resource }}" loading="lazy"
                                 onerror="this.onerror=null;this.src='{{ asset('/storage') . '/' . $row->resource }}';"

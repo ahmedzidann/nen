@@ -75,7 +75,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
                             @foreach (App\Models\TranslationKey::get() as $lang)
                             <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($lang->key) }}"
-                                    name="arabic">{{ $lang->name }}</a></li>
+                                    name="{{ $lang->name }}">{{ $lang->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

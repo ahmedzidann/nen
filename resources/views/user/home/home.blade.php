@@ -1159,9 +1159,9 @@
                                             <h4 class="card-title text-truncate fs-3 mb-1">{{ $blog->title }}
                                             </h4>
                                             <div class="description">
-                                                <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                                {{-- <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
                                                     {!! Illuminate\Support\Str::limit($blog->content, 1000, '...') !!}
-                                                </p>
+                                                </p> --}}
                                             </div>
                                         </div>
 

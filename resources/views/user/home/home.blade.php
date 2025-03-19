@@ -1160,7 +1160,7 @@
                                             </h4>
                                             <div class="description">
                                                 <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
-                                                    {!! Illuminate\Support\Str::limit($blog->content, 100) !!}
+                                                    {!! Illuminate\Support\Str::limit($blog->content, 1000, '...') !!}
                                                 </p>
                                             </div>
                                         </div>

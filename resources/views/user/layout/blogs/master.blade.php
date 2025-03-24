@@ -55,7 +55,7 @@
                     </a>
                     <a href="#"><img
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>E-wallet</span></a>
-                    <a href="#"><img
+                    <a href="{{ route('web.store') }}"><img
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>Store</span></a>
 
                     <!-- Start Dropdown Languages button -->

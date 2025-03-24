@@ -40,7 +40,6 @@ Route::group(['prefix' => 'solutions', 'as' => 'solutions.', 'name' => 'solution
         Route::get($page->slug . "/{page_id}", [SolutionController::class, 'index'])->name($page->slug);
         // Route::get('index', [SolutionController::class, 'index'])->name('education');
     }
-
 });
 
 Route::group(['prefix' => 'education', 'as' => 'education.', 'name' => 'education.'], function () {
@@ -79,7 +78,6 @@ Route::group(['prefix' => 'doc-validation', 'as' => 'doc-validation.', 'name' =>
 Route::group(['prefix' => 'find-us', 'as' => 'find-us.', 'name' => 'find-us.'], function () {
     foreach (Page::where('parent_id', Page::where('slug', 'find-us')->first()->id)->get() as $page) {
         Route::get($page->slug, [FindUsController::class, 'index'])->name($page->slug);
-        
     }
 });
 Route::get('find-us/data', [FindUsController::class, 'getData'])->name('find-us.data');
@@ -96,6 +94,11 @@ Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->na
 Route::get('blogs', BlogController::class)->name('blogs.index');
 Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.details');
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
+
+/* Store routes */
+Route::get('/store', function () {
+    return view('store.pags.index');
+})->name('web.store');
 Route::get('/link', function () {
     Artisan::call('storage:link');
     return 'Migrations have been run successfully!';

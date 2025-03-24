@@ -25,11 +25,11 @@ class ProductCategoryRequest extends FormRequest
     {
         if ($this->getMethod() == 'POST') {
             return [
-                'titles.*' => 'required|max:255',
+                'title.*' => 'required|max:255',
             ];
         } else {
             return [
-                'titles.*' => 'sometimes|max:255',
+                'title.*' => 'sometimes|max:255',
             ];
 
         }

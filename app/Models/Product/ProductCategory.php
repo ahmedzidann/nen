@@ -15,10 +15,12 @@ class ProductCategory extends Model
     ];
     protected $fillable = [
         'title',
+        "show_in_main",
+        'main_image',
     ];
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'product_id', 'id');
+        return $this->hasMany(Product::class);
     }
 }

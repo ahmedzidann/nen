@@ -256,7 +256,7 @@
       </div>
       <div class="offcanvas-footer p-3 border-top">
           <div class="d-grid">
-              <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Checkout</button>
+              <a type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" href="{{ route('web.store.cart') }}" >Checkout</a>
           </div>
       </div>
 
@@ -282,7 +282,7 @@
                                       <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/1.webp"
                                           alt="" class="img-fluid">
                                   </div>
-                                  <div>
+                                  {{-- <div>
                                       <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/2.jpg"
                                           alt="" class="img-fluid">
                                   </div>
@@ -293,7 +293,7 @@
                                   <div>
                                       <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/4.jpg"
                                           alt="" class="img-fluid">
-                                  </div>
+                                  </div> --}}
                               </div>
 
                               <div class="slider-nav mt-3">
@@ -301,7 +301,7 @@
                                       <img src="{{ asset('store') }}/assets/images/ecommerce_imges/basic programming/1.jpg"
                                           alt="" class="img-fluid">
                                   </div>
-                                  <div>
+                                  {{-- <div>
                                       <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/3.webp"
                                           alt="" class="img-fluid">
                                   </div>
@@ -312,7 +312,7 @@
                                   <div>
                                       <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/5.webp"
                                           alt="" class="img-fluid">
-                                  </div>
+                                  </div> --}}
                               </div>
 
                           </div>
@@ -374,9 +374,23 @@
                 </div> -->
                               <div class="cart-buttons mt-3">
                                   <div class="buttons d-flex flex-column gap-3 mt-4">
-                                      <a href="javascript:;"
+                                    @if(isset($product))
+                                    
+                                        <a href="javascript:;"
+                                        class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1 add-to-cart"
+                                        data-id="{{ $product->id }}"
+                                        data-name="{{ $product->name }}"
+                                        data-price="{{ $product->price }}"
+                                        data-image="{{ asset('storage') . '/' . $product->main_image }}">
+                                        <i class="bi bi-basket2 me-2"></i>Add to Bag
+                                    </a>
+                                    @else
+                                    <a href="javascript:;"
                                           class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1"><i
                                               class="bi bi-basket2 me-2"></i>Add to Bag</a>
+                                    @endif
+
+                                      
                                       <a href="javascript:;"
                                           class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i
                                               class="bi bi-suit-heart me-2"></i>Wishlist</a>
@@ -424,3 +438,142 @@
   <!--Start Back To Top Button-->
   <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
   <!--End Back To Top Button-->
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+
+        quickViewButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const name = this.dataset.name;
+                const price = this.dataset.price;
+                const images = JSON.parse(this.dataset.images);
+                const image = this.dataset.image;
+                // Update product info
+                document.querySelector('#QuickViewModal .product-title').textContent = name;
+                document.querySelector('#QuickViewModal .product-price .fw-bold').textContent = `$${price}`;
+
+                const sliderFor = $('#QuickViewModal .slider-for');
+                const sliderNav = $('#QuickViewModal .slider-nav');
+                // Destroy Slick if already initialized
+                if (sliderFor.hasClass('slick-initialized')) {
+                    sliderFor.slick('unslick');
+                }
+                if (sliderNav.hasClass('slick-initialized')) {
+                    sliderNav.slick('unslick');
+                }
+                sliderFor.html('');
+                sliderNav.html('');
+
+                if(!(images.length)) {
+                    const fallbackImage = image; 
+                    sliderFor.append(`<div><img src="${fallbackImage}" alt="No image available" class="img-fluid"></div>`);
+                    // sliderNav.append(`<div><img src="${fallbackImage}" alt="No image available" class="img-fluid"></div>`);
+                } else{
+                    images.forEach(imgPath => {
+                    const fullImgPath = `/storage/${imgPath}`;
+                    sliderFor.append(`<div><img src="${fullImgPath}" alt="" class="img-fluid"></div>`);
+                    sliderNav.append(`<div><img src="${fullImgPath}" alt="" class="img-fluid"></div>`);
+                });
+                }
+              
+                sliderFor.slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    fade: true,
+                    asNavFor: '#QuickViewModal .slider-nav'
+                });
+
+                sliderNav.slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    asNavFor: '#QuickViewModal .slider-for',
+                    dots: false,
+                    centerMode: true,
+                    focusOnSelect: true
+                });
+            });
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initialize cart from localStorage
+        updateCartUI();
+
+        // Handle add to cart
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", function () {
+                const product = {
+                    id: this.dataset.id,
+                    name: this.dataset.name,
+                    price: parseFloat(this.dataset.price),
+                    image: this.dataset.image,
+                    quantity: 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                const existing = cart.find(item => item.id === product.id);
+                if (existing) {
+                    existing.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateCartUI();
+            });
+        });
+    });
+
+    function updateCartUI() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartBadge = document.querySelector(".cart-badge");
+        const cartTitle = document.querySelector("#offcanvasRightLabel");
+        const cartList = document.querySelector(".cart-list");
+
+        // Update cart count
+        let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartBadge.textContent = totalItems;
+        cartTitle.textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''} in the cart`;
+
+        // Render cart items
+        cartList.innerHTML = "";
+        cart.forEach(item => {
+            const itemHTML = `
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bottom-product-img">
+                        <a href="product-details.html"><img src="${item.image}" width="60" alt=""></a>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-light mb-1">${item.name}</h6>
+                        <p class="mb-0"><strong>${item.quantity} x $${item.price.toFixed(2)}</strong></p>
+                    </div>
+                    <div class="ms-auto fs-5">
+                        <a href="javascript:;" class="link-dark remove-item" data-id="${item.id}"><i class="bi bi-trash"></i></a>
+                    </div>
+                </div>
+                <hr>
+            `;
+            cartList.insertAdjacentHTML("beforeend", itemHTML);
+        });
+
+        // Handle remove buttons
+        document.querySelectorAll(".remove-item").forEach(btn => {
+            btn.addEventListener("click", function () {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const idToRemove = this.dataset.id;
+                cart = cart.filter(item => item.id !== idToRemove);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateCartUI();
+            });
+        });
+    }
+</script>

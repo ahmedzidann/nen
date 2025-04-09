@@ -10,6 +10,7 @@ use App\Http\Controllers\User\FindUs\FindUsController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\Store\StoreController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Http\Controllers\Web\BlogController;
@@ -96,9 +97,14 @@ Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.de
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
 
 /* Store routes */
-Route::get('/store', function () {
-    return view('store.pags.index');
-})->name('web.store');
+Route::get('/store', [StoreController::class, 'index'])->name('web.store');
+Route::get('/cart', [StoreController::class, 'cart'])->name('web.store.cart');
+Route::get('/address', [StoreController::class, 'address'])->name('web.store.address');
+
+
+// Route::get('/store', function () {
+//     return view('store.pags.index');
+// })->name('web.store');
 Route::get('/link', function () {
     Artisan::call('storage:link');
     return 'Migrations have been run successfully!';

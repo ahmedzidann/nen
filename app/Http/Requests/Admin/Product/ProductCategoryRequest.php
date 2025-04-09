@@ -26,10 +26,15 @@ class ProductCategoryRequest extends FormRequest
         if ($this->getMethod() == 'POST') {
             return [
                 'title.*' => 'required|max:255',
+                'show_in_main' => 'sometimes',
+                'main_image' => 'required|image',
             ];
         } else {
             return [
                 'title.*' => 'sometimes|max:255',
+                'show_in_main' => 'sometimes',
+                'main_image' => 'nullable|image',
+
             ];
 
         }

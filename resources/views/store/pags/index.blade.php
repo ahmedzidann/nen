@@ -127,21 +127,23 @@
                 <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
             </div>
             <div class="cartegory-box">
-                <a href="shop-grid-type-4.html">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="overflow-hidden">
-                                <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/1.webp"
-                                    class="card-img-top rounded-0" alt="...">
-                            </div>
-                            <div class="text-center">
-                                <h5 class="mb-1 cartegory-name mt-3 fw-bold">Account Course</h5>
-                                <!-- <h6 class="mb-0 product-number fw-bold">856 Products</h6> -->
+                @foreach ($productCategories as $productCategory)
+                    <a href="#">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="overflow-hidden">
+                                    <img src="{{ asset('storage') . '/' . $productCategory->main_image }}"
+                                        class="card-img-top rounded-0" alt="...">
+                                </div>
+                                <div class="text-center">
+                                    <h5 class="mb-1 cartegory-name mt-3 fw-bold">{{$productCategory->title}}</h5>
+                                    <!-- <h6 class="mb-0 product-number fw-bold">856 Products</h6> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="shop-grid-type-4.html">
+                    </a>
+                @endforeach
+                {{-- <a href="shop-grid-type-4.html">
                     <div class="card">
                         <div class="card-body">
                             <div class="overflow-hidden">
@@ -210,7 +212,7 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </a> --}}
 
             </div>
         </div>
@@ -466,51 +468,61 @@
                 <div class="col-auto mx-auto">
                     <div class="product-tab-menu table-responsive">
                         <ul class="nav nav-pills flex-nowrap" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#new-arrival"
+
+                            @foreach ($productCategories->where('show_in_main',1) as $productCategory)
+                            <li class="nav-item " role="presentation">
+                                <button class="nav-link @if($loop->first)  active @endif " data-bs-toggle="pill" data-bs-target="#Category-{{$productCategory->id}}"
                                     type="button">
-                                    Accounting</button>
+                                    {{$productCategory->title}}
+                                </button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#best-sellar"
-                                    type="button">
-                                    Programming basics</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#trending-product"
-                                    type="button">Computer networks</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#special-offer"
-                                    type="button">
-                                    Business administration</button>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="tab-content tabular-product">
-                <div class="tab-pane fade show active" id="new-arrival">
+                @foreach ($productCategories->where('show_in_main',1) as $productCategory)
+                <div class="tab-pane fade show  @if($loop->first)  active @endif" id="Category-{{$productCategory->id}}">
                     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                        @foreach ($productCategory->products as $product)
                         <div class="col">
                             <div class="card">
                                 <div class="position-relative overflow-hidden">
                                     <div
                                         class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
                                         <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
+                                        {{-- <a href="javascript:;"><i class="bi bi-basket3"></i></a> --}}
+                                        <a href="javascript:;" class="add-to-cart"
+                                            data-id="{{ $product->id }}"
+                                            data-name="{{ $product->name }}"
+                                            data-price="{{ $product->price }}"
+                                            data-image="{{ asset('storage') . '/' . $product->main_image }}">
+                                            <i class="bi bi-basket3"></i>
+                                        </a>
+
+                                        {{-- <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
+                                                class="bi bi-zoom-in"></i></a> --}}
+                                                <a href="javascript:;" 
+                                                    class="quick-view-btn" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#QuickViewModal"
+                                                    data-name="{{ $product->name }}"
+                                                    data-price="{{ $product->price }}"
+                                                    data-image="{{ asset('storage/' . $product->main_image) }}"
+                                                    data-images="{{ json_encode($product->images->pluck('image')) }}">
+                                                    <i class="bi bi-zoom-in"></i>
+                                                </a>
                                     </div>
                                     <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/1.webp"
+                                        <img src="{{ asset('storage') }}/{{$product->main_image}}"
                                             class="card-img-top" alt="...">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                                        <h6 class="mb-1 fw-bold product-name">{{$product->name}}</h6>
                                         <div class="ratings mb-1 h6">
                                             <i class="bi bi-star-fill text-warning"></i>
                                             <i class="bi bi-star-fill text-warning"></i>
@@ -518,749 +530,19 @@
                                             <i class="bi bi-star-fill text-warning"></i>
                                             <i class="bi bi-star-fill text-warning"></i>
                                         </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
+                                        <p class="mb-0 h6 fw-bold product-price">${{$product->price}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="ribban">New Season</div>
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/10.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/5.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/2.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/3.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/4.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/6.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/7.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/8.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/accountaing_images/9.webp"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        @endforeach
+                        
+                        
                     </div>
                 </div>
-                <div class="tab-pane fade" id="best-sellar">
-                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/basic programming/1.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/basic programming/2.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/basic programming/3.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="ribban bg-primary">New Fashion</div>
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/basic programming/4.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/basic programming/5.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="trending-product">
-                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/courses on computer networks/1.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/courses on computer networks/2jpg.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="ribban bg-warning text-dark">New Season</div>
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="javascript:;">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/courses on computer networks/3.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/courses on computer networks/4.webp"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/courses on computer networks/5.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="special-offer">
-                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/1.jpg"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/2.png"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="ribban">50% Discount</div>
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal"
-                                            data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/3.webp"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal"
-                                            data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/4.webp"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="position-relative overflow-hidden">
-                                    <div
-                                        class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                                        <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                                        <a href="javascript:;" data-bs-toggle="modal"
-                                            data-bs-target="#QuickViewModal"><i class="bi bi-zoom-in"></i></a>
-                                    </div>
-                                    <a href="product-details.html">
-                                        <img src="{{ asset('store') }}/assets/images/ecommerce_imges/business administration/5.webp"
-                                            class="card-img-top" alt="...">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-info text-center">
-                                        <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                                        <div class="ratings mb-1 h6">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <p class="mb-0 h6 fw-bold product-price">$49</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+              
             </div>
         </div>
     </section>

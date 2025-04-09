@@ -67,6 +67,7 @@ Route::group(['prefix' => 'projects', 'as' => 'projects.', 'name' => 'projects.'
         // dd($page->slug);
         Route::get($page->slug, [ProjectController::class, 'index'])->name($page->slug);
     }
+    Route::get('download/{id}', [ProjectController::class, 'download'])->name('downloadprogrampdf');
 });
 
 Route::group(['prefix' => 'doc-validation', 'as' => 'doc-validation.', 'name' => 'doc-validation.'], function () {

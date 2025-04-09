@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\Slider;
+use App\Models\ProgramTabs;
 use App\Models\StaticTable;
 use App\Models\Tabs;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+
 
 class ProjectController extends Controller
 {
@@ -26,6 +28,19 @@ class ProjectController extends Controller
 
         }else abort(400, "error");
         //adadad
+}
+
+public function download($id){
+        
+    $file = ProgramTabs::findorfail($id);
+    $dow = $file->getFirstMediaUrl('pdfFile')  ;
+    $baseUrl = url('/');
+    if (!empty($dow)) {
+        return response()->download(str_replace($baseUrl."/", "", $dow));
+    } else {
+        return response()->json(['error' => 'File not found.'], 404);
+    }
+
 }
 
 }

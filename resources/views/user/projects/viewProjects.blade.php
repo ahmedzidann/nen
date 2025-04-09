@@ -214,7 +214,7 @@
 
                                             <div class="icons-data">
                                                 <a
-                                                    href="{{ route('admin.tabproject.programTabDownload', $program->id) }}">
+                                                    href="{{ route('projects.downloadprogrampdf', $program->id) }}">
                                                     <p class="icon-item">
                                                         <img src="{{ asset('content') }}/images/small_icon/archive-book.png"
                                                             loading="lazy"

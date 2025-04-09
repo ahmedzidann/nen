@@ -92,17 +92,23 @@
 
                                             </div>
                                             {{-- ----------Description end --}}
-                                            {{-- ----------sort first --}}
-                                            <div class="col-md-12 mb-4">
-                                                <x-admin.form.label-first class="form-label" name="sort">
-                                                </x-admin.form.label-first>
-                                                <x-admin.form.input old="{{ 'sort' }}" name="{{ 'sort' }}" type="number" required="" placeholder="sort" class="form-control valid" :value="$StaticTable->sort">
-                                                </x-admin.form.input>
-                                                <x-admin.form.label-end star="*" name="please enter sort">
-                                                </x-admin.form.label-end>
-                                            </div>
-                                            {{-- ----------sort end --}}
-                                            {{-- ----------first pdf--}}
+                                           
+                                      
+                       
+                        @if ($loop->first)
+                        {{-- ----------first image--}}
+                        <div class="col-md-12 mb-4">
+                            <x-admin.form.label-first class="col-sm-3 col-form-label" name="File Upload Image">
+                            </x-admin.form.label-first>
+                            <div class="col-sm-9">
+                                <x-admin.form.input :model="$StaticTable" nameImage="pdfFile" old="image" name="image" type="file" readonly="" placeholder="Please Enter Image" id="image" class="dropify" DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                </x-admin.form.input>
+                            </div>
+                        </div>
+
+                           {{-- ----------end image--}}
+
+                        {{-- ----------first pdf--}}
 
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="col-sm-3 col-form-label" name="File Upload Pdf">
@@ -118,18 +124,18 @@
 
                         </form>
                         {{-- ----------end pdf--}}
-                        {{-- ----------first image--}}
-                        @if ($loop->first)
-                        <div class="col-md-12 mb-4">
-                            <x-admin.form.label-first class="col-sm-3 col-form-label" name="File Upload Image">
-                            </x-admin.form.label-first>
-                            <div class="col-sm-9">
-                                <x-admin.form.input :model="$StaticTable" nameImage="pdfFile" old="image" name="image" type="file" readonly="" placeholder="Please Enter Image" id="image" class="dropify" DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                </x-admin.form.input>
-                            </div>
-                        </div>
+
+                         {{-- ----------sort first --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="form-label" name="sort">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'sort' }}" name="{{ 'sort' }}" type="number" required="" placeholder="sort" class="form-control valid" :value="$StaticTable->sort">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*" name="please enter sort">
+                                                </x-admin.form.label-end>
+                                            </div>
+                                            {{-- ----------sort end --}}
                         @endif
-                        {{-- ----------end image--}}
                         @if ($loop->first)
                         {{-- ----------status first --}}
                         <div class="col-md-6 mb-4">

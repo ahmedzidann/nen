@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\Product\ProductCategoryController;
 use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\Product\StoreSliderController;
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\Admin\profile\RoleController;
 use App\Http\Controllers\Admin\profile\UsersController;
@@ -84,6 +85,9 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('products', ProductController::class)->except('destroy');
     Route::post('products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.delete_bulck');
     Route::post('product-image', [ProductController::class, 'deleteImage'])->name('delete-image');
+
+    Route::resource('store_sliders', StoreSliderController::class)->except('destroy');
+    Route::post('store_sliders/bulk-delete', [StoreSliderController::class, 'bulkDelete'])->name('store_sliders.delete_bulck');
     Route::resource('education-descriptions', EducationDescriptionController::class)->except('destroy');
     Route::post('education-descriptions/bulk-delete', [EducationDescriptionController::class, 'bulkDelete'])->name('education-descriptions.delete_bulck');
     Route::resource('resources', ResourceController::class)->except('destroy');

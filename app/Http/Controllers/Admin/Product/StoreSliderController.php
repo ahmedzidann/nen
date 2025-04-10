@@ -10,8 +10,8 @@ use App\Models\TranslationKey;
 use Yajra\DataTables\Facades\DataTables;
 class StoreSliderController extends Controller
 {
-    
-    
+
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -34,7 +34,7 @@ class StoreSliderController extends Controller
                 ->editColumn('mini_desc', function ($row) use ($language) {
                     return $row->translate('mini_desc', $language);
                 })
-               
+
                 ->addColumn('action', function ($row) {
                     return '<div class="d-flex order-actions">
                                 <a href="' . route('admin.store_sliders.edit', $row->id) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
@@ -49,7 +49,7 @@ class StoreSliderController extends Controller
 
     public function create()
     {
-        
+
         return view('admin.product.store_slider.create');
     }
     /**
@@ -60,9 +60,8 @@ class StoreSliderController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $data['image'] = FileUploadHelper::uploadImage($request->file('image'), 'advertisements');
+            $data['image'] = FileUploadHelper::uploadImage($request->file('image'), 'store-slider');
         }
-
 
         StoreSlider::create($data);
 
@@ -105,7 +104,7 @@ class StoreSliderController extends Controller
         $data['image'] = FileUploadHelper::updateFile(
             $request->file('image'),
             $row->image,
-            'advertisements'
+            'store-slider'
         );
     }
         $row->update($data);

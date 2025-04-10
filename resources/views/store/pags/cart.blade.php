@@ -64,7 +64,7 @@
                                 <p class="mb-0" id="summary-grand">$0.00</p>
                             </div>
                             <div class="d-grid mt-4">
-                                <button type="button" class="btn btn-dark btn-ecomm py-3 px-5">Place Order</button>
+                                <button type="button" class="btn btn-dark btn-ecomm py-3 px-5" id='goToAddress' onClick="goToAddress()">Continue</button>
                             </div>
                         </div>
                     </div>
@@ -149,8 +149,8 @@
             });
 
             // Example logic for discounts/delivery
-            let discount = subtotal > 100 ? subtotal * 0.1 : 0;
-            let delivery = subtotal > 50 ? 0 : 5;
+            let discount = subtotal > 100 ? subtotal * 0 : 0;
+            let delivery = subtotal > 50 ? 0 : 0;
             let grandTotal = subtotal - discount + delivery;
 
             totalEl.textContent = `$${subtotal.toFixed(2)}`;
@@ -170,4 +170,14 @@
             });
         }
     });
+
+
+    function goToAddress(){
+        const cartChecker = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cartChecker.length === 0) {
+               alert('pleas add products to cart first');
+        }else{
+            window.location.href = '{{ route('web.store.address') }}'
+        }
+    }
 </script>

@@ -101,7 +101,7 @@ Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
 Route::get('/store', [StoreController::class, 'index'])->name('web.store');
 Route::get('/cart', [StoreController::class, 'cart'])->name('web.store.cart');
 Route::get('/address', [StoreController::class, 'address'])->name('web.store.address');
-
+Route::post('/place-order', [StoreController::class, 'place_order'])->name('web.store.place-order');
 
 // Route::get('/store', function () {
 //     return view('store.pags.index');

@@ -920,4 +920,6 @@
   'Advertisement' => 'Advertisement',
   'Advertisements' => 'Advertisements',
   'title  ' => 'Title  ',
+  'Mini_desc' => 'Mini desc',
+  'Store Slider' => 'Store Slider',
 );

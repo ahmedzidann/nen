@@ -7,33 +7,37 @@
         <section class="slider-section">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    @foreach ($storeSliders as $key => $slider)
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}" class="@if($loop->first)  active @endif"
                         aria-current="true"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+                        @endforeach
                     <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></button> -->
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active bg-primary">
+                    @foreach ($storeSliders as $slider)
+                    <div class="carousel-item @if($loop->first)  active @endif bg-primary">
                         <div class="row d-flex align-items-center padding_slide">
                             <div class="col d-none d-lg-flex justify-content-center">
                                 <div class="">
                                     <!-- <h3 class="h3 fw-light text-white fw-bold">New Arrival</h3> -->
-                                    <h1 class="h1 text-white fw-bold">The Future of Artificial Intelligence</h1>
-                                    <p class="text-white fw-bold"> How AI is Transforming Our World</p>
+                                    <h1 class="h1 text-white fw-bold">{{$slider->title}}</h1>
+                                    <p class="text-white fw-bold">{{$slider->mini_desc}}</p>
                                     <div class=""><a class="btn btn-dark btn-ecomm" href="shop-grid.html">Shop
                                             Now</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <img src="{{ asset('store') }}/assets/images/ecommerce_imges/artificail-courses.png"
+                                <img src="{{ asset('storage') }}/{{$slider->image}}"
                                     class="img-fluid img_w" alt="...">
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item bg-red">
+                    @endforeach
+
+
+                    {{-- <div class="carousel-item bg-red">
                         <div class="row d-flex align-items-center padding_slide">
                             <div class="col d-none d-lg-flex justify-content-center">
                                 <div class="">
@@ -70,7 +74,7 @@
                                     alt="...">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- <div class="carousel-item bg-yellow">
                 <div class="row d-flex align-items-center">
                   <div class="col d-none d-lg-flex justify-content-center">
@@ -504,9 +508,9 @@
 
                                         {{-- <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
                                                 class="bi bi-zoom-in"></i></a> --}}
-                                                <a href="javascript:;" 
-                                                    class="quick-view-btn" 
-                                                    data-bs-toggle="modal" 
+                                                <a href="javascript:;"
+                                                    class="quick-view-btn"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#QuickViewModal"
                                                     data-name="{{ $product->name }}"
                                                     data-price="{{ $product->price }}"
@@ -535,14 +539,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         @endforeach
-                        
-                        
+
+
                     </div>
                 </div>
                 @endforeach
-              
+
             </div>
         </div>
     </section>

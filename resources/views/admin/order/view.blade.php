@@ -23,7 +23,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i
                                         class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ str_replace('-', ' ', ucfirst('blogs')) }}
+                                {{ str_replace('-', ' ', ucfirst('orders')) }}
                             </li>
                         </ol>
                     </nav>

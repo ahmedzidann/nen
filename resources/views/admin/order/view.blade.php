@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('titleadmin')
-    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Blog' . ' View'))) }}
+    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('orders' . ' View'))) }}
 @endsection
 @section('cssadmin')
 @endsection
@@ -73,7 +73,7 @@
 
     <script>
         var language = $('#Admins').val();
-        let url = '{{ route('admin.order.index') }}'
+        let url = '{{ route('admin.orders.index') }}'
         url = url.replace(':id', language);
         $(document).ready(function() {
             var table = initializeDataTable(

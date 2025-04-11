@@ -375,7 +375,7 @@
                               <div class="cart-buttons mt-3">
                                   <div class="buttons d-flex flex-column gap-3 mt-4">
                                     @if(isset($product))
-                                    
+
                                         <a href="javascript:;"
                                         class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1 add-to-cart"
                                         data-id="{{ $product->id }}"
@@ -390,10 +390,10 @@
                                               class="bi bi-basket2 me-2"></i>Add to Bag</a>
                                     @endif
 
-                                      
+{{--
                                       <a href="javascript:;"
                                           class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i
-                                              class="bi bi-suit-heart me-2"></i>Wishlist</a>
+                                              class="bi bi-suit-heart me-2"></i>Wishlist</a> --}}
                                   </div>
                               </div>
                               <hr class="my-3">
@@ -469,7 +469,7 @@
                 sliderNav.html('');
 
                 if(!(images.length)) {
-                    const fallbackImage = image; 
+                    const fallbackImage = image;
                     sliderFor.append(`<div><img src="${fallbackImage}" alt="No image available" class="img-fluid"></div>`);
                     // sliderNav.append(`<div><img src="${fallbackImage}" alt="No image available" class="img-fluid"></div>`);
                 } else{
@@ -479,7 +479,7 @@
                     sliderNav.append(`<div><img src="${fullImgPath}" alt="" class="img-fluid"></div>`);
                 });
                 }
-              
+
                 sliderFor.slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,

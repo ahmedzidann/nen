@@ -77,10 +77,13 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(string $id)
-    // {
-    //     //
-    // }
+    public function show(string $id)
+    {
+        // $order = Order::with(['products'])->find($id);
+        //, 'products.vendor'
+        $order = Order::with(['products.product'])->findOrFail($id);
+        return view('admin.order.details' , compact('order'));
+    }
 
     /**
      * Show the form for editing the specified resource.

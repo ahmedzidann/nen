@@ -496,7 +496,7 @@
                                 <div class="position-relative overflow-hidden">
                                     <div
                                         class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                                        <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                        {{-- <a href="javascript:;"><i class="bi bi-heart"></i></a> --}}
                                         {{-- <a href="javascript:;"><i class="bi bi-basket3"></i></a> --}}
                                         <a href="javascript:;" class="add-to-cart"
                                             data-id="{{ $product->id }}"

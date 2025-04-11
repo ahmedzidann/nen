@@ -54,7 +54,7 @@
                                 <th>{{ TranslationHelper::translate(ucfirst('status') ?? '') }}</th>
                                     <th>{{ TranslationHelper::translate(ucfirst('address') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Created At') ?? '') }}</th>
-                                {{-- <th>{{ TranslationHelper::translate(ucfirst('Processes') ?? '') }}</th> --}}
+                                <th>{{ TranslationHelper::translate(ucfirst('actions') ?? '') }}</th>
                             </tr>
                         </thead>
 
@@ -99,11 +99,11 @@
                     {
                         data: 'created_at'
                     },
-                    // {
-                    //     data: 'action',
-                    //     orderable: false,
-                    //     searchable: false
-                    // }
+                    {
+                        data: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
                 ],
                 [ // Define buttons
                     {

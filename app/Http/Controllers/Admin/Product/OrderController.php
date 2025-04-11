@@ -12,41 +12,33 @@ use Yajra\DataTables\Facades\DataTables;
 class OrderController extends Controller
 {
 
-
     public function index(Request $request)
     {
         if ($request->ajax()) {
             $data = Order::query();
-            $language = app()->getLocale(); // Get current language
+            $language = app()->getLocale();
 
             return DataTables::of($data)
                 ->addIndexColumn()
-                // ->addColumn('checkbox', function ($row) {
-                //     return '<input type="checkbox" name="blogs_checkbox[]" class="form-check-input blogs_checkbox" value="' . $row->id . '" />';
-                // })
                 ->editColumn('id', function () {
                     static $count = 0;
                     $count++;
                     return $count;
                 })
-                // ->editColumn('title', function ($row) use ($language) {
-                //     return $row->translate('title', $language);
-                // })
-                // ->editColumn('mini_desc', function ($row) use ($language) {
-                //     return $row->translate('mini_desc', $language);
-                // })
-
-                // ->addColumn('action', function ($row) {
-                //     return '<div class="d-flex order-actions">
-                //                 <a href="' . route('admin.store_sliders.edit', $row->id) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
-                //             </div>';
-                // })
-                // ->rawColumns(['checkbox', 'action'])
+                ->addColumn('action', function ($row) {
+                    return '<div class="d-flex order-actions">
+                                <a href="' . route('admin.orders.show', $row->id) . '" class="btn btn-sm btn-primary me-1">
+                                    <i class="bx bx-show"></i> View
+                                </a>
+                            </div>';
+                })
+                ->rawColumns(['action']) // Important to render HTML
                 ->make(true);
         }
 
         return view('admin.order.view');
     }
+
 
     // public function create()
     // {
@@ -80,8 +72,7 @@ class OrderController extends Controller
     public function show(string $id)
     {
         // $order = Order::with(['products'])->find($id);
-        //, 'products.vendor'
-        $order = Order::with(['products.product'])->findOrFail($id);
+        $order = Order::with(['products.product', 'products.vendor'])->findOrFail($id);
         return view('admin.order.details' , compact('order'));
     }
 

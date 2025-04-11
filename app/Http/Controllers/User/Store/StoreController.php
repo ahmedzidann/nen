@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Store;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
 use App\Models\StoreSlider;
 use Illuminate\Contracts\View\View;
@@ -49,7 +50,9 @@ class StoreController extends Controller
 
         // Store the products in the order_products table
         foreach ($request->products as $product) {
+            $prod = Product::findOrFail($product['id']);
             OrderProduct::create([
+                "vendor_id" => $prod->vendor_id,
                 'order_id' => $order->id,
                 'product_id' => $product['id'],
                 'quantity' => $product['quantity'],

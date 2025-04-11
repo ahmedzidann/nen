@@ -9,7 +9,7 @@ class OrderProduct extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'order_id', 'quantity'];
+    protected $fillable = ['product_id', 'order_id', 'quantity','vendor_id'];
 
     // Relationship with Order
     public function order()
@@ -22,8 +22,8 @@ class OrderProduct extends Model
     return $this->belongsTo(Product::class);
 }
 
-    // public function vendor()
-    // {
-    //     return $this->belongsTo(vendor::class);
-    // }
+    public function vendor()
+    {
+        return $this->belongsTo(FindUs::class);
+    }
 }

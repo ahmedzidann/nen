@@ -522,6 +522,14 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        const modalElement = document.getElementById('EditAddress');
+        let modal = bootstrap.Modal.getInstance(modalElement);
+
+        if (!modal) {
+            modal = new bootstrap.Modal(modalElement);
+        }
+
+        modal.show();
         // Load address from localStorage on page load
         const savedAddress = JSON.parse(localStorage.getItem('userAddress'));
         if (savedAddress) {

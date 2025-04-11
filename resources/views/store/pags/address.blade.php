@@ -37,10 +37,10 @@
                     <div class="d-flex flex-column flex-xl-row gap-3">
                 <div class="address-info form-check flex-grow-1">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                    <span class="fw-bold mb-0 h5" id="displayName">Jhon Maxwell</span><br>
-                    <span id="displayAddress">47-A, US Road, New York</span><br>
-                    <span id="displayCity">United Kingdom, 201001</span><br>
-                    Mobile: <span class="text-dark fw-bold" id="displayMobile">+91-xxxxxxxxxx</span>
+                    <span class="fw-bold mb-0 h5" id="displayName"></span><br>
+                    <span id="displayAddress">k</span><br>
+                    <span id="displayCity"></span><br>
+                    Mobile: <span class="text-dark fw-bold" id="displayMobile"></span>
                 </div>
                 <div class="d-none d-xl-block vr"></div>
                 <div class="d-grid gap-2 align-self-start align-self-xl-center">
@@ -586,7 +586,7 @@
         let addressData = JSON.parse(localStorage.getItem('userAddress'));
         if (!addressData) {
             addressData = defaultAddress;
-            localStorage.setItem('userAddress', JSON.stringify(addressData));
+            // localStorage.setItem('userAddress', JSON.stringify(addressData));
         }
 
         // === Update Display Area ===

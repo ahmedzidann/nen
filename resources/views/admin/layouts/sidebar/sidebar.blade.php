@@ -599,8 +599,24 @@
                   </li>
                   <li> <a href="{{ route('admin.products.index') }}"><i class='bx bx-radio-circle'></i>Products</a>
                   </li>
+                  <li> <a href="{{ route('admin.store_sliders.index') }}"><i class='bx bx-radio-circle'></i>store sliders</a>
+                  </li>
               </ul>
           </li>
+          <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="bx bx-error"></i>
+                </div>
+                <div class="menu-title">Orders</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.orders.index') }}"><i class='bx bx-radio-circle'></i>
+                        orders</a>
+                </li>
+
+            </ul>
+        </li>
+
       @endcan
 
       {{-- end Testing  --}}

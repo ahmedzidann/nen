@@ -512,7 +512,9 @@
                                                     class="quick-view-btn"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#QuickViewModal"
+                                                    data-id="{{ $product->id }}"
                                                     data-name="{{ $product->name }}"
+                                                    data-description="{{ $product->description }}"
                                                     data-price="{{ $product->price }}"
                                                     data-image="{{ asset('storage/' . $product->main_image) }}"
                                                     data-images="{{ json_encode($product->images->pluck('image')) }}">

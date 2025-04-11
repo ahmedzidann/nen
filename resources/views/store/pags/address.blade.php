@@ -639,35 +639,40 @@
         });
     });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('placeOrderBtn').addEventListener('click', function () {
-            // Fetch the address data from localStorage
             const addressData = JSON.parse(localStorage.getItem('userAddress'));
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            // If address is not found, use default
+
             if (!addressData) {
-                alert('Please provide an address before placing the order.');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Missing Address',
+                    text: 'Please provide an address before placing the order.'
+                });
                 return;
             }
 
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let products=[];
-            // Check if the cart has products
-            if (cart.length === 0) {
-                alert("An error occurred. Please try again.");
-                return ;
-            } else {
+            let products = [];
 
-            products = cart.map(product => ({
-                id: product.id,         // Product ID
-                quantity: product.quantity  // Product Quantity
-            }));
+            if (cart.length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Empty Cart',
+                    text: 'An error occurred. Please try again.'
+                });
+                return;
+            } else {
+                products = cart.map(product => ({
+                    id: product.id,
+                    quantity: product.quantity
+                }));
             }
 
-
-            // Prepare data to send in AJAX request
             const orderData = {
                 name: addressData.name,
                 mobile: addressData.mobile,
@@ -675,40 +680,52 @@
                 city: addressData.city,
                 state: addressData.state,
                 pincode: addressData.pincode,
-                products: products // List of product IDs and quantities
+                products: products
             };
 
-            // Send AJAX request
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/place-order", true);  // Replace "/place-order" with your server endpoint
+            xhr.open("POST", "/place-order", true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("X-CSRF-TOKEN", csrfToken);
-            // Handle success response
+
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        alert("Order placed successfully!");
-                        localStorage.removeItem("cart");
-
-
-                        window.location.href = '{{ route('web.store') }}';
-                        // Optionally, redirect the user or reset the cart
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Order Placed',
+                            text: 'Your order was placed successfully!'
+                        }).then(() => {
+                            localStorage.removeItem("cart");
+                            window.location.href = '{{ route('web.store') }}';
+                        });
                     } else {
-                        alert("There was an error placing the order. Please try again.");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Order Failed',
+                            text: 'There was an error placing the order. Please try again.'
+                        });
                     }
                 } else {
-                    alert("An error occurred. Please try again.");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Server Error',
+                        text: 'An error occurred. Please try again.'
+                    });
                 }
             };
 
-            // Handle error response
             xhr.onerror = function () {
-                alert("An error occurred while sending your order. Please try again.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Request Failed',
+                    text: 'An error occurred while sending your order. Please try again.'
+                });
             };
 
-            // Send the request with order data
             xhr.send(JSON.stringify(orderData));
         });
     });
-    </script>
+</script>
+

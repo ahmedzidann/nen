@@ -321,7 +321,7 @@
                       <div class="col-12 col-xl-6">
                           <div class="product-info">
                               <h4 class="product-title fw-bold mb-1">Check Pink Kurta</h4>
-                              <p class="mb-0">Women Pink & Off-White Printed Kurta with Palazzos</p>
+                              <p class="mb-0 product-description">Women Pink & Off-White Printed Kurta with Palazzos</p>
                               <div class="product-rating">
                                   <div class="hstack gap-2 border p-1 mt-3 width-content">
                                       <div><span class="rating-number">4.8</span><i
@@ -333,8 +333,8 @@
                               <hr>
                               <div class="product-price d-flex align-items-center gap-3">
                                   <div class="h4 fw-bold">$458</div>
-                                  <div class="h5 fw-light text-muted text-decoration-line-through">$2089</div>
-                                  <div class="h4 fw-bold text-danger">(70% off)</div>
+                                  {{-- <div class="h5 fw-light text-muted text-decoration-line-through">$2089</div> --}}
+                                  <div class="h4 fw-bold text-danger"></div>
                               </div>
                               <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
 
@@ -387,7 +387,7 @@
                                     @else
                                     <a href="javascript:;"
                                           class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1"><i
-                                              class="bi bi-basket2 me-2"></i>Add to Bag</a>
+                                              class="bi bi-basket2 me-2"></i>Add to Bagf</a>
                                     @endif
 
 {{--
@@ -445,16 +445,32 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const quickViewButtons = document.querySelectorAll('.quick-view-btn');
-
         quickViewButtons.forEach(button => {
             button.addEventListener('click', function () {
+                const id = this.dataset.id;
                 const name = this.dataset.name;
+                const description = this.dataset.description;
                 const price = this.dataset.price;
                 const images = JSON.parse(this.dataset.images);
                 const image = this.dataset.image;
                 // Update product info
                 document.querySelector('#QuickViewModal .product-title').textContent = name;
+                const htmlString = description;
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = htmlString;
+                const plainText = tempDiv.textContent || tempDiv.innerText;
+
+                document.querySelector('#QuickViewModal .product-description').textContent = plainText;
+
+
                 document.querySelector('#QuickViewModal .product-price .fw-bold').textContent = `$${price}`;
+//
+
+                quickViewButton = document.querySelector('#QuickViewModal .add-to-cart');
+                quickViewButton.dataset.id = id;
+                quickViewButton.dataset.name = name;
+                quickViewButton.dataset.price = price;
+                quickViewButton.dataset.image = image;
 
                 const sliderFor = $('#QuickViewModal .slider-for');
                 const sliderNav = $('#QuickViewModal .slider-nav');
@@ -518,6 +534,7 @@
                     quantity: 1
                 };
 
+                console.log(product);
                 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
                 const existing = cart.find(item => item.id === product.id);

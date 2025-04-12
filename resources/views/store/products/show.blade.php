@@ -140,7 +140,7 @@
                         data-price="{{ $product->price }}"
                         data-image="{{ asset('storage') . '/' . $product->main_image }}">
                         <i class="bi bi-basket2 me-2">
-                            </i>Add to Bag
+                            </i>{{ TranslationHelper::translateWeb(ucfirst('Add to Bag')??'') }}
                         </a>
 
                        {{-- <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a> --}}

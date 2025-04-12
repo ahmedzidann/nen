@@ -3,29 +3,15 @@
 
 <div class="page-content">
 
-    <!--start breadcrumb-->
-    <div class="py-4 border-bottom">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:;">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!--end breadcrumb-->
-
     <!--start product details-->
     <section class="section-padding">
         <div class="container">
             <div class="d-flex align-items-center px-3 py-2 border mb-4">
                 <div class="text-start">
-                    <h4 class="mb-0 h4 fw-bold" id="cart-header-title">My Bag</h4>
+                    <h4 class="mb-0 h4 fw-bold" id="cart-header-title"></h4>
                 </div>
                 <div class="ms-auto">
-                    <a type="button" class="btn btn-light btn-ecomm" href='{{ route('web.store') }}'>Continue Shopping</a>
+                    <a type="button" class="btn btn-light btn-ecomm" href='{{ route('web.store') }}'>{{ TranslationHelper::translateWeb(ucfirst('Continue Shopping')??'') }}</a>
                 </div>
             </div>
 
@@ -34,7 +20,7 @@
                 <div class="col-12 col-xl-8">
                     <div id="empty-cart-message" class="text-center py-5 d-none">
                         <h4>Your cart is empty 😢</h4>
-                        <a href="{{ route('web.store') }}" class="btn btn-primary mt-3">Go Shopping</a>
+                        <a href="{{ route('web.store') }}" class="btn btn-primary mt-3">{{ TranslationHelper::translateWeb(ucfirst('Go Shopping')??'') }}</a>
                     </div>
                     <div id="cart-items-container"></div>
                 </div>

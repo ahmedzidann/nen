@@ -127,8 +127,8 @@
     <section class="cartegory-slider section-padding bg-section-2">
         <div class="container">
             <div class="text-center pb-3">
-                <h3 class="mb-0 h3 fw-bold">Featured Categories</h3>
-                <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
+                <h3 class="mb-0 h3 fw-bold">{{ TranslationHelper::translateWeb(ucfirst('Featured Categories')??'') }}</h3>
+                <p class="mb-0 text-capitalize">{{ TranslationHelper::translateWeb(ucfirst('Select your favorite categories and purchase')??'') }}</p>
             </div>
             <div class="cartegory-box">
                 @foreach ($productCategories->where('is_featured',1) as $productCategory)
@@ -465,8 +465,8 @@
     <section class="product-tab-section section-padding bg-light">
         <div class="container">
             <div class="text-center pb-3">
-                <h3 class="mb-0 h3 fw-bold">The best sections</h3>
-                <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+                <h3 class="mb-0 h3 fw-bold">{{ TranslationHelper::translateWeb(ucfirst('Latest Product')??'') }}</h3>
+                <p class="mb-0 text-capitalize">{{ TranslationHelper::translateWeb(ucfirst('Latest Product description')??'') }}</p>
             </div>
             <div class="row">
                 <div class="col-auto mx-auto">

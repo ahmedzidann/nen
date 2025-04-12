@@ -32,12 +32,12 @@
               <div class="offcanvas-body primary-menu">
                   <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
                       <li class="nav-item">
-                          <a class="nav-link" href="{{route('web.store')}}">Home</a>
+                          <a class="nav-link" href="{{route('web.store')}}">{{ TranslationHelper::translateWeb(ucfirst('Home')??'') }}</a>
                       </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                             data-bs-toggle="dropdown">
-                            Categories
+                            {{ TranslationHelper::translateWeb(ucfirst('Categories')??'') }}
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($categories as $category)
@@ -47,13 +47,13 @@
                         </ul>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="{{route('products.index')}}">products</a>
+                        <a class="nav-link" href="{{route('products.index')}}">{{ TranslationHelper::translateWeb(ucfirst('products')??'') }}</a>
                     </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="about-us.html">About</a>
+                          <a class="nav-link" href="about-us.html">{{ TranslationHelper::translateWeb(ucfirst('About')??'') }}</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="contact-us.html">Contact</a>
+                          <a class="nav-link" href="contact-us.html">{{ TranslationHelper::translateWeb(ucfirst('Contact')??'') }}</a>
                       </li>
                       {{-- <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"

@@ -256,7 +256,7 @@
       </div>
       <div class="offcanvas-footer p-3 border-top">
           <div class="d-grid">
-              <a type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" href="{{ route('web.store.cart') }}" >Checkout</a>
+              <a type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3" href="{{ route('web.store.cart') }}" >{{ TranslationHelper::translateWeb(ucfirst('Checkout')??'') }}</a>
           </div>
       </div>
 
@@ -382,12 +382,12 @@
                                         data-name="{{ $product->name }}"
                                         data-price="{{ $product->price }}"
                                         data-image="{{ asset('storage') . '/' . $product->main_image }}">
-                                        <i class="bi bi-basket2 me-2"></i>Add to Bag
+                                        <i class="bi bi-basket2 me-2"></i>{{ TranslationHelper::translateWeb(ucfirst('Add to Bag')??'') }}
                                     </a>
                                     @else
                                     <a href="javascript:;"
                                           class="btn btn-lg btn-dark btn-ecomm px-5 py-3 flex-grow-1"><i
-                                              class="bi bi-basket2 me-2"></i>Add to Bagf</a>
+                                              class="bi bi-basket2 me-2"></i> {{ TranslationHelper::translateWeb(ucfirst('Add to Bag')??'') }}</a>
                                     @endif
 
 {{--

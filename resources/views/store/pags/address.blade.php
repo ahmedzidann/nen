@@ -5,19 +5,7 @@
 <div class="page-content">
 
 
-    <!--start breadcrumb-->
-    <div class="py-4 border-bottom">
-     <div class="container">
-       <nav aria-label="breadcrumb">
-         <ol class="breadcrumb mb-0">
-           <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-           <li class="breadcrumb-item"><a href="javascript:;">checkout</a></li>
-           <li class="breadcrumb-item active" aria-current="page">Address</li>
-         </ol>
-       </nav>
-     </div>
-    </div>
-    <!--end breadcrumb-->
+
 
 
     <!--start product details-->
@@ -25,13 +13,13 @@
      <div class="container">
        <div class="d-flex align-items-center px-3 py-2 border mb-4">
          <div class="text-start">
-           <h4 class="mb-0 h4 fw-bold">Select Delivery Address</h4>
+           <h4 class="mb-0 h4 fw-bold">{{ TranslationHelper::translateWeb(ucfirst('Select Delivery Address')??'') }}</h4>
         </div>
        </div>
         <div class="row g-4">
           <div class="col-12 col-lg-8 col-xl-8">
 
-         <h6 class="fw-bold mb-3 py-2 px-3 bg-light">Default Address</h6>
+         <h6 class="fw-bold mb-3 py-2 px-3 bg-light">{{ TranslationHelper::translateWeb(ucfirst('Default Address')??'') }}</h6>
             <div class="card rounded-0 mb-3">
                 <div class="card-body">
                     <div class="d-flex flex-column flex-xl-row gap-3">
@@ -104,7 +92,7 @@
                         <p class="mb-0" id="summary-grand">$0.00</p>
                     </div>
                     <div class="d-grid mt-4">
-                        <button type="button" class="btn btn-dark btn-ecomm py-3 px-5" id="placeOrderBtn">Place Order</button>
+                        <button type="button" class="btn btn-dark btn-ecomm py-3 px-5" id="placeOrderBtn">{{ TranslationHelper::translateWeb(ucfirst('Place Order')??'') }}</button>
                     </div>
                 </div>
             </div>

@@ -19,6 +19,7 @@ class StoreController extends Controller
         $productCategories = ProductCategory::with(['products' => function ($query) {
             $query->where('is_active', true)->orderBy('sort')->with('images');
         }])->get();
+
         return view('store.pags.index',compact('productCategories', 'storeSliders'));
     }
 

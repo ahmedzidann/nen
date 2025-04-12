@@ -8,6 +8,7 @@ use App\Models\Footer;
 use App\Models\SidebarResource;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
         $pages = Page::where('parent_id', Page::where('slug', 'about')->first()->id)
             ->where('navbar', 'Active')->get();
         $educationPages = Page::where('parent_id', Page::where('slug', 'education')->first()->id)

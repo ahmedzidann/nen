@@ -72,11 +72,18 @@
                                                         name="show_in_main"  checked>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="form-group col-md-12">
-                                                <label for="main_image">Image</label>
-                                                <input type="file" class="form-control-file dropify" id="main_image"
-                                                    name="main_image">
+                                            <div class="card-body p-4 row">
+                                                <div class="form-group  ">
+                                                    <label for="title">is featured</label>
+                                                    <input type="checkbox" class="form-check-input selectAll" id="is_featured"
+                                                        name="is_featured"  checked>
+                                                </div>
+
+                                                <div class="form-group  ">
+                                                    <label for="main_image">Image</label>
+                                                    <input type="file" class="form-control-file dropify" id="main_image"
+                                                        name="main_image">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

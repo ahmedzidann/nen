@@ -33,4 +33,12 @@ class Product extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id', 'id');
     }
+
+    public function similarProducts()
+    {
+        return $this->hasMany(Product::class, 'product_category_id', 'product_category_id')
+                    ->where('id', '!=', $this->id)
+                    ->latest()
+                    ->limit(20); // Optional: limit results
+    }
 }

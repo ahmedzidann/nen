@@ -63,9 +63,10 @@ class ProductCategoryController extends Controller
     public function store(ProductCategoryRequest $request)
     {
         $data = $request->validated();
-        
+
         $data['show_in_main'] = isset($data['show_in_main']) ? 1 : 0;
-       
+        $data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+
         if ($request->hasFile('main_image')) {
             $data['main_image'] = FileUploadHelper::uploadImage($request->file('main_image'), 'product-categories');
         }
@@ -97,6 +98,7 @@ class ProductCategoryController extends Controller
 
         $data = $request->validated();
         $data['show_in_main'] = isset($data['show_in_main']) ? 1 : 0;
+        $data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
         if ($request->hasFile('main_image')) {
             // Delete old main image if it exists
             if ($productCategory->main_image) {

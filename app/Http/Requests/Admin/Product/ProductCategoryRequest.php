@@ -27,12 +27,14 @@ class ProductCategoryRequest extends FormRequest
             return [
                 'title.*' => 'required|max:255',
                 'show_in_main' => 'sometimes',
+                'is_featured' => 'sometimes',
                 'main_image' => 'required|image',
             ];
         } else {
             return [
                 'title.*' => 'sometimes|max:255',
                 'show_in_main' => 'sometimes',
+                'is_featured' => 'sometimes',
                 'main_image' => 'nullable|image',
 
             ];

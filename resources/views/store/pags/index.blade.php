@@ -127,12 +127,12 @@
     <section class="cartegory-slider section-padding bg-section-2">
         <div class="container">
             <div class="text-center pb-3">
-                <h3 class="mb-0 h3 fw-bold">Top Categories</h3>
+                <h3 class="mb-0 h3 fw-bold">Featured Categories</h3>
                 <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
             </div>
             <div class="cartegory-box">
-                @foreach ($productCategories as $productCategory)
-                    <a href="#">
+                @foreach ($productCategories->where('is_featured',1) as $productCategory)
+                    <a href="{{route('products.index',['category_id'=>$productCategory->id])}}">
                         <div class="card">
                             <div class="card-body">
                                 <div class="overflow-hidden">
@@ -521,7 +521,7 @@
                                                     <i class="bi bi-zoom-in"></i>
                                                 </a>
                                     </div>
-                                    <a href="product-details.html">
+                                    <a href="{{route('products.show',['product'=>$product->id])}}">
                                         <img src="{{ asset('storage') }}/{{$product->main_image}}"
                                             class="card-img-top" alt="...">
                                     </a>

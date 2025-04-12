@@ -1,3 +1,7 @@
+  @php
+      $categories = \App\Models\Product\ProductCategory::all();
+
+  @endphp
   <!--page loader-->
   <div class="loader-wrapper">
       <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
@@ -11,7 +15,7 @@
   <!--start top header-->
   <header class="top-header">
       <nav class="navbar navbar-expand-xl w-100 navbar-dark container gap-3">
-          <a class="navbar-brand d-none d-xl-inline" href="index.html"><img
+          <a class="navbar-brand d-none d-xl-inline" href="{{route('web.store')}}"><img
                   src="{{ asset('store') }}/assets/images/logo.svg" class="logo-img" alt=""></a>
           <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasNavbar">
@@ -28,95 +32,30 @@
               <div class="offcanvas-body primary-menu">
                   <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
                       <li class="nav-item">
-                          <a class="nav-link" href="index.html">Home</a>
+                          <a class="nav-link" href="{{route('web.store')}}">Home</a>
                       </li>
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="tv-shows.html"
-                              data-bs-toggle="dropdown">
-                              Categories
-                          </a>
-                          <div class="dropdown-menu dropdown-large-menu">
-                              <div class="row">
-                                  <div class="col-12 col-xl-4">
-                                      <h6 class="large-menu-title">Fashion</h6>
-                                      <ul class="list-unstyled">
-                                          <li><a href="javascript:;">Casual T-Shirts</a>
-                                          </li>
-                                          <li><a href="javascript:;">Formal Shirts</a>
-                                          </li>
-                                          <li><a href="javascript:;">Jackets</a>
-                                          </li>
-                                          <li><a href="javascript:;">Jeans</a>
-                                          </li>
-                                          <li><a href="javascript:;">Dresses</a>
-                                          </li>
-                                          <li><a href="javascript:;">Sneakers</a>
-                                          </li>
-                                          <li><a href="javascript:;">Belts</a>
-                                          </li>
-                                          <li><a href="javascript:;">Sports Shoes</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                                  <!-- end col-3 -->
-                                  <div class="col-12 col-xl-4">
-                                      <h6 class="large-menu-title">Electronics</h6>
-                                      <ul class="list-unstyled">
-                                          <li><a href="javascript:;">Mobiles</a>
-                                          </li>
-                                          <li><a href="javascript:;">Laptops</a>
-                                          </li>
-                                          <li><a href="javascript:;">Macbook</a>
-                                          </li>
-                                          <li><a href="javascript:;">Televisions</a>
-                                          </li>
-                                          <li><a href="javascript:;">Lighting</a>
-                                          </li>
-                                          <li><a href="javascript:;">Smart Watch</a>
-                                          </li>
-                                          <li><a href="javascript:;">Galaxy Phones</a>
-                                          </li>
-                                          <li><a href="javascript:;">PC Monitors</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                                  <!-- end col-3 -->
-                                  <div class="col-12 col-xl-4 d-none d-xl-block">
-                                      <div class="pramotion-banner1">
-                                          <img src="{{ asset('store') }}/assets/images/menu-img.webp" class="img-fluid"
-                                              alt="" />
-                                      </div>
-                                  </div>
-                                  <!-- end col-3 -->
-                              </div>
-                              <!-- end row -->
-                          </div>
-                      </li>
-                      <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
-                              data-bs-toggle="dropdown">
-                              Shop
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
-                              <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-                              <li><a class="dropdown-item" href="product-details.html">Product Details</a></li>
-                              <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
-                              <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
-                              <li><a class="dropdown-item" href="address.html">Addresses</a></li>
-                              <li><a class="dropdown-item" href="shop-grid.html">Shop Grid</a></li>
-                              <li><a class="dropdown-item" href="shop-grid-type-4.html">Shop Grid 4</a></li>
-                              <li><a class="dropdown-item" href="shop-grid-type-5.html">Shop Grid 5</a></li>
-                              <li><a class="dropdown-item" href="search.html">Search</a></li>
-                          </ul>
-                      </li>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
+                            data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach ($categories as $category)
+                                <li><a class="dropdown-item" href="{{route('products.index',['category_id'=>$category->id])}}">{{$category->title}}</a></li>
+                            @endforeach
+
+                        </ul>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('products.index')}}">products</a>
+                    </li>
                       <li class="nav-item">
                           <a class="nav-link" href="about-us.html">About</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="contact-us.html">Contact</a>
                       </li>
-                      <li class="nav-item dropdown">
+                      {{-- <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                               data-bs-toggle="dropdown">
                               Account
@@ -134,8 +73,8 @@
                               <li><a class="dropdown-item" href="authentication-register.html">Register</a></li>
                               <li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li>
                           </ul>
-                      </li>
-                      <li class="nav-item dropdown">
+                      </li> --}}
+                      {{-- <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                               data-bs-toggle="dropdown">
                               Blog
@@ -144,7 +83,7 @@
                               <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
                               <li><a class="dropdown-item" href="blog-read.html">Blog Read</a></li>
                           </ul>
-                      </li>
+                      </li> --}}
                   </ul>
               </div>
           </div>

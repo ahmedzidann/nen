@@ -10,6 +10,7 @@ use App\Http\Controllers\User\FindUs\FindUsController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\Store\ProductController;
 use App\Http\Controllers\User\Store\StoreController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
@@ -102,6 +103,7 @@ Route::get('/store', [StoreController::class, 'index'])->name('web.store');
 Route::get('/cart', [StoreController::class, 'cart'])->name('web.store.cart');
 Route::get('/address', [StoreController::class, 'address'])->name('web.store.address');
 Route::post('/place-order', [StoreController::class, 'place_order'])->name('web.store.place-order');
+Route::resource('products', ProductController::class)->except('destroy');
 
 // Route::get('/store', function () {
 //     return view('store.pags.index');

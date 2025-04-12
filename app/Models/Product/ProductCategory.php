@@ -16,6 +16,7 @@ class ProductCategory extends Model
     protected $fillable = [
         'title',
         "show_in_main",
+        "is_featured",
         'main_image',
     ];
 

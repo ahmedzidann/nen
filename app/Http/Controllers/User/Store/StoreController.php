@@ -38,13 +38,17 @@ class StoreController extends Controller
         // Validate incoming request
         $request->validate([
             'address' => 'required|string',
+            'mobile' => 'required|string',
+            'name' => 'required|string',
             'products' => 'required|array',
             'products.*.id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|integer|min:1',
         ]);
-
         // Store the order in the orders table
         $order = Order::create([
+            'address' => $request->address,
+            'mobile' => $request->mobile,
+            'name' => $request->name,
             'address' => $request->address,
             'status' => 'pending',  // Order status can be 'pending' initially
         ]);

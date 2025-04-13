@@ -664,7 +664,7 @@
             const orderData = {
                 name: addressData.name,
                 mobile: addressData.mobile,
-                address: `${addressData.address}, ${addressData.locality}`,
+                address: `${addressData.address}, ${addressData.locality}- ${addressData.city}`,
                 city: addressData.city,
                 state: addressData.state,
                 pincode: addressData.pincode,

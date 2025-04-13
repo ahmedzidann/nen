@@ -53,6 +53,8 @@
                                 <th>{{ TranslationHelper::translate(ucfirst('#') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('status') ?? '') }}</th>
                                     <th>{{ TranslationHelper::translate(ucfirst('address') ?? '') }}</th>
+                                    <th>{{ TranslationHelper::translate(ucfirst('name') ?? '') }}</th>
+                                    <th>{{ TranslationHelper::translate(ucfirst('mobile') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Created At') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('actions') ?? '') }}</th>
                             </tr>
@@ -94,6 +96,12 @@
 
                     {
                         data: 'address'
+                    },
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'mobile'
                     },
 
                     {

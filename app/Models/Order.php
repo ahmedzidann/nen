@@ -8,7 +8,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['address', 'status'];
+    protected $fillable = ['address', 'status', 'mobile', 'name'];
 
     // Relationship with OrderProduct
     public function products()

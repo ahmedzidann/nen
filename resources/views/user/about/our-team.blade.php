@@ -91,7 +91,7 @@
                                                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                     alt="Team Member">
                                                 <ul class="social">
-                                                    @if ($item->facebook)
+                                                    @if ($item->facebook != "")
                                                         <li><a target="_blank" href="{{ $item->facebook }}"
                                                             class="bi bi-facebook"></a></li>
                                                     @endif

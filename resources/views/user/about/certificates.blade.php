@@ -139,7 +139,7 @@ span {
                 @endif
             </div>
 
-            @if ($items->where('item', 'section-two')->where('childe_pages_id', $sub->id)->count() > 6)
+            {{-- @if ($items->where('item', 'section-two')->where('childe_pages_id', $sub->id)->count() > 6)
             <a href="#" id='see_more_bttn' class="see-more-btn mt-md-4 mt-3" data-slug="{{$sub->slug}}"
                 onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">
                 <button class="Btn">
@@ -152,7 +152,7 @@ span {
                     <div class="text">{{ TranslationHelper::translateWeb(ucfirst('See More')??'') }}</div>
                 </button>
             </a>
-            @endif
+            @endif --}}
         </div>
     </div>
     @endforeach

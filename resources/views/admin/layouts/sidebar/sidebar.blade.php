@@ -503,6 +503,18 @@
               </ul>
           </li>
       @endcan
+
+      <li>
+              <a class="has-arrow" href="javascript:;">
+                  <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                  </div>
+                  <div class="menu-title">Join us</div>
+              </a>
+              <ul>
+                  <li class=""><a href="{{ route('admin.joinus.index') }}"><i
+                              class='bx bx-radio-circle'></i>Section</a></li>
+              </ul>
+          </li>
       {{-- Start Contact Us  --}}
       @can('show Contact Us')
           <li>

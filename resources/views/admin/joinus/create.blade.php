@@ -170,7 +170,7 @@
                                                         </div>
                                                     </div>
                                                 </div> --}}
-
+                                                <input  type="hidden" name="parent_id" value="{{request()->parent_id}}">
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="" class="form-label"
                                                         name="video">
@@ -190,15 +190,15 @@
 
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="" class="form-label"
-                                                        name="order">
+                                                        name="sort">
                                                     </x-admin.form.label-first>
-                                                    <x-admin.form.input old="order"
-                                                        name="order" type="text"
-                                                         placeholder="order"
-                                                        class="form-control valid" :value="$StaticTable->order">
+                                                    <x-admin.form.input old="sort"
+                                                        name="sort" type="text"
+                                                         placeholder="sort"
+                                                        class="form-control valid" :value="$StaticTable->sort">
                                                     </x-admin.form.input>
                                                     <x-admin.form.label-end star=""
-                                                        name="please enter order">
+                                                        name="please enter sort">
                                                     </x-admin.form.label-end>
                                                 </div>
                                                 {{-- ----------status end --}}

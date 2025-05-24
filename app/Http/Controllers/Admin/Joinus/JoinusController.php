@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin\Joinus;
 
 use App\Actions\Project\StoreProjectAction;
 use App\Actions\Project\UpdateProjectAction;
+use App\Helper\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Joinus\JoinusRequest;
 use App\Http\Requests\Admin\Project\ProjectRequest;
+use App\Models\Joinus;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\Tabs;
@@ -16,9 +19,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
-
 class JoinusController extends Controller
 {
+
+ use ImageHelper;
+
     public function index(): View
     {
         return view('admin.joinus.view', new JoinusViewModel());
@@ -26,7 +31,13 @@ class JoinusController extends Controller
     public function show(Request $request, $language)
     {
         if ($request->ajax()) {
-            $data = Project::select('*')->latest();
+            $data = Joinus::select('*')->latest();
+            if(!empty($request->parent_id)){
+                $data->where('parent_id',$request->parent_id);
+            }else{
+                $data->where('parent_id',null );
+
+            }
             if ((!empty($request->from_date)) && (!empty($request->to_date))) {
                 $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }
@@ -55,7 +66,7 @@ class JoinusController extends Controller
                     return Carbon::parse($row->created_at)->format('Y-m-d');
                 })
 
-                ->addColumn('action', function ($row) use ($category, $subcategory) {
+                ->addColumn('action', function ($row) use ($category, $subcategory, $request) {
                     $Tabs = Tabs::where('type', 'project')->get();
                     $options = '';
                     foreach ($Tabs as $item) {
@@ -75,21 +86,20 @@ class JoinusController extends Controller
                             $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
                         }
                     };
-
+                  
+                    $show = '
+                        <a href="' . route('admin.joinus.index', [ 'parent_id=' . $row->id]) . '" class="m-auto">  <i class="bx bxs-show"></i></a>
+            ';
+            if(!empty($request->parent_id)){
+               
+              $show= '';
+            }
                     return
                         '
                         <div class="order-actions">
-                        <a href="' . route('admin.project.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
-                        <div class="dropdown">
-                            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Tabs
-                            </button>
-                            <ul class="dropdown-menu dragdown">
-                                ' . $options . '
-                            </ul>
-                        </div>
-                        ';
+                        <a href="' . route('admin.joinus.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
+                       
+                        '.$show;
                 })
                 ->rawColumns(['checkbox', 'action'])
                 ->make(true);
@@ -99,7 +109,7 @@ class JoinusController extends Controller
     {
         return view('admin.joinus.create', new JoinusViewModel());
     }
-    public function store(ProjectRequest $request)
+    public function store(JoinusRequest $request)
     {
         $validator = $request->validationStore();
         if ($validator->fails()) {
@@ -108,8 +118,11 @@ class JoinusController extends Controller
                 'errors' => $validator->messages()
             ]);
         } else {
-            app(StoreProjectAction::class)->handle($validator->validated());
-            redirect()->route('admin.project.index')->with('add', 'Success Add Project');
+            // app(StoreProjectAction::class)->handle($validator->validated());
+            $data = $validator->validated();
+            $Project = Joinus::create($data);
+            $this->StoreImage($data,$Project,'Joinus');
+            redirect()->route('admin.joinus.index')->with('add', 'Success Add Project');
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Project',
@@ -119,12 +132,12 @@ class JoinusController extends Controller
     }
     public function edit(Request $request, $id): View
     {
-        $StaticTable = Project::find($id);
-        return view('admin.project.edit', new ProjectTableViewModel($StaticTable));
+        $StaticTable = Joinus::find($id);
+        return view('admin.joinus.edit', new JoinusViewModel($StaticTable));
     }
-    public function update(ProjectRequest $request, $id)
+    public function update(JoinusRequest $request, $id)
     {
-        $StaticTable = Project::find($id);
+        $StaticTable = Joinus::find($id);
         if ($request->submit2 == 'en') {
             $validator = $request->validationUpdateEn();
         } else {
@@ -136,7 +149,10 @@ class JoinusController extends Controller
                 'errors' => $validator->messages()
             ]);
         } else {
-            app(UpdateProjectAction::class)->handle($StaticTable, $validator->validated());
+            // app(UpdateProjectAction::class)->handle($StaticTable, $validator->validated());
+            $data =  $validator->validated();
+             $StaticTable->update($data);
+            $this->UpdateImage($data,$StaticTable,'Joinus');
             return response()->json([
                 'status' => 200,
                 'message' => 'Update Project',
@@ -146,9 +162,9 @@ class JoinusController extends Controller
     }
     public function destroy(Request $request): RedirectResponse
     {
-        foreach (Project::find($request->id) as $static_table) {
+        foreach (Joinus::find($request->id) as $static_table) {
             $static_table->delete();
         }
-        return redirect()->back()->with('delete', 'Delete Project');
+        return redirect()->back()->with('delete', 'Delete Joinus');
     }
 }

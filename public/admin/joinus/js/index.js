@@ -1,8 +1,11 @@
 $(function () {
     var language = $('#Project').val();
     var url = new URL(window.location.href);
-    var category = url.searchParams.get("category");
-    var subcategory = url.searchParams.get("subcategory");
+    // var category = url.searchParams.get("category");
+    // var subcategory = url.searchParams.get("subcategory");
+
+    const urlParams = new URLSearchParams(window.location.search);
+const parent_id = urlParams.get('parent_id');
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
@@ -13,8 +16,9 @@ $(function () {
             data: function (d) {
                 d.from_date = $('.datepickerto').val();
                 d.to_date = $('.datepickerfrom').val();
-                d.category = category;
-                d.subcategory = subcategory;
+                // d.category = category;
+                // d.subcategory = subcategory;
+                d.parent_id = parent_id;
             }
         },
         columns: [{
@@ -31,10 +35,7 @@ $(function () {
                 data: 'title',
                 name: 'title'
             },
-            {
-                data: 'Page',
-                name: 'pages_id'
-            },
+           
             {
                 data: 'created_at',
                 name: 'created_at'

@@ -947,4 +947,5 @@
   'order' => 'Order',
   'Order' => 'Order',
   'please enter order' => 'Please enter order',
+  'Joinus Edit' => 'Joinus Edit',
 );

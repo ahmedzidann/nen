@@ -34,6 +34,7 @@
                             </li>
                             @endforeach
                         </ul>
+                        
                         <input type="hidden" id="key_new" value="{{ $translation->count() }}">
                         @foreach ($translation as $key=>$item)
                         <form method="post" id="myForm{{ $key }}" action="{{ $action??'' }}"
@@ -51,13 +52,13 @@
                                             {{-- ----------end static --}}
                                             {{-- ----------name Pages --}}
                                             @if ($loop->first)
-                                            <div class="col-md-12 mb-4">
+                                            {{-- <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Category">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
                                                     name="pages_id" nameselect="Category" :model="$StaticTable">
                                                 </x-admin.form.dropdown>
-                                            </div>
+                                            </div> --}}
                                             @endif
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name tabs_id --}}
@@ -142,35 +143,33 @@
                                                 </div>
                                             </div>
                                             {{-- ----------status end --}}
-                                                <div class="col-md-6 mb-4">
-                                                    <x-admin.form.label-first class="form-label" name="SHow In Home">
+                                                <input  type="hidden" name="parent_id" value="{{request()->parent_id}}">
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="" class="form-label"
+                                                        name="video">
                                                     </x-admin.form.label-first>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex align-items-center gap-3">
-                                                            <div class="form-check">
-                                                                <div class="form-check">
-                                                                    <x-admin.form.radio :checked="$StaticTable->show_in_home == true
-                                                                        ? 'checked'
-                                                                        : ''"
-                                                                        name="show_in_home" value="1"
-                                                                        :model="$StaticTable">
-                                                                    </x-admin.form.radio>
-                                                                    <label class="form-check-label"
-                                                                        for="bsValidation6">yes</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <x-admin.form.radio :checked="$StaticTable->show_in_home == false
-                                                                        ? 'checked'
-                                                                        : ''"
-                                                                        name="show_in_home" value="0"
-                                                                        :model="$StaticTable">
-                                                                    </x-admin.form.radio>
-                                                                    <label class="form-check-label"
-                                                                        for="bsValidation6">no</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <x-admin.form.input old="video"
+                                                        name="video" type="text"
+                                                         placeholder="video"
+                                                        class="form-control valid" :value="$StaticTable->video">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star="*"
+                                                        name="please enter video">
+                                                    </x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="" class="form-label"
+                                                        name="sort">
+                                                    </x-admin.form.label-first>
+                                                    <x-admin.form.input old="sort"
+                                                        name="sort" type="text"
+                                                         placeholder="sort"
+                                                        class="form-control valid" :value="$StaticTable->sort">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star=""
+                                                        name="please enter sort">
+                                                    </x-admin.form.label-end>
                                                 </div>
 
                                             @endif

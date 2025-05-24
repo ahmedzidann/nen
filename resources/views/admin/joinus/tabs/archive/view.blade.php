@@ -16,18 +16,21 @@
         <!--end breadcrumb-->
         <hr />
         <input type="hidden" id="{{ $viewTable }}" value="{{ app()->getLocale() }}">
+        {{-- <x-admin.form.filter  :route="$routeCreate"></x-admin.form.filter> --}}
         <x-admin.form.filter :route="$routeCreate"></x-admin.form.filter>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="yajra-datatable"
-                    class="yajra-datatable table table-striped table-bordered p-0 text-center table-hover">
+                <table id="yajra-datatable" class="yajra-datatable table table-striped table-bordered p-0 text-center table-hover">
                     <thead>
                         <tr>
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('title')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Category')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th>
+                            <th>{{ TranslationHelper::translate(ucfirst('Type')??'') }}</th>
+                            <th>{{ TranslationHelper::translate(ucfirst('Title')??'') }}</th>
+                            {{-- <th>{{ TranslationHelper::translate(ucfirst('Description')??'') }}</th> --}}
+                            <th>{{ TranslationHelper::translate(ucfirst('Project')??'') }}</th>
+                            {{-- <th>{{ TranslationHelper::translate(ucfirst('Tabs')??'') }}</th> --}}
+                            {{-- <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th> --}}
                             <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
                         </tr>
                     </thead>
@@ -37,15 +40,10 @@
                         {{-- <tr class="odd">
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
-                            <td><input type="text" class="form-control filter-input"
-                                    placeholder="{{ TranslationHelper::translate(ucfirst('Search for name...')??'') }}"
-                                    data-column="1"></td>
-                            <td><input type="text" class="form-control filter-input"
-                                    placeholder="{{ TranslationHelper::translate(ucfirst(ئ'Search for name...')??'') }}"
-                                    data-column="2"></td>
-                            <td><input type="text" class="form-control filter-input"
-                                    placeholder="Search for created_at..." data-column="3"></td>
-                            <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
+                        <td><input type="text" class="form-control filter-input" placeholder="{{ TranslationHelper::translate(ucfirst('Search for name...')??'') }}" data-column="1"></td>
+                        <td><input type="text" class="form-control filter-input" placeholder="{{ TranslationHelper::translate(ucfirst('Search for name...')??'') }}" data-column="2"></td>
+                        <td><input type="text" class="form-control filter-input" placeholder="Search for created_at..." data-column="3"></td>
+                        <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
                         </tr> --}}
                     </tfoot>
                 </table>
@@ -56,5 +54,5 @@
 </div>
 @endsection
 @section('jsadmin')
-<script src="{{ asset('admin/project/js/index.js') }}"></script>
+<script src="{{ asset('admin/project/tabs/archive/js/index.js') }}"></script>
 @endsection

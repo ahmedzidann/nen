@@ -122,4 +122,11 @@
   'International tests' => 'International tests',
   'Times of Work' => 'Times of Work',
   'There is No Data Available' => 'There is No Data Available',
+  'Continue Shopping' => 'Continue Shopping',
+  'Go Shopping' => 'Go Shopping',
+  'Categories' => 'Categories',
+  'Products' => 'Products',
+  'Contact' => 'Contact',
+  'Checkout' => 'Checkout',
+  'Add to Bag' => 'Add to Bag',
 );

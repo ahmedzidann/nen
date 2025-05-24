@@ -66,6 +66,12 @@ class ResourceController extends Controller
             if ($type == 'file' && $request->resource[$index]) {
                 $data['resource'] = FileUploadHelper::uploadFile($request->resource[$index], 'resources');
             }
+            if ($type == 'comp' && $request->resource[$index]) {
+                $data['resource'] = FileUploadHelper::uploadFile($request->resource[$index], 'resources');
+            }
+            if ($type == 'word' && $request->resource[$index]) {
+                $data['resource'] = FileUploadHelper::uploadFile($request->resource[$index], 'resources');
+            }
             if ($type == 'url' && $request->resource[$index]) {
                 $data['resource'] = $request->resource[$index];
             }
@@ -108,7 +114,6 @@ class ResourceController extends Controller
         $validData = $request->validated();
         foreach ($validData['keys'] as $index => $key) {
             $data = [];
-
             // Handle file uploads if present
             if (isset($validData['resource'][$index])) {
                 $resource = Resource::find($key);
@@ -121,12 +126,13 @@ class ResourceController extends Controller
                     $data['resource'] = FileUploadHelper::uploadImage($validData['resource'][$index], 'resources');
                 }
 
-                if ($request->type[$index] == 'file') {
+                if ($request->type[$index] == 'file' || $request->type[$index] == 'word' || $request->type[$index] == 'comp' ) {
                     // Delete old file if exists
                     if ($resource->resource) {
                         FileUploadHelper::deleteFile($resource->resource);
                     }
                     $data['resource'] = FileUploadHelper::uploadFile($validData['resource'][$index], 'resources');
+
                 }
                 if ($request->type[$index] == 'url') {
                     // Delete old file if exists
@@ -143,7 +149,7 @@ class ResourceController extends Controller
             $data['sub_category'] = $validData['sub_category'];
             $data['title'] = $validData['title'][$index];
             $data['type'] = $validData['type'][$index];
-
+            dump($data);
             // Update the resource record
             Resource::where('id', $key)->update($data);
         }

@@ -56,5 +56,5 @@
 </div>
 @endsection
 @section('jsadmin')
-<script src="{{ asset('admin/project/js/index.js') }}"></script>
+<script src="{{ asset('admin/joinus/js/index.js') }}"></script>
 @endsection

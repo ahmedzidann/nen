@@ -90,7 +90,7 @@
                                                 <img src="{{ $item->getFirstMediaUrl('OurTeam') }}" loading="lazy"
                                                     onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                     alt="Team Member">
-                                                {{-- <ul class="social">
+                                                <ul class="social">
                                                     @if ($item->facebook != "")
                                                         <li><a target="_blank" href="{{ $item->facebook }}"
                                                             class="bi bi-facebook"></a></li>
@@ -104,7 +104,7 @@
                                                                 class="bi bi-instagram"></a>
                                                         </li>
                                                     @endif
-                                                </ul> --}}
+                                                </ul>
                                             </div>
                                             <div class="team-content">
                                                 <div class="team-info">

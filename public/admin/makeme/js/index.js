@@ -6,21 +6,19 @@ $(function () {
 
     const urlParams = new URLSearchParams(window.location.search);
 const parent_id = urlParams.get('parent_id');
-const pages_id = urlParams.get('pages_id');
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
         autoWidth: false,
         ajax: {
-            url: `/admin/joinus/${language}`,
+            url: `/admin/makeme/${language}`,
             data: function (d) {
                 d.from_date = $('.datepickerto').val();
                 d.to_date = $('.datepickerfrom').val();
                 // d.category = category;
                 // d.subcategory = subcategory;
                 d.parent_id = parent_id;
-                d.pages_id = pages_id;
             }
         },
         columns: [{
@@ -37,11 +35,7 @@ const pages_id = urlParams.get('pages_id');
                 data: 'title',
                 name: 'title'
             },
-            {
-                data: 'page',
-                name: 'page'
-            },
-
+           
             {
                 data: 'created_at',
                 name: 'created_at'

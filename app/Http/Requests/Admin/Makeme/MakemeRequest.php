@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Requests\Admin\Joinus;
 
+namespace App\Http\Requests\Admin\Makeme;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
 
-class JoinusRequest extends FormRequest
+class MakemeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,39 +29,42 @@ class JoinusRequest extends FormRequest
 
     public function validationStore()
     {
-        $request= Request();
+        $request = request();
         return Validator::make($request->all(), [
-            'title.*' => ['required','max:255','min:2'],
-            'description.*' => ['required','min:2'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'title.*' => ['required', 'max:255', 'min:2'],
+            'description.*' => ['required', 'min:2'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             'video' => ['nullable'],
             'sort' => ['nullable'],
-            'pages_id' => ['nullable'],
+            // 'pages_id' => ['nullable'],
             'status' => ['nullable'],
-            'parent_id' => ['nullable'],
-
+            'url' => ['nullable'],
         ]);
     }
+
     public function validationUpdateEn()
     {
-        $request= Request();
+        $request = request();
+
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','min:2'],
-            'image'=>['nullable','mimes:png,jpg,jpeg'],
+            'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg'],
             'video' => ['nullable'],
+            'url' => ['nullable'],
             'sort' => ['nullable'],
-            'pages_id' => ['nullable'],
+            // 'pages_id' => ['nullable'],
             'status' => ['nullable'],
-            'parent_id' => ['nullable'],
         ]);
     }
+
     public function validationUpdateAr()
     {
-        $request= Request();
+        $request = request();
+
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
-            'description.'.$request->submit2 => ['required','min:2'],
+            'title.' . $request->submit2 => ['required', 'max:255', 'min:2'],
+            'description.' . $request->submit2 => ['required', 'min:2'],
         ]);
     }
 }

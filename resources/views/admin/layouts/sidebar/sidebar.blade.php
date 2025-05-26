@@ -503,8 +503,43 @@
               </ul>
           </li>
       @endcan
+                      <li>
+                        <a class="has-arrow" href="javascript:;">
+                            <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                            </div>
+                            <div class="menu-title">Join us</div>
 
-      <li>
+                        </a>
+
+                            <ul>
+                              @foreach (App\Models\Page::where('id', 9)->get() as $partner)
+
+                                  @foreach ($partner->childe as $item)
+                                      <li>
+                                        <a class="hw" href="{{ route('admin.joinus.index',['pages_id'=> $item->id]) }}">
+                                            <i class='bx bx-radio-circle'></i>{{ $item->name }}
+                                        </a>
+                                          {{-- <ul>
+                                            @foreach ($item->childe as $subItem)
+                                              <li
+                                                  class="{{ $route == 'about' && $route_two == 'certificates' && Request()->subsubcategory == $item->slug && Request()->item == 'section-one' ? 'mm-active' : '' }}">
+
+                                                  <a class="has-arrow" href="{{ route('admin.joinus.index',['page_id'=> $subItem->id]) }}">
+                                                    <i class='bx bx-radio-circle'></i>{{ $subItem->name }}
+                                                </a>
+
+                                                  <a
+                                                      href="{{ route('admin.about.certificates.index', ['category=about', 'subcategory=certificates', 'subsubcategory=' . $item->slug . '', 'item=section-one']) }}"><i
+                                                          class='bx bx-radio-circle'></i>Section one</a>
+                                              </li>
+                                             @endforeach
+
+                                          </ul> --}}
+                                  @endforeach
+                              @endforeach
+                          </ul>
+                      </li>
+      {{-- <li>
               <a class="has-arrow" href="javascript:;">
                   <div class="parent-icon"><i class="bx bx-user-circle"></i>
                   </div>
@@ -514,7 +549,7 @@
                   <li class=""><a href="{{ route('admin.joinus.index') }}"><i
                               class='bx bx-radio-circle'></i>Section</a></li>
               </ul>
-          </li>
+          </li> --}}
       {{-- Start Contact Us  --}}
       @can('show Contact Us')
           <li>
@@ -631,6 +666,15 @@
 
       @endcan
 
+      <li>
+              <a class="" href="{{ route('admin.makeme.index') }}">
+                  <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                  </div>
+                  <div class="menu-title">Mark me</div>
+              </a>
+              <ul>
+
+          </li>
       {{-- end Testing  --}}
       {{-- item --}}
       <li class="menu-label">Forms & Tables</li>

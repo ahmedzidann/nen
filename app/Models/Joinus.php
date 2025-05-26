@@ -29,6 +29,8 @@ class Joinus extends Model implements HasMedia
         'status',
         'sort',
         'video',
+        'pages_id',
+        'parent_id'
     ];
 
     const STATUS = ['Active', 'Not Active'];

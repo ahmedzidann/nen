@@ -26,11 +26,8 @@
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('title')??'') }}</th>
-                            <th>{{ TranslationHelper::translate(ucfirst('Page')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Processes')??'') }}</th>
-
-
                         </tr>
                     </thead>
 
@@ -58,5 +55,5 @@
 </div>
 @endsection
 @section('jsadmin')
-<script src="{{ asset('admin/joinus/js/index.js') }}"></script>
+<script src="{{ asset('admin/makeme/js/index.js') }}"></script>
 @endsection

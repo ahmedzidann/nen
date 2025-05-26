@@ -948,4 +948,9 @@
   'Order' => 'Order',
   'please enter order' => 'Please enter order',
   'Joinus Edit' => 'Joinus Edit',
+  'Makeme View' => 'Makeme View',
+  'Makeme Create' => 'Makeme Create',
+  'Url' => 'Url',
+  'please enter url' => 'Please enter url',
+  'Makeme Edit' => 'Makeme Edit',
 );

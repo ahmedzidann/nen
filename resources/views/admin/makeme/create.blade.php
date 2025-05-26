@@ -46,13 +46,13 @@
                                                     value="{{ Request()->category ?? '' }}">
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name Pages --}}
-                                                <div class="col-md-12 mb-4">
+                                                {{-- <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first class="form-label" name="Select Category">
                                                     </x-admin.form.label-first>
                                                     <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
                                                         name="pages_id" nameselect="Category" :model="$StaticTable">
                                                     </x-admin.form.dropdown>
-                                                </div>
+                                                </div> --}}
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name tabs_id --}}
                                                 {{-- <div class="col-md-6 mb-4">
@@ -118,28 +118,7 @@
                                                 </div>
                                                 {{-- ----------end image --}}
                                                 {{-- ----------status first --}}
-                                                <div class="col-md-6 mb-4">
-                                                    <x-admin.form.label-first class="form-label"
-                                                        name="Checked switch checkbox status">
-                                                    </x-admin.form.label-first>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex align-items-center gap-3">
-                                                            <div class="form-check">
-                                                                @foreach (App\Models\Page::STATUS as $status)
-                                                                    <div class="form-check">
-                                                                        <x-admin.form.radio :checked="$StaticTable->status == $status
-                                                                            ? 'checked'
-                                                                            : ''" name="status"
-                                                                            value="{{ $status }}" :model="$StaticTable">
-                                                                        </x-admin.form.radio>
-                                                                        <label class="form-check-label"
-                                                                            for="bsValidation6">{{ $status }}</label>
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                                 {{-- <div class="col-md-6 mb-4">
                                                     <x-admin.form.label-first class="form-label" name="SHow In Home">
                                                     </x-admin.form.label-first>
@@ -170,21 +149,20 @@
                                                         </div>
                                                     </div>
                                                 </div> --}}
-                                                <input  type="hidden" name="parent_id" value="{{request()->parent_id}}">
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="" class="form-label"
-                                                        name="video">
+                                                        name="url">
                                                     </x-admin.form.label-first>
-                                                    <x-admin.form.input old="video"
-                                                        name="video" type="text"
-                                                         placeholder="video"
+                                                    <x-admin.form.input old="url"
+                                                        name="url" type="text"
+                                                         placeholder="url"
                                                         class="form-control valid" :value="$StaticTable->translate(
                                                             'title',
                                                             $translationFirst->key,
                                                         )">
                                                     </x-admin.form.input>
-                                                    <x-admin.form.label-end star="*"
-                                                        name="please enter video">
+                                                    <x-admin.form.label-end star=""
+                                                        name="please enter url">
                                                     </x-admin.form.label-end>
                                                 </div>
 
@@ -200,6 +178,29 @@
                                                     <x-admin.form.label-end star=""
                                                         name="please enter sort">
                                                     </x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                    <x-admin.form.label-first class="form-label"
+                                                        name="Checked switch checkbox status">
+                                                    </x-admin.form.label-first>
+                                                    <div class="col-sm-9">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div class="form-check">
+                                                                @foreach (App\Models\Page::STATUS as $status)
+                                                                    <div class="form-check">
+                                                                        <x-admin.form.radio :checked="$StaticTable->status == $status
+                                                                            ? 'checked'
+                                                                            : ''" name="status"
+                                                                            value="{{ $status }}" :model="$StaticTable">
+                                                                        </x-admin.form.radio>
+                                                                        <label class="form-check-label"
+                                                                            for="bsValidation6">{{ $status }}</label>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 {{-- ----------status end --}}
                                                 <div class="col-md-12">
@@ -223,5 +224,5 @@
 @endsection
 @section('jsadmin')
     @include('admin.layouts.ckeditor.ckeditor')
-    <script src="{{ asset('admin/joinus/js/create.js') }}"></script>
+    <script src="{{ asset('admin/project/js/create.js') }}"></script>
 @endsection

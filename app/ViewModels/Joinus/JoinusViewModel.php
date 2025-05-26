@@ -29,7 +29,8 @@ class JoinusViewModel extends ViewModel
         $this->routeCreate = route('admin.joinus.create',Request()->query());
         $this->routeView = route('admin.joinus.index',Request()->query());
         $this->viewTable = 'Joinus';
-        $this->allPage = Page::where('slug','joinus')->get();
+        $this->allPage = Page::where('id',Request()->pages_id)->first()?->childe ??[];
+
         // $this->allTabs = Tabs::get();
     }
 

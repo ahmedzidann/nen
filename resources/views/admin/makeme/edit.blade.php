@@ -34,7 +34,7 @@
                             </li>
                             @endforeach
                         </ul>
-
+                        
                         <input type="hidden" id="key_new" value="{{ $translation->count() }}">
                         @foreach ($translation as $key=>$item)
                         <form method="post" id="myForm{{ $key }}" action="{{ $action??'' }}"
@@ -52,13 +52,13 @@
                                             {{-- ----------end static --}}
                                             {{-- ----------name Pages --}}
                                             @if ($loop->first)
-                                            <div class="col-md-12 mb-4">
+                                            {{-- <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Category">
                                                 </x-admin.form.label-first>
                                                 <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
                                                     name="pages_id" nameselect="Category" :model="$StaticTable">
                                                 </x-admin.form.dropdown>
-                                            </div>
+                                            </div> --}}
                                             @endif
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name tabs_id --}}
@@ -109,18 +109,51 @@
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">
-                                                    <x-admin.form.input :model="$StaticTable" nameImage="Project"
+                                                    <input type="file" class="form-control-file dropify"
+                                                                id="image" name="image"
+                                                                data-default-file="{{ asset('storage') . '/' . $StaticTable->image }}">
+                                                    {{-- <x-admin.form.input :model="$StaticTable" nameImage="Project"
                                                         old="image" name="image" type="file" readonly=""
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
-                                                    </x-admin.form.input>
+                                                    </x-admin.form.input> --}}
                                                 </div>
                                             </div>
                                             @endif
                                             {{-- ----------end image--}}
                                             @if ($loop->first)
                                             {{-- ----------status first --}}
-                                            <div class="col-md-6 mb-4">
+                                           
+                                            {{-- ----------status end --}}
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="" class="form-label"
+                                                        name="url">
+                                                    </x-admin.form.label-first>
+                                                    <x-admin.form.input old="url"
+                                                        name="url" type="text"
+                                                         placeholder="url"
+                                                        class="form-control valid" :value="$StaticTable->url">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star="*"
+                                                        name="please enter url">
+                                                    </x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="" class="form-label"
+                                                        name="sort">
+                                                    </x-admin.form.label-first>
+                                                    <x-admin.form.input old="sort"
+                                                        name="sort" type="text"
+                                                         placeholder="sort"
+                                                        class="form-control valid" :value="$StaticTable->sort">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star=""
+                                                        name="please enter sort">
+                                                    </x-admin.form.label-end>
+                                                </div>
+
+                                                 <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"
                                                     name="Checked switch checkbox status">
                                                 </x-admin.form.label-first>
@@ -142,35 +175,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- ----------status end --}}
-                                                <input  type="hidden" name="parent_id" value="{{request()->parent_id}}">
-                                                <div class="col-md-12 mb-4">
-                                                    <x-admin.form.label-first star="" class="form-label"
-                                                        name="video">
-                                                    </x-admin.form.label-first>
-                                                    <x-admin.form.input old="video"
-                                                        name="video" type="text"
-                                                         placeholder="video"
-                                                        class="form-control valid" :value="$StaticTable->video">
-                                                    </x-admin.form.input>
-                                                    <x-admin.form.label-end star="*"
-                                                        name="please enter video">
-                                                    </x-admin.form.label-end>
-                                                </div>
-
-                                                <div class="col-md-12 mb-4">
-                                                    <x-admin.form.label-first star="" class="form-label"
-                                                        name="sort">
-                                                    </x-admin.form.label-first>
-                                                    <x-admin.form.input old="sort"
-                                                        name="sort" type="text"
-                                                         placeholder="sort"
-                                                        class="form-control valid" :value="$StaticTable->sort">
-                                                    </x-admin.form.input>
-                                                    <x-admin.form.label-end star=""
-                                                        name="please enter sort">
-                                                    </x-admin.form.label-end>
-                                                </div>
 
                                             @endif
                                             <input type="hidden" name="submit2" value="{{ $item->key }}">

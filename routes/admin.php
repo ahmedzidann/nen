@@ -40,6 +40,7 @@ use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\Admin\profile\RoleController;
 use App\Http\Controllers\Admin\profile\UsersController;
 use App\Http\Controllers\Admin\Joinus\JoinusController;
+use App\Http\Controllers\Admin\Makeme\MakemeController;
 use App\Http\Controllers\Admin\Projects\ProjectController;
 use App\Http\Controllers\Admin\Projects\Tabs\AboutTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\ArchiveTabsController;
@@ -138,6 +139,7 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::resource('statistics', StatisticsTabsController::class);
     });
     Route::resource('joinus', JoinusController::class);
+    Route::resource('makeme', MakemeController::class);
 
     // clear route
     // clear route

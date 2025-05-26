@@ -30,13 +30,14 @@ class JoinusController extends Controller
     }
     public function show(Request $request, $language)
     {
+
         if ($request->ajax()) {
             $data = Joinus::select('*')->latest();
             if(!empty($request->parent_id)){
                 $data->where('parent_id',$request->parent_id);
             }else{
-                $data->where('parent_id',null );
-
+                $childs = Page::where('id',$request->pages_id)->first()->childe()->pluck('id')->toArray();
+                $data->whereIn('pages_id',$childs);
             }
             if ((!empty($request->from_date)) && (!empty($request->to_date))) {
                 $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
@@ -57,7 +58,7 @@ class JoinusController extends Controller
                 ->editColumn('title', function ($row) use ($language) {
                     return $row->translate('title', $language);
                 })
-                ->editColumn('Page', function ($row) use ($language) {
+                ->editColumn('page', function ($row) use ($language) {
                     if (!empty($row->Page)) {
                         return $row->Page->translate('name', $language);
                     }
@@ -86,19 +87,19 @@ class JoinusController extends Controller
                             $options .= '<li><a href="' . route('admin.tabproject.joinus.index', ['tab=' . $item->slug, 'project_id=' . $row->id]) . '">' . $item->name . '</a></li>';
                         }
                     };
-                  
+
                     $show = '
-                        <a href="' . route('admin.joinus.index', [ 'parent_id=' . $row->id]) . '" class="m-auto">  <i class="bx bxs-show"></i></a>
+                        <a href="' . route('admin.joinus.index', [ 'parent_id=' . $row->id , 'pages_id=' . $row->pages_id]) . '" class="m-auto">  <i class="bx bxs-show"></i></a>
             ';
             if(!empty($request->parent_id)){
-               
+
               $show= '';
             }
                     return
                         '
                         <div class="order-actions">
-                        <a href="' . route('admin.joinus.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
-                       
+                        <a href="' . route('admin.joinus.edit', [$row->id, 'pages_id=' . $request->pages_id, 'parent_id=' . $request->parent_id]) . '" class="m-auto"><i class="bx bxs-edit"></i></a>
+
                         '.$show;
                 })
                 ->rawColumns(['checkbox', 'action'])
@@ -121,12 +122,13 @@ class JoinusController extends Controller
             // app(StoreProjectAction::class)->handle($validator->validated());
             $data = $validator->validated();
             $Project = Joinus::create($data);
+            $pageId = $Project?->Page?->parent?? null;
             $this->StoreImage($data,$Project,'Joinus');
             redirect()->route('admin.joinus.index')->with('add', 'Success Add Project');
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Project',
-                'redirect_url' => route('admin.project.index', ['category=' . $request->category]),
+                'redirect_url' => route('admin.joinus.index', ['parent_id=' . $Project->parent_id, 'pages_id=' .$pageId]),
             ]);
         }
     }

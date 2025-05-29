@@ -124,11 +124,11 @@ class JoinusController extends Controller
             $Project = Joinus::create($data);
             $pageId = $Project?->Page?->parent?? null;
             $this->StoreImage($data,$Project,'Joinus');
-            redirect()->route('admin.joinus.index')->with('add', 'Success Add Project');
+            // redirect()->route('admin.s.index')->with('add', 'Success Add Project');
             return response()->json([
                 'status' => 200,
                 'message' => 'Success Add Project',
-                'redirect_url' => route('admin.joinus.index', ['parent_id=' . $Project->parent_id, 'pages_id=' .$pageId]),
+                'redirect_url' => route('admin.joinus.index', ['parent_id' => $Project->parent_id, 'pages_id' =>$pageId]),
             ]);
         }
     }

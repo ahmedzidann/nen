@@ -46,13 +46,15 @@
                                                     value="{{ Request()->category ?? '' }}">
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name Pages --}}
-                                                <div class="col-md-12 mb-4">
-                                                    <x-admin.form.label-first class="form-label" name="Select Category">
-                                                    </x-admin.form.label-first>
-                                                    <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
-                                                        name="pages_id" nameselect="Category" :model="$StaticTable">
-                                                    </x-admin.form.dropdown>
-                                                </div>
+                                                @if ( empty(Request()->parent_id))
+                                                    <div class="col-md-12 mb-4">
+                                                        <x-admin.form.label-first class="form-label" name="Select Category">
+                                                        </x-admin.form.label-first>
+                                                        <x-admin.form.dropdown disabled="" required="" :foreach="$allPage"
+                                                            name="pages_id" nameselect="Category" :model="$StaticTable">
+                                                        </x-admin.form.dropdown>
+                                                    </div>
+                                                @endif
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name tabs_id --}}
                                                 {{-- <div class="col-md-6 mb-4">

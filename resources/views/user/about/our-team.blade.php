@@ -11,6 +11,7 @@
 @section('content')
 
 
+
     <!-- New Desgin -->
     <div id="our-teams-section" class="container w-100 overflow-hidden">
         @if ($fSection = $items->where('item', 'section-one')->first())
@@ -51,6 +52,19 @@
                 <!-- Start Teams Tabs -->
                 <div class="tabs-items mt-md-4 mt-3">
                     <!-- Swiper Container -->
+
+                     <div>
+                        <div class="box-btn-slider">
+                          <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide">
+                             <!-- <i class="fa-solid fa-arrow-left icon-left"></i> -->
+                              <i class="fa-solid fa-arrow-left-long icon-left"></i>
+                             
+                        </div>
+                        <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide">
+                            <!-- <i class="fa-solid fa-arrow-right icon-right"></i> -->
+                             <i class="fa-solid fa-arrow-right-long icon-right"></i>
+                        </div>
+                      </div>
                     <div class="swiper-container">
                         <!-- Swiper Wrapper for Tabs -->
                         <div class="swiper-wrapper px-5">
@@ -67,13 +81,9 @@
                         </div>
 
                         <!-- Swiper Navigation Buttons -->
-                        <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide">
-                            <i class="fa fa-chevron-left"></i>
-                        </div>
-                        <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide">
-                            <i class="fa fa-chevron-right"></i>
-                        </div>
+                     
                     </div>
+                     </div>
 
                     <!-- Tab Content -->
                     <div class="tab-content mt-3" id="teamTabContent">

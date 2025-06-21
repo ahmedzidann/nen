@@ -46,6 +46,9 @@ class AppServiceProvider extends ServiceProvider
         $findus = Page::where('parent_id', Page::where('slug', 'find-us')->first()->id)
             ->where('navbar', 'Active')->get();
 
+        $joinus = Page::where('parent_id', Page::where('slug', 'join-us')->first()->id)
+            ->where('navbar', 'Active')->get();
+
         $footerData = Footer::where('status', 'Active')->get()->groupBy('type');
         $upperSection = SidebarResource::where('show_in_home', true)->where('type', 1)->latest()->get();
         $lowerSection = SidebarResource::where('show_in_home', true)->where('type', 2)->latest()->get();
@@ -71,6 +74,11 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('docs', $docs);
         });
+         View::composer('user.join-us.*', function ($view) use ($joinus) {
+
+            $view->with('joinus', $joinus);
+        });
+         
         View::composer('user.find-us.*', function ($view) use ($findus) {
 
             $view->with('findus', $findus);

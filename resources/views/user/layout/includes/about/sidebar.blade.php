@@ -101,6 +101,45 @@
         </div>
     </a>
     @endforeach
+    @elseif(isset($joinus))
+   @foreach ($joinus as $page)
+
+    <div class="flex_asid_menu">
+        @php
+    $currentPage = \App\Models\Page::where('parent_id', Request()->slug)->first();
+@endphp
+
+<a class="ref_styles dropdown_arrow 
+          {{ Route::is('join-us') && $currentPage && $currentPage->slug == $page->slug ? 'active_link active' : '' }}"
+   href="javascript:void(0)" onclick="toggleMenu(this)">
+    
+    <div class="img_link">
+        <img class="Identity_icon" src="content/images/small_icon/card.png" loading="lazy"
+             onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');"
+             alt="icon-side">
+        {{ $page->name }} 
+    </div>
+    
+    <i class="bi bi-chevron-right"></i>
+</a>
+
+
+           <ul class="aside_menu sub-item-menu">
+               @foreach (\App\Models\Page::where('parent_id', $page->id)->get() as $joinus)
+            <li>
+          
+               <a class="{{ Route::is('join-us') && Request()->slug == $joinus->id ? 'li_active' : '' }}"
+          href="{{ route('join-us', [$joinus->id]) }}">
+        {{ $joinus->name }}
+         </a>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+
+    @endforeach
+   
+
     @else
     @foreach ($ss as $page)
 

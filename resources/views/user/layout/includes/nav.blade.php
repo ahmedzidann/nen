@@ -72,7 +72,7 @@
                         <i class="bi bi-chevron-right"></i>
                         <ul class="sub_dropdowen">
                             @foreach (\App\Models\Page::where('parent_id',$sub->id)->get() as $join)
-                            <li><a href="#">{{$join->name}}</a></li>
+                            <li><a href="{{ route('join-us',[$join->id])}}">{{$join->name}}</a></li>
                             @endforeach
                         </ul>
                     </li>

@@ -103,7 +103,7 @@ Route::get('blogs', BlogController::class)->name('blogs.index');
 Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.details');
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
 Route::get('join-us/{slug}', [JoinUsController::class, 'index'])->name('join-us');
-Route::get('static/{slug}', [JoinUsController::class, 'index'])->name('static');
+Route::get('static/{slug}', [JoinUsController::class, 'static_page'])->name('static');
 /* Store routes */
 Route::get('/store', [StoreController::class, 'index'])->name('web.store');
 Route::get('/cart', [StoreController::class, 'cart'])->name('web.store.cart');

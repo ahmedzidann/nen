@@ -125,20 +125,37 @@ class AboutController extends Controller
         }
     }
 
-    public function certificates(): View
-    {
-        $partner = Page::where('slug', 'certificates')->first();
-        $slider = Slider::where('page_id', $partner->id)->first();
+   
 
-        if ($partner) {
-            $subPartners = $partner->childe;
-            $partners = StaticTable::where("pages_id", $partner->id)->active()->get();
+public function certificates(): View
+{
+    $partner = Page::where('slug', 'certificates')->first();
+    $slider = Slider::where('page_id', $partner->id)->first();
 
-            return view('user.about.certificates', ['items' => $partners, 'subPartners' => $subPartners, 'slider' => $slider]);
-        } else {
-            abort(400, "error");
-        }
+    if ($partner) {
+        $subPartners = $partner->childe;
+
+        $partners = StaticTable::where("pages_id", $partner->id)->active()->get();
+
+       
+        
+        // ✅ Add media URLs so they work in JavaScript
+        $partners->map(function ($item) {
+            $item->static_image_url = $item->getFirstMediaUrl('StaticTable');
+            $item->reference_url = $item->getFirstMediaUrl('StaticTable2');
+            return $item;
+        });
+
+        return view('user.about.certificates', [
+            'items' => $partners,
+            'subPartners' => $subPartners,
+            'slider' => $slider
+        ]);
+    } else {
+        abort(400, "error");
     }
+}
+
 
     public function partners(): View
     {

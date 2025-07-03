@@ -440,7 +440,7 @@ a {
     visibility: hidden;
     opacity: 0;
     transition: all 0.5s;
-    gap: 0;
+    gap: .5rem;
     z-index: 999;
     transform-origin: 0 0 0;
 }
@@ -478,6 +478,8 @@ a {
     visibility: visible;
     opacity: 1;
     transform: translateX(0px);
+    display: flex;
+    gap: .5rem;
 }
 
 .ul_pages .ul_dropdown .li_drop_content .sub_dropdowen {
@@ -500,7 +502,7 @@ a {
     border-right: 2px solid #ddd;
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 1rem;
 }
 
 .ul_pages .ul_dropdown .li_drop_content .sub_dropdowen li {

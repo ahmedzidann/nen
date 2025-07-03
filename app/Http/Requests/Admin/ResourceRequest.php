@@ -25,7 +25,7 @@ class ResourceRequest extends FormRequest
             'title.*' => 'required',
             'main_category' => 'required|exists:pages,slug',
             'sub_category' => 'required|exists:pages,slug',
-            'type.*' => 'required|in:image,file,url',
+            'type.*' => 'required|in:image,file,url,comp,word',
             'resource.*' => 'required',
             'status' => 'nullable',
         ];

@@ -57,10 +57,32 @@
                                             <label for="title_{{ $lang->key }}">Title in {{ ucfirst($lang->name) }}</label>
                                             <input type="text" class="form-control" id="title_{{ $lang->key }}" name="title[{{ $lang->key }}]" value="{{ old('title.' . $lang->key, $productCategory->getTranslation('title', $lang->key)) }}" required>
                                         </div>
+
                                     </div>
+                                    @if($loop->first)
+                                        <div class="card-body p-4 row">
+                                            <div class="form-group  ">
+                                                <label for="title">Show in main</label>
+                                                <input type="checkbox" class="form-check-input selectAll" id="show_in_main"
+                                                    name="show_in_main" @if($productCategory->show_in_main) checked @endif >
+                                            </div>
+                                            <div class="form-group  ">
+                                                <label for="title">is featured</label>
+                                                <input type="checkbox" class="form-check-input selectAll" id="is_featured"
+                                                    name="is_featured" @if($productCategory->is_featured) checked @endif >
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="main_image">Main Image</label>
+                                            <input type="file" class="form-control-file dropify"
+                                                id="main_image" name="main_image"
+                                                data-default-file="{{ asset('storage') . '/' . $productCategory->main_image }}">
+                                        </div>
+                                    @endif
                                 </div>
                                 @endforeach
                             </div>
+
                             <div class="col-md-12">
                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                     <button type="submit" class="btn btn-primary px-4" id="{{ $id ?? '' }}">{{ TranslationHelper::translate(ucfirst('Submit') ?? '') }}</button>

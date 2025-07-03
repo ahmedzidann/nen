@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('titleadmin')
-    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('Blog'))) }}
+    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate('product-categories'))) }}
 @endsection
 @section('cssadmin')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
@@ -12,8 +12,8 @@
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div class="breadcrumb-title pe-3">
-                    <a href="{{ route('admin.blogs.index') }}">
-                        blogs
+                    <a href="{{ route('admin.product-categories.index') }}">
+                        Product Categories
                     </a>
                 </div>
                 <div class="ps-3">
@@ -22,7 +22,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i
                                         class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ str_replace('-', ' ', ucfirst('blogs')) }}
+                                {{ str_replace('-', ' ', ucfirst('product-categories')) }}
                             </li>
                         </ol>
                     </nav>
@@ -65,9 +65,30 @@
                                                         name="title[en]" value="{{ old('title[en]') }}" required>
                                                 </div>
                                             </div>
+                                            <div class="card-body p-4 row">
+                                                <div class="form-group  ">
+                                                    <label for="title">Show in main</label>
+                                                    <input type="checkbox" class="form-check-input selectAll" id="show_in_main"
+                                                        name="show_in_main"  checked>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-4 row">
+                                                <div class="form-group  ">
+                                                    <label for="title">is featured</label>
+                                                    <input type="checkbox" class="form-check-input selectAll" id="is_featured"
+                                                        name="is_featured"  checked>
+                                                </div>
+
+                                                <div class="form-group  ">
+                                                    <label for="main_image">Image</label>
+                                                    <input type="file" class="form-control-file dropify" id="main_image"
+                                                        name="main_image">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-12">
                                     <div class="d-md-flex d-grid align-items-center gap-3">
                                         <button type="submit" class="btn btn-primary px-4"

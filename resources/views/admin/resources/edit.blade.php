@@ -126,6 +126,14 @@
                                                                                 {{ $item->type == 'file' ? 'selected' : '' }}>
                                                                                 File
                                                                             </option>
+                                                                             <option value="word"
+                                                                                {{ $item->type == 'word' ? 'selected' : '' }}>
+                                                                                Word
+                                                                            </option>
+                                                                             <option value="comp"
+                                                                                {{ $item->type == 'comp' ? 'selected' : '' }}>
+                                                                                Commpred file
+                                                                            </option>
                                                                             <option value="url"
                                                                                 {{ $item->type == 'url' ? 'selected' : '' }}>
                                                                                 URL
@@ -140,6 +148,14 @@
                                                                                 accept="image/*">
                                                                         @elseif ($item->type == 'file')
                                                                             <label class="form-label">Upload File</label>
+                                                                            <input type="file" class="form-control"
+                                                                                name="resource[{{ $index }}]">
+                                                                        @elseif ($item->type == 'word')
+                                                                            <label class="form-label">Upload Word File</label>
+                                                                            <input type="file" class="form-control"
+                                                                                name="resource[{{ $index }}]">
+                                                                        @elseif ($item->type == 'comp')
+                                                                            <label class="form-label">Upload Commpred File</label>
                                                                             <input type="file" class="form-control"
                                                                                 name="resource[{{ $index }}]">
                                                                         @elseif ($item->type == 'url')
@@ -347,6 +363,18 @@
                     case 'file':
                         container.append(`
                             <label class="form-label">Upload File</label>
+                            <input type="file" class="form-control" name="resource[${index}]" >
+                        `);
+                        break;
+                    case 'word':
+                        container.append(`
+                            <label class="form-label">Upload Word File</label>
+                            <input type="file" class="form-control" name="resource[${index}]" >
+                        `);
+                    break;
+                    case 'comp':
+                        container.append(`
+                            <label class="form-label">Upload Commpred file</label>
                             <input type="file" class="form-control" name="resource[${index}]" >
                         `);
                         break;

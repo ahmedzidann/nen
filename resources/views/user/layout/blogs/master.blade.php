@@ -55,7 +55,7 @@
                     </a>
                     <a href="#"><img
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>E-wallet</span></a>
-                    <a href="#"><img
+                    <a href="{{ route('web.store') }}"><img
                             src="{{ asset('content/images/small_icon/wallet_icon.svg') }}" /><span>Store</span></a>
 
                     <!-- Start Dropdown Languages button -->
@@ -68,9 +68,11 @@
                             <span>Language</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLangs">
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ar') }}" name="arabic">Arabic</a></li>
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('en') }}" name="english">English</a></li>
-                            <li><a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL('ru') }}" name="russian">Russian</a></li>
+                            @foreach (App\Models\TranslationKey::get() as $lang)
+                                <li><a class="dropdown-item"
+                                        href="{{ LaravelLocalization::getLocalizedURL($lang->key) }}"
+                                        name="{{ $lang->name }}">{{ $lang->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -78,8 +80,18 @@
                     <!-- End Dropdown Languages button -->
 
                     <a href="{{ route('blogs.index') }}" target="__blank" mg
-                        src="{{ asset('content/images/small_icon/media_icon.svg') }}" />
-                    <span>News Center</span>
+                        src="{{ asset('content/images/small_icon/media_icon.svg') }}">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                viewBox="0 0 640 512"
+                                fill="#000" 
+                                width="28" 
+                                height="28"
+                            >
+                                <path d="M180.5 74.3C80.8 74.3 0 155.6 0 256S80.8 437.7 180.5 437.7 361 356.4 361 256 280.2 74.3 180.5 74.3zm288.3 10.6c-49.8 0-90.2 76.6-90.2 171.1s40.4 171.1 90.3 171.1 90.3-76.6 90.3-171.1H559C559 161.5 518.6 84.9 468.8 84.9zm139.5 17.8c-17.5 0-31.7 68.6-31.7 153.3s14.2 153.3 31.7 153.3S640 340.6 640 256C640 171.4 625.8 102.7 608.3 102.7z"/>
+                            </svg>
+                        </span>
+                        <span>Media Center</span>
                     </a>
                 </div>
             </div>
@@ -139,14 +151,14 @@
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(1, $footerData)) --}}
                                         @foreach ($footerData[1] as $certificate)
-                                        <a href="{{ $certificate->url }}" class="item d-flex align-items-center gap-1"
-                                            target="__blank">
-                                            <!-- <i class="bi bi-arrow-right"></i> -->
-                                            <span>&gt;</span>
-                                            <span>
-                                                {{ $certificate->title }}
-                                            </span>
-                                        </a>
+                                            <a href="{{ $certificate->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <!-- <i class="bi bi-arrow-right"></i> -->
+                                                <span>&gt;</span>
+                                                <span>
+                                                    {{ $certificate->title }}
+                                                </span>
+                                            </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -158,14 +170,14 @@
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(2, $footerData)) --}}
                                         @foreach ($footerData[2] as $portal)
-                                        <a href="{{ $portal->url }}" class="item d-flex align-items-center gap-1"
-                                            target="__blank">
-                                            <!-- <i class="bi bi-arrow-right"></i> -->
-                                            <span>&gt;</span>
-                                            <span>
-                                                {{ $portal->title }}
-                                            </span>
-                                        </a>
+                                            <a href="{{ $portal->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <!-- <i class="bi bi-arrow-right"></i> -->
+                                                <span>&gt;</span>
+                                                <span>
+                                                    {{ $portal->title }}
+                                                </span>
+                                            </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -177,14 +189,14 @@
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(3, $footerData)) --}}
                                         @foreach ($footerData[3] as $subsidiaries)
-                                        <a href="{{ $subsidiaries->url }}" class="item d-flex align-items-center gap-1"
-                                            target="__blank">
-                                            <!-- <i class="bi bi-arrow-right"></i> -->
-                                            <span>&gt;</span>
-                                            <span>
-                                                {{ $subsidiaries->title }}
-                                            </span>
-                                        </a>
+                                            <a href="{{ $subsidiaries->url }}"
+                                                class="item d-flex align-items-center gap-1" target="__blank">
+                                                <!-- <i class="bi bi-arrow-right"></i> -->
+                                                <span>&gt;</span>
+                                                <span>
+                                                    {{ $subsidiaries->title }}
+                                                </span>
+                                            </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -192,7 +204,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div id="subscribe" class="d-flex flex-column justify-content-center text-white-color mt-2">
+                            <div id="subscribe"
+                                class="d-flex flex-column justify-content-center text-white-color mt-2">
                                 <h6 class="tag-title">
                                     {{ TranslationHelper::translateWeb(ucfirst('Get in Touch with Us') ?? '') }}
                                 </h6>
@@ -204,9 +217,9 @@
                                     <!-- Twitter -->
                                     <a href="{{ $about->twitter_link }}" class="text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-brand-x" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
+                                            class="icon icon-tabler icon-tabler-brand-x" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
                                             <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
@@ -238,8 +251,9 @@
                                     </a>
                                 </div>
                                 <div class="input-group border-0 overflow-hidden mt-2">
-                                    <input type="text" class="form-control border-0" placeholder="Your email address"
-                                        aria-label="Email" aria-describedby="basic-addon-email">
+                                    <input type="text" class="form-control border-0"
+                                        placeholder="Your email address" aria-label="Email"
+                                        aria-describedby="basic-addon-email">
                                     <span class="input-group-text border-0" id="basic-addon-email">
                                         <a
                                             class="join-btn text-white-color border-0 bg-main-color d-flex justify-content-center align-items-center rounded-circle">
@@ -411,67 +425,67 @@
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
     <script>
-    function toggleReadMore() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("read-more-btn");
+        function toggleReadMore() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("read-more-btn");
 
-        if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Read More";
-            moreText.style.display = "none";
-        } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "Read Less";
-            moreText.style.display = "inline";
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read More";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read Less";
+                moreText.style.display = "inline";
+            }
         }
-    }
 
-    function handleLanguage(buttons) {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('lang', localStorage.getItem('lang') || 'en');
-            document.querySelectorAll(buttons).forEach(btn => {
-                btn.addEventListener('click', () => {
-                    let langCode;
-                    console.log(btn.getAttribute('name'))
-                    langCode = btn.getAttribute('name') === 'english' ? 'en' :
-                        btn.getAttribute('name') === 'arabic' ? 'ar' :
-                        'ru'; // Default to Russian if the button is neither 'english' nor 'arabic'
-                    if (window.localStorage.getItem('lang') !== langCode) {
-                        window.localStorage.setItem('lang', langCode);
-                        window.location.reload();
-                    }
+        function handleLanguage(buttons) {
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('lang', localStorage.getItem('lang') || 'en');
+                document.querySelectorAll(buttons).forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        let langCode;
+                        console.log(btn.getAttribute('name'))
+                        langCode = btn.getAttribute('name') === 'english' ? 'en' :
+                            btn.getAttribute('name') === 'arabic' ? 'ar' :
+                            'ru'; // Default to Russian if the button is neither 'english' nor 'arabic'
+                        if (window.localStorage.getItem('lang') !== langCode) {
+                            window.localStorage.setItem('lang', langCode);
+                            window.location.reload();
+                        }
+                    });
                 });
-            });
-        }
-        initializePageLanguage()
-    }
-
-    function initializePageLanguage() {
-        if (typeof window === 'undefined') return;
-
-        const lang = localStorage.getItem('lang') || 'en';
-        console.log(lang)
-        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-
-        if (lang === 'ar') {
-            document.body.classList.add('rtl'); // Add RTL class for Arabic language
-            document.body.style.direction = 'rtl';
-            document.body.style.textAlign = 'right';
-        } else {
-            document.body.classList.remove('rtl'); // Remove RTL class for other languages
+            }
+            initializePageLanguage()
         }
 
-        if (lang === 'ar') {
-            document.querySelectorAll('.swiper-btn').forEach((btn, index) => {
-                btn.classList.replace(index === 0 ? 'back-btn' : 'next-btn', index === 0 ? 'next-btn' :
-                    'back-btn');
-            });
-        }
-    }
+        function initializePageLanguage() {
+            if (typeof window === 'undefined') return;
 
-    // Call the function after the page is loaded and the DOM is available
-    handleLanguage('.dropdown-menu .dropdown-item');
+            const lang = localStorage.getItem('lang') || 'en';
+            console.log(lang)
+            document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            if (lang === 'ar') {
+                document.body.classList.add('rtl'); // Add RTL class for Arabic language
+                document.body.style.direction = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.classList.remove('rtl'); // Remove RTL class for other languages
+            }
+
+            if (lang === 'ar') {
+                document.querySelectorAll('.swiper-btn').forEach((btn, index) => {
+                    btn.classList.replace(index === 0 ? 'back-btn' : 'next-btn', index === 0 ? 'next-btn' :
+                        'back-btn');
+                });
+            }
+        }
+
+        // Call the function after the page is loaded and the DOM is available
+        handleLanguage('.dropdown-menu .dropdown-item');
     </script>
     @yield('websiteScript')
 </body>

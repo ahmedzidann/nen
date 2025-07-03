@@ -7,9 +7,12 @@ use App\Http\Controllers\User\ContactUs\ContactUsController;
 use App\Http\Controllers\User\DocValidation\DocValidationController;
 use App\Http\Controllers\User\Education\EducationController;
 use App\Http\Controllers\User\FindUs\FindUsController;
+use App\Http\Controllers\User\JoinUs\JoinUsController;
 use App\Http\Controllers\User\Projects\ProjectController;
 use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
+use App\Http\Controllers\User\Store\ProductController;
+use App\Http\Controllers\User\Store\StoreController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Http\Controllers\Web\BlogController;
@@ -40,7 +43,6 @@ Route::group(['prefix' => 'solutions', 'as' => 'solutions.', 'name' => 'solution
         Route::get($page->slug . "/{page_id}", [SolutionController::class, 'index'])->name($page->slug);
         // Route::get('index', [SolutionController::class, 'index'])->name('education');
     }
-
 });
 
 Route::group(['prefix' => 'education', 'as' => 'education.', 'name' => 'education.'], function () {
@@ -68,6 +70,7 @@ Route::group(['prefix' => 'projects', 'as' => 'projects.', 'name' => 'projects.'
         // dd($page->slug);
         Route::get($page->slug, [ProjectController::class, 'index'])->name($page->slug);
     }
+    Route::get('download/{id}', [ProjectController::class, 'download'])->name('downloadprogrampdf');
 });
 
 Route::group(['prefix' => 'doc-validation', 'as' => 'doc-validation.', 'name' => 'doc-validation.'], function () {
@@ -79,9 +82,12 @@ Route::group(['prefix' => 'doc-validation', 'as' => 'doc-validation.', 'name' =>
 Route::group(['prefix' => 'find-us', 'as' => 'find-us.', 'name' => 'find-us.'], function () {
     foreach (Page::where('parent_id', Page::where('slug', 'find-us')->first()->id)->get() as $page) {
         Route::get($page->slug, [FindUsController::class, 'index'])->name($page->slug);
-        
     }
 });
+
+
+
+
 Route::get('find-us/data', [FindUsController::class, 'getData'])->name('find-us.data');
 Route::get('resources-data', [ResourceController::class, 'getResources'])->name('resources-data.get');
 Route::get('sidebar-resources-upper-data', [SidebarResourceController::class, 'getUpperResources'])->name('sidebar-resources-upper-data.get');
@@ -96,6 +102,18 @@ Route::get('get-companies/{type}', [AboutController::class, 'getCompanies'])->na
 Route::get('blogs', BlogController::class)->name('blogs.index');
 Route::get('blogs/details/{blog}', BlogDetailsController::class)->name('blogs.details');
 Route::get('/', [HomeController::class, 'getHome'])->name('web.home');
+Route::get('join-us/{slug}', [JoinUsController::class, 'index'])->name('join-us');
+Route::get('static/{slug}', [JoinUsController::class, 'static_page'])->name('static');
+/* Store routes */
+Route::get('/store', [StoreController::class, 'index'])->name('web.store');
+Route::get('/cart', [StoreController::class, 'cart'])->name('web.store.cart');
+Route::get('/address', [StoreController::class, 'address'])->name('web.store.address');
+Route::post('/place-order', [StoreController::class, 'place_order'])->name('web.store.place-order');
+Route::resource('products', ProductController::class)->except('destroy');
+
+// Route::get('/store', function () {
+//     return view('store.pags.index');
+// })->name('web.store');
 Route::get('/link', function () {
     Artisan::call('storage:link');
     return 'Migrations have been run successfully!';

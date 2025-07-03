@@ -81,6 +81,32 @@
                                     </svg> -->
 
                                 </a>
+
+                                 @elseif ($resource->type == 'word')
+                                    <a href="{{ asset('/storage') . '/' . $resource->resource }}" target="_blank">
+
+                                        <svg width="45" height="45" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="48" height="48" rx="8" fill="#2B579A"/>
+                                        <rect x="12" y="12" width="24" height="24" fill="white"/>
+                                        <path d="M17 19L19 29H21L23 21L25 29H27L29 19H27L25 27L23 19H21L19 27L17 19Z" fill="#2B579A"/>
+                                        </svg>
+
+
+                                    </a>
+
+
+                                 @elseif ($resource->type == 'comp')
+                                    <a href="{{ asset('/storage') . '/' . $resource->resource }}" target="_blank">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="48" height="48" rx="8" fill="#1976D2"/>
+                                        <path d="M14 10H34V38H14V10Z" fill="white"/>
+                                        <path d="M20 14H28V16H20V14ZM20 18H28V20H20V18ZM20 22H28V24H20V22ZM20 26H28V28H20V26Z" fill="#1976D2"/>
+                                        <path d="M20 32H28V34H20V32Z" fill="#1976D2"/>
+                                        <text x="16" y="44" font-family="Arial, sans-serif" font-size="10" fill="white">ZIP</text>
+                                        </svg>
+
+
+                                    </a>
                                 @elseif ($resource->type == 'url')
                                 <a href="{{ $resource->resource }}" target="_blank">
 

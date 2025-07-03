@@ -94,7 +94,7 @@ class TestingRequest extends FormRequest
             'links_title.ar.*' => ['nullable', 'required_with:links.*'],
             "file_id.ar.*" => ['nullable'],
             'submit2' => 'nullable',
-            'show_in_home' => 'required|in:1,0',
+           // 'show_in_home' => 'required|in:1,0',
 
         ]);
     }

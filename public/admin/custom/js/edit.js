@@ -8,6 +8,7 @@
     });
     // end show token
       $('#myForm').submit(function (e) {
+        
           e.preventDefault(); // Prevent the default form submission
           var form = $(this);
           var url = form.attr('action');

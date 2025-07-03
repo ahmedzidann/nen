@@ -185,20 +185,18 @@
                         date: '{{ $blog->created_at->format('j F Y') }}',
                         readTime: '{{ $blog->created_at->diffForHumans() }}',
                         title: '{{ $blog->title }}',
-                        description: '{{ $blog->mini_desc }}.',
+                        // description: '{{ $blog->mini_desc }}.',
                         author: {
                             name: "Maximilian Bartholomew",
-                            nameAr: "ماكسيميليان بارتولوميو",
                             imgSrc: "./images/people/person2.jpg"
                         },
                         category: "{{ $category->title }}",
-                        categoryAr: "أسلوب الحياة"
                     },
                 @endforeach
             @endforeach
         ];
         let categorateList = @json($categories->pluck('title'));
-        //Start DisplayContent
+
         function displaycontent(slidesData) {
 
             const list = document.querySelector('.list');
@@ -423,19 +421,14 @@
         window.addEventListener('resize', updateSwiperBtnsVisibility);
 
 
-        //Start GetSort function
-
         function getSortBy() {
             if (typeof window === 'undefined') return;
             const selectElement = document.getElementById('select');
 
             selectElement.addEventListener('change', (event) => {
                 const selectedValue = event.target.value;
-                console.log(selectedValue);
             });
         }
-
-        //End GetSort function
 
         //Start Pagination function
         let currentPage = 1;
@@ -443,11 +436,9 @@
         let NumberOfPages = Math.ceil(articlesData / itemsPerPage)
         let filteredData = articlesData;
 
-        // Function to display pagination buttons and manage pagination behavior
         function displayPagination() {
             const pagination = document.querySelector('.pagination');
             pagination.innerHTML = '';
-            // Create and append back button if currentPage > 1
             const backButton = document.createElement('button');
             backButton.classList.add('pagination-btn', 'p-1', 'rounded');
             backButton.innerHTML =
@@ -674,50 +665,6 @@
 
         }
 
-        function changeToArabic(lang) {
-            if (typeof window === 'undefined') return;
-            if (lang === 'ar') {
-                const navBarLinks = document.querySelectorAll('#navBarLinks li a');
-
-                navBarLinks[0].innerHTML = 'فندق';
-                navBarLinks[1].innerHTML = 'رحلة';
-                navBarLinks[2].innerHTML = 'قطار';
-                navBarLinks[3].innerHTML = 'سفر';
-                navBarLinks[4].innerHTML = 'تأجير سيارات';
-
-                const BlogTile = document.querySelector('#blogText h2')
-                const BlogParagraph = document.querySelector('#blogText p')
-                BlogTile.innerHTML = 'مدونات'
-                BlogParagraph.innerHTML = 'نشارك هنا نصائح السفر وأدلة الوجهات والقصص التي إلهام مغامرتك القادمة.'
-
-                const sortTitle = document.querySelector('#sortTitle')
-                const sortOptions = document.querySelectorAll('#sort select option')
-
-                sortTitle.innerHTML = 'الترتيب حسب:'
-                sortOptions[0].innerHTML = 'الكل'
-                sortOptions[1].innerHTML = 'اخر المدونات'
-                sortOptions[2].innerHTML = 'اقدم المدونات'
-                sortOptions[3].innerHTML = 'اشهر المدونات'
-
-                const bookingTitle = document.querySelector('#booking h2');
-                const bookingDescription = document.querySelector('#booking p');
-                const bookingButton = document.querySelector('#booking button');
-
-                bookingTitle.innerHTML = 'استكشف أكثر للحصول على منطقة راحتك';
-                bookingDescription.innerHTML = 'احجز إقامتك المثالية معنا.';
-                bookingButton.innerHTML = 'احجز الآن ';
-
-                const articleText = document.querySelector('#article p');
-                const articleCount = document.querySelector('#article h3');
-
-                articleText.innerHTML = 'مقالات متاحة';
-                articleCount.innerHTML = '78';
-
-                const beyondTitle = document.querySelector('#beyond h2');
-
-                beyondTitle.innerHTML = 'خارج الإقامة، خلق ذكريات تدوم مدى الحياة';
-            }
-        }
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof window === 'undefined') return;
             // 1. Call Displaycontent function 

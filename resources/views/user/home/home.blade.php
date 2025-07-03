@@ -1159,9 +1159,9 @@
                                             <h4 class="card-title text-truncate fs-3 mb-1">{{ $blog->title }}
                                             </h4>
                                             <div class="description">
-                                                <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
-                                                    {!! Illuminate\Support\Str::limit($blog->content, 100) !!}
-                                                </p>
+                                                {{-- <p class="card-text fs-6 overflow-hidden opacity-75 lh-base mb-2">
+                                                    {!! Illuminate\Support\Str::limit($blog->content, 1000, '...') !!}
+                                                </p> --}}
                                             </div>
                                         </div>
 
@@ -1240,7 +1240,6 @@
                     See More
                     <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
                 </button>
-            </div>
             </div>
         </section>
         <!-- End Blogs -->

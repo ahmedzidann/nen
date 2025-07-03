@@ -40,16 +40,6 @@ Identity
         <div class="container pb-md-5 pb-3">
             <div class="row g-4 align-items-center w-100">
                 <div class="col-12 w-100">
-                    <div class="about-image-item border-0 w-100">
-                        <div class="banner-image">
-                            <img src="{{ $fSection?->getFirstMediaUrl('StaticTable') }}" loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                alt="about image">
-                        </div>
-                        <!-- <div class="blob"></div> -->
-                    </div>
-                </div>
-                <div class="col-12 w-100">
                     <div class="text-start">
                         <h5 class="global-title">
                             {{ $fSection->title }}
@@ -64,6 +54,17 @@ Identity
                         </p>
                     </div>
                 </div>
+                <div class="col-12 w-100">
+                    <div class="about-image-item border-0 w-100">
+                        <div class="banner-image">
+                            <img src="{{ $fSection?->getFirstMediaUrl('StaticTable') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                alt="about image">
+                        </div>
+                        <!-- <div class="blob"></div> -->
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
+use App\Helper\FileUploadHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\ProductCategoryRequest;
 use App\Models\Product\ProductCategory;
@@ -61,7 +62,15 @@ class ProductCategoryController extends Controller
      */
     public function store(ProductCategoryRequest $request)
     {
-        $category = ProductCategory::create($request->validated());
+        $data = $request->validated();
+
+        $data['show_in_main'] = isset($data['show_in_main']) ? 1 : 0;
+        $data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+
+        if ($request->hasFile('main_image')) {
+            $data['main_image'] = FileUploadHelper::uploadImage($request->file('main_image'), 'product-categories');
+        }
+        $category = ProductCategory::create($data);
 
         redirect()->route('admin.product-categories.index')->with('success', 'Success Add Product Category');
         return response()->json([
@@ -86,7 +95,18 @@ class ProductCategoryController extends Controller
      */
     public function update(ProductCategoryRequest $request, ProductCategory $productCategory)
     {
-        $productCategory->update($request->validated());
+
+        $data = $request->validated();
+        $data['show_in_main'] = isset($data['show_in_main']) ? 1 : 0;
+        $data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+        if ($request->hasFile('main_image')) {
+            // Delete old main image if it exists
+            if ($productCategory->main_image) {
+                FileUploadHelper::deleteFile($productCategory->main_image);
+            }
+            $data['main_image'] = FileUploadHelper::uploadImage($request->file('main_image'), 'product-categories');
+        }
+        $productCategory->update($data);
 
         return response()->json([
             'status' => 200,

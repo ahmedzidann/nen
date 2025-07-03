@@ -32,11 +32,15 @@ use App\Http\Controllers\Admin\Footer\FooterController;
 use App\Http\Controllers\Admin\InvestorStatisticsController;
 use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\Product\OrderController;
 use App\Http\Controllers\Admin\Product\ProductCategoryController;
 use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\Product\StoreSliderController;
 use App\Http\Controllers\Admin\profile\AdminController;
 use App\Http\Controllers\Admin\profile\RoleController;
 use App\Http\Controllers\Admin\profile\UsersController;
+use App\Http\Controllers\Admin\Joinus\JoinusController;
+use App\Http\Controllers\Admin\Makeme\MakemeController;
 use App\Http\Controllers\Admin\Projects\ProjectController;
 use App\Http\Controllers\Admin\Projects\Tabs\AboutTabsController;
 use App\Http\Controllers\Admin\Projects\Tabs\ArchiveTabsController;
@@ -84,6 +88,10 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('products', ProductController::class)->except('destroy');
     Route::post('products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.delete_bulck');
     Route::post('product-image', [ProductController::class, 'deleteImage'])->name('delete-image');
+
+    Route::resource('store_sliders', StoreSliderController::class)->except('destroy');
+    Route::post('store_sliders/bulk-delete', [StoreSliderController::class, 'bulkDelete'])->name('store_sliders.delete_bulck');
+    Route::resource('orders', OrderController::class)->except('destroy');
     Route::resource('education-descriptions', EducationDescriptionController::class)->except('destroy');
     Route::post('education-descriptions/bulk-delete', [EducationDescriptionController::class, 'bulkDelete'])->name('education-descriptions.delete_bulck');
     Route::resource('resources', ResourceController::class)->except('destroy');
@@ -130,6 +138,8 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::delete('join-us/{join_id}', [JoinusTabsController::class, 'deleteJoin'])->name('join.delete');
         Route::resource('statistics', StatisticsTabsController::class);
     });
+    Route::resource('joinus', JoinusController::class);
+    Route::resource('makeme', MakemeController::class);
 
     // clear route
     // clear route

@@ -104,6 +104,8 @@
                                                                     Type</option>
                                                                 <option value="image">Image</option>
                                                                 <option value="file">File</option>
+                                                                <option value="word">Word</option>
+                                                                <option value="comp">Commpred file</option>
                                                                 <option value="url">URL</option>
                                                             </select>
                                                         </div>
@@ -231,6 +233,19 @@
                     case 'file':
                         container.append(`
                             <label class="form-label">Upload File</label>
+                            <input type="file" class="form-control" name="resource[${rowIndex}]" required>
+                        `);
+                        break;
+                    case 'word':
+                        container.append(`
+                            <label class="form-label">Upload Word File</label>
+                            <input type="file" class="form-control" name="resource[${rowIndex}]" required>
+                        `);
+                        break;
+                           break;
+                    case 'comp':
+                        container.append(`
+                            <label class="form-label">Upload Commpred file</label>
                             <input type="file" class="form-control" name="resource[${rowIndex}]" required>
                         `);
                         break;

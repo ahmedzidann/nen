@@ -8,6 +8,7 @@ use App\Models\Footer;
 use App\Models\SidebarResource;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
         $pages = Page::where('parent_id', Page::where('slug', 'about')->first()->id)
             ->where('navbar', 'Active')->get();
         $educationPages = Page::where('parent_id', Page::where('slug', 'education')->first()->id)
@@ -42,6 +44,9 @@ class AppServiceProvider extends ServiceProvider
             ->where('navbar', 'Active')->get();
 
         $findus = Page::where('parent_id', Page::where('slug', 'find-us')->first()->id)
+            ->where('navbar', 'Active')->get();
+
+        $joinus = Page::where('parent_id', Page::where('slug', 'join-us')->first()->id)
             ->where('navbar', 'Active')->get();
 
         $footerData = Footer::where('status', 'Active')->get()->groupBy('type');
@@ -69,6 +74,11 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('docs', $docs);
         });
+         View::composer('user.join-us.*', function ($view) use ($joinus) {
+
+            $view->with('joinus', $joinus);
+        });
+         
         View::composer('user.find-us.*', function ($view) use ($findus) {
 
             $view->with('findus', $findus);

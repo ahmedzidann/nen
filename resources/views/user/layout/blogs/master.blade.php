@@ -264,19 +264,19 @@
                                 <div class="iso-content mt-md-3 mt-2">
                                     <div class="d-flex align-items-center gap-md-4 gap-3 flex-wrap">
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="https://images.seeklogo.com/logo-png/17/1/iso-9001-logo-png_seeklogo-171579.png?v=638659035040000000"
+                                            <img src="{{ asset('content/images/iso.png') }}"  
                                                 class="logo" alt="ISO 9001">
                                         </div>
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="https://images.seeklogo.com/logo-png/17/1/iso-9001-logo-png_seeklogo-171579.png?v=638659035040000000"
+                                            <img src="{{ asset('content/images/iso.png') }}"  
                                                 class="logo" alt="ISO 14001">
                                         </div>
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="https://images.seeklogo.com/logo-png/17/1/iso-9001-logo-png_seeklogo-171579.png?v=638659035040000000"
+                                            <img src="{{ asset('content/images/iso.png') }}"  
                                                 class="logo" alt="ISO 45001">
                                         </div>
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="https://images.seeklogo.com/logo-png/17/1/iso-9001-logo-png_seeklogo-171579.png?v=638659035040000000"
+                                            <img src="{{ asset('content/images/iso.png') }}"  
                                                 class="logo" alt="ISO 27001">
                                         </div>
                                     </div>

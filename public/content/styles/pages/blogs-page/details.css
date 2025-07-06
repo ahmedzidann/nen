@@ -50,6 +50,7 @@
   flex-direction: column;
   color: #990000;
   cursor: pointer;
+  align-self: flex-end;
 }
 
 .share-popup {

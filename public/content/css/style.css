@@ -8200,14 +8200,21 @@ width: 100%;
 
 .swiper-container .slider-next {
     right: 0;
-    transition: all .3s;
-    width: 25px;
-    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 1rem;
+    border-radius: 50%;
     border: 1px solid rgba(128, 128, 128, 0.268);
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(75, 78, 96);
+    border-image: initial;
+    background-color: black !important;
+    transition: all 0.3s ease-in-out;
+    color: white;
 }
 
 .rtl .swiper-container .slider-next svg,
@@ -8217,20 +8224,28 @@ width: 100%;
 
 .swiper-container .slider-prev {
     left: 0;
-    transition: all .3s;
-    width: 25px;
-    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 1rem;
+    border-radius: 50%;
     border: 1px solid rgba(128, 128, 128, 0.268);
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(75, 78, 96);
+    border-image: initial;
+    background-color: black !important;
+    transition: all 0.3s ease-in-out;
+    color: white;
+
 }
 
 .swiper-container .slider-prev:hover,
 .swiper-container .slider-next:hover {
-    background-color: var(--main-color);
-    color: white;
+    background-color: white !important;
+    color: black;
 }
 
 .swiper-container.swiper-horizontal {

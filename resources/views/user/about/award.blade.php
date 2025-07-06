@@ -136,7 +136,7 @@ span {
                                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                 alt="Website Icon">
                                             <span>
-                                                <a class="text-decoration-underline text-main-color fs-8" target="_blank" href="{{ $item->url }}">
+                                                <a class="text-main-color fs-8" target="_blank" href="{{ $item->url }}">
                                                     Website
                                                 </a>
                                             </span>
@@ -147,7 +147,7 @@ span {
                                                 loading="lazy"
                                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                 alt="Calendar Icon">
-                                            <span>
+                                            <span class="text-black">
                                                 {{ $item->years_text }}
                                             </span>
                                         </p>
@@ -307,7 +307,7 @@ span {
                                             @endif
                                         </p>
                                         <p><img
-                                                src="{{url('content/images/small_icon/calendar-2.png')}}"><span>{{$item->years_text}}</span>
+                                                src="{{url('content/images/small_icon/calendar-2.png')}}"><span class="text-black">{{$item->years_text}}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -341,7 +341,7 @@ span {
                                         </p>
                                         <p><img src="content/images/small_icon/global.png"><span>Website</span>
                                         </p>
-                                        <p><img src="content/images/small_icon/calendar-2.png"><span>19
+                                        <p><img src="content/images/small_icon/calendar-2.png"><span class="text-black">19
                                                 /3 /
                                                 2024</span></p>
                                     </div>
@@ -380,7 +380,7 @@ span {
                                         </p>
                                         <p><img src="content/images/small_icon/global.png"><span>Website</span>
                                         </p>
-                                        <p><img src="content/images/small_icon/calendar-2.png"><span>19
+                                        <p><img src="content/images/small_icon/calendar-2.png"><span class="text-black">19
                                                 /3 /
                                                 2024</span></p>
                                     </div>
@@ -419,7 +419,7 @@ span {
                                         </p>
                                         <p><img src="content/images/small_icon/global.png"><span>Website</span>
                                         </p>
-                                        <p><img src="content/images/small_icon/calendar-2.png"><span>19
+                                        <p><img src="content/images/small_icon/calendar-2.png"><span class="text-black">19
                                                 /3 /
                                                 2024</span></p>
                                     </div>

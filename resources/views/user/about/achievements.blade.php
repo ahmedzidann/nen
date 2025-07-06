@@ -66,16 +66,13 @@ Achievements
 
                 <!-- Add Swiper navigation controls -->
                 <!-- Next button with custom SVG -->
-                 <div class="d-flex align-items-center gap-1">
-                                    <!-- Previous button with custom SVG -->
-                <div class="slider-button slider-prev scaleX-rtl" tabindex="0" role="button" aria-label="Previous slide"
-                    aria-controls="swiper-wrapper-233c22c6e8a4bb89" aria-disabled="false"><i
-                        class="fa fa-chevron-left"></i></div>
-                <div class="slider-button slider-next scaleX-rtl" tabindex="0" role="button" aria-label="Next slide"
+                <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide"
                     aria-controls="swiper-wrapper-547e9b84ed089508" aria-disabled="false"><i
                         class="fa fa-chevron-right"></i></div>
-
-                        </div>
+                <!-- Previous button with custom SVG -->
+                <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide"
+                    aria-controls="swiper-wrapper-233c22c6e8a4bb89" aria-disabled="false"><i
+                        class="fa fa-chevron-left"></i></div>
             </div>
             <!-- End Swiper Container -->
 

@@ -424,16 +424,13 @@
 
 #testing-section .testing-img {
     width: 90%;
-    height: 327px !important;
     border-radius: 20px;
     background-color: var(--bg-main-color);
     z-index: 2;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #testing-section .testing-img img {
     border-radius: 20px;
-    height: 327px !important;
 }
 
 #testing-section .layer {
@@ -497,8 +494,6 @@
 
     #testing-section .testing-img {
         width: 100%;
-        height: 327px !important;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
     #testing-section .layer-one {

@@ -342,7 +342,7 @@
                     },
                     renderer: am5xy.AxisRendererX.new(root, {
                         minorGridEnabled: true,
-                        minGridDistance: 90
+                        minGridDistance: 40
                     })
                 }));
 

@@ -73,7 +73,7 @@
                                             <span class="mt-1">({{$item->years_text}})</span>
                                             <div>
                                             <span
-                                                class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
+                                                class="description {{ strlen($item->description) >= 200 ? "p_clamp_2" : 'p_clamp'}}">
                                                 {{ html_entity_decode(strip_tags($item->description)) }}
                                             </span>
 
@@ -124,194 +124,22 @@
             </div>
         </div>
     </div>
-    <!-- End Swiper Slider -->
-
-    <!-- Old Desgin (Remove d-none Class to view it again-->
-    <div class="tabs_div d-none">
-        <ul class="nav nav-pills mb-3 text-start" id="pills-tab" role="tablist">
-            @foreach ($subPartners as $sub)
-            <li class="nav-item" role="presentation">
-                <button class="nav-link @if($loop->first) active @endif proj_bttn" id="pills-{{$sub->slug}}-tab"
-                    data-bs-toggle="pill" data-bs-target="#pills-{{$sub->slug}}" type="button" role="tab"
-                    aria-controls="pills-{{$sub->slug}}" aria-selected="true">{{$sub->name}}</button>
-            </li>
-            @endforeach
-        </ul>
-        <div class="tab-content certificates_h text-start" id="pills-tabContent">
-            @foreach ($subPartners as $sub)
-            @php
-            $fs = $items->where('item', 'section-one')
-            ->where('childe_pages_id', $sub->id)
-            ->first();
-            @endphp
-            <div class="tab-pane fade @if($loop->first) show active @endif" id="pills-{{$sub->slug}}" role="tabpanel"
-                aria-labelledby="pills-{{$sub->slug}}-tab" tabindex="0">
-                <div class="explain_titel">
-                    <p>{!! $fs?->description !!}</p>
-                </div>
-
-                <div class="swiper-slide">
-                    @if ($fs)
-                    <img class="certifcate_img" src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
-                    @endif
-                </div>
-
-                <div class="ceryifcates_sec">
-                    <h1>{{ TranslationHelper::translateWeb(ucfirst('Our Partners')??'') }}</h1>
-                    <p>{{ TranslationHelper::translateWeb(ucfirst('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')??'') }}</p>
-
-                    <div class="grid_div_bttn">
-                        <div class="grid_div" id="partners-{{$sub->slug}}" data-page="1">
-                            @foreach ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->take(6)
-                            as $item)
-                            <div class="card card_styles">
-                                <div class="card_content">
-                                    <div class="iso_div">
-                                        <div class="size_div">
-                                            <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
-                                        </div>
-                                        <p>{{$item->title}} <span>({{$item->years_text}})</span></p>
-                                    </div>
-                                    <div class="iso_titels">
-                                        <span
-                                            class="description text-start {{ strlen($item->description) >= 200 ? "p_clamp_2" : ''}}">
-                                            {{ html_entity_decode(strip_tags($item->description)) }}
-                                        </span>
-
-                                        @if (strlen($item->description) >= 200)
-                                        <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i
-                                                class="bi bi-chevron-down"></i></a>
-                                        @endif
-
-                                        <div class="flex_icons_div">
-                                            <p class="icons-item">
-                                                @if ($item->getFirstMediaUrl('StaticTable2'))
-                                                <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a
-                                                        class="ref_coloring"
-                                                        href="{{$item->getFirstMediaUrl('StaticTable2')}}">{{ TranslationHelper::translateWeb(ucfirst('Reference')??'') }}</a></span>
-                                                @endif
-                                            </p>
-                                            <p class="icons-item">
-                                                @if ($item->url)
-                                                <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                        class="ref_coloring" href="{{$item->url}}">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a></span>
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                        @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
-                        <a href="#" id='see_more_bttn' class="see_more_bttn" data-slug="{{$sub->slug}}"
-                            onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">See More <span><i
-                                    class="bi bi-chevron-down"></i></span></a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
+  
 </div>
 
-<!-- Old Desgin (Remove d-none Class to view it again-->
-    <div class="about_content text-start d-none">
-        <h1>{{ TranslationHelper::translateWeb(ucfirst('STRATEGIC PARTNERS')??'') }}</h1>
 
-        <div class="tabs_div">
-            <ul class="nav nav-pills mb-3 text-start" id="pills-tab" role="tablist">
-                @foreach ($subPartners as $sub)
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link @if($loop->first) active @endif proj_bttn" id="pills-{{$sub->slug}}-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-{{$sub->slug}}" type="button" role="tab" aria-controls="pills-{{$sub->slug}}"
-                            aria-selected="true">{{$sub->name}}</button>
-                    </li>
-                @endforeach
-            </ul>
-            <div class="tab-content certificates_h text-start" id="pills-tabContent">
-                @foreach ($subPartners as $sub)
-                @php
-                    $fs = $items->where('item', 'section-one')
-                        ->where('childe_pages_id', $sub->id)
-                        ->first();
-                @endphp
-                <div class="tab-pane fade @if($loop->first) show active @endif" id="pills-{{$sub->slug}}" role="tabpanel"
-                    aria-labelledby="pills-{{$sub->slug}}-tab" tabindex="0">
-                    <div class="explain_titel">
-                        <p>{!! $fs?->description !!}</p>
-                    </div>
-
-                    <div class="swiper-slide">
-                        @if ($fs)
-                            <img class="certifcate_img" src="{{$fs->getFirstMediaUrl('StaticTable')}}" alt="{{$fs->title}}">
-                        @endif
-                    </div>
-
-                    <div class="ceryifcates_sec">
-                        <h1>{{ TranslationHelper::translateWeb(ucfirst('Our Partners')??'') }}</h1>
-                        <p>{{ TranslationHelper::translateWeb(ucfirst('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')??'') }}</p>
-
-                        <div class="grid_div_bttn">
-                            <div class="grid_div" id="partners-{{$sub->slug}}" data-page="1">
-                                @foreach ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->take(6) as $item)
-                                    <div class="card card_styles">
-                                        <div class="card_content">
-                                            <div class="iso_div">
-                                                <div class="size_div">
-                                                    <img src="{{$item->getFirstMediaUrl('StaticTable')}}">
-                                                </div>
-                                                <p>{{$item->title}} <span>({{$item->years_text}})</span></p>
-                                            </div>
-                                            <div class="iso_titels">
-                                                <span class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
-                                                    {{ html_entity_decode(strip_tags($item->description)) }}
-                                                </span>
-
-                                                @if (strlen($item->description) >= 200)
-                                                    <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>
-                                                @endif
-
-                                                <div class="flex_icons_div">
-                                                    <p class="icons-item">
-                                                        @if ($item->getFirstMediaUrl('StaticTable2'))
-                                                            <img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" href="{{$item->getFirstMediaUrl('StaticTable2')}}">Reference</a></span>
-                                                        @endif
-                                                    </p>
-                                                    <p class="icons-item">
-                                                        @if ($item->url)
-                                                            <img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="{{$item->url}}">Website</a></span>
-                                                        @endif
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            @if ($items->where('item', 'section-two')->where('childe_pages_id',$sub->id)->count()>6)
-                                <a href="#"  id='see_more_bttn' class="see_more_bttn" data-slug="{{$sub->slug}}" onclick="loadMorePartners(event, '{{$sub->slug}}',{{$sub->id}} ,)">See More <span><i class="bi bi-chevron-down"></i></span></a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
 
     <script>
-        function toggleDescription(button) {
-            var description = button.previousElementSibling;
-            if (description.classList.contains('p_clamp')) {
-                description.classList.remove('p_clamp');
-                button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
-            } else {
-                description.classList.add('p_clamp');
-                button.innerHTML = 'Show More <i class="bi bi-chevron-down"></i>';
-            }
-        }
+       function toggleDescription(button) {
+      var description = button.previousElementSibling;
+      if (description.classList.contains('p_clamp_2')) {
+        description.classList.remove('p_clamp_2');
+        button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+      } else {
+        description.classList.add('p_clamp_2');
+        button.innerHTML = 'Read More <i class="bi bi-chevron-down"></i>';
+    }
+}
 
         function htmlspecialchars(str) {
             const map = {
@@ -383,14 +211,18 @@
                 </div>
                 <div class="icons-data">
                     <p class="icons-item">
-                        ${item.media && item.media.filter(i => i.collection_name === 'StaticTable2')[0] 
-                            ? `<img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" href="${item.media.filter(i => i.collection_name === 'StaticTable2')[0].original_url}">Reference</a></span>` 
-                            : ''}
+                        ${
+                            item.media && item.media.find(i => i.collection_name === 'StaticTable2')
+                                ? `<img src="{{url('content/images/small_icon/archive-book.png')}}"><span><a class="ref_coloring" href="${item.media.find(i => i.collection_name === 'StaticTable2').original_url}">Reference</a></span>`
+                                : ''
+                        }
                     </p>
                     <p class="icons-item">
-                        ${item.url 
-                            ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="${item.url}">Website</a></span>` 
-                            : ''}
+                        ${
+                            item.url
+                                ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="${item.url[lang] ?? item.url.en}">Website</a></span>`
+                                : ''
+                        }
                     </p>
                 </div>
             </div>`;
@@ -403,8 +235,10 @@
     container.setAttribute('data-page', newPage);
 
     // Hide the "See More" button if there are no more items to load
-    if (((subItems.length / 6) - newPage) < 0) {
-        document.getElementById('see_more_bttn').style.display = 'none';
+   
+    if (((subItems.length / 6) - newPage) <= 0) {
+         const btn = document.querySelector(`#see_more_bttn[data-slug="${slug}"]`);
+        if (btn) btn.style.display = 'none';
     }
 }
 

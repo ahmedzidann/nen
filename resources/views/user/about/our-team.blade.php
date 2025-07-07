@@ -785,8 +785,8 @@ Our Team
                                     <li><a target="_blank" href="https://wa.me/{{ $item->whatsapp }}"
                                             class="bi bi-whatsapp"></a></li>
                                     @endif
-                                    @if ($item->instagram)
-                                    <li><a target="_blank" href="{{ $item->instagram }}" class="bi bi-instagram"></a>
+                                    @if ($item->instagrame)
+                                    <li><a target="_blank" href="{{ $item->instagrame }}" class="bi bi-instagram"></a>
                                     </li>
                                     @endif
                                 </ul>

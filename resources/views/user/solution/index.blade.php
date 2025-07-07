@@ -8,9 +8,7 @@
 
 <div class="about_content">
     <div class="text-start">
-        <!-- <p class="global-description">
-            Solution
-        </p> -->
+       
         <h5 class="global-title">
             {{$solution->title}}
         </h5>
@@ -178,15 +176,15 @@
             @if ($tab->slug =='about' )
             <hr class="custom-hr" />
             <ul class="about-counters mt-0 mb-2 border-0 p-0">
-                @foreach ($items->where('tabs_id',11)->take(4) as $key=> $item)
+                @foreach ($items->where('tabs_id',11)->take(4) as $key)
                 <li class="mt-3">
-                    <!-- <i class="{{$item->icon}}"></i> -->
+                  
                     <div class="dts-counters">
                         <h4 class="line-before">
-                            {{$item->title}}
+                            {{$key->title}}
                         </h4>
                         <p class="mt-3 pt-0 before-vertical-line ms-3">
-                            {{$item->subtitle}}
+                            {{$key->subtitle}}
                         </p>
                     </div>
                 </li>
@@ -287,7 +285,7 @@
 
 
             @if ($items->where('tabs_id',$tab->id)->count())
-            <div class="service_div">
+            {{-- <div class="service_div">
                 <span class="line-before pt-0 mb-2">
                     Call Us
                 </span>
@@ -301,7 +299,7 @@
                         <h6>{{$solution->email}}</h6>
                     </div>
                 </a>
-            </div>
+            </div> --}}
             <div id="representatives-table-section" class="mt-md-5 mt-3">
                 <hr />
                 <h3 class="table-title line-before text-gray500 fs-5 mb-3">

@@ -13,9 +13,9 @@
     <div id="edu4me-section" class="about_content">
         <div class="container">
             <div class="text-start">
-                <p class="sub-title">
+                {{-- <p class="sub-title">
                     {{ $page->name }}
-                </p>
+                </p> --}}
                 <h5 class="global-title">
                     {{ $projects->title }}
                 </h5>

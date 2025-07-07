@@ -439,7 +439,7 @@ a {
     visibility: hidden;
     opacity: 0;
     transition: all 0.5s;
-    gap: .5rem;
+    gap: 0;
     z-index: 999;
     transform-origin: 0 0 0;
 }
@@ -467,9 +467,9 @@ a {
     align-items: center;
     gap: 7px;
     position: relative;
+    line-height: 35px;
     color: #000;
-    font-size: 15px;
-    line-height: 1.5rem;
+    font-size: 18px;
 }
 
 .ul_pages .ul_dropdown .li_drop_content:hover .sub_dropdowen {
@@ -477,8 +477,6 @@ a {
     visibility: visible;
     opacity: 1;
     transform: translateX(0px);
-    display: flex;
-    gap: .5rem;
 }
 
 .ul_pages .ul_dropdown .li_drop_content .sub_dropdowen {
@@ -499,9 +497,6 @@ a {
     transform: translateX(-45px);
     padding: 5px 15px;
     border-right: 2px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
 }
 
 .ul_pages .ul_dropdown .li_drop_content .sub_dropdowen li {
@@ -2035,14 +2030,9 @@ z-index: 2;
     hyphens: auto !important;
     word-wrap: break-word !important;
     font-size: 1.1rem;
-    color: black;
+    color: #6c757d;
     padding-top: 1rem;
     line-height: 1.6;
-}
-
-.tabs-items p:hover,
-.tabs-items span:hover {
-    color: var(--main-color)
 }
 
 /* End Customized Tabs */
@@ -2224,7 +2214,6 @@ z-index: 2;
 #acheivements-timeline-section em {
     font-style: initial !important;
 }
-
 .grid_sec {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2255,7 +2244,7 @@ z-index: 2;
     display: flex;
     align-items: flex-end;
     gap: 5px;
-
+ 
 }
 
 .grid_sec .year_div:nth-child(even) {
@@ -2275,7 +2264,6 @@ z-index: 2;
     background-color: #ddd;
     right: -100px;
 }
-
 .grid_sec .year_div:nth-child(even)::after {
     position: absolute;
     content: "";
@@ -2298,7 +2286,6 @@ z-index: 2;
     right: -106px;
     z-index: 1;
 }
-
 .grid_sec .year_div:nth-child(even)::before {
     position: absolute;
     content: "";
@@ -2690,13 +2677,6 @@ z-index: 2;
 .new-card .icons-data .icons-item p,
 .new-card .icons-data .icons-item span {
     padding: initial !important;
-    color: black;
-}
-
-.new-card .icons-data .icons-item p:hover,
-.new-card .icons-data .icons-item span:hover {
-    color: var(--main-color);
-
 }
 
 .see-more-btn {
@@ -4482,7 +4462,7 @@ circle-progress::part(text) {
 margin-top: 75px;
 
 } */
-
+ 
 .swiper.Awards_slider .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
     content: 'next';

@@ -97,9 +97,9 @@
                                                     </select>
                                                 </div>
                                                 {{-- ----------first image --}}
-                                                <div class="col-md-12 mb-4">
+                                                <div class="col-md-12 mb-4">(90*90)                                                    
                                                     <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
-                                                        name="File Upload Image">
+                                                        name="File Upload Image"> 
                                                     </x-admin.form.label-first>
                                                     <div class="col-sm-9">
                                                         <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"

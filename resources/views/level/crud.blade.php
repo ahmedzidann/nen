@@ -43,18 +43,6 @@
 
 
 
-
-                                                {{-- <div class="row mb-3">
-                                            <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
-                                                name="title">
-                                            </x-admin.form.label-first>
-                                            <div class="col-sm-9">
-                                                <x-admin.form.input old="title" name="title" type="text"
-                                                    placeholder="title" class="form-control valid" required='true'>
-                                                </x-admin.form.input>
-                                            </div>
-                                        </div> --}}
-
                                                 <div class="row mb-3">
                                                     <x-admin.form.label-first star="*" class="col-sm-3 col-form-label"
                                                         name="title  {{ $item->name }}">
@@ -80,7 +68,7 @@
                                                                 <option selected disabled>Select Page
                                                                 </option>
                                                                 @foreach ($cats as $page)
-                                                                    <option value="{{ $page->id }}">
+                                                                    <option value="{{ $page->id }}"<?php if($admin->category_id==$page->id) echo 'selected' ;?>>
                                                                         {{ $page->name }}</option>
                                                                 @endforeach
                                                             </select>

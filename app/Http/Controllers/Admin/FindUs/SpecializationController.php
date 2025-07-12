@@ -40,7 +40,7 @@ class SpecializationController extends Controller
                                 return $row->translate('title', $language);
                         })
                         ->editColumn('created_at', function ($row) { return Carbon::parse($row->created_at)->format('Y-m-d'); })
-                        ->addColumn('action', function($row){return'<div class="d-flex order-actions"> <a href="'.route('admin.certificates.edit',$row->id).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
+                        ->addColumn('action', function($row){return'<div class="d-flex order-actions"> <a href="'.route('admin.specializations.edit',$row->id).'" class="m-auto"><i class="bx bxs-edit"></i></a> ';})
                         ->rawColumns(['checkbox','action'])
                         ->make(true);
             }
@@ -60,18 +60,23 @@ class SpecializationController extends Controller
         ]);
         return redirect()->route('admin.specializations.index')->with('add','Success Add Admin');
     }
-    public function edit(Admin $admin):View
+    public function edit(Specialization $Specialization):View
     {
-        return view('admin.specializations.crud',new SpecializationViewModel($admin));
+       return view('specialization.crud',new SpecializationViewModel($Specialization));
+    
     }
-    public function update(UpdateAdminRequest $request, Admin $admin):RedirectResponse
+    public function update(Request $request, Specialization $Specialization):RedirectResponse
     {
-        app(UpdateAdminAction::class)->handle($admin,$request->validated());
-        return redirect()->route('admin.countries.index')->with('edit','Update Admin');
+        $validateData = $request->validate([
+            'title'=>'required|max:255',
+            'category_id'=>'required|exists:pages,id',
+        ]);
+        $Specialization->update($validateData);
+        return redirect()->route('admin.specializations.index')->with('edit','Update Specialization');
     }
     public function destroy(Request $request):RedirectResponse
     {
-        foreach(Admin::find($request->id) as $admin){$admin->delete();}
-        return redirect()->back()->with('delete','Delete Admin');
+        foreach(Specialization::find($request->id) as $admin){$admin->delete();}
+        return redirect()->back()->with('delete','Delete Specialization');
     }
 }

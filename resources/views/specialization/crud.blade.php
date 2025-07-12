@@ -75,7 +75,7 @@
                                         <div class="col-sm-9">
                                             <select name="category_id" class="form-control valid">
                                                 @foreach($categories as $country)
-                                                    <option value="{{$country->id}}">{{$country->title}}</option>
+                                                    <option value="{{$country->id}}" <?php if($admin->category_id==$country->id) echo 'selected' ;?>>{{$country->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

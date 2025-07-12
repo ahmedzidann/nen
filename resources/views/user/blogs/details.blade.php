@@ -48,7 +48,7 @@
 
 
             <!-- start Article -->
-            <div class=" d-flex align-items-center justify-content-between">
+            <div class=" d-flex flex-column justify-content-between flex-wrap">
                 <div>
                     <div id="articleTitle" class="article-title">
                         <h1></h1>
@@ -64,8 +64,7 @@
                     <div class="category-content align-items-center  flex-grow-1 d-flex flex-row gap-3"
                         id="categoryContent">
                     </div>
-                </div>
-                <div id="share" class="share d-flex  align-items-center  gap-2">
+                          <div id="share" class="share d-flex  align-items-center  gap-2">
                     <div class="share-icon">
                         <svg width="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g stroke-width="0"></g>
@@ -89,6 +88,8 @@
                     </div>
                     <span>Share</span>
                 </div>
+                </div>
+          
                 <div class="share-popup" id="sharePopup">
                     <div class="share-container">
                         <button class="close-popup" id="closePopup">

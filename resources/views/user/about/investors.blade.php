@@ -160,8 +160,10 @@
                                                 </div>
                                             </div>
                                         </div>
+                                         @if ($sub->url && $sub->url!= '')
                                         <a href="{{ $sub->url }}"
                                             class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website') ?? '') }}</a>
+                                             @endif
 
                                     </div>
                                 </div>
@@ -220,9 +222,10 @@
                                                 </div>
                                             </div>
                                         </div>
+                                         @if ($sub->url && $sub->url!= '')
                                         <a href="{{ $sub->url }}"
                                             class="website_link mt-0 p-2 text-center">{{ TranslationHelper::translateWeb(ucfirst('Website') ?? '') }}</a>
-
+                                         @endif
                                     </div>
                                 </div>
                             @empty

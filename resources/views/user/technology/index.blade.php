@@ -128,7 +128,7 @@ Technology
                 <div class="bg">
                     <div class="counter-item p-3">
                         <div class="image-count d-flex justify-content-center mt-2">
-                            <img src="{{ $item->getFirstMediaUrl('StaticTable') }}" loading="lazy"
+                            <img src="{{ asset('storage/technology/' . $item->image) }}" loading="lazy"
                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                 alt="count image">
                         </div>

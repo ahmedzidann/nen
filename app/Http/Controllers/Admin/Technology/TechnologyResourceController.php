@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin\Technology;
-use App\Actions\StaticTable\StoreStaticTableAction;
+use App\Actions\Technology\StoreTechnologyAction;
+use App\Actions\Technology\UpdateTechnologyAction;
 use App\Actions\StaticTable\UpdateStaticTableAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\About\IdentityRequest;
@@ -64,6 +65,7 @@ class TechnologyResourceController extends Controller
     public function store(TechnologyRequest $request)
     // public function store(Request $request)
     {  
+       // dd($request);
         if ($request->item == 'section-two'){
             $validator = $request->validationStoretwo();
         }else{
@@ -76,7 +78,8 @@ class TechnologyResourceController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
-            app(StoreStaticTableAction::class)->handle($validator->validated());
+
+            app(StoreTechnologyAction::class)->handle($validator->validated());
 
             redirect()->route('admin.technology.index')->with('add','Success Add Technology');
             return response()->json([
@@ -121,7 +124,7 @@ class TechnologyResourceController extends Controller
                 'errors'=>$validator->messages()
             ]);
         }else{
-            app(UpdateStaticTableAction::class)->handle($identity,$validator->validated());
+            app(UpdateTechnologyAction::class)->handle($identity,$validator->validated());
             return response()->json([
                 'status'=>200,
                 'message'=>'Update technology',

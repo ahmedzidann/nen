@@ -59,7 +59,7 @@ class CertificateController extends Controller
     }
     public function edit(Admin $admin):View
     {
-        return view('admin.certificates.crud',new CertificateViewModel($admin));
+         return view('certificate.crud',new CertificateViewModel());
     }
     public function update(UpdateAdminRequest $request, Admin $admin):RedirectResponse
     {

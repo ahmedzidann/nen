@@ -61,18 +61,25 @@ class LevelController extends Controller
         ]);
         return redirect()->route('admin.levels.index')->with('add','Success Add Admin');
     }
-    public function edit(Admin $admin):View
+    public function edit(Level $level):View
     {
-        return view('level.crud',new LevelViewModel($admin));
+      //  dd();
+        return view('level.crud',new LevelViewModel($level));
     }
-    public function update(UpdateAdminRequest $request, Admin $admin):RedirectResponse
+    public function update(Request $request, Level $level):RedirectResponse
     {
-        app(UpdateAdminAction::class)->handle($admin,$request->validated());
-        return redirect()->route('admin.levels.index')->with('edit','Update Admin');
+        $validateData = $request->validate([
+            'title'=>'required|max:255',
+            'category_id'=>'required|exists:pages,id',
+        ]);
+        $level->update( $validateData);
+        
+       return redirect()->route('admin.levels.index')->with('edit','Update Level');
     }
     public function destroy(Request $request):RedirectResponse
     {
-        foreach(Admin::find($request->id) as $admin){$admin->delete();}
-        return redirect()->back()->with('delete','Delete Admin');
+       
+        foreach(Level::find($request->id) as $admin){$admin->delete();}
+        return redirect()->back()->with('delete','Delete Level');
     }
 }

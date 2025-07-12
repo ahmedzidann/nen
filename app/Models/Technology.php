@@ -32,6 +32,7 @@ class Technology extends Model implements HasMedia
     'childe_pages_id',
     'sort',
     'show_in_home',
+    'image',
   ];
   const STATUS = ['Active', 'Not Active'];
   public function Page()

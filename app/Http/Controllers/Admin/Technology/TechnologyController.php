@@ -78,6 +78,7 @@ class TechnologyController extends Controller
     public function store(TechnologyRequest $request)
     {
 
+        dd($request);
         $validator = $request->validationStore();
         if($validator->fails())
         {

@@ -103,8 +103,8 @@ class IdentityRequest extends FormRequest
             'pages_id' => ['required'],
             'status' => ['required'],
             'sort' => ['nullable'],
-            'statistics.title.' . $request->submit2 => ['required'],
-            'statistics.value.*' => ['required'],
+           // 'statistics.title.' . $request->submit2 => ['required'],
+          //  'statistics.value.*' => ['required'],
         ]);
     }
     public function validationUpdateThreeAr()

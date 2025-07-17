@@ -31,7 +31,7 @@
 
     <div id="home-page">
         <!-- Start Quick Access Section UI -->
-        <div id="quick-access-card" class="position-relative mt-4">
+        {{-- <div id="quick-access-card" class="position-relative mt-4">
             <div class="container">
                 <div class="row g-3">
                     @foreach ($lowerDidebarResources as $resource)
@@ -53,7 +53,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- End Quick Access Section UI -->
 
         <!-- Start Features Section -->

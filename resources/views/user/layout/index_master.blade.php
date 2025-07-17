@@ -40,22 +40,18 @@
 
 
 <body>
-    <!-- Marquee Ms$  -->
+      @php
+use App\Models\Makeme;
+$marques = Makeme::all();
+  @endphp
     <div class="marquee">
         <div class="marquee-content">
            <ul class="ul-marquee">
-            <li>
-                ene 👋 مرحباً بيك في الموقع 
-            </li>   
+            @foreach($marques as $row)
              <li>
-                ene 👋 مرحباً بيك في الموقع 
-            </li>
-             <li>
-                ene 👋 مرحباً بيك في الموقع 
-            </li>  
-             <li>
-                ene 👋 مرحباً بيك في الموقع 
-            </li>      
+               👋   {{ strip_tags($row->translate('description', app()->getLocale()))  }}
+            </li> 
+            @endforeach     
            </ul>
         </div>
     </div>

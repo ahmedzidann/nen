@@ -50,6 +50,22 @@
 </style>
 
 <body>
+  <!-- Marquee Ms$  -->
+  @php
+use App\Models\Makeme;
+$marques = Makeme::all();
+  @endphp
+    <div class="marquee">
+        <div class="marquee-content">
+           <ul class="ul-marquee">
+            @foreach($marques as $row)
+             <li>
+               👋   {{ strip_tags($row->translate('description', app()->getLocale()))  }}
+            </li> 
+            @endforeach     
+           </ul>
+        </div>
+    </div>
 
     <!-- <div class="loader-wrapper">
         <div class="loader"></div>
@@ -175,7 +191,7 @@
     <!-- section_who_us -->
 
     <!-- Start Quick Access Section UI -->
-    <div id="quick-access-card" class="position-relative mt-4">
+    {{-- <div id="quick-access-card" class="position-relative mt-4">
         <div class="container">
             <div class="row g-3">
                 @if (count($lowerSection) > 0)
@@ -203,7 +219,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Quick Access Section UI -->
 
     <section class="about_sec">

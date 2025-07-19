@@ -61,6 +61,14 @@ class JoinusController extends Controller
                 ->editColumn('page', function ($row) use ($language) {
                     if (!empty($row->Page)) {
                         return $row->Page->translate('name', $language);
+                    }elseif($row->type=='sub_main' && $row->main_title_id =='' ) {
+                       return Joinus::where('id',$row->parent_id)->first()->title ?? ''; 
+                    }elseif($row->type=='main') {
+                       return Joinus::where('id',$row->parent_id)->first()->title ?? ''; 
+                    }elseif($row->type=='sub_main'&& $row->main_title_id !='') {
+                       $main= Joinus::where('id',$row->parent_id)->first()->title ?? '';
+                        $sub = Joinus::where('id',$row->main_title_id)->first()->title ?? ''; 
+                        return $main .'-->'.$sub ;
                     }
                 })
                 ->editColumn('created_at', function ($row) {
@@ -121,9 +129,17 @@ class JoinusController extends Controller
         } else {
             // app(StoreProjectAction::class)->handle($validator->validated());
             $data = $validator->validated();
+            if(isset($data['image']))
+                {
+                    $image = $data['image'];
+                    $fileName = time() . '_' . $image->getClientOriginalName();
+                    $image->storeAs('public/join_us', $fileName);
+                   $data['image']=$fileName;  
+                }
             $Project = Joinus::create($data);
             $pageId = $Project?->Page?->parent?? null;
-            $this->StoreImage($data,$Project,'Joinus');
+            
+           // $this->StoreImage($data,$Project,'Joinus');
             // redirect()->route('admin.s.index')->with('add', 'Success Add Project');
             return response()->json([
                 'status' => 200,
@@ -153,8 +169,15 @@ class JoinusController extends Controller
         } else {
             // app(UpdateProjectAction::class)->handle($StaticTable, $validator->validated());
             $data =  $validator->validated();
+            if(isset($data['image']))
+                {
+                    $image = $data['image'];
+                    $fileName = time() . '_' . $image->getClientOriginalName();
+                    $image->storeAs('public/join_us', $fileName);
+                   $data['image']=$fileName;  
+                }
              $StaticTable->update($data);
-            $this->UpdateImage($data,$StaticTable,'Joinus');
+           // $this->UpdateImage($data,$StaticTable,'Joinus');
             return response()->json([
                 'status' => 200,
                 'message' => 'Update Project',

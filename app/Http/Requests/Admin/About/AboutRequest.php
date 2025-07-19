@@ -34,6 +34,13 @@ class AboutRequest extends FormRequest
                 'youtube' => 'required|image',
                 'whats_number' => 'required|max:255',
                 'telegram_number' => 'required|max:255',
+                'vk_link' => 'nullable',
+                'email' => 'nullable',
+                'image_1' => 'nullable',
+                'image_2' => 'nullable',
+                'image_3' => 'nullable',
+                'image_4' => 'nullable',
+                
             ];
         } else {
             return [
@@ -48,6 +55,12 @@ class AboutRequest extends FormRequest
                 'youtube' => 'sometimes|image',
                 'whats_number' => 'required|max:255',
                 'telegram_number' => 'required|max:255',
+                'vk_link' => 'nullable',
+                'email' => 'nullable',
+                'image_1' => 'nullable',
+                'image_2' => 'nullable',
+                'image_3' => 'nullable',
+                'image_4' => 'nullable',
             ];
         }
     }

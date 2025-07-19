@@ -48,6 +48,7 @@ class AboutController extends Controller
     public function store(AboutRequest $request)
     {
         $data = $request->validated();
+
         app(StoreAboutAction::class)->handle($data);
         redirect()->route('admin.about.index')->with('add', 'Success Add About');
         return response()->json([
@@ -64,6 +65,7 @@ class AboutController extends Controller
     public function update(AboutRequest $request, $id)
     {
         $StaticTable = About::find($id);
+       
         app(UpdateAboutAction::class)->handle($StaticTable, $request->validated());
         return response()->json([
             'status' => 200,

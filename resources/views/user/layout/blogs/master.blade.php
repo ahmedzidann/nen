@@ -263,22 +263,32 @@
                                 </div>
                                 <div class="iso-content mt-md-3 mt-2">
                                     <div class="d-flex align-items-center gap-md-4 gap-3 flex-wrap">
+                                    @if(isset($about->image_1)&& !empty($about->image_1))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('content/images/iso.png') }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_1) }}"  
                                                 class="logo" alt="ISO 9001">
                                         </div>
+                                    @endif
+
+                                      @if(isset($about->image_2)&& !empty($about->image_2))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('content/images/iso.png') }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_2) }}"  
                                                 class="logo" alt="ISO 14001">
                                         </div>
+                                         @endif
+                                         @if(isset($about->image_3)&& !empty($about->image_3))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('content/images/iso.png') }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_3) }}"  
                                                 class="logo" alt="ISO 45001">
                                         </div>
+                                         @endif
+
+                                         @if(isset($about->image_4)&& !empty($about->image_4))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('content/images/iso.png') }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_4) }}"  
                                                 class="logo" alt="ISO 27001">
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

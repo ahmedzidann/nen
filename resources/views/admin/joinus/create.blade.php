@@ -142,36 +142,45 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="col-md-6 mb-4">
-                                                    <x-admin.form.label-first class="form-label" name="SHow In Home">
+                                                @if(request()->parent_id)
+                                             <div class="col-md-6 mb-4">
+                                                    <x-admin.form.label-first class="form-label" name="main or branch">
                                                     </x-admin.form.label-first>
                                                     <div class="col-sm-9">
                                                         <div class="d-flex align-items-center gap-3">
                                                             <div class="form-check">
                                                                 <div class="form-check">
-                                                                    <x-admin.form.radio :checked="$StaticTable->show_in_home == true
-                                                                        ? 'checked'
+                                                                    <x-admin.form.radio :checked="$StaticTable->type == 'main'
+                                                                        ? ''
                                                                         : ''"
-                                                                        name="show_in_home" value="1"
+                                                                        name="type" value="main"
                                                                         :model="$StaticTable">
                                                                     </x-admin.form.radio>
                                                                     <label class="form-check-label"
-                                                                        for="bsValidation6">yes</label>
+                                                                        for="bsValidation6">mainly</label>
                                                                 </div>
                                                                 <div class="form-check">
-                                                                    <x-admin.form.radio :checked="$StaticTable->show_in_home == false
+                                                                    <x-admin.form.radio :checked="$StaticTable->type == 'sub_main'
                                                                         ? 'checked'
-                                                                        : ''"
-                                                                        name="show_in_home" value="0"
+                                                                        : 'checked'"
+                                                                        name="type" value="sub_main"
                                                                         :model="$StaticTable">
                                                                     </x-admin.form.radio>
                                                                     <label class="form-check-label"
-                                                                        for="bsValidation6">no</label>
+                                                                        for="bsValidation6">branch</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div> 
+                                                 <div class="col-md-12 mb-4">
+                                                        <x-admin.form.label-first class="form-label" name="Select main titles">
+                                                        </x-admin.form.label-first>
+                                                        <x-admin.form.dropdown disabled="" required="" :foreach="$main_titles"
+                                                            name="main_title_id" nameselect="Main Title" :model="$StaticTable">
+                                                        </x-admin.form.dropdown>
+                                                    </div>
+                                                 @endif
                                                 <input  type="hidden" name="parent_id" value="{{request()->parent_id}}">
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="" class="form-label"
@@ -210,6 +219,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                           
                                             {{-- --------hatem --}}
                                         </div>
                                     </div>

@@ -106,12 +106,12 @@
 
     <div class="flex_asid_menu">
         @php
-    $currentPage = \App\Models\Page::where('parent_id', Request()->slug)->first();
-@endphp
+    $currentPage = \App\Models\Page::where('id', Request()->slug)->first();
+   @endphp
 
 <a class="ref_styles dropdown_arrow 
-          {{ Route::is('join-us') && $currentPage && $currentPage->slug == $page->slug ? 'active_link active' : '' }}"
-   href="javascript:void(0)" onclick="toggleMenu(this)">
+          {{ Route::is('join-us') && $currentPage && $currentPage->parent_id == $page->id ? 'active_link active' : '' }}"
+        href="javascript:void(0)" onclick="toggleMenu(this)">
     
     <div class="img_link">
         <img class="Identity_icon" src="content/images/small_icon/card.png" loading="lazy"

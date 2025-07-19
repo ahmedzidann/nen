@@ -2,6 +2,7 @@
 namespace App\ViewModels\Joinus;
 
 use App\Models\Page;
+ use App\Models\Joinus;
 use App\Models\Project;
 use App\Models\StaticTable;
 use App\Models\Tabs;
@@ -19,6 +20,7 @@ class JoinusViewModel extends ViewModel
     public  $routeView;
     public  $allPage;
     public  $allTabs;
+    public  $main_titles ;
 
     public function __construct($StaticTable = null)
     {
@@ -30,6 +32,7 @@ class JoinusViewModel extends ViewModel
         $this->routeView = route('admin.joinus.index',Request()->query());
         $this->viewTable = 'Joinus';
         $this->allPage = Page::where('id',Request()->pages_id)->first()?->childe ??[];
+       $this->main_titles = Joinus::where('parent_id',Request()->parent_id)->where('type','main')->get();
 
         // $this->allTabs = Tabs::get();
     }

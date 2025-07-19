@@ -20,5 +20,13 @@ class About extends Model implements  HasMedia
         'twitter_link',
         'instagram_link',
         'youtube_link',
+        'vk_link',
+        'email',
+        'telegram_number',
+        'whats_number',
+        'image_1',
+        'image_2',
+        'image_3',
+        'image_4'
     ];
 }

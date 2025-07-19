@@ -88,12 +88,21 @@
                                                             </x-admin.form.label-end>
                                                         </div>
                                                         <div class="col-md-12 mb-4">
-                                                            <x-admin.form.input old="{{ 'instagram_link' }}" name="instagram_link"
-                                                                type="url" required="" placeholder="instagram_link"
-                                                                class="form-control valid" :value="$StaticTable->instagram_link">
+                                                            <x-admin.form.input old="{{ 'vk_link' }}" name="vk_link"
+                                                                type="text" required="" placeholder="vk_link"
+                                                                class="form-control valid" :value="$StaticTable->vk_link">
                                                             </x-admin.form.input>
                                                             <x-admin.form.label-end star="*"
-                                                                name="please enter instagram_link">
+                                                                name="please enter vk_link">
+                                                            </x-admin.form.label-end>
+                                                        </div>
+                                                          <div class="col-md-12 mb-4">
+                                                            <x-admin.form.input old="{{ 'email' }}" name="email"
+                                                                type="text" required="" placeholder="email"
+                                                                class="form-control valid" :value="$StaticTable->email">
+                                                            </x-admin.form.input>
+                                                            <x-admin.form.label-end star="*"
+                                                                name="please enter email">
                                                             </x-admin.form.label-end>
                                                         </div>
                                                         <div class="col-md-12 mb-4">
@@ -114,7 +123,8 @@
                                                                 name="please enter whats number">
                                                             </x-admin.form.label-end>
                                                         </div>
-                                                        <div class="col-md-12 mb-4">
+
+                                                          <div class="col-md-12 mb-4">
                                                             <x-admin.form.input old="{{ 'telegram_number' }}" name="telegram_number"
                                                                 type="text" required="" placeholder="telegram_number"
                                                                 class="form-control valid" :value="$StaticTable->telegram_number">
@@ -123,6 +133,34 @@
                                                                 name="please enter telegram number">
                                                             </x-admin.form.label-end>
                                                         </div>
+
+                                                        <div class="form-group col-md-12">
+                                                         <label for="image"> Image1</label>
+                                                        <input type="file" data-default-file="{{ isset($StaticTable->image_1) ? asset('storage/footer_iso/' . $StaticTable->image_1) : '' }}" class="form-control-file dropify" 
+                                                        name="image_1">
+                                                        </div>
+                                                         <div class="form-group col-md-12">
+                                                         <label for="image"> Image2</label>
+                                                        <input type="file" data-default-file="{{ isset($StaticTable->image_2) ? asset('storage/footer_iso/' . $StaticTable->image_2) : '' }}" class="form-control-file dropify" 
+                                                        name="image_2">
+                                                        </div>
+
+                                                        <div class="form-group col-md-12">
+                                                         <label for="image"> Image3</label>
+                                                        <input type="file" data-default-file="{{ isset($StaticTable->image_3) ? asset('storage/footer_iso/' . $StaticTable->image_3) : '' }}" class="form-control-file dropify" 
+                                                        name="image_3">
+                                                        </div>
+
+                                                        <div class="form-group col-md-12">
+                                                         <label for="image"> Image4</label>
+                                                        <input type="file" data-default-file="{{ isset($StaticTable->image_4) ? asset('storage/footer_iso/' . $StaticTable->image_4) : '' }}" class="form-control-file dropify" 
+                                                        name="image_4">
+                                                        </div>
+                                                    
+                                                    
+
+                                                        
+                                                        </br></br>
 
                                                     @endif
                                                     {{-- ----------end image --}}

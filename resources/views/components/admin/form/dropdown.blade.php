@@ -11,7 +11,7 @@
         @else
             {{--  create  --}}
             <option value="{{ $item->id }}" @if (old(isset($name) ? $name : '') == $item->id) {{ 'selected' }} @endif>
-                {{ $item->name }}</option>
+                {{ $item->name ??  $item->title }}</option>
         @endif
     @endforeach
 </select>

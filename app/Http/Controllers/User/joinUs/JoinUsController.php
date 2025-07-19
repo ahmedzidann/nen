@@ -2,9 +2,7 @@
 namespace App\Http\Controllers\User\joinUS;
 
 use App\Http\Controllers\Controller;
-use App\Models\Country;
-use App\Models\FindUs;
-use App\Models\Level;
+use App\Models\Joinus;
 use App\Models\Page;
 use App\Models\Slider;
 use App\Models\Specialization;
@@ -22,7 +20,9 @@ class JoinUsController extends Controller
         $page = Page::findOrFail(9);
         $slider = Slider::where('page_id', $page->id)->first();
         $categories = Page::where('parent_id', 9)->get();
-        return view('user.join-us.index', ['slider'=> $slider,'categories'=>$categories]);
+        $tabs = Joinus::where('pages_id',$id)->get();
+
+        return view('user.join-us.index', ['slider'=> $slider,'categories'=>$categories,'tabs'=>$tabs]);
 
     }
 

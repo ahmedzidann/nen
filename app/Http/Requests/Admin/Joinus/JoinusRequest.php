@@ -31,7 +31,7 @@ class JoinusRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'title.*' => ['required','max:255','min:2'],
+            'title.*' => ['required','max:255'],
             'description.*' => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'video' => ['nullable'],
@@ -39,6 +39,8 @@ class JoinusRequest extends FormRequest
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
             'parent_id' => ['nullable'],
+            'type' => ['nullable'],
+            'main_title_id' => ['nullable'],
 
         ]);
     }
@@ -46,7 +48,7 @@ class JoinusRequest extends FormRequest
     {
         $request= Request();
         return Validator::make($request->all(), [
-            'title.'.$request->submit2 => ['required','max:255','min:2'],
+            'title.'.$request->submit2 => ['required','max:255'],
             'description.'.$request->submit2 => ['required','min:2'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'video' => ['nullable'],
@@ -54,6 +56,8 @@ class JoinusRequest extends FormRequest
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
             'parent_id' => ['nullable'],
+             'type' => ['nullable'],
+            'main_title_id' => ['nullable'],
         ]);
     }
     public function validationUpdateAr()

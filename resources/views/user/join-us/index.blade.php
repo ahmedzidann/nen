@@ -10,23 +10,21 @@ Our Team
 @endsection
 @section('content')
  <div class="modern-tabs">
+   @if(isset($tabs) && !empty($tabs) && $tabs->count() > 0)
     <div class="tabs-header">
-    @if(isset($tabs) && !empty($tabs))
+
      @php $x= 0 ; @endphp
     @foreach($tabs as $row)
-        {{-- <button class="tab-btn active" data-tab="why-join">Why Join?</button>
-        <button class="tab-btn" data-tab="member-benefits">Member Benefits</button>
-        <button class="tab-btn" data-tab="requirements">Requirements & Conditions</button>
-        <button class="tab-btn" data-tab="steps">Registration Steps</button>
-        <button class="tab-btn" data-tab="faq">FAQ</button> --}}
+       
           <button class="tab-btn {{ $x == 0 ? 'active' : '' }}" data-tab="tab_{{$row->id }}">{{ strip_tags($row->translate('title', app()->getLocale()))  }} </button>
            @php $x++ ; @endphp
     @endforeach
-    @endif
+   
     </div>
 
     <div class="tabs-body">
-        <div id="tab_{{$tabs[0]->id}}" class="tab-pane active">
+    @if($tabs->count() >= 1)
+        <div id="tab_{$tabs[0]->id ?}" class="tab-pane active">
             <h2><span class="icon-titel"><i class="fa-solid fa-user-plus"></i></span> {{ strip_tags($tabs[0]->translate('title', app()->getLocale()))  }}</h2>
             <div class="rounded-4  overflow-hidden my-2"
                 style="background-image: url('{{ asset('storage/join_us/' . $tabs[0]->image) }}'); height: 40vh;width: 100%; background-size: cover; background-repeat: no-repeat;">
@@ -37,9 +35,9 @@ Our Team
             <div class="row mt-5 gap-y-3">
 
             @php
-                use App\Models\Joinus;
+               
 
-               $tabs_1=  Joinus::where('parent_id',$tabs[0]->id)->where('status','Active')->get();
+               $tabs_1=  \App\Models\Joinus::where('parent_id',$tabs[0]->id)->where('status','Active')->get();
  
             @endphp
               
@@ -63,7 +61,8 @@ Our Team
            
             </div>
         </div>
-
+    @endif
+ @if($tabs->count() >= 2)
         <div id="tab_{{$tabs[1]->id }}"" class="tab-pane">
             <h2><span class="icon-titel"><i class="fa-solid fa-gift"></i></span>   {{ strip_tags($tabs[1]->translate('title', app()->getLocale()))  }}
             </h2>
@@ -77,7 +76,7 @@ Our Team
 
             @php
 
-               $tabs_2=  Joinus::where('parent_id',$tabs[1]->id)->where('status','Active')->where('type','main')->get();   
+               $tabs_2=  \App\Models\Joinus::where('parent_id',$tabs[1]->id)->where('status','Active')->where('type','main')->get();   
             @endphp
 
              @if(isset($tabs_2) && !empty($tabs_2))
@@ -88,7 +87,7 @@ Our Team
                 </div>
                 <div class="row gap-y-4">
                 @php
-                     $items=Joinus::where('main_title_id',$row2->id)->where('type','sub_main')->get(); 
+                     $items=\App\Models\Joinus::where('main_title_id',$row2->id)->where('type','sub_main')->get(); 
                 @endphp
                  @if(isset($items) && !empty($items))
                  @foreach($items as $item)
@@ -118,6 +117,8 @@ Our Team
            
 
         </div>
+ @endif
+  @if($tabs->count() >= 3)
 
         <div id="tab_{{$tabs[2]->id }}" class="tab-pane">
 
@@ -132,7 +133,8 @@ Our Team
               {{ strip_tags($tabs[2]->translate('description', app()->getLocale()))  }}
             </p>
         </div>
-
+  @endif
+ @if($tabs->count() >= 4)
         <div id="tab_{{$tabs[3]->id }}" class="tab-pane">
             <h2><span class="icon-titel"><i class="fa-solid fa-pen-to-square icon"></i></span>
                 {{ strip_tags($tabs[3]->translate('title', app()->getLocale()))  }}</h2>
@@ -141,7 +143,7 @@ Our Team
             <div class="inner-container">
             @php
            
-               $tabs_4=  Joinus::where('parent_id',$tabs[3]->id)->where('status','Active')->get();
+               $tabs_4=  \App\Models\Joinus::where('parent_id',$tabs[3]->id)->where('status','Active')->get();
             
             @endphp
              @if(isset($tabs_4)&& !empty($tabs_4))
@@ -162,8 +164,9 @@ Our Team
                
             </div>
         </div>
+ @endif
 
-      
+     @if($tabs->count() >= 5)  
         <div id="tab_{{$tabs[4]->id }}" class="tab-pane">
             <h2><span class="icon-titel"><i class="fas fa-question-circle"></i>
                 </span>{{ strip_tags($tabs[4]->translate('title', app()->getLocale()))  }} </h2>
@@ -176,7 +179,7 @@ Our Team
                 <div class="faq-container">
                 @php
            
-               $tabs_5=  Joinus::where('parent_id',$tabs[4]->id)->where('status','Active')->get();
+               $tabs_5=  \App\Models\Joinus::where('parent_id',$tabs[4]->id)->where('status','Active')->get();
               $x=0 ;
               @endphp
                @if(isset($tabs_5)&& !empty($tabs_5))
@@ -196,7 +199,12 @@ Our Team
             </div>
 
         </div>
+     @endif
     </div>
+    @else
+    @include('user.layout.includes.no-data')
+    @endif 
+     
 </div> 
 @endsection
 @section('websiteScript')

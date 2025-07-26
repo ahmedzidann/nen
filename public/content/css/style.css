@@ -9256,7 +9256,6 @@ span {
 .faq-question {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 15px 20px;
     cursor: pointer;
     font-weight: bold;

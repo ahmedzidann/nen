@@ -141,33 +141,9 @@
 
 
                             </button>
-                        </div>
-                        <div class="copy">
-                            <h5 class="fs-5 pt-5 opacity-75" id="pageLink">Copy url</h5>
-                            <div
-                                class="d-flex justify-content-between align-items-center bg-light text-muted-color py-2 px-3 rounded mt-3 gap-3">
-                                <p class="mb-0 opacity-25" id="link"></p>
-                                <button id="copyLinkBtn" class="copy" name="copyLink"
-                                    aria-label="Copy link to clipboard" title="Copy the link to clipboard">
-                                    <span class="copied">Copied</span>
+                            
 
-                                    <span>
-                                        <svg xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                            class="no-rotate" viewBox="0 0 6.35 6.35" y="0" x="0" height="20"
-                                            width="20" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g>
-                                                <path fill="currentColor"
-                                                    d="M2.43.265c-.3 0-.548.236-.573.53h-.328a.74.74 0 0 0-.735.734v3.822a.74.74 0 0 0 .735.734H4.82a.74.74 0 0 0 .735-.734V1.529a.74.74 0 0 0-.735-.735h-.328a.58.58 0 0 0-.573-.53zm0 .529h1.49c.032 0 .049.017.049.049v.431c0 .032-.017.049-.049.049H2.43c-.032 0-.05-.017-.05-.049V.843c0-.032.018-.05.05-.05zm-.901.53h.328c.026.292.274.528.573.528h1.49a.58.58 0 0 0 .573-.529h.328a.2.2 0 0 1 .206.206v3.822a.2.2 0 0 1-.206.205H1.53a.2.2 0 0 1-.206-.205V1.529a.2.2 0 0 1 .206-.206z">
-                                                </path>
-                                            </g>
-                                        </svg>
-                                    </span>
-
-                                </button>
-
-
-                                <button id="linkedinShareButton" name="linkedinShare" aria-label="Share on LinkedIn">
+                            <button id="linkedinShareButton" name="linkedinShare" aria-label="Share on LinkedIn">
                                     <svg class="no-rotate" width="30" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg" fill="#000000">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -265,34 +241,33 @@
                                     <span>Instagram</span>
 
                                 </button>
-                            </div>
-                            <div class="copy">
-                                <h5 class="fs-5 pt-5 opacity-75" id="pageLink">Copy url</h5>
-                                <div
-                                    class="d-flex justify-content-between align-items-center bg-light text-muted-color py-2 px-3 rounded mt-3 gap-3">
-                                    <p class="mb-0 opacity-25" id="link"></p>
-                                    <button id="copyLinkBtn" class="copy" name="copyLink"
-                                        aria-label="Copy link to clipboard" title="Copy the link to clipboard">
-                                        <span class="copied">Copied</span>
-                                        <span data-text-end="Copied!" data-text-initial="Copy to clipboard"
-                                            class="tooltip"></span>
-                                        <span>
-                                            <svg xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                                class="no-rotate" viewBox="0 0 6.35 6.35" y="0" x="0" height="20"
-                                                width="20" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <g>
-                                                    <path fill="currentColor"
-                                                        d="M2.43.265c-.3 0-.548.236-.573.53h-.328a.74.74 0 0 0-.735.734v3.822a.74.74 0 0 0 .735.734H4.82a.74.74 0 0 0 .735-.734V1.529a.74.74 0 0 0-.735-.735h-.328a.58.58 0 0 0-.573-.53zm0 .529h1.49c.032 0 .049.017.049.049v.431c0 .032-.017.049-.049.049H2.43c-.032 0-.05-.017-.05-.049V.843c0-.032.018-.05.05-.05zm-.901.53h.328c.026.292.274.528.573.528h1.49a.58.58 0 0 0 .573-.529h.328a.2.2 0 0 1 .206.206v3.822a.2.2 0 0 1-.206.205H1.53a.2.2 0 0 1-.206-.205V1.529a.2.2 0 0 1 .206-.206z">
-                                                    </path>
-                                                </g>
-                                            </svg>
-                                        </span>
-                                    </button>
+                        </div>
+                        <div class="copy">
+                            <h5 class="fs-5 pt-5 opacity-75" id="pageLink">Copy url</h5>
+                            <div
+                                class="d-flex justify-content-between align-items-center bg-light text-muted-color py-2 px-3 rounded mt-3 gap-3">
+                                <p class="mb-0 opacity-25" id="link"></p>
+                                <button id="copyLinkBtn" class="copy" name="copyLink"
+                                    aria-label="Copy link to clipboard" title="Copy the link to clipboard">
+                                    <span class="copied">Copied</span>
 
-                                </div>
-                            </div>
+                                    <span>
+                                        <svg xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                            class="no-rotate" viewBox="0 0 6.35 6.35" y="0" x="0" height="20"
+                                            width="20" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g>
+                                                <path fill="currentColor"
+                                                    d="M2.43.265c-.3 0-.548.236-.573.53h-.328a.74.74 0 0 0-.735.734v3.822a.74.74 0 0 0 .735.734H4.82a.74.74 0 0 0 .735-.734V1.529a.74.74 0 0 0-.735-.735h-.328a.58.58 0 0 0-.573-.53zm0 .529h1.49c.032 0 .049.017.049.049v.431c0 .032-.017.049-.049.049H2.43c-.032 0-.05-.017-.05-.049V.843c0-.032.018-.05.05-.05zm-.901.53h.328c.026.292.274.528.573.528h1.49a.58.58 0 0 0 .573-.529h.328a.2.2 0 0 1 .206.206v3.822a.2.2 0 0 1-.206.205H1.53a.2.2 0 0 1-.206-.205V1.529a.2.2 0 0 1 .206-.206z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </span>
 
+                                </button>
+
+                            </div>
+    
                         </div>
                     </div>
 

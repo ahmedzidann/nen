@@ -164,15 +164,20 @@
 
         <!-- Swiper Navigation Buttons -->
 
-         <div class="d-flex align-items-center justify-content-center mt-2 gap-1">
+        <div class="d-flex align-items-center justify-content-center mt-2 gap-1">
 
-        <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide">
-            <i class="fa fa-chevron-left"></i>
-        </div>
-        <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide">
-            <i class="fa fa-chevron-right"></i>
-        </div>
+    <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide">
+        <i class="fa fa-chevron-left"></i>
+    </div>
+    <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide">
+        <i class="fa fa-chevron-right"></i>
+    </div>
     </div>
 </div>
 <!--End Swiper Container -->
+
+<script>
+
+</script>
 @endif
+

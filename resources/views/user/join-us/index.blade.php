@@ -3,7 +3,7 @@
 About
 @endsection
 @section('page_name')
-Our Team
+Join Us
 @endsection
 @section('cover_image')
 {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png') }}

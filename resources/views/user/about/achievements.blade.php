@@ -62,17 +62,23 @@ Achievements
                         </button>
                     </div>
                     @endforeach
+                     
                 </div>
 
                 <!-- Add Swiper navigation controls -->
                 <!-- Next button with custom SVG -->
+                <div class="d-flex align-items-center justify-content-center mt-2 gap-1">
+
+                                <!-- Previous button with custom SVG -->
+                                <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide"
+                    aria-controls="swiper-wrapper-233c22c6e8a4bb89" aria-disabled="false"><i
+                        class="fa fa-chevron-left"></i></div>
                 <div class="slider-button slider-next" tabindex="0" role="button" aria-label="Next slide"
                     aria-controls="swiper-wrapper-547e9b84ed089508" aria-disabled="false"><i
                         class="fa fa-chevron-right"></i></div>
-                <!-- Previous button with custom SVG -->
-                <div class="slider-button slider-prev" tabindex="0" role="button" aria-label="Previous slide"
-                    aria-controls="swiper-wrapper-233c22c6e8a4bb89" aria-disabled="false"><i
-                        class="fa fa-chevron-left"></i></div>
+
+                                 <div class="d-flex align-items-center justify-content-center mt-2 gap-1">
+               </div>
             </div>
             <!-- End Swiper Container -->
 
@@ -96,7 +102,9 @@ Achievements
                         </div>
                     </div>
                 </div>
+                
                 @endforeach
+
             </div>
         </div>
     </div>
@@ -112,6 +120,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
         spaceBetween: 20,
+        slidesOffsetAfter: 130,
+        // slidesOffsetBefore: 130,
         freeMode: true,
         navigation: {
             nextEl: '.slider-next',

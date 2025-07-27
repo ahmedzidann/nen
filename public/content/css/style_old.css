@@ -2214,11 +2214,12 @@ z-index: 2;
 #acheivements-timeline-section em {
     font-style: initial !important;
 }
-.grid_sec {
+
+.grid_sec:not(li) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 200px;
-    color: #fff;
+    color: black;
     row-gap: 25px;
     position: relative;
     padding: 45px 0 45px;
@@ -2244,7 +2245,7 @@ z-index: 2;
     display: flex;
     align-items: flex-end;
     gap: 5px;
- 
+
 }
 
 .grid_sec .year_div:nth-child(even) {
@@ -2264,6 +2265,7 @@ z-index: 2;
     background-color: #ddd;
     right: -100px;
 }
+
 .grid_sec .year_div:nth-child(even)::after {
     position: absolute;
     content: "";
@@ -2286,6 +2288,7 @@ z-index: 2;
     right: -106px;
     z-index: 1;
 }
+
 .grid_sec .year_div:nth-child(even)::before {
     position: absolute;
     content: "";
@@ -4462,7 +4465,7 @@ circle-progress::part(text) {
 margin-top: 75px;
 
 } */
- 
+
 .swiper.Awards_slider .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
     content: 'next';

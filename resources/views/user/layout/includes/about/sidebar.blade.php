@@ -114,7 +114,7 @@
         href="javascript:void(0)" onclick="toggleMenu(this)">
     
     <div class="img_link">
-        <img class="Identity_icon" src="content/images/small_icon/card.png" loading="lazy"
+        <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}" loading="lazy"
              onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');"
              alt="icon-side">
         {{ $page->name }} 

@@ -709,10 +709,58 @@ $marques = Makeme::all();
                     .then(data => {
                         console.log('data:', data);
                         if (data.status === 'success' && data.data) {
-                            document.getElementById('quick-access').innerHTML += data.data;
-                            document.getElementById('line').style.display = 'block';
+                            const quickAccessElement = document.getElementById('quick-access');
+                            const lineElement = document.getElementById('line');
+                            
+                            if (quickAccessElement) {
+                                quickAccessElement.innerHTML += data.data;
+                            }
+                            
+                            if (lineElement) {
+                                lineElement.style.display = 'block';
+                            }
+                            
+                                                        // Initialize Swiper after content is loaded
+                            setTimeout(() => {
+                                if (typeof Swiper !== 'undefined') {
+                                    // Get current language direction
+                                    const isRTL = document.body.getAttribute('dir') === 'rtl' || document.body.classList.contains('rtl');
+                                    
+                                    const swiperConfig = {
+                                        slidesPerView: 'auto',
+                                        spaceBetween: 20,
+                                        freeMode: true,
+                                        navigation: {
+                                            nextEl: '.slider-next',
+                                            prevEl: '.slider-prev',
+                                        },
+                                        keyboard: {
+                                            enabled: true,
+                                            onlyInViewport: true,
+                                        },
+                                        mousewheel: {
+                                            forceToAxis: true,
+                                        }
+                                    };
+                                    
+                                    // Add offset based on language direction
+                                    if (isRTL) {
+                                        swiperConfig.slidesOffsetBefore = 130;
+                                    } else {
+                                        swiperConfig.slidesOffsetAfter = 130;
+                                    }
+                                    
+                                    const swiper = new Swiper('.swiper-container', swiperConfig);
+                                    console.log('Swiper initialized successfully with', isRTL ? 'RTL' : 'LTR', 'offset');
+                                } else {
+                                    console.log('Swiper library not loaded');
+                                }
+                            }, 100);
                         } else {
-                            document.getElementById('contact-us').style.display = 'none';
+                            const contactUsElement = document.getElementById('contact-us');
+                            if (contactUsElement) {
+                                contactUsElement.style.display = 'none';
+                            }
                         }
                     })
                     .catch(error => {

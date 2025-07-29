@@ -92,11 +92,11 @@ span {
                                     </div>
                                     <div>
                                         <span
-                                                class="description {{ strlen($item->description) >= 500 ? "p_clamp_2" : 'p_clamp'}}">
+                                                class="description {{ strlen($item->description) >= 50 ? "p_clamp_2" : 'p_clamp'}}">
                                                 {{ html_entity_decode(strip_tags($item->description)) }}
                                             </span>
 
-                                            @if (strlen($item->description) >= 500)
+                                            @if (strlen($item->description) >= 50)
                                             <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More
                                                 <i class="bi bi-chevron-down"></i></a>
                                             @endif
@@ -225,10 +225,10 @@ function loadMorePartners(event, slug, slug_id, lang) {
                         <span class="mt-1 mb-2">(${item.years_text?.[lang] ?? item.years_text?.en ?? ''})</span>
                     </div>
                      <div>
-                        <span class="description ${item.description[lang] && item.description[lang].length >= 500 ? 'p_clamp' : 'p_clamp_2'}">
+                        <span class="description ${item.description[lang] && item.description[lang].length >= 50 ? 'p_clamp' : 'p_clamp_2'}">
                             ${htmlspecialchars(stripTags(item.description[lang] ? item.description[lang] : item.description.en))}
                         </span>
-                        ${item.description.en.length >= 500 
+                        ${item.description.en.length >= 50 
                             ? '<a role="btn" onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>' 
                             : ''}
                     </div>

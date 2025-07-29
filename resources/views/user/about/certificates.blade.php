@@ -92,15 +92,14 @@ span {
                                     </div>
                                     <div>
                                         <span
-                                            class="description {{ strlen($item->description) >= 200 ? "p_clamp" : ''}}">
-                                            {{ html_entity_decode(strip_tags($item->description)) }}
-                                        </span>
+                                                class="description {{ strlen($item->description) >= 200 ? "p_clamp_2" : 'p_clamp'}}">
+                                                {{ html_entity_decode(strip_tags($item->description)) }}
+                                            </span>
 
-                                        @if (strlen($item->description) >= 200)
-                                        <a role='btn' onclick="toggleDescription(this)" class="read_more">Read
-                                            More
-                                            <i class="bi bi-chevron-down"></i></a>
-                                        @endif
+                                            @if (strlen($item->description) >= 200)
+                                            <a role='btn' onclick="toggleDescription(this)" class="read_more">Read More
+                                                <i class="bi bi-chevron-down"></i></a>
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="icons-data">
@@ -150,14 +149,14 @@ span {
 
 
 <script>
-function toggleDescription(button) {
-    var description = button.previousElementSibling;
-    if (description.classList.contains('p_clamp_2')) {
+      function toggleDescription(button) {
+      var description = button.previousElementSibling;
+      if (description.classList.contains('p_clamp_2')) {
         description.classList.remove('p_clamp_2');
-        button.innerHTML = 'Read More <i class="bi bi-chevron-up"></i>';
-    } else {
+        button.innerHTML = 'Show Less <i class="bi bi-chevron-up"></i>';
+      } else {
         description.classList.add('p_clamp_2');
-        button.innerHTML = 'Show Less <i class="bi bi-chevron-down"></i>';
+        button.innerHTML = 'Read More <i class="bi bi-chevron-down"></i>';
     }
 }
 
@@ -225,12 +224,12 @@ function loadMorePartners(event, slug, slug_id, lang) {
                         <p class="title-card mt-2">${item.title?.[lang] ?? item.title?.en ?? ''}</p>
                         <span class="mt-1 mb-2">(${item.years_text?.[lang] ?? item.years_text?.en ?? ''})</span>
                     </div>
-                    <div>
-                        <span class="description ${item.description?.[lang]?.length >= 200 || item.description?.en?.length >= 200 ? 'p_clamp' : 'p_clamp_2'}">
-                            ${htmlspecialchars(stripTags(item.description?.[lang] ?? item.description?.en ?? ''))}
+                     <div>
+                        <span class="description ${item.description[lang] && item.description[lang].length >= 200 ? 'p_clamp' : 'p_clamp_2'}">
+                            ${htmlspecialchars(stripTags(item.description[lang] ? item.description[lang] : item.description.en))}
                         </span>
-                        ${(item.description?.[lang]?.length >= 200 || item.description?.en?.length >= 200)
-                            ? `<a role="btn" onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>` 
+                        ${item.description.en.length >= 200 
+                            ? '<a role="btn" onclick="toggleDescription(this)" class="read_more">Read More <i class="bi bi-chevron-down"></i></a>' 
                             : ''}
                     </div>
                 </div>

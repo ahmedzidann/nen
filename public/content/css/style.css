@@ -8536,11 +8536,11 @@ span {
     align-items: center;
 }
 
-#banner-quick-access img {
+#banner-quick-access .nav-item img {
     filter: brightness(0) invert(1);
 }
 
-#banner-quick-access:hover img {
+#banner-quick-access:hover .nav-item img {
     filter: initial
 }
 
@@ -9256,6 +9256,7 @@ span {
 .faq-question {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     padding: 15px 20px;
     cursor: pointer;
     font-weight: bold;

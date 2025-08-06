@@ -16,12 +16,12 @@ class JoinUsController extends Controller
     
     public function index($id=null): View
     {
-       
         $page = Page::findOrFail(9);
-        $slider = Slider::where('page_id', $page->id)->first();
+        
+        $parent_id = Page::where('id', $id)->first();
+        $slider = Slider::where('page_id', $parent_id->parent_id)->first();
         $categories = Page::where('parent_id', 9)->get();
         $tabs = Joinus::where('pages_id',$id)->get();
-
         return view('user.join-us.index', ['slider'=> $slider,'categories'=>$categories,'tabs'=>$tabs]);
 
     }

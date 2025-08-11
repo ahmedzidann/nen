@@ -289,30 +289,9 @@
 
                     <div class="edu-statisctics rounded-3 overflow-hidden p-4">
                         <h3 class="line-before text-white-color mb-3">
-                            Register Steps
+                            {{ TranslationHelper::translateWeb(ucfirst('Register Steps')) }}
                         </h3>
-                        <div class="join-steps">
-                            <div class="join-step d-flex gap-2 align-items-center mb-3 text-white-color">
-                                <img src="{{ asset('content') }}/images/small_icon/share.png" loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                    alt="share">
 
-
-
-                            </div>
-                            @foreach ($projects->getJoinus->where('type', 'register') as $joinus)
-                            <div class="join-step d-flex gap-2 align-items-center mb-3 text-white-color">
-                                <img src="{{ asset('content') }}/images/small_icon/share.png" loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                    alt="share">
-                                @if (!empty($joinus['description']))
-                                <p class="">
-                                    {!! $joinus['description'] !!}
-                                </p>
-                                @endif
-                            </div>
-                            @endforeach
-                        </div>
                     </div>
                     <hr class="custom-hr mt-md-5 mt-4">
                     <div class="terms-section">

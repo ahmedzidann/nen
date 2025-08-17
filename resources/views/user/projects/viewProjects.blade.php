@@ -59,7 +59,14 @@
                             <div class="col-md-7 order-md-2">
                                 <div class="who-us-titles text-start">
                                     <h5 class="line-before">
+
+
+                                        @if( $about->title == null )
                                         {{ TranslationHelper::translateWeb(ucfirst('Who we do for you')??'') }}
+                                        @else
+                                        {!! $about->title !!}
+                                        @endif
+
                                     </h5>
                                     @if (!empty($about->shortDescription))
                                     <p id="shortDescription"

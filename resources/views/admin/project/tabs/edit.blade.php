@@ -56,11 +56,11 @@
                                                 <x-admin.form.label-first star="*" class="form-label"
                                                     name="Title  {{ $item->name  }}">
                                                 </x-admin.form.label-first>
-                                                <x-admin.form.text old="{{ 'title.'.$item->key }}"
+                                                <x-admin.form.input old="{{ 'title.'.$item->key }}"
                                                     name="{{ 'title'.'['.$item->key.']' }}" type="text"
                                                     placeholder="Title {{ ucfirst($item->name)  }}"
                                                     :value="$StaticTable->translate('title', $item->key)">
-                                                </x-admin.form.text>
+                                                </x-admin.form.input>
 
 
                                             </div>

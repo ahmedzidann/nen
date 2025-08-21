@@ -527,8 +527,8 @@ a {
     border-bottom-right-radius: 25px; */
 }
 
-.title_img::after {
-    /* background-color: #09506566; */
+/* .title_img::after {
+ background-color: #09506566; 
     position: absolute;
     content: "";
     width: 100%;
@@ -536,8 +536,9 @@ a {
     top: 0;
     right: 0;
     /* border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px; */
+    border-bottom-right-radius: 25px; 
 }
+*/
 
 .titel_img_content {
     position: absolute;

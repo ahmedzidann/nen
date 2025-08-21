@@ -528,7 +528,7 @@ a {
 }
 
 .title_img::after {
-    background-color: #09506566;
+    /* background-color: #09506566; */
     position: absolute;
     content: "";
     width: 100%;

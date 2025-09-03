@@ -16,76 +16,81 @@ $(function () {
             }
         },
         columns: [{
-                data: 'checkbox',
-                name: 'checkbox',
-                orderable: false,
-                searchable: false
-            },
-            {
-                data: 'id',
-                name: 'id'
-            },
-            {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'created_at',
-                name: 'created_at'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: true,
-                searchable: true
-            },
+            data: 'checkbox',
+            name: 'checkbox',
+            orderable: false,
+            searchable: false
+        },
+        {
+            data: 'id',
+            name: 'id'
+        },
+        {
+            data: 'category',
+            name: 'category'
+        },
+        {
+            data: 'name',
+            name: 'name'
+        },
+
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+        {
+            data: 'action',
+            name: 'action',
+            orderable: true,
+            searchable: true
+        },
         ],
         dom: 'lBfrtip',
         buttons: [{
-                extend: 'copy',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            extend: 'copy',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'excel',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'excel',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'csv',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'csv',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'pdf',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'pdf',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'print',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'print',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
+            }
+        },
         ],
     });
     $('.filter-input').keyup(function () {
@@ -156,9 +161,9 @@ $(function () {
                 }
             } else {
                 Swal.fire(
-                'Error!',
-                'Please select least one check.',
-                'error'
+                    'Error!',
+                    'Please select least one check.',
+                    'error'
                 );
             }
         });

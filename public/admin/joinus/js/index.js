@@ -5,8 +5,8 @@ $(function () {
     // var subcategory = url.searchParams.get("subcategory");
 
     const urlParams = new URLSearchParams(window.location.search);
-const parent_id = urlParams.get('parent_id');
-const pages_id = urlParams.get('pages_id');
+    const parent_id = urlParams.get('parent_id');
+    const pages_id = urlParams.get('pages_id');
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
@@ -24,81 +24,81 @@ const pages_id = urlParams.get('pages_id');
             }
         },
         columns: [{
-                data: 'checkbox',
-                name: 'checkbox',
-                orderable: false,
-                searchable: false
-            },
-            {
-                data: 'id',
-                name: 'id'
-            },
-            {
-                data: 'title',
-                name: 'title'
-            },
-            {
-                data: 'page',
-                name: 'page'
-            },
+            data: 'checkbox',
+            name: 'checkbox',
+            orderable: false,
+            searchable: false
+        },
+        {
+            data: 'id',
+            name: 'id'
+        },
+        {
+            data: 'title',
+            name: 'title'
+        },
+        {
+            data: 'page',
+            name: 'page'
+        },
 
-            {
-                data: 'created_at',
-                name: 'created_at'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: true,
-                searchable: true
-            },
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+        {
+            data: 'action',
+            name: 'action',
+            orderable: true,
+            searchable: true
+        },
         ],
         dom: 'lBfrtip',
         buttons: [{
-                extend: 'copy',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            extend: 'copy',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'excel',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'excel',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'csv',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'csv',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'pdf',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'pdf',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'print',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'print',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
+            }
+        },
         ],
     });
     $('.filter-input').keyup(function () {
@@ -122,6 +122,8 @@ const pages_id = urlParams.get('pages_id');
     });
 
     $(document).on('click', '#bulk_delete', function () {
+
+
         var id = [];
         $('.users_checkbox:checked').each(function () {
             id.push($(this).val());
@@ -139,7 +141,7 @@ const pages_id = urlParams.get('pages_id');
             if (id.length > 0) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/admin/project/test",
+                        url: "/admin/joinus/destroy",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

@@ -50,20 +50,20 @@
 </style>
 
 <body>
-  <!-- Marquee Ms$  -->
-  @php
-use App\Models\Makeme;
-$marques = Makeme::all();
-  @endphp
+    <!-- Marquee Ms$  -->
+    @php
+    use App\Models\Makeme;
+    $marques = Makeme::all();
+    @endphp
     <div class="marquee">
         <div class="marquee-content">
-           <ul class="ul-marquee">
-            @foreach($marques as $row)
-             <li>
-               👋   {{ strip_tags($row->translate('description', app()->getLocale()))  }}
-            </li> 
-            @endforeach     
-           </ul>
+            <ul class="ul-marquee">
+                @foreach($marques as $row)
+                <li>
+                    👋 {{ strip_tags($row->translate('description', app()->getLocale()))  }}
+                </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 
@@ -136,16 +136,15 @@ $marques = Makeme::all();
                     </div>
                     <!-- End Dropdown Languages button -->
 
-                     <a href="{{ route('blogs.index') }}" target="__blank" mg
+                    <a href="{{ route('blogs.index') }}" target="__blank" mg
                         src="{{ asset('content/images/small_icon/media_icon.svg') }}">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 512"
-                                fill="#000" 
-                                width="28" 
-                                height="28"
-                            >
-                                <path d="M180.5 74.3C80.8 74.3 0 155.6 0 256S80.8 437.7 180.5 437.7 361 356.4 361 256 280.2 74.3 180.5 74.3zm288.3 10.6c-49.8 0-90.2 76.6-90.2 171.1s40.4 171.1 90.3 171.1 90.3-76.6 90.3-171.1H559C559 161.5 518.6 84.9 468.8 84.9zm139.5 17.8c-17.5 0-31.7 68.6-31.7 153.3s14.2 153.3 31.7 153.3S640 340.6 640 256C640 171.4 625.8 102.7 608.3 102.7z"/>
+                                fill="#000"
+                                width="28"
+                                height="28">
+                                <path d="M180.5 74.3C80.8 74.3 0 155.6 0 256S80.8 437.7 180.5 437.7 361 356.4 361 256 280.2 74.3 180.5 74.3zm288.3 10.6c-49.8 0-90.2 76.6-90.2 171.1s40.4 171.1 90.3 171.1 90.3-76.6 90.3-171.1H559C559 161.5 518.6 84.9 468.8 84.9zm139.5 17.8c-17.5 0-31.7 68.6-31.7 153.3s14.2 153.3 31.7 153.3S640 340.6 640 256C640 171.4 625.8 102.7 608.3 102.7z" />
                             </svg>
                         </span>
                         <span>Media Center</span>
@@ -174,8 +173,8 @@ $marques = Makeme::all();
         </div>
 
         <!-- Start Quick Navigation Bar -->
-    <div id="banner-quick-access">
-        @foreach ($upperSection as $resource)
+        <div id="banner-quick-access">
+            @foreach ($upperSection as $resource)
             <div class="nav-item">
                 <!-- <i class="bi bi-telephone-fill"></i> -->
                 <img src="{{ asset('/storage') . '/' . $resource->resource }}" loading="lazy"
@@ -183,8 +182,8 @@ $marques = Makeme::all();
                     style="width: 25px; height: 25px; border-radius: 4px;" />
                 <span>{{ $resource->title }}</span>
             </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
         <!-- End Quick Navigation Bar -->
 
     </div>
@@ -202,23 +201,23 @@ $marques = Makeme::all();
                                     <div class="brand-card light-blue">
                                         <div class="brand-card-icon">
                                             <img src="{{ asset('/storage') . '/' . $row->resource }}" loading="lazy"
-                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                                alt="icon"
-                                                style="width: 25px; height: 25px; border-radius: 4px;" />
-                                        </div>
-                                        <div class="card-texts">
-                                            <div class="brand-card-title">{{ $row->title }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+    alt="icon"
+    style="width: 25px; height: 25px; border-radius: 4px;" />
+    </div>
+    <div class="card-texts">
+        <div class="brand-card-title">{{ $row->title }}</div>
+    </div>
+    </div>
+    </div>
+    @endforeach
 
-                        </div>
-                    </div>
-                @endif
+    </div>
+    </div>
+    @endif
 
-            </div>
-        </div>
+    </div>
+    </div>
     </div> --}}
     <!-- End Quick Access Section UI -->
 
@@ -312,14 +311,14 @@ $marques = Makeme::all();
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(1, $footerData)) --}}
                                         @foreach ($footerData[1] as $certificate)
-                                            <a href="{{ $certificate->url }}"
-                                                class="item d-flex align-items-center gap-1" target="__blank">
-                                                <!-- <i class="bi bi-arrow-right"></i> -->
-                                                <span>&gt;</span>
-                                                <span>
-                                                    {{ $certificate->title }}
-                                                </span>
-                                            </a>
+                                        <a href="{{ $certificate->url }}"
+                                            class="item d-flex align-items-center gap-1" target="__blank">
+                                            <!-- <i class="bi bi-arrow-right"></i> -->
+                                            <span>&gt;</span>
+                                            <span>
+                                                {{ $certificate->title }}
+                                            </span>
+                                        </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -331,14 +330,14 @@ $marques = Makeme::all();
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(2, $footerData)) --}}
                                         @foreach ($footerData[2] as $portal)
-                                            <a href="{{ $portal->url }}"
-                                                class="item d-flex align-items-center gap-1" target="__blank">
-                                                <!-- <i class="bi bi-arrow-right"></i> -->
-                                                <span>&gt;</span>
-                                                <span>
-                                                    {{ $portal->title }}
-                                                </span>
-                                            </a>
+                                        <a href="{{ $portal->url }}"
+                                            class="item d-flex align-items-center gap-1" target="__blank">
+                                            <!-- <i class="bi bi-arrow-right"></i> -->
+                                            <span>&gt;</span>
+                                            <span>
+                                                {{ $portal->title }}
+                                            </span>
+                                        </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -350,14 +349,14 @@ $marques = Makeme::all();
                                     <div class="items d-flex flex-column gap-3">
                                         {{-- @if (array_key_exists(3, $footerData)) --}}
                                         @foreach ($footerData[3] as $subsidiaries)
-                                            <a href="{{ $subsidiaries->url }}"
-                                                class="item d-flex align-items-center gap-1" target="__blank">
-                                                <!-- <i class="bi bi-arrow-right"></i> -->
-                                                <span>&gt;</span>
-                                                <span>
-                                                    {{ $subsidiaries->title }}
-                                                </span>
-                                            </a>
+                                        <a href="{{ $subsidiaries->url }}"
+                                            class="item d-flex align-items-center gap-1" target="__blank">
+                                            <!-- <i class="bi bi-arrow-right"></i> -->
+                                            <span>&gt;</span>
+                                            <span>
+                                                {{ $subsidiaries->title }}
+                                            </span>
+                                        </a>
                                         @endforeach
                                         {{-- @endif --}}
                                     </div>
@@ -426,27 +425,27 @@ $marques = Makeme::all();
                                     <div class="d-flex align-items-center gap-md-4 gap-3 flex-wrap">
                                         @if(isset($about->image_1)&& !empty($about->image_1))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('storage/footer_iso/' . $about->image_1) }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_1) }}"
                                                 class="logo" alt="ISO 9001">
                                         </div>
-                                    @endif
+                                        @endif
 
-                                      @if(isset($about->image_2)&& !empty($about->image_2))
+                                        @if(isset($about->image_2)&& !empty($about->image_2))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('storage/footer_iso/' . $about->image_2) }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_2) }}"
                                                 class="logo" alt="ISO 14001">
                                         </div>
-                                         @endif
-                                         @if(isset($about->image_3)&& !empty($about->image_3))
+                                        @endif
+                                        @if(isset($about->image_3)&& !empty($about->image_3))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('storage/footer_iso/' . $about->image_3) }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_3) }}"
                                                 class="logo" alt="ISO 45001">
                                         </div>
-                                         @endif
+                                        @endif
 
-                                         @if(isset($about->image_4)&& !empty($about->image_4))
+                                        @if(isset($about->image_4)&& !empty($about->image_4))
                                         <div class="image-box d-flex justify-content-center">
-                                            <img src="{{ asset('storage/footer_iso/' . $about->image_4) }}"  
+                                            <img src="{{ asset('storage/footer_iso/' . $about->image_4) }}"
                                                 class="logo" alt="ISO 27001">
                                         </div>
                                         @endif
@@ -640,46 +639,46 @@ $marques = Makeme::all();
     @yield('websiteScript')
 
     @section('websiteScript')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialize Swiper after DOM is fully loaded
-                const swiper = new Swiper('.swiper-container', {
-                    slidesPerView: 'auto',
-                    spaceBetween: 20,
-                    freeMode: true,
-                    navigation: {
-                        nextEl: '.slider-next',
-                        prevEl: '.slider-prev',
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Swiper after DOM is fully loaded
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                freeMode: true,
+                navigation: {
+                    nextEl: '.slider-next',
+                    prevEl: '.slider-prev',
+                },
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true,
+                },
+                mousewheel: {
+                    forceToAxis: true,
+                },
+                // Responsive breakpoints for Swiper
+                breakpoints: {
+                    1200: {
+                        slidesPerView: 4, // Large desktops
+                        spaceBetween: 30,
                     },
-                    keyboard: {
-                        enabled: true,
-                        onlyInViewport: true,
+                    992: {
+                        slidesPerView: 3, // Medium desktops
+                        spaceBetween: 20,
                     },
-                    mousewheel: {
-                        forceToAxis: true,
+                    768: {
+                        slidesPerView: 2, // Tablets
+                        spaceBetween: 15,
                     },
-                    // Responsive breakpoints for Swiper
-                    breakpoints: {
-                        1200: {
-                            slidesPerView: 4, // Large desktops
-                            spaceBetween: 30,
-                        },
-                        992: {
-                            slidesPerView: 3, // Medium desktops
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 2, // Tablets
-                            spaceBetween: 15,
-                        },
-                        576: {
-                            slidesPerView: 1, // Small screens
-                            spaceBetween: 10,
-                        },
+                    576: {
+                        slidesPerView: 1, // Small screens
+                        spaceBetween: 10,
                     },
-                });
+                },
             });
-        </script>
+        });
+    </script>
     @endsection
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -711,21 +710,21 @@ $marques = Makeme::all();
                         if (data.status === 'success' && data.data) {
                             const quickAccessElement = document.getElementById('quick-access');
                             const lineElement = document.getElementById('line');
-                            
+
                             if (quickAccessElement) {
                                 quickAccessElement.innerHTML += data.data;
                             }
-                            
+
                             if (lineElement) {
                                 lineElement.style.display = 'block';
                             }
-                            
-                                                        // Initialize Swiper after content is loaded
+
+                            // Initialize Swiper after content is loaded
                             setTimeout(() => {
                                 if (typeof Swiper !== 'undefined') {
                                     // Get current language direction
                                     const isRTL = document.body.getAttribute('dir') === 'rtl' || document.body.classList.contains('rtl');
-                                    
+
                                     const swiperConfig = {
                                         slidesPerView: 'auto',
                                         spaceBetween: 20,
@@ -742,14 +741,14 @@ $marques = Makeme::all();
                                             forceToAxis: true,
                                         }
                                     };
-                                    
+
                                     // Add offset based on language direction
                                     if (isRTL) {
                                         swiperConfig.slidesOffsetBefore = 130;
                                     } else {
                                         swiperConfig.slidesOffsetAfter = 130;
                                     }
-                                    
+
                                     const swiper = new Swiper('.swiper-container', swiperConfig);
                                     console.log('Swiper initialized successfully with', isRTL ? 'RTL' : 'LTR', 'offset');
                                 } else {

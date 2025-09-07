@@ -129,4 +129,5 @@
   'Contact' => 'Contact',
   'Checkout' => 'Checkout',
   'Add to Bag' => 'Add to Bag',
+  'Register Steps' => 'Register Steps',
 );

@@ -122,4 +122,8 @@ Route::get('/migrate', function () {
     Artisan::call('migrate');
     return 'Migrations have been run successfully!';
 });
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link created successfully!';
+});
 //

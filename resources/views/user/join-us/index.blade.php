@@ -131,7 +131,8 @@ Join Us
 
             </div>
             <p>
-                {{ strip_tags($tabs[2]->translate('description', app()->getLocale()))  }}
+                {!! $tabs[2]->translate('description', app()->getLocale()) !!}
+
             </p>
         </div>
         @endif

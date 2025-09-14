@@ -400,7 +400,7 @@
                 </div>
                 <div class="modal-body p-0">
                     <div class="p-4 py-2 modal-content-area">
-                        <div class="row row-cols-1 row-cols-md-4 g-4" id="registrations-container">
+                        <div class="row" id="registrations-container">
                             </div>
                     </div>
                 </div>
@@ -524,11 +524,29 @@
                 // Loop through dummy data and create cards
                 dummyRegistrations.forEach(reg => {
                     const cardHtml = `
-                        <div class="col">
-                            <div class="card h-100 text-center new-card-style m-0">
-                                <img src="${reg.imageUrl}" class="card-img-top mx-auto" style="width: 100px; height: 100px; object-fit: contain;" alt="${reg.name}">
-                                <div class="card-body p-0  my-2">
-                                    <a href="#"  class="card-title fw-400 px-2" target="_blank" style="font-size:14px">Register Now</a>
+                        <div class="col-12 mb-2">
+                            <div class="card new-card-style">
+                                <div class="card-body d-flex align-items-center py-1">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <img src="${reg.imageUrl}" class="me-3" style="width: 60px; height: 60px; object-fit: contain;" alt="${reg.name}">
+                                        <div>
+                                            <h6 class="card-title mb-0 fw-400" style="font-size:16px">${reg.name}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <a href="#" class="btn btn-link p-0" target="_blank" title="Download">
+                                            <svg width="24" height="24" fill="#1C274C" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier"> 
+                                                    <g> 
+                                                        <path d="M48.7,2H29.6C28.8,2,28,2.5,28,3.3v3C28,7.1,28.7,8,29.6,8h7.9c0.9,0,1.4,1,0.7,1.6l-17,17 c-0.6,0.6-0.6,1.5,0,2.1l2.1,2.1c0.6,0.6,1.5,0.6,2.1,0l17-17c0.6-0.6,1.6-0.2,1.6,0.7v7.9c0,0.8,0.8,1.7,1.6,1.7h2.9 c0.8,0,1.5-0.9,1.5-1.7v-19C50,2.5,49.5,2,48.7,2z"></path> 
+                                                        <path d="M36.3,25.5L32.9,29c-0.6,0.6-0.9,1.3-0.9,2.1v11.4c0,0.8-0.7,1.5-1.5,1.5h-21C8.7,44,8,43.3,8,42.5v-21 C8,20.7,8.7,20,9.5,20H21c0.8,0,1.6-0.3,2.1-0.9l3.4-3.4c0.6-0.6,0.2-1.7-0.7-1.7H6c-2.2,0-4,1.8-4,4v28c0,2.2,1.8,4,4,4h28 c2.2,0,4-1.8,4-4V26.2C38,25.3,36.9,24.9,36.3,25.5z"></path> 
+                                                    </g> 
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

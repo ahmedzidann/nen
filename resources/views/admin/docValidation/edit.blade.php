@@ -41,9 +41,9 @@
                             @include('components.admin.form.csrf')
 
                             <input type="hidden" name="category"
-                                   value="{{ Request()->category ?? '' }}">
+                                value="{{ Request()->category ?? '' }}">
                             <input type="hidden" name="subcategory"
-                                   value="{{ Request()->subcategory ?? '' }}">
+                                value="{{ Request()->subcategory ?? '' }}">
 
                             <div class="tab-content py-3">
                                 <div class="tab-pane fade {{ $loop->first?'show active':'' }}" id="{{ $item->id }}"
@@ -92,7 +92,7 @@
                                             @if ($loop->first)
 
                                             <div class="col-md-9 mb-4">
-                                                <x-admin.form.label-first  class="col-sm-3 col-form-label"
+                                                <x-admin.form.label-first class="col-sm-3 col-form-label"
                                                     name="File Upload Image">
                                                 </x-admin.form.label-first>
                                                 <div class="col-sm-9">
@@ -145,46 +145,46 @@
                                             @if($StaticTable->details->count())
 
 
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div id='inputs-container-{{$item->id}}'>
-                                                            <label>{{ TranslationHelper::translate(ucfirst('Details')??'') }}</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id='inputs-container-{{$item->id}}'>
+                                                        <label>{{ TranslationHelper::translate(ucfirst('Details')??'') }}</label>
 
-                                                            @foreach($StaticTable->details as $details)
-                                                                <div id="input-template-{{$item->id}}-{{$details->id}}"  class="input-temp" style="">
-                                                                    <div class="col-md-12 mb-4 row">
-                                                                        <div class="col-md-10 row">
+                                                        @foreach($StaticTable->details as $details)
+                                                        <div id="input-template-{{$item->id}}-{{$details->id}}" class="input-temp" style="">
+                                                            <div class="col-md-12 mb-4 row">
+                                                                <div class="col-md-10 row">
 
-                                                                            <input type="hidden" name="{{ 'old_details_id'.'['.$item->key.'][]' }}" value="{{$details->id}}">
-                                                                            <div class="col-sm-12">
+                                                                    <input type="hidden" name="{{ 'old_details_id'.'['.$item->key.'][]' }}" value="{{$details->id}}">
+                                                                    <div class="col-sm-12">
 
-                                                                                <x-admin.form.input name="{{ 'old_details_title'.'['.$item->key.'][]' }}" type="text" required="" placeholder="title {{ $item->name  }}" class="form-control valid" value="{{ $details->translate('title', $item->key)}}">
-                                                                                </x-admin.form.input>
-                                                                            </div>
-                                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
-                                                                            </x-admin.form.label-end> --}}
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <button data-id="{{$details->id}}" data-item="{{$item->id}}" type="button" class="btn btn-danger delete-input">
-                                                                                <i class="bx bxs-trash"></i>&nbsp;</button>
-                                                                        </div>
+                                                                        <x-admin.form.input name="{{ 'old_details_title'.'['.$item->key.'][]' }}" type="text" required="" placeholder="title {{ $item->name  }}" class="form-control valid" value="{{ $details->translate('title', $item->key)}}">
+                                                                        </x-admin.form.input>
                                                                     </div>
-                                                                    <!-- Add more input fields as needed -->
-
+                                                                    {{-- <x-admin.form.label-end star="*" name="Please enter title">
+                                                                            </x-admin.form.label-end> --}}
                                                                 </div>
+                                                                <div class="col-md-2">
+                                                                    <button data-id="{{$details->id}}" data-item="{{$item->id}}" onclick="delete_db({{$details->id}})" type="button" class="btn btn-danger delete-input">
+                                                                        <i class="bx bxs-trash"></i>&nbsp;</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Add more input fields as needed -->
 
-                                                            @endforeach
                                                         </div>
 
-                                                        <button id="add-input" data-item="{{$item->id}}"  data-key="{{$item->key}}" data-trans="{{$item->name}}" type="button" class="col-sm-1 btn btn-success addItem">
-                                                            <i class='bx bx-plus' ></i></i>&nbsp;
-                                                        </button>
-
+                                                        @endforeach
                                                     </div>
 
-
+                                                    <button id="add-input" data-item="{{$item->id}}" data-key="{{$item->key}}" data-trans="{{$item->name}}" type="button" class="col-sm-1 btn btn-success addItem">
+                                                        <i class='bx bx-plus'></i></i>&nbsp;
+                                                    </button>
 
                                                 </div>
+
+
+
+                                            </div>
 
                                             @endif
 
@@ -223,15 +223,15 @@
     document.addEventListener("DOMContentLoaded", function() {
         // Function to create a new input field
 
-        $(document).on('click','.addItem',function (){
+        $(document).on('click', '.addItem', function() {
 
-            var item_id=$(this).attr('data-item');
-            var trans=$(this).attr('data-trans');
+            var item_id = $(this).attr('data-item');
+            var trans = $(this).attr('data-trans');
             var random = Math.floor(Math.random() * (999999999 - 2 + 1)) + 999999999;
-            var key=$(this).attr('data-key');
+            var key = $(this).attr('data-key');
 
 
-            var row=`
+            var row = `
 
                                                                  <div id="input-template-${item_id}-${random}"  class="input-temp" style="">
                                                         <div class="col-md-12 mb-4 row">
@@ -262,10 +262,10 @@
             $(`#inputs-container-${item_id}`).append(row);
         })
 
-        $(document).on('click','.delete-input',function (){
+        $(document).on('click', '.delete-input', function() {
 
-            var id=$(this).attr('data-id');
-            var item=$(this).attr('data-item')
+            var id = $(this).attr('data-id');
+            var item = $(this).attr('data-item')
 
             $(`#input-template-${item}-${id}`).remove();
 
@@ -273,5 +273,26 @@
 
         })
     });
+</script>
 
+<script>
+    function delete_db(row_id) {
+        $.ajax({
+            url: "{{ route('admin.doc-validation.delete_doc_details') }}", // Laravel route helper
+            type: "POST", // using POST instead of PUT/DELETE
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id: row_id
+            },
+            success: function(response) {
+                console.log(response);
+                Swal.fire('Deleted!', 'Your item has been deleted.', 'success');
+            },
+            error: function(xhr) {
+                Swal.fire('Error!', 'An error occurred while deleting the item.', 'error');
+            }
+        });
+    }
 </script>

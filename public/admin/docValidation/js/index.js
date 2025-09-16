@@ -20,82 +20,82 @@ $(function () {
             }
         },
         columns: [{
-                data: 'checkbox',
-                name: 'checkbox',
-                orderable: false,
-                searchable: false
-            },
-            {
-                data: 'id',
-                name: 'id'
-            },
-            {
-                data: 'title',
-                name: 'title'
-            },
-            {
-                data: 'description',
-                name: 'description'
-            },
-            {
-                data: 'created_at',
-                name: 'created_at'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: true,
-                searchable: true,
+            data: 'checkbox',
+            name: 'checkbox',
+            orderable: false,
+            searchable: false
+        },
+        {
+            data: 'id',
+            name: 'id'
+        },
+        {
+            data: 'title',
+            name: 'title'
+        },
+        {
+            data: 'description',
+            name: 'description'
+        },
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+        {
+            data: 'action',
+            name: 'action',
+            orderable: true,
+            searchable: true,
 
 
-            },
+        },
         ],
         dom: 'lBfrtip',
         buttons: [{
-                extend: 'copy',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            extend: 'copy',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'excel',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'excel',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'csv',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'csv',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'pdf',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'pdf',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
-            {
-                extend: 'print',
-                exportOptions: {
-                    modifier: {
-                        page: 'all',
-                        search: 'none'
-                    }
+            }
+        },
+        {
+            extend: 'print',
+            exportOptions: {
+                modifier: {
+                    page: 'all',
+                    search: 'none'
                 }
-            },
+            }
+        },
         ],
     });
     $('.filter-input').keyup(function () {
@@ -119,6 +119,8 @@ $(function () {
     });
 
     $(document).on('click', '#bulk_delete', function () {
+
+
         var id = [];
         $('.users_checkbox:checked').each(function () {
             id.push($(this).val());
@@ -136,7 +138,7 @@ $(function () {
             if (id.length > 0) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/admin/doc-validation/test",
+                        url: "/admin/doc-validation/bulk-destroy",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -145,6 +147,8 @@ $(function () {
                             id: id
                         },
                         sucess: function (response) {
+
+
                             // Handle the success response
                             Swal.fire(
                                 'Deleted!',
@@ -154,6 +158,9 @@ $(function () {
                             // Optionally, reload the page or update the UI
                         },
                         error: function (xhr) {
+
+
+
                             // Handle the error response
                             Swal.fire(
                                 'Error!',
@@ -162,13 +169,13 @@ $(function () {
                             );
                         }
                     });
-                    location.reload();
+                    //location.reload();
                 }
             } else {
                 Swal.fire(
-                'Error!',
-                'Please select least one check.',
-                'error'
+                    'Error!',
+                    'Please select least one check.',
+                    'error'
                 );
             }
         });

@@ -41,6 +41,9 @@ class EducationRequest extends FormRequest
                 "file.*" => ['nullable', 'file'],
                 "file_title.en.*" => ['nullable', 'string', 'required_with:file.*'],
                 'show_in_home' => 'required|in:1,0',
+                "country" => ['nullable', 'array'],
+                "url" => ['nullable', 'array'],
+                'submit2' => 'required',
             ];
         } elseif ($this->isMethod('put') && $this->submit2 == 'en') {
             return [
@@ -61,8 +64,11 @@ class EducationRequest extends FormRequest
                 "file.*" => ['nullable', 'file'],
                 "file_title.en.*" => ['nullable', 'string', 'required_with:file.*'],
                 "file_title.ar.*" => ['nullable', 'string', 'required_with:file.*'],
-                "file_id.en.*" => ['required'],
+                "file_id" => ['nullable', 'array'],
                 'show_in_home' => 'required|in:1,0',
+                "country" => ['nullable', 'array'],
+                "url" => ['nullable', 'array'],
+                'submit2' => 'required',
 
             ];
         } elseif ($this->isMethod('put') && $this->submit2 != 'en') {
@@ -86,8 +92,11 @@ class EducationRequest extends FormRequest
                 "file_title.en.*" => ['nullable', 'string', 'required_with:file.*'],
                 "file_title.ar.*" => ['nullable', 'string', 'required_with:file.*'],
                 "file_title.{$this->submit2}.*" => ['nullable', 'string', 'required_with:file.*'],
-                "file_id.*.*" => ['required'],
-                'show_in_home' => 'required|in:1,0',
+                "file_id" => ['nullable', 'array'],
+                // 'show_in_home' => 'required|in:1,0',
+                "country" => ['nullable', 'array'],
+                "url" => ['nullable', 'array'],
+                'submit2' => 'required',
             ];
         }
     }

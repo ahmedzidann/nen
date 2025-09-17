@@ -157,6 +157,8 @@ Route::middleware('authAdmin:admin')->group(function () {
     });
     Route::get('child-pages/{page_id}', [SliderController::class, 'getChildPages'])->name('get-child-pages');
     Route::resource('education', EducationController::class);
+    Route::post('education/add_row', [EducationController::class, 'add_row'])->name('education.add_row');
+
     Route::resource('testing', TestingController::class);
     Route::resource('summary', SummaryController::class);
     Route::delete('summary/link/{link_id}', [SummaryController::class, 'deleteLink'])->name('summary-delete.link');

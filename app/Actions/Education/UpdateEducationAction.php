@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Actions\Education;
 
 use App\Helper\ImageHelper;
 use App\Models\Education;
 use App\Models\EducationFile;
 use App\Models\EducationReference;
+use App\Models\EducationCountry;
 use Illuminate\Support\Facades\DB;
 
 class UpdateEducationAction
@@ -44,54 +46,56 @@ class UpdateEducationAction
             try {
 
                 $education->update($data);
-                $firstIterator = 1;
-                if (count($data['file_title'][array_key_first($data['file_title'])]) > 0 && count($data['file'] ?? []) > 0) {
-
-                    foreach ($data['file_title'][array_key_first($data['file_title'])] as $key => $value) {
-                        if (!array_key_exists($key, $data['file_id'][array_key_first($data['file_id'])])) {
-                            EducationFile::create([
-                                'education_id' => $education->id,
-                                'file' => $data['file'][$firstIterator],
-                                'title' => $data['file_title'][array_key_first($data['file_title'])][$key],
-                            ]);
-                            ++$firstIterator;
-                        }
-                    }
-
-                }
-
-                if (isset($data['file_id'])) {
-
-                    foreach ($data['file_id'][array_key_first($data['file_id'])] as $key => $file) {
-
-                        if ($file != null) {
-
-                            $title[array_key_first($data['file_id'])] = $data['file_title'][array_key_first($data['file_id'])][$key];
-                            $e = EducationFile::find($file);
-
-                            $e->update([
-                                "title" => $title,
-                            ]);
+                $lang = $data['submit2'];
+                if (isset($data['links_title'][$lang])) {
+                    foreach ($data['links_title'][$lang] as $index => $linkTitle) {
+                        $ref = EducationReference::find($data['link_id'][$lang][$index]);
+                        if ($ref) {
+                            $ref->reference = $data['links'][$index];
+                            $ref->setTranslation('title', $lang, $linkTitle);
+                            $ref->save();
                         }
                     }
                 }
 
-                if (count($data['links_title'][array_key_first($data['links_title'])]) > 0) {
-                    // dd($education->links());
-                    $education->links()->delete();
-                    foreach ($data['links_title'][array_key_first($data['links_title'])] as $key => $value) {
-                        if (1) {
-                            $title[array_key_first($data['links_title'])] = $data['links_title'][array_key_first($data['links_title'])][$key];
 
-                            EducationReference::create([
-                                'education_id' => $education->id,
-                                'reference' => $data['links'][$key],
-                                'title' => $title,
+                if (isset($data['file'])) {
+
+                    foreach ($data['file_title'][$lang] as $index => $linkTitle) {
+
+                        $file = $data['file'][1];
+
+                        $fileName = time() . $index . '_' . $file->getClientOriginalName();
+                        $filePath = $file->storeAs('public/education', $fileName);
+                        $ref = EducationFile::find($data['file_id'][0]);
+                        if ($ref) {
+                            $ref->file = $fileName;
+                            $ref->setTranslation('title', $lang, $linkTitle);
+                            $ref->save();
+                        }
+                    }
+                }
+
+                if (isset($data['country']) && !empty($data['country'])) {
+                    EducationCountry::where('education_id', $education->id)->delete();
+                    foreach ($data['country'] as $key => $link) {
+                        if ($link != null) {
+                            // $title[array_key_first($data['links_title'])]= $data['links_title']['en'][$key];
+                            EducationCountry::create([
+                                "education_id" => $education->id,
+                                "country_id" => $link,
+                                "url" => $data['url'][$key],
                             ]);
                         }
                     }
-
                 }
+
+
+
+
+
+
+
 
 
                 // if (isset($data['link_id'])) {

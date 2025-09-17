@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin\Education;
 
 use App\Actions\Education\StoreEducationAction;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Education\EducationRequest;
 use App\Models\Education;
 use App\Models\Page;
+use App\Models\Country;
 use App\ViewModels\EducationView\EducationViewModel;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
@@ -43,8 +45,14 @@ class EducationController extends Controller
             $item = $request->item ?? "";
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('checkbox', function ($row) {return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';})
-                ->editColumn('id', function () {static $count = 0; $count++;return $count;})
+                ->addColumn('checkbox', function ($row) {
+                    return '<input type="checkbox" name="users_checkbox[]" class="form-check-input users_checkbox" value="' . $row->id . '" />';
+                })
+                ->editColumn('id', function () {
+                    static $count = 0;
+                    $count++;
+                    return $count;
+                })
                 ->editColumn('title', function ($row) use ($language) {
                     return $row->translate('title', $language);
                 })
@@ -54,13 +62,16 @@ class EducationController extends Controller
                         return $row->Page->translate('name', $language);
                     }
                 })
-                ->editColumn('created_at', function ($row) {return Carbon::parse($row->created_at)->format('Y-m-d');})
+                ->editColumn('created_at', function ($row) {
+                    return Carbon::parse($row->created_at)->format('Y-m-d');
+                })
 
-                ->addColumn('action', function ($row) use ($category, $subcategory, $item) {return '<div class="d-flex order-actions"> <a href="' . route('admin.education.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a></div> ';})
+                ->addColumn('action', function ($row) use ($category, $subcategory, $item) {
+                    return '<div class="d-flex order-actions"> <a href="' . route('admin.education.edit', [$row->id, 'category=' . $category, 'subcategory=' . $subcategory]) . '" class="m-auto"><i class="bx bxs-edit"></i></a></div> ';
+                })
                 ->rawColumns(['checkbox', 'action'])
                 ->make(true);
         }
-
     }
     public function create(Request $request): View
     {
@@ -85,7 +96,10 @@ class EducationController extends Controller
     public function update(EducationRequest $request, $id)
     {
         // dd($request->validated()['links_title']);
+
+
         $StaticTable = Education::find($id);
+
         app(UpdateEducationAction::class)->handle($StaticTable, $request->validated());
         return response()->json([
             'status' => 200,
@@ -95,7 +109,16 @@ class EducationController extends Controller
     }
     public function destroy(Request $request): RedirectResponse
     {
-        foreach (Education::find($request->id) as $static_table) {$static_table->delete();}
+        foreach (Education::find($request->id) as $static_table) {
+            $static_table->delete();
+        }
         return redirect()->back()->with('delete', 'Delete Education');
+    }
+
+    public function add_row(Request $request)
+    {
+        $countries = Country::get();
+        $length = $request->length;
+        return view('admin.education.add_row', compact('countries', 'length'));
     }
 }

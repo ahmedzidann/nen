@@ -50,6 +50,10 @@ class Education extends Model implements HasMedia
     {
         return $this->hasMany(EducationReference::class);
     }
+    public function country_register()
+    {
+        return $this->hasMany(EducationCountry::class, 'education_id');
+    }
 
     public function files()
     {

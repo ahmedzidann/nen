@@ -68,6 +68,7 @@ class UpdateEducationAction
                         $fileName = time() . $index . '_' . $file->getClientOriginalName();
                         $filePath = $file->storeAs('public/education', $fileName);
                         $ref = EducationFile::find($data['file_id'][0]);
+
                         if ($ref) {
                             $ref->file = $fileName;
                             $ref->setTranslation('title', $lang, $linkTitle);

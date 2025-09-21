@@ -56,22 +56,7 @@
                         </div>
                     </div>
                 </ul>
-                <div id="dummy-highlight-section" class="dummy-highlight-section">
-                    <div class="row g-0">
-                        <div class="col-md-7">
-                            <div class="dummy-description">
-                                <p id="dummy-text" class="dummy-text">
-                                Microsoft Corporation, founded in 1975 by Bill Gates and Paul Allen, is a global technology leader headquartered in Redmond, Washington. It is best known for its Windows operating system, Microsoft Office suite, and Azure cloud computing platform. The company also develops hardware like the Surface line and Xbox gaming consoles. Microsoft plays a major role in AI innovation, with initiatives like Copilot and partnerships with OpenAI. Its mission is to empower every person and organization to achieve more. 
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <img id="dummy-image"
-                                src="https://www.economica.net/wp-content/uploads/2019/01/microsoft_windows_update_21456400.png"
-                                alt="Dummy Image" class="dummy-image img-fluid rounded">
-                        </div>
-                    </div>
-                </div>
+              
                 <div class="tab-content" id="pills-tabContent">
                     @foreach ($subPartners as $sub)
                         @php
@@ -80,20 +65,39 @@
                                 ->where('childe_pages_id', $sub->id)
                                 ->first();
                         @endphp
+                     
                         <div class="tab-pane fade @if ($loop->first) show active @endif"
                             id="pills-{{ $sub->slug }}" role="tabpanel"
                             aria-labelledby="pills-{{ $sub->slug }}-tab" tabindex="0">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    @if ($fs)
-                                        <img class="img-fluid rounded mb-3"
-                                            src="{{ $fs->getFirstMediaUrl('StaticTable') }}" alt="{{ $fs->title }}">
-                                    @endif
-                                </div>
-                                <div class="col-md-7">
-                                    <p>{!! $fs?->description !!}</p>
-                                </div>
+
+                            <!-------------------------------------------- start description---------------------------------------->
+                            @php
+                            $des=  DB::table('education_descriptions')->where('sub_page_id',$sub->id)->first();   
+                            @endphp
+                            @if(isset( $des) && !empty($des))
+                                 <div id="dummy-highlight-section" class="dummy-highlight-section">
+                    <div class="row g-0">
+                        <div class="col-md-7">
+                            <div class="dummy-description">
+                                <p id="dummy-text" class="dummy-text">
+                               @php
+                                   $desc = json_decode($des->description, true);
+                                     @endphp
+
+                             {!! $desc[app()->getLocale()] ?? '' !!}
+                                 </p>
                             </div>
+                        </div>
+                        <div class="col-md-5">
+                            <img id="dummy-image"
+                                src="{{ asset('storage') . '/' . $des->image }}"
+                                alt="Dummy Image" class="dummy-image img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                 <!-------------------------------------------- end description---------------------------------------->
                             <div class="grid_div_bttn">
                                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="partners-{{ $sub->slug }}"
                                     data-page="1">

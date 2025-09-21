@@ -28,6 +28,8 @@ class EducationRequest extends FormRequest
             return [
                 'title.*' => ['required', 'max:255', 'min:2'],
                 'mini_desc.*' => ['nullable', 'max:1000'],
+                'price' => ['required'],
+                'hours' => ['required'],
                 'description.*' => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
                 'pages_id' => ['nullable'],
@@ -43,12 +45,14 @@ class EducationRequest extends FormRequest
                 'show_in_home' => 'required|in:1,0',
                 "country" => ['nullable', 'array'],
                 "url" => ['nullable', 'array'],
-                'submit2' => 'required',
+                'submit2' => 'nullable',
             ];
         } elseif ($this->isMethod('put') && $this->submit2 == 'en') {
             return [
                 'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
                 'mini_desc.*' => ['nullable', 'max:1000'],
+                'price' => ['nullable'],
+                'hours' => ['nullable'],
                 'description.' . $this->submit2 => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
                 'pages_id' => ['nullable'],
@@ -75,6 +79,8 @@ class EducationRequest extends FormRequest
             return [
                 'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
                 'mini_desc.' . $this->submit2 => ['nullable', 'max:1000'],
+                'price.*' => ['nullable'],
+                'hours.*' => ['nullable'],
                 'description.' . $this->submit2 => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
                 'childe_pages_id' => ['nullable'],

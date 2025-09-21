@@ -25,6 +25,8 @@ class Education extends Model implements HasMedia
         'title',
         'mini_desc',
         'description',
+        'hours',
+        'price',
         'status',
         'pages_id',
         'childe_pages_id',

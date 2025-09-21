@@ -79,6 +79,32 @@
                                                     name="please enter Title  {{ $item->name }}">
                                                 </x-admin.form.label-end>
                                             </div>
+                                            {{-- ------hours ---- --}}
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name=" Hours"></x-admin.form.label-first>
+                                                <x-admin.form.input id="hours" old="hours"
+                                                    name="hours" type="text"
+                                                    required="" placeholder=""
+                                                    class="form-control valid" :value="$StaticTable->hours">
+                                                </x-admin.form.input>
+
+                                            </div>
+
+                                            {{-- ------Price ---- --}}
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name=" Hours"></x-admin.form.label-first>
+                                                <x-admin.form.input id="price" old="price"
+                                                    name="price" type="text"
+                                                    required="" placeholder=""
+                                                    class="form-control valid" :value="$StaticTable->price">
+                                                </x-admin.form.input>
+
+                                            </div>
+
                                             {{-- ----------name first --}}
                                             <div class="form-group col-md-12">
                                                 <label for="mini_desc_{{ $item->key }}">Mini Description in

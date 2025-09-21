@@ -66,7 +66,7 @@ class EducationDescriptionController extends Controller
     public function create()
     {
         $existsDescriptions = EducationDescription::pluck('page_id');
-        $pages = Page::where('parent_id', 4)->whereNotIn('id', $existsDescriptions)->get();
+        $pages = Page::where('parent_id', 4)->get();
         return view('admin.education.education_description.create', compact('pages'));
     }
 

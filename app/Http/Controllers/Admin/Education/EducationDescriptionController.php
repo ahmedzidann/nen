@@ -21,8 +21,9 @@ class EducationDescriptionController extends Controller
      */
     public function index(Request $request)
     {
+
         if ($request->ajax()) {
-            $data = EducationDescription::query()->with('education');
+            $data = EducationDescription::query()->with('education')->with('sub_pages');
             $language = app()->getLocale(); // Get current language
 
             return Datatables::of($data)
@@ -35,8 +36,14 @@ class EducationDescriptionController extends Controller
                     $count++;
                     return $count;
                 })
+                ->editColumn('type', function ($row) use ($language) {
+                    return $row->type;
+                })
                 ->editColumn('title', function ($row) use ($language) {
                     return $row->education->slug;
+                })
+                ->editColumn('sub_title', function ($row) use ($language) {
+                    return $row->sub_pages->slug ?? '';
                 })
                 ->editColumn('created_at', function ($row) use ($language) {
                     return $row->created_at->format('Y-m-d');
@@ -69,10 +76,16 @@ class EducationDescriptionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'type'        => 'required|in:main,sub_main',
             'page_id' => 'required|numeric',
+            'sub_page_id' => 'required_if:type,sub_main|numeric|nullable',
             'description.*' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
         ]);
+        if ($validatedData['type'] === 'main') {
+            $validatedData['sub_page_id'] = null;
+        }
+
 
         if ($request->hasFile('image')) {
             $validatedData['image'] = FileUploadHelper::uploadImage($request->file('image'), 'education_descriptions');
@@ -86,7 +99,6 @@ class EducationDescriptionController extends Controller
             'message' => 'Success Add Education Description',
             'redirect_url' => route('admin.education-descriptions.index'),
         ]);
-
     }
 
     /**
@@ -96,7 +108,10 @@ class EducationDescriptionController extends Controller
     {
         $description = EducationDescription::findOrFail($id);
         $langs = TranslationKey::get();
-        return view('admin.education.education_description.edit', compact('description', 'langs'));
+        $pages = Page::where('parent_id', 4)->get();
+        $sub_pages = Page::where('parent_id', $description->page_id)->get();
+
+        return view('admin.education.education_description.edit', compact('description', 'langs', 'pages', 'sub_pages'));
     }
 
     /**
@@ -104,12 +119,20 @@ class EducationDescriptionController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $description = EducationDescription::findOrFail($id);
 
         $validatedData = $request->validate([
+            'type'        => 'required|in:main,sub_main',
+            'page_id' => 'required|numeric',
+            'sub_page_id' => 'required_if:type,sub_main|numeric|nullable',
             'description.*' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
         ]);
+
+        if ($validatedData['type'] === 'main') {
+            $validatedData['sub_page_id'] = null;
+        }
         if ($request->hasFile('image')) {
             $validatedData['image'] = FileUploadHelper::updateFile(
                 $request->file('image'),

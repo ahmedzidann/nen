@@ -19,11 +19,17 @@ class EducationDescription extends Model implements HasMedia
     protected $fillable = [
         'page_id',
         'description',
+        'type',
+        'sub_page_id',
         'image',
     ];
 
     public function education()
     {
         return $this->belongsTo(Page::class, 'page_id', 'id');
+    }
+    public function sub_pages()
+    {
+        return $this->belongsTo(Page::class, 'sub_page_id', 'id');
     }
 }

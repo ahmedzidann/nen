@@ -66,6 +66,16 @@
                                                 value="{{ Request()->item ?? '' }}"> --}}
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name Pages --}}
+
+                                             <div class="col-md-12 mb-4">
+                                         <x-admin.form.label-first class="form-label" name="Type">
+                                                </x-admin.form.label-first>
+                                                <select name="type" class="form-control">
+                                                <option value="cards"> cards</option>
+                                                <option value="faqs"> faqs</option>
+
+                                                </select>
+                                             </div>
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Pages">
                                                 </x-admin.form.label-first>

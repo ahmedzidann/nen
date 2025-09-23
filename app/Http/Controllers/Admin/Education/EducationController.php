@@ -53,6 +53,9 @@ class EducationController extends Controller
                     $count++;
                     return $count;
                 })
+                ->editColumn('type', function ($row) use ($language) {
+                    return $row->type;
+                })
                 ->editColumn('title', function ($row) use ($language) {
                     return $row->translate('title', $language);
                 })
@@ -77,17 +80,44 @@ class EducationController extends Controller
     {
         return view('admin.education.create', new EducationViewModel());
     }
-    public function store(EducationRequest $request)
-    {
+   public function store(EducationRequest $request)
+{
+    $subcategory = $request->get('subcategory');
+    $category    = $request->get('category');
 
-        app(StoreEducationAction::class)->handle($request->validated());
-        redirect()->route('admin.education.index')->with('add', 'Success Add Education');
+    $page = Page::where('slug', $subcategory)
+                ->where('parent_id', 4)
+                ->first();
+
+    if ($page) {
+        $data = $request->validated();
+
+        if ($data['type'] === 'faqs') {
+            $data['pages_id'] = $page->id;
+        }
+     
+        app(StoreEducationAction::class)->handle($data);
+
         return response()->json([
-            'status' => 200,
-            'message' => 'Success Add Education',
-            'redirect_url' => route('admin.education.index', ['category=' . $request->category, 'subcategory=' . $request->subcategory]),
+            'status'       => 200,
+            'message'      => 'Success Add Education',
+            'redirect_url' => route('admin.education.index', [
+                'category'    => $category,
+                'subcategory' => $subcategory,
+            ]),
         ]);
     }
+
+    return response()->json([
+        'status'       => 404,
+        'message'      => 'No Category Found',
+        'redirect_url' => route('admin.education.index', [
+            'category'    => $category,
+            'subcategory' => $subcategory,
+        ]),
+    ]);
+}
+
     public function edit(Request $request, $id): View
     {
         $StaticTable = Education::find($id);
@@ -95,17 +125,38 @@ class EducationController extends Controller
     }
     public function update(EducationRequest $request, $id)
     {
-        // dd($request->validated()['links_title']);
+     $subcategory = $request->get('subcategory');
+    $category    = $request->get('category');
 
+    $page = Page::where('slug', $subcategory)
+                ->where('parent_id', 4)
+                ->first();
+               
 
+    if ($page) {
+        $data = $request->validated();
+
+        if ($data['type'] === 'faqs') {
+            $data['pages_id'] = $page->id;
+        }
+       
         $StaticTable = Education::find($id);
+        
 
-        app(UpdateEducationAction::class)->handle($StaticTable, $request->validated());
+        app(UpdateEducationAction::class)->handle($StaticTable, $data);
         return response()->json([
             'status' => 200,
             'message' => 'Update Education',
             'redirect_url' => route('admin.education.index', ['category=' . $request->category, 'subcategory=' . $request->subcategory]),
         ]);
+        }else{
+return response()->json([
+            'status' => 404,
+            'message' => 'Page Not Found',
+            'redirect_url' => route('admin.education.index', ['category=' . $request->category, 'subcategory=' . $request->subcategory]),
+        ]);
+
+        }
     }
     public function destroy(Request $request): RedirectResponse
     {

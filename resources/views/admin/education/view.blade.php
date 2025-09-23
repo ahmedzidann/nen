@@ -26,6 +26,7 @@
                         <tr>
                             <th><input type="checkbox" class="form-check-input selectAll" id="selectAll"></th>
                             <th>{{ TranslationHelper::translate(ucfirst('#')??'') }}</th>
+                             <th>{{ TranslationHelper::translate(ucfirst('Type')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('title')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Page')??'') }}</th>
                             <th>{{ TranslationHelper::translate(ucfirst('Created At')??'') }}</th>

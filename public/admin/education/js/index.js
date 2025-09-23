@@ -28,6 +28,10 @@ $(function () {
                 name: 'id'
             },
             {
+                data: 'type',
+                name: 'type'
+            },
+            {
                 data: 'title',
                 name: 'title'
             },

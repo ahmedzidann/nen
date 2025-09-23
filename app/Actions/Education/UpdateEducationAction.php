@@ -44,7 +44,7 @@ class UpdateEducationAction
 
         DB::transaction(function () use ($data, $education) {
             try {
-
+          
                 $education->update($data);
                 $lang = $data['submit2'];
                 if (isset($data['links_title'][$lang])) {

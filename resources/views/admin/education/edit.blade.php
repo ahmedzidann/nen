@@ -56,6 +56,15 @@
                                             {{-- ----------end static --}}
                                             {{-- ----------name Pages --}}
                                             @if ($loop->first)
+                                               <div class="col-md-12 mb-4">
+                                         <x-admin.form.label-first class="form-label" name="Type">
+                                                </x-admin.form.label-first>
+                                                <select name="type" class="form-control">
+                                                <option value="cards" {{  $StaticTable->type == 'cards' ? 'selected' : ''  }}> cards</option>
+                                                <option value="faqs"{{  $StaticTable->type == 'faqs' ? 'selected' : ''  }}> faqs</option>
+
+                                                </select>
+                                             </div>
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label"
                                                     name="Select Pages">
@@ -389,7 +398,7 @@
                                                     </div>
                                                     <div class="col-md-8">
 
-                                                        <h3>Registered Company</h3>
+                                                        <h3>Registered Countries</h3>
                                                         <table class="table table-bordered" id="table-country2">
                                                             <thead style="background-color: gray;">
                                                                 <th style="width: 10%;"> #</th>
@@ -405,6 +414,7 @@
                                                                 @endphp
 
                                                                 @if(isset($StaticTable->country_register) && !empty($StaticTable->country_register))
+                                                               
 
                                                                 @foreach($StaticTable->country_register as $country)
 
@@ -414,12 +424,12 @@
                                                                     <td>{{$x}}</td>
                                                                     <td><select class="form-control" name="country[]">
                                                                             @foreach ($countries as $row)
-                                                                            <option value="{{ $row->id }}" {{ $row->id == $country->country_id ? 'selected' : '' }}>
+                                                                            <option value="{{ $row->id }}" {{ $row->id == $country->id ? 'selected' : '' }}>
                                                                                 {{ $row->title }}
                                                                                 @endforeach
 
                                                                         </select></td>
-                                                                    <td> <input type="url" value="{{ $country->url}}" name="url[]" class="form-control" /></td>
+                                                                    <td> <input type="url" value="{{ $country->pivot->url}}" name="url[]" class="form-control" /></td>
                                                                     <td> <button type="button" onclick="delete_row({{$x}})"
                                                                             class="btn btn-danger">
                                                                             <i class="bx bxs-trash"></i>&nbsp;</button></td>

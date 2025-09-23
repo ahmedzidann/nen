@@ -41,10 +41,18 @@ class EducationController extends Controller
 
         if($partner){
             $subPartners = $partner->childe;
-            $partners = Education::whereIn("pages_id",$subPartners->pluck('id')->toArray())->with('media')->active()->get();
-            // dd($partners);
+            $partners = Education::whereIn("pages_id",$subPartners->pluck('id')->toArray())->where('type','cards')->with('media','files','country_register','links')->active()->get();
+           $partners->each(function ($partner) {
+           $partner->country_register->each(function ($country) {
+           $country->flag_url = $country->getFirstMediaUrl('flag');
+          });
+         });
+      
+         $faqs = Education::where("pages_id",request()->get('page_id'))->where('type','faqs')->active()->get();
 
-            return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
+        
+
+            return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider,'faqs'=>$faqs]);
         }
         else abort(400, "error");
     }

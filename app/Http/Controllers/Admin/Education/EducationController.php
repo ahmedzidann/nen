@@ -33,10 +33,15 @@ class EducationController extends Controller
         } else {
             $pages = '';
         }
-
+        if($request->subcategory)
+        {
+     $sub_cat= Page::where('slug', $request->subcategory)->first();
+        }
+          
+           
         if ($request->ajax()) {
 
-            $data = Education::whereIn('pages_id', $pages ?? [])->select('*')->latest();
+            $data = Education::whereIn('pages_id', $pages ?? [])->orWhere('pages_id', $sub_cat->id ?? null)->select('*')->latest();
             if ((!empty($request->from_date)) && (!empty($request->to_date))) {
                 $data = $data->whereBetween('created_at', [$request->from_date, $request->to_date]);
             }

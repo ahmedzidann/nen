@@ -182,6 +182,19 @@
                                                     </x-admin.form.input>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="col-sm-3 col-form-label"
+                                                    name="Material">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="material"
+                                                        old="material" name="material" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".pdf/">
+                                                    </x-admin.form.input>
+                                                </div>
+                                            </div>
                                             {{-- @endif --}}
                                             {{-- ----------end image --}}
                                             {{-- @if ($loop->first) --}}

@@ -15,9 +15,18 @@ class StoreEducationAction
     use ImageHelper;
     public function handle(array $data)
     {
+                           
 
         DB::transaction(function () use ($data) {
             try {
+
+              if (!empty($data['material'])) {
+   
+            $fileName = time() . '_1.' . $data['material']->extension();
+             $path = $data['material']->storeAs('public/education', $fileName);
+              $data['material'] = $fileName;
+                      }
+
                 $Education = Education::create($data);
                 if (isset($data['file'])) {
 

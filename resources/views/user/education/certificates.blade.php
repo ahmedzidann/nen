@@ -118,7 +118,7 @@ Education
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <i class="bi bi-book mx-1 text-muted"></i>
-                                            <a href="#" class="material" target="_blank">Material</a>
+                                            <a href="{{ asset('storage/education/' . ($item->material ?? '#')) }}" class="material" target="_blank">Material</a>
                                         </div>
                                     </div>
                                     <hr class="m-0">

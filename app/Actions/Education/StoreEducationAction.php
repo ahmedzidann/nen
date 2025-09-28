@@ -48,6 +48,8 @@ class StoreEducationAction
                     }
                 }
 
+                if(isset($data['country'])&& !empty($data['country'])){
+
                 foreach ($data['country'] as $key => $link) {
                     if ($link != null) {
                         // $title[array_key_first($data['links_title'])]= $data['links_title']['en'][$key];
@@ -58,6 +60,7 @@ class StoreEducationAction
                         ]);
                     }
                 }
+            }
 
 
 

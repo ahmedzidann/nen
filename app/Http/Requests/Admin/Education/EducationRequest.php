@@ -34,7 +34,7 @@ class EducationRequest extends FormRequest
                 'hours' => ['required_if:type,cards'],
                 'description.*' => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
-                'pages_id' => ['nullable'],
+                'pages_id' => ['required'],
                 'childe_pages_id' => ['nullable'],
                 'status' => ['nullable'],
                 "links" => ['nullable', 'array'],

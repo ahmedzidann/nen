@@ -96,10 +96,6 @@ class EducationController extends Controller
 
     if ($page) {
         $data = $request->validated();
-
-        if ($data['type'] === 'faqs') {
-            $data['pages_id'] = $page->id;
-        }
      
         app(StoreEducationAction::class)->handle($data);
 
@@ -141,9 +137,7 @@ class EducationController extends Controller
     if ($page) {
         $data = $request->validated();
 
-        if ($data['type'] === 'faqs') {
-            $data['pages_id'] = $page->id;
-        }
+        
        
         $StaticTable = Education::find($id);
         

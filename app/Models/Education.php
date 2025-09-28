@@ -29,6 +29,7 @@ class Education extends Model implements HasMedia
         'hours',
         'price',
         'status',
+        'material',
         'pages_id',
         'childe_pages_id',
         'sort',

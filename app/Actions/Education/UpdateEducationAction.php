@@ -44,7 +44,12 @@ class UpdateEducationAction
 
         DB::transaction(function () use ($data, $education) {
             try {
-          
+           if (!empty($data['material'])) {
+   
+            $fileName = time() . '_1.' . $data['material']->extension();
+             $path = $data['material']->storeAs('public/education', $fileName);
+              $data['material'] = $fileName;
+                      }
                 $education->update($data);
                 $lang = $data['submit2'];
                 if (isset($data['links_title'][$lang])) {

@@ -48,11 +48,10 @@ class EducationController extends Controller
           });
          });
       
-         $faqs = Education::where("pages_id",request()->get('page_id'))->where('type','faqs')->active()->get();
-
+        
         
 
-            return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider,'faqs'=>$faqs]);
+            return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }
         else abort(400, "error");
     }

@@ -101,7 +101,7 @@ Education
                     <div class="grid_div_bttn">
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="partners-{{ $sub->slug }}"
                             data-page="1">
-                            @forelse ($items->where('pages_id', $sub->id)->take(6) as $item)
+                            @forelse ($items->where('pages_id', $sub->id)->take(12) as $item)
 
                             <div class="col">
                                 <div class="card h-100 new-card-style">
@@ -253,17 +253,17 @@ Education
                             @include('user.layout.includes.no-data')
                             @endforelse
                         </div>
-                        @if ($items->where('pages_id', $sub->id)->count() > 6)
+                        @if ($items->where('pages_id', $sub->id)->count() >12)
                         <a href="#" id='see_more_bttn' class="see_more_bttn"
                             data-slug="{{ $sub->slug }}"
                             onclick="loadMorePartners(event, '{{ $sub->slug }}', {{ $sub->id }})">See
                             More <span><i class="bi bi-chevron-down"></i></span></a>
                         @endif
                     </div>
+                    @php
+                     $faqs = App\Models\Education::where('pages_id',$sub->id)->where('type','faqs')->get() ;
                     
-                </div>
-                @endforeach
-               
+                    @endphp
                  @if($faqs && $faqs->isNotEmpty())
                       
                  
@@ -295,6 +295,10 @@ Education
                        
                     </div>
                      @endif
+                    
+                </div>
+                @endforeach
+               
             </div>
         </div>
     </div>

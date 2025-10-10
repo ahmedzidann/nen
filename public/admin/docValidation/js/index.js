@@ -118,67 +118,59 @@ $(function () {
         });
     });
 
-    $(document).on('click', '#bulk_delete', function () {
+$(document).on('click', '#bulk_delete', function () {
 
-
-        var id = [];
-        $('.users_checkbox:checked').each(function () {
-            id.push($(this).val());
-        });
-        // --------
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#dc3545',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (id.length > 0) {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "/admin/doc-validation/bulk-destroy",
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        type: "DELETE",
-                        data: {
-                            id: id
-                        },
-                        sucess: function (response) {
-
-
-                            // Handle the success response
-                            Swal.fire(
-                                'Deleted!',
-                                'Your item has been deleted.',
-                                'success'
-                            );
-                            // Optionally, reload the page or update the UI
-                        },
-                        error: function (xhr) {
-
-
-
-                            // Handle the error response
-                            Swal.fire(
-                                'Error!',
-                                'An error occurred while deleting the item.',
-                                'error'
-                            );
-                        }
-                    });
-                    //location.reload();
-                }
-            } else {
-                Swal.fire(
-                    'Error!',
-                    'Please select least one check.',
-                    'error'
-                );
-            }
-        });
-        // ----------
+    var id = [];
+    $('.users_checkbox:checked').each(function () {
+        id.push($(this).val());
     });
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (id.length > 0) {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: bulkDestroyUrl, // <-- هنا استخدمنا المتغير
+                    type: "DELETE",
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    data: {
+                        id: id
+                    },
+                    success: function (response) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your items have been deleted.',
+                            'success'
+                        );
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        Swal.fire(
+                            'Error!',
+                            'An error occurred while deleting the items.',
+                            'error'
+                        );
+                    }
+                });
+            }
+        } else {
+            Swal.fire(
+                'Error!',
+                'Please select at least one checkbox.',
+                'error'
+            );
+        }
+    });
+});
+
+
 });

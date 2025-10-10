@@ -142,7 +142,21 @@
                                         <div class="">
                                             <div class="col-md-12">
                                                 <div id='inputs-container'>
-                                                    <label>{{ TranslationHelper::translate(ucfirst('Details')??'') }}</label>
+                                                    <h3>{{ TranslationHelper::translate(ucfirst('Details')??'') }}</h3>
+                                                    <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Second Title">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.input old="{{ 'second_title.'.$translationFirst->key }}"
+                                                    name="{{ 'second_title'.'['.$translationFirst->key.']' }}" type="text"
+                                                    required="" placeholder=""
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('second_title', $translationFirst->key)">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter title  {{ $translationFirst->second_title  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
                                                     <div id="input-template-1"  class="input-temp" style="">
                                                         <div class="col-md-12 mb-4 row">
                                                             <div class="col-md-10 row">

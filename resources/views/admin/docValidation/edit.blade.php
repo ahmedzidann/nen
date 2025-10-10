@@ -142,13 +142,27 @@
 
                                             <br>
 
+                                           
+
                                             @if($StaticTable->details->count())
 
 
                                             <div class="row">
+                                                 <div class="col-md-12">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name="Second Title"></x-admin.form.label-first>
+                                                <x-admin.form.input id="second_title" old="{{ 'second_title.'.$item->key }}"
+                                                    name="{{'second_title'.'['.$item->key.']' }}" type="text" required=""
+                                                    placeholder="second_title {{ $item->name }}" class="form-control valid"
+                                                    :value="$StaticTable->translate('second_title', $item->key)">
+                                                </x-admin.form.input>
+                                                <x-admin.form.label-end star="*"
+                                                    name="please enter Title  {{ $item->second_title  }}">
+                                                </x-admin.form.label-end>
+                                            </div>
                                                 <div class="col-md-12">
                                                     <div id='inputs-container-{{$item->id}}'>
-                                                        <label>{{ TranslationHelper::translate(ucfirst('Details')??'') }}</label>
+                                                        <h3> {{ TranslationHelper::translate(ucfirst('Details')??'') }} </h3>
 
                                                         @foreach($StaticTable->details as $details)
                                                         <div id="input-template-{{$item->id}}-{{$details->id}}" class="input-temp" style="">

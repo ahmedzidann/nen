@@ -17,10 +17,12 @@ class DocValidation extends Model implements  HasMedia
     public $translatable = [
         'title',
         'description',
+        'second_title',
     ];
 
     protected $fillable = [
         'title',
+        'second_title',
         'description',
         'status',
         'pages_id',

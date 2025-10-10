@@ -57,5 +57,10 @@
 </div>
 @endsection
 @section('jsadmin')
+<script>
+    // نمرّر الرابط من Laravel إلى JavaScript
+    const bulkDestroyUrl = "{{ route('admin.doc-validation.bulk-destroy') }}";
+    const csrfToken = "{{ csrf_token() }}";
+</script>
 <script src="{{ asset('admin/docValidation/js/index.js') }}"></script>
 @endsection

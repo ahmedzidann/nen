@@ -54,7 +54,7 @@
         <div class="doc_valdation_div">
             @if ($item)
                 <h4 class="line-before fs-2 text-capitalize">
-                    {{ TranslationHelper::translateWeb(ucfirst('why choose us')??'') }}
+                      {{ $item->second_title }}
                 </h4>
                 <div class="p_div">
                     @forelse($item->details as $details)

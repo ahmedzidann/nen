@@ -151,12 +151,14 @@ Route::middleware('authAdmin:admin')->group(function () {
         return 'Route cache cleared successfully.';
     });
     // end optimization route
-// slider
+    // slider
     Route::prefix('settings')->group(function () {
         Route::resource('slider', SliderController::class)->names('slider');
     });
     Route::get('child-pages/{page_id}', [SliderController::class, 'getChildPages'])->name('get-child-pages');
     Route::resource('education', EducationController::class);
+    Route::post('education/add_row', [EducationController::class, 'add_row'])->name('education.add_row');
+
     Route::resource('testing', TestingController::class);
     Route::resource('summary', SummaryController::class);
     Route::delete('summary/link/{link_id}', [SummaryController::class, 'deleteLink'])->name('summary-delete.link');
@@ -169,12 +171,22 @@ Route::middleware('authAdmin:admin')->group(function () {
         Route::get('/{solution}', [SolutionTabController::class, 'show']);
         Route::get('/{solution}/edit', [SolutionTabController::class, 'edit']);
         Route::put('/{solution}', [SolutionTabController::class, 'update']);
-
     });
 
     #### Elsdodey
 
     Route::resource('doc-validation', DocValidationController::class);
+    Route::delete('admin/doc-validation/bulk-destroy', [DocValidationController::class, 'destroy'])
+        ->name('doc-validation.bulk-destroy');
+
+    Route::post(
+        'admin/doc-validation/delete_doc_details',
+        [DocValidationController::class, 'delete_doc_details']
+    )->name('doc-validation.delete_doc_details');
+
+
+
+
     Route::resource('contct-us-country/services', FindUsController::class);
     Route::resource('contct-us-country/regional-offices', RegionalOfficeController::class)->except('destroy');
     Route::resource('about', AboutController::class);
@@ -185,7 +197,6 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
     Route::resource('contact-us-services', ServicesController::class)->except('destroy');
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
-
 });
 
 Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('tabproject.archiveDownload');

@@ -1,5 +1,5 @@
 @if (!str_contains(url()->current(), '/contact-us'))
-<div class="aside_div">
+<div class="aside_div" style="{{ str_contains(url()->current(), '/testing/') ? 'display: none;' : '' }}">
     @if (isset($VCpages))
     @foreach ($VCpages as $page)
     <a href="{{ route('about.' . $page->slug . '') }}"

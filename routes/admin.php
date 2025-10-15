@@ -150,6 +150,11 @@ Route::middleware('authAdmin:admin')->group(function () {
         Artisan::call('config:clear');
         return 'Route cache cleared successfully.';
     });
+     Route::get('/storage-link', function () {
+        Artisan::call('storage:link');
+      
+        return 'storage link cleared successfully.';
+    });
     // end optimization route
     // slider
     Route::prefix('settings')->group(function () {

@@ -56,6 +56,15 @@
                                             {{-- ----------end static --}}
                                             {{-- ----------name Pages --}}
                                             @if ($loop->first)
+                                               <div class="col-md-12 mb-4">
+                                         <x-admin.form.label-first class="form-label" name="Type">
+                                                </x-admin.form.label-first>
+                                                <select name="type" class="form-control">
+                                                <option value="cards" {{  $StaticTable->type == 'cards' ? 'selected' : ''  }}> cards</option>
+                                                <option value="faqs"{{  $StaticTable->type == 'faqs' ? 'selected' : ''  }}> faqs</option>
+
+                                                </select>
+                                             </div>
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label"
                                                     name="Select Pages">
@@ -79,6 +88,32 @@
                                                     name="please enter Title  {{ $item->name }}">
                                                 </x-admin.form.label-end>
                                             </div>
+                                            {{-- ------hours ---- --}}
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name=" Hours"></x-admin.form.label-first>
+                                                <x-admin.form.input id="hours" old="hours"
+                                                    name="hours" type="text"
+                                                    required="" placeholder=""
+                                                    class="form-control valid" :value="$StaticTable->hours">
+                                                </x-admin.form.input>
+
+                                            </div>
+
+                                            {{-- ------Price ---- --}}
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first star="*" class="form-label"
+                                                    name=" Hours"></x-admin.form.label-first>
+                                                <x-admin.form.input id="price" old="price"
+                                                    name="price" type="text"
+                                                    required="" placeholder=""
+                                                    class="form-control valid" :value="$StaticTable->price">
+                                                </x-admin.form.input>
+
+                                            </div>
+
                                             {{-- ----------name first --}}
                                             <div class="form-group col-md-12">
                                                 <label for="mini_desc_{{ $item->key }}">Mini Description in
@@ -120,6 +155,27 @@
                                                     </x-admin.form.input>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12 mb-4">
+    <x-admin.form.label-first class="col-sm-3 col-form-label" name="Material" />
+    <div class="col-sm-9">
+        <x-admin.form.input 
+            :model="$StaticTable" 
+            nameImage="material"
+            old="material" 
+            name="material" 
+            type="file" 
+            readonly=""
+            placeholder="Please Enter File" 
+            id="material" 
+            class="dropify"
+            DataHeight="300" 
+            accept=".pdf"
+            data-default-file="{{ asset('storage/education/' . ($StaticTable->material ?? '#')) }}">
+        </x-admin.form.input>
+    </div>
+</div>
+
                                             @endif
                                             {{-- ----------end image --}}
                                             @if ($loop->first)
@@ -363,7 +419,7 @@
                                                     </div>
                                                     <div class="col-md-8">
 
-                                                        <h3>Registered Company</h3>
+                                                        <h3>Registered Countries</h3>
                                                         <table class="table table-bordered" id="table-country2">
                                                             <thead style="background-color: gray;">
                                                                 <th style="width: 10%;"> #</th>
@@ -379,6 +435,7 @@
                                                                 @endphp
 
                                                                 @if(isset($StaticTable->country_register) && !empty($StaticTable->country_register))
+                                                               
 
                                                                 @foreach($StaticTable->country_register as $country)
 
@@ -388,12 +445,12 @@
                                                                     <td>{{$x}}</td>
                                                                     <td><select class="form-control" name="country[]">
                                                                             @foreach ($countries as $row)
-                                                                            <option value="{{ $row->id }}" {{ $row->id == $country->country_id ? 'selected' : '' }}>
+                                                                            <option value="{{ $row->id }}" {{ $row->id == $country->id ? 'selected' : '' }}>
                                                                                 {{ $row->title }}
                                                                                 @endforeach
 
                                                                         </select></td>
-                                                                    <td> <input type="url" value="{{ $country->url}}" name="url[]" class="form-control" /></td>
+                                                                    <td> <input type="url" value="{{ $country->pivot->url}}" name="url[]" class="form-control" /></td>
                                                                     <td> <button type="button" onclick="delete_row({{$x}})"
                                                                             class="btn btn-danger">
                                                                             <i class="bx bxs-trash"></i>&nbsp;</button></td>

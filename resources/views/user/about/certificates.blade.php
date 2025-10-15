@@ -112,7 +112,7 @@ span {
                                     </p>
                                     <p class="icons-item">
                                         @if ($item->url)
-                                        <img src="{{url('content/images/small_icon/global.png')}}"><span><a
+                                        <img src="{{url('content/images/small_icon/global.png')}}"><span><a target="_blank"
                                                 class="ref_coloring" href="{{$item->url}}">Website</a></span>
                                         @endif
                                     </p>
@@ -203,6 +203,7 @@ function loadMorePartners(event, slug, slug_id, lang) {
     var itemsPerPage = 6;
 
     var items = @json($items->where('item', 'section-two')->values());
+
     var subItems = items.filter(item => item.childe_pages_id == slug_id);
     var start = page * itemsPerPage;
     var end = start + itemsPerPage;
@@ -244,7 +245,7 @@ function loadMorePartners(event, slug, slug_id, lang) {
                     <p class="icons-item">
                         ${
                             item.url
-                                ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="${item.url[lang] ?? item.url.en}">Website</a></span>`
+                                ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" target="_blank" href="${item.url[lang] ?? item.url.en}">Website</a></span>`
                                 : ''
                         }
                     </p>

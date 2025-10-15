@@ -44,7 +44,12 @@ class UpdateEducationAction
 
         DB::transaction(function () use ($data, $education) {
             try {
-
+           if (!empty($data['material'])) {
+   
+            $fileName = time() . '_1.' . $data['material']->extension();
+             $path = $data['material']->storeAs('public/education', $fileName);
+              $data['material'] = $fileName;
+                      }
                 $education->update($data);
                 $lang = $data['submit2'];
                 if (isset($data['links_title'][$lang])) {
@@ -68,6 +73,7 @@ class UpdateEducationAction
                         $fileName = time() . $index . '_' . $file->getClientOriginalName();
                         $filePath = $file->storeAs('public/education', $fileName);
                         $ref = EducationFile::find($data['file_id'][0]);
+
                         if ($ref) {
                             $ref->file = $fileName;
                             $ref->setTranslation('title', $lang, $linkTitle);

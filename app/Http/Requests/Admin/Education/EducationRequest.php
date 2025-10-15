@@ -26,11 +26,16 @@ class EducationRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
             return [
+                
                 'title.*' => ['required', 'max:255', 'min:2'],
                 'mini_desc.*' => ['nullable', 'max:1000'],
+                'type'=>'required',
+                'price' => ['required_if:type,cards'],
+                'hours' => ['required_if:type,cards'],
                 'description.*' => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
-                'pages_id' => ['nullable'],
+                'material' => ['nullable', 'mimes:pdf'],
+                'pages_id' => ['required'],
                 'childe_pages_id' => ['nullable'],
                 'status' => ['nullable'],
                 "links" => ['nullable', 'array'],
@@ -42,16 +47,20 @@ class EducationRequest extends FormRequest
                 "file_title.en.*" => ['nullable', 'string', 'required_with:file.*'],
                 'show_in_home' => 'required|in:1,0',
                 "country" => ['nullable', 'array'],
-                "url" => ['nullable', 'array'],
-                'submit2' => 'required',
+                 "url" => ['nullable', 'array'],
+                'submit2' => 'nullable',
             ];
         } elseif ($this->isMethod('put') && $this->submit2 == 'en') {
             return [
                 'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
                 'mini_desc.*' => ['nullable', 'max:1000'],
+                'type'=>'required',
+                'price' => ['required_if:type,cards'],
+                'hours' => ['required_if:type,cards'],
                 'description.' . $this->submit2 => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
-                'pages_id' => ['nullable'],
+                'material' => ['nullable', 'mimes:pdf'],
+                'pages_id' => ['required_if:type,cards'],
                 'childe_pages_id' => ['nullable'],
                 'status' => ['nullable'],
                 "links" => ['nullable', 'array'],
@@ -75,10 +84,15 @@ class EducationRequest extends FormRequest
             return [
                 'title.' . $this->submit2 => ['required', 'max:255', 'min:2'],
                 'mini_desc.' . $this->submit2 => ['nullable', 'max:1000'],
+                'type'=>'required',
+                'price' => ['required_if:type,cards'],
+                'hours' => ['required_if:type,cards'],
                 'description.' . $this->submit2 => ['required', 'min:2'],
                 'image' => ['nullable', 'mimes:png,jpg,jpeg'],
+                'material' => ['nullable', 'mimes:pdf'],
                 'childe_pages_id' => ['nullable'],
                 'status' => ['nullable'],
+                'pages_id' => ['required_if:type,cards'],
                 "links" => ['nullable', 'array'],
                 "links.*" => ['nullable', 'url'],
                 'links_title.*.*' => ['nullable', 'string', 'required_with:links.*'],

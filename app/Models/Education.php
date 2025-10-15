@@ -23,9 +23,13 @@ class Education extends Model implements HasMedia
 
     protected $fillable = [
         'title',
+        'type',
         'mini_desc',
         'description',
+        'hours',
+        'price',
         'status',
+        'material',
         'pages_id',
         'childe_pages_id',
         'sort',
@@ -52,7 +56,7 @@ class Education extends Model implements HasMedia
     }
     public function country_register()
     {
-        return $this->hasMany(EducationCountry::class, 'education_id');
+         return $this->belongsToMany(Country::class, 'education_countries', 'education_id', 'country_id')->withPivot('url');;
     }
 
     public function files()

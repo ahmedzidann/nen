@@ -66,6 +66,16 @@
                                                 value="{{ Request()->item ?? '' }}"> --}}
                                             {{-- ----------end Pages --}}
                                             {{-- ----------name Pages --}}
+
+                                             <div class="col-md-12 mb-4">
+                                         <x-admin.form.label-first class="form-label" name="Type">
+                                                </x-admin.form.label-first>
+                                                <select name="type" class="form-control">
+                                                <option value="cards"> cards</option>
+                                                <option value="faqs"> faqs</option>
+
+                                                </select>
+                                             </div>
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first class="form-label" name="Select Pages">
                                                 </x-admin.form.label-first>
@@ -93,6 +103,39 @@
                                                     name="please enter title  {{ $translationFirst->name }}">
                                                 </x-admin.form.label-end>
                                             </div>
+                                            {{-- ------------hours --}}
+
+                                            <div class="form-group col-md-12">
+                                                <label for="hours">
+                                                    Hours
+                                                </label>
+                                                <x-admin.form.input
+                                                    old="hours"
+                                                    name="hours"
+                                                    type="number"
+                                                    required
+                                                    placeholder=""
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('title', $translationFirst->key)" />
+                                            </div>
+                                            {{-- ------------Price --}}
+
+                                            <div class="form-group col-md-12">
+                                                <label for="hours">
+                                                    Price
+                                                </label>
+                                                <x-admin.form.input
+                                                    old="price"
+                                                    name="price"
+                                                    type="number"
+                                                    required
+                                                    placeholder=""
+                                                    class="form-control valid"
+                                                    :value="$StaticTable->translate('title', $translationFirst->key)" />
+                                            </div>
+
+
+
                                             {{-- ----------name first --}}
                                             <div class="form-group col-md-12">
                                                 <label for="mini_desc_{{ $translationFirst->key }}">Mini Description in
@@ -100,6 +143,10 @@
                                                 <textarea class="form-control" id="mini_desc_{{ $translationFirst->key }}"
                                                     name="mini_desc[{{ $translationFirst->key }}]" rows="3">{{ old('mini_desc.' . $translationFirst->key, $StaticTable->getTranslation('mini_desc', $translationFirst->key)) }}</textarea>
                                             </div>
+
+
+
+
                                             {{-- ----------Description first --}}
                                             <div class="col-md-12 mb-4">
                                                 <x-admin.form.label-first star="*" class="form-label"
@@ -132,6 +179,19 @@
                                                         old="image" name="image" type="file" readonly=""
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="col-sm-3 col-form-label"
+                                                    name="Material">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$StaticTable" nameImage="material"
+                                                        old="material" name="material" type="file" readonly=""
+                                                        placeholder="Please Enter Image" id="image" class="dropify"
+                                                        DataHeight="300" accept=".pdf/">
                                                     </x-admin.form.input>
                                                 </div>
                                             </div>

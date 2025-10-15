@@ -94,7 +94,7 @@
                                                 <p class="icons-item">
                                                     @if ($item->url)
                                                     <img src="{{url('content/images/small_icon/global.png')}}"><span><a
-                                                            class="ref_coloring"
+                                                            class="ref_coloring" target="_blank"
                                                             href="{{$item->url}}">{{ TranslationHelper::translateWeb(ucfirst('Website')??'') }}</a></span>
                                                     @endif
                                                 </p>
@@ -220,7 +220,7 @@
                     <p class="icons-item">
                         ${
                             item.url
-                                ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring" href="${item.url[lang] ?? item.url.en}">Website</a></span>`
+                                ? `<img src="{{url('content/images/small_icon/global.png')}}"><span><a class="ref_coloring"  target="_blank" href="${item.url[lang] ?? item.url.en}">Website</a></span>`
                                 : ''
                         }
                     </p>

@@ -90,30 +90,55 @@
     </div>
 
     <!-- Section 1: Image Right, Text Left -->
-    <section class="image-text-section py-4">
+    <section class="image-text-section py-4 mt-3">
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="section-title mb-3">{{ __('Innovative Testing Solutions') }}</h2>
-                    <div class="before-vertical-line">
+                    <h2 class="section-title mb-3">Innovative Testing Solutions</h2>
+                    <div>
                         <p class="section-description mb-4">
-                            نحن نقدم حلول اختبار مبتكرة ومتطورة تساعدك على تحسين جودة منتجاتك وخدماتك. 
-                            من خلال فريق من الخبراء المتخصصين، نضمن لك أفضل النتائج وأعلى معايير الجودة.
+                            We provide innovative and advanced testing solutions that help you improve the quality of your products and services. 
+                            Through a team of specialized experts, we guarantee the best results and the highest quality standards.
                         </p>
                         <p class="section-description mb-4">
-                            نستخدم أحدث التقنيات والأدوات لضمان اختبار شامل وفعال لجميع جوانب مشروعك.
-                            مع خبرة تمتد لسنوات في هذا المجال، نحن شريكك المثالي للنجاح.
+                            We use the latest technologies and tools to ensure comprehensive and effective testing for all aspects of your project.
+                            With years of experience in this field, we are your ideal partner for success.
                         </p>
-                    </div>
-                    <div class="d-flex gap-3 mt-4">
-                        <a href="#" class="btn-custom-primary">{{ __('Learn More') }}</a>
-                        <a href="#" class="btn-custom-secondary">{{ __('Contact Us') }}</a>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <div class="image-wrapper-unified">
+                    <div class="image-wrapper-unified-small">
                         <img src="{{ asset('content/images/about_img.png') }}" 
                              alt="Testing Solutions" 
+                             class="img-fluid rounded-modern">
+                        <div class="image-decoration"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Quality Assurance Approach (Reversed) -->
+    <section class="image-text-section py-4">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+                    <h2 class="section-title mb-3">Quality Assurance Approach</h2>
+                    <div>
+                        <p class="section-description mb-4">
+                            Our quality assurance approach is built on industry best practices and cutting-edge methodologies. 
+                            We focus on delivering comprehensive testing coverage that identifies issues before they impact your users.
+                        </p>
+                        <p class="section-description mb-4">
+                            From initial planning to final delivery, we work closely with your team to ensure every aspect of your software 
+                            meets the highest standards of quality, performance, and reliability.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                    <div class="image-wrapper-unified-small">
+                        <img src="{{ asset('content/images/about_img.png') }}" 
+                             alt="Quality Assurance" 
                              class="img-fluid rounded-modern">
                         <div class="image-decoration"></div>
                     </div>
@@ -127,10 +152,10 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="global-title">{{ __('Our Key Features') }}</h2>
-                <div class="under-title-vector mx-auto">
+                <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
-                <p class="text-gray500 mt-3">نقدم مجموعة واسعة من الميزات التي تجعلنا الخيار الأفضل</p>
+                <p class="text-gray500 mt-3">We offer a wide range of features that make us the best choice</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
@@ -139,7 +164,7 @@
                             <i class="bi bi-shield-check"></i>
                         </div>
                         <h4 class="feature-title">{{ __('Quality Assurance') }}</h4>
-                        <p class="feature-description">ضمان الجودة الشاملة لجميع المشاريع</p>
+                        <p class="feature-description">Comprehensive quality assurance for all projects</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
@@ -148,7 +173,7 @@
                             <i class="bi bi-speedometer2"></i>
                         </div>
                         <h4 class="feature-title">{{ __('Fast Performance') }}</h4>
-                        <p class="feature-description">أداء سريع وفعال في التنفيذ</p>
+                        <p class="feature-description">Fast and efficient performance in execution</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
@@ -157,7 +182,7 @@
                             <i class="bi bi-people"></i>
                         </div>
                         <h4 class="feature-title">{{ __('Expert Team') }}</h4>
-                        <p class="feature-description">فريق من الخبراء المحترفين</p>
+                        <p class="feature-description">Team of professional experts</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
@@ -166,7 +191,7 @@
                             <i class="bi bi-headset"></i>
                         </div>
                         <h4 class="feature-title">{{ __('24/7 Support') }}</h4>
-                        <p class="feature-description">دعم فني على مدار الساعة</p>
+                        <p class="feature-description">24/7 technical support</p>
                     </div>
                 </div>
             </div>
@@ -222,7 +247,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="global-title">{{ __('Our Services') }}</h2>
-                <div class="under-title-vector mx-auto">
+                <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
             </div>
@@ -235,8 +260,7 @@
                                 <i class="bi bi-chevron-down accordion-arrow-faq"></i>
                             </div>
                             <div class="accordion-body-faq" style="display: block;">
-                                <p>نوفر حلول اختبار آلية متطورة تساعد على تسريع عملية الاختبار وضمان دقة النتائج. 
-                                   باستخدام أحدث الأدوات والتقنيات في مجال الاختبار الآلي.</p>
+                                <p>We provide advanced automated testing solutions that help accelerate the testing process and ensure accurate results using the latest tools and technologies in automated testing.</p>
                             </div>
                         </div>
                         <div class="accordion-item-faq" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop">
@@ -245,8 +269,7 @@
                                 <i class="bi bi-chevron-down accordion-arrow-faq"></i>
                             </div>
                             <div class="accordion-body-faq">
-                                <p>اختبار الأداء الشامل للتأكد من أن تطبيقك يعمل بكفاءة عالية تحت مختلف الظروف 
-                                   والأحمال المختلفة.</p>
+                                <p>Comprehensive performance testing to ensure your application works efficiently under various conditions and different loads.</p>
                             </div>
                         </div>
                         <div class="accordion-item-faq" data-image="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop">
@@ -255,7 +278,7 @@
                                 <i class="bi bi-chevron-down accordion-arrow-faq"></i>
                             </div>
                             <div class="accordion-body-faq">
-                                <p>نقوم بفحص شامل لأمان تطبيقاتك للكشف عن أي ثغرات أمنية محتملة وحمايتها من التهديدات.</p>
+                                <p>We conduct comprehensive security testing of your applications to detect any potential security vulnerabilities and protect them from threats.</p>
                             </div>
                         </div>
                         <div class="accordion-item-faq" data-image="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop">
@@ -264,28 +287,20 @@
                                 <i class="bi bi-chevron-down accordion-arrow-faq"></i>
                             </div>
                             <div class="accordion-body-faq">
-                                <p>اختبار شامل لتطبيقات الهاتف المحمول على مختلف المنصات والأجهزة لضمان تجربة مستخدم ممتازة.</p>
+                                <p>Comprehensive testing for mobile applications across different platforms and devices to ensure an excellent user experience.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <div class="accordion-image-wrapper-unified">
-                        <div class="image-container-unified">
-                            <img id="accordionImage" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" 
-                                 alt="Service" class="img-fluid">
+                    <div class="accordion-image-wrapper-small">
+                        <div class="image-container-small rotating-border">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=500&fit=crop" 
+                                 alt="Our Services" class="img-fluid">
                         </div>
-                        <div class="image-overlay-unified">
-                            <div class="stats-overlay-unified">
-                                <span class="stat-number-overlay">68%</span>
-                                <span class="stat-label-overlay">Success Rate</span>
-                            </div>
-                        </div>
-                        <div class="decorative-shapes">
-                            <div class="shape-1"></div>
-                            <div class="shape-2"></div>
-                            <div class="shape-3"></div>
-                        </div>
+                        <div class="floating-circle circle-1"></div>
+                        <div class="floating-circle circle-2"></div>
+                        <div class="floating-circle circle-3"></div>
                     </div>
                 </div>
             </div>
@@ -293,17 +308,17 @@
     </section>
 
     <!-- Section 5: FAQ -->
-    <section class="faq-section py-4">
-        <div class="container w-100">
-            <div class="text-center mb-3">
-                <h2 class="global-title">{{ __('Frequently Asked Questions') }}</h2>
-                <div class="under-title-vector mx-auto">
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="global-title" style="font-size: 2.5rem; font-weight: 700;">{{ __('Frequently Asked Questions') }}</h2>
+                <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
-                <p class="text-gray500 mt-3">إجابات على الأسئلة الأكثر شيوعاً</p>
+                <p class="text-gray500 mt-3" style="font-size: 1.1rem;">Answers to the most frequently asked questions about our services</p>
             </div>
-            <div class="row w-100">
-                <div>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7 order-2 order-lg-1" data-aos="fade-right">
                     <div class="faq-container-professional">
                         <div class="faq-item-professional" data-aos="fade-up" data-aos-delay="100">
                             <div class="faq-question-professional" onclick="toggleFaq(this)">
@@ -311,8 +326,7 @@
                                 <i class="bi bi-plus"></i>
                             </div>
                             <div class="faq-answer-professional">
-                                <p>نقدم مجموعة واسعة من خدمات الاختبار بما في ذلك الاختبار الآلي، اختبار الأداء، 
-                                   اختبار الأمان، اختبار الهاتف المحمول، والمزيد من الخدمات المتخصصة.</p>
+                                <p>We offer a wide range of testing services including automated testing, performance testing, security testing, mobile testing, and many more specialized services.</p>
                             </div>
                         </div>
                         <div class="faq-item-professional" data-aos="fade-up" data-aos-delay="200">
@@ -321,8 +335,7 @@
                                 <i class="bi bi-plus"></i>
                             </div>
                             <div class="faq-answer-professional">
-                                <p>يعتمد وقت المشروع على حجمه وتعقيده، لكن معظم مشاريعنا تستغرق من أسبوعين إلى شهرين. 
-                                   نحن نعمل بشكل وثيق مع عملائنا لتحديد جدول زمني واقعي.</p>
+                                <p>Project time depends on its size and complexity, but most of our projects take from two weeks to two months. We work closely with our clients to determine a realistic timeline.</p>
                             </div>
                         </div>
                         <div class="faq-item-professional" data-aos="fade-up" data-aos-delay="300">
@@ -331,8 +344,7 @@
                                 <i class="bi bi-plus"></i>
                             </div>
                             <div class="faq-answer-professional">
-                                <p>نعم، نقدم تقارير اختبار شاملة ومفصلة تتضمن جميع النتائج والتوصيات والخطوات التالية 
-                                   المقترحة لتحسين جودة منتجك.</p>
+                                <p>Yes, we provide comprehensive and detailed test reports that include all results, recommendations, and suggested next steps to improve your product quality.</p>
                             </div>
                         </div>
                         <div class="faq-item-professional" data-aos="fade-up" data-aos-delay="400">
@@ -341,8 +353,7 @@
                                 <i class="bi bi-plus"></i>
                             </div>
                             <div class="faq-answer-professional">
-                                <p>نقدم نماذج تسعير مرنة تناسب احتياجات مختلف العملاء، بما في ذلك التسعير بالساعة، 
-                                   بالمشروع، أو الاشتراك الشهري. اتصل بنا للحصول على عرض أسعار مخصص.</p>
+                                <p>We offer flexible pricing models to suit different client needs, including hourly, project-based, or monthly subscription pricing. Contact us for a customized quote.</p>
                             </div>
                         </div>
                         <div class="faq-item-professional" data-aos="fade-up" data-aos-delay="500">
@@ -351,10 +362,24 @@
                                 <i class="bi bi-plus"></i>
                             </div>
                             <div class="faq-answer-professional">
-                                <p>بالطبع! نحن نعمل بشكل تعاوني مع فرق التطوير الداخلية ونتكامل بسلاسة مع عمليات العمل 
-                                   الحالية لضمان أفضل النتائج.</p>
+                                <p>Of course! We work collaboratively with internal development teams and integrate seamlessly with current workflows to ensure the best results.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-1 order-lg-2" data-aos="fade-left">
+                    <div class="faq-image-wrapper">
+                        <div class="faq-main-image">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=900&fit=crop&q=85" 
+                                 alt="FAQ" class="img-fluid">
+                        </div>
+                        <div class="faq-circle-image">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=250&h=250&fit=crop&q=85" 
+                                 alt="Support" class="img-fluid">
+                        </div>
+                        <div class="faq-shape shape-1"></div>
+                        <div class="faq-shape shape-2"></div>
+                        <div class="faq-shape shape-3"></div>
                     </div>
                 </div>
             </div>
@@ -366,10 +391,10 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="global-title">{{ __('Our Expert Team') }}</h2>
-                <div class="under-title-vector mx-auto">
+                <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
-                <p class="text-gray500 mt-3">فريق من الخبراء المتخصصين في مجال الاختبار والجودة</p>
+                <p class="text-gray500 mt-3">A team of experts specialized in testing and quality assurance</p>
             </div>
             
             <div class="team-slider-container">
@@ -389,7 +414,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Ahmed Hassan') }}</h4>
                             <p class="team-position">{{ __('Senior QA Engineer') }}</p>
-                            <p class="team-description">خبير في اختبار الأداء والأمان مع خبرة 8 سنوات</p>
+                            <p class="team-description">Expert in performance and security testing with 8 years of experience</p>
                         </div>
                     </div>
                 </div>
@@ -408,7 +433,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Sara Mohamed') }}</h4>
                             <p class="team-position">{{ __('Automation Specialist') }}</p>
-                            <p class="team-description">متخصصة في الاختبار الآلي وأدوات CI/CD</p>
+                            <p class="team-description">Specialized in automated testing and CI/CD tools</p>
                         </div>
                     </div>
                 </div>
@@ -427,7 +452,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Mohamed Ali') }}</h4>
                             <p class="team-position">{{ __('Mobile Testing Expert') }}</p>
-                            <p class="team-description">خبير في اختبار تطبيقات الهاتف المحمول</p>
+                            <p class="team-description">Expert in mobile application testing</p>
                         </div>
                     </div>
                 </div>
@@ -446,7 +471,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Fatma Ibrahim') }}</h4>
                             <p class="team-position">{{ __('Quality Assurance Lead') }}</p>
-                            <p class="team-description">قائدة فريق ضمان الجودة مع خبرة 10 سنوات</p>
+                            <p class="team-description">Quality Assurance Team Lead with 10 years of experience</p>
                         </div>
                     </div>
                 </div>
@@ -465,7 +490,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Khaled Mahmoud') }}</h4>
                             <p class="team-position">{{ __('Performance Testing Engineer') }}</p>
-                            <p class="team-description">متخصص في اختبار الأداء وتحسين السرعة</p>
+                            <p class="team-description">Specialized in performance testing and speed optimization</p>
                         </div>
                     </div>
                 </div>
@@ -484,7 +509,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Nour Ahmed') }}</h4>
                             <p class="team-position">{{ __('Security Testing Specialist') }}</p>
-                            <p class="team-description">خبيرة في الأمان واختبار الاختراق</p>
+                            <p class="team-description">Expert in security and penetration testing</p>
                         </div>
                     </div>
                 </div>
@@ -503,7 +528,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Omar Said') }}</h4>
                             <p class="team-position">{{ __('Test Manager') }}</p>
-                            <p class="team-description">مدير الاختبار والتخطيط الاستراتيجي</p>
+                            <p class="team-description">Testing Manager and Strategic Planning</p>
                         </div>
                     </div>
                 </div>
@@ -522,7 +547,7 @@
                         <div class="team-info">
                             <h4 class="team-name">{{ __('Heba Youssef') }}</h4>
                             <p class="team-position">{{ __('API Testing Expert') }}</p>
-                            <p class="team-description">متخصصة في اختبار الـ APIs والخدمات</p>
+                            <p class="team-description">Specialized in API and web services testing</p>
                         </div>
                     </div>
                 </div>
@@ -546,10 +571,10 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="global-title">{{ __('Why Choose Us') }}</h2>
-                <div class="under-title-vector mx-auto">
+                <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
-                <p class="text-gray500 mt-3">نحن نقدم أفضل الخدمات مع مميزات استثنائية</p>
+                <p class="text-gray500 mt-3">We provide the best services with exceptional features</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
@@ -559,7 +584,7 @@
                         </div>
                         <h4 class="card-title">{{ __('Innovation') }}</h4>
                         <p class="card-description">
-                            نستخدم أحدث التقنيات والأدوات المبتكرة لتقديم حلول اختبار متطورة ومتقدمة.
+                            We use the latest technologies and innovative tools to provide advanced and sophisticated testing solutions.
                         </p>
                         <div class="card-footer-link">
                             <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
@@ -573,7 +598,7 @@
                         </div>
                         <h4 class="card-title">{{ __('Reliability') }}</h4>
                         <p class="card-description">
-                            نضمن لك نتائج موثوقة ودقيقة مع الالتزام بالمواعيد النهائية والمعايير العالية.
+                            We guarantee reliable and accurate results with commitment to deadlines and high standards.
                         </p>
                         <div class="card-footer-link">
                             <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
@@ -587,7 +612,7 @@
                         </div>
                         <h4 class="card-title">{{ __('Scalability') }}</h4>
                         <p class="card-description">
-                            حلولنا قابلة للتوسع لتناسب احتياجاتك المتنامية من المشاريع الصغيرة إلى الكبيرة.
+                            Our solutions are scalable to fit your growing needs from small to large projects.
                         </p>
                         <div class="card-footer-link">
                             <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
@@ -601,7 +626,7 @@
                         </div>
                         <h4 class="card-title">{{ __('Time Efficiency') }}</h4>
                         <p class="card-description">
-                            نعمل بكفاءة عالية لتسليم المشاريع في الوقت المحدد دون التأثير على الجودة.
+                            We work with high efficiency to deliver projects on time without compromising quality.
                         </p>
                         <div class="card-footer-link">
                             <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
@@ -615,7 +640,7 @@
                         </div>
                         <h4 class="card-title">{{ __('Security First') }}</h4>
                         <p class="card-description">
-                            نضع الأمان في أولوياتنا ونحافظ على سرية معلوماتك وبياناتك بأعلى المعايير.
+                            We prioritize security and maintain the confidentiality of your information and data with the highest standards.
                         </p>
                         <div class="card-footer-link">
                             <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
@@ -629,7 +654,7 @@
                         </div>
                         <h4 class="card-title">{{ __('Communication') }}</h4>
                         <p class="card-description">
-                            نحافظ على تواصل مستمر وواضح معك طوال فترة المشروع لضمان رضاك التام.
+                            We maintain continuous and clear communication with you throughout the project to ensure your complete satisfaction.
                         </p>
                         <div class="card-footer-link">
                             <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
@@ -665,13 +690,11 @@
                 }
             };
 
-            // FAQ Style Accordion functionality with image change
+            // FAQ Style Accordion functionality
             window.toggleAccordion = function(header) {
                 const item = header.parentElement;
                 const body = item.querySelector('.accordion-body-faq');
                 const allItems = document.querySelectorAll('.accordion-item-faq');
-                const imageElement = document.getElementById('accordionImage');
-                const newImage = item.getAttribute('data-image');
 
                 // Close all other accordion items
                 allItems.forEach(function(accItem) {
@@ -688,15 +711,6 @@
                 } else {
                     item.classList.add('active');
                     body.style.maxHeight = body.scrollHeight + 'px';
-                    
-                    // Change image with fade effect
-                    if (imageElement && newImage) {
-                        imageElement.style.opacity = '0';
-                        setTimeout(function() {
-                            imageElement.src = newImage;
-                            imageElement.style.opacity = '1';
-                        }, 300);
-                    }
                 }
             };
 

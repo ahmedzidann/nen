@@ -44,6 +44,7 @@ Achievements
             <p class="global-description">
                 {{ strip_tags($fSection->description) }}
             </p>
+            
         </div>
         @endif
         <div class="tabs-items mt-md-4 mt-3">

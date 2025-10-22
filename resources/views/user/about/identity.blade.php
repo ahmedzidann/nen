@@ -12,12 +12,12 @@ Identity
 
 <style>
 .about-image-item .banner-image {
-    height: 60vh;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 1rem;
     border-radius: 14px;
     overflow: hidden;
     width: 100%;
+    aspect-ratio: 1 / .511;
 }
 
 .about-image-item .banner-image img {

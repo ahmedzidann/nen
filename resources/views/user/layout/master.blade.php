@@ -28,6 +28,10 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    
     @yield('websiteStyle')
 </head>
 
@@ -619,6 +623,19 @@
     <!-- <script src="{{ asset('content/js/vendors/swiper-bundle.min.js') }}"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
     <script src="{{ asset('content/js/scripts.js') }}"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out'
+        });
+    </script>
+    
     <script>
         function toggleReadMore() {
             var dots = document.getElementById("dots");

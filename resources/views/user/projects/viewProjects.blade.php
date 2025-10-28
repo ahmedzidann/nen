@@ -233,7 +233,7 @@
                                                 </span>
                                             </p>
                                         </a>
-                                        <a href="https://{{ $program->url }}" class="card_prgram"
+                                        <a href="{{ $program->url }}" class="card_prgram"
                                             target="_blank">
                                             <p class="icon-item">
                                                 <img src="{{ asset('content') }}/images/small_icon/global.png"

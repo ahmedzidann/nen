@@ -26,10 +26,10 @@ class EducationController extends Controller
     public function index():View
     {
 
-        if(Route::currentRouteName() == 'education.tqs'){
+        // if(Route::currentRouteName() == 'education.tqs'){
 
-            return $this->tqsView();
-        };
+        //     return $this->tqsView();
+        // };
         return $this->certificatesView();
     }
 

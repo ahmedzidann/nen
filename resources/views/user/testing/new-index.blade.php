@@ -90,11 +90,14 @@
     </div>
 
     <!-- Section 1: Image Right, Text Left -->
-    <section class="image-text-section py-4 mt-3">
+    <section class="image-text-section-no-bg py-4 mt-3">
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="section-title mb-3">Innovative Testing Solutions</h2>
+                    <h2 class="global-title mb-0">Innovative Testing Solutions</h2>
+                    <div class="under-title-vector mb-4">
+                        <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
+                    </div>
                     <div>
                         <p class="section-description mb-4">
                             We provide innovative and advanced testing solutions that help you improve the quality of your products and services. 
@@ -118,29 +121,311 @@
         </div>
     </section>
 
-    <!-- Section: Quality Assurance Approach (Reversed) -->
-    <section class="image-text-section py-4">
+    <!-- Section: Company Info with Image -->
+    <section class="company-info-section py-0 my-4">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <!-- Left: Image -->
+                <div class="col-lg-6">
+                    <div class="company-image-wrapper">
+                        <img src="{{ asset('content/images/about_img.png') }}" 
+                             alt="Company Meeting" 
+                             class="img-fluid h-100 w-100 object-fit-cover">
+                    </div>
+                </div>
+                
+                <!-- Right: Info Cards -->
+                <div class="col-lg-6">
+                    <div class="company-info-cards">
+                        <!-- History Card -->
+                        <div class="info-card active align-items-center" onclick="toggleInfoCard(this)">
+                            <div class="info-icon-wrapper">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3 class="info-title">{{ __('History') }}</h3>
+                                <p>
+                                    Global for Integrated Business Solutions is an Egyptian company established in June 2019. 
+                                    We specialize in managing projects, marketing, advertising, employment, data verification, 
+                                    software implementation and development, managing business incubators, supporting entrepreneurship, 
+                                    and managing training and testing centers.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vision Card -->
+                        <div class="info-card" onclick="toggleInfoCard(this)">
+                            <div class="info-icon-wrapper">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3 class="info-title">{{ __('Vision') }}</h3>
+                                <p>
+                                    To be the prime, respected source of business expertise for organizations seeking 
+                                    to realize the full potential of their resources and markets.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Mission Card -->
+                        <div class="info-card" onclick="toggleInfoCard(this)">
+                            <div class="info-icon-wrapper">
+                                <i class="bi bi-globe"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3 class="info-title">{{ __('Mission') }}</h3>
+                                <p>
+                                    To help business organizations achieve their shareholders' objectives, attract and retain talents, 
+                                    leverage their core competencies, develop sustainable competitive advantages, 
+                                    and contribute to their economies.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Services -->
+    <section class="services-section py-5">
         <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6 order-lg-2" data-aos="fade-left">
-                    <h2 class="section-title mb-3">Quality Assurance Approach</h2>
-                    <div>
-                        <p class="section-description mb-4">
-                            Our quality assurance approach is built on industry best practices and cutting-edge methodologies. 
-                            We focus on delivering comprehensive testing coverage that identifies issues before they impact your users.
-                        </p>
-                        <p class="section-description mb-4">
-                            From initial planning to final delivery, we work closely with your team to ensure every aspect of your software 
-                            meets the highest standards of quality, performance, and reliability.
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="global-title">{{ __('SERVICES') }}</h2>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
+                </div>
+            </div>
+
+            <div class="services-grid">
+                <!-- Marketing Consultancy -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Marketing Consultancy') }}</h4>
+                        <p class="service-description">
+                            Strategic marketing solutions to help your business grow and reach its target audience effectively.
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-6 order-lg-1" data-aos="fade-right">
-                    <div class="image-wrapper-unified-small">
-                        <img src="{{ asset('content/images/about_img.png') }}" 
-                             alt="Quality Assurance" 
-                             class="img-fluid rounded-modern">
-                        <div class="image-decoration"></div>
+
+                <!-- Digital Marketing -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-megaphone"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Digital Marketing') }}</h4>
+                        <p class="service-description">
+                            Comprehensive digital marketing campaigns to boost your online presence and engagement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Brand Building -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-award"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Brand Building') }}</h4>
+                        <p class="service-description">
+                            Create a strong brand identity that resonates with your customers and stands out in the market.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Software Development -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Software Development') }}</h4>
+                        <p class="service-description">
+                            Custom software solutions tailored to meet your business needs and enhance productivity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-palette"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Graphic Design') }}</h4>
+                        <p class="service-description">
+                            Creative and professional graphic design services for all your branding and marketing materials.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Infographic Videos -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-camera-video"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Infographic Videos') }}</h4>
+                        <p class="service-description">
+                            Engaging infographic videos that simplify complex information and capture audience attention.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Strategic Consulting -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Strategic Consulting') }}</h4>
+                        <p class="service-description">
+                            Expert consulting services to help you make informed decisions and achieve business goals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mobile Development -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="450">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Mobile Development') }}</h4>
+                        <p class="service-description">
+                            Native and cross-platform mobile applications for iOS and Android devices.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-share"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Social Media') }}</h4>
+                        <p class="service-description">
+                            Social media management and strategy to build your online community and increase engagement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SEO -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="550">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('SEO') }}</h4>
+                        <p class="service-description">
+                            Search engine optimization to improve your website ranking and drive organic traffic.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project Management -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-kanban"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Project Management') }}</h4>
+                        <p class="service-description">
+                            Professional project management services to ensure timely delivery and successful outcomes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Data Verification -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="650">
+                    <div class="service-icon-wrapper">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4 class="service-title">{{ __('Data Verification') }}</h4>
+                        <p class="service-description">
+                            Accurate data verification and validation services to ensure data integrity and quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Website Design with Images -->
+    <section class="website-design-section py-5">
+        <div class="container">
+            <div class="row align-items-stretch g-4">
+                <!-- Left: Images -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="design-images-wrapper">
+                        <div class="main-design-image">
+                            <img src="{{ asset('content/images/about_img.png') }}" 
+                                 alt="Team Meeting" 
+                                 class="img-fluid rounded">
+                        </div>
+                        <div class="secondary-design-image">
+                            <img src="{{ asset('content/images/about_img.png') }}" 
+                                 alt="Team Fun" 
+                                 class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="design-content">
+                        <h2 class="design-title">{{ __('Designing Websites That Drive Success') }}</h2>
+                        <p class="design-description">
+                            We create stunning, user-friendly websites that not only look great but also deliver 
+                            measurable results. Our team combines creativity with technical expertise to build 
+                            digital experiences that engage your audience and grow your business.
+                        </p>
+                        
+                        <div class="design-features">
+                            <div class="design-feature-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>{{ __('Refreshing to get such a personal touch') }}</span>
+                            </div>
+                            <div class="design-feature-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>{{ __('Making this the first true generator on the Internet') }}</span>
+                            </div>
+                        </div>
+                        
+                        <p class="design-description mb-4">
+                            Our approach ensures that every project is tailored to your unique needs, delivering 
+                            solutions that exceed expectations and provide long-term value for your business.
+                        </p>
+                        
+                        <div class="row g-4 align-items-stretch">
+                            <div class="col-lg-8 d-flex flex-column">
+                                <div class="design-support-box">
+                                    <h5 class="support-title">{{ __('24/7 Support') }}</h5>
+                                    <p class="support-text">
+                                        Our dedicated support team is available around the clock to assist you with any 
+                                        questions or concerns, ensuring your website runs smoothly at all times.
+                                    </p>
+                                </div>
+                                
+                                <a href="#" class="btn-discover">
+                                    {{ __('DISCOVER MORE') }}
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="col-lg-4 d-flex">
+                                <div class="trusted-badge">
+                                    <i class="bi bi-people-fill"></i>
+                                    <span>{{ __('Trusted by clients') }}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -242,72 +527,133 @@
         </div>
     </section>
 
-    <!-- Section 4: Accordion with Image Change -->
-    <section class="accordion-section py-4">
+    <!-- Section: Process / Workflow Timeline -->
+    <section class="process-section py-5">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="global-title">{{ __('Our Services') }}</h2>
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="global-title">{{ __('how we work') }}</h2>
                 <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
+                <p class="text-gray500 mt-3">Follow our systematic approach to delivering quality results</p>
             </div>
-            <div class="row g-0 align-items-stretch">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="accordion-faq-style" id="servicesAccordion">
-                        <div class="accordion-item-faq active" data-image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop">
-                            <div class="accordion-header-faq" onclick="toggleAccordion(this)">
-                                <h5 class="accordion-title-faq">{{ __('Automated Testing') }}</h5>
-                                <i class="bi bi-chevron-down accordion-arrow-faq"></i>
-                            </div>
-                            <div class="accordion-body-faq" style="display: block;">
-                                <p>We provide advanced automated testing solutions that help accelerate the testing process and ensure accurate results using the latest tools and technologies in automated testing.</p>
-                            </div>
+            
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+                <div class="timeline-item right" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="bi bi-clipboard-data"></i>
                         </div>
-                        <div class="accordion-item-faq" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop">
-                            <div class="accordion-header-faq" onclick="toggleAccordion(this)">
-                                <h5 class="accordion-title-faq">{{ __('Performance Testing') }}</h5>
-                                <i class="bi bi-chevron-down accordion-arrow-faq"></i>
-                            </div>
-                            <div class="accordion-body-faq">
-                                <p>Comprehensive performance testing to ensure your application works efficiently under various conditions and different loads.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item-faq" data-image="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop">
-                            <div class="accordion-header-faq" onclick="toggleAccordion(this)">
-                                <h5 class="accordion-title-faq">{{ __('Security Testing') }}</h5>
-                                <i class="bi bi-chevron-down accordion-arrow-faq"></i>
-                            </div>
-                            <div class="accordion-body-faq">
-                                <p>We conduct comprehensive security testing of your applications to detect any potential security vulnerabilities and protect them from threats.</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item-faq" data-image="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop">
-                            <div class="accordion-header-faq" onclick="toggleAccordion(this)">
-                                <h5 class="accordion-title-faq">{{ __('Mobile Testing') }}</h5>
-                                <i class="bi bi-chevron-down accordion-arrow-faq"></i>
-                            </div>
-                            <div class="accordion-body-faq">
-                                <p>Comprehensive testing for mobile applications across different platforms and devices to ensure an excellent user experience.</p>
-                            </div>
-                        </div>
+                        <h4 class="timeline-title">{{ __('Requirements Analysis') }}</h4>
+                        <p class="timeline-description">
+                            We start by thoroughly understanding your project requirements, goals, and expectations 
+                            to create a comprehensive testing strategy.
+                        </p>
+                        <ul class="timeline-checklist">
+                            <li><i class="bi bi-check-circle-fill"></i> Detailed requirement gathering</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Strategy development</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="accordion-image-wrapper-small">
-                        <div class="image-container-small rotating-border">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=500&fit=crop" 
-                                 alt="Our Services" class="img-fluid">
+
+                <div class="timeline-item left" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="bi bi-file-earmark-text"></i>
                         </div>
-                        <div class="floating-circle circle-1"></div>
-                        <div class="floating-circle circle-2"></div>
-                        <div class="floating-circle circle-3"></div>
+                        <h4 class="timeline-title">{{ __('Test Planning') }}</h4>
+                        <p class="timeline-description">
+                            Our team develops detailed test plans, defines test cases, and establishes quality 
+                            metrics aligned with your project objectives.
+                        </p>
+                        <ul class="timeline-checklist">
+                            <li><i class="bi bi-check-circle-fill"></i> Comprehensive test plans</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Quality metrics definition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item right" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        <h4 class="timeline-title">{{ __('Test Environment Setup') }}</h4>
+                        <p class="timeline-description">
+                            We configure the necessary testing environments, tools, and frameworks to ensure 
+                            accurate and reliable test execution.
+                        </p>
+                        <ul class="timeline-checklist">
+                            <li><i class="bi bi-check-circle-fill"></i> Environment configuration</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Tools and frameworks setup</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item left" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="bi bi-play-circle"></i>
+                        </div>
+                        <h4 class="timeline-title">{{ __('Test Execution') }}</h4>
+                        <p class="timeline-description">
+                            Our experts execute comprehensive testing including functional, performance, security, 
+                            and usability tests across all platforms.
+                        </p>
+                        <ul class="timeline-checklist">
+                            <li><i class="bi bi-check-circle-fill"></i> Functional & performance tests</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Security & usability tests</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item right" data-aos="fade-up" data-aos-delay="500">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="bi bi-bug"></i>
+                        </div>
+                        <h4 class="timeline-title">{{ __('Defect Reporting') }}</h4>
+                        <p class="timeline-description">
+                            All identified issues are documented in detail with severity levels, reproduction steps, 
+                            and visual evidence for quick resolution.
+                        </p>
+                        <ul class="timeline-checklist">
+                            <li><i class="bi bi-check-circle-fill"></i> Detailed documentation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Visual evidence attached</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item left" data-aos="fade-up" data-aos-delay="600">
+                    <div class="timeline-number">6</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <h4 class="timeline-title">{{ __('Final Report & Delivery') }}</h4>
+                        <p class="timeline-description">
+                            We provide comprehensive reports with test results, recommendations, and quality 
+                            metrics to ensure project success.
+                        </p>
+                        <ul class="timeline-checklist">
+                            <li><i class="bi bi-check-circle-fill"></i> Comprehensive reports</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Quality recommendations</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: FAQ -->
+
+
+    <!-- Section 4: FAQ -->
     <section class="faq-section py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-down">
@@ -386,8 +732,108 @@
         </div>
     </section>
 
-    <!-- Section 6: Team Members Cards -->
-    <section class="team-section py-4">
+
+    <!-- Section 6: Modern Cards -->
+    <section class="modern-cards-section py-4">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="global-title">{{ __('Why Choose Us') }}</h2>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
+                </div>
+                <p class="text-gray500 mt-3">We provide the best services with exceptional features</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="modern-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-lightbulb card-icon"></i>
+                        </div>
+                        <h4 class="card-title">{{ __('Innovation') }}</h4>
+                        <p class="card-description">
+                            We use the latest technologies and innovative tools to provide advanced and sophisticated testing solutions.
+                        </p>
+                        <div class="card-footer-link">
+                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="modern-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-patch-check card-icon"></i>
+                        </div>
+                        <h4 class="card-title">{{ __('Reliability') }}</h4>
+                        <p class="card-description">
+                            We guarantee reliable and accurate results with commitment to deadlines and high standards.
+                        </p>
+                        <div class="card-footer-link">
+                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="modern-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-graph-up-arrow card-icon"></i>
+                        </div>
+                        <h4 class="card-title">{{ __('Scalability') }}</h4>
+                        <p class="card-description">
+                            Our solutions are scalable to fit your growing needs from small to large projects.
+                        </p>
+                        <div class="card-footer-link">
+                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="modern-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-clock-history card-icon"></i>
+                        </div>
+                        <h4 class="card-title">{{ __('Time Efficiency') }}</h4>
+                        <p class="card-description">
+                            We work with high efficiency to deliver projects on time without compromising quality.
+                        </p>
+                        <div class="card-footer-link">
+                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="500">
+                    <div class="modern-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-shield-lock card-icon"></i>
+                        </div>
+                        <h4 class="card-title">{{ __('Security First') }}</h4>
+                        <p class="card-description">
+                            We prioritize security and maintain the confidentiality of your information and data with the highest standards.
+                        </p>
+                        <div class="card-footer-link">
+                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="600">
+                    <div class="modern-card">
+                        <div class="card-icon-wrapper">
+                            <i class="bi bi-chat-dots card-icon"></i>
+                        </div>
+                        <h4 class="card-title">{{ __('Communication') }}</h4>
+                        <p class="card-description">
+                            We maintain continuous and clear communication with you throughout the project to ensure your complete satisfaction.
+                        </p>
+                        <div class="card-footer-link">
+                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Section 5: Team Members Cards -->
+        <section class="team-section py-4">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="global-title">{{ __('Our Expert Team') }}</h2>
@@ -566,105 +1012,212 @@
         </div>
     </section>
 
-    <!-- Section 7: Modern Cards -->
-    <section class="modern-cards-section py-4">
+        <!-- Section: Client Testimonials -->
+        <section class="testimonials-section py-5">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="global-title">{{ __('Why Choose Us') }}</h2>
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="global-title">{{ __('What Our Clients Say') }}</h2>
                 <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                 </div>
-                <p class="text-gray500 mt-3">We provide the best services with exceptional features</p>
+                <p class="text-gray500 mt-3">Real feedback from satisfied clients who trust our services</p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
-                    <div class="modern-card">
-                        <div class="card-icon-wrapper">
-                            <i class="bi bi-lightbulb card-icon"></i>
+
+            <div class="testimonials-slider-container">
+                <div class="row g-4 testimonials-slides" id="testimonialsSlides">
+                    <!-- Testimonial 1 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Outstanding testing services! The team was professional, thorough, and delivered 
+                                exceptional results. Our application quality improved significantly."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('John Anderson') }}</h5>
+                                    <p class="client-position">{{ __('CEO, TechStart Inc.') }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="card-title">{{ __('Innovation') }}</h4>
-                        <p class="card-description">
-                            We use the latest technologies and innovative tools to provide advanced and sophisticated testing solutions.
-                        </p>
-                        <div class="card-footer-link">
-                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Their attention to detail is remarkable. They found critical issues we had missed 
+                                and provided valuable recommendations for improvement."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Sarah Williams') }}</h5>
+                                    <p class="client-position">{{ __('Product Manager, Digital Solutions') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Excellent communication and transparency throughout the entire testing process. 
+                                The reports were detailed and easy to understand."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Michael Chen') }}</h5>
+                                    <p class="client-position">{{ __('CTO, Innovation Labs') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Best testing partner we've ever worked with. They helped us reduce bugs by 80% 
+                                and significantly improved our user experience."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Emma Thompson') }}</h5>
+                                    <p class="client-position">{{ __('Founder, StartupHub') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Their expertise in automated testing saved us countless hours. The team is 
+                                knowledgeable, responsive, and truly committed to quality."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('David Martinez') }}</h5>
+                                    <p class="client-position">{{ __('Director, Enterprise Systems') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Highly recommend their services! They provide comprehensive testing coverage 
+                                and helped us launch our product with confidence."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Lisa Johnson') }}</h5>
+                                    <p class="client-position">{{ __('VP Engineering, CloudTech') }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="200">
-                    <div class="modern-card">
-                        <div class="card-icon-wrapper">
-                            <i class="bi bi-patch-check card-icon"></i>
-                        </div>
-                        <h4 class="card-title">{{ __('Reliability') }}</h4>
-                        <p class="card-description">
-                            We guarantee reliable and accurate results with commitment to deadlines and high standards.
-                        </p>
-                        <div class="card-footer-link">
-                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="300">
-                    <div class="modern-card">
-                        <div class="card-icon-wrapper">
-                            <i class="bi bi-graph-up-arrow card-icon"></i>
-                        </div>
-                        <h4 class="card-title">{{ __('Scalability') }}</h4>
-                        <p class="card-description">
-                            Our solutions are scalable to fit your growing needs from small to large projects.
-                        </p>
-                        <div class="card-footer-link">
-                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="400">
-                    <div class="modern-card">
-                        <div class="card-icon-wrapper">
-                            <i class="bi bi-clock-history card-icon"></i>
-                        </div>
-                        <h4 class="card-title">{{ __('Time Efficiency') }}</h4>
-                        <p class="card-description">
-                            We work with high efficiency to deliver projects on time without compromising quality.
-                        </p>
-                        <div class="card-footer-link">
-                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="500">
-                    <div class="modern-card">
-                        <div class="card-icon-wrapper">
-                            <i class="bi bi-shield-lock card-icon"></i>
-                        </div>
-                        <h4 class="card-title">{{ __('Security First') }}</h4>
-                        <p class="card-description">
-                            We prioritize security and maintain the confidentiality of your information and data with the highest standards.
-                        </p>
-                        <div class="card-footer-link">
-                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="600">
-                    <div class="modern-card">
-                        <div class="card-icon-wrapper">
-                            <i class="bi bi-chat-dots card-icon"></i>
-                        </div>
-                        <h4 class="card-title">{{ __('Communication') }}</h4>
-                        <p class="card-description">
-                            We maintain continuous and clear communication with you throughout the project to ensure your complete satisfaction.
-                        </p>
-                        <div class="card-footer-link">
-                            <a href="#">{{ __('Learn More') }} <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
+
+                <!-- Testimonials Navigation Arrows -->
+                <div class="testimonials-navigation-arrows">
+                    <button class="testimonials-nav-btn prev-testimonial-btn" onclick="changeTestimonialSlide(-1)">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="testimonials-nav-btn next-testimonial-btn" onclick="changeTestimonialSlide(1)">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Insert the description content from the server into the <p> element
@@ -868,6 +1421,106 @@
                 firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
                 firstIcon.style.transform = 'rotate(45deg)';
             }
+
+            // Testimonials Slider functionality
+            let currentTestimonialPage = 0;
+            let testimonialsPerView = 3;
+            let totalTestimonials = 0;
+
+            function updateTestimonialsPerView() {
+                if (window.innerWidth >= 992) {
+                    testimonialsPerView = 3;
+                } else if (window.innerWidth >= 768) {
+                    testimonialsPerView = 2;
+                } else {
+                    testimonialsPerView = 1;
+                }
+            }
+
+            function showTestimonialSlide() {
+                const slidesContainer = document.getElementById('testimonialsSlides');
+                if (!slidesContainer) return;
+                
+                updateTestimonialsPerView();
+                const translateX = currentTestimonialPage * 100;
+                
+                slidesContainer.style.transform = `translateX(${translateX}%)`;
+                slidesContainer.style.transition = 'transform 0.5s ease';
+                
+                // Update button states
+                updateTestimonialButtonStates();
+            }
+
+            function updateTestimonialButtonStates() {
+                const prevBtn = document.querySelector('.prev-testimonial-btn');
+                const nextBtn = document.querySelector('.next-testimonial-btn');
+                const totalPages = Math.ceil(totalTestimonials / testimonialsPerView) - 1;
+                
+                if (prevBtn && nextBtn) {
+                    prevBtn.disabled = currentTestimonialPage >= 0;
+                    nextBtn.disabled = currentTestimonialPage <= -totalPages;
+                    
+                    prevBtn.style.opacity = currentTestimonialPage >= 0 ? '0.5' : '1';
+                    nextBtn.style.opacity = currentTestimonialPage <= -totalPages ? '0.5' : '1';
+                }
+            }
+
+            window.changeTestimonialSlide = function(direction) {
+                updateTestimonialsPerView();
+                const totalPages = Math.ceil(totalTestimonials / testimonialsPerView) - 1;
+                
+                currentTestimonialPage -= direction; // Reverse direction for RTL
+                
+                // Clamp the page
+                if (currentTestimonialPage > 0) {
+                    currentTestimonialPage = 0;
+                } else if (currentTestimonialPage < -totalPages) {
+                    currentTestimonialPage = -totalPages;
+                }
+                
+                showTestimonialSlide();
+            };
+
+            // Initialize testimonials slider
+            function initTestimonialsSlider() {
+                const testimonialCards = document.querySelectorAll('.testimonial-card');
+                totalTestimonials = testimonialCards.length;
+                const slidesContainer = document.getElementById('testimonialsSlides');
+                
+                if (slidesContainer && testimonialCards.length > 0) {
+                    updateTestimonialsPerView();
+                    currentTestimonialPage = 0;
+                    showTestimonialSlide();
+                }
+            }
+
+            // Initialize testimonials slider on page load
+            setTimeout(function() {
+                initTestimonialsSlider();
+            }, 100);
+
+            // Handle window resize for testimonials
+            window.addEventListener('resize', function() {
+                initTestimonialsSlider();
+            });
         });
+
+        // Company Info Card Toggle
+        function toggleInfoCard(clickedCard) {
+            // If the clicked card is already active, don't change anything
+            if (clickedCard.classList.contains('active')) {
+                return;
+            }
+            
+            const allCards = document.querySelectorAll('.info-card');
+            
+            // Remove active class from all cards
+            allCards.forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Add active class to clicked card
+            clickedCard.classList.add('active');
+        }
     </script>
 @endsection

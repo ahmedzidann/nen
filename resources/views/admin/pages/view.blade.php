@@ -13,7 +13,7 @@
         <!--end breadcrumb-->
         <hr />
         <input type="hidden" id="{{ $viewTable }}" value="{{ app()->getLocale() }}">
-        <x-admin.form.pages-filter :subparents="$sub_parents" :parents="$parents" :route="$allPage"></x-admin.form.pages-filter>
+        <x-admin.form.pages-filter :subparents="$sub_parents" :parents="$parents" :route="$routeCreate"></x-admin.form.pages-filter>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="yajra-datatable"

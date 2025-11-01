@@ -11315,7 +11315,8 @@ certifications-section .btn-outline {
 .accordion-section,
 .faq-section,
 .team-section,
-.modern-cards-section {
+.modern-cards-section,
+.process-section {
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     padding-left: calc(50vw - 50%);
@@ -11324,20 +11325,12 @@ certifications-section .btn-outline {
 
 /* Enhanced Background Patterns */
 .features-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: #ffffff;
     position: relative;
 }
 
 .features-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(153, 0, 0, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(153, 0, 0, 0.02) 0%, transparent 50%);
-    z-index: 0;
+    display: none;
 }
 
 .features-section .container {
@@ -11691,7 +11684,6 @@ certifications-section .btn-outline {
 
 /* Team Section */
 .team-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
 }
 
@@ -11702,11 +11694,11 @@ certifications-section .btn-outline {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
+    /* background:
         radial-gradient(circle at 20% 20%, rgba(153, 0, 0, 0.05) 0%, transparent 40%),
         radial-gradient(circle at 80% 30%, rgba(153, 0, 0, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 40% 70%, rgba(153, 0, 0, 0.04) 0%, transparent 45%),
-        radial-gradient(circle at 90% 80%, rgba(153, 0, 0, 0.02) 0%, transparent 60%);
+        radial-gradient(circle at 90% 80%, rgba(153, 0, 0, 0.02) 0%, transparent 60%); */
     z-index: 0;
     animation: floatBackground 20s ease-in-out infinite;
 }
@@ -12237,7 +12229,8 @@ certifications-section .btn-outline {
     .accordion-section,
     .faq-section,
     .team-section,
-    .modern-cards-section {
+    .modern-cards-section,
+    .process-section {
         margin-left: calc(-50vw + 50%);
         margin-right: calc(-50vw + 50%);
         padding-left: calc(50vw - 50%);
@@ -12306,7 +12299,8 @@ certifications-section .btn-outline {
     .accordion-section,
     .faq-section,
     .team-section,
-    .modern-cards-section {
+    .modern-cards-section,
+    .process-section {
         margin-left: calc(-50vw + 50%);
         margin-right: calc(-50vw + 50%);
         padding-left: 15px;
@@ -12318,7 +12312,8 @@ certifications-section .btn-outline {
     .accordion-section::before,
     .faq-section::before,
     .team-section::before,
-    .modern-cards-section::before {
+    .modern-cards-section::before,
+    .process-section::before {
         opacity: 0.5;
     }
 
@@ -12382,37 +12377,335 @@ certifications-section .btn-outline {
 }
 
 /* ===========================
-   Process Cards Section
+   CTA (Call to Action) Section
    =========================== */
-.process-section {
+.cta-section {
+    position: relative;
+    padding: 4rem 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    overflow: hidden;
+    border-bottom: 1px solid #80808024;
+}
+
+
+.cta-card {
+    background: var(--main-color);
+    border-radius: 24px;
+    padding: 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+}
+
+
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.cta-card .row {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.cta-title {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+}
+
+.cta-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.cta-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cta-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    font-size: 1.05rem;
+}
+
+.cta-features li i {
+    color: #2ea7db;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    position: relative;
+    animation: iconBounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(46, 167, 219, 0.4));
+}
+
+.cta-features li:nth-child(1) i {
+    animation-delay: 0s;
+}
+
+.cta-features li:nth-child(2) i {
+    animation-delay: 0.5s;
+}
+
+.cta-features li:nth-child(3) i {
+    animation-delay: 1s;
+}
+
+/* Icon Bounce Animation */
+@keyframes iconBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.1);
+    }
+}
+
+.cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.cta-btn-primary {
+    background: white;
+    color: var(--main-color);
     position: relative;
     overflow: hidden;
 }
 
+.cta-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(46, 167, 219, 0.15);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-btn-primary:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(46, 167, 219, 0.3);
+    color: var(--main-color);
+}
+
+.cta-btn-primary i,
+.cta-btn-primary span {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.cta-btn-secondary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-btn-secondary:hover {
+    background: white;
+    color: var(--main-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn-secondary i,
+.cta-btn-secondary span {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.cta-note i {
+    font-size: 1rem;
+}
+
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .cta-section {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding-left: calc(50vw - 50%);
+        padding-right: calc(50vw - 50%);
+    }
+}
+
+@media (max-width: 991px) {
+    .cta-card {
+        padding: 3rem 2.5rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+
+    .cta-description {
+        font-size: 1rem;
+    }
+
+    .cta-actions {
+        margin-top: 2rem;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .cta-section {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .cta-card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .cta-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-description {
+        font-size: 0.95rem;
+    }
+
+    .cta-features li {
+        font-size: 0.95rem;
+    }
+
+    .cta-btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ===========================
+   Process Cards Section
+   =========================== */
+.process-section {
+    background: linear-gradient(135deg, #f9fafb 0%, #f0f2f5 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Gradient Overlay */
 .process-section::before {
     content: '';
     position: absolute;
-    top: -100px;
-    left: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(var(--main-color-rgb), 0.08) 0%, transparent 70%);
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 25% 25%, rgba(153, 0, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(46, 167, 219, 0.03) 0%, transparent 50%);
     z-index: 0;
-    animation: float 8s ease-in-out infinite;
 }
 
+/* Decorative Circle Top Right */
 .process-section::after {
     content: '';
     position: absolute;
-    bottom: -150px;
-    right: -150px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--sec-color-rgb), 0.06) 0%, transparent 70%);
+    top: 8%;
+    right: 3%;
+    width: 190px;
+    height: 190px;
+    background: linear-gradient(135deg, rgba(153, 0, 0, 0.06) 0%, rgba(153, 0, 0, 0.03) 100%);
+    border: 2px solid rgba(153, 0, 0, 0.1);
     border-radius: 50%;
     z-index: 0;
-    animation: float 10s ease-in-out infinite reverse;
+    animation: rotateCircle 35s linear infinite;
+    pointer-events: none;
 }
 
 .process-section .container {
@@ -12420,48 +12713,66 @@ certifications-section .btn-outline {
     z-index: 1;
 }
 
+/* Decorative Circle Bottom Left */
 .process-section .container::before {
     content: '';
     position: absolute;
-    top: 50%;
-    right: 10%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(var(--main-color-rgb), 0.05) 0%, transparent 70%);
+    bottom: 8%;
+    left: 3%;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, rgba(46, 167, 219, 0.05) 0%, rgba(46, 167, 219, 0.02) 100%);
+    border: 2px solid rgba(46, 167, 219, 0.08);
     border-radius: 50%;
-    z-index: -1;
-    animation: float 12s ease-in-out infinite;
+    z-index: 0;
+    animation: rotateCircle 28s linear infinite reverse;
+    pointer-events: none;
 }
 
+/* Decorative Circle Middle Right */
 .process-section .container::after {
     content: '';
     position: absolute;
-    top: 20%;
-    left: 5%;
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(var(--sec-color-rgb), 0.04) 0%, transparent 70%);
+    top: 45%;
+    right: 5%;
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(135deg, rgba(153, 0, 0, 0.04) 0%, rgba(153, 0, 0, 0.02) 100%);
+    border: 2px solid rgba(153, 0, 0, 0.07);
     border-radius: 50%;
-    z-index: -1;
-    animation: float 15s ease-in-out infinite reverse;
+    z-index: 0;
+    animation: rotateCircle 42s linear infinite;
+    pointer-events: none;
 }
 
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translate(0, 0);
+@keyframes rotateCircle {
+    0% {
+        transform: rotate(0deg) scale(1);
     }
 
     50% {
-        transform: translate(30px, 30px);
+        transform: rotate(180deg) scale(1.1);
     }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+/* Process Cards Section */
+.process-cards-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 }
 
 .process-card {
     background: white;
     border-radius: 16px;
-    padding: 25px 20px;
+    padding: 30px 25px;
     text-align: center;
     position: relative;
     transition: all 0.3s ease;
@@ -12474,6 +12785,69 @@ certifications-section .btn-outline {
     transform: translateY(-8px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-color: var(--main-color);
+}
+
+/* Process Badge */
+.process-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--main-color) 0%, #c1282a 100%);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(153, 0, 0, 0.2);
+}
+
+/* Process Icon */
+.process-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.process-card:hover .process-icon {
+    background: linear-gradient(135deg, var(--main-color) 0%, #c1282a 100%);
+    transform: scale(1.1) rotateY(360deg);
+}
+
+.process-icon i {
+    font-size: 2.2rem;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.process-card:hover .process-icon i {
+    color: white;
+}
+
+/* Process Title */
+.process-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1d2939;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* Process Description */
+.process-description {
+    color: #667085;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
 }
 
 .process-number-badge {
@@ -12540,9 +12914,7 @@ certifications-section .btn-outline {
    =========================== */
 .timeline-wrapper {
     position: relative;
-    max-width: 1000px;
     margin: 0 auto;
-    padding: 3rem 1rem;
 }
 
 /* Center Vertical Line */
@@ -12637,32 +13009,6 @@ certifications-section .btn-outline {
     border-color: var(--main-color);
 }
 
-/* Connector Line from Number to Content - Right Side */
-.timeline-item.right .timeline-content::before {
-    content: '';
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 97px;
-    height: 6px;
-    background: var(--main-color);
-    z-index: -1;
-}
-
-/* Connector Line from Number to Content - Left Side */
-.timeline-item.left .timeline-content::before {
-    content: '';
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 97px;
-    height: 6px;
-    background: var(--main-color);
-    z-index: -1;
-}
-
 /* Timeline Icon */
 .timeline-icon {
     width: 55px;
@@ -12732,6 +13078,8 @@ certifications-section .btn-outline {
 @media (max-width: 991px) {
     .timeline-line {
         left: 40px;
+        top: 145px !important;
+        bottom: 145px !important;
     }
 
     .timeline-item {
@@ -12764,16 +13112,21 @@ certifications-section .btn-outline {
         width: 20px;
     }
 
-    .process-section::before,
     .process-section::after {
-        width: 200px;
-        height: 200px;
+        width: 160px;
+        height: 160px;
+        top: 5%;
+        right: 2%;
     }
 
-    .process-section .container::before,
+    .process-section .container::before {
+        width: 130px;
+        height: 130px;
+    }
+
     .process-section .container::after {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
 }
 
@@ -12826,23 +13179,26 @@ certifications-section .btn-outline {
     }
 
     .process-section::before {
-        top: -50px;
-        left: -50px;
-        width: 150px;
-        height: 150px;
+        opacity: 0.6;
     }
 
     .process-section::after {
-        bottom: -75px;
-        right: -75px;
-        width: 200px;
-        height: 200px;
+        width: 120px;
+        height: 120px;
+        top: 4%;
+        right: 1%;
     }
 
-    .process-section .container::before,
-    .process-section .container::after {
+    .process-section .container::before {
         width: 100px;
         height: 100px;
+        bottom: 5%;
+    }
+
+    .process-section .container::after {
+        width: 90px;
+        height: 90px;
+        display: none;
     }
 }
 
@@ -12850,9 +13206,13 @@ certifications-section .btn-outline {
    Testimonials Section
    =========================== */
 .testimonials-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
     overflow: visible;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 }
 
 .testimonials-slider-container {
@@ -13077,6 +13437,7 @@ certifications-section .btn-outline {
 @media (max-width: 768px) {
     .testimonials-slider-container {
         padding: 10px 0;
+        max-width: 100%;
     }
 
     .testimonial-card {
@@ -15070,7 +15431,12 @@ certifications-section .btn-outline {
    Company Info Section with Image
    ============================================= */
 .company-info-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 }
 
 .company-image-wrapper {
@@ -15145,10 +15511,6 @@ certifications-section .btn-outline {
     transition: all 0.3s ease;
 }
 
-/* Non-Active State - White Background */
-.info-card {
-    background: #ffffff;
-}
 
 .info-card .info-icon-wrapper i {
     color: #666666;
@@ -15232,8 +15594,12 @@ certifications-section .btn-outline {
    Services Section Grid
    ============================================= */
 .services-section {
-    background: #ffffff;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 }
 
 .services-grid {
@@ -15368,12 +15734,12 @@ certifications-section .btn-outline {
 
 .secondary-design-image {
     position: absolute;
-    inset-block-end: -60px;
     inset-inline-end: -60px;
     width: 45%;
     z-index: 3;
     filter: grayscale(100%);
     height: 40%;
+    inset-block-end: 80px;
 }
 
 .secondary-design-image img {
@@ -15521,7 +15887,7 @@ certifications-section .btn-outline {
 @media (max-width: 991px) {
     .design-content {
         padding-inline-start: 0;
-        margin-top: 3rem;
+        margin-top: 8rem;
     }
 
     .design-title {
@@ -15612,4 +15978,121 @@ certifications-section .btn-outline {
 .rtl .timeline-dot::after,
 [dir="rtl"] .timeline-dot::after {
     transform: translateY(-50%) scaleX(-1);
+}
+
+/* RTL Full Width Sections Fix */
+.rtl .testimonials-section,
+.rtl .services-section,
+.rtl .process-cards-section,
+.rtl .company-info-section,
+.rtl .website-design-section,
+.rtl .work-timeline-section,
+.rtl .image-text-section-no-bg,
+[dir="rtl"] .testimonials-section,
+[dir="rtl"] .services-section,
+[dir="rtl"] .process-cards-section,
+[dir="rtl"] .company-info-section,
+[dir="rtl"] .website-design-section,
+[dir="rtl"] .work-timeline-section,
+[dir="rtl"] .image-text-section-no-bg {
+    margin-left: 0;
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+}
+
+/* RTL Button Arrow Fix */
+.rtl .btn-discover i,
+[dir="rtl"] .btn-discover i {
+    transform: scaleX(-1);
+    display: flex;
+}
+
+.rtl .btn-discover:hover i,
+[dir="rtl"] .btn-discover:hover i {
+    transform: scaleX(-1) translateX(-3px);
+}
+
+/* Responsive Fixes for Mobile */
+@media (max-width: 991px) {
+
+    /* Keep full width sections on mobile with adjusted padding */
+    .testimonials-section,
+    .services-section,
+    .process-cards-section,
+    .company-info-section,
+    .website-design-section,
+    .work-timeline-section,
+    .image-text-section-no-bg {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100vw;
+    }
+
+    .rtl .testimonials-section,
+    .rtl .services-section,
+    .rtl .process-cards-section,
+    .rtl .company-info-section,
+    .rtl .website-design-section,
+    .rtl .work-timeline-section,
+    .rtl .image-text-section-no-bg,
+    [dir="rtl"] .testimonials-section,
+    [dir="rtl"] .services-section,
+    [dir="rtl"] .process-cards-section,
+    [dir="rtl"] .company-info-section,
+    [dir="rtl"] .website-design-section,
+    [dir="rtl"] .work-timeline-section,
+    [dir="rtl"] .image-text-section-no-bg {
+        margin-left: 0;
+        margin-right: calc(-50vw + 50%);
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Hide absolute decorations on mobile */
+    .image-decoration,
+    .features-section::after,
+    .features-section .container::before {
+        display: none !important;
+    }
+
+    /* Fix container overflow */
+    .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Further adjustments for very small screens */
+    .image-text-section-no-bg,
+    .company-info-section,
+    .website-design-section,
+    .work-timeline-section,
+    .testimonials-section {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* Stack images above text */
+    .image-wrapper-unified-small,
+    .company-image-wrapper,
+    .design-images-wrapper {
+        margin-bottom: 2rem;
+        max-height: 300px;
+    }
+
+    /* Reduce spacing */
+    section.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    section.py-4 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
 }

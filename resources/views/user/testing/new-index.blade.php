@@ -459,211 +459,6 @@
             </div>
         </div>
     </section>
-    <section class="testimonials-section py-5">
-        <div class="container">
-            <div class="text-center mb-3 w-100" data-aos="fade-down">
-                <h2 class="global-title">{{ __('What Our Clients Say') }}</h2>
-                <div class="under-title-vector">
-                    <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
-                </div>
-                <p class="text-gray500 mt-3 text-start">Real feedback from satisfied clients who trust our services</p>
-            </div>
-
-            <div class="testimonials-slider-container">
-                <div class="row g-4 testimonials-slides" id="testimonialsSlides">
-                    <!-- Testimonial 1 -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">
-                                <i class="bi bi-quote"></i>
-                            </div>
-                            <div class="stars-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Outstanding testing services! The team was professional, thorough, and delivered 
-                                exceptional results. Our application quality improved significantly."
-                            </p>
-                            <div class="client-info">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=85" 
-                                         alt="Client" class="img-fluid">
-                                </div>
-                                <div class="client-details">
-                                    <h5 class="client-name">{{ __('John Anderson') }}</h5>
-                                    <p class="client-position">{{ __('CEO, TechStart Inc.') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">
-                                <i class="bi bi-quote"></i>
-                            </div>
-                            <div class="stars-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Their attention to detail is remarkable. They found critical issues we had missed 
-                                and provided valuable recommendations for improvement."
-                            </p>
-                            <div class="client-info">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=85" 
-                                         alt="Client" class="img-fluid">
-                                </div>
-                                <div class="client-details">
-                                    <h5 class="client-name">{{ __('Sarah Williams') }}</h5>
-                                    <p class="client-position">{{ __('Product Manager, Digital Solutions') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">
-                                <i class="bi bi-quote"></i>
-                            </div>
-                            <div class="stars-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Excellent communication and transparency throughout the entire testing process. 
-                                The reports were detailed and easy to understand."
-                            </p>
-                            <div class="client-info">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=85" 
-                                         alt="Client" class="img-fluid">
-                                </div>
-                                <div class="client-details">
-                                    <h5 class="client-name">{{ __('Michael Chen') }}</h5>
-                                    <p class="client-position">{{ __('CTO, Innovation Labs') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 4 -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">
-                                <i class="bi bi-quote"></i>
-                            </div>
-                            <div class="stars-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Best testing partner we've ever worked with. They helped us reduce bugs by 80% 
-                                and significantly improved our user experience."
-                            </p>
-                            <div class="client-info">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&q=85" 
-                                         alt="Client" class="img-fluid">
-                                </div>
-                                <div class="client-details">
-                                    <h5 class="client-name">{{ __('Emma Thompson') }}</h5>
-                                    <p class="client-position">{{ __('Founder, StartupHub') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 5 -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">
-                                <i class="bi bi-quote"></i>
-                            </div>
-                            <div class="stars-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Their expertise in automated testing saved us countless hours. The team is 
-                                knowledgeable, responsive, and truly committed to quality."
-                            </p>
-                            <div class="client-info">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&q=85" 
-                                         alt="Client" class="img-fluid">
-                                </div>
-                                <div class="client-details">
-                                    <h5 class="client-name">{{ __('David Martinez') }}</h5>
-                                    <p class="client-position">{{ __('Director, Enterprise Systems') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 6 -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                        <div class="testimonial-card">
-                            <div class="quote-icon">
-                                <i class="bi bi-quote"></i>
-                            </div>
-                            <div class="stars-rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Highly recommend their services! They provide comprehensive testing coverage 
-                                and helped us launch our product with confidence."
-                            </p>
-                            <div class="client-info">
-                                <div class="client-image">
-                                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&q=85" 
-                                         alt="Client" class="img-fluid">
-                                </div>
-                                <div class="client-details">
-                                    <h5 class="client-name">{{ __('Lisa Johnson') }}</h5>
-                                    <p class="client-position">{{ __('VP Engineering, CloudTech') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonials Navigation Arrows -->
-                <div class="testimonials-navigation-arrows">
-                    <button class="testimonials-nav-btn prev-testimonial-btn" onclick="changeTestimonialSlide(-1)">
-                        <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="testimonials-nav-btn next-testimonial-btn" onclick="changeTestimonialSlide(1)">
-                        <i class="bi bi-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Section: How We Work Timeline -->
     <section class="work-timeline-section py-5">
@@ -1392,6 +1187,212 @@
             </div>
         </div>
     </section>
+        <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="text-center mb-3 w-100" data-aos="fade-down">
+                <h2 class="global-title">{{ __('What Our Clients Say') }}</h2>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
+                </div>
+                <p class="text-gray500 mt-3 text-start">Real feedback from satisfied clients who trust our services</p>
+            </div>
+
+            <div class="testimonials-slider-container">
+                <div class="row g-4 testimonials-slides" id="testimonialsSlides">
+                    <!-- Testimonial 1 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Outstanding testing services! The team was professional, thorough, and delivered 
+                                exceptional results. Our application quality improved significantly."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('John Anderson') }}</h5>
+                                    <p class="client-position">{{ __('CEO, TechStart Inc.') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Their attention to detail is remarkable. They found critical issues we had missed 
+                                and provided valuable recommendations for improvement."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Sarah Williams') }}</h5>
+                                    <p class="client-position">{{ __('Product Manager, Digital Solutions') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Excellent communication and transparency throughout the entire testing process. 
+                                The reports were detailed and easy to understand."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Michael Chen') }}</h5>
+                                    <p class="client-position">{{ __('CTO, Innovation Labs') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Best testing partner we've ever worked with. They helped us reduce bugs by 80% 
+                                and significantly improved our user experience."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Emma Thompson') }}</h5>
+                                    <p class="client-position">{{ __('Founder, StartupHub') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Their expertise in automated testing saved us countless hours. The team is 
+                                knowledgeable, responsive, and truly committed to quality."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('David Martinez') }}</h5>
+                                    <p class="client-position">{{ __('Director, Enterprise Systems') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="testimonial-card">
+                            <div class="quote-icon">
+                                <i class="bi bi-quote"></i>
+                            </div>
+                            <div class="stars-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "Highly recommend their services! They provide comprehensive testing coverage 
+                                and helped us launch our product with confidence."
+                            </p>
+                            <div class="client-info">
+                                <div class="client-image">
+                                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&q=85" 
+                                         alt="Client" class="img-fluid">
+                                </div>
+                                <div class="client-details">
+                                    <h5 class="client-name">{{ __('Lisa Johnson') }}</h5>
+                                    <p class="client-position">{{ __('VP Engineering, CloudTech') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials Navigation Arrows -->
+                <div class="testimonials-navigation-arrows">
+                    <button class="testimonials-nav-btn prev-testimonial-btn" onclick="changeTestimonialSlide(-1)">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="testimonials-nav-btn next-testimonial-btn" onclick="changeTestimonialSlide(1)">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
         <!-- Section: Client Testimonials -->
 

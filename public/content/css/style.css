@@ -12761,7 +12761,6 @@ certifications-section .btn-outline {
 
 /* Process Cards Section */
 .process-cards-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
@@ -15709,8 +15708,12 @@ certifications-section .btn-outline {
    Website Design Section
    ============================================= */
 .website-design-section {
-    background: #ffffff;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
 }
 
 .design-images-wrapper {

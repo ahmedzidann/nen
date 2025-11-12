@@ -130,4 +130,5 @@
   'Checkout' => 'Checkout',
   'Add to Bag' => 'Add to Bag',
   'Register Steps' => 'Register Steps',
+  'We\'re here to help! Whether you have questions, feedback, or need support, reach out to us, and we\'ll be happy to assist you.' => 'We re here to help! Whether you have questions  feedback  or need support  reach out to us  and we ll be happy to assist you.',
 );

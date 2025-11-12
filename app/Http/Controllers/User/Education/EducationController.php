@@ -47,9 +47,6 @@ class EducationController extends Controller
            $country->flag_url = $country->getFirstMediaUrl('flag');
           });
          });
-      
-        
-        
 
             return view('user.education.certificates',['partner'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }

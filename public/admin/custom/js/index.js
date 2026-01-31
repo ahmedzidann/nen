@@ -46,7 +46,7 @@ function bulkDelete(table, deleteUrl) {
         $('.blogs_checkbox:checked').each(function () {
             ids.push($(this).val());
         });
-  console.log(ids);
+ 
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -57,6 +57,7 @@ function bulkDelete(table, deleteUrl) {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (ids.length > 0) {
+               
                 if (result.isConfirmed) {
                     $.ajax({
                         url: deleteUrl,
@@ -68,6 +69,7 @@ function bulkDelete(table, deleteUrl) {
                             ids: ids
                         },
                         success: function (response) {
+                              
                             Swal.fire(
                                 'Deleted!',
                                 'Your item has been deleted.',

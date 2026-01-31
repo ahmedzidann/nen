@@ -51,6 +51,25 @@
                                                 <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name first --}}
+
+                                                  <div class="col-md-12 mb-4">
+                                                   <label
+                                                    class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Section Design')) }}
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                                <select class="form-select w-100" id="section_id"
+                                                    data-placeholder="Choose Category" name="section_id">
+
+                                                    <option selected="" value="" disabled selected>
+                                                        {{ ucfirst(TranslationHelper::translate('Select design_section')) }}
+                                                    </option>
+                                                    @foreach ($sections as $section)
+                                                        
+                                                        <option value="{{ $section->id }}"
+                                                            >
+                                                            {{ $section->title }}</option>
+                                                    @endforeach
+                                                </select> 
+                                                  </div>
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="*" class="form-label"
                                                         name="Title  {{ $translationFirst->name }}">
@@ -105,6 +124,34 @@
                                                     </div>
                                                 @endif
                                                 {{-- ----------end image --}}
+
+                                                  <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">Title First Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="text" name="{{ 'first_button' . '[' . $translationFirst->key . ']' }}" value="" class="form-control"/>
+                                            </div>
+
+                                             <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">URl First Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="url" name="url_first_button" value="" class="form-control"/>
+                                            </div>
+
+                                            <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">Title second Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="text" name="{{ 'second_button' . '[' . $translationFirst->key . ']' }}" value="" class="form-control"/>
+                                            </div>
+
+                                             <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">URl Second Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="url" name="url_second_button" value="" class="form-control"/>
+                                            </div>
                                                 {{-- ----------sort first --}}
                                                 @if (Request()->category == 'about' && Request()->subcategory == 'identity' && Request()->item == 'section-one')
                                                 @else
@@ -120,6 +167,10 @@
                                                     </div>
                                                 @endif
                                                 {{-- ----------sort end --}}
+
+
+                                                 
+
                                                 {{-- ----------status first --}}
                                                 <div class="col-md-6 mb-4">
                                                     <x-admin.form.label-first class="form-label"

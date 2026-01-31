@@ -4,6 +4,7 @@ namespace App\ViewModels\TestingView;
 use App\Models\Page;
 use App\Models\StaticTable;
 use App\Models\Testing;
+use App\Models\TestingTechnologySection;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
 
@@ -20,9 +21,11 @@ class TestingViewModel extends ViewModel
     public  $SelectPages;
     public  $DataFull;
     public  $editRoute;
+    public  $sections;
 
     public function __construct($StaticTable = null)
     {
+       
         $this->StaticTable = is_null($StaticTable) ? new Testing(old()) : $StaticTable;
         $this->type = is_null($StaticTable)?'Create':'Edit' ;
         $this->translation = TranslationKey::get();
@@ -34,7 +37,7 @@ class TestingViewModel extends ViewModel
 
         $this->viewTable = 'Testing';
         $a = Page::where('slug',Request()->category)->first()->childe->where('slug',Request()->subcategory);
-        // dd($a);
+        $this->sections= TestingTechnologySection::where('main_category_id',Request()->category)->where('sub_category_id',Request()->subcategory)->get();
         $this->allPage = $a->first()->childe;
 
         if(!empty(Request()->category) && !empty(Request()->subcategory) && !empty(Request()->item)){

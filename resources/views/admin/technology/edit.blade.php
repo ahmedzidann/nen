@@ -55,6 +55,25 @@
                                                         value="{{ Request()->item ?? '' }}">
                                                     {{-- ----------end static --}}
                                                     {{-- ----------name first --}}
+
+                                                         <div class="col-md-12 mb-4">
+                                                   <label
+                                                    class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Section Design')) }}
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                                <select class="form-select w-100" id="section_id"
+                                                    data-placeholder="Choose Category" name="section_id">
+
+                                                    <option selected="" value="" disabled selected>
+                                                        {{ ucfirst(TranslationHelper::translate('Select design_section')) }}
+                                                    </option>
+                                                    @foreach ($sections as $section)
+                                                        
+                                                        <option value="{{ $section->id }}"
+                                                            {{  $StaticTable->section_id== $section->id ?'selected':""  }}>
+                                                            {{ $section->title }}</option>
+                                                    @endforeach
+                                                </select> 
+                                                  </div>
                                                     <div class="col-md-12 mb-4">
                                                         <x-admin.form.label-first star="*" class="form-label"
                                                             name="Title  {{ $item->name }}"></x-admin.form.label-first>
@@ -86,26 +105,56 @@
                                                         </x-admin.form.label-end>
 
                                                     </div>
+                                                     <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">Title First Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="text" name="{{'first_button' . '[' . $item->key . ']' }}" value="{{$StaticTable->getTranslation('first_button', $item->key)}}" class="form-control"/>
+                                            </div>
+
+                                            
+
+                                            <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">Title second Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="text" name="{{'second_button' . '[' . $item->key . ']' }}" value="{{$StaticTable->getTranslation('second_button', $item->key)}}" class="form-control"/>
+                                            </div>
+
                                                     {{-- ----------Description end --}}
                                                     {{-- ----------first image --}}
                                                     @if (Request()->category == 'about' && Request()->subcategory == 'identity' && Request()->item == 'section-three')
                                                     @else
                                                         @if ($loop->first)
+
+                                                           <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">URl Second Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                                <input type="url" name="url_second_button" value="{{$StaticTable->url_second_button }}" class="form-control"/>
+                                               </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">URl First Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="url" name="url_first_button" value="{{$StaticTable->url_first_button }}" class="form-control"/>
+                                            </div>
                                                             <div class="col-md-12 mb-4">
                                                                 <x-admin.form.label-first star="*"
                                                                     class="col-sm-3 col-form-label"
                                                                     name="File Upload Image">
                                                                 </x-admin.form.label-first>
                                                                 <div class="col-sm-9">
-                                                                    <x-admin.form.input :model="$StaticTable"
-                                                                        nameImage="StaticTable" old="image"
-                                                                        name="image" type="file" readonly=""
-                                                                        placeholder="Please Enter Image" id="image"
+                                                                   
+                                                                    <input type="file" data-default-file="{{ asset('storage/technology/'.$StaticTable->image) }}" name="image" placeholder="Please Enter Image" id="image"
                                                                         class="dropify" DataHeight="300"
-                                                                        accept=".jpg, .png, image/jpeg, image/png">
-                                                                    </x-admin.form.input>
+                                                                        accept=".jpg, .png, image/jpeg, image/png"/>
                                                                 </div>
                                                             </div>
+
+
+
                                                         @endif
                                                     @endif
                                                     {{-- ----------end image --}}

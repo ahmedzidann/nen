@@ -65,7 +65,7 @@ class TechnologyResourceController extends Controller
     public function store(TechnologyRequest $request)
     // public function store(Request $request)
     {  
-       // dd($request);
+      
         if ($request->item == 'section-two'){
             $validator = $request->validationStoretwo();
         }else{

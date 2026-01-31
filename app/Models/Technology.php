@@ -20,6 +20,8 @@ class Technology extends Model implements HasMedia
     'title',
     'subtitle',
     'description',
+    'first_button',
+    'second_button',
   ];
 
   protected $fillable = [
@@ -33,6 +35,11 @@ class Technology extends Model implements HasMedia
     'sort',
     'show_in_home',
     'image',
+    'first_button',
+    'second_button',
+    'section_id',
+    'url_first_button',
+    'url_second_button',
   ];
   const STATUS = ['Active', 'Not Active'];
   public function Page()

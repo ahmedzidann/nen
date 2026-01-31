@@ -13,6 +13,7 @@ class BlogController extends Controller
     public function __invoke()
     {
         $categories = MediaCategory::with('blogs')->latest()->get();
+        //dd($categories );
         $advertisements = Advertisement::latest()->get();
         return view('user.blogs.index', compact('categories', 'advertisements'));
     }       

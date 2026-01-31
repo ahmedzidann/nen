@@ -47,7 +47,12 @@ class TechnologyRequest extends FormRequest
             // "file" =>['nullable','array'],
             // "file.*" =>['nullable','file'],
             // "file_title.en.*" =>['nullable','string','required_with:file.*'],
-            "video"=>'nullable|mimetypes:video/mp4,video/quicktime'
+            "video"=>'nullable|mimetypes:video/mp4,video/quicktime',
+            'first_button.*'=>['nullable'],
+            'second_button.*'=>['nullable'],
+            'section_id'=>['required'],
+            'url_first_button'=>['nullable'],
+            'url_second_button'=>['nullable'],
         ]);
     }
     public function validationStoretwo()
@@ -90,6 +95,11 @@ class TechnologyRequest extends FormRequest
             "item"  =>['required'],
             "subcategory"  =>['required'],
             'show_in_home' => 'required|in:0,1',
+            'first_button.*'=>['nullable'],
+            'second_button.*'=>['nullable'],
+            'section_id'=>['required'],
+            'url_first_button'=>['nullable'],
+            'url_second_button'=>['nullable'],
         ]);
     }
 
@@ -122,7 +132,10 @@ class TechnologyRequest extends FormRequest
             'status' => ['nullable'],
             "item"  =>['required'],
             "subcategory"  =>['required'],
-            'show_in_home' => 'required|in:0,1',
+          //  'show_in_home' => 'required|in:0,1',
+            'first_button.*'=>['nullable'],
+            'second_button.*'=>['nullable'],
+           
 
         ]);
     }

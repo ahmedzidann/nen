@@ -20,6 +20,9 @@ class Testing extends Model implements HasMedia
     'title',
     'mini_desc',
     'description',
+    'first_button',
+    'second_button',
+    
   ];
 
   protected $fillable = [
@@ -31,6 +34,11 @@ class Testing extends Model implements HasMedia
     'childe_pages_id',
     'sort',
     'show_in_home',
+    'first_button',
+    'second_button',
+    'section_id',
+    'url_first_button',
+    'url_second_button',
   ];
   const STATUS = ['Active', 'Not Active'];
   public function Page()

@@ -6,6 +6,7 @@ use App\Models\Technology;
 use App\Models\StaticTable;
 use App\Models\TranslationKey;
 use Spatie\ViewModels\ViewModel;
+use App\Models\TestingTechnologySection;
 
 class TechnologyViewModel extends ViewModel
 {
@@ -19,6 +20,7 @@ class TechnologyViewModel extends ViewModel
     public  $allPage;
     public  $SelectPages;
     public  $DataFull;
+     public  $sections;
 
     public function __construct($StaticTable = null)
     {
@@ -28,6 +30,7 @@ class TechnologyViewModel extends ViewModel
         $this->translationFirst = TranslationKey::first();
         $this->routeCreate = route('admin.technology.create',Request()->query());
         $this->routeView = route('admin.technology.index',Request()->query());
+        $this->sections= TestingTechnologySection::where('main_category_id',Request()->category)->where('sub_category_id',Request()->subcategory)->get();
         $this->viewTable = 'Technology';
         $this->allPage = Page::get();
         if(!empty(Request()->category) && !empty(Request()->subcategory)){

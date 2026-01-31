@@ -77,7 +77,30 @@
 
                                                 {{-- ----------end Pages --}}
                                                 {{-- ----------name first --}}
-                                                <div class="col-md-12 mb-4">
+
+                                                  <div class="col-md-12 mb-4">
+                                                   <label
+                                                    class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Section Design')) }}
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                                <select class="form-select w-100" id="section_id"
+                                                    data-placeholder="Choose Category" name="section_id">
+
+                                                    <option selected="" value="" disabled selected>
+                                                        {{ ucfirst(TranslationHelper::translate('Select design_section')) }}
+                                                    </option>
+                                                    @foreach ($sections as $section)
+                                                        
+                                                        <option value="{{ $section->id }}"
+                                                            >
+                                                            {{ $section->title }}</option>
+                                                    @endforeach
+                                                </select> 
+                                                  </div>
+
+
+
+
+                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first star="*" class="form-label"
                                                         name="Title  {{ $translationFirst->name }}">
                                                     </x-admin.form.label-first>
@@ -119,6 +142,40 @@
                                                         name="please enter Description  {{ $translationFirst->name }}">
                                                     </x-admin.form.label-end>
                                                 </div>
+
+
+               
+
+                                            <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">Title First Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="text" name="{{ 'first_button' . '[' . $translationFirst->key . ']' }}" value="" class="form-control"/>
+                                            </div>
+
+                                             <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">URl First Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="url" name="url_first_button" value="" class="form-control"/>
+                                            </div>
+
+                                            <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">Title second Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="text" name="{{ 'second_button' . '[' . $translationFirst->key . ']' }}" value="" class="form-control"/>
+                                            </div>
+
+                                             <div class="col-md-6 mb-4">
+                                                <label
+                                                    class="{{ $class ?? 'form-label' }}">URl Second Button
+                                                    <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
+                                              <input type="url" name="url_second_button" value="" class="form-control"/>
+                                            </div>
+
+
+
                                                 {{-- ----------Description end --}}
                                                 {{-- ----------first image --}}
                                                 {{-- @if ($loop->first) --}}
@@ -137,7 +194,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12 mb-4">
+                                                <!-- <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first class="col-sm-3 col-form-label"
                                                         name="File Upload Video">
                                                     </x-admin.form.label-first>
@@ -149,159 +206,12 @@
                                                             accept=".mp4, .mov, video/mp4, video/quicktime">
                                                         </x-admin.form.input>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 {{-- @endif --}}
                                                 {{-- ----------end image --}}
                                                 {{-- @if ($loop->first) --}}
                                                 {{-- ----------status first --}}
-                                                <div class="col-md-6 mb-4">
-                                                    <x-admin.form.label-first class="form-label"
-                                                        name="Checked switch checkbox status">
-                                                    </x-admin.form.label-first>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex align-items-center gap-3">
-                                                            <div class="form-check">
-                                                                @foreach (App\Models\Page::STATUS as $status)
-                                                                    <div class="form-check">
-                                                                        <x-admin.form.radio :checked="$StaticTable->status == $status
-                                                                            ? 'checked'
-                                                                            : ''"
-                                                                            name="status" value="{{ $status }}"
-                                                                            :model="$StaticTable">
-                                                                        </x-admin.form.radio>
-                                                                        <label class="form-check-label"
-                                                                            for="bsValidation6">{{ $status }}</label>
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 mb-4">
-
-                                                    <div class="">
-                                                        <div class="col-md-12">
-                                                            <div id='inputs-container'>
-                                                                <label>links</label>
-                                                                <div id="input-template" class="input-temp"
-                                                                    style="">
-                                                                    <div class="col-md-12 mb-4 row">
-                                                                        <div class="col-md-10 row">
-                                                                            {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
-                                                                    </x-admin.form.label-first> --}}
-                                                                            <div class="col-sm-8">
-                                                                                <x-admin.form.input name="links[]"
-                                                                                    type="text" required=""
-                                                                                    placeholder="links"
-                                                                                    class="form-control valid">
-                                                                                </x-admin.form.input>
-                                                                            </div>
-                                                                            <div class="col-sm-4">
-
-                                                                                <x-admin.form.input
-                                                                                    name="{{ 'links_title' . '[' . $translationFirst->key . '][]' }}"
-                                                                                    type="text" required=""
-                                                                                    placeholder="title {{ $translationFirst->name }}"
-                                                                                    class="form-control valid">
-                                                                                </x-admin.form.input>
-                                                                            </div>
-                                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
-                                                                    </x-admin.form.label-end> --}}
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <button type="button"
-                                                                                class="btn btn-danger delete-input"
-                                                                                style="">
-                                                                                <i class="bx bxs-trash"></i>&nbsp;</button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Add more input fields as needed -->
-
-                                                                </div>
-                                                            </div>
-
-                                                            <button id="add-input" type="button"
-                                                                class="col-sm-1 btn btn-success">
-                                                                <i class='bx bx-plus'></i></i>&nbsp;
-                                                            </button>
-
-                                                        </div>
-
-
-                                                        <div class="col-md-12">
-                                                            <div id='inputs-container-file'>
-                                                                <label>file</label>
-                                                                <div id="input-template-file" class="input-temp-file"
-                                                                    style="">
-                                                                    <div class="col-md-12 mb-4 row">
-                                                                        <div class="col-md-10 row">
-                                                                            {{-- <x-admin.form.label-first star="*" class="form-label" name="Title">
-                                                                </x-admin.form.label-first> --}}
-                                                                            <div class="col-sm-8">
-                                                                                <x-admin.form.input name="file[]"
-                                                                                    type="file" required=""
-                                                                                    placeholder="file"
-                                                                                    class="form-control valid">
-                                                                                </x-admin.form.input>
-                                                                            </div>
-
-                                                                            <div class="col-sm-4">
-                                                                                <x-admin.form.input
-                                                                                    name="{{ 'file_title' . '[' . $translationFirst->key . '][]' }}"
-                                                                                    type="text" required=""
-                                                                                    placeholder="title {{ $translationFirst->name }}"
-                                                                                    class="form-control valid">
-                                                                                </x-admin.form.input>
-                                                                            </div>
-                                                                            {{-- <x-admin.form.label-end star="*" name="Please enter title">
-                                                                </x-admin.form.label-end> --}}
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <button type="button"
-                                                                                class="btn btn-danger delete-input-file">
-                                                                                <i class="bx bxs-trash"></i>&nbsp;</button>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Add more input fields as needed -->
-
-                                                                </div>
-                                                            </div>
-                                                            <button id="add-input-file" type="button"
-                                                                class="col-sm-1 btn btn-success">
-                                                                <i class='bx bx-plus'></i></i>&nbsp;</button>
-                                                        </div>
-                                                    </div>
-                                                    {{-- @endif --}}
-                                                    {{-- ----------status end --}}
-                                                    <x-admin.form.label-first class="form-label" name="SHow In Home">
-                                                    </x-admin.form.label-first>
-                                                    <div class="col-sm-9">
-                                                        <div class="d-flex align-items-center gap-3">
-                                                            <div class="form-check">
-                                                                <div class="form-check">
-                                                                    <x-admin.form.radio :checked="$StaticTable->show_in_home == true
-                                                                        ? 'checked'
-                                                                        : ''"
-                                                                        name="show_in_home" value="1"
-                                                                        :model="$StaticTable">
-                                                                    </x-admin.form.radio>
-                                                                    <label class="form-check-label"
-                                                                        for="bsValidation6">yes</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <x-admin.form.radio :checked="$StaticTable->show_in_home == false
-                                                                        ? 'checked'
-                                                                        : ''"
-                                                                        name="show_in_home" value="0"
-                                                                        :model="$StaticTable">
-                                                                    </x-admin.form.radio>
-                                                                    <label class="form-check-label"
-                                                                        for="bsValidation6">no</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               
 
                                             </div>
                                             {{-- --------hatem --}}

@@ -57,6 +57,7 @@ use App\Http\Controllers\Admin\Summary\SummaryController;
 use App\Http\Controllers\Admin\Technology\TechnologyResourceController;
 use App\Http\Controllers\Admin\Testing\TestingController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\Admin\setting_testing_technology\SettingTestingTechnologyController ;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -201,6 +202,10 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('contct-us-country/regional-representatives', RegionalRepresentativeController::class)->except('destroy');
     Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
     Route::resource('contact-us-services', ServicesController::class)->except('destroy');
+     Route::resource('setting_technology_testing', SettingTestingTechnologyController::class)->except('destroy');
+    
+      Route::post('setting_technology_testing/delete_bulck', [SettingTestingTechnologyController::class, 'bulkDelete'])->name('setting_technology_testing.delete_bulck');
+    
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
 });
 

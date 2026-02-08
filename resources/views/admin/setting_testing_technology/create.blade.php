@@ -4,6 +4,11 @@
 @endsection
 @section('cssadmin')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 @endsection
 
 @section('contentadmin')
@@ -98,11 +103,11 @@
                                               <input type="text" name="title[en]" value="" class="form-control"/>
                                             </div>
 
-                                              <div class="col-md-6">
+                                              <div class="col-md-4">
                                                 <label
                                                     class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Section Design')) }}
                                                     <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
-                                                <select class="form-select w-100" id="design_section_id"
+                                                <select class="form-select w-100" id="design_section_id" onchange="get_image();"
                                                     data-placeholder="Choose Category" name="design_section_id">
 
                                                     <option selected="" value="" disabled selected>
@@ -110,12 +115,70 @@
                                                     </option>
                                                     @foreach ($designs as $design)
                                                         
-                                                        <option value="{{ $design->id }}"
+                                                        <option value="{{ $design->id }}" data-image-src="{{ asset('content/images/design-sections/' . $design->title.'.PNG') }}"
                                                             >
                                                             {{ $design->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
+
+                                            <div class="col-md-2" style="padding-top: 32px;">
+                                               
+                                                
+
+
+<!------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------>
+
+<!-- Eye icon trigger -->
+<a href="#"
+   onclick="return false;"
+   style="display:inline-flex; align-items:center; justify-content:center;
+          width:34px; height:34px; background:#f8f9fa; border:1px solid #0d6efd;
+          border-radius:50%; color:#0d6efd; cursor:pointer; font-size:18px;"
+   data-bs-toggle="modal"
+   data-bs-target="#viewModal"
+   title="View">
+    <i class="fa-solid fa-eye"></i>
+</a>
+
+<!-- Modal -->
+<!-- Modal Preview -->
+<div class="modal fade" id="viewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:70vw;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" style="text-align:center; max-height:70vh; overflow:auto;">
+        <img id="modalImage"
+             src=""
+             alt="Preview"
+             style="max-width:100%; max-height:100%; object-fit:contain; border-radius:5px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------>
+
+
+
+
+                                               </div>
+
+
+
+
+
+                                            
                                             <div class="col-md-12">
                                                 <label
                                                     class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Description')) }}
@@ -127,14 +190,14 @@
                                                 <label
                                                     class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Image1')) }}
                                                     <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
-                                               <input type="file" name="image_1" value="" class="dropify" id="image_1"  placeholder="Please Enter Image" .jpg,="" .png,="" image="" jpeg,="" png="">
+                                               <input type="file" name="image_1" value="" class="dropify" id="image_1"  placeholder="Please Enter Image1" .jpg,="" .png,="" image="" jpeg,="" png="">
                                             </div>
 
                                             <div class="col-md-12">
                                                 <label
                                                     class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Image2')) }}
                                                     <span style="color: red">{{ $star ?? '' }}</span> </label> <br>
-                                               <input type="file" name="image_2" value="" class="dropify" id="image_2"  placeholder="Please Enter Image" .jpg,="" .png,="" image="" jpeg,="" png="">
+                                               <input type="file" name="image_2" value="" class="dropify" id="image_2"  placeholder="Please Enter Image2" .jpg,="" .png,="" image="" jpeg,="" png="">
                                             </div>
                                             
                                              <div class="col-md-6">
@@ -237,6 +300,40 @@
                 });
             });
         });
+
+        
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const select = document.getElementById('design_section_id'); // select
+    const modalImage = document.getElementById('modalImage'); // صورة المودال
+    const modal = new bootstrap.Modal(document.getElementById('viewModal')); // المودال
+
+    if(!select || !modalImage){
+        console.warn('Element not found: check your IDs!');
+        return;
+    }
+
+    // عند تغيير الاختيار في select
+    select.addEventListener('change', function() {
+        const selectedOption = select.options[select.selectedIndex];
+        const imageUrl = selectedOption ? selectedOption.getAttribute('data-image-src') : null;
+
+        if(imageUrl){
+            modalImage.src = imageUrl; // ضع الصورة في المودال
+            modal.show(); // افتح المودال مباشرة
+        } else {
+            modalImage.src = '';
+        }
+    });
+
+});
+</script>
+
+
+
+
    
 @endsection

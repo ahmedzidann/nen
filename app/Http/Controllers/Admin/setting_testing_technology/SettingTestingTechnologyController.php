@@ -59,6 +59,7 @@ class SettingTestingTechnologyController extends Controller
     {
         $categories = Page::whereNull('parent_id')->get();
         $designs= DB::table('sections_design')->get();
+        
         return view('admin.setting_testing_technology.create', compact('categories','designs'));
     }
 

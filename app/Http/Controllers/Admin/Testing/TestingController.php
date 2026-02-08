@@ -29,15 +29,16 @@ class TestingController extends Controller
         // }
 
         if (!empty($request->category) && !empty($request->subcategory)) {
-            $pages = Page::whereHas('parent', function ($q) use ($request) {
-                $q->where('slug', $request->subcategory);
-            })->get()->pluck('id')->toArray();
+           $pages = Page::where('slug', $request->subcategory)
+             ->pluck('id')
+             ->toArray();
         } elseif (!empty($request->category)) {
             $pages = Page::where('slug', $request->category)->first();
         } else {
             $pages = '';
         }
-
+     
+        
         if ($request->ajax()) {
 
             $data = Testing::whereIn('pages_id', $pages ?? [])->select('*')->latest();
@@ -86,6 +87,7 @@ class TestingController extends Controller
     {
 
         $validator = $request->validationStore();
+        
         if ($validator->fails()) {
             return response()->json([
                 'status' => 400,

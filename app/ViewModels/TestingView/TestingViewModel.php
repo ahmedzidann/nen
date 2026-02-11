@@ -37,9 +37,11 @@ class TestingViewModel extends ViewModel
 
         $this->viewTable = 'Testing';
         $a = Page::where('slug',Request()->category)->first()->childe->where('slug',Request()->subcategory);
+      
         $this->sections= TestingTechnologySection::where('main_category_id',Request()->category)->where('sub_category_id',Request()->subcategory)->get();
-        $this->allPage = $a->first()->childe;
-
+        $this->allPage = $a;
+        
+ 
         if(!empty(Request()->category) && !empty(Request()->subcategory) && !empty(Request()->item)){
             $this->SelectPages = Page::where('slug',Request()->item)->first();
         }

@@ -35,12 +35,12 @@ class TestingContoller extends Controller
     // }
 
 
-    public function index():View
+    public function index(Request $request):View
     {
         $partner = Page::findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
-
-
+        $page_id= $request->page_id;
+     
         if($partner){
             $subPartners = $partner->childe;
             $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->latest()->first();

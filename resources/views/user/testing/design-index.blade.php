@@ -88,29 +88,30 @@
         </div>
     </div>
     </div>
-     @php
-    $section_one = App\Models\TestingTechnologySection::where('design_section_id',1)->where('main_category_id',request()->segment(2))->where('sub_category_id',request()->segment(3))->first();
-    @endphp
 
     <!-- Section 1: Image Right, Text Left -->
     <section class="image-text-section-no-bg py-4 mt-3">
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="global-title mb-0">{{  $section_one->title  }}</h2>
+                    <h2 class="global-title mb-0">Innovative Testing Solutions</h2>
                     <div class="under-title-vector mb-4">
                         <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
                     </div>
                     <div>
                         <p class="section-description mb-4">
-                            {!!  $section_one->description  !!}
-                                 </p>
-                   
+                            We provide innovative and advanced testing solutions that help you improve the quality of your products and services. 
+                            Through a team of specialized experts, we guarantee the best results and the highest quality standards.
+                        </p>
+                        <p class="section-description mb-4">
+                            We use the latest technologies and tools to ensure comprehensive and effective testing for all aspects of your project.
+                            With years of experience in this field, we are your ideal partner for success.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="image-wrapper-unified-small">
-                        <img src="{{ asset('storage/setting_testing_technology/'.$section_one->image_1) }}" 
+                        <img src="{{ asset('content/images/about_img.png') }}" 
                              alt="Testing Solutions" 
                              class="img-fluid rounded-modern">
                         <div class="image-decoration"></div>

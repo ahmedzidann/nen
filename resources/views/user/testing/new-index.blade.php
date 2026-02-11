@@ -88,154 +88,16 @@
         </div>
     </div>
     </div>
-     @php
-    $section_one = App\Models\TestingTechnologySection::where('design_section_id',1)->where('main_category_id',request()->segment(2))->where('sub_category_id',request()->segment(3))->first();
-    @endphp
-
-    <!-- Section 1: Image Right, Text Left -->
-    <section class="image-text-section-no-bg py-4 mt-3">
-        <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="global-title mb-0">{{  $section_one->title  }}</h2>
-                    <div class="under-title-vector mb-4">
-                        <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
-                    </div>
-                    <div>
-                        <p class="section-description mb-4">
-                            {!!  $section_one->description  !!}
-                                 </p>
-                   
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="image-wrapper-unified-small">
-                        <img src="{{ asset('storage/setting_testing_technology/'.$section_one->image_1) }}" 
-                             alt="Testing Solutions" 
-                             class="img-fluid rounded-modern">
-                        <div class="image-decoration"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+        @include('user.testing.sections.section-one')
+        @include('user.testing.sections.section-two')
+         @include('user.testing.sections.section-three')
 
     <!-- Section: Company Info with Image -->
-    <section class="company-info-section py-0 my-4">
-        <div class="container-fluid p-0">
-            <div class="row g-0">
-                <!-- Left: Image -->
-                <div class="col-lg-6">
-                    <div class="company-image-wrapper">
-                        <img src="{{ asset('content/images/about_img.png') }}" 
-                             alt="Company Meeting" 
-                             class="img-fluid h-100 w-100 object-fit-cover">
-                    </div>
-                </div>
-                
-                <!-- Right: Info Cards -->
-                <div class="col-lg-6">
-                    <div class="company-info-cards">
-                        <!-- History Card -->
-                        <div class="info-card active align-items-center" onclick="toggleInfoCard(this)">
-                            <div class="info-icon-wrapper">
-                                <i class="bi bi-person"></i>
-                            </div>
-                            <div class="info-content">
-                                <h3 class="info-title">{{ __('History') }}</h3>
-                                <p>
-                                    Global for Integrated Business Solutions is an Egyptian company established in June 2019. 
-                                    We specialize in managing projects, marketing, advertising, employment, data verification, 
-                                    software implementation and development, managing business incubators, supporting entrepreneurship, 
-                                    and managing training and testing centers.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Vision Card -->
-                        <div class="info-card" onclick="toggleInfoCard(this)">
-                            <div class="info-icon-wrapper">
-                                <i class="bi bi-lightbulb"></i>
-                            </div>
-                            <div class="info-content">
-                                <h3 class="info-title">{{ __('Vision') }}</h3>
-                                <p>
-                                    To be the prime, respected source of business expertise for organizations seeking 
-                                    to realize the full potential of their resources and markets.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Mission Card -->
-                        <div class="info-card" onclick="toggleInfoCard(this)">
-                            <div class="info-icon-wrapper">
-                                <i class="bi bi-globe"></i>
-                            </div>
-                            <div class="info-content">
-                                <h3 class="info-title">{{ __('Mission') }}</h3>
-                                <p>
-                                    To help business organizations achieve their shareholders' objectives, attract and retain talents, 
-                                    leverage their core competencies, develop sustainable competitive advantages, 
-                                    and contribute to their economies.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Section 2: Features with Icons -->
-    <section class="features-section py-4">
-        <div class="container">
-            <div class="text-center mb-5 w-100">
-                <h2 class="global-title">{{ __('Our Key Features') }}</h2>
-                <div class="under-title-vector">
-                    <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy" alt="vector">
-                </div>
-                <p class="text-gray500 mt-3 text-start">We offer a wide range of features that make us the best choice</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                        <h4 class="feature-title">{{ __('Quality Assurance') }}</h4>
-                        <p class="feature-description">Comprehensive quality assurance for all projects</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="bi bi-speedometer2"></i>
-                        </div>
-                        <h4 class="feature-title">{{ __('Fast Performance') }}</h4>
-                        <p class="feature-description">Fast and efficient performance in execution</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="bi bi-people"></i>
-                        </div>
-                        <h4 class="feature-title">{{ __('Expert Team') }}</h4>
-                        <p class="feature-description">Team of professional experts</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="bi bi-headset"></i>
-                        </div>
-                        <h4 class="feature-title">{{ __('24/7 Support') }}</h4>
-                        <p class="feature-description">24/7 technical support</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ 
 
     <!-- Section 3: Statistics -->
     <section class="statistics-section py-4">

@@ -115,7 +115,7 @@
                                                     </option>
                                                     @foreach ($designs as $design)
                                                         
-                                                        <option value="{{ $design->id }}" data-image-src="{{ asset('content/images/design-sections/' . $design->title.'.pnd') }}"
+                                                        <option value="{{ $design->id }}" data-image-src="{{ asset('content/images/design-sections/' . $design->title.'.png') }}"
                                                             >
                                                             {{ $design->title }}</option>
                                                     @endforeach

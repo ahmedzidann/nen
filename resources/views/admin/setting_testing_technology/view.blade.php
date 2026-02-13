@@ -54,6 +54,7 @@
                                 <th>{{ TranslationHelper::translate(ucfirst('Category') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Sub Category') ?? '') }}</th>
                                  <th>{{ TranslationHelper::translate(ucfirst('Title') ?? '') }}</th>
+                                 <th>{{ TranslationHelper::translate(ucfirst('Section Number') ?? '') }}</th>
                                    <th>{{ TranslationHelper::translate(ucfirst('Sort') ?? '') }}</th>
                                 <th>{{ TranslationHelper::translate(ucfirst('Processes') ?? '') }}</th>
                             </tr>
@@ -97,6 +98,10 @@
                     },
                       {
                         data: 'title'
+                    },
+                    
+                     {
+                        data: 'design_section_id'
                     },
                     {
                         data: 'sort'

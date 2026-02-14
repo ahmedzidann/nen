@@ -23,7 +23,7 @@
     <div class="modern-card">
         <div class="card-icon-wrapper">
             <img src="{{ $row->getFirstMediaUrl('Testing') }}" 
-                 alt="{{ $row->title }}" 
+               
                  class="card-icon">
         </div>
         <h4 class="card-title">{{ $row->title }}</h4>

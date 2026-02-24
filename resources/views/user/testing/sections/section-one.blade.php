@@ -1,6 +1,19 @@
- @php
+
+ <style>
+.section-description ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.section-description ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+    </style>
+@php
     $section_one = App\Models\TestingTechnologySection::where('design_section_id',1)->where('main_category_id',request()->segment(2))->where('sub_category_id',request()->segment(3))->first();
     @endphp
+    
 
     <!-- Section 1: Image Right, Text Left -->
     <section class="image-text-section-no-bg py-4 mt-3">

@@ -202,10 +202,33 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::resource('contct-us-country/regional-representatives', RegionalRepresentativeController::class)->except('destroy');
     Route::post('contct-us-country/regional-representatives-bulk-delete', [RegionalRepresentativeController::class, 'destroy'])->name('delete.regional-representatives');
     Route::resource('contact-us-services', ServicesController::class)->except('destroy');
-     Route::resource('setting_technology_testing', SettingTestingTechnologyController::class)->except('destroy');
-    
-      Route::post('setting_technology_testing/delete_bulck', [SettingTestingTechnologyController::class, 'bulkDelete'])->name('setting_technology_testing.delete_bulck');
-    
+    Route::prefix('setting_technology_testing/{type}')
+    ->group(function () {
+
+        Route::get('/', [SettingTestingTechnologyController::class, 'index'])
+            ->name('setting_technology_testing.index');
+
+        Route::get('/create', [SettingTestingTechnologyController::class, 'create'])
+            ->name('setting_technology_testing.create');
+
+        Route::post('/', [SettingTestingTechnologyController::class, 'store'])
+            ->name('setting_technology_testing.store');
+
+        Route::get('/{setting_technology_testing}/edit', [SettingTestingTechnologyController::class, 'edit'])
+            ->name('setting_technology_testing.edit');
+
+        Route::put('/{setting_technology_testing}', [SettingTestingTechnologyController::class, 'update'])
+            ->name('setting_technology_testing.update');
+            //  Route::delete('setting_technology_testing/bulk-delete', 
+            // [SettingTestingTechnologyController::class, 'bulkDelete'])
+            // ->name('setting_technology_testing.delete_bulk');
+
+    });
+
+   Route::post('admin/setting_technology_testing/bulk-delete', 
+    [SettingTestingTechnologyController::class, 'bulkDelete'])
+    ->name('setting_technology_testing.delete_bulk');
+
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
 });
 

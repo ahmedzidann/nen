@@ -429,6 +429,9 @@
           <div class="menu-title">{{ $testing->name }}</div>
       </a>
       <ul>
+             <a href="{{ route('admin.setting_technology_testing.index', ['type' => 'testing']) }}" style="color: red;">
+    <i class='bx bx-radio-circle'></i>Section Setting
+</a>
           @foreach ($testing->childe as $ch)
           {{-- <li class="">
 
@@ -447,7 +450,7 @@
       <li class="">
 
           <a
-              href="{{ route('admin.testing.index', ['category=' . $testing->slug, 'subcategory=' . $ch->slug]) }}">
+              href="{{ route('admin.testing.index', ['category=' . $testing->slug, 'subcategory=' . $ch->slug]) }}" >
               <i class='bx bx-radio-circle'></i>{{ $ch->name }}</a>
       </li>
 
@@ -471,10 +474,13 @@
           <div class="menu-title">{{ $testing->name }}</div>
       </a>
       <ul>
+        <a href="{{ route('admin.setting_technology_testing.index', ['type' => 'technology']) }}" style="color: red;">
+    <i class='bx bx-radio-circle'></i>Section Setting
+</a>
           @foreach ($testing->childe as $ch)
-          <li><a class="has-arrow" href="javascript:;"><i
+          <li><a  href="{{ route('admin.technology.index', ['category=' . $testing->slug, 'subcategory=' . $ch->slug, 'item=section-one']) }}"><i
                       class='bx bx-radio-circle'></i>{{ $ch->name }}</a>
-              <ul>
+              <!-- <ul>
                   <li
                       class="{{ $route == 'about' && $route_two == 'identity' && Request()->item == 'section-one' ? 'mm-active' : '' }}">
                       <a
@@ -491,7 +497,7 @@
           </li> --}}
           {{-- <li class="{{ $route=='about' && $route_two=='identity' && Request()->item=='section-three' ?'mm-active':'' }}"><a href="{{ route('admin.about.identity.index',['category=about','subcategory=identity','item=section-three']) }}"><i class='bx bx-radio-circle'></i>Section three</a>
   </li> --}}
-  </ul>
+  </ul> -->
   </li>
   {{-- <li class="">
 

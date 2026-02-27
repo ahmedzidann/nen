@@ -37,21 +37,19 @@ class TechnologyContoller extends Controller
     // }
 
 
-    public function index():View
+    public function index(Request $request):View
     {
 
-        $partner = Page::findOrFail(request()->page_id);
+         $partner = Page::findOrFail(request()->page_id);
         $slider   = Slider::where('page_id',$partner->id)->first();
-
+        $page_id= $request->page_id;
+     
         if($partner){
-            $items = Technology::where("pages_id",request()->page_id)->active()->get();
+               $items = Technology::where("pages_id",request()->page_id)->active()->get();
 
             $subPartners = $partner->childe;
-            // $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->get();
-            // dd($partners);
-
-            //  return view('user.about.identity',['items'=>$identities,'slider'=>$slider]);
-            return view('user.technology.index', ['tech'=>$partner,'items'=>$items,'slider'=>$slider]);
+                $partners = Testing::whereIn("pages_id",$subPartners->pluck('id')->toArray())->active()->latest()->first();
+            return view('user.technology.index',['tech'=>$partner,'items'=>$partners,'subPartners'=>$subPartners,'slider'=>$slider]);
         }
         else abort(400, "error");
     }

@@ -40,7 +40,7 @@
 
 
   
-        @include('user.testing.sections.' .$section->section_title)
+        @include('user.technology.sections.' .$section->section_title)
     @endforeach
     
        

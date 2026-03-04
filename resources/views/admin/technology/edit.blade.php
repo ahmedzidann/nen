@@ -69,7 +69,7 @@
                                                     @foreach ($sections as $section)
                                                         
                                                         <option value="{{ $section->id }}"
-                                                            {{  $StaticTable->section_id== $section->id ?'selected':""  }}>
+                                                            {{  $StaticTable->section_id== $section->design_section_id ?'selected':""  }}>
                                                             {{ $section->title }}</option>
                                                     @endforeach
                                                 </select> 

@@ -64,7 +64,7 @@
                                                     </option>
                                                     @foreach ($sections as $section)
                                                         
-                                                        <option value="{{ $section->id }}"
+                                                        <option value="{{ $section->design_section_id }}"
                                                             >
                                                             {{ $section->title }}</option>
                                                     @endforeach

@@ -15,14 +15,14 @@
 
                   @php
                           
-                  $items = App\Models\Testing::where('pages_id',request()->page_id)->where('section_id',9)->get();
+                  $items = App\Models\Technology::where('pages_id',request()->page_id)->where('section_id',9)->get();
                    @endphp
 
                    @foreach($items as $row)
                 <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
     <div class="modern-card">
         <div class="card-icon-wrapper">
-            <img src="{{ $row->getFirstMediaUrl('Testing') }}" 
+            <img src="{{ asset('storage/technology/'.$row->image) }}" 
                
                  class="card-icon">
         </div>

@@ -22,9 +22,10 @@ class StoreTechnologyAction
                     $image = $data['image'];
                     $fileName = time() . '_' . $image->getClientOriginalName();
                     $image->storeAs('public/technology', $fileName);
+                    $data['image']=$fileName;
                     
                 }
-                  $data['image']=$fileName;
+                  
                  $technology = Technology::create($data);
            
             } catch (\Exception $e) {

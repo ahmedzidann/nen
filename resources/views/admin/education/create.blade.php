@@ -112,7 +112,7 @@
                                                 <x-admin.form.input
                                                     old="hours"
                                                     name="hours"
-                                                    type="number"
+                                                    type="text"
                                                     required
                                                     placeholder=""
                                                     class="form-control valid"
@@ -127,7 +127,7 @@
                                                 <x-admin.form.input
                                                     old="price"
                                                     name="price"
-                                                    type="number"
+                                                    type="text"
                                                     required
                                                     placeholder=""
                                                     class="form-control valid"

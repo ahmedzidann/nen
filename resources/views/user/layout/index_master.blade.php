@@ -374,113 +374,93 @@ $marques = Makeme::all();
                 <i class="bi bi-x-circle"></i>
             </div>
             <ul class="mobile_ul">
-                <li class="mobile_li"><a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Home') ?? '') }}</a></li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('About') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>
-                            <a href="#"
-                                class="insted_mobile_link">{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}<i
-                                    class="bi bi-chevron-down"></i></a>
-                            <ul class="small_ul_menu">
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 3') ?? '') }}</li>
+                @foreach (App\Models\Page::where('parent_id', null)->get() as $page)
+                    @if ($page->slug == 'home')
+                        <li class="mobile_li">
+                            <a href="{{ route('web.home') }}" class="mobile_link">{{ $page->name }}</a>
+                        </li>
+                    @elseif ($page->slug == 'solutions')
+                        <li class="mobile_li">
+                            <a href="#" class="mobile_link">{{ $page->name }}<i class="bi bi-chevron-down"></i></a>
+                            <ul class="sub_mobile_menu">
+                                @foreach ($page->childe as $sub)
+                                    <li>
+                                        <a href="#" class="insted_mobile_link">{{ $sub->name }}<i
+                                                class="bi bi-chevron-down"></i></a>
+                                        <ul class="small_ul_menu">
+                                            @foreach (\App\Models\Solution::where('pages_id', $sub->id)->get() as $solution)
+                                                <li>
+                                                    <a
+                                                        href="{{ route($page->slug . '.' . $sub->slug, ['page_id' => $sub->id, 'solution_id' => $solution->id]) }}">{{ $solution->title }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 4') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Projects') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>
-                            <a href="#"
-                                class="insted_mobile_link">{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}<i
-                                    class="bi bi-chevron-down"></i></a>
-                            <ul class="small_ul_menu">
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                                <li>{{ TranslationHelper::translateWeb(ucfirst('test 3') ?? '') }}</li>
+                    @elseif ($page->slug == 'projects')
+                        <li class="mobile_li">
+                            <a href="#" class="mobile_link">{{ $page->name }}<i class="bi bi-chevron-down"></i></a>
+                            <ul class="sub_mobile_menu">
+                                @foreach ($page->childe as $sub)
+                                    <li>
+                                        <a href="#" class="insted_mobile_link">{{ $sub->name }}<i
+                                                class="bi bi-chevron-down"></i></a>
+                                        <ul class="small_ul_menu">
+                                            @foreach (\App\Models\Project::where('pages_id', $sub->id)->get() as $project)
+                                                <li>
+                                                    <a
+                                                        href="{{ route($page->slug . '.' . $sub->slug, ['page_id' => $sub->id, 'project_id' => $project->id]) }}">{{ $project->title }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 4') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Education') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Testing') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Solution') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Technology') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#" class="mobile_link">
-                        {{ TranslationHelper::translateWeb(ucfirst('DOC Validation') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Join Us') ?? '') }} <i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                    </ul>
-                </li>
-
-                <li class="mobile_li">
-                    <a href="#"
-                        class="mobile_link">{{ TranslationHelper::translateWeb(ucfirst('Find Us') ?? '') }}<i
-                            class="bi bi-chevron-down"></i></a>
-                    <ul class="sub_mobile_menu">
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 1') ?? '') }}</li>
-                        <li>{{ TranslationHelper::translateWeb(ucfirst('test 2') ?? '') }}</li>
-                    </ul>
-                </li>
+                    @elseif ($page->slug == 'join-us')
+                        <li class="mobile_li">
+                            <a href="#" class="mobile_link">{{ $page->name }}<i class="bi bi-chevron-down"></i></a>
+                            <ul class="sub_mobile_menu">
+                                @foreach ($page->childe as $sub)
+                                    <li>
+                                        <a href="#" class="insted_mobile_link">{{ $sub->name }}<i
+                                                class="bi bi-chevron-down"></i></a>
+                                        <ul class="small_ul_menu">
+                                            @foreach (\App\Models\Page::where('parent_id', $sub->id)->get() as $join)
+                                                <li>
+                                                    <a href="{{ route('join-us', [$join->id]) }}">{{ $join->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @elseif ($page->slug == 'about' || $page->slug == 'education' || $page->slug == 'testing' || $page->slug == 'technology' || $page->slug == 'doc-validation' || $page->slug == 'find-us')
+                        <li class="mobile_li">
+                            <a href="#" class="mobile_link">{{ $page->name }}<i class="bi bi-chevron-down"></i></a>
+                            <ul class="sub_mobile_menu">
+                                @foreach ($page->childe as $sub)
+                                    <li>
+                                        <a
+                                            href="{{ route($page->slug . '.' . $sub->slug, ['page_id' => $sub->id]) }}">{{ $sub->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
+                        <li class="mobile_li">
+                            <a href="#" class="mobile_link">{{ $page->name }}<i class="bi bi-chevron-down"></i></a>
+                            <ul class="sub_mobile_menu">
+                                @foreach ($page->childe as $sub)
+                                    <li><a href="#">{{ $sub->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endif
+                @endforeach
             </ul>
         </ul>
     </nav>

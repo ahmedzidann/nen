@@ -4,7 +4,7 @@
 @endsection
 
 @section('cover_image')
-    {{ asset($home->getFirstMediaUrl('icon')) ?? 'https://cdn.pixabay.com/photo/2023/01/15/16/20/library-7720589_1280.jpg' }}
+    {{ $home->getFirstMediaUrl('icon') ?: asset('content/images/logo.svg') }}
 @endsection
 
 @section('page_name')
@@ -12,6 +12,7 @@
 @endsection
 
 @section('websiteStyle')
+    <link rel="stylesheet" href="{{ asset('content/styles/pages/home-page/home-index-style.css') }}" />
 @endsection
 
 @section('content')
@@ -20,9 +21,11 @@
         @foreach ($upperDidebarResources as $resource)
             <div class="nav-item">
                 <!-- <i class="bi bi-telephone-fill"></i> -->
-                <img src="{{ asset('/storage') . '/' . $resource->resource }}" loading="lazy"
-                    onerror="this.onerror=null;this.src='https://dev.nendemo2024.xyz/media/748/investors.svg';" alt="icon"
-                    style="width: 25px; height: 25px; border-radius: 4px;" />
+                <div class="nav-item-icon">
+                    <img src="{{ $resource->resource ? asset('/storage/' . $resource->resource) : asset('content/images/logo.svg') }}" loading="lazy"
+                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;" alt="icon"
+                        style="width: 25px; height: 25px; border-radius: 4px;" />
+                </div>
                 <span>{{ $resource->title }}</span>
             </div>
         @endforeach
@@ -38,8 +41,8 @@
                         <div class="col-6 col-md-4 col-lg-3 col-xl-2 px-1">
                             <div class="brand-card light-blue">
                                 <div class="brand-card-icon">
-                                    <img src="{{ asset('/storage') . '/' . $resource->resource }}" loading="lazy"
-                                        onerror="this.onerror=null;this.src='https://dev.nendemo2024.xyz/media/747/careers.svg';"
+                                    <img src="{{ $resource->resource ? asset('/storage/' . $resource->resource) : asset('content/images/logo.svg') }}" loading="lazy"
+                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                         alt="icon" style="width: 25px; height: 25px; border-radius: 4px;" />
                                 </div>
                                 <div class="card-texts">
@@ -68,15 +71,19 @@
                 <p class="mt-2 description">
                     {!! $feature->description ?? '' !!}
                 </p>
-                <div class="features row justify-content-around align-items-center gap-md-2">
-                    @foreach ($feature->files as $file)
-                        <div
-                            class="col-6 col-sm-4 col-md-2 feature-item d-flex flex-column align-items-center justify-content-center p-3">
+                <div class="features row g-3">
+                    @foreach ($feature->files->take(8) as $file)
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="feature-item feature-card d-flex flex-column text-start p-3">
                             {{-- <i class="fa-solid fa-clock"></i> --}}
-                            <img src="{{ asset('/storage/' . $file->image) }}" class="img-fluid"
-                                style="max-width: 40px; height: auto;">
-                            <span>{{ $file->title }}</span>
-                            <p class="text-center">{{ $file->sub_title }}</p>
+                            <div class="feature-icon">
+                                <img src="{{ $file->image ? asset('/storage/' . $file->image) : asset('content/images/logo.svg') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;" class="img-fluid"
+                                    style="max-width: 40px; height: auto;">
+                            </div>
+                            <div class="feature-value">{{ $file->title }}</div>
+                            <div class="feature-label">{{ $file->sub_title }}</div>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -113,8 +120,8 @@
                                                                                                                                 onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
                                                                                                                                 alt="about-img" class="w-100 h-100"> -->
                             <iframe id="videoFrame" width="100%" height="100%"
-                                src="https://www.youtube.com/embed/sQ22pm-xvrE"
-                                title="4K 100% Royalty-Free Stock Footage | Technology HUD Element Intro Background | No Copyright Video"
+                                src="https://www.youtube.com/embed/8mAITcNt710"
+                                title="Java Tutorial for Beginners"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -152,15 +159,15 @@
                                 <div class="step @if ($key > 0) mt-lg-3 @endif">
                                     <div class="step-content text-center">
                                         <div class="image-box">
-                                            <img src="{{ asset($project->getFirstMediaUrl('Project')) }}" loading="lazy"
-                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            <img src="{{ $project->getFirstMediaUrl('Project') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                                onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                                 alt="{{ $project->title }}" class="w-100 h-100">
                                         </div>
                                         <h3 class="fs-5 text-main-color fw-bold mt-2">
                                             {{ $project->title }}
                                         </h3>
                                         <p class="mb-0 step-description fs-8 m-auto">
-                                            {!! $project->description ?? '' !!}
+                                            {{ Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 140) }}
                                         </p>
                                     </div>
                                 </div>
@@ -174,11 +181,16 @@
             <div class="col-xl-4 col-lg-4 col-md-6 mt-lg-0 mt-3">
                 <div class="step special-step h-100">
                     <div class="step-content text-center">
-                        <h3 class="fs-5 text-dark-color fw-bold mt-2">
+                        <div class="image-box">
+                            <img src="{{ $project->getFirstMediaUrl('Project') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
+                                alt="{{ $project->title }}" class="w-100 h-100">
+                        </div>
+                        <h3 class="fs-5 text-white-color fw-bold mt-2">
                             {{ $project->title }}
                         </h3>
-                        <p class="mb-0 step-description m-auto fs-8 mx-4">
-                            {!! $project->description ?? '' !!}
+                        <p class="mb-0 step-description m-auto fs-8 mx-4 text-white-color">
+                            {{ Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 220) }}
                         </p>
                         <div class="d-flex justify-content-center mt-3">
                             <a href="{{ url('/projects/education?page_id=20&project_id=5') }}"
@@ -200,8 +212,8 @@
                     <div class="step-content text-center">
                         <div class="@if ($key == 3) scaleX-rtl @endif">
                             <div class="image-box">
-                                <img src="{{ asset($project->getFirstMediaUrl('Project')) }}" loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                <img src="{{ $project->getFirstMediaUrl('Project') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                     alt="{{ $project->title }}" class="w-100 h-100">
                             </div>
                         </div>
@@ -209,7 +221,7 @@
                             {{ $project->title }}
                         </h3>
                         <p class="mb-0 step-description fs-8 m-auto">
-                            {!! $project->description ?? '' !!}
+                            {{ Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 140) }}
                         </p>
                     </div>
                 </div>
@@ -308,7 +320,7 @@
         <!-- End Education Section -->
     @endif
 
-    @if (count($testings) > 0)
+    {{-- @if (count($testings) > 0)
         <!-- Start Testing Section -->
         <section id="testing-section" class="section-bundries">
             <div class="container mx-auto">
@@ -329,8 +341,8 @@
                             <div class="layer layer-one position-absolute"></div>
                             <div class="layer layer-two position-absolute"></div>
                             <div class="testing-img d-flex justify-content-center align-items-center h-100">
-                                <img src="{{ asset($testings[0]->getFirstMediaUrl('Testing')) }}" loading="lazy"
-                                    onerror="this.onerror=null;this.src='https://wakeb-tech-site.vercel.app/images/useCases/cases/solar.webp';"
+                                <img src="{{ $testings[0]->getFirstMediaUrl('Testing') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                    onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                     alt="solar" class="w-100 h-100">
                             </div>
                         </div>
@@ -383,8 +395,8 @@
                                 <div class="layer layer-one position-absolute"></div>
                                 <div class="layer layer-two position-absolute"></div>
                                 <div class="testing-img d-flex justify-content-center align-items-center h-100">
-                                    <img src="{{ asset($testings[1]->getFirstMediaUrl('Testing')) }}" loading="lazy"
-                                        onerror="this.onerror=null;this.src='https://wakeb-tech-site.vercel.app/images/useCases/cases/wind.webp';"
+                                    <img src="{{ $testings[1]->getFirstMediaUrl('Testing') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                         alt="solar" class="w-100 h-100">
                                 </div>
                             </div>
@@ -404,7 +416,8 @@
             </div>
         </section>
         <!-- End Testing Section -->
-    @endif
+    @endif --}}
+
     @if (count($solutions) > 0)
         <!-- Start Solutions Section -->
         <section id="solutions-section" class="section-bundries">
@@ -421,6 +434,7 @@
                         support your growth and success.
                     </p>
                 </div>
+
                 {{-- View implementation --}}
                 <div class="row g-3 mt-md-4 mt-3">
                     @foreach ($solutions as $pageId => $group)
@@ -433,11 +447,14 @@
                                     <div
                                         class="duties-item-card d-flex gap-md-4 gap-3 align-items-sm-start align-items-center flex-sm-row flex-column text-sm-start text-center">
                                         <div class="duties-item-img">
-                                            <img src="{{ asset($solution->getFirstMediaUrl('Solution')) }}"
+                                            <img src="{{ $solution->getFirstMediaUrl('Solution') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                                onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                                 class="w-100 h-100">
                                         </div>
                                         <div class="duties-items-details">
-                                            <h4 class="duties-item-title text-align-justify">{{ $solution->title }}</h4>
+                                            <h4 class="duties-item-title text-dark-color">
+                                                {{ $solution->title }}
+                                            </h4>
                                             <p class="duties-item-description text-align-justify">
                                                 {!! Illuminate\Support\Str::limit($solution->description ?? '', 100) !!}
 
@@ -481,9 +498,10 @@
                         <div class=" col-md-6 col-lg-4 mb-lg-0 mb-4">
                             <article>
                                 <div class="article-img w-100 mb-3">
-                                    <img src="{{ $technology->getFirstMediaUrl('StaticTable') }}" loading="lazy"
-                                        onerror="this.onerror=null;this.src='{{ $technology->getFirstMediaUrl('StaticTable') }}';"
-                                        alt="article-img" class="w-100 h-100 shadow-sm">
+                                    <img src="{{ $technology->getFirstMediaUrl('StaticTable') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                        class="w-100 h-100 shadow-sm"
+                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
+                                        alt="article-img">
                                 </div>
                                 <div class="d-flex justify-content-between flex-column gap-3 text-md-start text-center">
                                     <div>
@@ -548,437 +566,12 @@
         <!-- End Technology Section -->
     @endif
 
-    <!-- Start Doc Validation Section -->
-    <section id="doc-validation-section" class="section-bundries">
-        <div class="container mx-auto">
-            <div class="texts-data d-flex flex-column">
-                <h5 class="global-title">
-                    Our Doc Validation
-                </h5>
-                <div class="under-title-vector">
-                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
-                </div>
-                <p class="global-description pt-0 mt-1">
-                    Get every thing about AI when reading Article and News
-                </p>
-            </div>
-        </div>
-        <div id="item-list" class=" py-md-5 py-3 mt-md-4 mt-3">
-            <div class="container mx-auto">
-                <div class="row g-3 mx-0">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
-                            <img alt="" class="doc-icon"
-                                src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
-                            <h4 class="mt-3 mb-3 title text-white-color position-relative">
-                                Create a business profile
-                            </h4>
-                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Employees.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Providers.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Available Services.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Service Locations.
-                                </li>
-                            </div>
-                            <div class="number position-absolute"> 1 </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
-                            <img alt="" class="doc-icon"
-                                src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
-                            <h4 class="mt-3 mb-3 title position-relative text-white-color">
-                                Create a business profile
-                            </h4>
-                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Employees.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Providers.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Available Services.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Service Locations.
-                                </li>
-                            </div>
-                            <div class="number position-absolute"> 2 </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
-                            <img alt="" class="doc-icon"
-                                src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
-                            <h4 class="mt-3 mb-3 title position-relative text-white-color">
-                                Create a business profile
-                            </h4>
-                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Employees.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Providers.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Available Services.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Service Locations.
-                                </li>
-                            </div>
-                            <div class="number position-absolute"> 3 </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mx-auto">
-            <div class="d-flex justify-content-center mt-md-4 mt-3">
-                <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
-                    <span>
-                        See More
-                    </span>
-                    <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-    <!-- End Doc Validation Section -->
-
-    @if (count($findus) > 0)
-        <!-- Start Stats Section -->
-        <section id="stats-section" class="section-bundries">
-            <div class="container mx-auto">
-                <div class="texts-data d-flex flex-column">
-                    <h5 class="global-title">
-                        Find US
-                    </h5>
-                    <div class="under-title-vector">
-                        <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
-                    </div>
-                    <p class="description text-align-justify">
-                        NEN | We have offices in major cities around the world, providing professional services and
-                        solutions to help businesses achieve their goals.
-                        Our team works closely with global technology leaders to ensure the highest standards in everything
-                        we do.
-                    </p>
-                </div>
-                <div class="row justify-content-center w-100 mt-3 g-3">
-                    @foreach ($findus as $key => $rowData)
-                        <div class="col-md-4 col-sm-6">
-                            <div class="stats-card p-md-4 p-3">
-                                <p class="counter-text">
-                                    <span class="count">{{ ++$key }}</span>
-                                </p>
-                                <p class="label-text">
-                                    {{ $rowData->name }}
-                                </p>
-                                <div class="image-box">
-                                    <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                        alt="about-img" class="w-100 h-100">
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-        <!-- End Stats Section -->
-    @endif
-
-    <!-- Start Join Us Section -->
-    <section id="join-us-section" class="section-bundries">
-        <div class="container mx-auto">
-            <p class="text-main-color mb-0">
-                Join Us
-            </p>
-            <h1>
-                Join us with our team
-            </h1>
-            <p>
-                We have the team and know-how to help you scale 10x faster.
-            </p>
-
-            <!-- World Map -->
-            <div class="world-map">
-                <div class="map-dot usa"></div>
-                <div class="map-dot europe"></div>
-                <div class="map-dot asia"></div>
-                <div class="map-dot australia"></div>
-            </div>
-
-            <!-- Contact Cards -->
-            <div class="container mt-5">
-                <div class="row gy-4 justify-content-center">
-                    <!-- Chat to Sales -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-chat"></i>
-                            <h5>Chat to sales</h5>
-                            <p>Speak to our friendly team.</p>
-                            <a href="mailto:sales@untitledui.com" class="email-link">
-                                sales@untitledui.com
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Chat to Support -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-chat-left-dots"></i>
-                            <h5>Chat to support</h5>
-                            <p>We're here to help.</p>
-                            <a href="mailto:support@untitledui.com" class="email-link">
-                                support@untitledui.com
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Visit Us -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-geo-alt"></i>
-                            <h5>Visit us</h5>
-                            <p>Visit our office HQ.</p>
-                            <a href="https://goo.gl/maps/" class="map-link" target="_blank">
-                                View on Google Maps
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Call Us -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-telephone"></i>
-                            <h5>Call us</h5>
-                            <p>Mon-Fri from 8am to 5pm.</p>
-                            <a href="tel:+1555000000" class="phone-link">
-                                +1 (555) 000-0000
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Join Us Section -->
-    <hr>
-    @if (count($countries) > 0)
-        <!-- Start Find Us Section -->
-        <section id="find-us-section" class="section-bundries">
-            <div class="container mx-auto">
-
-                <!-- Locations Section -->
-                <div class="row location-section justify-content-center">
-                    @foreach ($countries as $item)
-                        <div class="col-md-3 col-sm-6">
-                            <div class="location-item border-0">
-                                <h5 class="country-name">{{ $item->state->country->name }}</h5>
-                                <p class="country-location">{{ $item->address }}</p>
-                                <img src="{{ $item->state->country->getFirstMediaUrl('flag') }}" loading="lazy"
-                                    onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                    class="country-flag shadow-sm" alt="{{ $item->state->country->name }} Flag">
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-            <div class="row justify-content-center">
-                <button class="btn btn-solid-main w-auto">CONTACT NOW</button>
-            </div>
-        </section>
-        <!-- End Find Us Section -->
-    @endif
-    <!-- Start Contact Section -->
-    <!-- <section id="contact-us-section" class="section-bundries">
-                        <div class="container mx-auto">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="texts-data d-flex flex-column">
-                                        <h5 class="global-title">
-                                            Contact Us
-                                        </h5>
-                                        <div class="under-title-vector">
-                                            <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
-                                        </div>
-                                        <p class="global-description pt-0 mt-1">
-                                            If you have any questions, suggestions, or complaints, feel free to contact us.
-                                        </p>
-                                    </div>
-
-                                    <form id="contactForm" class="contact-form mt-md-4 mt-3">
-                                        <fieldset>
-                                            <label>Reason for Contact</label>
-                                            <div class="radio-group mt-2">
-                                                <label>
-                                                    <input type="radio" name="contactReason" value="inquiry" required>
-                                                    Inquiry
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="contactReason" value="complaint" required>
-                                                    Complaint
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="contactReason" value="suggestion" required>
-                                                    Suggestion
-                                                </label>
-                                                <div class="error-message" data-error="contactReason"></div>
-                                            </div>
-                                        </fieldset>
-
-                                        <div class="form-group">
-                                            <label for="fullName">Full Name</label>
-                                            <input type="text" id="fullName" name="fullName" required minlength="3">
-                                            <div class="error-message" data-error="fullName"></div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="email">Email Address</label>
-                                            <input type="email" id="email" name="email" required>
-                                            <div class="error-message" data-error="email"></div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="phoneNumber">Phone Number</label>
-                                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
-                                            <div class="error-message" data-error="phoneNumber"></div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="message">Message</label>
-                                            <textarea id="message" name="message" required minlength="3"></textarea>
-                                            <div class="error-message" data-error="message"></div>
-                                        </div>
-
-                                        <button type="submit" class="btn btn-solid-main">Send</button>
-                                    </form>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="contact-image rounded h-100">
-                                        <img src="https://media.voltron.alhurra.com/Drupal/01live-126/styles/sourced/s3/2019-12/47FA9734-FD85-4ED5-A492-290A0218B61B.jpg?itok=1UzdSy4o"
-                                            loading="lazy"
-                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                            alt="about-img" class="rounded">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> -->
-    <!-- End Contact Section -->
-    <!-- Start Join our Team -->
-    <section id="join-our-team" class="section-bundries">
-        <div class="container mx-auto">
-            <div class="texts-data align-items-center">
-                <p class="text-main-color mb-0">
-                    Join Us
-                </p>
-                <h1>
-                    Join us with our team
-                </h1>
-                <p>
-                    We have the team and know-how to help you scale 10x faster.
-                </p>
-
-            </div>
-            <div class="row justify-content-center align-items-center mt-5 gap-4">
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-                        <p>Academic</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-
-                    </div>
-
-                    <div class="cover">
-                        <img class="w-100 h-100"
-                            src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp" alt="">
-                        <p>Academic</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-
-                        <p>Professional</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/doc_team.jpg" alt="">
-                        <p>Professional</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-
-                        <p>Centers</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/about.jpg" alt="">
-                        <p>Centers</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-                        <p>Agents</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100"
-                            src="https://www.globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg"
-                            alt="">
-                        <p>Agents</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-                        <p>International Cards</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aZpkugDl106LnBdxudqbifCp7-x4UWIQ7dIV-AWwIv0VfXeVGJJb226s5fMi7LweoFg&usqp=CAU"
-                            alt="">
-                        <p>International Cards</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Join our Team -->
     <!-- Start Check -->
     <section id="check-section" class="section-bundries">
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <h2 class="global-title">Check-In Regulations</h2>
+                    <h2 class="global-title">Testing</h2>
                     <div class="under-title-vector">
                         <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
                     </div>
@@ -1080,6 +673,437 @@
         </div>
     </section>
     <!-- End Check -->
+
+    <!-- Start Doc Validation Section -->
+    <section id="doc-validation-section" class="section-bundries">
+        <div class="container mx-auto">
+            <div class="texts-data d-flex flex-column">
+                <h5 class="global-title">
+                    Our Doc Validation
+                </h5>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                </div>
+                <p class="global-description pt-0 mt-1">
+                    Get every thing about AI when reading Article and News
+                </p>
+            </div>
+        </div>
+        <div id="item-list" class=" py-md-5 py-3 mt-md-4 mt-3">
+            <div class="container mx-auto">
+                <div class="row g-3 mx-0">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
+                            <div class="doc-icon-wrap">
+                                <img alt="" class="doc-icon"
+                                    src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
+                            </div>
+                            <h4 class="mt-3 mb-3 title text-white-color position-relative">
+                                Create a business profile
+                            </h4>
+                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Employees.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Providers.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Available Services.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Service Locations.
+                                </li>
+                            </div>
+                            <div class="number position-absolute"> 1 </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
+                            <div class="doc-icon-wrap">
+                                <img alt="" class="doc-icon"
+                                    src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
+                            </div>
+                            <h4 class="mt-3 mb-3 title position-relative text-white-color">
+                                Create a business profile
+                            </h4>
+                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Employees.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Providers.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Available Services.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Service Locations.
+                                </li>
+                            </div>
+                            <div class="number position-absolute"> 2 </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
+                            <div class="doc-icon-wrap">
+                                <img alt="" class="doc-icon"
+                                    src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
+                            </div>
+                            <h4 class="mt-3 mb-3 title position-relative text-white-color">
+                                Create a business profile
+                            </h4>
+                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Employees.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Providers.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Available Services.
+                                </li>
+                                <li class="d-flex align-items-baseline gap-2 text-item">
+                                    <i class="bi bi-circle-fill circle"></i>
+                                    Add Service Locations.
+                                </li>
+                            </div>
+                            <div class="number position-absolute"> 3 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto">
+            <div class="d-flex justify-content-center mt-md-4 mt-3">
+                <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
+                    <span>
+                        See More
+                    </span>
+                    <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- End Doc Validation Section -->
+
+    @if (count($findus) > 0)
+        <!-- Start Stats Section -->
+        <section id="stats-section" class="section-bundries">
+            <div class="container mx-auto">
+                <div class="texts-data d-flex flex-column">
+                    <h5 class="global-title">
+                        Find US
+                    </h5>
+                    <div class="under-title-vector">
+                        <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                    </div>
+                    <p class="description text-align-justify">
+                        NEN | We have offices in major cities around the world, providing professional services and
+                        solutions to help businesses achieve their goals.
+                        Our team works closely with global technology leaders to ensure the highest standards in everything
+                        we do.
+                    </p>
+                </div>
+                <div class="row justify-content-center w-100 mt-3 g-3">
+                    @foreach ($findus as $key => $rowData)
+                        <div class="col-md-4 col-sm-6">
+                            <div class="stats-card p-md-4 p-3">
+                                <p class="counter-text">
+                                    <span class="count">{{ ++$key }}</span>
+                                </p>
+                                <p class="label-text">
+                                    {{ $rowData->name }}
+                                </p>
+                                <div class="image-box">
+                                    <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
+                                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                        alt="about-img" class="w-100 h-100">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <!-- End Stats Section -->
+    @endif
+
+    <!-- Start Join Us Section -->
+    <section id="join-us-section" class="section-bundries">
+        <div class="container mx-auto">
+            <h1>
+                Find US
+            </h1>
+            <p>
+                We have the team and know-how to help you scale 10x faster.
+            </p>
+
+            <!-- World Map -->
+            <div class="world-map">
+                <div class="map-dot usa"></div>
+                <div class="map-dot europe"></div>
+                <div class="map-dot asia"></div>
+                <div class="map-dot australia"></div>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="container mt-5">
+                <div class="row gy-4 justify-content-center">
+                    <!-- Chat to Sales -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="contact-card text-center">
+                            <i class="bi bi-chat"></i>
+                            <h5>Chat to sales</h5>
+                            <p>Speak to our friendly team.</p>
+                            <a href="mailto:sales@untitledui.com" class="email-link">
+                                sales@untitledui.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Chat to Support -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="contact-card text-center">
+                            <i class="bi bi-chat-left-dots"></i>
+                            <h5>Chat to support</h5>
+                            <p>We're here to help.</p>
+                            <a href="mailto:support@untitledui.com" class="email-link">
+                                support@untitledui.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Visit Us -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="contact-card text-center">
+                            <i class="bi bi-geo-alt"></i>
+                            <h5>Visit us</h5>
+                            <p>Visit our office HQ.</p>
+                            <a href="https://goo.gl/maps/" class="map-link" target="_blank">
+                                View on Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Call Us -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="contact-card text-center">
+                            <i class="bi bi-telephone"></i>
+                            <h5>Call us</h5>
+                            <p>Mon-Fri from 8am to 5pm.</p>
+                            <a href="tel:+1555000000" class="phone-link">
+                                +1 (555) 000-0000
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Join Us Section -->
+    <hr>
+    @if (count($countries) > 0)
+        <!-- Start Find Us Section -->
+        <section id="find-us-section" class="section-bundries">
+            <div class="container mx-auto">
+
+                <!-- Locations Section -->
+                <div class="row location-section justify-content-center">
+                    @foreach ($countries as $item)
+                        <div class="col-md-3 col-sm-6">
+                            <div class="location-item border-0">
+                                <h5 class="country-name">{{ $item->state->country->name }}</h5>
+                                <p class="country-location">{{ $item->address }}</p>
+                                <div class="country-flag-wrap">
+                                    <img src="{{ $item->state->country->getFirstMediaUrl('flag') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
+                                        class="country-flag shadow-sm" alt="{{ $item->state->country->name }} Flag">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-solid-main w-auto">CONTACT NOW</button>
+            </div>
+        </section>
+        <!-- End Find Us Section -->
+    @endif
+    <!-- Start Contact Section -->
+    <!-- <section id="contact-us-section" class="section-bundries">
+                        <div class="container mx-auto">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="texts-data d-flex flex-column">
+                                        <h5 class="global-title">
+                                            Contact Us
+                                        </h5>
+                                        <div class="under-title-vector">
+                                            <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                                        </div>
+                                        <p class="global-description pt-0 mt-1">
+                                            If you have any questions, suggestions, or complaints, feel free to contact us.
+                                        </p>
+                                    </div>
+
+                                    <form id="contactForm" class="contact-form mt-md-4 mt-3">
+                                        <fieldset>
+                                            <label>Reason for Contact</label>
+                                            <div class="radio-group mt-2">
+                                                <label>
+                                                    <input type="radio" name="contactReason" value="inquiry" required>
+                                                    Inquiry
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="contactReason" value="complaint" required>
+                                                    Complaint
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="contactReason" value="suggestion" required>
+                                                    Suggestion
+                                                </label>
+                                                <div class="error-message" data-error="contactReason"></div>
+                                            </div>
+                                        </fieldset>
+
+                                        <div class="form-group">
+                                            <label for="fullName">Full Name</label>
+                                            <input type="text" id="fullName" name="fullName" required minlength="3">
+                                            <div class="error-message" data-error="fullName"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" id="email" name="email" required>
+                                            <div class="error-message" data-error="email"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="phoneNumber">Phone Number</label>
+                                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                                            <div class="error-message" data-error="phoneNumber"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="message">Message</label>
+                                            <textarea id="message" name="message" required minlength="3"></textarea>
+                                            <div class="error-message" data-error="message"></div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-solid-main">Send</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-image rounded h-100">
+                                        <img src="https://media.voltron.alhurra.com/Drupal/01live-126/styles/sourced/s3/2019-12/47FA9734-FD85-4ED5-A492-290A0218B61B.jpg?itok=1UzdSy4o"
+                                            loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="about-img" class="rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section> -->
+    <!-- End Contact Section -->
+    <!-- Start Join our Team -->
+    <section id="join-our-team" class="section-bundries">
+        <div class="container mx-auto">
+            <div class="texts-data align-items-center">
+                <p class="text-main-color mb-0">
+                    Join Us
+                </p>
+                <h1>
+                    Join Us
+                </h1>
+                <p>
+                    We have the team and know-how to help you scale 10x faster.
+                </p>
+
+            </div>
+            <div class="row justify-content-center align-items-center mt-5 gap-4">
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <div class=content>
+                        <p>Academic</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+
+                    </div>
+
+                    <div class="cover">
+                        <img class="w-100 h-100"
+                            src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp" alt="">
+                        <p>Academic</p>
+
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <div class=content>
+
+                        <p>Professional</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
+                    <div class="cover">
+                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/doc_team.jpg" alt="">
+                        <p>Professional</p>
+
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <div class=content>
+
+                        <p>Centers</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
+                    <div class="cover">
+                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/about.jpg" alt="">
+                        <p>Centers</p>
+
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <div class=content>
+                        <p>Agents</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
+                    <div class="cover">
+                        <img class="w-100 h-100"
+                            src="https://www.globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg"
+                            alt="">
+                        <p>Agents</p>
+
+                    </div>
+                </div>
+                <div class="book col-lg-2 col-md-4 col-sm-6">
+                    <div class=content>
+                        <p>International Cards</p>
+                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    </div>
+                    <div class="cover">
+                        <img class="w-100 h-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aZpkugDl106LnBdxudqbifCp7-x4UWIQ7dIV-AWwIv0VfXeVGJJb226s5fMi7LweoFg&usqp=CAU"
+                            alt="">
+                        <p>International Cards</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Join our Team -->
     @if (count($blogs) > 0)
         <!-- Start Blogs -->
         <section id="blogs-section" class="section-bundries">
@@ -1096,7 +1120,8 @@
                             <a href="#" class="text-black text-decoration-none">
                                 <div class="img-container">
                                     <img class="card-img w-100 h-100 object-fit-cover rounded-2"
-                                        src="{{ asset('/storage/' . $blog->banner) }} "
+                                        src="{{ $blog->banner ? asset('/storage/' . $blog->banner) : asset('content/images/logo.svg') }}"
+                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
                                         alt="A fashionista's guide to wanderlust">
 
                                 </div>
@@ -1244,7 +1269,7 @@
         </section>
         <!-- End Blogs -->
     @endif
-    </div>
+
     <script>
         // articles carousel
         const articlesWrapper = document.querySelector('.articles');

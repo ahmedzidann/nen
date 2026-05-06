@@ -103,6 +103,25 @@
                                                     </x-admin.form.label-end>
                                                 </div>
                                                 {{-- ----------Description end --}}
+                                                {{-- ----------home description --}}
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first class="form-label"
+                                                        name="Home Description  {{ $translationFirst->name }}">
+                                                    </x-admin.form.label-first>
+                                                    <x-admin.form.text old="{{ 'home_description.' . $translationFirst->key }}"
+                                                        name="{{ 'home_description' . '[' . $translationFirst->key . ']' }}"
+                                                        type="text"
+                                                        placeholder="Home Description {{ ucfirst($translationFirst->name) }}"
+                                                        :value="$StaticTable->translate(
+                                                            'home_description',
+                                                            $translationFirst->key,
+                                                        )">
+                                                    </x-admin.form.text>
+                                                    <x-admin.form.label-end
+                                                        name="please enter Home Description  {{ $translationFirst->name }}">
+                                                    </x-admin.form.label-end>
+                                                </div>
+                                                {{-- ----------home description end --}}
                                                 {{-- ----------first image --}}
                                                 <div class="col-md-12 mb-4">
                                                     <x-admin.form.label-first class="col-sm-3 col-form-label"

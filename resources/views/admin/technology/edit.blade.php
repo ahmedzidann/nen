@@ -122,6 +122,22 @@
                                             </div>
 
                                                     {{-- ----------Description end --}}
+                                                    {{-- ----------home description --}}
+                                                    <div class="col-md-12 mb-4">
+                                                        <x-admin.form.label-first class="form-label"
+                                                            name="Home Description  {{ $item->name }}">
+                                                        </x-admin.form.label-first>
+                                                        <x-admin.form.text old="{{ 'home_description.'.$item->key }}"
+                                                            name="{{ 'home_description'.'['.$item->key.']' }}"
+                                                            type="text"
+                                                            placeholder="Home Description {{ ucfirst($item->name) }}"
+                                                            :value="$StaticTable->translate('home_description', $item->key)">
+                                                        </x-admin.form.text>
+                                                        <x-admin.form.label-end
+                                                            name="please enter Home Description  {{ $item->name }}">
+                                                        </x-admin.form.label-end>
+                                                    </div>
+                                                    {{-- ----------home description end --}}
                                                     {{-- ----------first image --}}
                                                     @if (Request()->category == 'about' && Request()->subcategory == 'identity' && Request()->item == 'section-three')
                                                     @else

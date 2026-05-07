@@ -167,7 +167,7 @@
                                             {{ $project->title }}
                                         </h3>
                                         <p class="mb-0 step-description fs-8 m-auto">
-                                            {{ Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 140) }}
+                                            {{ Illuminate\Support\Str::limit(strip_tags($project->home_description ?? $project->description ?? ''), 140) }}
                                         </p>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                             {{ $project->title }}
                         </h3>
                         <p class="mb-0 step-description m-auto fs-8 mx-4 text-white-color">
-                            {{ Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 220) }}
+                            {{ Illuminate\Support\Str::limit(strip_tags($project->home_description ?? $project->description ?? ''), 220) }}
                         </p>
                         <div class="d-flex justify-content-center mt-3">
                             <a href="{{ url('/projects/education?page_id=20&project_id=5') }}"
@@ -221,7 +221,7 @@
                             {{ $project->title }}
                         </h3>
                         <p class="mb-0 step-description fs-8 m-auto">
-                            {{ Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 140) }}
+                            {{ Illuminate\Support\Str::limit(strip_tags($project->home_description ?? $project->description ?? ''), 140) }}
                         </p>
                     </div>
                 </div>
@@ -273,7 +273,7 @@
                                                 {{ $education->title }}
                                             </h4>
                                             <p class="text-black-50 fs-5-2 mt-4 description text-align-justify">
-                                                {{ Illuminate\Support\Str::limit($education->mini_desc ?? '', 300) }}
+                                                {{ Illuminate\Support\Str::limit($education->home_description ?? $education->mini_desc ?? '', 300) }}
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-between gap-3 flex-wrap z-2">
@@ -456,7 +456,7 @@
                                                 {{ $solution->title }}
                                             </h4>
                                             <p class="duties-item-description text-align-justify">
-                                                {!! Illuminate\Support\Str::limit($solution->description ?? '', 100) !!}
+                                                {!! Illuminate\Support\Str::limit($solution->home_description ?? $solution->description ?? '', 100) !!}
 
                                             </p>
                                         </div>
@@ -510,7 +510,7 @@
                                         </h5>
                                         <p
                                             class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter article-description text-align-justify mb-0">
-                                            {!! Illuminate\Support\Str::limit($technology->description ?? '', 300) !!}
+                                            {!! Illuminate\Support\Str::limit($technology->home_description ?? $technology->description ?? '', 300) !!}
                                         </p>
                                     </div>
                                     <a href="./blog-details.html"

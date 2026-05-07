@@ -20,6 +20,7 @@ class Technology extends Model implements HasMedia
     'title',
     'subtitle',
     'description',
+    'home_description',
     'first_button',
     'second_button',
   ];
@@ -28,6 +29,7 @@ class Technology extends Model implements HasMedia
     'title',
     'subtitle',
     'description',
+    'home_description',
     'item',
     'status',
     'pages_id',

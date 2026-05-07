@@ -19,6 +19,7 @@ class Education extends Model implements HasMedia
         'title',
         'mini_desc',
         'description',
+        'home_description',
     ];
 
     protected $fillable = [
@@ -26,6 +27,7 @@ class Education extends Model implements HasMedia
         'type',
         'mini_desc',
         'description',
+        'home_description',
         'hours',
         'price',
         'status',

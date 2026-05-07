@@ -19,11 +19,13 @@ class Solution extends Model implements HasMedia
   public $translatable = [
     'title',
     'description',
+    'home_description',
   ];
 
   protected $fillable = [
     'title',
     'description',
+    'home_description',
     'status',
     'pages_id',
     'tabs_id',

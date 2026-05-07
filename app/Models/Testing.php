@@ -20,6 +20,7 @@ class Testing extends Model implements HasMedia
     'title',
     'mini_desc',
     'description',
+    'home_description',
     'first_button',
     'second_button',
     
@@ -29,6 +30,7 @@ class Testing extends Model implements HasMedia
     'title',
     'mini_desc',
     'description',
+    'home_description',
     'status',
     'pages_id',
     'childe_pages_id',

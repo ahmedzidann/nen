@@ -33,6 +33,7 @@ class ProjectRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
             'description.*' => ['required','min:2'],
+            'home_description.*' => ['nullable'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
@@ -45,6 +46,7 @@ class ProjectRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','min:2'],
+            'home_description.'.$request->submit2 => ['nullable'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['nullable'],
             'status' => ['nullable'],
@@ -57,6 +59,7 @@ class ProjectRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.'.$request->submit2 => ['required','max:255','min:2'],
             'description.'.$request->submit2 => ['required','min:2'],
+            'home_description.'.$request->submit2 => ['nullable'],
         ]);
     }
 }

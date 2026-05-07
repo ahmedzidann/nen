@@ -33,6 +33,7 @@ class TechnologyRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
             'description.*' => ['required','min:2'],
+            'home_description.*' => ['nullable'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],
@@ -88,6 +89,7 @@ class TechnologyRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
             'description.*' => ['required','min:2'],
+            'home_description.*' => ['nullable'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],
@@ -126,6 +128,7 @@ class TechnologyRequest extends FormRequest
         return Validator::make($request->all(), [
             'title.*' => ['required','max:255','min:2'],
             'description.*' => ['required','min:2'],
+            'home_description.*' => ['nullable'],
             'image'=>['nullable','mimes:png,jpg,jpeg'],
             'pages_id' => ['required'],
             'childe_pages_id' => ['nullable'],

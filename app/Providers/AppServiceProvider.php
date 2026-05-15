@@ -40,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
         $technologies = Page::where('parent_id', Page::where('slug', 'technology')->first()->id)
             ->where('navbar', 'Active')->get();
 
+        $ngoParentPage = Page::where('slug', 'ngo')->first();
+        $ngoPages = $ngoParentPage
+            ? Page::where('parent_id', $ngoParentPage->id)->where('navbar', 'Active')->get()
+            : collect();
+
         $docs = Page::where('parent_id', Page::where('slug', 'doc-validation')->first()->id)
             ->where('navbar', 'Active')->get();
 
@@ -67,8 +72,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('projectPages', $projectPages);
         });
         View::composer('user.technology.*', function ($view) use ($technologies) {
-
             $view->with('technologies', $technologies);
+        });
+        View::composer('user.ngo.*', function ($view) use ($ngoPages) {
+            $view->with('ngoPages', $ngoPages);
         });
         View::composer('user.doc-validation.*', function ($view) use ($docs) {
 

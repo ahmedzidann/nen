@@ -13,75 +13,224 @@
     <link rel="stylesheet" href="{{ asset('toastr/css/toastr.min.css') }}" />
     {{-- end toastr --}}
     <style>
+        /* ===== Map Container ===== */
         #contentChartdiv {
             position: relative;
-        }
-
-        /* Set the size of the map container */
-        #chartdiv {
-            height: 500px;
+            background: #c8d8e8;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
             width: 100%;
-            margin-top: 25px;
-            /* box-shadow: 0px 4px 30px rgba(213, 215, 216, 0.47); */
-            border-radius: 15px;
-            position: relative;
-            /* Make chartdiv relative to position modal inside */
         }
 
-        /* Modal container - now positioned inside chartdiv */
+        #chartdiv {
+            height: 520px;
+            width: 100%;
+            margin-top: 0;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== Map Modal ===== */
         #contactModal {
             position: absolute;
-            /* Now absolute, so it is positioned relative to #chartdiv */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: white;
             z-index: 1000;
-            width: 400px;
+            width: 380px;
             max-width: 90%;
-            border-radius: 8px;
-            /* Optional for rounded corners */
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(153,0,0,0.18);
+            border-top: 4px solid #990000;
         }
 
-        /* Modal content styling */
         .modal-content {
             position: relative;
-            padding: 20px;
+            padding: 24px;
             background-color: #fff;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-            /* Shadow */
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
-        /* Close button styling */
+        .modal-content h3 {
+            color: #990000;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0e0e0;
+        }
+
+        .modal-content p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+            color: #444;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .modal-content p strong {
+            color: #990000;
+            min-width: 65px;
+        }
+
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
+            top: 12px;
+            right: 14px;
+            background: #f8f0f0;
             border: none;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
-            color: #333;
-            /* Button color */
+            color: #990000;
             font-weight: bold;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
         }
 
         .close-btn:hover {
-            color: #ff0000;
-            /* Change color on hover */
+            background: #990000;
+            color: #fff;
         }
 
-        /* Styling for modal text */
         #modalTitle {
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
-        #contactModal p {
-            margin: 10px 0;
+        /* ===== Section Title ===== */
+        .contact-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1d2939;
+            margin-bottom: 6px;
+        }
+
+        .contact-section-title span {
+            color: #990000;
+        }
+
+        .contact-title-bar {
+            width: 48px;
+            height: 4px;
+            background: linear-gradient(90deg, #990000, #2ea7db);
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== Tables ===== */
+        .office-table thead tr {
+            background: linear-gradient(90deg, #990000, #7a0000);
+            color: #fff;
+        }
+
+        .office-table thead th {
+            color: #fff !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            border: none;
+        }
+
+        .office-table tbody tr:hover {
+            background-color: rgba(153,0,0,0.04);
+        }
+
+        .office-table tbody td {
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .table-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1d2939;
+        }
+
+        .table-title.line-before::before {
+            background-color: #990000 !important;
+        }
+
+        /* ===== Contact Form ===== */
+        .contact-form-section {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #f0e0e0;
+            box-shadow: 0 4px 20px rgba(153,0,0,0.07);
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #990000;
+        }
+
+        .form-description {
+            color: #667085;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #990000;
+            box-shadow: 0 0 0 0.2rem rgba(153,0,0,0.15);
+        }
+
+        .form-label {
+            color: #1d2939;
+            font-size: 0.9rem;
+        }
+
+        .custom-hr {
+            border-color: rgba(153,0,0,0.15);
+        }
+
+        /* ===== Service Items ===== */
+        .service-item {
+            border: 1px solid #f0e0e0 !important;
+            border-radius: 12px !important;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+
+        .service-item:hover {
+            box-shadow: 0 6px 20px rgba(153,0,0,0.12) !important;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Contact Form Submit Button ===== */
+        #contact_form button[type="submit"] {
+            background: linear-gradient(135deg, #990000, #cc0000);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 32px;
             font-size: 1rem;
-            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        #contact_form button[type="submit"]:hover {
+            opacity: 0.9;
+        }
+
+        /* ===== Map section wrapper ===== */
+        .contact-us-page-bg {
+            background: #f8f9fc;
+            min-height: 60vh;
+            padding-bottom: 40px;
         }
     </style>
 @endsection
@@ -90,8 +239,8 @@
     <!-- Start Contact Us Page Section -->
     <div class="contact-us-page-bg">
         <div id="contact-us-page">
-            <!-- Start Hero Section -->
-            <div class="container-fluid mt-md-5 mt-3">
+            {{-- Start Hero Section --}}
+            {{-- <div class="container-fluid mt-md-5 mt-3">
                 <section id="hero-section" aria-labelledby="hero-title">
                     <div class="col-lg-9 col-md-11 col-sm-12 col-12">
                         <div class="content d-flex align-items-center justify-content-center flex-column">
@@ -167,10 +316,9 @@
                     </div>
                 </section>
             </div>
-            <!-- End Hero Section -->
+            --}} {{-- End Hero Section --}}
 
-            <div class="container">
-                <div id="contentChartdiv">
+            <div id="contentChartdiv">
                     <div id="chartdiv"></div>
                     <!-- Modal HTML -->
                     <div id="contactModal" style="display: none;">
@@ -183,6 +331,8 @@
                         </div>
                     </div>
                 </div>
+
+            <div class="container">
 
                 <div class="services-items-container mt-md-4 mt-3">
                     <div class="services-items">
@@ -568,6 +718,8 @@
 
             // Create the chart object
             var chart = am4core.create("chartdiv", am4maps.MapChart);
+            chart.background.fill = am4core.color("#c8d8e8");
+            chart.background.fillOpacity = 1;
 
             // Set the projection type
             chart.projection = new am4maps.projections.Miller();
@@ -582,11 +734,13 @@
             // Configure country polygons
             var polygonTemplate = polygonSeries.mapPolygons.template;
             polygonTemplate.tooltipText = "{name}";
-            polygonTemplate.fill = am4core.color("#776655"); // Default color for countries
+            polygonTemplate.fill = am4core.color("#7a9ec4"); // Default color for countries
+            polygonTemplate.stroke = am4core.color("#ffffff");
+            polygonTemplate.strokeWidth = 0.4;
 
             // Hover state for polygons
             var hs = polygonTemplate.states.create("hover");
-            hs.properties.fill = am4core.color("#121212"); // Hover color
+            hs.properties.fill = am4core.color("#cc2200"); // Hover color
 
             // Create an image series for points (clustered)
             var imageSeries = chart.series.push(new am4maps.MapImageSeries());

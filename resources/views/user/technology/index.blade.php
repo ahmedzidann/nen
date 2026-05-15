@@ -1,4 +1,4 @@
-@extends('user.layout.master_without_sidebar')
+@extends('user.layout.master')
 @section('parent_page_name')
     Testing
 @endsection

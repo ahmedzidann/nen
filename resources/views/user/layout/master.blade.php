@@ -229,7 +229,9 @@
         <div class="container">
             <div class="about_us_div">
                 @include('user.layout.includes.about.sidebar')
-                @yield('content')
+                <div class="about_content" style="flex: 1; min-width: 0; overflow-x: hidden;">
+                    @yield('content')
+                </div>
             </div>
         </div>
     </section>

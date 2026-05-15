@@ -22,15 +22,12 @@
 
     <!-- Start Loader -->
     <div class="loader-wrapper">
-        <div class="custom-loader"></div>
-
-        <!-- Other Loader -->
-        <!-- <div class="new-loader">
-            <div class="loader-bar bar-1"></div>
-            <div class="loader-bar bar-2"></div>
-            <div class="loader-bar bar-3"></div>
-            <div class="loader-bar bar-4"></div>
-        </div> -->
+        <div class="loading">
+            <svg width="64px" height="48px">
+                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+                <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+            </svg>
+        </div>
     </div>
     <!-- End Loader -->
 
@@ -102,7 +99,6 @@
 
     <!-- hero_img -->
     <!-- section_who_us -->
-
 
     <section class="page-content">
         @yield('content')

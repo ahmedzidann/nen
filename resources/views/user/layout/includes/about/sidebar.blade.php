@@ -1,5 +1,5 @@
 @if (!str_contains(url()->current(), '/contact-us'))
-<div class="aside_div" style="{{ str_contains(url()->current(), '/testing/') ? 'display: none;' : '' }}">
+<div class="aside_div">
     @if (isset($VCpages))
     @foreach ($VCpages as $page)
     <a href="{{ route('about.' . $page->slug . '') }}"
@@ -69,6 +69,18 @@
     @foreach ($technologies as $page)
     <a href="{{ route('technology.' . $page->slug . '', ['page_id' => $page->id]) }}"
         class="ref_styles active_ref {{ Route::is('technology.' . $page->slug . '') ? 'active_link active' : '' }}">
+        <div class="img_link">
+            <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/icon_document.png') }}'; this.classList.add('Identity_icon');" alt="{{ $page->name }}" />
+            {{ $page->name }}
+        </div>
+    </a>
+    @endforeach
+    @elseif (isset($ngoPages))
+    @foreach ($ngoPages as $page)
+    <a href="{{ route('ngo.' . $page->slug . '', ['page_id' => $page->id]) }}"
+        class="ref_styles active_ref {{ Route::is('ngo.' . $page->slug . '') ? 'active_link active' : '' }}">
         <div class="img_link">
             <img class="@if ($loop->first) Identity_icon @endif" src="{{ asset($page->getFirstMediaUrl('icon')) }}"
                 loading="lazy"

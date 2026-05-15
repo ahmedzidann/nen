@@ -13,6 +13,7 @@ use App\Http\Controllers\User\ResourceController;
 use App\Http\Controllers\User\Solution\SolutionController;
 use App\Http\Controllers\User\Store\ProductController;
 use App\Http\Controllers\User\Store\StoreController;
+use App\Http\Controllers\User\Ngo\NgoController;
 use App\Http\Controllers\User\Technology\TechnologyContoller;
 use App\Http\Controllers\User\Testing\TestingContoller;
 use App\Http\Controllers\Web\BlogController;
@@ -56,6 +57,15 @@ Route::group(['prefix' => 'education', 'as' => 'education.', 'name' => 'educatio
 Route::group(['prefix' => 'testing', 'as' => 'testing.', 'name' => 'testing.'], function () {
     foreach (Page::where('parent_id', Page::where('slug', 'testing')->first()->id)->get() as $page) {
         Route::get($page->slug, [TestingContoller::class, 'index'])->name($page->slug);
+    }
+});
+
+Route::group(['prefix' => 'ngo', 'as' => 'ngo.', 'name' => 'ngo.'], function () {
+    $ngoParent = Page::where('slug', 'ngo')->first();
+    if ($ngoParent) {
+        foreach (Page::where('parent_id', $ngoParent->id)->get() as $page) {
+            Route::get($page->slug, [NgoController::class, 'index'])->name($page->slug);
+        }
     }
 });
 

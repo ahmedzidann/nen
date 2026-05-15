@@ -224,15 +224,17 @@
     </div>
     </div> --}}
     <!-- End Quick Access Section UI -->
-<!-- 
+{{-- 
     <section class="about_sec">
         <div class="container">
             <div class="about_us_div">
                 @include('user.layout.includes.about.sidebar')
-                @yield('content')
             </div>
         </div>
-    </section> -->
+    </section>
+--}}
+
+    @yield('content')
 
     <!-- Start Contact Us Section -->
     <section id="contact-us" class="pt-3 mt-md-5 mt-3">

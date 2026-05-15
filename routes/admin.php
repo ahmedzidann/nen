@@ -59,6 +59,8 @@ use App\Http\Controllers\Admin\Technology\TechnologyResourceController;
 use App\Http\Controllers\Admin\Testing\TestingController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\Admin\setting_testing_technology\SettingTestingTechnologyController ;
+use App\Http\Controllers\Admin\Ngo\NgoSectionController;
+use App\Http\Controllers\Admin\Ngo\NgoItemController;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -229,6 +231,18 @@ Route::middleware('authAdmin:admin')->group(function () {
    Route::post('admin/setting_technology_testing/bulk-delete', 
     [SettingTestingTechnologyController::class, 'bulkDelete'])
     ->name('setting_technology_testing.delete_bulk');
+
+    Route::prefix('ngo-sections')->as('ngo_sections.')->group(function () {
+        Route::get('/', [NgoSectionController::class, 'index'])->name('index');
+        Route::get('/create', [NgoSectionController::class, 'create'])->name('create');
+        Route::post('/', [NgoSectionController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [NgoSectionController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [NgoSectionController::class, 'update'])->name('update');
+    });
+    Route::post('admin/ngo-sections/bulk-delete', [NgoSectionController::class, 'bulkDelete'])->name('ngo_sections.bulk_delete');
+
+    Route::resource('ngo', NgoItemController::class);
+    Route::get('ngo/{language}', [NgoItemController::class, 'show'])->name('ngo.show');
 
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
 });

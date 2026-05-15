@@ -1,0 +1,170 @@
+@extends('admin.layouts.master')
+@section('titleadmin')
+    {{ str_replace('-', ' ', ucfirst(TranslationHelper::translate($viewTable . ' ' . $type))) }}
+@endsection
+@section('cssadmin')
+@endsection
+
+@section('contentadmin')
+    <div class="page-wrapper">
+        <div class="page-content">
+            <x-admin.customize-breadcrumb :name="$viewTable" :route-view="$routeView" type="Create">
+            </x-admin.customize-breadcrumb>
+            <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12">
+                <div class="col">
+                    <h6 class="mb-0 text-uppercase">{{ TranslationHelper::translate(ucfirst('Nav Tabs') ?? '') }}</h6>
+                    <hr />
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs nav-danger" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#{{ $translationFirst->id }}"
+                                        role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i></div>
+                                            <div class="tab-title"> {{ ucfirst($translationFirst->name) }}</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <form method="post" id="myForm" action="{{ $action ?? '' }}" enctype="multipart/form-data">
+                                @include('components.admin.form.csrf')
+                                <div class="tab-content py-3">
+                                    <div class="tab-pane fade show active" id="{{ $translationFirst->id }}" role="tabpanel">
+                                        <div class="card-body p-4">
+                                            <div class="card-body p-4 row">
+                                                <input type="hidden" name="pages_id" value="{{ $SelectPages->id ?? '' }}">
+                                                <input type="hidden" name="category" value="{{ Request()->category ?? '' }}">
+                                                <input type="hidden" name="subcategory" value="{{ Request()->subcategory ?? '' }}">
+                                                <input type="hidden" name="item" value="{{ Request()->item ?? '' }}">
+
+                                                <div class="col-md-12 mb-4">
+                                                    <label class="{{ $class ?? 'form-label' }}">{{ ucfirst(TranslationHelper::translate('Section Design')) }}
+                                                        <span style="color: red">{{ $star ?? '' }}</span></label> <br>
+                                                    <select class="form-select w-100" id="section_id" data-placeholder="Choose Category" name="section_id">
+                                                        <option selected="" value="" disabled selected>{{ ucfirst(TranslationHelper::translate('Select design_section')) }}</option>
+                                                        @foreach ($sections as $section)
+                                                            <option value="{{ $section->design_section_id }}">{{ $section->title }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="*" class="form-label" name="Title  {{ $translationFirst->name }}"></x-admin.form.label-first>
+                                                    <x-admin.form.input old="{{ 'title.' . $translationFirst->key }}"
+                                                        name="{{ 'title' . '[' . $translationFirst->key . ']' }}" type="text"
+                                                        required="" placeholder="Title {{ $translationFirst->name }}"
+                                                        class="form-control valid" :value="$StaticTable->translate('title', $translationFirst->key)">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star="*" name="please enter title  {{ $translationFirst->name }}"></x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="*" class="form-label" name="Description  {{ $translationFirst->name }}"></x-admin.form.label-first>
+                                                    <x-admin.form.text old="{{ 'description.' . $translationFirst->key }}"
+                                                        name="{{ 'description' . '[' . $translationFirst->key . ']' }}"
+                                                        type="text" placeholder="Description {{ ucfirst($translationFirst->name) }}"
+                                                        :value="$StaticTable->translate('description', $translationFirst->key)">
+                                                    </x-admin.form.text>
+                                                    <x-admin.form.label-end star="*" name="please enter Description  {{ $translationFirst->name }}"></x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first class="form-label" name="Home Description  {{ $translationFirst->name }}"></x-admin.form.label-first>
+                                                    <x-admin.form.text old="{{ 'home_description.' . $translationFirst->key }}"
+                                                        name="{{ 'home_description' . '[' . $translationFirst->key . ']' }}"
+                                                        type="text" placeholder="Home Description {{ ucfirst($translationFirst->name) }}"
+                                                        :value="$StaticTable->translate('home_description', $translationFirst->key)">
+                                                    </x-admin.form.text>
+                                                    <x-admin.form.label-end name="please enter Home Description  {{ $translationFirst->name }}"></x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first star="*" class="col-sm-3 col-form-label" name="File Upload Image"></x-admin.form.label-first>
+                                                    <div class="col-sm-9">
+                                                        <x-admin.form.input :model="$StaticTable" nameImage="StaticTable"
+                                                            old="image" name="image" type="file" readonly=""
+                                                            placeholder="Please Enter Image" id="image"
+                                                            class="dropify" DataHeight="300"
+                                                            accept=".jpg, .png, image/jpeg, image/png">
+                                                        </x-admin.form.input>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                    <label class="{{ $class ?? 'form-label' }}">Title First Button <span style="color: red">{{ $star ?? '' }}</span></label> <br>
+                                                    <input type="text" name="{{ 'first_button' . '[' . $translationFirst->key . ']' }}" value="" class="form-control"/>
+                                                </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                    <label class="{{ $class ?? 'form-label' }}">URL First Button <span style="color: red">{{ $star ?? '' }}</span></label> <br>
+                                                    <input type="url" name="url_first_button" value="" class="form-control"/>
+                                                </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                    <label class="{{ $class ?? 'form-label' }}">Title Second Button <span style="color: red">{{ $star ?? '' }}</span></label> <br>
+                                                    <input type="text" name="{{ 'second_button' . '[' . $translationFirst->key . ']' }}" value="" class="form-control"/>
+                                                </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                    <label class="{{ $class ?? 'form-label' }}">URL Second Button <span style="color: red">{{ $star ?? '' }}</span></label> <br>
+                                                    <input type="url" name="url_second_button" value="" class="form-control"/>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <x-admin.form.label-first class="form-label" name="sort"></x-admin.form.label-first>
+                                                    <x-admin.form.input old="{{ 'sort' }}" name="{{ 'sort' }}" type="number"
+                                                        required="" placeholder="sort" class="form-control valid" :value="$StaticTable->sort">
+                                                    </x-admin.form.input>
+                                                    <x-admin.form.label-end star="*" name="please enter sort"></x-admin.form.label-end>
+                                                </div>
+
+                                                <div class="col-md-6 mb-4">
+                                                    <x-admin.form.label-first class="form-label" name="Checked switch checkbox status"></x-admin.form.label-first>
+                                                    <div class="col-sm-9">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div class="form-check">
+                                                                @foreach (App\Models\Page::STATUS as $status)
+                                                                    <div class="form-check">
+                                                                        <x-admin.form.radio :checked="$StaticTable->status == $status ? 'checked' : ''" name="status" value="{{ $status }}" :model="$StaticTable"></x-admin.form.radio>
+                                                                        <label class="form-check-label" for="bsValidation6">{{ $status }}</label>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <x-admin.form.label-first class="form-label" name="Show In Home"></x-admin.form.label-first>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="show_in_home_yes" value="1" name="show_in_home">
+                                                        <label class="form-check-label" for="show_in_home_yes">Yes</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="show_in_home_no" value="0" name="show_in_home" checked>
+                                                        <label class="form-check-label" for="show_in_home_no">No</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="d-md-flex d-grid align-items-center gap-3">
+                                                        <x-admin.form.submit type="submit"></x-admin.form.submit>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('jsadmin')
+    @include('admin.layouts.ckeditor.ckeditor')
+    <script src="{{ asset('admin/about/identity/js/create.js') }}"></script>
+@endsection

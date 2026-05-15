@@ -524,6 +524,29 @@
   @endcan
   <li>
       <a class="has-arrow" href="javascript:;">
+          <div class="parent-icon"><i class="bx bxs-heart"></i>
+          </div>
+          <div class="menu-title">NGO</div>
+      </a>
+      <ul>
+          <li>
+              <a href="{{ route('admin.ngo_sections.index') }}" style="color: red;">
+                  <i class='bx bx-radio-circle'></i>Section Setting
+              </a>
+          </li>
+          @foreach (App\Models\Page::where('slug', 'ngo')->get() as $ngoPage)
+              @foreach ($ngoPage->childe as $ch)
+                  <li>
+                      <a href="{{ route('admin.ngo.index', ['category=' . $ngoPage->slug, 'subcategory=' . $ch->slug, 'item=section-one']) }}">
+                          <i class='bx bx-radio-circle'></i>{{ $ch->translate('name', app()->getLocale()) }}
+                      </a>
+                  </li>
+              @endforeach
+          @endforeach
+      </ul>
+  </li>
+  <li>
+      <a class="has-arrow" href="javascript:;">
           <div class="parent-icon"><i class="bx bx-user-circle"></i>
           </div>
           <div class="menu-title">Join us</div>

@@ -7,15 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('page_name')</title>
 
-    <!-- amCharts 4 Core -->
-    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-    <!-- amCharts 4 Maps -->
-    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
-    <!-- amCharts 4 Geodata (World Map) -->
-    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
-    <!-- amCharts 4 Animated Theme -->
-    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('content/images/logo.svg') }}" />
 
@@ -51,6 +42,20 @@
         </div>
     </div>
     <!-- End Loader -->
+    <script>
+        window.addEventListener('load', function () {
+            var loader = document.querySelector('.loader-wrapper');
+            if (loader) {
+                loader.style.transition = 'opacity 0.4s';
+                loader.style.opacity = '0';
+                setTimeout(function () { loader.remove(); }, 400);
+            }
+        });
+        setTimeout(function () {
+            var loader = document.querySelector('.loader-wrapper');
+            if (loader) { loader.remove(); }
+        }, 5000);
+    </script>
 
       @php
 use App\Models\Makeme;

@@ -9883,7 +9883,7 @@ certifications-section .btn-outline {
     background: white;
     padding: 25px;
     border-radius: 8px;
-    text-align: center;
+    text-align: start;
     transition: all 0.4s ease;
     height: 100%;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
@@ -9914,7 +9914,7 @@ certifications-section .btn-outline {
 .feature-icon {
     width: 70px;
     height: 70px;
-    margin: 0 auto 18px;
+    margin: 0 0 18px;
     background: linear-gradient(135deg, var(--main-color) 0%, #7d0000 100%);
     border-radius: 50%;
     display: flex;
@@ -10686,6 +10686,14 @@ certifications-section .btn-outline {
     transition: all 0.4s ease;
 }
 
+.modern-cards-section .card-icon-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    transform: none;
+}
+
 .modern-card:hover .card-icon-wrapper {
     background: linear-gradient(135deg, var(--main-color) 0%, #7d0000 100%);
     transform: scale(1.1) rotate(5deg);
@@ -10695,6 +10703,13 @@ certifications-section .btn-outline {
     font-size: 2rem;
     color: var(--main-color);
     transition: all 0.4s ease;
+}
+
+.modern-cards-section .card-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .modern-card:hover .card-icon {
@@ -12779,7 +12794,7 @@ certifications-section .btn-outline {
     background: white;
     border-radius: 16px;
     padding: 30px 25px;
-    text-align: center;
+    text-align: start;
     position: relative;
     transition: all 0.3s ease;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
@@ -12815,7 +12830,7 @@ certifications-section .btn-outline {
 .process-icon {
     width: 80px;
     height: 80px;
-    margin: 0 auto 20px;
+    margin: 0 0 20px;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 50%;
     display: flex;
@@ -15622,6 +15637,10 @@ certifications-section .btn-outline {
     padding: 1rem;
     border-radius: 8px;
     transition: all 0.3s ease;
+}
+
+.services-section .service-card {
+    flex-direction: column;
 }
 
 .service-icon-wrapper {

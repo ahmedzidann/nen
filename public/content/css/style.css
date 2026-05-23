@@ -626,12 +626,19 @@ a {
 }
 
 .about_us_div:has(.aside_div[style*="display: none"]) .about_content {
-    width: 100%;
+    flex: 1;
     max-width: 100%;
 }
 
+.about_us_div > :not(.aside_div) {
+    flex: 1;
+    min-width: 0;
+}
+
 .about_content {
-    width: calc(100% - 330px);
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
     text-align: center;
 }
 
@@ -6299,7 +6306,7 @@ th {
     }
 
     .about_content {
-        width: calc(100% - 318px);
+        flex: 1;
     }
 
     .about_us_div {

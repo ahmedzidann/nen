@@ -9,6 +9,7 @@
     {{ isset($slider) ? $slider->getFirstMediaUrl('image') : asset('content/images/about_img.png') }}
 @endsection
 @section('content')
+<div class="about_content" style="text-align: start;">
   @if ($fSection = $items)
               
                    
@@ -1014,4 +1015,5 @@
             }
         });
     </script>
+</div>
 @endsection

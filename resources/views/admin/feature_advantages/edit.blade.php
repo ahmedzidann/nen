@@ -85,11 +85,27 @@
                                                                     <div id="input-template-file" class="input-temp-file">
                                                                         <div class="col-md-12 mb-4 row">
                                                                             <div class="col-sm-4">
-                                                                                <x-admin.form.input name="image[]"
-                                                                                    type="file" required=""
-                                                                                    placeholder="image"
-                                                                                    class="form-control valid">
-                                                                                </x-admin.form.input>
+                                                                                <div class="d-flex align-items-center gap-2">
+                                                                                    <x-admin.form.input name="image[]"
+                                                                                        type="file" required=""
+                                                                                        placeholder="image"
+                                                                                        class="form-control valid">
+                                                                                    </x-admin.form.input>
+                                                                                    @if($file->image)
+                                                                                    <button type="button"
+                                                                                        class="btn btn-sm btn-outline-secondary flex-shrink-0"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#imgPreviewModal"
+                                                                                        data-img="{{ asset('/storage/' . $file->image) }}"
+                                                                                        title="Preview image">
+                                                                                        <i class="bx bx-show" style="pointer-events:none;"></i>
+                                                                                    </button>
+                                                                                    @else
+                                                                                    <span class="badge bg-warning text-dark flex-shrink-0" title="No image uploaded">
+                                                                                        <i class="bx bx-image-alt" style="pointer-events:none;"></i> لم يتم الرفع
+                                                                                    </span>
+                                                                                    @endif
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-sm-4">
                                                                                 <input type="hidden"
@@ -143,6 +159,34 @@
     @include('admin.layouts.ckeditor.ckeditor')
     <script src="{{ asset('admin/education/js/edit.js') }}"></script>
 @endsection
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="imgPreviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="previewModalImg" src="" alt="preview" class="img-fluid rounded" style="max-height:70vh;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var modalEl = document.getElementById("imgPreviewModal");
+        if (modalEl) {
+            modalEl.addEventListener("show.bs.modal", function(event) {
+                var btn = event.relatedTarget;
+                var imgSrc = btn ? btn.getAttribute("data-img") : "";
+                document.getElementById("previewModalImg").src = imgSrc || "";
+            });
+        }
+    });
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

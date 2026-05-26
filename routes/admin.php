@@ -62,6 +62,8 @@ use App\Http\Controllers\Admin\setting_testing_technology\SettingTestingTechnolo
 use App\Http\Controllers\Admin\Ngo\NgoSectionController;
 use App\Http\Controllers\Admin\Ngo\NgoItemController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\Admin\Homepage\VideoController;
+use App\Http\Controllers\Admin\Homepage\HomeDocValidationController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -245,6 +247,21 @@ Route::middleware('authAdmin:admin')->group(function () {
     Route::get('ngo/{language}', [NgoItemController::class, 'show'])->name('ngo.show');
 
     Route::post('contact-us-services-bulk-delete', [ServicesController::class, 'destroy'])->name('delete.contact-us-services');
+
+    Route::name('homepage.')->prefix('homepage')->group(function () {
+        Route::resource('video', VideoController::class)->except(['destroy', 'show']);
+
+        Route::prefix('home-doc-validation')->name('home-doc-validation.')->group(function () {
+            Route::get('/', [HomeDocValidationController::class, 'index'])->name('index');
+            Route::get('/create', [HomeDocValidationController::class, 'create'])->name('create');
+            Route::post('/', [HomeDocValidationController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [HomeDocValidationController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [HomeDocValidationController::class, 'update'])->name('update');
+            Route::get('/item-template', [HomeDocValidationController::class, 'itemTemplate'])->name('item-template');
+            Route::post('/delete-item', [HomeDocValidationController::class, 'deleteItem'])->name('delete-item');
+            Route::post('/delete-detail', [HomeDocValidationController::class, 'deleteDetail'])->name('delete-detail');
+        });
+    });
 });
 
 Route::get('Archive/download/{id}', [ArchiveTabsController::class, 'download'])->name('tabproject.archiveDownload');

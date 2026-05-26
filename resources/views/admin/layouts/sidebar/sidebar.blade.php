@@ -27,6 +27,34 @@
           </li>
           {{-- item --}}
           <li class="menu-label">Items</li>
+
+          {{-- Home Page Management --}}
+          <li>
+              <a class="has-arrow" href="javascript:;">
+                  <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                  </div>
+                  <div class="menu-title">Homepage</div>
+              </a>
+              <ul>
+                  <li class="{{ request()->is('*feature-advantages*') ? 'mm-active' : '' }}">
+                      <a href="{{ route('admin.feature-advantages.index') }}">
+                          <i class='bx bx-radio-circle'></i>Features & Advantages
+                      </a>
+                  </li>
+                  <li class="{{ request()->is('*homepage/video*') ? 'mm-active' : '' }}">
+                      <a href="{{ route('admin.homepage.video.index') }}">
+                          <i class='bx bx-radio-circle'></i>Video Section
+                      </a>
+                  </li>
+                  <li class="{{ request()->is('*homepage/home-doc-validation*') ? 'mm-active' : '' }}">
+                      <a href="{{ route('admin.homepage.home-doc-validation.index') }}">
+                          <i class='bx bx-radio-circle'></i>Doc Validation
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          {{-- End Home Page Management --}}
+
           {{-- about --}}
           @can('show About')
           <li>
@@ -810,6 +838,7 @@
       </ul>
   </li>
   @endcan
+
   @can('show Pages')
   <li>
       <a class="has-arrow" href="javascript:;">

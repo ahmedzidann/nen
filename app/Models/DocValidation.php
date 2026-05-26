@@ -25,6 +25,7 @@ class DocValidation extends Model implements  HasMedia
         'second_title',
         'description',
         'status',
+        'show_in_home',
         'pages_id',
         'childe_pages_id',
     ];

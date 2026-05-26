@@ -39,7 +39,7 @@ class UpdateFeatureAdvantagesAction
 
                     foreach ($data['title'][array_key_first($data['title'])] as $key => $value) {
                         if (!array_key_exists($key, $data['file_id'][array_key_first($data['file_id'])])) {
-                            $file = $data['image'][$key];
+                            $file = $data['image'][$key] ?? null;
                             $instance = new FileUploadHelper();
                             $filePath = $instance->uploadFile($image, 'feature_advantages');
                             FeatureAdvantagesDetails::create([
@@ -56,11 +56,12 @@ class UpdateFeatureAdvantagesAction
                 if (isset($data['file_id'])) {
                     foreach ($data['file_id'][array_key_first($data['file_id'])] as $key => $file) {
                         if ($file != null) {
+                            $filePath = null;
                             $title[array_key_first($data['file_id'])] = $data['title'][array_key_first($data['file_id'])][$key];
                             $sub_title[array_key_first($data['file_id'])] = $data['sub_title'][array_key_first($data['file_id'])][$key];
                             $instance = new FileUploadHelper();
                             $e = FeatureAdvantagesDetails::find($file);
-                            if (isset($data['image']) && $image = $data['image'][$key]) {
+                            if (isset($data['image']) && isset($data['image'][$key]) && $image = $data['image'][$key]) {
                                 $image = $data['image'][$key];
                                 $filePath = $instance->updateFile($image, $e->image, 'feature_advantages');
                             }

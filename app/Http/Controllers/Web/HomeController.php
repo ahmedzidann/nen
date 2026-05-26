@@ -8,6 +8,8 @@ use App\Models\Country;
 use App\Models\Education;
 use App\Models\FeatureAdvantages;
 use App\Models\FindUs;
+use App\Models\HomeDocValidation;
+use App\Models\HomeVideo;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\SidebarResource;
@@ -33,6 +35,8 @@ class HomeController extends Controller
       $feature = $this->getFeatureAdvantages();
       $findus = $this->getFindUsData();
       $countries = $this->getCountries();
+      $homeVideo = $this->getHomeVideo();
+      $homeDocValidation = $this->getHomeDocValidation();
 
       return view('user.home.home', \compact(
          'projects',
@@ -47,6 +51,8 @@ class HomeController extends Controller
          'feature',
          'findus',
          'countries',
+         'homeVideo',
+         'homeDocValidation',
       ));
    }
 
@@ -138,6 +144,16 @@ class HomeController extends Controller
    public function getFeatureAdvantages()
    {
       return FeatureAdvantages::with('files')->first();
+   }
+
+   public function getHomeVideo()
+   {
+      return HomeVideo::first();
+   }
+
+   public function getHomeDocValidation()
+   {
+      return HomeDocValidation::with('items.details')->where('is_active', true)->first();
    }
 
    /**

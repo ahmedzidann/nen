@@ -92,36 +92,33 @@
         <!-- End Features Section -->
 
         <!-- Start About Section -->
+        @if($homeVideo)
         <section id="about-company-section" class="section-bundries">
             <div class="container mx-auto">
                 <div class="row align-items-center">
                     <div class="col-md-7">
                         <div class="about-content text-sm-start text-center">
                             <h2 class="title fs-lg text-white-color fw-bold">
-                                On <br> Platform
+                                {!! $homeVideo->title ?? '' !!}
                             </h2>
                             <p class="w-75 mt-2 text-white-color description">
-                                NEN | National Education Network for Communication and Information Technology with the main
-                                offices in [London, Dubai, Cairo, Amman, and Tashkent] established@2008, to offer
-                                high-standard professional services and enterprise solutions to help organizations to meet
-                                their business needs and identify their goals, in cooperation with worldwide technology
-                                leaders
+                                {!! $homeVideo->description ?? '' !!}
                             </p>
+                            @if($homeVideo->button_url)
                             <div class="mt-4">
-                                <button class="btn btn-light border justify-content-sm-start justify-content-center" onclick="window.open('https://www.google.com', '_blank')">
-                                    Learn More
+                                <button class="btn btn-light border justify-content-sm-start justify-content-center"
+                                    onclick="window.open('{{ $homeVideo->button_url }}', '_blank')">
+                                    {{ $homeVideo->button_text ?? 'Learn More' }}
                                 </button>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="position-relative about-img">
-                            <!-- <img src="{{ asset('content/images/pages/home-page/hero-home-page.webp') }}" loading="lazy"
-                                                                                                                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                                                                                                                alt="about-img" class="w-100 h-100"> -->
                             <iframe id="videoFrame" width="100%" height="100%"
-                                src="https://www.youtube.com/embed/8mAITcNt710"
-                                title="Java Tutorial for Beginners"
+                                src="{{ $homeVideo->youtube_url }}"
+                                title="{{ $homeVideo->title ?? 'Video' }}"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -131,6 +128,7 @@
                 </div>
             </div>
         </section>
+        @endif
         <!-- End About Section -->
 
         <!-- Start Projects Section -->
@@ -675,128 +673,63 @@
     <!-- End Check -->
 
     <!-- Start Doc Validation Section -->
+    @if($homeDocValidation)
     <section id="doc-validation-section" class="section-bundries">
         <div class="container mx-auto">
             <div class="texts-data d-flex flex-column">
                 <h5 class="global-title">
-                    Our Doc Validation
+                    {{ $homeDocValidation->title ?? '' }}
                 </h5>
                 <div class="under-title-vector">
                     <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
                 </div>
                 <p class="global-description pt-0 mt-1">
-                    Get every thing about AI when reading Article and News
+                    {{ $homeDocValidation->description ?? '' }}
                 </p>
             </div>
         </div>
-        <div id="item-list" class=" py-md-5 py-3 mt-md-4 mt-3">
+        <div id="item-list" class="py-md-5 py-3 mt-md-4 mt-3">
             <div class="container mx-auto">
                 <div class="row g-3 mx-0">
+                    @foreach($homeDocValidation->items as $idx => $item)
                     <div class="col-lg-4 col-md-6">
                         <div class="position-relative doc-validation-card mb-md-4 mb-5">
                             <div class="doc-icon-wrap">
-                                <img alt="" class="doc-icon"
-                                    src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
+                                <img alt="{{ $item->title }}" class="doc-icon"
+                                    src="{{ $item->image ? asset('/storage/' . $item->image) : asset('content/images/pages/home-page/doc-validation/1.svg') }}"
+                                    onerror="this.src='{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}'">
                             </div>
                             <h4 class="mt-3 mb-3 title text-white-color position-relative">
-                                Create a business profile
+                                {{ $item->title }}
                             </h4>
                             <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
+                                @foreach($item->details as $detail)
                                 <li class="d-flex align-items-baseline gap-2 text-item">
                                     <i class="bi bi-circle-fill circle"></i>
-                                    Add Employees.
+                                    {{ $detail->title }}
                                 </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Providers.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Available Services.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Service Locations.
-                                </li>
+                                @endforeach
                             </div>
-                            <div class="number position-absolute"> 1 </div>
+                            <div class="number position-absolute"> {{ $idx + 1 }} </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
-                            <div class="doc-icon-wrap">
-                                <img alt="" class="doc-icon"
-                                    src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
-                            </div>
-                            <h4 class="mt-3 mb-3 title position-relative text-white-color">
-                                Create a business profile
-                            </h4>
-                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Employees.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Providers.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Available Services.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Service Locations.
-                                </li>
-                            </div>
-                            <div class="number position-absolute"> 2 </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="position-relative doc-validation-card mb-md-4 mb-5">
-                            <div class="doc-icon-wrap">
-                                <img alt="" class="doc-icon"
-                                    src="{{ asset('content/images/pages/home-page/doc-validation/1.svg') }}">
-                            </div>
-                            <h4 class="mt-3 mb-3 title position-relative text-white-color">
-                                Create a business profile
-                            </h4>
-                            <div class="d-flex flex-column fs-6 lh-base mb-0 gap-3">
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Employees.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Providers.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Available Services.
-                                </li>
-                                <li class="d-flex align-items-baseline gap-2 text-item">
-                                    <i class="bi bi-circle-fill circle"></i>
-                                    Add Service Locations.
-                                </li>
-                            </div>
-                            <div class="number position-absolute"> 3 </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
 
+        @if($homeDocValidation->button_url)
         <div class="container mx-auto">
             <div class="d-flex justify-content-center mt-md-4 mt-3">
-                <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
-                    <span>
-                        See More
-                    </span>
+                <button class="btn btn-solid-main" onclick="window.open('{{ $homeDocValidation->button_url }}', '_blank')">
+                    <span>{{ $homeDocValidation->button_text ?? 'See More' }}</span>
                     <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
                 </button>
             </div>
         </div>
+        @endif
     </section>
+    @endif
     <!-- End Doc Validation Section -->
 
     @if (count($findus) > 0)

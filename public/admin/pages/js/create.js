@@ -10,14 +10,15 @@
     
           $('#myForm').submit(function (e) {
               e.preventDefault(); // Prevent the default form submission
-              var form = $(this);
-              var url = form.attr('action');
+              var formEl = $(this);
+              var url = formEl.attr('action');
+              var formData = new FormData(formEl[0]);
               $.ajax({
                   url: url,
                   type: "POST",
-                //   contentType: false,
-                //   processData: false,
-                  data: form.serialize(), // Serialize the form data
+                  contentType: false,
+                  processData: false,
+                  data: formData, // FormData supports file uploads
                   success: function (response) {
                       if (response.status == 200) {
                           window.location.href = response.redirect_url;

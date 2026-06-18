@@ -28,14 +28,14 @@ trait ImageHelper
     public function StoreImage2($data2, $model2, $nameImage2)
     {
         if (!empty($data2['image2'])) {
-            $model2->addMediaFromRequest('image2')->toMediaCollection($nameImage2);
+            $model2->addMedia($data2['image2'])->toMediaCollection($nameImage2);
         }
     }
     public function UpdateImage2($data2, $model2, $nameImage2)
     {
         if (!empty($data2['image2'])) {
             $model2->clearMediaCollection($nameImage2);
-            $model2->addMediaFromRequest('image2')->toMediaCollection($nameImage2);
+            $model2->addMedia($data2['image2'])->toMediaCollection($nameImage2);
         }
     }
 

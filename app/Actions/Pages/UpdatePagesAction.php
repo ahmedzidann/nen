@@ -15,6 +15,7 @@ class UpdatePagesAction
             $page->update($data);
         }
         $this->UpdateImage($data,$page,'icon');
+        $this->UpdateImage2($data,$page,'home_image');
 
         return $page;
     }

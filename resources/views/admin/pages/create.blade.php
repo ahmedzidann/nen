@@ -112,6 +112,33 @@
                                             </div>
                                             {{-- ----------Description end --}}
 
+                                            {{-- ----------Home Description first --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="form-label"
+                                                    name="Home Description  {{ $translationFirst->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.text old="{{ 'home_description.'.$translationFirst->key }}"
+                                                    name="{{ 'home_description'.'['.$translationFirst->key.']' }}"
+                                                    type="text"
+                                                    placeholder="Home Description {{ ucfirst($translationFirst->name)  }}"
+                                                    :value="$pages->translate('home_description', $translationFirst->key)">
+                                                </x-admin.form.text>
+                                            </div>
+                                            {{-- ----------Home Description end --}}
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="col-sm-3 col-form-label"
+                                                    name="Home Image (Homepage Display)">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    <x-admin.form.input :model="$pages" nameImage="home_image"
+                                                        old="image2" name="image2" type="file" readonly=""
+                                                        placeholder="Home Image" id="image2" class="dropify"
+                                                        DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
+                                                    </x-admin.form.input>
+                                                </div>
+                                            </div>
+
                                             {{-- ----------navbar first --}}
                                             <div class="col-md-6 mb-4">
                                                 <x-admin.form.label-first class="form-label"

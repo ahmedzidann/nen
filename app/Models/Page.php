@@ -15,12 +15,13 @@ class Page extends Model implements HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable, HasTranslations, HasRoles, InteractsWithMedia;
 
-    public $translatable = ['name', 'description'];
+    public $translatable = ['name', 'description', 'home_description'];
 
     protected $fillable = [
         'name',
         'link',
         'description',
+        'home_description',
         'navbar',
         'footer',
         'status',

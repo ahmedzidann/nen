@@ -88,6 +88,7 @@ class PagesController extends Controller
         $validator = Validator::make($request->all(), [
             'name.*' => ['required', 'max:255', 'min:2'],
             'description.*' => ['nullable', 'max:255', 'min:2'],
+            'home_description.*' => ['nullable'],
             'link' => ['nullable'],
             'sort' => ['nullable'],
             'navbar' => ['nullable'],
@@ -95,6 +96,7 @@ class PagesController extends Controller
             'status' => ['nullable'],
             'parent_id' => ['nullable'],
             'image' => ['nullable'],
+            'image2' => ['nullable'],
         ]);
 
         if ($validator->fails()) {
@@ -122,6 +124,7 @@ class PagesController extends Controller
             $validator = Validator::make($request->all(), [
                 'name.' . $request->submit2 => ['required', 'max:255', 'min:2'],
                 'description.' . $request->submit2 => ['nullable', 'max:4000', 'min:2'],
+                'home_description.' . $request->submit2 => ['nullable'],
                 'link' => ['nullable'],
                 'sort' => ['nullable'],
                 'navbar' => ['nullable'],
@@ -129,11 +132,13 @@ class PagesController extends Controller
                 'status' => ['required'],
                 'parent_id' => ['nullable'],
                 'image' => ['nullable'],
+                'image2' => ['nullable'],
             ]);
         } else {
             $validator = Validator::make($request->all(), [
                 'name.' . $request->submit2 => ['required', 'max:255', 'min:2'],
                 'description.' . $request->submit2 => ['nullable', 'max:4000', 'min:2'],
+                'home_description.' . $request->submit2 => ['nullable'],
             ]);
         }
         if ($validator->fails()) {

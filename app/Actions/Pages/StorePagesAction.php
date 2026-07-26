@@ -13,6 +13,7 @@ class StorePagesAction
     {
         $pages = Page::create($data+['slug'=>Str::slug($data['name']['en'])]);
         $this->StoreImage($data,$pages,'icon');
+        $this->StoreImage2($data,$pages,'home_image');
         return $pages;
     }
 }

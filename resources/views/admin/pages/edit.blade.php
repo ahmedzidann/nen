@@ -115,6 +115,20 @@
                                             </div>
                                             {{-- ----------Description end --}}
 
+                                            {{-- ----------Home Description first --}}
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="form-label"
+                                                    name="Home Description  {{ $item->name  }}">
+                                                </x-admin.form.label-first>
+                                                <x-admin.form.text old="{{ 'home_description.'.$item->key }}"
+                                                    name="{{ 'home_description'.'['.$item->key.']' }}"
+                                                    type="text"
+                                                    placeholder="Home Description {{ ucfirst($item->name)  }}"
+                                                    :value="$pages->translate('home_description', $item->key)">
+                                                </x-admin.form.text>
+                                            </div>
+                                            {{-- ----------Home Description end --}}
+
                                             @if ($loop->first)
 
                                             <div class="col-md-12 mb-4">
@@ -127,6 +141,25 @@
                                                         placeholder="Please Enter Image" id="image" class="dropify"
                                                         DataHeight="300" accept=".jpg, .png, image/jpeg, image/png">
                                                     </x-admin.form.input>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mb-4">
+                                                <x-admin.form.label-first class="col-sm-3 col-form-label"
+                                                    name="Home Image (Homepage Display)">
+                                                </x-admin.form.label-first>
+                                                <div class="col-sm-9">
+                                                    @php
+                                                        $homeMedia = $pages->getFirstMedia('home_image');
+                                                        $homeDefaultUrl = $homeMedia
+                                                            ? request()->getSchemeAndHttpHost() . '/storage/' . $homeMedia->id . '/' . $homeMedia->file_name
+                                                            : '';
+                                                    @endphp
+                                                    <input type="file" name="image2" id="image2"
+                                                        class="dropify"
+                                                        data-default-file="{{ $homeDefaultUrl }}"
+                                                        data-height="300"
+                                                        accept=".jpg,.png,image/jpeg,image/png">
                                                 </div>
                                             </div>
                                             {{-- ----------navbar first --}}

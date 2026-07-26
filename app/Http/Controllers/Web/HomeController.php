@@ -37,15 +37,29 @@ class HomeController extends Controller
       $countries = $this->getCountries();
       $homeVideo = $this->getHomeVideo();
       $homeDocValidation = $this->getHomeDocValidation();
+      $joinUs = $this->getJoinUs();
+      $educationPages = $this->getEducationPages();
+      $solutionPages = $this->getSolutionPages();
+      [$techParent, $techItems] = $this->getTechParentAndItems();
+      [$testingParent, $testingItems] = $this->getTestingParentAndItems();
+      [$findusParent, $findusItems] = $this->getFindUsParentAndItems();
 
       return view('user.home.home', \compact(
          'projects',
          'upperDidebarResources',
          'lowerDidebarResources',
          'educations',
+         'educationPages',
+         'solutionPages',
          'testings',
          'solutions',
          'technologies',
+         'techParent',
+         'techItems',
+         'testingParent',
+         'testingItems',
+         'findusParent',
+         'findusItems',
          'home',
          'blogs',
          'feature',
@@ -53,6 +67,7 @@ class HomeController extends Controller
          'countries',
          'homeVideo',
          'homeDocValidation',
+         'joinUs',
       ));
    }
 
@@ -156,6 +171,73 @@ class HomeController extends Controller
       return HomeDocValidation::with('items.details')->where('is_active', true)->first();
    }
 
+   public function getFindUsParentAndItems(): array
+   {
+      $parent = Page::where('slug', 'find-us')->first();
+      if (!$parent) return [null, collect()];
+      $items = Page::where('parent_id', $parent->id)
+         ->where('status', 'Active')
+         ->orderBy('sort')
+         ->get();
+      return [$parent, $items];
+   }
+
+   public function getTestingParentAndItems(): array
+   {
+      $parent = Page::where('slug', 'testing')->first();
+      if (!$parent) return [null, collect()];
+      $items = Page::where('parent_id', $parent->id)
+         ->where('status', 'Active')
+         ->orderBy('sort')
+         ->get();
+      return [$parent, $items];
+   }
+
+   public function getTechParentAndItems(): array
+   {
+      $parent = Page::where('slug', 'technology')->first();
+      if (!$parent) return [null, collect()];
+      $items = Page::where('parent_id', $parent->id)
+         ->where('status', 'Active')
+         ->orderBy('sort')
+         ->get();
+      return [$parent, $items];
+   }
+
+   public function getSolutionPages()
+   {
+      $parent = Page::where('slug', 'solutions')->first();
+      if (!$parent) return collect();
+      return Page::where('parent_id', $parent->id)
+         ->where('status', 'Active')
+         ->orderBy('sort')
+         ->with(['childe' => function ($q) {
+            $q->where('status', 'Active')->orderBy('sort');
+         }])
+         ->get();
+   }
+
+   public function getEducationPages()
+   {
+      $parent = Page::where('slug', 'education')->first();
+      if (!$parent) return collect();
+      return Page::where('parent_id', $parent->id)
+         ->where('status', 'Active')
+         ->orderBy('sort')
+         ->get();
+   }
+
+   public function getJoinUs()
+   {
+      $parent = Page::where('slug', 'join-us')->first();
+      if (!$parent) return null;
+      $cards = Page::where('parent_id', $parent->id)
+         ->where('status', 'Active')
+         ->orderBy('sort')
+         ->get();
+      return (object) ['page' => $parent, 'cards' => $cards];
+   }
+
    /**
     * getFindUsData
     *
@@ -174,6 +256,6 @@ class HomeController extends Controller
     */
    public function getCountries()
    {
-      return FindUs::query()->with('state')->get();
+      return FindUs::query()->with('state.country')->get();
    }
 }

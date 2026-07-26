@@ -243,7 +243,7 @@
     </div>
     </section>
     <!-- End Projects Section -->
-    @if (count($educations) > 0)
+    @if ($educationPages->count() > 0)
         <!-- Start Education Section -->
         <section id="education-section" class="section-bundries">
             <div class="container mx-auto">
@@ -259,19 +259,29 @@
                     </p>
                 </div>
                 <div class="row mt-4 mx-0">
-                    @foreach ($educations as $education)
+                    @foreach ($educationPages as $education)
+                    @php
+                        $eduMedia = $education->getFirstMedia('home_image');
+                        $eduImgUrl = $eduMedia
+                            ? request()->getSchemeAndHttpHost() . '/storage/' . $eduMedia->id . '/' . $eduMedia->file_name
+                            : asset('content/images/logo.svg');
+                    @endphp
                         <div class="col-md-6 col-lg-4 mb-lg-0 mb-4">
                             <div class="clipped-border-card h-100">
                                 <div class="clipped-item-card border h-100">
                                     <div
                                         class="d-flex flex-column justify-content-between gap-4 item-content h-100 position-relative">
                                         <div class="item-overlay position-absolute"></div>
+                                        <img src="{{ $eduImgUrl }}" alt="{{ $education->name }}"
+                                            class="position-absolute w-100 h-100 object-fit-cover top-0 start-0"
+                                            style="z-index:0; opacity:0.15;"
+                                            onerror="this.style.display='none'">
                                         <div>
                                             <h4 class="text-main-color text-uppercase item-title">
-                                                {{ $education->title }}
+                                                {{ $education->name }}
                                             </h4>
                                             <p class="text-black-50 fs-5-2 mt-4 description text-align-justify">
-                                                {{ Illuminate\Support\Str::limit($education->home_description ?? $education->mini_desc ?? '', 300) }}
+                                                {{ Illuminate\Support\Str::limit(strip_tags($education->home_description ?? $education->description ?? ''), 300) }}
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-between gap-3 flex-wrap z-2">
@@ -285,7 +295,7 @@
                                                         fill="#fff" />
                                                 </svg>
                                             </div>
-                                            <a href="https://www.google.com/?hl=ar" target="_blank"
+                                            <a href="{{ url(app()->getLocale() . '/education/' . $education->slug . '?page_id=' . $education->id) }}"
                                                 class="text-main-color d-flex gap-3 align-items-center text-uppercase fs-8 apply-now-btn">
                                                 See More
                                                 <span>
@@ -318,104 +328,6 @@
         <!-- End Education Section -->
     @endif
 
-    {{-- @if (count($testings) > 0)
-        <!-- Start Testing Section -->
-        <section id="testing-section" class="section-bundries">
-            <div class="container mx-auto">
-                <div class="texts-data d-flex flex-column">
-                    <h5 class="global-title">
-                        Our Testing
-                    </h5>
-                    <div class="under-title-vector">
-                        <img src="{{ asset('content/images/vector-title.svg') }}" loading="lazy"
-                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                            alt="vector">
-                    </div>
-                </div>
-
-                <div class="row mt-md-4 mt-3">
-                    <div class="col-md-6 mb-md-0 mb-3">
-                        <div class="position-relative h-100 d-flex align-items-center testing-content">
-                            <div class="layer layer-one position-absolute"></div>
-                            <div class="layer layer-two position-absolute"></div>
-                            <div class="testing-img d-flex justify-content-center align-items-center h-100">
-                                <img src="{{ $testings[0]->getFirstMediaUrl('Testing') ?: asset('content/images/logo.svg') }}" loading="lazy"
-                                    onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
-                                    alt="solar" class="w-100 h-100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-md-start text-center">
-                            <span class="subheading">
-                                Solar energy stocks
-                            </span>
-                            <h2 class="fs-1 mt-2 testing-title">
-                                {{ $testings[0]->title }}
-                            </h2>
-                            <div class="title-bg m-md-0 m-auto"></div>
-                            <div class="mt-3 testing-description text-align-justify">
-                                {{ Illuminate\Support\Str::limit($testings[0]->mini_desc ?? '', 300) }}
-
-                            </div>
-                            <div class="d-flex justify-content-md-start justify-content-center mt-4">
-                                <span class="button-border w-content">
-                                    <a class="btn btn-solid-main navbar-button" href="https://www.google.com/?hl=ar" target="_blank">
-                                        Learn More
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @if (count($testings) == 2)
-                    <div class="row mt-md-5 mt-3">
-                        <div class="col-md-6  mb-md-0 mb-3">
-                            <div class="text-md-start text-center">
-                                <h2 class="fs-1 mt-2 testing-title">
-                                    {{ $testings[1]->title }}
-                                </h2>
-                                <div class="title-bg m-md-0 m-auto"></div>
-                                <div class="mt-3 testing-description text-align-justify">
-                                    {{ Illuminate\Support\Str::limit($testings[1]->mini_desc ?? '', 300) }}
-                                </div>
-                                <div class="d-flex justify-content-md-start justify-content-center mt-4">
-                                    <span class="button-border w-content">
-                                        <a class="btn btn-solid-main navbar-button" href="https://www.google.com/?hl=ar" target="_blank">
-                                            Learn More
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="position-relative h-100 d-flex align-items-center testing-content">
-                                <div class="layer layer-one position-absolute"></div>
-                                <div class="layer layer-two position-absolute"></div>
-                                <div class="testing-img d-flex justify-content-center align-items-center h-100">
-                                    <img src="{{ $testings[1]->getFirstMediaUrl('Testing') ?: asset('content/images/logo.svg') }}" loading="lazy"
-                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
-                                        alt="solar" class="w-100 h-100">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                <div class="d-flex justify-content-center mt-md-5 mt-3">
-                    <button class="btn btn-solid-main"
-                    onclick="window.open('https://www.google.com', '_blank')">
-                        <span>
-                            See More
-                        </span>
-                        <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-        <!-- End Testing Section -->
-    @endif --}}
-
     @if (count($solutions) > 0)
         <!-- Start Solutions Section -->
         <section id="solutions-section" class="section-bundries">
@@ -433,96 +345,108 @@
                     </p>
                 </div>
 
-                {{-- View implementation --}}
                 <div class="row g-3 mt-md-4 mt-3">
                     @foreach ($solutions as $pageId => $group)
                         <div class="col-md-6 mt-3">
-                            <h3 class="type-title">
-                                {{ $group->first()->Page->name ?? '' }}
-                            </h3>
+                            <h3 class="type-title">{{ $group->first()->Page->name ?? '' }}</h3>
                             <div class="duties-items-content pt-3">
                                 @foreach ($group as $solution)
-                                    <div
-                                        class="duties-item-card d-flex gap-md-4 gap-3 align-items-sm-start align-items-center flex-sm-row flex-column text-sm-start text-center">
+                                @php
+                                    $solMedia = $solution->getFirstMedia('Solution');
+                                    $solImgUrl = $solMedia
+                                        ? request()->getSchemeAndHttpHost() . '/storage/' . $solMedia->id . '/' . $solMedia->file_name
+                                        : asset('content/images/logo.svg');
+                                @endphp
+                                    <div class="duties-item-card">
                                         <div class="duties-item-img">
-                                            <img src="{{ $solution->getFirstMediaUrl('Solution') ?: asset('content/images/logo.svg') }}" loading="lazy"
-                                                onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
-                                                class="w-100 h-100">
+                                            <img src="{{ $solImgUrl }}" loading="lazy"
+                                                onerror="this.onerror=null;this.src='{{ asset('content/images/logo.svg') }}';"
+                                                alt="{{ $solution->title }}">
                                         </div>
                                         <div class="duties-items-details">
-                                            <h4 class="duties-item-title text-dark-color">
+                                            <h4 class="duties-item-title">
                                                 {{ $solution->title }}
                                             </h4>
-                                            <p class="duties-item-description text-align-justify">
-                                                {!! Illuminate\Support\Str::limit($solution->home_description ?? $solution->description ?? '', 100) !!}
-
+                                            <p class="duties-item-description">
+                                                {{ Illuminate\Support\Str::limit(strip_tags($solution->home_description ?? $solution->description ?? ''), 120) }}
                                             </p>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
+                            @if($group->first()->Page)
+                            <div class="duties-show-more-wrap">
+                                <a href="{{ url(app()->getLocale() . '/solutions/' . $group->first()->Page->slug . '/' . $group->first()->Page->id . '?solution_id=' . $group->first()->id) }}"
+                                    class="duties-show-more-btn">
+                                    <span class="duties-show-more-icon">
+                                        <svg class="duties-show-more-arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                                                fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    <span class="duties-show-more-label">{{ app()->getLocale() == 'ar' ? 'عرض المزيد' : 'Show More' }}</span>
+                                </a>
+                            </div>
+                            @endif
                         </div>
                     @endforeach
-                </div>
-                <div class="d-flex justify-content-center mt-md-5 mt-3">
-                <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
-                    <span>See More</span>
-                        <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
-                </button>
                 </div>
             </div>
         </section>
         <!-- End Solutions Section -->
     @endif
 
-    @if (count($technologies) > 0)
+    @if ($techItems->count() > 0)
         <!-- Start Technology Section -->
         <section id="technology-section" class="section-bundries">
             <div class="container mx-auto">
-                {{-- <div class="subheading">Category</div> --}}
                 <div class="texts-data d-flex flex-column">
                     <h5 class="global-title">
-                        Our Technology
+                        {{ $techParent->name ?? 'Our Technology' }}
                     </h5>
                     <div class="under-title-vector">
                         <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
                     </div>
+                    @if($techParent && $techParent->home_description)
                     <p class="global-description pt-0 mt-1">
-                        Get every thing about AI when reading Article and News
+                        {{ $techParent->home_description }}
                     </p>
+                    @endif
                 </div>
                 <div class="articles row d-flex flex-nowrap overflow-hidden mt-4 mx-0">
-                    @foreach ($technologies as $technology)
-                        <div class=" col-md-6 col-lg-4 mb-lg-0 mb-4">
+                    @foreach ($techItems as $techItem)
+                    @php
+                        $techMedia = $techItem->getFirstMedia('home_image');
+                        $techImgUrl = $techMedia
+                            ? request()->getSchemeAndHttpHost() . '/storage/' . $techMedia->id . '/' . $techMedia->file_name
+                            : asset('content/images/logo.svg');
+                    @endphp
+                        <div class="col-md-6 col-lg-4 mb-lg-0 mb-4">
                             <article>
                                 <div class="article-img w-100 mb-3">
-                                    <img src="{{ $technology->getFirstMediaUrl('StaticTable') ?: asset('content/images/logo.svg') }}" loading="lazy"
+                                    <img src="{{ $techImgUrl }}" loading="lazy"
                                         class="w-100 h-100 shadow-sm"
-                                        onerror="this.onerror=null;this.src=`{{ asset('content/images/logo.svg') }}`;"
-                                        alt="article-img">
+                                        onerror="this.onerror=null;this.src='{{ asset('content/images/logo.svg') }}';"
+                                        alt="{{ $techItem->name }}">
                                 </div>
                                 <div class="d-flex justify-content-between flex-column gap-3 text-md-start text-center">
                                     <div>
                                         <h5 class="fs-5-2 lh-sm text-main-color text-align-justify">
-                                            {{ $technology->title }}
+                                            {{ $techItem->name }}
                                         </h5>
-                                        <p
-                                            class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter article-description text-align-justify mb-0">
-                                            {!! Illuminate\Support\Str::limit($technology->home_description ?? $technology->description ?? '', 300) !!}
+                                        <p class="fs-6-1 ls-1 text-black-50 mt-2 fw-lighter article-description text-align-justify mb-0">
+                                            {{ Illuminate\Support\Str::limit(strip_tags($techItem->home_description ?? $techItem->description ?? ''), 300) }}
                                         </p>
                                     </div>
-                                    <a href="./blog-details.html"
+                                    <a href="{{ url(app()->getLocale() . '/technology/' . $techItem->slug . '?page_id=' . $techItem->id) }}"
                                         class="d-flex align-items-center justify-content-center justify-content-md-start gap-4">
-                                        <span
-                                            class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
-                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
-                                                    fill="#000" />
+                                        <span class="arrow-icon rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z" fill="#000" />
                                             </svg>
                                         </span>
-                                        <span class="text-main-color">Read more</span>
+                                        <span class="text-main-color">{{ app()->getLocale() == 'ar' ? 'اقرأ المزيد' : 'Read more' }}</span>
                                     </a>
                                 </div>
                             </article>
@@ -531,32 +455,18 @@
                 </div>
                 <div class="scroll-btns d-flex align-items-center justify-content-center gap-2 mt-4">
                     <button class="scroll-left" id="prev" aria-label="Scroll Left" title="Scroll Left">
-                        <span
-                            class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
-                                    fill="#000" />
+                        <span class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z" fill="#000" />
                             </svg>
                         </span>
                     </button>
                     <button class="scroll-right" id="next" aria-label="Scroll Right" title="Scroll Right">
-                        <span
-                            class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z"
-                                    fill="#000" />
-                            </svg> </button>
-                </div>
-                <div class="d-flex justify-content-center mt-md-4 mt-3">
-                    <button class="btn btn-solid-main" onclick="window.open('https://www.google.com', '_blank')">
-                        <span>
-                            See More
+                        <span class="arrow-icon scroll rounded-circle d-flex justify-content-center align-items-center scaleX-rtl">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.6309 6.33869C12.5833 6.21599 12.5119 6.10379 12.4209 6.00869L7.42094 1.00869C7.32774 0.915449 7.21704 0.841489 7.09514 0.791029C6.97334 0.740569 6.84284 0.7146 6.71094 0.7146C6.44464 0.7146 6.18924 0.820389 6.00094 1.00869C5.90774 1.10193 5.83374 1.21262 5.78324 1.33444C5.73284 1.45627 5.70684 1.58683 5.70684 1.71869C5.70684 1.98499 5.81264 2.24039 6.00094 2.42869L9.30094 5.71869H1.71094C1.44572 5.71869 1.19137 5.82409 1.00383 6.01159C0.816298 6.19909 0.710938 6.45349 0.710938 6.71869C0.710938 6.98389 0.816298 7.23829 1.00383 7.42579C1.19137 7.61329 1.44572 7.71869 1.71094 7.71869H9.30094L6.00094 11.0087C5.90724 11.1017 5.83284 11.2123 5.78204 11.3341C5.73124 11.456 5.70514 11.5867 5.70514 11.7187C5.70514 11.8507 5.73124 11.9814 5.78204 12.1033C5.83284 12.2251 5.90724 12.3357 6.00094 12.4287C6.09394 12.5224 6.20454 12.5968 6.32634 12.6476C6.44824 12.6984 6.57894 12.7245 6.71094 12.7245C6.84294 12.7245 6.97364 12.6984 7.09554 12.6476C7.21734 12.5968 7.32794 12.5224 7.42094 12.4287L12.4209 7.42869C12.5119 7.33359 12.5833 7.22149 12.6309 7.09869C12.7309 6.85519 12.7309 6.58219 12.6309 6.33869Z" fill="#000" />
+                            </svg>
                         </span>
-                        <i class="bi bi-arrow-right scaleX-rtl fs-8"></i>
                     </button>
                 </div>
             </div>
@@ -565,111 +475,69 @@
     @endif
 
     <!-- Start Check -->
+    @if($testingItems->count() > 0)
     <section id="check-section" class="section-bundries">
         <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <h2 class="global-title">Testing</h2>
+                    <h2 class="global-title">{{ $testingParent->name ?? 'Testing' }}</h2>
                     <div class="under-title-vector">
                         <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
                     </div>
                 </div>
+                @if($testingParent && $testingParent->home_description)
                 <div>
-                    <p>The
-                        test proctor is authorized to end the test, hide test results,
-                        or
-                        block the candidates account if the test taker failed to apply the following instructions.</p>
+                    <p>{{ $testingParent->home_description }}</p>
                 </div>
+                @endif
             </div>
             <div class="row g-4 mt-3">
+                @foreach($testingItems as $testItem)
+                @php
+                    $testIcon = $testItem->getFirstMedia('icon');
+                    $testIconUrl = $testIcon
+                        ? request()->getSchemeAndHttpHost() . '/storage/' . $testIcon->id . '/' . $testIcon->file_name
+                        : asset('content/images/not-found/no-image.svg');
+                @endphp
                 <div class="col-md-6 col-lg-4 col-12 h-100">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex gap-2 align-items-center">
-                                <i class="fa-solid fa-handshake card-icon"></i>
-                                <h5 class="card-title">Cooperations</h5>
+                    <a href="{{ url(app()->getLocale() . '/testing/' . $testItem->slug . '?page_id=' . $testItem->id) }}"
+                        class="text-decoration-none">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <img src="{{ $testIconUrl }}" alt="{{ $testItem->name }}"
+                                        class="card-icon" style="width:22px;height:22px;object-fit:contain;"
+                                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}'">
+                                    <h5 class="card-title">{{ $testItem->name }}</h5>
+                                </div>
+                                <p class="card-text">
+                                    {{ Illuminate\Support\Str::limit(strip_tags($testItem->home_description ?? $testItem->description ?? ''), 120) }}
+                                </p>
                             </div>
-                            <p class="card-text">Cooperating with the proctor during the inspection process.</p>
+                            <img src="{{ $testIconUrl }}" alt="" class="card-icon"
+                                style="width:60px;height:60px;object-fit:contain;opacity:0.15;"
+                                onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}'">
                         </div>
-                        <i class="fa-solid fa-handshake card-icon"></i>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-md-6 col-lg-4 col-12 h-100">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex gap-2 align-items-center">
-                                <i class="fa-solid fa-id-card card-icon"></i>
-                                <h5 class="card-title">Identification</h5>
-                            </div>
-
-                            <p class="card-text">Bring the original Valid National ID or Passport.</p>
-                        </div>
-                        <i class="fa-solid fa-id-card card-icon"></i>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-12 h-100">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex gap-2 align-items-center"><i class="fa-solid fa-camera card-icon"></i>
-                                <h5 class="card-title">Facial Recognition</h5>
-                            </div>
-
-                            <p class="card-text">Sitting properly in front of the camera or wearing stuff that may hide
-                                his/her face.</p>
-                        </div>
-                        <i class="fa-solid fa-camera card-icon"></i>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-12 h-100">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex gap-2 align-items-center"><i class="fa-solid fa-phone card-icon"></i>
-                                <h5 class="card-title">Violations</h5>
-                            </div>
-                            <p class="card-text">Using banned stuff such as test preparation material, mobile phones.
-                            </p>
-                        </div>
-                        <i class="fa-solid fa-phone card-icon"></i>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-12 h-100">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex gap-2 align-items-center"><i class="fa-solid fa-utensils card-icon"></i>
-                                <h5 class="card-title">Manners</h5>
-                            </div>
-                            <p class="card-text">Eating, drinking, or side-talking during the test, or leaving the room
-                                before ending.</p>
-                        </div>
-                        <i class="fa-solid fa-utensils card-icon"></i>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-12 h-100">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <div class="d-flex gap-2 align-items-center"> <i
-                                    class="fa-solid fa-user-secret card-icon"></i>
-                                <h5 class="card-title">Deception</h5>
-                            </div>
-                            <p class="card-text">All attempts of copying questions or answers are prohibited.</p>
-                        </div>
-                        <i class="fa-solid fa-user-secret card-icon"></i>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="mt-4 note">
                 <h6 class="mb-2">
                     <i class="fa-solid fa-pen-to-square card-icon"></i>
-                    note
+                    {{ app()->getLocale() == 'ar' ? 'ملاحظة' : 'Note' }}
                 </h6>
-                <p>In case of technical problems or power cuts, the test will be resumed where it stopped while safely
-                    keeping the remaining time, and test takers are not allowed to leave the room unless they have
-                    waited for at least 30 minutes. Then the proctor will fill out the status report and then the test
-                    taker shall decide whether to resume the test or repeat</p>
+                <p>
+                    @if($testingParent && $testingParent->description)
+                        {{ $testingParent->description }}
+                    @else
+                        In case of technical problems or power cuts, the test will be resumed where it stopped while safely keeping the remaining time, and test takers are not allowed to leave the room unless they have waited for at least 30 minutes. Then the proctor will fill out the status report and then the test taker shall decide whether to resume the test or repeat.
+                    @endif
+                </p>
             </div>
         </div>
     </section>
+    @endif
     <!-- End Check -->
 
     <!-- Start Doc Validation Section -->
@@ -732,40 +600,48 @@
     @endif
     <!-- End Doc Validation Section -->
 
-    @if (count($findus) > 0)
+    @if ($findusItems->count() > 0)
         <!-- Start Stats Section -->
         <section id="stats-section" class="section-bundries">
             <div class="container mx-auto">
                 <div class="texts-data d-flex flex-column">
                     <h5 class="global-title">
-                        Find US
+                        {{ $findusParent->name ?? 'Find Us' }}
                     </h5>
                     <div class="under-title-vector">
                         <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
                     </div>
+                    @if($findusParent && $findusParent->home_description)
                     <p class="description text-align-justify">
-                        NEN | We have offices in major cities around the world, providing professional services and
-                        solutions to help businesses achieve their goals.
-                        Our team works closely with global technology leaders to ensure the highest standards in everything
-                        we do.
+                        {{ $findusParent->home_description }}
                     </p>
+                    @endif
                 </div>
-                <div class="row justify-content-center w-100 mt-3 g-3">
-                    @foreach ($findus as $key => $rowData)
+                <div class="row justify-content-start w-100 mt-3 g-3">
+                    @foreach ($findusItems as $index => $findusItem)
+                    @php
+                        $findusImg = $findusItem->getFirstMedia('home_image');
+                        $findusImgUrl = $findusImg
+                            ? request()->getSchemeAndHttpHost() . '/storage/' . $findusImg->id . '/' . $findusImg->file_name
+                            : asset('content/images/not-found/no-image.svg');
+                    @endphp
                         <div class="col-md-4 col-sm-6">
-                            <div class="stats-card p-md-4 p-3">
-                                <p class="counter-text">
-                                    <span class="count">{{ ++$key }}</span>
-                                </p>
-                                <p class="label-text">
-                                    {{ $rowData->name }}
-                                </p>
-                                <div class="image-box">
-                                    <img src="https://dev.nendemo2024.xyz/media/748/investors.svg" loading="lazy"
-                                        onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
-                                        alt="about-img" class="w-100 h-100">
+                            <a href="{{ url(app()->getLocale() . '/find-us/' . $findusItem->slug . '?page_id=' . $findusItem->id) }}"
+                                class="text-decoration-none">
+                                <div class="stats-card p-md-4 p-3">
+                                    <p class="counter-text">
+                                        <span class="count">{{ $index + 1 }}</span>
+                                    </p>
+                                    <p class="label-text">
+                                        {{ $findusItem->name }}
+                                    </p>
+                                    <div class="image-box">
+                                        <img src="{{ $findusImgUrl }}" loading="lazy"
+                                            onerror="this.onerror=null;this.src='{{ asset('content/images/not-found/no-image.svg') }}';"
+                                            alt="{{ $findusItem->name }}" class="w-100 h-100">
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -774,79 +650,92 @@
         <!-- End Stats Section -->
     @endif
 
-    <!-- Start Join Us Section -->
+    <!-- Start Find Us Map Section -->
+    @if(count($countries) > 0)
     <section id="join-us-section" class="section-bundries">
         <div class="container mx-auto">
-            <h1>
-                Find US
-            </h1>
-            <p>
-                We have the team and know-how to help you scale 10x faster.
-            </p>
-
-            <!-- World Map -->
-            <div class="world-map">
-                <div class="map-dot usa"></div>
-                <div class="map-dot europe"></div>
-                <div class="map-dot asia"></div>
-                <div class="map-dot australia"></div>
+            <div class="texts-data d-flex flex-column mb-4">
+                <h5 class="global-title">{{ app()->getLocale() == 'ar' ? 'مواقعنا' : 'Our Locations' }}</h5>
+                <div class="under-title-vector">
+                    <img src="{{ asset('content/images/vector-title.svg') }}" alt="vector">
+                </div>
             </div>
 
-            <!-- Contact Cards -->
-            <div class="container mt-5">
-                <div class="row gy-4 justify-content-center">
-                    <!-- Chat to Sales -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-chat"></i>
-                            <h5>Chat to sales</h5>
-                            <p>Speak to our friendly team.</p>
-                            <a href="mailto:sales@untitledui.com" class="email-link">
-                                sales@untitledui.com
-                            </a>
-                        </div>
-                    </div>
+            @if($findusItems->count() > 0)
+            @php
+                $mapColors = ['#990000','#c0392b','#e63946','#a93226','#d4722f','#e8a838','#7a1010','#b5451b'];
+                $colorMap = [];
+                foreach($findusItems as $i => $fi) {
+                    $colorMap[$fi->id] = $mapColors[$i % count($mapColors)];
+                }
+            @endphp
+            <div class="d-flex flex-wrap gap-3 mb-4">
+                @foreach($findusItems as $i => $fi)
+                <div class="d-flex align-items-center gap-2">
+                    <span style="width:14px;height:14px;border-radius:50%;background:{{ $mapColors[$i % count($mapColors)] }};display:inline-block;"></span>
+                    <span style="font-size:13px;font-weight:600;">{{ $fi->name }}</span>
+                </div>
+                @endforeach
+            </div>
+            @endif
+        </div>
+        {{-- World Map --}}
+        <div class="world-map">
+            @foreach($countries->filter(function($c){ return $c->lat && $c->lng; }) as $loc)
+            @php
+                $dotLeft = round((floatval($loc->lng) + 180) / 360 * 100, 2);
+                $dotTop  = round((90 - floatval($loc->lat)) / 180 * 100, 2);
+                $dotColor = (isset($colorMap) && isset($colorMap[$loc->page_id])) ? $colorMap[$loc->page_id] : '#990000';
+            @endphp
+            <div class="map-dot dynamic-dot" style="left:{{ $dotLeft }}%;top:{{ $dotTop }}%;background-color:{{ $dotColor }};">
+                <div class="dot-popup">
+                    <strong>{{ $loc->name }}</strong>
+                    @if($loc->address)<span>{{ $loc->address }}</span>@endif
+                </div>
+            </div>
+            @endforeach
+        </div>
 
-                    <!-- Chat to Support -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-chat-left-dots"></i>
-                            <h5>Chat to support</h5>
-                            <p>We're here to help.</p>
-                            <a href="mailto:support@untitledui.com" class="email-link">
-                                support@untitledui.com
-                            </a>
-                        </div>
+        {{-- Contact Cards --}}
+        <div class="container mt-5">
+            <div class="row gy-4 justify-content-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-card text-center">
+                        <i class="bi bi-chat"></i>
+                        <h5>{{ app()->getLocale() == 'ar' ? 'الدردشة مع المبيعات' : 'Chat to sales' }}</h5>
+                        <p>{{ app()->getLocale() == 'ar' ? 'تحدث مع فريقنا الودود.' : 'Speak to our friendly team.' }}</p>
+                        <a href="mailto:sales@nen.com" class="email-link">sales@nen.com</a>
                     </div>
-
-                    <!-- Visit Us -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-geo-alt"></i>
-                            <h5>Visit us</h5>
-                            <p>Visit our office HQ.</p>
-                            <a href="https://goo.gl/maps/" class="map-link" target="_blank">
-                                View on Google Maps
-                            </a>
-                        </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-card text-center">
+                        <i class="bi bi-chat-left-dots"></i>
+                        <h5>{{ app()->getLocale() == 'ar' ? 'الدردشة مع الدعم' : 'Chat to support' }}</h5>
+                        <p>{{ app()->getLocale() == 'ar' ? 'نحن هنا للمساعدة.' : 'We\'re here to help.' }}</p>
+                        <a href="mailto:support@nen.com" class="email-link">support@nen.com</a>
                     </div>
-
-                    <!-- Call Us -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="contact-card text-center">
-                            <i class="bi bi-telephone"></i>
-                            <h5>Call us</h5>
-                            <p>Mon-Fri from 8am to 5pm.</p>
-                            <a href="tel:+1555000000" class="phone-link">
-                                +1 (555) 000-0000
-                            </a>
-                        </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-card text-center">
+                        <i class="bi bi-geo-alt"></i>
+                        <h5>{{ app()->getLocale() == 'ar' ? 'زورنا' : 'Visit us' }}</h5>
+                        <p>{{ app()->getLocale() == 'ar' ? 'زر مقرنا الرئيسي.' : 'Visit our office HQ.' }}</p>
+                        <a href="https://goo.gl/maps/" class="map-link" target="_blank">{{ app()->getLocale() == 'ar' ? 'عرض على خرائط جوجل' : 'View on Google Maps' }}</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-card text-center">
+                        <i class="bi bi-telephone"></i>
+                        <h5>{{ app()->getLocale() == 'ar' ? 'اتصل بنا' : 'Call us' }}</h5>
+                        <p>{{ app()->getLocale() == 'ar' ? 'من الاثنين إلى الجمعة، 8 ص - 5 م.' : 'Mon-Fri from 8am to 5pm.' }}</p>
+                        <a href="tel:+1555000000" class="phone-link">+1 (555) 000-0000</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Join Us Section -->
+    @endif
+    <!-- End Find Us Map Section -->
     <hr>
     @if (count($countries) > 0)
         <!-- Start Find Us Section -->
@@ -954,88 +843,43 @@
                     </section> -->
     <!-- End Contact Section -->
     <!-- Start Join our Team -->
+    @if($joinUs)
     <section id="join-our-team" class="section-bundries">
         <div class="container mx-auto">
             <div class="texts-data align-items-center">
-                <p class="text-main-color mb-0">
-                    Join Us
-                </p>
                 <h1>
-                    Join Us
+                    {{ $joinUs->page->name }}
                 </h1>
                 <p>
-                    We have the team and know-how to help you scale 10x faster.
+                    {{ $joinUs->page->description }}
                 </p>
-
             </div>
             <div class="row justify-content-center align-items-center mt-5 gap-4">
+                @foreach($joinUs->cards as $card)
+                @php
+                    $cardMedia = $card->getFirstMedia('home_image');
+                    $cardImgUrl = $cardMedia
+                        ? request()->getSchemeAndHttpHost() . '/storage/' . $cardMedia->id . '/' . $cardMedia->file_name
+                        : asset('content/images/pages/home-page/hero-home-page.webp');
+                @endphp
                 <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-                        <p>Academic</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-
-                    </div>
-
-                    <div class="cover">
-                        <img class="w-100 h-100"
-                            src="http://127.0.0.1:8000/content/images/pages/home-page/hero-home-page.webp" alt="">
-                        <p>Academic</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-
-                        <p>Professional</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/doc_team.jpg" alt="">
-                        <p>Professional</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-
-                        <p>Centers</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100" src="http://127.0.0.1:8000/content/images/about.jpg" alt="">
-                        <p>Centers</p>
-
-                    </div>
-                </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-                        <p>Agents</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
+                    <div class="content">
+                        <p>{{ $card->name }}</p>
+                        <p>{{ $card->description }}</p>
                     </div>
                     <div class="cover">
                         <img class="w-100 h-100"
-                            src="https://www.globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg"
-                            alt="">
-                        <p>Agents</p>
-
+                            src="{{ $cardImgUrl }}"
+                            alt="{{ $card->name }}"
+                            onerror="this.src='{{ asset('content/images/pages/home-page/hero-home-page.webp') }}'">
+                        <p>{{ $card->name }}</p>
                     </div>
                 </div>
-                <div class="book col-lg-2 col-md-4 col-sm-6">
-                    <div class=content>
-                        <p>International Cards</p>
-                        <p>Join our international network and gain access to exclusive resources and opportunities.</p>
-                    </div>
-                    <div class="cover">
-                        <img class="w-100 h-100"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aZpkugDl106LnBdxudqbifCp7-x4UWIQ7dIV-AWwIv0VfXeVGJJb226s5fMi7LweoFg&usqp=CAU"
-                            alt="">
-                        <p>International Cards</p>
-
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+    @endif
     <!-- End Join our Team -->
     @if (count($blogs) > 0)
         <!-- Start Blogs -->

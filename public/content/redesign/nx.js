@@ -74,6 +74,52 @@
     panels.forEach((p) => { const open = () => panels.forEach((x) => x.classList.toggle("is-open", x === p)); p.addEventListener("pointerenter", open); p.addEventListener("focus", open); p.addEventListener("click", open); });
   })();
 
+  // Hover intent: an item activates once the pointer has rested on it briefly, or right away on click / focus.
+  // Only real pointer movement counts, so the layout shift caused by opening an item never opens the next one.
+  const intent = (els, fn, delay = 140) => {
+    let pending = -1, timer = 0;
+    els.forEach((el, i) => {
+      el.addEventListener("pointermove", (e) => {
+        if (e.pointerType === "touch" || pending === i) return;
+        pending = i; clearTimeout(timer); timer = setTimeout(() => { pending = -1; fn(i); }, delay);
+      });
+      el.addEventListener("pointerleave", () => { if (pending === i) { clearTimeout(timer); pending = -1; } });
+      el.addEventListener("click", () => { clearTimeout(timer); pending = -1; fn(i); });
+      el.addEventListener("focusin", () => fn(i));
+    });
+  };
+
+  // Our Projects: the chosen project opens in the list and its image wipes into the frame
+  (function projects() {
+    const box = $("[data-nx-projects]"); if (!box) return;
+    const items = $$("[data-nx-proj]", box), frames = $$("[data-nx-frame]", box), idx = $("[data-nx-proj-idx]", box);
+    let cur = 0;
+    const show = (i) => {
+      if (i === cur) return;
+      const down = i > cur, from = frames[cur], to = frames[i]; cur = i;
+      items.forEach((x, j) => { x.classList.toggle("is-active", j === i); const b = $(".nx-proj__btn", x); if (b) b.setAttribute("aria-expanded", String(j === i)); });
+      if (idx) idx.textContent = pad(i + 1);
+      if (!to) return;
+      frames.forEach((f) => { f.classList.remove("is-leaving"); f.classList.toggle("is-active", f === to); });
+      if (window.gsap && !reduce) {
+        if (from) from.classList.add("is-leaving");   // stays under the new image until the wipe is done
+        gsap.killTweensOf([to, to.firstElementChild]);
+        gsap.fromTo(to, { clipPath: down ? "inset(100% 0% 0% 0%)" : "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.85, ease: "power3.inOut", onComplete: () => from && from.classList.remove("is-leaving") });
+        gsap.fromTo(to.firstElementChild, { scale: 1.15 }, { scale: 1, duration: 1.1, ease: "power3.out" });
+      }
+    };
+    intent(items, show);
+  })();
+
+  // Doc Validation steps: hover / click / focus picks a step; the motion layer (below) plays the certificate to it
+  const docSteps = { set: null, go: null };
+  (function docValidationSteps() {
+    const sec = $("[data-nx-verify]"); if (!sec) return;
+    const steps = $$("[data-nx-step]", sec);
+    docSteps.set = (j) => steps.forEach((s, k) => { s.classList.toggle("is-active", k === j); const b = $(".nx-step__btn", s); if (b) b.setAttribute("aria-pressed", String(k === j)); });
+    intent(steps, (j) => { if (docSteps.go) docSteps.go(j, true); else docSteps.set(j); });
+  })();
+
   // Features: cursor spotlight across the photo cards (fine pointers only)
   if (fine) $$("[data-nx-spotlight]", root).forEach((grid) => {
     const cards = $$(".nx-card", grid); let raf = 0, ex = 0, ey = 0;
@@ -258,11 +304,14 @@
   const split = (el, mask = true) => {
     const text = el.textContent.trim(); el.textContent = "";
     const sr = document.createElement("span"); sr.className = "visually-hidden"; sr.textContent = text; el.appendChild(sr);
+    // the words sit in one run that takes the text's own direction, so an English title on the Arabic page
+    // keeps its word order (word boxes would otherwise be laid out right-to-left)
+    const run = document.createElement("span"); run.dir = "auto"; el.appendChild(run);
     return text.split(/\s+/).map((w, i, arr) => {
       const outer = document.createElement("span"); outer.setAttribute("aria-hidden", "true");
-      if (mask) { outer.className = "nx-w"; const inner = document.createElement("span"); inner.textContent = w; outer.appendChild(inner); el.appendChild(outer); }
-      else { outer.className = "nx-lw"; outer.textContent = w; el.appendChild(outer); }
-      if (i < arr.length - 1) el.appendChild(document.createTextNode(" "));
+      if (mask) { outer.className = "nx-w"; const inner = document.createElement("span"); inner.textContent = w; outer.appendChild(inner); run.appendChild(outer); }
+      else { outer.className = "nx-lw"; outer.textContent = w; run.appendChild(outer); }
+      if (i < arr.length - 1) run.appendChild(document.createTextNode(" "));
       return mask ? outer.firstChild : outer;
     });
   };
@@ -312,45 +361,43 @@
 
   const mm = gsap.matchMedia();
 
-  // Pinned scenes, created in DOM order (projects → doc validation)
-  (function projects() {
-    const box = $("[data-nx-projects]"); if (!box) return;
-    const items = $$("[data-nx-proj]", box), frames = $$("[data-nx-frame]", box), idx = $("[data-nx-proj-idx]", box);
-    if (frames.length < 2) return;
-    const set = (i) => { items.forEach((x, j) => x.classList.toggle("is-active", j === i)); idx.textContent = pad(i + 1); };
-    mm.add("(min-width: 992px)", () => {
-      gsap.set(frames.slice(1), { clipPath: "inset(100% 0% 0% 0%)" });
-      const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: box, start: "top top", end: () => "+=" + Math.round(innerHeight * (frames.length - 0.4)), pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
-        onUpdate: (s) => set(Math.round(s.progress * (frames.length - 1))) } });
-      frames.slice(1).forEach((f) => tl.to(f, { clipPath: "inset(0% 0% 0% 0%)", duration: 1 }).fromTo(f.querySelector("img"), { scale: 1.15 }, { scale: 1, duration: 1 }, "<"));
-      return () => gsap.set(frames, { clearProps: "clipPath" });
-    });
-  })();
-
+  // Doc Validation: the certificate check is one paused timeline in 4 stages (upload, scan, decode, stamp).
+  // The dashboard's steps are spread across the stages; picking a step plays the check forward (or rewinds it)
+  // to the end of that step's stages. When the certificate comes into view the steps play through once on
+  // their own, until the visitor picks one. The page is never pinned.
   (function docValidation() {
     const sec = $("[data-nx-verify]"); if (!sec) return;
-    const doc = $("[data-nx-doc]", sec), steps = $$(".nx-step", sec), fields = $$("[data-nx-field]", doc), vals = $$("[data-nx-scramble]", doc), ticks = $$(".nx-tick", doc);
+    const doc = $("[data-nx-doc]", sec), steps = $$("[data-nx-step]", sec), fields = $$("[data-nx-field]", doc), vals = $$("[data-nx-scramble]", doc), ticks = $$(".nx-tick", doc);
     const prog = $("[data-nx-verify-progress]", sec), match = $("[data-nx-match]", doc), hash = $("[data-nx-hash]", doc), m = { v: 0 };
-    // the animation has 4 stages (upload, scan, decode, stamp); the dashboard's steps are spread across them
-    const stepFor = (k) => Math.min(steps.length - 1, Math.floor((k * steps.length) / 4));
-    const build = (scrub) => {
-      const tl = gsap.timeline({ defaults: { ease: "none" } });
-      tl.set(vals, { opacity: 0.35, textContent: (i, el) => "•".repeat(Math.max(6, el.textContent.length)) }).set(ticks, { scale: 0, autoAlpha: 0 }).set(match, { textContent: "0%" }).set(hash, { textContent: "────────────" });
-      tl.addLabel("s0").fromTo(doc, { y: 70, rotateX: 14, autoAlpha: 0 }, { y: 0, rotateX: 0, autoAlpha: 1, duration: 1, ease: "power3.out" })
-        .fromTo("[data-nx-upload]", { scaleX: 0 }, { scaleX: 1, duration: 1.1 }, "<0.25").to("[data-nx-upload-row]", { autoAlpha: 0.25, duration: 0.3 })
-        .addLabel("s1").set("[data-nx-scan]", { autoAlpha: 1, y: 0 }).to("[data-nx-scan]", { y: () => doc.offsetHeight + 90, duration: 1.8 })
-        .to(fields, { "--hl": 1, duration: 0.25, stagger: 0.3 }, "s1+=0.35").to("[data-nx-scan]", { autoAlpha: 0, duration: 0.2 })
-        .addLabel("s2").to(fields, { "--hl": 0, duration: 0.3, stagger: 0.05 }, "s2").to(m, { v: 100, duration: 1.6, onUpdate: () => (match.textContent = Math.round(m.v) + "%") }, "s2");
-      vals.forEach((el, i) => { tl.to(el, { opacity: 1, duration: 0.1 }, `s2+=${i * 0.32}`).to(el, { duration: 0.6, scrambleText: { text: el.dataset.nxScramble, chars: "0123456789ABCDEF#/", speed: 0.6 } }, `s2+=${i * 0.32}`).to(ticks[i], { scale: 1, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, `s2+=${i * 0.32 + 0.45}`); });
-      tl.addLabel("s3", "+=0.15").to(hash, { duration: 0.8, scrambleText: { text: "7f3a9c4e…e21b", chars: "0123456789abcdef", speed: 0.8 } }, "s3")
-        .fromTo("[data-nx-stamp]", { scale: 1.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "expo.in" }, "s3+=0.1").to(doc, { "--verified": 1, duration: 0.6, ease: "power2.out" }, "s3+=0.55").to({}, { duration: 0.6 });
-      const labels = ["s0", "s1", "s2", "s3"].map((l) => tl.labels[l]), dur = tl.duration();
-      tl.eventCallback("onUpdate", () => { const t = tl.time(); let k = 0; labels.forEach((lt, j) => { if (t >= lt - 0.05) k = j; }); const a = stepFor(k); steps.forEach((s, j) => s.classList.toggle("is-active", j === a)); gsap.set(prog, { scaleX: 0.25 + 0.75 * (t / dur) }); });
-      if (scrub) ScrollTrigger.create({ trigger: sec, start: "top top", end: "+=" + Math.round(innerHeight * 2.6), pin: true, scrub: 1, anticipatePin: 1, animation: tl, invalidateOnRefresh: true });
-      else { tl.pause(); onView(doc, () => tl.timeScale(1.4).play()); }
+    const tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
+    tl.set(vals, { opacity: 0.35, textContent: (i, el) => "•".repeat(Math.max(6, el.textContent.length)) }).set(ticks, { scale: 0, autoAlpha: 0 }).set(match, { textContent: "0%" }).set(hash, { textContent: "────────────" });
+    tl.addLabel("s0").fromTo(doc, { y: 70, rotateX: 14, autoAlpha: 0 }, { y: 0, rotateX: 0, autoAlpha: 1, duration: 1, ease: "power3.out" })
+      .fromTo("[data-nx-upload]", { scaleX: 0 }, { scaleX: 1, duration: 1.1 }, "<0.25").to("[data-nx-upload-row]", { autoAlpha: 0.25, duration: 0.3 })
+      .addLabel("s1").set("[data-nx-scan]", { autoAlpha: 1, y: 0 }).to("[data-nx-scan]", { y: () => doc.offsetHeight + 90, duration: 1.8 })
+      .to(fields, { "--hl": 1, duration: 0.25, stagger: 0.3 }, "s1+=0.35").to("[data-nx-scan]", { autoAlpha: 0, duration: 0.2 })
+      .addLabel("s2").to(fields, { "--hl": 0, duration: 0.3, stagger: 0.05 }, "s2").to(m, { v: 100, duration: 1.6, onUpdate: () => (match.textContent = Math.round(m.v) + "%") }, "s2");
+    vals.forEach((el, i) => { tl.to(el, { opacity: 1, duration: 0.1 }, `s2+=${i * 0.32}`).to(el, { duration: 0.6, scrambleText: { text: el.dataset.nxScramble, chars: "0123456789ABCDEF#/", speed: 0.6 } }, `s2+=${i * 0.32}`).to(ticks[i], { scale: 1, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, `s2+=${i * 0.32 + 0.45}`); });
+    tl.addLabel("s3", "+=0.15").to(hash, { duration: 0.8, scrambleText: { text: "7f3a9c4e…e21b", chars: "0123456789abcdef", speed: 0.8 } }, "s3")
+      .fromTo("[data-nx-stamp]", { scale: 1.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "expo.in" }, "s3+=0.1").to(doc, { "--verified": 1, duration: 0.6, ease: "power2.out" }, "s3+=0.55").to({}, { duration: 0.6 });
+    const ends = ["s1", "s2", "s3"].map((l) => tl.labels[l]).concat(tl.duration());   // end time of stage 0..3
+    const n = steps.length, endOf = (j) => ends[Math.min(3, Math.ceil(((j + 1) * 4) / Math.max(1, n)) - 1)];
+    gsap.set(prog, { scaleX: 0 });
+    tl.eventCallback("onUpdate", () => gsap.set(prog, { scaleX: tl.time() / ends[3] }));
+
+    let tween = null, auto = null, picked = false, active = -1;
+    const go = (j, byUser) => {
+      if (byUser) { picked = true; if (auto) auto.kill(); }
+      if (j === active && tween && tween.isActive()) return tween;
+      active = j; if (docSteps.set) docSteps.set(j);
+      if (tween) tween.kill();
+      const to = endOf(j), back = to < tl.time();   // going back rewinds the same animation, twice as fast
+      tween = tl.tweenTo(to, { duration: Math.max(0.4, Math.abs(to - tl.time()) / (back ? 2.6 : 1.3)), ease: "power1.inOut" });
+      return tween;
     };
-    mm.add("(min-width: 992px)", () => build(true));
-    mm.add("(max-width: 991px)", () => build(false));
+    docSteps.go = go;
+    if (!n) { onView(doc, () => tl.play()); return; }
+    const autoplay = (j) => { if (picked) return; go(j).eventCallback("onComplete", () => { if (!picked && j < n - 1) auto = gsap.delayedCall(1.6, () => autoplay(j + 1)); }); };
+    onView(doc, () => { if (!picked) autoplay(0); });
   })();
 
   // Locations map: dots ripple in from Cairo once the map is on screen (the view itself stays fixed)

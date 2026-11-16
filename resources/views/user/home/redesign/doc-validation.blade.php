@@ -1,21 +1,29 @@
-{{-- Doc Validation: the dashboard's Home Doc Validation (title, description, steps = items with their details,
-     button). Desktop: pinned scroll story; the certificate on the right is an illustration of the check. --}}
+{{-- Doc Validation: the dashboard's Home Doc Validation: title, description, then the steps (each item = a title
+     with its details listed under it) and the button. The page scrolls normally: hovering or clicking a step plays
+     the certificate check on the right to that step (upload → scan → decode → verified). --}}
 @if ($homeDocValidation)
     @php $nxDocItems = $homeDocValidation->items->values(); @endphp
     <section class="nx nx-sec nx-doc" id="doc-validation-section" style="--nx-bg:#f5f6f8">
-        <div class="nx-pin" data-nx-verify>
+        <div data-nx-verify>
             <div class="container nx-doc__layout">
                 <div class="nx-doc__copy">
                     @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $nxText($homeDocValidation->title), 'intro' => $nxText($homeDocValidation->description)])
                     @if ($nxDocItems->count())
                         <ol class="nx-steps">
                             @foreach ($nxDocItems as $i => $item)
-                                <li class="nx-step{{ $i === 0 ? ' is-active' : '' }}">
-                                    <span class="nx-mono">{{ $nxPad($i + 1) }}</span>
-                                    <div>
+                                @php $nxDetails = $item->details->pluck('title')->map(fn ($d) => trim((string) $d))->filter()->values(); @endphp
+                                <li class="nx-step{{ $i === 0 ? ' is-active' : '' }}" data-nx-step>
+                                    <button type="button" class="nx-step__btn" aria-pressed="{{ $i === 0 ? 'true' : 'false' }}">
+                                        <span class="nx-step__num nx-mono">{{ $nxPad($i + 1) }}</span>
                                         <h3>{{ $item->title }}</h3>
-                                        @if ($item->details->count())<p>{{ $item->details->pluck('title')->map(fn ($d) => rtrim(trim((string) $d), '.'))->filter()->implode(' · ') }}</p>@endif
-                                    </div>
+                                    </button>
+                                    @if ($nxDetails->count())
+                                        <ul class="nx-step__list">
+                                            @foreach ($nxDetails as $nxDetail)
+                                                <li>{{ $nxDetail }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </li>
                             @endforeach
                         </ol>

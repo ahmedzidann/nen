@@ -1,11 +1,17 @@
-{{-- Hero: image-only slider. Slides = the dashboard's active Slider entries for the Home page;
-     with none, the Home page cover image is shown as a single banner. --}}
+{{-- Hero: image-only slider (autoplay with a slow zoom, tabs, arrows). Slides = the dashboard's active Slider
+     entries for the Home page. Until the dashboard has Home slides, the approved design's 3 slides are shown
+     (NEN's own photos from site.nen-global.org + one Unsplash photo, like the other design default photos). --}}
 @php
     $nxSlides = $heroSlides->map(fn ($s) => ['img' => $s->getFirstMediaUrl('image'), 'alt' => $nxText($s->title)])
         ->filter(fn ($s) => $s['img'])->values();
     if ($nxSlides->isEmpty()) {
-        $nxCover = $home ? $home->getFirstMediaUrl('icon') : '';
-        $nxSlides = collect([['img' => $nxCover ?: asset('content/images/pages/home-page/hero-home-page.webp'), 'alt' => $home->name ?? 'NEN']]);
+        $nxLecture = 'https://images.unsplash.com/photo-1758270704763-22072a90d3b6?auto=format&fit=crop&q=80&w=';
+        $nxSlides = collect([
+            ['img' => $nxSite . 'site/images/tpi-hero.jpg', 'alt' => $t('Official international exams, close to home.', 'اختبارات دولية رسمية بالقرب منك.')],
+            ['img' => $nxLecture . '2400', 'srcset' => collect([900, 1400, 1920, 2400])->map(fn ($w) => $nxLecture . $w . ' ' . $w . 'w')->implode(', '),
+                'alt' => $t('One network. Global impact.', 'شبكة واحدة. أثر عالمي.')],
+            ['img' => $nxSite . 'site/images/verifiy.jpg', 'alt' => $t('Trusted credentials. Secure systems.', 'شهادات موثوقة. أنظمة آمنة.')],
+        ]);
     }
     $nxMulti = $nxSlides->count() > 1;
 @endphp
@@ -13,7 +19,7 @@
     <div class="nx-hero__slides">
         @foreach ($nxSlides as $i => $s)
             <div class="nx-slide{{ $i === 0 ? ' is-active' : '' }}" data-nx-slide role="group" aria-roledescription="slide" aria-label="{{ $i + 1 }} / {{ $nxSlides->count() }}" @if ($i) aria-hidden="true" @endif>
-                <div class="nx-slide__media"><img class="nx-slide__img" src="{{ $s['img'] }}" alt="{{ $s['alt'] }}" decoding="async" @if ($i === 0) fetchpriority="high" @endif></div>
+                <div class="nx-slide__media"><img class="nx-slide__img" src="{{ $s['img'] }}" @if (!empty($s['srcset'])) srcset="{{ $s['srcset'] }}" sizes="100vw" @endif alt="{{ $s['alt'] }}" decoding="async" @if ($i === 0) fetchpriority="high" @endif></div>
             </div>
         @endforeach
     </div>

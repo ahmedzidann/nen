@@ -13,6 +13,7 @@ use App\Models\HomeVideo;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\SidebarResource;
+use App\Models\Slider;
 use App\Models\Solution;
 use App\Models\Technology;
 use App\Models\Testing;
@@ -43,8 +44,13 @@ class HomeController extends Controller
       [$techParent, $techItems] = $this->getTechParentAndItems();
       [$testingParent, $testingItems] = $this->getTestingParentAndItems();
       [$findusParent, $findusItems] = $this->getFindUsParentAndItems();
+      // redesign: hero slides (Slider entries for the Home page) and the network countries (map + Find Us filter)
+      $heroSlides = $home ? Slider::where('page_id', $home->id)->where('status', 'Active')->latest()->get() : collect();
+      $networkCountries = Country::query()->get();
 
       return view('user.home.home', \compact(
+         'heroSlides',
+         'networkCountries',
          'projects',
          'upperDidebarResources',
          'lowerDidebarResources',

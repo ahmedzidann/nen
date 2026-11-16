@@ -136,12 +136,16 @@ $marques = Makeme::all();
         @include('user.layout.includes.nav')
     </div>
 
-    <!-- hero_img -->
+    <!-- hero_img (a page can replace it with its own hero, e.g. the homepage slider) -->
+    @hasSection('hero')
+        @yield('hero')
+    @else
     <div class="section_photoe">
         <div class="title_img">
             <img class="img_team" src="@yield('cover_image') " />
         </div>
     </div>
+    @endif
     <!-- section_who_us -->
 
     <section class="content-ui">

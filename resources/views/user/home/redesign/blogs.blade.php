@@ -12,7 +12,7 @@
                                 <img src="{{ $blog->banner ? asset('/storage/' . $blog->banner) : asset('content/images/logo.svg') }}" alt="{{ $blog->title }}" loading="lazy" decoding="async">
                                 @if ($nxCat)<span class="nx-blog__cat">{{ $nxCat }}</span>@endif
                             </div>
-                            <p class="nx-mono nx-blog__meta">{{ optional($blog->published_at ? \Illuminate\Support\Carbon::parse($blog->published_at) : $blog->created_at)->format('j F Y') }} · {{ optional($blog->created_at)->diffForHumans() }}</p>
+                            <p class="nx-mono nx-blog__meta">{{ optional($blog->published_at ? \Illuminate\Support\Carbon::parse($blog->published_at) : $blog->created_at)->translatedFormat('j F Y') }} · {{ optional($blog->created_at)->diffForHumans() }}</p>
                             <h3>{{ $blog->title }}</h3>
                             <span class="nx-link">{{ $t('Read article', 'اقرأ المقال') }} {!! $nxArrow !!}</span>
                         </a>

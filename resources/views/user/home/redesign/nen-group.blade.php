@@ -3,19 +3,19 @@
      (site.nen-global.org). When a dashboard source exists, replace $nxGroup with it. --}}
 @php
     $nxGroup = [
-        ['name' => ['Technology', 'التقنية'], 'ghost' => 'TECHNOLOGY', 'year' => '2008', 'logo' => 'images/subsidiaries/nen-tech.png',
+        ['name' => ['Technology', 'التقنية'], 'ghost' => ['TECHNOLOGY', 'تقنية'], 'year' => '2008', 'logo' => 'images/subsidiaries/nen-tech.png',
             'text' => ['The engine behind our e-learning, e-exam and verification platforms, and Microsoft cloud, security and software services.', 'المحرك وراء منصاتنا للتعليم والاختبارات والتحقق الإلكتروني، وخدمات مايكروسوفت السحابية والأمنية والبرمجية.']],
-        ['name' => ['Academy', 'الأكاديمية'], 'ghost' => 'ACADEMY', 'year' => '2010', 'logo' => 'images/subsidiaries/nen-learningacademy.png',
+        ['name' => ['Academy', 'الأكاديمية'], 'ghost' => ['ACADEMY', 'أكاديمية'], 'year' => '2010', 'logo' => 'images/subsidiaries/nen-learningacademy.png',
             'text' => ['Accredited courses and professional certification programs that help learners build, prove and grow their skills.', 'دورات معتمدة وبرامج شهادات مهنية تساعد المتعلمين على بناء مهاراتهم وإثباتها وتطويرها.']],
-        ['name' => ['Aviation', 'الطيران'], 'ghost' => 'AVIATION', 'year' => '2010', 'logo' => 'images/subsidiaries/nenaviation.png',
+        ['name' => ['Aviation', 'الطيران'], 'ghost' => ['AVIATION', 'طيران'], 'year' => '2010', 'logo' => 'images/subsidiaries/nenaviation.png',
             'text' => ['Aviation training and certification programs delivered through IATA-accredited NEN centers.', 'برامج تدريب واعتماد في مجال الطيران تُقدَّم عبر مراكز نين المعتمدة من IATA.']],
-        ['name' => ['Verification (vData)', 'التحقق (vData)'], 'ghost' => 'VERIFICATION', 'year' => '2015', 'logo' => 'images/subsidiaries/vdata.png', 'tone' => 'red',
+        ['name' => ['Verification (vData)', 'التحقق (vData)'], 'ghost' => ['VERIFICATION', 'تحقق'], 'year' => '2015', 'logo' => 'images/subsidiaries/vdata.png', 'tone' => 'red',
             'text' => ['Secure verification of academic and professional documents, certificates and personal data for employers, universities and government entities.', 'تحقق آمن من الوثائق والشهادات الأكاديمية والمهنية والبيانات الشخصية لجهات العمل والجامعات والجهات الحكومية.']],
-        ['name' => ['Integrated Solutions', 'الحلول المتكاملة'], 'ghost' => 'INTEGRATED', 'year' => '2022', 'logo' => 'uploads/sections/file_6adf0fb8745ec.png',
+        ['name' => ['Integrated Solutions', 'الحلول المتكاملة'], 'ghost' => ['INTEGRATED', 'حلول'], 'year' => '2022', 'logo' => 'uploads/sections/file_6adf0fb8745ec.png',
             'text' => ['Integrated education and business systems (ERP, school management, training management) designed around how institutions actually work.', 'أنظمة تعليم وأعمال متكاملة (تخطيط الموارد وإدارة المدارس وإدارة التدريب) مصممة حول طريقة عمل المؤسسات فعليًا.']],
-        ['name' => ['BIO', 'بايو'], 'ghost' => 'BIO', 'year' => '2023', 'logo' => 'images/subsidiaries/nen-bio.png',
+        ['name' => ['BIO', 'بايو'], 'ghost' => ['BIO', 'بايو'], 'year' => '2023', 'logo' => 'images/subsidiaries/nen-bio.png',
             'text' => ['Training, certification and specialised services for the agriculture and agri-food sector.', 'تدريب واعتماد وخدمات متخصصة لقطاع الزراعة والصناعات الغذائية.']],
-        ['name' => ['Foundation (NGO)', 'المؤسسة (غير ربحية)'], 'ghost' => 'FOUNDATION', 'year' => '2023', 'logo' => 'images/subsidiaries/nen-foundation-ngo.png', 'tone' => 'light',
+        ['name' => ['Foundation (NGO)', 'المؤسسة (غير ربحية)'], 'ghost' => ['FOUNDATION', 'مؤسسة'], 'year' => '2023', 'logo' => 'images/subsidiaries/nen-foundation-ngo.png', 'tone' => 'light',
             'text' => ['Our non-profit arm: free learning, skills programs and scholarships for young people and underserved communities.', 'ذراعنا غير الربحية: تعليم مجاني وبرامج مهارات ومنح دراسية للشباب والمجتمعات الأقل حظًا.']],
     ];
     $nxGn = count($nxGroup);
@@ -34,7 +34,7 @@
                     <span class="nx-stack-card__logo"><img src="{{ $nxSite . $co['logo'] }}" alt="NEN | {{ $co['name'][0] }}" loading="lazy" decoding="async"></span>
                     <h3 class="nx-stack-card__name"><span>{{ $t('NEN |', 'نين |') }}</span>{{ $t($co['name'][0], $co['name'][1]) }}</h3>
                     <p class="nx-stack-card__desc">{{ $t($co['text'][0], $co['text'][1]) }}</p>
-                    <span class="nx-stack-card__ghost" aria-hidden="true">{{ $co['ghost'] }}</span><span class="nx-stack-card__shade" aria-hidden="true"></span>
+                    <span class="nx-stack-card__ghost" aria-hidden="true">{{ $t($co['ghost'][0], $co['ghost'][1]) }}</span><span class="nx-stack-card__shade" aria-hidden="true"></span>
                 </article>
             @endforeach
         </div>

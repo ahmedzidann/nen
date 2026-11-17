@@ -25,7 +25,7 @@
             </ul>
             <aside class="nx-note" data-nx-reveal>
                 <span class="nx-note__tag nx-mono">{{ $t('Note', 'ملاحظة') }}</span>
-                <p>{{ ($testingParent && $nxText($testingParent->description)) ? $nxText($testingParent->description) : 'In case of technical problems or power cuts, the test will be resumed where it stopped while safely keeping the remaining time, and test takers are not allowed to leave the room unless they have waited for at least 30 minutes. Then the proctor will fill out the status report and then the test taker shall decide whether to resume the test or repeat.' }}</p>
+                <p>{{ ($testingParent && $nxText($testingParent->description)) ? $nxText($testingParent->description) : $t('In case of technical problems or power cuts, the test will be resumed where it stopped while safely keeping the remaining time, and test takers are not allowed to leave the room unless they have waited for at least 30 minutes. Then the proctor will fill out the status report and then the test taker shall decide whether to resume the test or repeat.', 'في حال حدوث مشكلات تقنية أو انقطاع الكهرباء، يُستأنف الاختبار من حيث توقف مع الحفاظ على الوقت المتبقي، ولا يُسمح للمتقدمين بمغادرة القاعة إلا بعد الانتظار 30 دقيقة على الأقل. بعد ذلك يملأ المراقب تقرير الحالة، ثم يقرر المتقدم استئناف الاختبار أو إعادته.') }}</p>
             </aside>
         </div>
     </section>

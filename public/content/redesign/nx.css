@@ -16,7 +16,7 @@
   --nx-card: #fff;
   --nx-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --nx-font: "Roboto", "Roboto-Regular", system-ui, sans-serif;
-  --nx-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --nx-mono: "JetBrains Mono", ui-monospace, Consolas, system-ui, monospace; /* system-ui: Arabic glyphs (mono fonts have none) */
   --nx-title: clamp(2.6rem, 1.3rem + 3.9vw, 5.4rem);
   position: relative;
   background: var(--nx-bg, #fff);
@@ -42,6 +42,8 @@
 .nx :focus-visible { outline: 2px solid var(--nx-red-2); outline-offset: 3px; border-radius: 6px; }
 .nx-ic { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 [dir="rtl"] .nx .nx-arrow { transform: scaleX(-1); }
+/* Arabic letters are joined: any letter-spacing pulls them apart (Chrome), so RTL drops the tracking. */
+[dir="rtl"] .nx :is(.nx-mono, .nx-label__n, .nx-title, .nx-stack-card__name, .nx-stack-card__name span, .nx-stack-card__ghost, .nx-edu__copy h3, .nx-plat__body h3, .nx-testing__title, .nx-cert__foot, .nx-cert__stamp, .nx-tcard__title, .nx-video figcaption b) { letter-spacing: 0; }
 .nx-mono { font-family: var(--nx-mono); font-size: 0.74rem !important; letter-spacing: 0.1em; text-transform: uppercase; }
 
 .nx-sec { padding-block: clamp(56px, 7.5vh, 96px); }
@@ -116,6 +118,7 @@
 .nx-hero__arrow:hover { background: var(--nx-red); border-color: var(--nx-red); }
 .nx-hero__arrow .nx-arrow { width: 20px; height: 20px; }
 [data-nx-hero-prev] .nx-arrow { transform: scaleX(-1); }
+[dir="rtl"] .nx [data-nx-hero-prev] .nx-arrow { transform: none; } /* RTL: the mirror above would flip it back */
 
 /* quick access cards (the old icon bar, redesigned) overlapping the bottom of the slider */
 .nx-quick { --nx-bg: transparent; position: relative; z-index: 4; margin-top: -64px; overflow: visible; }
@@ -309,7 +312,7 @@
 .nx-orbit__ring--2 { inset: 25%; border: 1px solid rgba(153,0,0,.18); background: radial-gradient(circle, rgba(153,0,0,.08), transparent 70%); }
 .nx-orbit__core { position: relative; z-index: 2; width: 44%; aspect-ratio: 1; border-radius: 50%; display: grid; place-content: center; justify-items: center; gap: 8px; padding: 26px; text-align: center;
   background: radial-gradient(circle at 35% 30%, #2a2c33, #0e0f12 70%); color: #fff; box-shadow: 0 0 0 8px rgba(153,0,0,.12), 0 40px 80px -30px rgba(153,0,0,.6); }
-.nx-orbit__core .nx-mono { color: #ff8a9c; font-size: 0.66rem !important; }
+.nx-orbit__core .nx-mono { color: #ff8a9c; font-size: 0.75rem !important; }
 .nx-orbit__core strong { font-size: clamp(1.05rem, 0.85rem + 0.6vw, 1.35rem) !important; line-height: 1.2; }
 .nx-orbit__core p { font-size: 0.8rem !important; line-height: 1.45; color: rgba(255,255,255,.75); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .nx-orbit__core .nx-link { color: #ff8a9c; font-size: 0.82rem !important; }
@@ -651,3 +654,15 @@ button.nx-video__play { border: 0; padding: 0; cursor: pointer; z-index: 2; }
   .nx-plat--logos .nx-plat__img, .nx-plat--logos .nx-plat__panel.is-open .nx-plat__img { width: min(46%, 200px); }
   .nx-plat--logos .nx-plat__panel:not(.is-open) .nx-plat__img { opacity: 0; }
 }
+
+/* Their header (homepage only, since this file only loads here): at <=768px their CSS hides the text labels of the
+   top-bar icons, but missed the "Language" label (it sits in a <button>, not an <a>). That label made the row ~18px
+   wider than a phone; in Arabic the overflow opened the page scrolled sideways, shifting every section. */
+@media (max-width: 768px) {
+  .header_section .small_photes_div .dropdown-toggle > span { display: none; }
+}
+
+/* RTL arrows: the hover nudges replace the RTL mirror (same specificity, declared later), which flipped the arrow back
+   to point right and moved it the wrong way. Keep the mirror and nudge in the reading direction. */
+[dir="rtl"] .nx .nx-btn:hover .nx-arrow { transform: scaleX(-1) translateX(5px); }
+[dir="rtl"] .nx .nx-link:hover .nx-arrow, [dir="rtl"] .nx .nx-quick__card:hover .nx-arrow, [dir="rtl"] .nx .nx-tcard:hover .nx-tcard__more .nx-arrow { transform: scaleX(-1) translateX(4px); }

@@ -60,6 +60,16 @@
 @endphp
 
 @section('websiteStyle')
+    {{-- The layout takes the page direction from localStorage.lang (set by the language switcher), so a first visit
+         to /ar rendered left-to-right. Sync it with the URL's locale before the layout reads it (the switcher's links
+         go to the other locale's URL, so the two stay consistent), and give <html> the right lang/dir. --}}
+    <script>
+        (function (l) {
+            try { localStorage.setItem('lang', l); } catch (e) {}
+            document.documentElement.lang = l;
+            document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+        })(@json(app()->getLocale()));
+    </script>
     {{-- home-index-style.css styled the old homepage sections (all replaced below), so it is no longer loaded here --}}
     <!-- NEN redesign layer -->
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

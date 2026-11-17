@@ -35,19 +35,20 @@
                 </div>
                 <div class="nx-doc__stage" aria-hidden="true">
                     <div class="nx-cert" data-nx-doc>
-                        <div class="nx-cert__upload" data-nx-upload-row><span class="nx-mono">Uploading · encrypted channel</span><span class="nx-cert__bar"><i data-nx-upload></i></span></div>
-                        <div class="nx-cert__head"><img src="{{ asset('content/images/logo.svg') }}" alt="" class="nx-cert__logo"><span class="nx-mono">NEN-2026-04817</span></div>
-                        <p class="nx-mono nx-cert__kicker">Certificate of achievement</p>
-                        <p class="nx-cert__name">Sample Candidate</p>
+                        <div class="nx-cert__upload" data-nx-upload-row><span class="nx-mono">{{ $t('Uploading · encrypted channel', 'جارٍ الرفع · قناة مشفّرة') }}</span><span class="nx-cert__bar"><i data-nx-upload></i></span></div>
+                        <div class="nx-cert__head"><img src="{{ asset('content/images/logo.svg') }}" alt="" class="nx-cert__logo"><span class="nx-mono" dir="ltr">NEN-2026-04817</span></div>
+                        <p class="nx-mono nx-cert__kicker">{{ $t('Certificate of achievement', 'شهادة إنجاز') }}</p>
+                        <p class="nx-cert__name">{{ $t('Sample Candidate', 'اسم المتقدّم') }}</p>
+                        @php $nxMatched = $t('Matched', 'مطابق'); @endphp
                         <dl class="nx-cert__fields">
-                            <div class="nx-field" data-nx-field><dt>Exam</dt><dd><span data-nx-scramble="TOEFL iBT®">TOEFL iBT®</span><i class="nx-tick"></i></dd></div>
-                            <div class="nx-field" data-nx-field><dt>Score</dt><dd><span data-nx-scramble="102 / 120">102 / 120</span><i class="nx-tick"></i></dd></div>
-                            <div class="nx-field" data-nx-field><dt>Issued</dt><dd><span data-nx-scramble="2026-03-14">2026-03-14</span><i class="nx-tick"></i></dd></div>
-                            <div class="nx-field" data-nx-field><dt>Issuer record</dt><dd><span data-nx-scramble="Matched">Matched</span><i class="nx-tick"></i></dd></div>
+                            <div class="nx-field" data-nx-field><dt>{{ $t('Exam', 'الاختبار') }}</dt><dd><span data-nx-scramble="TOEFL iBT®" dir="ltr">TOEFL iBT®</span><i class="nx-tick"></i></dd></div>
+                            <div class="nx-field" data-nx-field><dt>{{ $t('Score', 'الدرجة') }}</dt><dd><span data-nx-scramble="102 / 120" dir="ltr">102 / 120</span><i class="nx-tick"></i></dd></div>
+                            <div class="nx-field" data-nx-field><dt>{{ $t('Issued', 'تاريخ الإصدار') }}</dt><dd><span data-nx-scramble="2026-03-14" dir="ltr">2026-03-14</span><i class="nx-tick"></i></dd></div>
+                            <div class="nx-field" data-nx-field><dt>{{ $t('Issuer record', 'سجل جهة الإصدار') }}</dt><dd><span data-nx-scramble="{{ $nxMatched }}">{{ $nxMatched }}</span><i class="nx-tick"></i></dd></div>
                         </dl>
-                        <div class="nx-cert__foot nx-mono"><span>Record match <b data-nx-match>100%</b></span><span>SHA-256 · <span data-nx-hash>7f3a9c4e…e21b</span></span></div>
+                        <div class="nx-cert__foot nx-mono"><span>{{ $t('Record match', 'تطابق السجل') }} <b data-nx-match>100%</b></span><span dir="ltr">SHA-256 · <span data-nx-hash>7f3a9c4e…e21b</span></span></div>
                         <div class="nx-cert__scan" data-nx-scan></div>
-                        <div class="nx-cert__stamp" data-nx-stamp>{!! $nxIcon($nxIcons['shield']) !!}<span>Verified</span></div>
+                        <div class="nx-cert__stamp" data-nx-stamp>{!! $nxIcon($nxIcons['shield']) !!}<span>{{ $t('Verified', 'تم التحقق') }}</span></div>
                     </div>
                 </div>
             </div>

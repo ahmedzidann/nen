@@ -356,10 +356,6 @@
 .nx-step__num { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--nx-red); color: var(--nx-red); font-size: 0.72rem !important; transition: background-color .45s, color .45s; }
 .nx-step.is-active .nx-step__num { background: var(--nx-red); color: #fff; }
 .nx-step h3 { font-size: 1.2rem !important; font-weight: 700; color: var(--nx-ink); }
-.nx-step__list { list-style: none; margin: 10px 0 0; padding: 0; padding-inline-start: 48px; display: grid; gap: 6px; }
-.nx-step__list li { position: relative; padding-inline-start: 18px; color: var(--nx-muted); line-height: 1.5; font-size: 0.97rem !important; }
-.nx-step__list li::before { content: ""; position: absolute; inset-inline-start: 0; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--nx-red); opacity: .45; transition: opacity .45s; }
-.nx-step.is-active .nx-step__list li::before { opacity: 1; }
 .nx-doc__progress { height: 3px; background: var(--nx-line); border-radius: 3px; overflow: hidden; margin-top: 16px; }
 .nx-doc__progress i { display: block; height: 100%; background: var(--nx-red); transform-origin: left; transform: scaleX(1); }
 [dir="rtl"] .nx-doc__progress i { transform-origin: right; }
@@ -373,11 +369,15 @@
 .nx-cert__head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px dashed rgba(255,255,255,.2); color: rgba(255,255,255,.55); }
 .nx-cert__logo { height: 30px; width: auto; filter: brightness(0) invert(1); }
 .nx-cert__kicker { margin-top: 20px; color: #ff8a9c; }
-.nx-cert__name { font-size: 1.6rem !important; font-weight: 700; margin-top: 4px; }
-.nx-cert__fields { display: grid; gap: 8px; margin-top: 20px; }
-.nx-field { --hl: 0; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 11px 14px; border-radius: 10px; background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,45,79, calc(var(--hl) * .9)); }
-.nx-field dt { color: rgba(255,255,255,.65); font-size: 0.86rem !important; font-weight: 400; }
-.nx-field dd { display: flex; align-items: center; gap: 10px; font-family: var(--nx-mono); font-size: 0.86rem !important; direction: ltr; }
+.nx-cert__name { font-size: 1.6rem !important; font-weight: 700; margin-top: 4px; max-width: calc(100% - 180px); line-height: 1.2; }   /* room for the Verified stamp */
+/* the document's views: one per step (its title + its details as rows), stacked in one spot so the card keeps its size */
+.nx-cert__views { display: grid; }
+.nx-cert__view { grid-area: 1 / 1; min-width: 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .3s, transform .45s var(--nx-ease), visibility 0s .45s; }
+.nx-cert__view.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity .45s .12s, transform .55s .12s var(--nx-ease), visibility 0s; }
+.nx-vrows { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
+.nx-vrow { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; background: rgba(255,255,255,.05); }
+.nx-vrow__n { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid rgba(255,138,156,.75); color: #ff8a9c; font-size: 0.7rem !important; letter-spacing: 0; }
+.nx-vrow b { flex: 1; min-width: 0; color: #fff; font-size: 0.95rem !important; font-weight: 500; line-height: 1.35; }
 .nx-tick { width: 18px; height: 18px; border-radius: 50%; background: var(--nx-glow); position: relative; flex: none; }
 .nx-tick::after { content: ""; position: absolute; left: 6px; top: 4px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
 .nx-cert__foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 18px; color: rgba(255,255,255,.5); text-transform: none; letter-spacing: .04em; }
@@ -455,7 +455,7 @@
 .nx-mpin__label { position: absolute; display: grid; gap: 1px; padding: 8px 13px; border-radius: 12px; white-space: nowrap; background: #fff; border: 1px solid var(--nx-line); box-shadow: 0 14px 30px -14px rgba(14,15,18,.35);
   opacity: 0; transition: opacity .5s calc(var(--pd, 1.2s) + .25s), background-color .3s, border-color .3s; }
 .nx-mpin__label b { font-size: 0.98rem !important; font-weight: 700; color: var(--nx-ink); line-height: 1.2; transition: color .3s; }
-.nx-mpin__label .nx-mono { font-size: 0.6rem !important; color: var(--nx-muted); transition: color .3s; }
+.nx-mpin__label .nx-mono { font-size: 0.7rem !important; color: var(--nx-muted); transition: color .3s; }
 .nx-map.is-in .nx-mpin__label { opacity: 1; }
 .nx-mpin--w .nx-mpin__label { right: 18px; top: 0; transform: translateY(-50%); }
 .nx-mpin--e .nx-mpin__label { left: 18px; top: 0; transform: translateY(-50%); }
@@ -646,13 +646,30 @@ button.nx-video__play { border: 0; padding: 0; cursor: pointer; z-index: 2; }
 .nx-find__ic.is-img, .nx-tcard__ic.is-img { background: var(--nx-red); }
 .nx-find__ic.is-img img, .nx-tcard__ic.is-img img { filter: none !important; }
 
-/* Solutions: the dashboard's solution images are logos, so they sit on a white tile instead of filling the panel */
+/* Solutions: the dashboard's solution images are logos, so each sits on a white tile of one fixed shape (logos of any
+   proportion fit inside). Closed panels show the tile at the top; the open (hovered) panel glides it to the middle and
+   centres it with the text right under it (small gap), over a soft red glow. */
 .nx-plat--logos .nx-plat__panel { background: linear-gradient(165deg, #262a31, #0e0f12); }
-.nx-plat--logos .nx-plat__img { inset: auto; left: 50%; top: 26px; z-index: 1; width: min(78%, 230px); height: auto; aspect-ratio: 16 / 10; object-fit: contain; padding: 14px; border-radius: 18px; background: #fff; opacity: 1; transform: translateX(-50%); box-shadow: 0 18px 40px -20px rgba(0,0,0,.6); transition: width .8s var(--nx-ease); }
-.nx-plat--logos .nx-plat__panel.is-open .nx-plat__img { opacity: 1; transform: translateX(-50%); width: min(56%, 300px); }
+.nx-plat--logos .nx-plat__panel::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(55% 45% at 50% 42%, rgba(200,16,46,.32), transparent 72%); opacity: 0; transition: opacity .8s var(--nx-ease); }
+.nx-plat--logos .nx-plat__panel.is-open::before { opacity: 1; }
+.nx-plat--logos .nx-plat__panel::after { background: linear-gradient(180deg, transparent 55%, rgba(14,15,18,.55)); }
+.nx-plat__stage { position: absolute; z-index: 2; left: 50%; top: 26px; width: calc(100% - 32px); display: flex; flex-direction: column; align-items: center; transform: translate(-50%, 0); transition: top .8s var(--nx-ease), transform .8s var(--nx-ease), opacity .4s; }
+.nx-plat__panel.is-open .nx-plat__stage { top: 50%; transform: translate(-50%, -50%); }
+.nx-plat__logo { display: grid; place-items: center; width: min(100%, 200px); aspect-ratio: 16 / 10; padding: 14px; border-radius: 18px; background: #fff; box-shadow: 0 18px 40px -20px rgba(0,0,0,.6); transition: width .8s var(--nx-ease), padding .8s var(--nx-ease), box-shadow .8s; }
+.nx-plat__panel.is-open .nx-plat__logo { width: min(100%, 280px); padding: 20px; box-shadow: 0 30px 70px -30px rgba(0,0,0,.8), 0 0 0 6px rgba(255,255,255,.06); }
+.nx-plat--logos .nx-plat__img, .nx-plat--logos .nx-plat__panel.is-open .nx-plat__img { position: static; inset: auto; width: 100%; height: 100%; object-fit: contain; opacity: 1; transform: none; transition: none; }
+.nx-plat--logos .nx-plat__body { position: static; inset: auto; width: 100%; max-width: 520px; padding: 0; margin-top: 0; justify-items: center; text-align: center; max-height: 0; overflow: hidden; visibility: hidden;
+  transition: opacity .5s .2s, transform .6s .2s var(--nx-ease), max-height .8s var(--nx-ease), margin-top .8s var(--nx-ease), visibility 0s .8s; }
+.nx-plat--logos .nx-plat__panel.is-open .nx-plat__body { margin-top: 22px; max-height: 320px; visibility: visible;
+  transition: opacity .5s .2s, transform .6s .2s var(--nx-ease), max-height .8s var(--nx-ease), margin-top .8s var(--nx-ease), visibility 0s; }
+.nx-plat--logos .nx-plat__body h3 { line-height: 1.1; }
+.nx-plat--logos .nx-plat__body .nx-link { color: #ff8a9c; margin-top: 4px; }
+.nx-plat--logos .nx-plat__body .nx-link:hover { color: #fff; }
 @media (max-width: 991px) {
-  .nx-plat--logos .nx-plat__img, .nx-plat--logos .nx-plat__panel.is-open .nx-plat__img { width: min(46%, 200px); }
-  .nx-plat--logos .nx-plat__panel:not(.is-open) .nx-plat__img { opacity: 0; }
+  /* stacked rows: closed rows show just the name; the open row centres the logo and text */
+  .nx-plat--logos .nx-plat__panel:not(.is-open) .nx-plat__stage { opacity: 0; }
+  .nx-plat--logos .nx-plat__panel.is-open { min-height: 420px; }
+  .nx-plat__panel.is-open .nx-plat__logo { width: min(100%, 220px); }
 }
 
 /* Their header (homepage only, since this file only loads here): at <=768px their CSS hides the text labels of the
@@ -666,3 +683,34 @@ button.nx-video__play { border: 0; padding: 0; cursor: pointer; z-index: 2; }
    to point right and moved it the wrong way. Keep the mirror and nudge in the reading direction. */
 [dir="rtl"] .nx .nx-btn:hover .nx-arrow { transform: scaleX(-1) translateX(5px); }
 [dir="rtl"] .nx .nx-link:hover .nx-arrow, [dir="rtl"] .nx .nx-quick__card:hover .nx-arrow, [dir="rtl"] .nx .nx-tcard:hover .nx-tcard__more .nx-arrow { transform: scaleX(-1) translateX(4px); }
+
+/* Our Locations, from the dashboard's Contact Us offices: tab counts, the extra tag sides the automatic placement uses
+   (nx.js picks the first free side of 8), the swap-in state when a tab changes, and the office cards' details. */
+.nx-chips button { display: inline-flex; align-items: center; gap: 8px; }
+.nx-chips__n { min-width: 22px; padding: 2px 7px; border-radius: 999px; background: var(--nx-line); color: inherit; font-size: 0.72rem !important; font-weight: 700; line-height: 1.4; text-align: center; transition: background-color .3s; }
+.nx-chips button.is-active .nx-chips__n { background: rgba(255,255,255,.18); }
+.nx-mpin--s .nx-mpin__label { top: 18px; left: 0; transform: translateX(-30%); }
+.nx-mpin--ne .nx-mpin__label { bottom: 16px; left: 8px; }
+.nx-mpin--nw .nx-mpin__label { bottom: 16px; right: 8px; }
+.nx-map.is-in .nx-mpin.is-new .nx-mpin__dot { transform: scale(0); transition: none; }
+.nx-map.is-in .nx-mpin.is-new .nx-mpin__label { opacity: 0; transition: none; }
+.nx-map.is-in .nx-map__arc.is-new { stroke-dashoffset: 1; transition: none; }
+.nx-map.is-in .nx-map__comet.is-new { opacity: 0; animation: none; }
+.nx-office[data-nx-office] { display: flex; flex-direction: column; gap: 4px; }   /* top-aligned: addresses differ in length */
+.nx-office[data-nx-office] > .nx-mono { margin-bottom: 14px; }
+.nx-office[data-nx-office] > .nx-link { margin-top: auto; padding-top: 6px; }
+.nx-office[data-nx-office][hidden] { display: none; }
+#nx-root #join-us-section .nx-office p.nx-office__who:not(#nx-x) { color: var(--nx-ink); font-weight: 600; margin-bottom: 2px; }
+#nx-root #join-us-section .nx-office p.nx-office__meta:not(#nx-x) { display: grid; gap: 3px; font-size: 0.86rem !important; color: var(--nx-ink); }
+.nx-office .nx-office__meta .nx-mono { margin: 0; color: var(--nx-muted); }
+@media (max-width: 767px) {
+  /* phones: the location tabs sit on one row that scrolls sideways instead of wrapping into three ragged lines */
+  .nx-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .nx-chips::-webkit-scrollbar { display: none; }
+  .nx-chips li { flex: none; }
+}
+@media (max-width: 575px) {
+  /* phones: the Verified stamp lands on the faded upload line, so it never covers the title */
+  .nx-cert__stamp { top: 14px; padding: 8px 12px; font-size: 0.95rem !important; }
+  .nx-cert__name { max-width: none; }
+}

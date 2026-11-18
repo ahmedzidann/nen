@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\ContactUsCountry;
 use App\Models\Country;
 use App\Models\Education;
 use App\Models\FeatureAdvantages;
@@ -13,7 +14,6 @@ use App\Models\HomeVideo;
 use App\Models\Page;
 use App\Models\Project;
 use App\Models\SidebarResource;
-use App\Models\Slider;
 use App\Models\Solution;
 use App\Models\Technology;
 use App\Models\Testing;
@@ -44,13 +44,14 @@ class HomeController extends Controller
       [$techParent, $techItems] = $this->getTechParentAndItems();
       [$testingParent, $testingItems] = $this->getTestingParentAndItems();
       [$findusParent, $findusItems] = $this->getFindUsParentAndItems();
-      // redesign: hero slides (Slider entries for the Home page) and the network countries (map + Find Us filter)
-      $heroSlides = $home ? Slider::where('page_id', $home->id)->where('status', 'Active')->latest()->get() : collect();
+      // redesign: the network countries (Our Locations map + Find Us country filter) and the Contact Us offices
+      // (Regional Offices / Authorized Offices / Regional Representatives: the Our Locations tabs, map pins and cards)
       $networkCountries = Country::query()->get();
+      $contactOffices = ContactUsCountry::query()->with('country')->orderBy('type')->orderBy('id')->get();
 
       return view('user.home.home', \compact(
-         'heroSlides',
          'networkCountries',
+         'contactOffices',
          'projects',
          'upperDidebarResources',
          'lowerDidebarResources',

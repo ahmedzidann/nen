@@ -111,12 +111,16 @@
     intent(items, show);
   })();
 
-  // Doc Validation steps: hover / click / focus picks a step; the motion layer (below) plays the certificate to it
+  // Doc Validation steps: hover / click / focus picks a step and switches the document to that step's view;
+  // the motion layer (below) runs the view's check (scan, ticks, stamp)
   const docSteps = { set: null, go: null };
   (function docValidationSteps() {
     const sec = $("[data-nx-verify]"); if (!sec) return;
-    const steps = $$("[data-nx-step]", sec);
-    docSteps.set = (j) => steps.forEach((s, k) => { s.classList.toggle("is-active", k === j); const b = $(".nx-step__btn", s); if (b) b.setAttribute("aria-pressed", String(k === j)); });
+    const steps = $$("[data-nx-step]", sec), views = $$("[data-nx-view]", sec);
+    docSteps.set = (j) => {
+      steps.forEach((s, k) => { s.classList.toggle("is-active", k === j); const b = $(".nx-step__btn", s); if (b) b.setAttribute("aria-pressed", String(k === j)); });
+      views.forEach((v, k) => v.classList.toggle("is-active", k === j));
+    };
     intent(steps, (j) => { if (docSteps.go) docSteps.go(j, true); else docSteps.set(j); });
   })();
 
@@ -141,33 +145,52 @@
     });
   });
 
-  // Our Locations: dotted world map (the same SVG file the old section used as its background),
-  // redrawn in NEN colours: grey dots, the dashboard's countries (Countries list) in red.
+  // Our Locations: dotted world map (the same SVG file the old section used as its background), redrawn in NEN colours:
+  // grey dots and the dashboard's countries (Countries list) in red. The active tab's Contact Us offices are pinned with
+  // tags (each tag takes the first free side, so they never cover each other) and linked to Cairo by routes. A pin and
+  // its office cards highlight each other; the tabs (Regional Offices / Authorized Offices / Representatives) swap them.
   const MAP = (function map() {
     const box = $("[data-nx-map]"); if (!box) return null;
-    const svgs = $$("svg", box), dotsG = $("[data-nx-map-dots]", box);
+    const sec = box.closest("section") || root;
+    const svgs = $$("svg", box), dotsG = $("[data-nx-map-dots]", box), arcsG = $("[data-nx-map-arcs]", box), pinsOl = $("[data-nx-map-pins]", box);
     // Linear fit of that map's projection, from landmarks (London, Dakar, Cape Agulhas, Horn of Africa, tip of India). SVG units.
     const P = { c0: 36, lon0: -17.5, dLon: 3.44, r0: 9, lat0: 51.5, dLat: 2.9, step: 9.25, y0: 3.5 };
     const proj = (lat, lon) => [(P.c0 + (lon - P.lon0) / P.dLon) * P.step, P.y0 + (P.r0 + (P.lat0 - lat) / P.dLat) * P.step];
     const inv = (x, y) => [P.lat0 - ((y - P.y0) / P.step - P.r0) * P.dLat, P.lon0 + (x / P.step - P.c0) * P.dLon];
-    // Rough country areas [lat, lon, half-height°, half-width°], matched by name to the dashboard's country titles.
+    // Rough country areas [lat, lon, half-height°, half-width°] + ISO code, matched by name to the dashboard's country titles.
     const GEO = [
-      [/egypt|مصر/, [26.8, 30, 4.6, 5]], [/^(usa|us|united states|america)|أمريكا/, [39, -98, 9, 25]], [/^(sa|ksa)$|saudi|السعودية/, [24, 45, 6, 8]],
-      [/emirates|^uae$|الإمارات/, [24, 54.3, 1.4, 2]], [/oman|عمان/, [21, 57, 3.5, 3]], [/uzbek|أوزبك/, [41.5, 64, 3, 7]], [/kyrgyz|قيرغيز/, [41.3, 74.5, 1.8, 4.5]],
-      [/turk|تركيا/, [39, 35, 2.8, 9]], [/german|ألمانيا/, [51, 10.3, 3.2, 3.5]], [/united kin|^uk$|britain|england|بريطانيا|المملكة المتحدة/, [54, -2.5, 4.5, 3.5]],
-      [/jordan|الأردن/, [31.2, 36.5, 1.8, 1.8]], [/syria|سوريا/, [35, 38.5, 2, 3]], [/russia|روسيا/, [61, 95, 12, 60]], [/spain|إسبانيا/, [40.2, -3.6, 3.2, 4.8]],
-      [/qatar|قطر/, [25.3, 51.2, 0.8, 0.8]], [/bahrain|البحرين/, [26, 50.5, 0.6, 0.6]], [/kuwait|الكويت/, [29.3, 47.6, 1, 1]], [/georgia|جورجيا/, [42.2, 43.5, 1, 2.3]],
-      [/azerbaijan|أذربيجان/, [40.3, 47.7, 1.2, 2]], [/tajik|طاجيك/, [38.8, 71, 1.8, 3]], [/kazakh|كازاخ/, [48, 67, 6, 18]], [/iraq|العراق/, [33, 43.7, 3.5, 4]],
-      [/leban|لبنان/, [33.9, 35.9, 0.5, 0.5]], [/palestin|فلسطين/, [31.9, 35.2, 0.5, 0.4]], [/yemen|اليمن/, [15.5, 47.5, 3, 6]], [/sudan|السودان/, [15.5, 30, 6, 7]],
-      [/libya|ليبيا/, [27, 17, 5, 8]], [/tunisia|تونس/, [34, 9.5, 3, 1.5]], [/algeria|الجزائر/, [28, 2.6, 8, 9]], [/morocco|المغرب/, [31.8, -7, 3.5, 4]],
-      [/pakistan|باكستان/, [30, 69.5, 5, 6]], [/india|الهند/, [22, 79, 8, 9]], [/france|فرنسا/, [46.6, 2.4, 3.5, 4]], [/ital|إيطاليا/, [42.8, 12.5, 4, 3]],
-      [/china|الصين/, [35, 103, 10, 22]], [/canada|كندا/, [56, -100, 12, 35]], [/kenya|كينيا/, [0.5, 38, 4, 3]], [/nigeria|نيجيريا/, [9.5, 8, 4, 5]],
+      [/egypt|مصر/, [26.8, 30, 4.6, 5], "EG"], [/^(usa|us|united states|america)|أمريكا/, [39, -98, 9, 25], "US"], [/^(sa|ksa)$|saudi|السعودية/, [24, 45, 6, 8], "SA"],
+      [/emirates|^uae$|الإمارات/, [24, 54.3, 1.4, 2], "AE"], [/oman|عمان/, [21, 57, 3.5, 3], "OM"], [/uzbek|أوزبك/, [41.5, 64, 3, 7], "UZ"], [/kyrgyz|قيرغيز/, [41.3, 74.5, 1.8, 4.5], "KG"],
+      [/turk|تركيا/, [39, 35, 2.8, 9], "TR"], [/german|ألمانيا/, [51, 10.3, 3.2, 3.5], "DE"], [/united kin|^uk$|britain|england|بريطانيا|المملكة المتحدة/, [54, -2.5, 4.5, 3.5], "GB"],
+      [/jordan|الأردن/, [31.2, 36.5, 1.8, 1.8], "JO"], [/syria|سوريا/, [35, 38.5, 2, 3], "SY"], [/russia|روسيا/, [61, 95, 12, 60], "RU"], [/spain|إسبانيا/, [40.2, -3.6, 3.2, 4.8], "ES"],
+      [/qatar|قطر/, [25.3, 51.2, 0.8, 0.8], "QA"], [/bahrain|البحرين/, [26, 50.5, 0.6, 0.6], "BH"], [/kuwait|الكويت/, [29.3, 47.6, 1, 1], "KW"], [/georgia|جورجيا/, [42.2, 43.5, 1, 2.3], "GE"],
+      [/azerbaijan|أذربيجان/, [40.3, 47.7, 1.2, 2], "AZ"], [/tajik|طاجيك/, [38.8, 71, 1.8, 3], "TJ"], [/kazakh|كازاخ/, [48, 67, 6, 18], "KZ"], [/iraq|العراق/, [33, 43.7, 3.5, 4], "IQ"],
+      [/leban|لبنان/, [33.9, 35.9, 0.5, 0.5], "LB"], [/palestin|فلسطين/, [31.9, 35.2, 0.5, 0.4], "PS"], [/yemen|اليمن/, [15.5, 47.5, 3, 6], "YE"], [/sudan|السودان/, [15.5, 30, 6, 7], "SD"],
+      [/libya|ليبيا/, [27, 17, 5, 8], "LY"], [/tunisia|تونس/, [34, 9.5, 3, 1.5], "TN"], [/algeria|الجزائر/, [28, 2.6, 8, 9], "DZ"], [/morocco|المغرب/, [31.8, -7, 3.5, 4], "MA"],
+      [/pakistan|باكستان/, [30, 69.5, 5, 6], "PK"], [/india|الهند/, [22, 79, 8, 9], "IN"], [/france|فرنسا/, [46.6, 2.4, 3.5, 4], "FR"], [/ital|إيطاليا/, [42.8, 12.5, 4, 3], "IT"],
+      [/china|الصين/, [35, 103, 10, 22], "CN"], [/canada|كندا/, [56, -100, 12, 35], "CA"], [/kenya|كينيا/, [0.5, 38, 4, 3], "KE"], [/nigeria|نيجيريا/, [9.5, 8, 4, 5], "NG"],
+    ];
+    const geoOf = (name) => { const s = String(name || "").toLowerCase().replace(/^republic of |^the |^sultanate of /, "").trim(); const hit = s && GEO.find(([re]) => re.test(s)); return hit ? { area: hit[1], iso: hit[2] } : null; };
+    // Cities found in the offices' addresses: [match, lat, lon, ISO, English, Arabic, capital?]. A city only counts when it is in
+    // the office's own country (one dashboard office has another country's address). Capitals place offices with no address.
+    const CITY = [
+      [/london|covent garden/, 51.51, -0.13, "GB", "London", "لندن", 1], [/frankfurt|bockenheimer/, 50.11, 8.68, "DE", "Frankfurt", "فرانكفورت"], [/berlin/, 52.52, 13.4, "DE", "Berlin", "برلين", 1],
+      [/dover|delaware/, 39.16, -75.52, "US", "Dover", "دوفر"], [/istanbul|büyükçekmece/, 41.01, 28.98, "TR", "Istanbul", "إسطنبول"], [/ankara/, 39.93, 32.86, "TR", "Ankara", "أنقرة", 1],
+      [/cairo/, 30.04, 31.24, "EG", "Cairo", "القاهرة", 1], [/giza|6 ?october/, 29.97, 30.94, "EG", "Giza", "الجيزة"], [/dubai|oud metha/, 25.2, 55.27, "AE", "Dubai", "دبي"],
+      [/abu dhabi/, 24.45, 54.38, "AE", "Abu Dhabi", "أبوظبي", 1], [/ajman/, 25.41, 55.45, "AE", "Ajman", "عجمان"], [/sharjah/, 25.35, 55.4, "AE", "Sharjah", "الشارقة"],
+      [/muscat/, 23.59, 58.41, "OM", "Muscat", "مسقط", 1], [/tashkent/, 41.3, 69.24, "UZ", "Tashkent", "طشقند", 1], [/nukus|karakalpak/, 42.46, 59.6, "UZ", "Nukus", "نوكوس"],
+      [/margilan|fergana/, 40.47, 71.72, "UZ", "Margilan", "مرغلان"], [/bishkek/, 42.87, 74.6, "KG", "Bishkek", "بيشكيك", 1], [/amman/, 31.95, 35.93, "JO", "Amman", "عمّان", 1],
+      [/damascus/, 33.51, 36.29, "SY", "Damascus", "دمشق", 1], [/moscow/, 55.76, 37.62, "RU", "Moscow", "موسكو", 1], [/riyadh/, 24.71, 46.68, "SA", "Riyadh", "الرياض", 1],
+      [/jeddah/, 21.49, 39.19, "SA", "Jeddah", "جدة"], [/doha/, 25.29, 51.53, "QA", "Doha", "الدوحة", 1], [/manama/, 26.23, 50.59, "BH", "Manama", "المنامة", 1],
+      [/kuwait/, 29.38, 47.99, "KW", "Kuwait City", "مدينة الكويت", 1], [/baku/, 40.41, 49.87, "AZ", "Baku", "باكو", 1], [/tbilisi/, 41.72, 44.79, "GE", "Tbilisi", "تبليسي", 1],
+      [/dushanbe/, 38.56, 68.79, "TJ", "Dushanbe", "دوشنبه", 1], [/madrid/, 40.42, -3.7, "ES", "Madrid", "مدريد", 1],
     ];
     const names = data("nx-map-data") || [];
-    const NET = names.map((n) => { const s = String(n).toLowerCase().replace(/^republic of |^the |^sultanate of /, "").trim(); const hit = GEO.find(([re]) => re.test(s)); return hit && hit[1]; }).filter(Boolean);
+    const NET = names.map((n) => { const g = geoOf(n); return g && g.area; }).filter(Boolean);
     const VIEWS = { full: [0, 0, 858, 432], mobile: [316, 38, 300, 200] };
-    const hub = proj(30.04, 31.24);   // Cairo: the dots ripple in from here
+    const cairo = proj(30.04, 31.24);   // the dots ripple in from here
     const f = (n) => n.toFixed(1);
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     const ready = fetch(box.dataset.src).then((r) => (r.ok ? r.text() : Promise.reject(r.status))).then((txt) => {
       // every land dot in that file is a circle path "M{right edge x} {cy}C…" filled #183364 (its own blue pins are skipped)
       const dots = Array.from(txt.matchAll(/<path d="M([\d.]+) ([\d.]+)C[^"]*" fill="#183364"/g), (m) => [+m[1] - 3.465, +m[2]]);
@@ -178,14 +201,99 @@
         dots.forEach(([x, y], i) => { const [a, b] = inv(x, y), dd = ((b - lo) / rx) ** 2 + ((a - la) / ry) ** 2; if (dd <= 1) { net.add(i); hit = true; } if (dd < bd) { bd = dd; best = i; } });
         if (!hit) net.add(best);   // small countries: at least the nearest dot
       });
-      dotsG.innerHTML = dots.map(([x, y], i) => `<circle cx="${f(x)}" cy="${f(y)}" r="3.3"${net.has(i) ? ' class="is-net"' : ""} style="--d:${((Math.hypot(x - hub[0], y - hub[1]) / 858) * 1.9).toFixed(2)}s"/>`).join("");
+      dotsG.innerHTML = dots.map(([x, y], i) => `<circle cx="${f(x)}" cy="${f(y)}" r="3.3"${net.has(i) ? ' class="is-net"' : ""} style="--d:${((Math.hypot(x - cairo[0], y - cairo[1]) / 858) * 1.9).toFixed(2)}s"/>`).join("");
       box.classList.add("is-loaded");
     }).catch(() => box.classList.add("is-nomap"));
+
+    // ---- offices: where each one goes. The address's city first (the dashboard's lat/lng are mostly empty or off),
+    // then the dashboard's lat/lng when they fall inside the country, then the capital, then the country's middle.
+    const isAr = /^ar/i.test(document.documentElement.lang || "");
+    const cards = $$("[data-nx-office]", sec), tabs = $$("[data-nx-loc-tab]", sec);
+    const inside = (la, lo, [cla, clo, ry, rx]) => ((lo - clo) / (rx * 1.3)) ** 2 + ((la - cla) / (ry * 1.3)) ** 2 <= 1;
+    cards.forEach((c) => {
+      const g = geoOf(c.dataset.country); if (!g) return;
+      const addr = (c.dataset.address || "").toLowerCase(), lat = parseFloat(c.dataset.lat), lng = parseFloat(c.dataset.lng);
+      const city = addr && CITY.find((k) => k[3] === g.iso && k[0].test(addr));
+      const cap = CITY.find((k) => k[3] === g.iso && k[6]);
+      const ll = city ? [city[1], city[2]] : (!isNaN(lat) && !isNaN(lng) && inside(lat, lng, g.area)) ? [lat, lng] : cap ? [cap[1], cap[2]] : [g.area[0], g.area[1]];
+      c._loc = { ll, iso: g.iso, city: city || null };
+      c.dataset.key = c.dataset.type + ":" + g.iso + ":" + (city ? city[4] : "-");
+    });
+    let view = VIEWS.full, groups = [], active = 0;
+    const arc = (a, b, d, cls) => {
+      const dist = Math.hypot(b[0] - a[0], b[1] - a[1]), cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2 - Math.max(8, dist * 0.38);
+      const path = `M${f(a[0])} ${f(a[1])} Q${f(cx)} ${f(cy)} ${f(b[0])} ${f(b[1])}`, st = `style="--d:${d.toFixed(2)}s"`;
+      return `<path class="nx-map__arc${cls}" d="${path}" pathLength="1" ${st}/><path class="nx-map__comet${cls}" d="${path}" pathLength="1" ${st}/>`;
+    };
+    // tags: each takes the first side (of 8) that covers no other tag or pin and stays inside the map
+    const DIRS = ["e", "w", "ne", "nw", "se", "sw", "n", "s"];
+    const side = (d, x, y, w, h) => ({ e: [x + 18, y - h / 2], w: [x - 18 - w, y - h / 2], n: [x - w * 0.3, y - 18 - h], s: [x - w * 0.3, y + 18],
+      ne: [x + 8, y - 16 - h], nw: [x - 8 - w, y - 16 - h], se: [x + 8, y + 16], sw: [x - 8 - w, y + 16] }[d]);
+    const overlap = (a, b) => Math.max(0, Math.min(a[0] + a[2], b[0] + b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[1] + a[3], b[1] + b[3]) - Math.max(a[1], b[1]));
+    const place = () => {
+      const W = box.clientWidth, H = box.clientHeight, pins = $$(".nx-mpin", pinsOl); if (!W || !H) return;
+      const pts = pins.map((p, i) => {
+        const [sx, sy] = groups[i].pt, x = ((sx - view[0]) / view[2]) * W, y = ((sy - view[1]) / view[3]) * H;
+        p.style.left = (x / W) * 100 + "%"; p.style.top = (y / H) * 100 + "%"; p.hidden = x < 0 || x > W || y < 0 || y > H;
+        return [x, y];
+      });
+      const dots = pts.filter((_, i) => !pins[i].hidden).map(([x, y]) => [x - 12, y - 12, 24, 24]), taken = [];
+      pins.map((_, i) => i).filter((i) => !pins[i].hidden).sort((a, b) => pts[a][0] - pts[b][0]).forEach((i) => {
+        const lab = $(".nx-mpin__label", pins[i]), w = lab.offsetWidth, h = lab.offsetHeight, [x, y] = pts[i]; if (!w) return;   // tags are hidden on phones
+        let best = null;
+        for (const d of DIRS) {
+          const [lx, ly] = side(d, x, y, w, h), r = [lx, ly, w, h];
+          const cost = taken.reduce((s, t) => s + overlap(r, t), 0) + dots.reduce((s, t) => s + overlap(r, t), 0) * 2
+            + (Math.max(0, -lx) + Math.max(0, lx + w - W) + Math.max(0, -ly) + Math.max(0, ly + h - H)) * h * 3;
+          if (!best || cost < best.cost) best = { d, r, cost };
+          if (!cost) break;
+        }
+        DIRS.forEach((d) => pins[i].classList.toggle("nx-mpin--" + d, d === best.d));
+        taken.push(best.r);
+      });
+    };
+    const hot = (key, on) => {
+      $$(".nx-mpin", pinsOl).forEach((p) => p.classList.toggle("is-hot", on && p.dataset.key === key));
+      cards.forEach((c) => c.classList.toggle("is-hot", on && c.dataset.key === key));
+    };
+    const build = (swap) => {
+      const byKey = new Map();
+      cards.filter((c) => +c.dataset.type === active && c._loc).forEach((c) => { const g = byKey.get(c.dataset.key) || { key: c.dataset.key, loc: c._loc, cards: [] }; g.cards.push(c); byKey.set(g.key, g); });
+      groups = [...byKey.values()]; groups.forEach((g) => { g.pt = proj(g.loc.ll[0], g.loc.ll[1]); });
+      const is = swap ? " is-new" : "";
+      pinsOl.innerHTML = groups.map((g, i) => {
+        const c0 = g.cards[0], n = g.cards.length, country = (($("h3", c0) || {}).textContent || "").trim();
+        const city = g.loc.city ? g.loc.city[isAr ? 5 : 4] : "";
+        const sub = city ? country + (n > 1 ? " · " + n : "") : (n === 1 && c0.dataset.who) ? c0.dataset.who : (c0.dataset.one || "") + (n > 1 ? " ×" + n : "");
+        return `<li class="nx-mpin${is}" data-key="${esc(g.key)}" style="--pd:${(swap ? i * 0.06 : 1.1 + i * 0.12).toFixed(2)}s"><i class="nx-mpin__dot"></i><span class="nx-mpin__label"><b>${esc(city || country)}</b><span class="nx-mono">${esc(sub)}</span></span></li>`;
+      }).join("");
+      // routes from the Egypt pin (or the pin nearest Cairo) to the others
+      const near = (g) => Math.hypot(g.pt[0] - cairo[0], g.pt[1] - cairo[1]);
+      const hub = groups.find((g) => g.loc.iso === "EG") || groups.slice().sort((a, b) => near(a) - near(b))[0];
+      arcsG.innerHTML = hub ? groups.filter((g) => g !== hub && Math.hypot(g.pt[0] - hub.pt[0], g.pt[1] - hub.pt[1]) > 2)
+        .map((g, i) => arc(hub.pt, g.pt, swap ? 0.1 + i * 0.07 : 0.9 + i * 0.15, is)).join("") : "";
+      $$(".nx-mpin", pinsOl).forEach((p) => { p.addEventListener("pointerenter", () => hot(p.dataset.key, true)); p.addEventListener("pointerleave", () => hot(p.dataset.key, false)); });
+      place();
+      if (swap) requestAnimationFrame(() => requestAnimationFrame(() => $$(".is-new", box).forEach((el) => el.classList.remove("is-new"))));
+    };
+    const show = (type, swap) => {
+      active = type;
+      tabs.forEach((t) => { const on = +t.dataset.nxLocTab === type; t.classList.toggle("is-active", on); t.setAttribute("aria-selected", String(on)); });
+      const shown = cards.filter((c) => { c.hidden = +c.dataset.type !== type; return !c.hidden; });
+      build(swap);
+      if (swap && hasGSAP && !reduce) gsap.fromTo(shown, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.05, ease: "power3.out", overwrite: "auto" });
+    };
+    cards.forEach((c) => { c.addEventListener("pointerenter", () => hot(c.dataset.key, true)); c.addEventListener("pointerleave", () => hot(c.dataset.key, false)); });
+    tabs.forEach((t) => t.addEventListener("click", () => { if (+t.dataset.nxLocTab !== active) show(+t.dataset.nxLocTab, true); }));
     const mq = window.matchMedia("(max-width: 767px)");
-    const fit = () => { const v = mq.matches ? VIEWS.mobile : VIEWS.full; box.style.aspectRatio = v[2] + " / " + v[3]; svgs.forEach((s) => s.setAttribute("viewBox", v.join(" "))); };
+    const fit = () => { view = mq.matches ? VIEWS.mobile : VIEWS.full; box.style.aspectRatio = view[2] + " / " + view[3]; svgs.forEach((s) => s.setAttribute("viewBox", view.join(" "))); place(); };
     fit(); mq.addEventListener("change", fit);
+    const first = tabs.find((t) => t.classList.contains("is-active")) || tabs[0];
+    if (first || cards.length) show(first ? +first.dataset.nxLocTab : +cards[0].dataset.type, false);
+    let rz = 0; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(place, 150); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
     if (!hasGSAP || reduce) box.classList.add("is-in");
-    // pause the looping animations while the map is off screen
+    // pause the looping routes and pin pulses while the map is off screen
     new IntersectionObserver(([en]) => box.classList.toggle("is-off", !en.isIntersecting)).observe(box);
     return { box, ready };
   })();
@@ -361,43 +469,50 @@
 
   const mm = gsap.matchMedia();
 
-  // Doc Validation: the certificate check is one paused timeline in 4 stages (upload, scan, decode, stamp).
-  // The dashboard's steps are spread across the stages; picking a step plays the check forward (or rewinds it)
-  // to the end of that step's stages. When the certificate comes into view the steps play through once on
-  // their own, until the visitor picks one. The page is never pinned.
+  // Doc Validation: the document on the right has one view per step (the step's title + its details as rows).
+  // Picking a step shows its view and runs that step's check; in view, the steps play through once on their own.
   (function docValidation() {
     const sec = $("[data-nx-verify]"); if (!sec) return;
-    const doc = $("[data-nx-doc]", sec), steps = $$("[data-nx-step]", sec), fields = $$("[data-nx-field]", doc), vals = $$("[data-nx-scramble]", doc), ticks = $$(".nx-tick", doc);
-    const prog = $("[data-nx-verify-progress]", sec), match = $("[data-nx-match]", doc), hash = $("[data-nx-hash]", doc), m = { v: 0 };
-    const tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
-    tl.set(vals, { opacity: 0.35, textContent: (i, el) => "•".repeat(Math.max(6, el.textContent.length)) }).set(ticks, { scale: 0, autoAlpha: 0 }).set(match, { textContent: "0%" }).set(hash, { textContent: "────────────" });
-    tl.addLabel("s0").fromTo(doc, { y: 70, rotateX: 14, autoAlpha: 0 }, { y: 0, rotateX: 0, autoAlpha: 1, duration: 1, ease: "power3.out" })
-      .fromTo("[data-nx-upload]", { scaleX: 0 }, { scaleX: 1, duration: 1.1 }, "<0.25").to("[data-nx-upload-row]", { autoAlpha: 0.25, duration: 0.3 })
-      .addLabel("s1").set("[data-nx-scan]", { autoAlpha: 1, y: 0 }).to("[data-nx-scan]", { y: () => doc.offsetHeight + 90, duration: 1.8 })
-      .to(fields, { "--hl": 1, duration: 0.25, stagger: 0.3 }, "s1+=0.35").to("[data-nx-scan]", { autoAlpha: 0, duration: 0.2 })
-      .addLabel("s2").to(fields, { "--hl": 0, duration: 0.3, stagger: 0.05 }, "s2").to(m, { v: 100, duration: 1.6, onUpdate: () => (match.textContent = Math.round(m.v) + "%") }, "s2");
-    vals.forEach((el, i) => { tl.to(el, { opacity: 1, duration: 0.1 }, `s2+=${i * 0.32}`).to(el, { duration: 0.6, scrambleText: { text: el.dataset.nxScramble, chars: "0123456789ABCDEF#/", speed: 0.6 } }, `s2+=${i * 0.32}`).to(ticks[i], { scale: 1, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, `s2+=${i * 0.32 + 0.45}`); });
-    tl.addLabel("s3", "+=0.15").to(hash, { duration: 0.8, scrambleText: { text: "7f3a9c4e…e21b", chars: "0123456789abcdef", speed: 0.8 } }, "s3")
-      .fromTo("[data-nx-stamp]", { scale: 1.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "expo.in" }, "s3+=0.1").to(doc, { "--verified": 1, duration: 0.6, ease: "power2.out" }, "s3+=0.55").to({}, { duration: 0.6 });
-    const ends = ["s1", "s2", "s3"].map((l) => tl.labels[l]).concat(tl.duration());   // end time of stage 0..3
-    const n = steps.length, endOf = (j) => ends[Math.min(3, Math.ceil(((j + 1) * 4) / Math.max(1, n)) - 1)];
-    gsap.set(prog, { scaleX: 0 });
-    tl.eventCallback("onUpdate", () => gsap.set(prog, { scaleX: tl.time() / ends[3] }));
-
-    let tween = null, auto = null, picked = false, active = -1;
+    const doc = $("[data-nx-doc]", sec), steps = $$("[data-nx-step]", sec), views = $$("[data-nx-view]", doc), scan = $("[data-nx-scan]", doc);
+    const prog = $("[data-nx-verify-progress]", sec), match = $("[data-nx-match]", doc), hash = $("[data-nx-hash]", doc), stamp = $("[data-nx-stamp]", doc), m = { v: 0 };
+    const n = views.length, HASH = ["7f3a9c4e…e21b", "b81d07fa…94c3", "2c6e5d1b…07af", "e49a3f60…5bd2", "91c4b7e2…3fa8"];
+    // resting state: no rows ticked, no stamp, match 0%
+    views.forEach((v) => { gsap.set($$("[data-nx-row]", v), { autoAlpha: 0, y: 8 }); gsap.set($$(".nx-tick", v), { scale: 0, autoAlpha: 0 }); });
+    gsap.set(stamp, { autoAlpha: 0 }); gsap.set(match, { textContent: "0%" }); gsap.set(hash, { textContent: "────────────" }); gsap.set(prog, { scaleX: 0 });
+    // the document comes in and uploads once
+    const intro = gsap.timeline({ paused: true })
+      .fromTo(doc, { y: 70, rotateX: 14, autoAlpha: 0 }, { y: 0, rotateX: 0, autoAlpha: 1, duration: 1, ease: "power3.out" })
+      .fromTo($("[data-nx-upload]", doc), { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "none" }, "<0.25").to($("[data-nx-upload-row]", doc), { autoAlpha: 0.25, duration: 0.3 });
+    // one step's check, run each time its view is shown: scan, rows ticked one by one, 0→100%, hash, Verified
+    let tl = null;
+    const check = (j) => {
+      const v = views[j], rows = $$("[data-nx-row]", v), ticks = rows.map((r) => $(".nx-tick", r)), span = Math.max(0.9, rows.length * 0.3 + 0.3);
+      if (tl) tl.kill();
+      tl = gsap.timeline({ onUpdate() { gsap.set(prog, { scaleX: (j + this.progress()) / n }); } })
+        .to(stamp, { autoAlpha: 0, scale: 0.9, duration: 0.2 }, 0).to(doc, { "--verified": 0, duration: 0.3 }, 0)
+        .set(hash, { textContent: "────────────" }, 0)
+        .set(scan, { autoAlpha: 1, y: 0 }, 0.3).to(scan, { y: () => doc.offsetHeight + 90, duration: 1.3, ease: "none" }, 0.3).to(scan, { autoAlpha: 0, duration: 0.2 }, 1.6)
+        .fromTo(rows, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.3, ease: "power2.out" }, 0.55)
+        .fromTo(ticks, { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.25, stagger: 0.3, ease: "back.out(2)" }, 0.75)
+        .fromTo(m, { v: 0 }, { v: 100, duration: span, ease: "none", onUpdate: () => (match.textContent = Math.round(m.v) + "%") }, 0.55)
+        .addLabel("done", Math.max(1.7, 0.55 + span))
+        .to(hash, { duration: 0.8, scrambleText: { text: HASH[j % HASH.length], chars: "0123456789abcdef", speed: 0.8 } }, "done")
+        .fromTo(stamp, { scale: 1.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "expo.in", immediateRender: false }, "done+=0.1")
+        .to(doc, { "--verified": 1, duration: 0.6, ease: "power2.out" }, "done+=0.55");
+      return tl;
+    };
+    let auto = null, picked = false, active = -1;
     const go = (j, byUser) => {
       if (byUser) { picked = true; if (auto) auto.kill(); }
-      if (j === active && tween && tween.isActive()) return tween;
-      active = j; if (docSteps.set) docSteps.set(j);
-      if (tween) tween.kill();
-      const to = endOf(j), back = to < tl.time();   // going back rewinds the same animation, twice as fast
-      tween = tl.tweenTo(to, { duration: Math.max(0.4, Math.abs(to - tl.time()) / (back ? 2.6 : 1.3)), ease: "power1.inOut" });
-      return tween;
+      if (j === active) return tl;   // already showing that step's view
+      active = j; if (docSteps.set) docSteps.set(j);   // swaps the step and the view (CSS fade)
+      return check(j);
     };
     docSteps.go = go;
-    if (!n) { onView(doc, () => tl.play()); return; }
-    const autoplay = (j) => { if (picked) return; go(j).eventCallback("onComplete", () => { if (!picked && j < n - 1) auto = gsap.delayedCall(1.6, () => autoplay(j + 1)); }); };
-    onView(doc, () => { if (!picked) autoplay(0); });
+    if (!n) { onView(doc, () => intro.play().then(() => gsap.fromTo(stamp, { scale: 1.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "expo.in" }))); return; }
+    // in view: the document comes in, then the steps play through once on their own until the visitor picks one
+    const autoplay = (j) => { if (picked) return; go(j).eventCallback("onComplete", () => { if (!picked && j < n - 1) auto = gsap.delayedCall(1.8, () => autoplay(j + 1)); }); };
+    onView(doc, () => { intro.play(); if (!picked) auto = gsap.delayedCall(1.2, () => autoplay(0)); });
   })();
 
   // Locations map: dots ripple in from Cairo once the map is on screen (the view itself stays fixed)

@@ -1,18 +1,14 @@
-{{-- Hero: image-only slider (autoplay with a slow zoom, tabs, arrows). Slides = the dashboard's active Slider
-     entries for the Home page. Until the dashboard has Home slides, the approved design's 3 slides are shown
-     (NEN's own photos from site.nen-global.org + one Unsplash photo, like the other design default photos). --}}
+{{-- Hero: image-only slider (autoplay with a slow zoom, tabs, arrows). STATIC for now: the approved design's 3 slides
+     (NEN's own photos from site.nen-global.org + one Unsplash photo). The dashboard's Slider can't hold several Home
+     images yet; once it can, build $nxSlides from it. With one image there is no sliding, tabs, counter or arrows. --}}
 @php
-    $nxSlides = $heroSlides->map(fn ($s) => ['img' => $s->getFirstMediaUrl('image'), 'alt' => $nxText($s->title)])
-        ->filter(fn ($s) => $s['img'])->values();
-    if ($nxSlides->isEmpty()) {
-        $nxLecture = 'https://images.unsplash.com/photo-1758270704763-22072a90d3b6?auto=format&fit=crop&q=80&w=';
-        $nxSlides = collect([
-            ['img' => $nxSite . 'site/images/tpi-hero.jpg', 'alt' => $t('Official international exams, close to home.', 'اختبارات دولية رسمية بالقرب منك.')],
-            ['img' => $nxLecture . '2400', 'srcset' => collect([900, 1400, 1920, 2400])->map(fn ($w) => $nxLecture . $w . ' ' . $w . 'w')->implode(', '),
-                'alt' => $t('One network. Global impact.', 'شبكة واحدة. أثر عالمي.')],
-            ['img' => $nxSite . 'site/images/verifiy.jpg', 'alt' => $t('Trusted credentials. Secure systems.', 'شهادات موثوقة. أنظمة آمنة.')],
-        ]);
-    }
+    $nxLecture = 'https://images.unsplash.com/photo-1758270704763-22072a90d3b6?auto=format&fit=crop&q=80&w=';
+    $nxSlides = collect([
+        ['img' => $nxSite . 'site/images/tpi-hero.jpg', 'alt' => $t('Official international exams, close to home.', 'اختبارات دولية رسمية بالقرب منك.')],
+        ['img' => $nxLecture . '2400', 'srcset' => collect([900, 1400, 1920, 2400])->map(fn ($w) => $nxLecture . $w . ' ' . $w . 'w')->implode(', '),
+            'alt' => $t('One network. Global impact.', 'شبكة واحدة. أثر عالمي.')],
+        ['img' => $nxSite . 'site/images/verifiy.jpg', 'alt' => $t('Trusted credentials. Secure systems.', 'شهادات موثوقة. أنظمة آمنة.')],
+    ]);
     $nxMulti = $nxSlides->count() > 1;
 @endphp
 <section class="nx nx-hero" id="nx-hero" style="--nx-bg:#0e0f12" data-nx-hero @if ($nxMulti) aria-roledescription="carousel" @endif aria-label="{{ $t('NEN highlights', 'أبرز ما في NEN') }}">

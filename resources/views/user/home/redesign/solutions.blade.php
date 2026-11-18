@@ -24,15 +24,24 @@
                 @php $nxGPage = $group->first()->Page; @endphp
                 <div class="nx-plat nx-plat--logos{{ $gi === 0 ? ' is-active' : '' }}" data-nx-plat="{{ $gi }}">
                     @foreach ($group as $i => $solution)
-                        @php $nxSImg = $nxMedia($solution, 'Solution') ?: asset('content/images/logo.svg'); @endphp
+                        @php
+                            $nxSImg = $nxMedia($solution, 'Solution') ?: asset('content/images/logo.svg');
+                            // most dashboard descriptions just repeat the name, so those are left out
+                            $nxSText = $nxText($solution->home_description, 160) ?: $nxText($solution->description, 160);
+                            if (mb_strtolower(trim($nxSText)) === mb_strtolower(trim((string) $solution->title))) $nxSText = '';
+                        @endphp
+                        {{-- the logo and the text form one centred group in the open (hovered) panel; closed panels show the logo at the top --}}
                         <article class="nx-plat__panel{{ $i === 0 ? ' is-open' : '' }}" tabindex="0" data-nx-panel>
-                            <img class="nx-plat__img" src="{{ $nxSImg }}" alt="{{ $solution->title }}" loading="lazy" decoding="async">
-                            <span class="nx-plat__label"><span class="nx-mono">{{ $nxPad($i + 1) }}</span>{{ $solution->title }}</span>
-                            <div class="nx-plat__body">
-                                <span class="nx-mono">{{ $nxGPage->name ?? '' }} · {{ $nxPad($i + 1) }}</span>
-                                <h3>{{ $solution->title }}</h3>
-                                @if ($nxSText = $nxText($solution->home_description ?? $solution->description, 160))<p>{{ $nxSText }}</p>@endif
+                            <div class="nx-plat__stage">
+                                <span class="nx-plat__logo"><img class="nx-plat__img" src="{{ $nxSImg }}" alt="{{ $solution->title }}" loading="lazy" decoding="async"></span>
+                                <div class="nx-plat__body">
+                                    <span class="nx-mono">{{ $nxGPage->name ?? '' }} · {{ $nxPad($i + 1) }}</span>
+                                    <h3>{{ $solution->title }}</h3>
+                                    @if ($nxSText)<p>{{ $nxSText }}</p>@endif
+                                    @if ($nxGPage)<a class="nx-link" href="{{ url(app()->getLocale() . '/solutions/' . $nxGPage->slug . '/' . $nxGPage->id . '?solution_id=' . $solution->id) }}">{{ $t('Learn more', 'اعرف المزيد') }} {!! $nxArrow !!}</a>@endif
+                                </div>
                             </div>
+                            <span class="nx-plat__label"><span class="nx-mono">{{ $nxPad($i + 1) }}</span>{{ $solution->title }}</span>
                         </article>
                     @endforeach
                     @if ($nxGPage)

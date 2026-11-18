@@ -3,7 +3,7 @@
 @if ($testingItems->count() > 0)
     <section class="nx nx-sec nx-sec--testing" id="check-section" style="--nx-bg:#fff">
         <div class="container">
-            @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $testingParent->name ?? $t('Testing', 'الاختبارات'), 'intro' => $testingParent ? $nxText($testingParent->home_description) : ''])
+            @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $testingParent->name ?? $t('Testing', 'الاختبارات'), 'intro' => $testingParent ? $nxText($testingParent->home_description) : ''])
             <ul class="nx-tcards" data-nx-group>
                 @foreach ($testingItems as $i => $item)
                     @php

@@ -12,7 +12,7 @@
     @endphp
     <section class="nx nx-sec nx-dark nx-education" id="education-section" style="--nx-bg:#990000">
         <div class="container">
-            @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $t('Our Education', 'التعليم'), 'dark' => true])
+            @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $t('Our Education', 'التعليم'), 'dark' => true])
             <div class="nx-edu" data-nx-edu>
                 <div class="nx-edu__tabs" role="tablist">
                     @foreach ($nxEdu as $i => $e)

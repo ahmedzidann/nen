@@ -2,7 +2,7 @@
    NEN homepage redesign: motion + interactions for the .nx sections.
    All content comes from the dashboard (rendered by Blade); the JSON blocks
    (#nx-edu-data, #nx-tech-data, #nx-find-data, #nx-map-data) are written by
-   resources/views/user/home/redesign/*.blade.php.
+   resources/views/user/home/home/*.blade.php.
    GSAP 3.13 (ScrollTrigger, ScrambleText) + Lenis 1.3.27, loaded before this file.
    ========================================================= */
 (function () {

@@ -14,7 +14,7 @@
                     $nxSeg .= '<i class="nx-seg__pill"></i></div>';
                 }
             @endphp
-            @include('user.home.redesign._head', [
+            @include('user.home.home._head', [
                 'n' => ++$nxSec->n,
                 'title' => $t('Our Solutions', 'حلولنا'),
                 'intro' => $t("Explore our innovative solutions tailored for the education and business sectors. We're here to support your growth and success.", 'اكتشف حلولنا المبتكرة المصممة لقطاعي التعليم والأعمال. نحن هنا لدعم نموك ونجاحك.'),

@@ -22,7 +22,7 @@
 @endphp
 <section class="nx nx-sec nx-group" id="nen-group-section" style="--nx-bg:#fff">
     <div class="container">
-        @include('user.home.redesign._head', [
+        @include('user.home.home._head', [
             'n' => ++$nxSec->n,
             'title' => $t('NEN Group', 'مجموعة نين'),
             'intro' => $t("Specialised companies, one shared network. Each NEN company focuses on one field and draws on the group's partners, centers and regional presence.", 'شركات متخصصة، وشبكة واحدة مشتركة. تركّز كل شركة من شركات نين على مجال واحد، وتستفيد من شركاء المجموعة ومراكزها وحضورها الإقليمي.'),

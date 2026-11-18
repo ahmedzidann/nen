@@ -8,7 +8,7 @@
     <section class="nx nx-sec nx-platform" id="about-company-section" style="--nx-bg:#f5f6f8">
         <div class="container nx-split">
             <div>
-                @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $nxVTitle, 'intro' => $nxText($homeVideo->description)])
+                @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $nxVTitle, 'intro' => $nxText($homeVideo->description)])
                 @if ($homeVideo->button_url)
                     <a class="nx-btn nx-btn--primary" href="{{ $homeVideo->button_url }}" target="_blank" rel="noopener" data-nx-magnetic data-nx-reveal><span>{{ $homeVideo->button_text ? \Illuminate\Support\Str::ucfirst($homeVideo->button_text) : $t('Learn more', 'اعرف المزيد') }}</span>{!! $nxArrow !!}</a>
                 @endif

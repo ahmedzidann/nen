@@ -4,7 +4,7 @@
     <section class="nx nx-sec nx-projects" id="projects-section" style="--nx-bg:#fff">
         <div class="container nx-projects__layout" data-nx-projects>
             <div>
-                @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $t('Our Projects', 'مشاريعنا')])
+                @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $t('Our Projects', 'مشاريعنا')])
                 <ol class="nx-proj-list">
                     @foreach ($projects as $i => $project)
                         @php

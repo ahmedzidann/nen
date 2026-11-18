@@ -2,7 +2,7 @@
 @if (count($blogs) > 0)
     <section class="nx nx-sec nx-blogs" id="blogs-section" style="--nx-bg:#fff">
         <div class="container">
-            @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $t('Our Blogs', 'المدونة')])
+            @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $t('Our Blogs', 'المدونة')])
             <div class="nx-blog-grid" data-nx-group>
                 @foreach ($blogs as $blog)
                     @php $nxCat = optional($blog->categories->first())->title; @endphp

@@ -16,8 +16,8 @@
      | NEN homepage redesign (motion design system, scoped under .nx).
      | Every text comes from the dashboard. Where an image is missing in the dashboard, a design default photo
      | is used (like the old template's hero-home-page.webp fallback). Sections without dashboard content are hidden.
-     | Exception: NEN Group (redesign/nen-group.blade.php) is static until the dashboard has a source for it.
-     | Sections: resources/views/user/home/redesign/*.blade.php · styles/scripts: public/content/redesign/
+     | Exception: NEN Group (home/nen-group.blade.php) is static until the dashboard has a source for it.
+     | Sections: resources/views/user/home/home/*.blade.php · styles/scripts: public/content/home/
      */
     $nxAr = app()->getLocale() === 'ar';
     $t = fn ($en, $ar) => $nxAr ? $ar : $en;
@@ -75,31 +75,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.css">
-    <link rel="stylesheet" href="{{ asset('content/redesign/nx.css') }}?v={{ $nxVer('content/redesign/nx.css') }}">
+    <link rel="stylesheet" href="{{ asset('content/home/nx.css') }}?v={{ $nxVer('content/home/nx.css') }}">
 @endsection
 
 @section('hero')
-    @include('user.home.redesign.hero')
+    @include('user.home.home.hero')
 @endsection
 
 @section('content')
-    @include('user.home.redesign.quick')
+    @include('user.home.home.quick')
 
     <div id="home-page">
         <div id="nx-root">
-            @include('user.home.redesign.features')
-            @include('user.home.redesign.about')
-            @include('user.home.redesign.nen-group') {{-- static content (no dashboard table yet) --}}
-            @include('user.home.redesign.projects')
-            @include('user.home.redesign.education')
-            @include('user.home.redesign.solutions')
-            @include('user.home.redesign.technology')
-            @include('user.home.redesign.testing')
-            @include('user.home.redesign.doc-validation')
-            @include('user.home.redesign.find-us')
-            @include('user.home.redesign.locations')
-            @include('user.home.redesign.join')
-            @include('user.home.redesign.blogs')
+            @include('user.home.home.features')
+            @include('user.home.home.about')
+            @include('user.home.home.nen-group') {{-- static content (no dashboard table yet) --}}
+            @include('user.home.home.projects')
+            @include('user.home.home.education')
+            @include('user.home.home.solutions')
+            @include('user.home.home.technology')
+            @include('user.home.home.testing')
+            @include('user.home.home.doc-validation')
+            @include('user.home.home.find-us')
+            @include('user.home.home.locations')
+            @include('user.home.home.join')
+            @include('user.home.home.blogs')
         </div>
     </div>
 @endsection
@@ -110,5 +110,5 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
-    <script src="{{ asset('content/redesign/nx.js') }}?v={{ $nxVer('content/redesign/nx.js') }}"></script>
+    <script src="{{ asset('content/home/nx.js') }}?v={{ $nxVer('content/home/nx.js') }}"></script>
 @endsection

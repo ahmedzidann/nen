@@ -8,7 +8,7 @@
     <section class="nx nx-sec nx-features" id="features-section" style="--nx-bg:#fff">
         <div class="container">
             <div class="nx-fhead">
-                @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $t('Features & Advantages', 'المميزات والمزايا')])
+                @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $t('Features & Advantages', 'المميزات والمزايا')])
                 @if ($nxLead)
                     <p class="nx-lead" data-nx-scrub>{{ $nxLead }}</p>
                 @endif

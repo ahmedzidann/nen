@@ -4,7 +4,7 @@
     @php $nxJoinIcons = ['star', 'cap', 'briefcase', 'building', 'handshake']; $nxJn = $joinUs->cards->count(); @endphp
     <section class="nx nx-sec nx-join" id="join-our-team" style="--nx-bg:#f5f6f8">
         <div class="container">
-            @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $joinUs->page->name, 'intro' => $nxText($joinUs->page->description)])
+            @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $joinUs->page->name, 'intro' => $nxText($joinUs->page->description)])
             <div class="nx-plat nx-plat--join is-active" data-nx-join>
                 @foreach ($joinUs->cards->values() as $i => $card)
                     @php

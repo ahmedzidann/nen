@@ -12,7 +12,7 @@
         <div data-nx-verify>
             <div class="container nx-doc__layout">
                 <div class="nx-doc__copy">
-                    @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $nxText($homeDocValidation->title), 'intro' => $nxText($homeDocValidation->description)])
+                    @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $nxText($homeDocValidation->title), 'intro' => $nxText($homeDocValidation->description)])
                     @if ($nxDocItems->count())
                         <ol class="nx-steps">
                             @foreach ($nxDocItems as $i => $item)

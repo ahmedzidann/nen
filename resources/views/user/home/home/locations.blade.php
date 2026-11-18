@@ -22,7 +22,7 @@
 @if ($networkCountries->count() || $nxOfficeTypes->count())
     <section class="nx nx-sec nx-locations" id="join-us-section" style="--nx-bg:#f5f6f8">
         <div class="container">
-            @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $t('Our Locations', 'مواقعنا'),
+            @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $t('Our Locations', 'مواقعنا'),
                 'intro' => $nxOfficeTypes->count() ? $t("NEN's regional offices, authorized offices and representatives across its network. Choose a type to see them on the map.", 'المكاتب الإقليمية والمكاتب المعتمدة وممثلو NEN عبر شبكتها. اختر النوع لتراهم على الخريطة.') : ''])
             @if ($nxOfficeTypes->count() > 1)
                 <ul class="nx-chips" role="tablist" aria-label="{{ $t('Location type', 'نوع الموقع') }}">

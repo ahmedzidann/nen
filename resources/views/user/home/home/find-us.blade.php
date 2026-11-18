@@ -30,7 +30,7 @@
     @endphp
     <section class="nx nx-sec nx-sec--find" id="stats-section" style="--nx-bg:#fff">
         <div class="container">
-            @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $findusParent->name ?? $t('Find Us', 'اعثر علينا'), 'intro' => $findusParent ? $nxText($findusParent->home_description) : ''])
+            @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $findusParent->name ?? $t('Find Us', 'اعثر علينا'), 'intro' => $findusParent ? $nxText($findusParent->home_description) : ''])
             <div class="nx-find">
                 <div class="nx-find__main">
                     @if (count($nxCounts))

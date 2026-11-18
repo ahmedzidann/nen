@@ -11,7 +11,7 @@
     <section class="nx nx-sec nx-tech" id="technology-section" style="--nx-bg:#f8f8f8">
         <div class="container nx-tech__layout">
             <div>
-                @include('user.home.redesign._head', ['n' => ++$nxSec->n, 'title' => $techParent->name ?? $t('Technology', 'التكنولوجيا'), 'intro' => $techParent ? $nxText($techParent->home_description) : ''])
+                @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $techParent->name ?? $t('Technology', 'التكنولوجيا'), 'intro' => $techParent ? $nxText($techParent->home_description) : ''])
                 <ol class="nx-tech__list">
                     @foreach ($nxTech as $i => $item)
                         <li><button type="button" class="{{ $i === 0 ? 'is-active' : '' }}" data-nx-tech="{{ $i }}"><span class="nx-mono">{{ $nxPad($i + 1) }}</span>{{ $item['title'] }}{!! $nxArrow !!}</button></li>

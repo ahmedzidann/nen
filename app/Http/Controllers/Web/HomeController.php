@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\ContactUsCountry;
 use App\Models\Country;
 use App\Models\Education;
 use App\Models\FeatureAdvantages;
@@ -43,8 +44,14 @@ class HomeController extends Controller
       [$techParent, $techItems] = $this->getTechParentAndItems();
       [$testingParent, $testingItems] = $this->getTestingParentAndItems();
       [$findusParent, $findusItems] = $this->getFindUsParentAndItems();
+      // redesign: the network countries (Our Locations map + Find Us country filter) and the Contact Us offices
+      // (Regional Offices / Authorized Offices / Regional Representatives: the Our Locations tabs, map pins and cards)
+      $networkCountries = Country::query()->get();
+      $contactOffices = ContactUsCountry::query()->with('country')->orderBy('type')->orderBy('id')->get();
 
       return view('user.home.home', \compact(
+         'networkCountries',
+         'contactOffices',
          'projects',
          'upperDidebarResources',
          'lowerDidebarResources',
@@ -113,12 +120,24 @@ class HomeController extends Controller
 
    /**
     * getSolutions
+    * The solutions marked "show in home", grouped by their page (Education / Business ...). The homepage shows
+    * at least 3 per group: when fewer are marked, the group is filled with that page's latest other active solutions.
     *
-    * @return Illuminate\Database\Eloquent\Collection
+    * @return Illuminate\Support\Collection
     */
    public function getSolutions()
    {
-      return Solution::with('Page')->where('show_in_home', true)->where('status', 'Active')->latest()->get()->groupBy('pages_id');
+      $minPerGroup = 3;
+      return Solution::with('Page')->where('show_in_home', true)->where('status', 'Active')->latest()->get()->groupBy('pages_id')
+         ->map(function ($group, $pageId) use ($minPerGroup) {
+            $missing = $minPerGroup - $group->count();
+            if ($missing <= 0) {
+               return $group;
+            }
+            $more = Solution::with('Page')->where('pages_id', $pageId)->where('status', 'Active')
+               ->whereNotIn('id', $group->pluck('id'))->latest()->take($missing)->get();
+            return $group->concat($more)->values();
+         });
    }
 
    /**

@@ -22,8 +22,8 @@
             'counts' => $nxCounts,
             'totals' => $nxTotals,
             'labels' => [
-                'in' => $t('in', 'في'), 'network' => $t('across the NEN network', 'في شبكة NEN'), 'all' => $t('Across the NEN network', 'في شبكة NEN'),
-                'pick' => $t('Pick a service to view the list.', 'اختر خدمة لعرض القائمة.'), 'searching' => $t('Searching the NEN network…', 'جارٍ البحث في شبكة NEN…'),
+                'in' => $t('in', 'في'), 'network' => $t('across the NEN network', 'في شبكة نين'), 'all' => $t('Across the NEN network', 'في شبكة نين'),
+                'pick' => $t('Pick a service to view the list.', 'اختر خدمة لعرض القائمة.'), 'searching' => $t('Searching the NEN network…', 'جارٍ البحث في شبكة نين…'),
             ],
         ];
         $nxFindFallback = ['building', 'users', 'briefcase', 'award', 'cap', 'doc', 'phone'];
@@ -59,7 +59,7 @@
                 </div>
                 <div class="nx-find__result" data-nx-find-result aria-live="polite">
                     <div class="nx-radar"><i></i><i></i><i></i><b></b></div>
-                    <h3 data-nx-find-title>{{ $t('Across the NEN network', 'في شبكة NEN') }}</h3>
+                    <h3 data-nx-find-title>{{ $t('Across the NEN network', 'في شبكة نين') }}</h3>
                     <p data-nx-find-msg>{{ $t('Pick a service to view the list.', 'اختر خدمة لعرض القائمة.') }}</p>
                     <a class="nx-btn nx-btn--primary" href="#" data-nx-find-go hidden><span>{{ $t('View the list', 'عرض القائمة') }}</span>{!! $nxArrow !!}</a>
                 </div>

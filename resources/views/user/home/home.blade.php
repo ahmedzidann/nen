@@ -48,12 +48,14 @@
         'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3v3H8z"/>',
         'doc' => '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 15l2 2 4-4"/>',
     ];
-    // design default photos (NEN's own photos from site.nen-global.org), used only when the dashboard has no image
+    // design default photos (NEN's own photos from site.nen-global.org), used only when the dashboard has no image.
+    // Each slot uses a photo at least as large as it is shown: the big first feature card, the education tabs and the
+    // Join Us panels (up to 624x540 when open) take the 1536-2048px photos; the small feature cards take the 800px ones.
     $nxSite = 'https://site.nen-global.org/';
     $nxPhotos = [
-        'features' => ['site/images/vide.jpg', 'uploads/events/file_6a8f187f0eb28.jpeg', 'site/images/joins/working-1.jpg', 'site/images/joins/working-3.jpg', 'site/images/partners-join.jpg', 'site/images/join-teachers.jpg', 'uploads/blogs/file_6ac2b1b2e5493.jpg', 'site/images/verifiy.jpg'],
-        'education' => ['images/partners/edu-2.jpg', 'images/partners/strategic-photo.jpg', 'images/partners/edu-1.jpg', 'images/partners/edu-3.jpg', 'images/partners/edu-4.jpg', 'images/partners/join.jpg', 'images/partners/strategic.jpg', 'images/partners/tech-screen.jpg'],
-        'join' => ['site/images/joins/working-4.jpg', 'images/partners/edu-1.jpg', 'site/images/joins/working-2.jpg', 'uploads/blogs/file_6ac2b22856479.jpg', 'site/images/partners-bg.jpg'],
+        'features' => ['site/images/partners-join.jpg', 'site/images/joins/working-4.jpg', 'site/images/joins/working-1.jpg', 'site/images/joins/working-3.jpg', 'site/images/vide.jpg', 'site/images/join-teachers.jpg', 'site/images/joins/working-2.jpg', 'site/images/verifiy.jpg'],
+        'education' => ['images/partners/edu-2.jpg', 'images/partners/strategic-photo.jpg', 'images/partners/edu-1.jpg', 'images/partners/edu-3.jpg', 'images/partners/edu-4.jpg', 'images/partners/join.jpg', 'uploads/blogs/file_6ac2b22856479.jpg', 'images/partners/tech-screen.jpg'],
+        'join' => ['images/partners/strategic-photo.jpg', 'images/partners/edu-1.jpg', 'images/partners/tech-screen.jpg', 'uploads/blogs/file_6ac2b22856479.jpg', 'site/images/partners-bg.jpg'],
     ];
     $nxPhoto = fn ($set, $i) => $nxSite . $nxPhotos[$set][$i % count($nxPhotos[$set])];
     $nxVer = fn ($p) => @filemtime(public_path($p)) ?: 1;

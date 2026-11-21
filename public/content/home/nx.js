@@ -191,9 +191,9 @@
     const cairo = proj(30.04, 31.24);   // the dots ripple in from here
     const f = (n) => n.toFixed(1);
     const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    const ready = fetch(box.dataset.src).then((r) => (r.ok ? r.text() : Promise.reject(r.status))).then((txt) => {
-      // every land dot in that file is a circle path "M{right edge x} {cy}C…" filled #183364 (its own blue pins are skipped)
-      const dots = Array.from(txt.matchAll(/<path d="M([\d.]+) ([\d.]+)C[^"]*" fill="#183364"/g), (m) => [+m[1] - 3.465, +m[2]]);
+    // world-map-dots.json = the land dots of that map as [x, y] centres in its 858×432 units. The map used to be fetched
+    // from a third-party site (convenitconsultants.com/…/Map.svg); that domain expired, so its dots now live here.
+    const ready = fetch(box.dataset.src).then((r) => (r.ok ? r.json() : Promise.reject(r.status))).then((dots) => {
       if (!dots.length) throw new Error("no dots");
       const net = new Set();
       NET.forEach(([la, lo, ry, rx]) => {
@@ -475,7 +475,7 @@
     const sec = $("[data-nx-verify]"); if (!sec) return;
     const doc = $("[data-nx-doc]", sec), steps = $$("[data-nx-step]", sec), views = $$("[data-nx-view]", doc), scan = $("[data-nx-scan]", doc);
     const prog = $("[data-nx-verify-progress]", sec), match = $("[data-nx-match]", doc), hash = $("[data-nx-hash]", doc), stamp = $("[data-nx-stamp]", doc), m = { v: 0 };
-    const n = views.length, HASH = ["7f3a9c4e…e21b", "b81d07fa…94c3", "2c6e5d1b…07af", "e49a3f60…5bd2", "91c4b7e2…3fa8"];
+    const n = views.length, HASH = ["7039 4481…2158", "8164 0752…9431", "2605 5131…0779", "4930 3660…5182", "9147 2706…3488"];   // digits only: no Latin letters on the Arabic page
     // resting state: no rows ticked, no stamp, match 0%
     views.forEach((v) => { gsap.set($$("[data-nx-row]", v), { autoAlpha: 0, y: 8 }); gsap.set($$(".nx-tick", v), { scale: 0, autoAlpha: 0 }); });
     gsap.set(stamp, { autoAlpha: 0 }); gsap.set(match, { textContent: "0%" }); gsap.set(hash, { textContent: "────────────" }); gsap.set(prog, { scaleX: 0 });
@@ -496,7 +496,7 @@
         .fromTo(ticks, { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.25, stagger: 0.3, ease: "back.out(2)" }, 0.75)
         .fromTo(m, { v: 0 }, { v: 100, duration: span, ease: "none", onUpdate: () => (match.textContent = Math.round(m.v) + "%") }, 0.55)
         .addLabel("done", Math.max(1.7, 0.55 + span))
-        .to(hash, { duration: 0.8, scrambleText: { text: HASH[j % HASH.length], chars: "0123456789abcdef", speed: 0.8 } }, "done")
+        .to(hash, { duration: 0.8, scrambleText: { text: HASH[j % HASH.length], chars: "0123456789", speed: 0.8 } }, "done")
         .fromTo(stamp, { scale: 1.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "expo.in", immediateRender: false }, "done+=0.1")
         .to(doc, { "--verified": 1, duration: 0.6, ease: "power2.out" }, "done+=0.55");
       return tl;

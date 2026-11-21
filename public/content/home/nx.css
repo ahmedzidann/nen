@@ -244,7 +244,7 @@
 .nx-proj-frames { position: relative; aspect-ratio: 4 / 3; border-radius: 28px; overflow: hidden; background: #f5f6f8; box-shadow: 0 50px 90px -40px rgba(14,15,18,.45); border: 1px solid var(--nx-line); }
 .nx-proj-frame { position: absolute; inset: 0; z-index: 1; visibility: hidden; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; padding: 8%;
   background: radial-gradient(circle at 50% 40%, #fff, #f2f3f6 70%); }
-.nx-proj-frame img { width: 100%; height: 100%; object-fit: contain; }
+.nx-proj-frame img { width: 100%; height: 100%; object-fit: scale-down; }   /* scale-down: a small upload stays at its real size (sharp) instead of being stretched */
 .nx-proj-frame.is-leaving { visibility: visible; z-index: 2; }
 .nx-proj-frame.is-active { visibility: visible; z-index: 3; }
 .nx-proj-count { position: absolute; inset-inline-end: 0; top: -34px; color: var(--nx-muted); }
@@ -657,7 +657,7 @@ button.nx-video__play { border: 0; padding: 0; cursor: pointer; z-index: 2; }
 .nx-plat__panel.is-open .nx-plat__stage { top: 50%; transform: translate(-50%, -50%); }
 .nx-plat__logo { display: grid; place-items: center; width: min(100%, 200px); aspect-ratio: 16 / 10; padding: 14px; border-radius: 18px; background: #fff; box-shadow: 0 18px 40px -20px rgba(0,0,0,.6); transition: width .8s var(--nx-ease), padding .8s var(--nx-ease), box-shadow .8s; }
 .nx-plat__panel.is-open .nx-plat__logo { width: min(100%, 280px); padding: 20px; box-shadow: 0 30px 70px -30px rgba(0,0,0,.8), 0 0 0 6px rgba(255,255,255,.06); }
-.nx-plat--logos .nx-plat__img, .nx-plat--logos .nx-plat__panel.is-open .nx-plat__img { position: static; inset: auto; width: 100%; height: 100%; object-fit: contain; opacity: 1; transform: none; transition: none; }
+.nx-plat--logos .nx-plat__img, .nx-plat--logos .nx-plat__panel.is-open .nx-plat__img { position: static; inset: auto; width: 100%; height: 100%; object-fit: scale-down; opacity: 1; transform: none; transition: none; }   /* never stretch a small logo */
 .nx-plat--logos .nx-plat__body { position: static; inset: auto; width: 100%; max-width: 520px; padding: 0; margin-top: 0; justify-items: center; text-align: center; max-height: 0; overflow: hidden; visibility: hidden;
   transition: opacity .5s .2s, transform .6s .2s var(--nx-ease), max-height .8s var(--nx-ease), margin-top .8s var(--nx-ease), visibility 0s .8s; }
 .nx-plat--logos .nx-plat__panel.is-open .nx-plat__body { margin-top: 22px; max-height: 320px; visibility: visible;

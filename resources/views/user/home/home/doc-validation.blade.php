@@ -33,7 +33,7 @@
                 <div class="nx-doc__stage" aria-hidden="true">
                     <div class="nx-cert" data-nx-doc>
                         <div class="nx-cert__upload" data-nx-upload-row><span class="nx-mono">{{ $t('Uploading · encrypted channel', 'جارٍ الرفع · قناة مشفّرة') }}</span><span class="nx-cert__bar"><i data-nx-upload></i></span></div>
-                        <div class="nx-cert__head"><img src="{{ asset('content/images/logo.svg') }}" alt="" class="nx-cert__logo"><span class="nx-mono" dir="ltr">NEN-2026-04817</span></div>
+                        <div class="nx-cert__head"><img src="{{ asset('content/images/logo.svg') }}" alt="" class="nx-cert__logo"><span class="nx-mono" dir="ltr">{{ $t('NEN', 'نين') }}-2026-04817</span></div>
                         @if ($nxDocItems->count())
                             {{-- one view per step (all stacked in the same spot, the active one shown): its title + its details --}}
                             <div class="nx-cert__views">
@@ -53,7 +53,7 @@
                                 @endforeach
                             </div>
                         @endif
-                        <div class="nx-cert__foot nx-mono"><span>{{ $t('Record match', 'تطابق السجل') }} <b data-nx-match>100%</b></span><span dir="ltr">SHA-256 · <span data-nx-hash>7f3a9c4e…e21b</span></span></div>
+                        <div class="nx-cert__foot nx-mono"><span>{{ $t('Record match', 'تطابق السجل') }} <b data-nx-match>100%</b></span><span>{{ $t('SHA-256', 'البصمة') }} · <span data-nx-hash dir="ltr">7039 4481…2158</span></span></div>
                         <div class="nx-cert__scan" data-nx-scan></div>
                         <div class="nx-cert__stamp" data-nx-stamp>{!! $nxIcon($nxIcons['shield']) !!}<span>{{ $t('Verified', 'تم التحقق') }}</span></div>
                     </div>

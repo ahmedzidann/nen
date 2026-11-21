@@ -21,7 +21,7 @@
                     @endif
                     <span class="nx-video__shade"></span>
                     <button type="button" class="nx-video__play" data-nx-play aria-label="{{ $t('Play video', 'تشغيل الفيديو') }}"><i></i></button>
-                    <figcaption><span class="nx-mono">NEN · {{ $nxVTitle }}</span><b>{{ $t('Watch the video', 'شاهد الفيديو') }}</b></figcaption>
+                    <figcaption><span class="nx-mono">{{ $t('NEN', 'نين') }} · {{ $nxVTitle }}</span><b>{{ $t('Watch the video', 'شاهد الفيديو') }}</b></figcaption>
                 </figure>
             @endif
         </div>

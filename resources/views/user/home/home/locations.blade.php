@@ -23,7 +23,7 @@
     <section class="nx nx-sec nx-locations" id="join-us-section" style="--nx-bg:#f5f6f8">
         <div class="container">
             @include('user.home.home._head', ['n' => ++$nxSec->n, 'title' => $t('Our Locations', 'مواقعنا'),
-                'intro' => $nxOfficeTypes->count() ? $t("NEN's regional offices, authorized offices and representatives across its network. Choose a type to see them on the map.", 'المكاتب الإقليمية والمكاتب المعتمدة وممثلو NEN عبر شبكتها. اختر النوع لتراهم على الخريطة.') : ''])
+                'intro' => $nxOfficeTypes->count() ? $t("NEN's regional offices, authorized offices and representatives across its network. Choose a type to see them on the map.", 'المكاتب الإقليمية والمكاتب المعتمدة وممثلو نين عبر شبكتها. اختر النوع لتراهم على الخريطة.') : ''])
             @if ($nxOfficeTypes->count() > 1)
                 <ul class="nx-chips" role="tablist" aria-label="{{ $t('Location type', 'نوع الموقع') }}">
                     @foreach ($nxOfficeTypes as $type => [$slug, $label])
@@ -31,14 +31,14 @@
                     @endforeach
                 </ul>
             @endif
-            <div class="nx-map" data-nx-map data-src="https://convenitconsultants.com/wp-content/uploads/2023/12/Map.svg">
+            <div class="nx-map" data-nx-map data-src="{{ asset('content/home/world-map-dots.json') }}?v={{ $nxVer('content/home/world-map-dots.json') }}">
                 <svg class="nx-map__svg nx-map__dots" viewBox="0 0 858 432" aria-hidden="true"><g data-nx-map-dots></g></svg>
                 <svg class="nx-map__svg nx-map__routes" viewBox="0 0 858 432" aria-hidden="true"><g data-nx-map-arcs></g></svg>
                 <ol class="nx-map__pins" data-nx-map-pins aria-hidden="true"></ol>
             </div>
             <p class="nx-map__legend">
                 @if ($nxOfficeTypes->count())<span><i class="nx-key nx-key--office"></i>{{ $t('Offices & representatives', 'المكاتب والممثلون') }}</span>@endif
-                <span><i class="nx-key nx-key--net"></i>{{ $t('Countries in the NEN network', 'دول شبكة NEN') }}</span><span><i class="nx-key"></i>{{ $t('Rest of the world', 'باقي العالم') }}</span>
+                <span><i class="nx-key nx-key--net"></i>{{ $t('Countries in the NEN network', 'دول شبكة نين') }}</span><span><i class="nx-key"></i>{{ $t('Rest of the world', 'باقي العالم') }}</span>
             </p>
             @if ($nxOfficeTypes->count())
                 <div class="nx-offices" data-nx-group>
@@ -50,6 +50,8 @@
                                 $nxWho = trim((string) $office->name);
                                 $nxAddr = trim((string) $office->address);
                                 $nxPhone = trim(preg_replace('/\s+/', ' ', (string) $office->phone));
+                                // the phone field is not translatable: its labels are translated here for the Arabic page
+                                if (app()->getLocale() === 'ar') $nxPhone = preg_replace(['/\bLand\s*Line\b/i', '/\bCall\s*Cent(er|re|e)\b/i', '/\bOperation\s*Team\b/i'], ['هاتف أرضي', 'مركز الاتصال', 'فريق العمليات'], $nxPhone);
                                 $nxFrom = $nxTime($office->from_at); $nxTo = $nxTime($office->to_at);
                             @endphp
                             <article class="nx-office" data-nx-item data-nx-tilt data-nx-office data-type="{{ $type }}"
@@ -63,7 +65,7 @@
                                 @if ($nxAddr)<p>{{ $nxAddr }}</p>@endif
                                 @if ($nxPhone || ($nxFrom && $nxTo))
                                     <p class="nx-office__meta">
-                                        @if ($nxPhone)<span dir="ltr">{{ $nxPhone }}</span>@endif
+                                        @if ($nxPhone)<span dir="auto">{{ $nxPhone }}</span>@endif
                                         @if ($nxFrom && $nxTo)<span class="nx-mono" dir="ltr">{{ $nxFrom }} – {{ $nxTo }}</span>@endif
                                     </p>
                                 @endif
@@ -80,6 +82,6 @@
                 @endforeach
             </div>
         </div>
-        <script type="application/json" id="nx-map-data">@json($networkCountries->pluck('title')->values())</script>
+        <script type="application/json" id="nx-map-data">@json($networkCountries->map(fn ($c) => $nxEn($c, 'title'))->values()){{-- English names: the map matches countries by name --}}</script>
     </section>
 @endif

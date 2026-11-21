@@ -21,7 +21,7 @@
             <div class="nx-orbit" data-nx-orbit>
                 <span class="nx-orbit__ring"></span><span class="nx-orbit__ring nx-orbit__ring--2"></span>
                 <div class="nx-orbit__core">
-                    <span class="nx-mono">NEN {{ $techParent->name ?? $t('Technology', 'التقنية') }}</span>
+                    <span class="nx-mono">{{ $t('NEN', 'نين') }} {{ $techParent->name ?? $t('Technology', 'التقنية') }}</span>
                     <strong data-nx-tech-title>{{ $nxT0['title'] }}</strong>
                     <p data-nx-tech-text @if (!$nxT0['text']) hidden @endif>{{ $nxT0['text'] }}</p>
                     <a class="nx-link" href="{{ $nxT0['url'] }}" data-nx-tech-link>{{ $t('Read more', 'اقرأ المزيد') }} {!! $nxArrow !!}</a>

@@ -5,13 +5,13 @@
     $nxLecture = 'https://images.unsplash.com/photo-1758270704763-22072a90d3b6?auto=format&fit=crop&q=80&w=';
     $nxSlides = collect([
         ['img' => $nxSite . 'site/images/tpi-hero.jpg', 'alt' => $t('Official international exams, close to home.', 'اختبارات دولية رسمية بالقرب منك.')],
-        ['img' => $nxLecture . '2400', 'srcset' => collect([900, 1400, 1920, 2400])->map(fn ($w) => $nxLecture . $w . ' ' . $w . 'w')->implode(', '),
+        ['img' => $nxLecture . '2400', 'srcset' => collect([900, 1400, 1920, 2400, 3200, 3840])->map(fn ($w) => $nxLecture . $w . ' ' . $w . 'w')->implode(', '),
             'alt' => $t('One network. Global impact.', 'شبكة واحدة. أثر عالمي.')],
         ['img' => $nxSite . 'site/images/verifiy.jpg', 'alt' => $t('Trusted credentials. Secure systems.', 'شهادات موثوقة. أنظمة آمنة.')],
     ]);
     $nxMulti = $nxSlides->count() > 1;
 @endphp
-<section class="nx nx-hero" id="nx-hero" style="--nx-bg:#0e0f12" data-nx-hero @if ($nxMulti) aria-roledescription="carousel" @endif aria-label="{{ $t('NEN highlights', 'أبرز ما في NEN') }}">
+<section class="nx nx-hero" id="nx-hero" style="--nx-bg:#0e0f12" data-nx-hero @if ($nxMulti) aria-roledescription="carousel" @endif aria-label="{{ $t('NEN highlights', 'أبرز ما في نين') }}">
     <div class="nx-hero__slides">
         @foreach ($nxSlides as $i => $s)
             <div class="nx-slide{{ $i === 0 ? ' is-active' : '' }}" data-nx-slide role="group" aria-roledescription="slide" aria-label="{{ $i + 1 }} / {{ $nxSlides->count() }}" @if ($i) aria-hidden="true" @endif>
